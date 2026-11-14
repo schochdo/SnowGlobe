@@ -1587,8 +1587,9 @@ export default function App() {
       }, 400);
 
       // 1. Twist to rotate heading (in degrees)
+      // Clockwise trackpad twist (positive e.rotation) rotates terrain clockwise by decreasing camera bearing
       if (typeof e.rotation === 'number') {
-        const nextBearing = Math.round(gestureStartBearing + e.rotation);
+        const nextBearing = Math.round(gestureStartBearing - e.rotation);
         map.setBearing(nextBearing);
         setMapBearing(nextBearing);
       }
@@ -1656,6 +1657,8 @@ export default function App() {
     let gestureLock: 'pitch' | 'zoom-rotate' | null = null;
     let t0_d0 = 0;
     let t0_a0 = 0;
+    let prevTouchAngle = 0;
+    let accumulatedAngleDelta = 0;
     let t0_midX = 0;
     let t0_midY = 0;
     let t0_pitch = 0;
@@ -1674,6 +1677,8 @@ export default function App() {
         const dy = t2.clientY - t1.clientY;
         t0_d0 = Math.hypot(dx, dy);
         t0_a0 = Math.atan2(dy, dx) * (180 / Math.PI);
+        prevTouchAngle = t0_a0;
+        accumulatedAngleDelta = 0;
         t0_midX = (t1.clientX + t2.clientX) / 2;
         t0_midY = (t1.clientY + t2.clientY) / 2;
         t0_pitch = map.getPitch();
@@ -1704,15 +1709,18 @@ export default function App() {
         const dd = curDist - t0_d0;
         const midDx = curMidX - t0_midX;
         const midDy = curMidY - t0_midY;
-        let dAngle = curAngle - t0_a0;
-        if (dAngle > 180) dAngle -= 360;
-        if (dAngle < -180) dAngle += 360;
+
+        let stepAngle = curAngle - prevTouchAngle;
+        if (stepAngle > 180) stepAngle -= 360;
+        if (stepAngle < -180) stepAngle += 360;
+        accumulatedAngleDelta += stepAngle;
+        prevTouchAngle = curAngle;
 
         // Arbiter: evaluate once movement exceeds 12px deadzone
         if (!gestureLock) {
           const totalMovement = Math.hypot(midDx, midDy, dd);
           if (totalMovement >= 12) {
-            if (Math.abs(midDy) > 1.5 * Math.abs(dd) && Math.abs(dAngle) < 8) {
+            if (Math.abs(midDy) > 1.5 * Math.abs(dd) && Math.abs(accumulatedAngleDelta) < 8) {
               gestureLock = 'pitch';
               // Disable MapLibre's built-in touchZoomRotate so it doesn't fight pitch
               try { map.touchZoomRotate.disable(); } catch (_) {}
@@ -1744,10 +1752,11 @@ export default function App() {
             }
           }
           // Twist to rotate: apply once finger rotation exceeds 6° deadzone
-          // In screen coords, positive dAngle means clockwise finger rotation -> increase map bearing
-          if (Math.abs(dAngle) > 6 && isFinite(dAngle)) {
-            const effectiveAngle = dAngle > 0 ? dAngle - 6 : dAngle + 6;
-            const nextBearing = Math.round(t0_bearing + effectiveAngle);
+          // In screen coords (y-down), positive accumulatedAngleDelta means clockwise finger rotation.
+          // Rotating clockwise turns the terrain clockwise beneath the user's fingers, which decreases camera bearing.
+          if (Math.abs(accumulatedAngleDelta) > 6 && isFinite(accumulatedAngleDelta)) {
+            const effectiveAngle = accumulatedAngleDelta > 0 ? accumulatedAngleDelta - 6 : accumulatedAngleDelta + 6;
+            const nextBearing = Math.round(t0_bearing - effectiveAngle);
             map.setBearing(nextBearing);
             setMapBearing(nextBearing);
           }

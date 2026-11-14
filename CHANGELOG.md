@@ -4,6 +4,24 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ---
 
+## 2026-11-14
+
+### `fix: correct inverted mobile two-finger rotate gesture & continuous angle delta unwrapping`
+- **What was wrong before**:
+  - In `src/App.tsx`, the two-finger touch gesture handler calculated angle rotation in screen coordinates ($y$-down) and applied `const nextBearing = Math.round(t0_bearing + effectiveAngle)`.
+  - In MapLibre GL JS, camera bearing represents the clockwise azimuth from North. Increasing bearing turns the camera East, which causes the terrain on screen to rotate *counter-clockwise* (left).
+  - Consequently, rotating two fingers to the right (clockwise) caused the map terrain to rotate left, and rotating fingers to the left caused the terrain to rotate right.
+  - Additionally, measuring `dAngle` as `curAngle - t0_a0` against a static start angle with a simple $[-180^\circ, 180^\circ]$ wrap check caused visual snapping and angle inversion when rotating continuously past $180^\circ$.
+- **What changed**:
+  - **Inverted Bearing Delta to Match Direct Finger Manipulation** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+    - Subtracted `effectiveAngle` from `t0_bearing` (`nextBearing = Math.round(t0_bearing - effectiveAngle)`) so that rotating fingers clockwise directly rotates the terrain clockwise under the user's fingers, maintaining 1:1 direct tactile physics.
+    - Also calibrated Mac trackpad Safari twist gesture (`gestureStartBearing - e.rotation`) to match.
+  - **Continuous Angle Delta Unwrapping** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+    - Tracked incremental step deltas (`stepAngle = curAngle - prevTouchAngle`) with $[-180^\circ, 180^\circ]$ boundary crossing checks and accumulated them into `accumulatedAngleDelta`.
+    - Allows continuous multi-turn rotations without $180^\circ$ jump artifacts.
+
+---
+
 ## 2026-11-13
 
 ### `feat: replace awkward line tick with cartographic navigation chevron on locator map`
