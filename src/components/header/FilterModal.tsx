@@ -98,7 +98,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
         <button
           type="button"
           onClick={onToggleDownhill}
-          className={`py-2 px-1 rounded-md border transition-all cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
+          className={`py-2 px-1 rounded-md border transition-colors duration-150 cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
             showDownhill
               ? 'bg-[#2C2A27] border-[#2C2A27] text-[#FAF8F3] shadow-2xs'
               : 'bg-[#FAF8F3] border-[#D6D0C2] text-[#736E67] hover:text-[#1C1B18] hover:border-[#8A847C]'
@@ -113,7 +113,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
         <button
           type="button"
           onClick={onToggleNordic}
-          className={`py-2 px-1 rounded-md border transition-all cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
+          className={`py-2 px-1 rounded-md border transition-colors duration-150 cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
             showNordic
               ? 'bg-[#2C2A27] border-[#2C2A27] text-[#FAF8F3] shadow-2xs'
               : 'bg-[#FAF8F3] border-[#D6D0C2] text-[#736E67] hover:text-[#1C1B18] hover:border-[#8A847C]'
@@ -128,7 +128,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
         <button
           type="button"
           onClick={onToggleHeliCat}
-          className={`py-2 px-1 rounded-md border transition-all cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
+          className={`py-2 px-1 rounded-md border transition-colors duration-150 cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
             showHeliCat
               ? 'bg-[#2C2A27] border-[#2C2A27] text-[#FAF8F3] shadow-2xs'
               : 'bg-[#FAF8F3] border-[#D6D0C2] text-[#736E67] hover:text-[#1C1B18] hover:border-[#8A847C]'
@@ -143,7 +143,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
         <button
           type="button"
           onClick={onToggleTouring}
-          className={`py-2 px-1 rounded-md border transition-all cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
+          className={`py-2 px-1 rounded-md border transition-colors duration-150 cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
             showTouring
               ? 'bg-[#2C2A27] border-[#2C2A27] text-[#FAF8F3] shadow-2xs'
               : 'bg-[#FAF8F3] border-[#D6D0C2] text-[#736E67] hover:text-[#1C1B18] hover:border-[#8A847C]'
@@ -196,7 +196,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 key={pass}
                 type="button"
                 onClick={() => onTogglePass(pass)}
-                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold border transition-all cursor-pointer ${buttonStyle}`}
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold border transition-colors duration-150 cursor-pointer ${buttonStyle}`}
                 title={PASS_DISPLAY_NAMES[pass] || `Filter by ${label}`}
               >
                 <span

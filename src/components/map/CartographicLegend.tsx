@@ -42,10 +42,10 @@ export const CartographicLegend: React.FC<CartographicLegendProps> = ({
       ref={mapLegendRef}
       className={`hidden md:block absolute bottom-5 ${
         leftDockOpen ? 'left-88 md:left-106' : 'left-8'
-      } z-20 transition-all duration-300 select-none`}
+      } z-20 transition-[left] duration-200 ease-out select-none`}
     >
       {mapLegendOpen && (
-        <div className="absolute bottom-11 left-0 w-72 bg-[#FAF8F3] border border-[#D6D0C2] rounded-md p-3.5 space-y-3 z-30 text-xs shadow-xl animate-in fade-in duration-150">
+        <div className="absolute bottom-11 left-0 w-72 bg-[#FAF8F3] border border-[#D6D0C2] rounded-md p-3.5 space-y-3 z-30 text-xs shadow-xl animate-slide-up">
           <div className="flex items-center justify-between border-b border-[#D6D0C2] pb-2">
             <span className="text-xs font-bold text-[#1C1B18] tracking-tight">Cartographic Key</span>
             <button onClick={onCloseLegend} className="text-[#8A847C] hover:text-[#1C1B18] cursor-pointer">

@@ -180,7 +180,7 @@ export const BasemapMenu: React.FC<BasemapMenuProps> = ({
               e.stopPropagation();
               setIsSticky(true);
             }}
-            className="absolute right-0 top-0 w-88 max-w-[calc(100vw-1.5rem)] bg-[#FAF8F3] border border-[#D6D0C2] rounded-md p-3.5 space-y-3 z-30 text-xs shadow-xl animate-in fade-in duration-150 max-h-[calc(100dvh-4.5rem-env(safe-area-inset-top,0px))] overflow-y-auto"
+            className="absolute right-0 top-0 w-88 max-w-[calc(100vw-1.5rem)] bg-[#FAF8F3] border border-[#D6D0C2] rounded-md p-3.5 space-y-3 z-30 text-xs shadow-xl animate-slide-down max-h-[calc(100dvh-4.5rem-env(safe-area-inset-top,0px))] overflow-y-auto"
           >
             {/* Header: Segmented Tabs (Layers | Basemap) + Close button */}
             <div className="flex items-center justify-between border-b border-[#D6D0C2] pb-2.5 gap-2">
@@ -191,7 +191,7 @@ export const BasemapMenu: React.FC<BasemapMenuProps> = ({
                     e.stopPropagation();
                     setActiveTab('layers');
                   }}
-                  className={`flex-1 flex items-center justify-center gap-1.5 py-1 px-2 rounded-[4px] text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1 px-2 rounded-[4px] text-xs font-bold transition-colors duration-150 cursor-pointer ${
                     activeTab === 'layers'
                       ? 'bg-[#FAF8F3] text-[#1C1B18] shadow-2xs border border-[#A8A299]'
                       : 'text-[#736E67] hover:text-[#1C1B18]'
@@ -210,7 +210,7 @@ export const BasemapMenu: React.FC<BasemapMenuProps> = ({
                     e.stopPropagation();
                     setActiveTab('basemap');
                   }}
-                  className={`flex-1 flex items-center justify-center gap-1.5 py-1 px-2 rounded-[4px] text-xs font-bold transition-all cursor-pointer ${
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1 px-2 rounded-[4px] text-xs font-bold transition-colors duration-150 cursor-pointer ${
                     activeTab === 'basemap'
                       ? 'bg-[#FAF8F3] text-[#1C1B18] shadow-2xs border border-[#A8A299]'
                       : 'text-[#736E67] hover:text-[#1C1B18]'

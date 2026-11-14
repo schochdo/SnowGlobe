@@ -412,7 +412,7 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
       </button>
 
       {locatorOpen && (
-        <div className="absolute left-0 top-0 w-80 sm:w-88 bg-[#FAF8F3] border border-[#D6D0C2] rounded-md shadow-xl overflow-hidden z-30 origin-top-left transition-all duration-200 animate-in fade-in-0 zoom-in-95">
+        <div className="absolute left-0 top-0 w-80 sm:w-88 bg-[#FAF8F3] border border-[#D6D0C2] rounded-md shadow-xl overflow-hidden z-30 animate-slide-down">
           {/* Header: Title + Region | Continent | World pills + Close button */}
           <div className="px-3 py-2 bg-[#FAF8F3] border-b border-[#D6D0C2] flex items-center justify-between">
             <div className="flex items-center gap-1.5 min-w-0 pr-2">

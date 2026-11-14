@@ -27,7 +27,7 @@ export const CompassGimbal: React.FC<CompassGimbalProps> = ({
 }) => {
   return (
     <div
-      className="hidden md:block absolute bottom-8 right-6 z-20 select-none transition-all duration-300"
+      className="hidden md:block absolute bottom-8 right-6 z-20 select-none transition-all duration-200 ease-out"
     >
       <div
         className="relative w-[66px] h-[66px] rounded-full bg-[#FAF8F3] border border-[#D6D0C2] shadow-sm flex items-center justify-center p-0"

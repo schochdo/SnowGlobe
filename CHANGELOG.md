@@ -6,6 +6,26 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `feat: simplify animations, eliminate filter gliding expansion & add light slide transitions`
+- **What was wrong before**:
+  - Tapping the `Filters` button on mobile previously called `setMobileSheetState('full')`, triggering a heavy 300ms gliding animation where the 88dvh bottom sheet expanded across the entire phone and faded out the top bar.
+  - In the desktop and mobile directory drawer (`src/components/sidebar/DirectoryList.tsx`), opening filters previously wiped out the search input and filter toggle button in a full-panel takeover.
+  - Category buttons (Downhill, Nordic, Heli/Cat, Touring) and pass network pills in `FilterModal.tsx` used `transition-all`, creating an artificial geometry/padding swelling sensation on toggle.
+  - Panels and floating HUD controls throughout the interface used sluggish 300ms `ease-in-out` transitions.
+- **What changed**:
+  - **Mobile Filter Popover with Light Slide** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+    - Eliminated the full-screen gliding expansion when tapping `Filters` in the mobile floating bar.
+    - Rendered a lightweight mobile filter dropdown popover anchored beneath the top bar with `.animate-slide-down` (150ms ease-out) and automatic outside-click dismiss.
+    - Inside the full sheet, tapping `Filters` toggles criteria cleanly in-place without triggering full-sheet transitions.
+  - **Stabilized Directory Search & Filters Toggle** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)):
+    - Kept the search input, `Filters` toggle button (`aria-expanded`, active charcoal styling when open), and collapse controls stably pinned at the top.
+    - Rendered the filter panel in the list body with light sliding `.animate-slide-down` and a sticky subheader with `Reset All` and `Done` actions.
+  - **Immediate, Crisp Button Transitions** ([`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/FilterModal.tsx)):
+    - Replaced `transition-all` on category buttons and pass network pills with `transition-colors duration-150`, eliminating layout reflow and button swelling.
+  - **Snappy Lightweight Panel Transitions** ([`src/components/sidebar/LeftDock.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/LeftDock.tsx), [`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/MobileSheet.tsx), [`src/components/map/CartographicLegend.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/CartographicLegend.tsx), [`src/components/map/CompassGimbal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/CompassGimbal.tsx), [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), [`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx)):
+    - Accelerated transition speeds from 300ms `ease-in-out` down to 200ms `ease-out`, targeting specific transform/position properties (`transition-transform`, `transition-[left]`).
+    - Added `@keyframes slideDownFade` and `@keyframes slideUpFade` (150ms ease-out) in [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/index.css) and removed hover thumb scale ballooning.
+
 ### `fix: correct inverted mobile two-finger rotate gesture & continuous angle delta unwrapping`
 - **What was wrong before**:
   - In `src/App.tsx`, the two-finger touch gesture handler calculated angle rotation in screen coordinates ($y$-down) and applied `const nextBearing = Math.round(t0_bearing + effectiveAngle)`.

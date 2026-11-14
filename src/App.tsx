@@ -14,6 +14,7 @@ maplibregl.setWorkerUrl(workerUrl);
 import {
   TopNavBar,
 } from './components/header/TopNavBar';
+import { FilterPanel } from './components/header/FilterModal';
 import { LeftDock } from './components/sidebar/LeftDock';
 import { DirectoryList } from './components/sidebar/DirectoryList';
 import { MobileSheet } from './components/sidebar/MobileSheet';
@@ -316,6 +317,9 @@ export default function App() {
   const [panelView, setPanelView] = useState<'directory' | 'profile'>('directory');
   const [mobileSheetState, setMobileSheetState] = useState<'peek' | 'half' | 'full'>('peek');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [mobileFilterPopoverOpen, setMobileFilterPopoverOpen] = useState(false);
+  const mobileFilterPopoverRef = useRef<HTMLDivElement | null>(null);
+  const mobileFilterBtnRef = useRef<HTMLButtonElement | null>(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
   useEffect(() => {
@@ -325,6 +329,35 @@ export default function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Close mobile filter popover when tapping outside
+  useEffect(() => {
+    if (!mobileFilterPopoverOpen) return;
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node;
+      if (
+        mobileFilterPopoverRef.current &&
+        !mobileFilterPopoverRef.current.contains(target) &&
+        mobileFilterBtnRef.current &&
+        !mobileFilterBtnRef.current.contains(target)
+      ) {
+        setMobileFilterPopoverOpen(false);
+      }
+    };
+    document.addEventListener('pointerdown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('pointerdown', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [mobileFilterPopoverOpen]);
+
+  // Ensure filter popover closes if the bottom sheet is opened to full
+  useEffect(() => {
+    if (mobileSheetState === 'full') {
+      setMobileFilterPopoverOpen(false);
+    }
+  }, [mobileSheetState]);
 
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
@@ -680,13 +713,18 @@ export default function App() {
   const handleOpenMobileSearch = () => {
     setPanelView('directory');
     setMobileFiltersOpen(false);
+    setMobileFilterPopoverOpen(false);
     setMobileSheetState('full');
   };
 
   const handleOpenMobileFilters = () => {
-    setPanelView('directory');
-    setMobileFiltersOpen(true);
-    setMobileSheetState('full');
+    if (mobileSheetState === 'full') {
+      setMobileFiltersOpen((prev) => !prev);
+    } else {
+      setMobileFilterPopoverOpen((prev) => !prev);
+      setMapMenuOpen(false);
+      setLocatorOpen(false);
+    }
   };
 
   // Filtered Resorts across entire world dataset
@@ -3279,21 +3317,38 @@ export default function App() {
         </button>
 
         <button
+          ref={mobileFilterBtnRef}
           onClick={handleOpenMobileFilters}
-          className="h-10 px-3 bg-[#FAF8F3] border border-[#2C2A27] rounded-md flex items-center gap-1.5 text-xs font-bold text-[#1C1B18] shadow-sm cursor-pointer hover:bg-[#EFECE4] transition-colors shrink-0"
+          className={`h-10 px-3 border border-[#2C2A27] rounded-md flex items-center gap-1.5 text-xs font-bold shadow-sm cursor-pointer transition-colors shrink-0 ${
+            mobileFilterPopoverOpen
+              ? 'bg-[#2C2A27] text-[#FAF8F3]'
+              : 'bg-[#FAF8F3] text-[#1C1B18] hover:bg-[#EFECE4]'
+          }`}
           aria-label="Filter ski areas"
+          aria-expanded={mobileFilterPopoverOpen}
         >
           <Sliders className="w-3.5 h-3.5" />
           <span>Filters</span>
           {activeFiltersCount > 0 && (
-            <span className="bg-[#B84A39] text-[#FAF8F3] text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums">
+            <span
+              className={`${
+                mobileFilterPopoverOpen
+                  ? 'bg-[#FAF8F3] text-[#1C1B18]'
+                  : 'bg-[#B84A39] text-[#FAF8F3]'
+              } text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums`}
+            >
               {activeFiltersCount}
             </span>
           )}
         </button>
 
         <button
-          onClick={() => setMapMenuOpen((prev) => !prev)}
+          onClick={() => {
+            setMapMenuOpen((prev) => !prev);
+            if (!mapMenuOpen) {
+              setMobileFilterPopoverOpen(false);
+            }
+          }}
           className="h-10 px-3 bg-[#FAF8F3] border border-[#2C2A27] rounded-md flex items-center gap-1.5 text-xs font-bold text-[#1C1B18] shadow-sm cursor-pointer hover:bg-[#EFECE4] transition-colors shrink-0"
           aria-label="Toggle map layers and basemaps"
         >
@@ -3301,6 +3356,85 @@ export default function App() {
           <span>Layers</span>
         </button>
       </div>
+
+      {/* MOBILE COMPACT FILTER POPOVER (LIGHT SLIDING, SIMPLE EDITORIAL APPEARANCE) */}
+      {mobileFilterPopoverOpen && mobileSheetState !== 'full' && (
+        <div
+          ref={mobileFilterPopoverRef}
+          className="md:hidden fixed top-[calc(env(safe-area-inset-top,0px)+58px)] left-3 right-3 sm:left-auto sm:right-3 sm:w-92 z-30 bg-[#FAF8F3] border border-[#2C2A27] rounded-md p-3.5 shadow-xl max-h-[calc(100dvh-5.5rem)] overflow-y-auto animate-slide-down select-none"
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#D6D0C2]">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#1C1B18] uppercase tracking-wider">
+              <Sliders className="w-3.5 h-3.5 text-[#1C1B18]" />
+              <span>Filter Criteria</span>
+              {activeFiltersCount > 0 && (
+                <span className="bg-[#B84A39] text-[#FAF8F3] text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums">
+                  {activeFiltersCount}
+                </span>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              {activeFiltersCount > 0 && (
+                <button
+                  type="button"
+                  onClick={handleResetFilters}
+                  className="text-xs text-[#B84A39] font-bold hover:underline cursor-pointer mr-1"
+                >
+                  Reset All
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setMobileFilterPopoverOpen(false)}
+                className="px-2.5 py-1 text-xs font-bold text-[#1C1B18] bg-[#FAF8F3] hover:bg-[#EAE5D9] border border-[#2C2A27] rounded-md cursor-pointer transition-colors"
+              >
+                Done
+              </button>
+            </div>
+          </div>
+
+          {/* Filter Panel Content */}
+          <FilterPanel
+            activeFiltersCount={activeFiltersCount}
+            onResetFilters={handleResetFilters}
+            filteredCount={filteredResorts.length}
+            showDownhill={showDownhill}
+            onToggleDownhill={() => setShowDownhill(!showDownhill)}
+            showNordic={showNordic}
+            onToggleNordic={() => setShowNordic(!showNordic)}
+            showHeliCat={showHeliCat}
+            onToggleHeliCat={() => setShowHeliCat(!showHeliCat)}
+            showTouring={showTouring}
+            onToggleTouring={() => setShowTouring(!showTouring)}
+            categoryFilterCounts={categoryFilterCounts}
+            selectedPasses={selectedPasses}
+            onTogglePass={(pass) => {
+              setSelectedPasses((prev) =>
+                prev.includes(pass) ? prev.filter((p) => p !== pass) : [...prev, pass]
+              );
+            }}
+            onSetAllPasses={() =>
+              setSelectedPasses(['Ikon', 'Epic', 'Indy', 'Mountain Collective', 'Independent'])
+            }
+            onClearPasses={() => setSelectedPasses([])}
+            unitsMetric={unitsMetric}
+            minVerticalM={minVerticalM}
+            onChangeMinVerticalM={setMinVerticalM}
+            minVerticalFt={minVerticalFt}
+            onChangeMinVerticalFt={setMinVerticalFt}
+            minAreaHa={minAreaHa}
+            onChangeMinAreaHa={setMinAreaHa}
+            minAreaAcres={minAreaAcres}
+            onChangeMinAreaAcres={setMinAreaAcres}
+            minNordicKm={minNordicKm}
+            onChangeMinNordicKm={setMinNordicKm}
+            minNordicMi={minNordicMi}
+            onChangeMinNordicMi={setMinNordicMi}
+          />
+        </div>
+      )}
 
       {/* DESKTOP DIRECTORY DOCK */}
       <LeftDock isOpen={leftDockOpen} onToggle={() => setLeftDockOpen(!leftDockOpen)}>
@@ -3458,7 +3592,7 @@ export default function App() {
       <div
         className={`absolute top-[calc(env(safe-area-inset-top,0px)+64px)] md:top-[calc(env(safe-area-inset-top,0px)+56px)] left-3 md:left-8 ${
           leftDockOpen ? 'md:left-[420px]' : 'md:left-8'
-        } z-20 flex items-start gap-2 transition-all duration-300 ease-in-out select-none`}
+        } z-20 flex items-start gap-2 transition-[left] duration-200 ease-out select-none`}
       >
         <NavigationControls
           onZoomIn={handleZoomIn}
