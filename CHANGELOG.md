@@ -6,6 +6,31 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-15
 
+### `feat: consolidate topology single source of truth, enforce architecture guardrails & create canary suite`
+- **What was wrong before**:
+  1. **Topology Logic Drift Risk**:
+     - `src/utils/pisteTopologyGraph.ts` and `data_pipeline/pisteTopologyGraph.cjs` contained duplicate implementations of the 3-tier topological classifier and physical gradient/gravity return laws, creating drift risk whenever rules were refined.
+  2. **Unenforced Runtime Immutability Boundaries in Documentation**:
+     - `ARCHITECTURE.md` lacked an explicit "AI / Developer Guardrails" section warning developers and AI agents that `public/data/trails/*.json` `atlas_category` tags are immutable at runtime and that classification logic must never leak into `App.tsx` or `src/layers/`.
+  3. **No Fast Headless Verification**:
+     - Validating topology classifier behavior required either manual browser inspection or scanning massive output dumps. There was no instant CLI canary script to run regression checks on known difficult edge cases.
+- **What changed**:
+  - **Single Source of Truth Consolidator** ([`data_pipeline/pisteTopologyGraph.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/pisteTopologyGraph.cjs), [`src/utils/pisteTopologyGraph.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/pisteTopologyGraph.ts)):
+     - Converted `data_pipeline/pisteTopologyGraph.cjs` into a clean CommonJS re-export adapter that imports the canonical implementation from `src/utils/pisteTopologyGraph.ts`. Fixed coordinate tuple typings to support optional 3D elevation tuples `[number, number, number?]`.
+  - **ARCHITECTURE.md Developer Guardrails** ([`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/ARCHITECTURE.md)):
+     - Added Section 13 ("AI / Developer Guardrails & Strict Module Boundaries") enforcing:
+       - Runtime immutability of `atlas_category` tags on all trail features (`App.tsx` and `src/layers/` must never overwrite `atlas_category` with radius or proximity checks).
+       - Exclusive residence of classification algorithms in `pisteTopologyGraph`.
+       - Fast isolated single-area development workflow.
+     - Updated Section 3 directory map with a 1-line-per-file reference across all newly added and active files.
+  - **Canary Verification Suite** ([`scripts/verify_topology_canary.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/verify_topology_canary.cjs)):
+     - Built a fast, headless CLI verification script that loads 7 representative resorts (Mt. Baker, Jackson Hole, Queyras/Valpreveyre, Levi, Whistler Blackcomb, Chamonix, Zermatt), strips all pre-baked categories, runs the classifier, outputs a formatted summary table, and programmatically asserts known edge cases:
+       - Mt. Baker Blueberry Chutes $\to$ `touring` (Universal Gravity Sink Law)
+       - Jackson Hole 4.1-mile path $\to$ `ignore` (Universal Physical Gradient Law)
+       - Queyras Valpreveyre $\to$ `downhill` (1km Fracture Spatial BFS Chaining)
+       - Whistler Flat Catwalks/Traverses $\to$ `downhill` (Machine-Groomed Flow)
+       - Levi Base Tracks $\to$ `nordic` (Strict Discipline Segregation)
+
 ### `fix: enforce universal physical gradient and gravity return laws in piste topology graph`
 - **What was wrong before**:
   1. **Jackson Hole 4.1-Mile Summer Hiking Path**:

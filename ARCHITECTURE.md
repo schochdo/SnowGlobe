@@ -54,6 +54,8 @@ SnowGlobe/
 │   │   ├── geometry.ts            ← extractPointCoordinates, haversineDistanceKm
 │   │   ├── classification.ts      ← PASS_COLORS, PASS_DISPLAY_NAMES, getResortStats, getCategoryBadge
 │   │   ├── mapStyles.ts           ← MapLibre style JSON factory (satellite, osm, topo, Mapterhorn DEM, slope, aspect)
+│   │   ├── pisteTopologyGraph.ts  ← Single canonical source of truth for 3-tier piste topology graph classifier
+│   │   ├── trailAnalysis.ts       ← Trail elevation profile sampler, grade analysis, connected feature aggregation
 │   │   └── terrainAnalysis.ts     ← Client-side 3x3 Sobel/Horn DEM convolution protocols (slope://, aspect://)
 │   ├── data/
 │   │   ├── resorts.ts             ← Curated flagship ski atlas (GLOBAL_SKI_ATLAS)
@@ -85,14 +87,21 @@ SnowGlobe/
 │   │       ├── BasemapMenu.tsx        ← Basemap selector & 3D terrain exaggeration slider
 │   │       ├── CartographicLegend.tsx ← Map key popover & alternating scale bar
 │   │       ├── CompassGimbal.tsx      ← Concentric rotary compass heading & 3D tilt horizon gimbal
-│   │       └── AttributionBadge.tsx   ← Collapsible map attribution pill
+│   │       ├── AttributionBadge.tsx   ← Collapsible map attribution pill
+│   │       └── TrailProfileCard.tsx   ← Interactive trail elevation profile, pitch badge, and stats card
 │   └── server/
 │       └── trailsPlugin.ts        ← Vite dev plugin: serves local SQLite trails DB via HTTP
 ├── data_pipeline/
 │   ├── trails.db                  ← SQLite: OSM piste + lift geometries keyed by resort bbox
 │   ├── build_trails_db.cjs        ← Script: build trails.db from Overpass API
-│   └── export_resort_trails.cjs   ← Script: export per-resort GeoJSON from DB
-├── public/                        ← Static assets served as-is
+│   ├── export_resort_trails.cjs   ← Script: export per-resort GeoJSON from DB
+│   ├── export_all_ski_areas.cjs   ← Script: export all global ski areas from trails.db
+│   └── pisteTopologyGraph.cjs     ← CommonJS adapter re-exporting canonical src/utils/pisteTopologyGraph.ts
+├── scripts/
+│   ├── apply_piste_topology.cjs   ← Offline batch script: applies topology classifier to public/data/trails/
+│   └── verify_topology_canary.cjs ← Fast headless CLI test suite asserting topology classifications & edge cases
+├── public/                        ← Static assets served as-is (resort GeoJSON, country bounds, peaks, lookouts)
+│   └── data/trails/*.json         ← Pre-baked resort GeoJSON with immutable atlas_category tags
 ├── index.html
 ├── vite.config.ts
 └── CHANGELOG.md                   ← Every feature/fix logged here
@@ -283,7 +292,27 @@ To solve the lack of relational resort boundaries and network topology in OpenSt
 
 ---
 
-## 13. Parked & Future Initiatives
+## 13. AI / Developer Guardrails & Strict Module Boundaries
+
+To ensure fast, isolated, and bug-free development without cross-subsystem drift, all AI agents and developers must observe these hard boundaries:
+
+1. **`public/data/trails/*.json` `atlas_category` Values Are Immutable at Runtime**:
+   - The pre-baked `atlas_category` tags (`downhill`, `nordic`, `touring`, `ignore`) generated during offline ingestion are the authoritative ground truth.
+   - `src/App.tsx`, `src/layers/`, and all client rendering code must **never** overwrite or mutate `atlas_category` with runtime radius checks (e.g. `isPisteNearLift`), bounding box checks, or proximity heuristics.
+   - Any trail with `atlas_category === 'ignore'` must be excluded from downhill/nordic rendering and statistics.
+
+2. **Trail Classification Rules Live Exclusively in `pisteTopologyGraph`**:
+   - `src/utils/pisteTopologyGraph.ts` is the single canonical source of truth for all trail classification algorithms and physical gradient/gravity return laws.
+   - `data_pipeline/pisteTopologyGraph.cjs` is a thin CommonJS adapter that re-exports `src/utils/pisteTopologyGraph.ts` so Node scripts and Vite/client never diverge.
+   - Never duplicate classification rules or introduce localized heuristics into `src/App.tsx`, `src/layers/`, or `data_pipeline/`.
+
+3. **Isolated Single-Area Modifications**:
+   - Single-area tasks (e.g. tuning UI controls, adjusting camera flight, styling vector layers) must touch only their target modules according to the 1-line-per-file directory map in Section 3.
+   - Always run the headless canary verification suite (`node scripts/verify_topology_canary.cjs`) before committing any changes touching trail classification or data pipeline logic.
+
+---
+
+## 14. Parked & Future Initiatives
 
 - **Offline Tile & Elevation Caching (PWA / Airplane Mode)**:
   - *Goal*: Allow offline map browsing for single ski areas or backcountry hiking zones without cellular data.

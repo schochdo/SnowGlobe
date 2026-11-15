@@ -17,7 +17,7 @@ function fastDistMeters(lng1: number, lat1: number, lng2: number, lat2: number):
   return Math.hypot(dLat, dLng);
 }
 
-function extractFlatCoords(geom: TopologyFeature['geometry']): [number, number][] {
+function extractFlatCoords(geom: TopologyFeature['geometry']): [number, number, number?][] {
   if (!geom || !geom.coordinates) return [];
   if (geom.type === 'LineString') return geom.coordinates;
   if (geom.type === 'MultiLineString' || geom.type === 'Polygon') return geom.coordinates.flat(1);
@@ -25,7 +25,7 @@ function extractFlatCoords(geom: TopologyFeature['geometry']): [number, number][
   return [];
 }
 
-function computeLineLengthMeters(coords: [number, number][]): number {
+function computeLineLengthMeters(coords: [number, number, number?][]): number {
   let total = 0;
   for (let i = 1; i < coords.length; i++) {
     total += fastDistMeters(coords[i - 1][0], coords[i - 1][1], coords[i][0], coords[i][1]);
@@ -34,10 +34,10 @@ function computeLineLengthMeters(coords: [number, number][]): number {
 }
 
 // Detects tight summer hiking switchbacks (>125 deg hairpin turns)
-function countHairpinSwitchbacks(coords: [number, number][]): number {
+function countHairpinSwitchbacks(coords: [number, number, number?][]): number {
   if (coords.length < 3) return 0;
   // Filter out micro-vertices closer than 10m so GPS jitter doesn't look like a switchback
-  const pts: [number, number][] = [coords[0]];
+  const pts: [number, number, number?][] = [coords[0]];
   for (let i = 1; i < coords.length; i++) {
     if (fastDistMeters(pts[pts.length - 1][0], pts[pts.length - 1][1], coords[i][0], coords[i][1]) >= 10) {
       pts.push(coords[i]);
@@ -101,7 +101,7 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
   for (const lift of liftFeatures) {
     const coords = extractFlatCoords(lift.geometry);
     for (let i = 0; i < coords.length; i++) {
-      liftPoints.push(coords[i]);
+      liftPoints.push([coords[i][0], coords[i][1]]);
       if (i > 0) {
         const [x1, y1] = coords[i - 1];
         const [x2, y2] = coords[i];
