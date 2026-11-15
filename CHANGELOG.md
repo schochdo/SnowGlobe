@@ -6,6 +6,28 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-15
 
+### `fix: enforce universal physical gradient and gravity return laws in piste topology graph`
+- **What was wrong before**:
+  1. **Jackson Hole 4.1-Mile Summer Hiking Path**:
+     - An unnamed 4.1-mile perimeter path (`548d46ed`) with an average slope of only 3.1° (5.4% grade) and `grooming=backcountry` was classified as a downhill freeride run. Because its bottom terminus reached the Teton Village base area within 350m of base lifts, it seeded the BFS graph and propagated `downhill` status for over 4 miles.
+  2. **Mt. Baker Blueberry Chutes Runtime Mutation in `App.tsx`**:
+     - Although Blueberry Chutes was correctly classified as `touring` in the static dataset, a legacy client-side re-evaluation loop in `src/App.tsx` (`newLiftsAdded`) was inspecting all ingested features and checking `isPisteNearLift(coords, operatingLiftSegmentsRef.current, 1000)`. Because Blueberry Chutes is 940.7m from Chair 2 (< 1,000m), the client runtime was overwriting `atlas_category = 'downhill'` on every page load.
+  3. **Brittle Whack-a-Mole Overrides**:
+     - Hardcoded way IDs in `OSM_WAY_OVERRIDES` failed to generalize across global ski areas and violated our dataset-wide algorithmic rule standard.
+- **What changed**:
+  - **Universal Physical Gradient Law (Slope & Energy Law)** ([`src/utils/pisteTopologyGraph.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/pisteTopologyGraph.ts), [`data_pipeline/pisteTopologyGraph.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/pisteTopologyGraph.cjs)):
+    - Evaluates 3D coordinates `[lng, lat, ele]`. If a trail has length > 1,200m with an average pitch $\le 4.5^\circ$ ($< 8\%$ grade) and is not machine-groomed (`classic`, `skating`, `scooter`), it is physically incapable of sustaining gravity-driven downhill skiing. Demoted to `ignore` (or `touring`), universally filtering summer perimeter paths and service roads worldwide without hardcoded IDs.
+  - **Universal Gravity Sink Law (Lift Gravity Return Loop)** ([`src/utils/pisteTopologyGraph.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/pisteTopologyGraph.ts), [`data_pipeline/pisteTopologyGraph.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/pisteTopologyGraph.cjs)):
+    - Evaluates the lowest elevation terminus of candidate descents. If the bottom of a run is $> 350\text{m}$ from any lift and connects to no downstream run returning to a lift, it is an unserviced backcountry descent. Automatically classified as `touring`.
+  - **Eliminated Client-Side Mutation Bug** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+    - Removed the legacy client-side 1,000m radius override in `App.tsx` (`newLiftsAdded`), preserving deterministic pre-baked `atlas_category` as the authoritative source of truth.
+  - **Removed `OSM_WAY_OVERRIDES`**:
+    - Completely deleted hardcoded way override dictionaries in favor of pure topological and physical classification.
+  - **Re-applied Across All Datasets**:
+    - Re-ran `scripts/apply_piste_topology.cjs` across all 5,905 datasets. Verified Jackson Hole 4.1-mile path is stripped (`ignore`), Mt. Baker's Blueberry Chutes stays `touring`, and Queyras's Valpreveyre remains seamless `downhill`.
+
+
+
 ### `fix: resolve live viewport bbox overwrites, local server cache headers, and generic name graph bridging`
 - **What was wrong before**:
   - Spot-checking Jackson Hole, Queyras, and Mt. Baker appeared unchanged in the browser:

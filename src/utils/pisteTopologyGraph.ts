@@ -9,13 +9,6 @@ export interface TopologyFeature {
   };
 }
 
-// Known upstream OSM tagging errors (e.g. Jackson Hole Rendezvous Trail summer hike)
-const OSM_WAY_OVERRIDES: Record<string, AtlasCategory> = {
-  '318672212': 'ignore',
-  'way/318672212': 'ignore',
-  '79ad96794a239398407a1f5da587f4068b74116a': 'ignore',
-};
-
 const DEG_TO_RAD = Math.PI / 180;
 
 function fastDistMeters(lng1: number, lat1: number, lng2: number, lat2: number): number {
@@ -131,22 +124,40 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
 
   // 2. Pre-screen disciplines & identify candidate Downhill graph nodes
   const downhillCandidates: number[] = [];
-  const coordsByIdx: [number, number][][] = new Array(pisteFeatures.length);
+  const coordsByIdx: [number, number, number?][][] = new Array(pisteFeatures.length);
   const lengthByIdx: number[] = new Array(pisteFeatures.length);
+  const bottomPtByIdx: [number, number][] = new Array(pisteFeatures.length);
 
   for (let i = 0; i < pisteFeatures.length; i++) {
     const feat = pisteFeatures[i];
     const props = feat.properties || {};
-    const rawId = String(props.id || props['@id'] || feat.id || '');
-
-    if (OSM_WAY_OVERRIDES[rawId]) {
-      props.atlas_category = OSM_WAY_OVERRIDES[rawId];
-      continue;
-    }
 
     const coords = extractFlatCoords(feat.geometry);
     coordsByIdx[i] = coords;
     lengthByIdx[i] = computeLineLengthMeters(coords);
+
+    // Analyze elevation profile (3D coords [lng, lat, ele])
+    let minZ = Infinity;
+    let maxZ = -Infinity;
+    let bPt: [number, number] = coords.length > 0 ? [coords[coords.length - 1][0], coords[coords.length - 1][1]] : [0, 0];
+    for (const c of coords) {
+      if (c.length >= 3 && typeof c[2] === 'number' && isFinite(c[2])) {
+        if (c[2] < minZ) {
+          minZ = c[2];
+          bPt = [c[0], c[1]];
+        }
+        if (c[2] > maxZ) {
+          maxZ = c[2];
+        }
+      }
+    }
+    bottomPtByIdx[i] = bPt;
+
+    const hasElevation = isFinite(minZ) && isFinite(maxZ) && maxZ > minZ;
+    const vertDrop = hasElevation ? maxZ - minZ : 0;
+    const avgSlopeDeg = hasElevation && lengthByIdx[i] > 10
+      ? (Math.atan2(vertDrop, lengthByIdx[i]) * 180) / Math.PI
+      : 15;
 
     // Normalize tags across both raw OSM tags and OpenSkiData `uses` arrays
     const rawType = String(props['piste:type'] || props.type || '').toLowerCase();
@@ -160,6 +171,7 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
     const patrolled = String(props.patrolled || props['piste:patrolled'] || '').toLowerCase();
     const highway = String(props.highway || '').toLowerCase();
     const name = String(props.name || props['piste:name'] || props.ref || '').trim();
+    const diff = String(props.difficulty || props['piste:difficulty'] || '').toLowerCase();
 
     // TIER 2A: Strict Nordic Isolation (Fixes Levi / Scandinavia & Mt. Baker USFS roads)
     // A Nordic trail NEVER becomes downhill just because it has `hike` or passes under a lift.
@@ -202,6 +214,22 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
         props.atlas_category = 'ignore';
         continue;
       }
+    }
+
+    // UNIVERSAL PHYSICAL GRADIENT LAW (Slope & Energy Law):
+    // A downhill ski run requires gravity to overcome friction. Machine-groomed snow (classic, skating, scooter) on flat terrain is Nordic.
+    // Long trails (>1,200m) with average pitch <= 4.5 deg (<8% grade) that lack machine grooming cannot physically sustain downhill skiing.
+    // (e.g. Jackson Hole 4.1-mile perimeter hiking path). Demote to ignore or touring.
+    const isMachineGroomed = ['classic', 'skating', 'scooter'].includes(grooming);
+    if (hasElevation && lengthByIdx[i] > 1200 && avgSlopeDeg <= 4.5 && !isMachineGroomed) {
+      if (types.has('skitour')) {
+        props.atlas_category = 'touring';
+      } else if (['track', 'service', 'path', 'footway', 'unclassified'].includes(highway) || !isRealName(name) || diff === 'freeride') {
+        props.atlas_category = 'ignore';
+      } else {
+        props.atlas_category = 'touring';
+      }
+      continue;
     }
 
     downhillCandidates.push(i);
@@ -299,31 +327,41 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
     }
   }
 
-  // 6. Finalize Downhill vs. Backcountry Touring + Dead-End Summer Trail Sink Check
+  // 6. Finalize Downhill vs. Backcountry Touring + Universal Gravity Sink Law
   for (const idx of downhillCandidates) {
     const feat = pisteFeatures[idx];
     const props = feat.properties || {};
     const coords = coordsByIdx[idx];
     const highway = String(props.highway || '').toLowerCase();
     const grooming = String(props['piste:grooming'] || props.grooming || '').toLowerCase();
+    const diff = String(props.difficulty || props['piste:difficulty'] || '').toLowerCase();
 
     if (!liftServed.has(idx)) {
       props.atlas_category = 'touring';
       continue;
     }
 
-    // Dead-End Canyon Sink Check (Catches summer hiking trails starting near a summit tram
-    // that drop into an un-lifted backcountry canyon and never return to a lift or another run)
-    if (['path', 'footway', 'track'].includes(highway) && !grooming && coords.length >= 2) {
-      const endPt = coords[coords.length - 1];
-      const endNearLift = isPointWithinMetersOfLift(endPt[0], endPt[1], 450);
-      const endNeighbors = neighborCellKeys(endPt[0], endPt[1])
-        .flatMap(k => gridMap.get(k) || [])
-        .filter(nIdx => nIdx !== idx && liftServed.has(nIdx));
+    // GRAVITY SINK LAW (Lift Gravity Return Loop):
+    // An inbounds downhill piste delivers skiers to a lift (either directly at its lowest terminus or via
+    // connecting downhill runs). If a run's lowest terminus (where gravity brings the skier) has no lift
+    // within 350m and connects to no run with a lift, it drops into an unserviced backcountry drainage/canyon
+    // (e.g. Shuksan Arm / Blueberry Chutes at Mt. Baker). The skier cannot ride a lift back up and must skin
+    // or hike out => Backcountry / Touring!
+    if (coords.length >= 2 && liftPoints.length > 0) {
+      const bPt = bottomPtByIdx[idx] || coords[coords.length - 1];
+      const bottomNearLift = isPointWithinMetersOfLift(bPt[0], bPt[1], 350);
 
-      if (!endNearLift && endNeighbors.length === 0) {
-        props.atlas_category = 'touring';
-        continue;
+      if (!bottomNearLift) {
+        const bottomNeighbors = neighborCellKeys(bPt[0], bPt[1])
+          .flatMap(k => gridMap.get(k) || [])
+          .filter(nIdx => nIdx !== idx && liftServed.has(nIdx));
+
+        if (bottomNeighbors.length === 0) {
+          if (grooming === 'backcountry' || ['path', 'footway', 'track'].includes(highway) || !isRealName(props.name) || diff === 'freeride') {
+            props.atlas_category = 'touring';
+            continue;
+          }
+        }
       }
     }
 

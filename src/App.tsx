@@ -1150,30 +1150,6 @@ export default function App() {
       }
     }
 
-    // 3. If new lifts were discovered, re-evaluate any previously ingested pistes in liveFeaturesMap
-    // that were marked 'touring' only because lifts hadn't arrived yet
-    if (newLiftsAdded) {
-      for (const [fid, existingF] of liveFeaturesMapRef.current.entries()) {
-        const ep = existingF.properties;
-        if (ep?.kind === 'piste' && ep.atlas_category === 'touring') {
-          const origType = (ep.osm_piste_type || ep['piste:type'] || '').toLowerCase();
-          const patrolled = (ep.patrolled || '').toLowerCase();
-          if ((origType.includes('downhill') || origType.includes('freeride') || origType.includes('connection')) && patrolled !== 'no') {
-            let coords: [number, number][] = [];
-            if (existingF.geometry?.type === 'LineString' && Array.isArray(existingF.geometry.coordinates)) {
-              coords = existingF.geometry.coordinates;
-            } else if (existingF.geometry?.type === 'Polygon' && Array.isArray(existingF.geometry.coordinates?.[0])) {
-              coords = existingF.geometry.coordinates[0];
-            }
-            if (isPisteNearLift(coords, operatingLiftSegmentsRef.current, 1000)) {
-              ep.atlas_category = 'downhill';
-              ep['piste:type'] = 'downhill';
-            }
-          }
-        }
-      }
-    }
-
     // Limit transient bbox features while strictly preserving all loaded resort trails
     if (liveFeaturesMapRef.current.size > 5000) {
       const keys = Array.from(liveFeaturesMapRef.current.keys());
