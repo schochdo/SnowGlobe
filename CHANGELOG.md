@@ -6,6 +6,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `feat: switch regional locator inset to OpenFreeMap Liberty vector basemap`
+- **What was wrong before**:
+  - The Esri World Boundaries and Places raster overlay baked heavy black drop shadows and blurry raster outlines into its text, causing place names and country labels to render as unreadable fuzzy blobs.
+- **What changed**:
+  - **OpenFreeMap Liberty Vector Basemap** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
+    - Swapped the basemap to OpenFreeMap Liberty (`https://tiles.openfreemap.org/styles/liberty`).
+    - Eliminates all drop shadows: labels are rendered as crisp GPU vector text in clean solid charcoal/black with a sharp 1px white halo (`text-halo-width: 1`).
+    - Retains visible mountain topography through embedded Natural Earth 2 Shaded Relief raster underlayer while keeping boundaries and city labels razor-sharp.
+
 ### `feat: replace empty CARTO basemap with Esri World Physical Shaded Relief & Reference on locator inset`
 - **What was wrong before**:
   - CARTO Voyager and Positron at zoom 5.2 in mountainous inland regions (e.g. Savoie/Alps) rendered 97% blank off-white space because they lack digital elevation hillshading and suppress place labels until higher zooms, creating a featureless void.

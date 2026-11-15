@@ -217,46 +217,13 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
 
     const initialZoom = savedZoomRef.current ?? getOverviewTargetZoom(locatorZoomPreset);
 
-    // National Geographic-style physical shaded relief + clean borders and anchor cities
-    const physicalReliefStyle: maplibregl.StyleSpecification = {
-      version: 8,
-      sources: {
-        'esri-physical': {
-          type: 'raster',
-          tiles: [
-            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
-          ],
-          tileSize: 256,
-          attribution: 'Esri Physical',
-          maxzoom: 8,
-        },
-        'esri-reference': {
-          type: 'raster',
-          tiles: [
-            'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
-          ],
-          tileSize: 256,
-          attribution: 'Esri Reference',
-        },
-      },
-      layers: [
-        {
-          id: 'esri-physical-layer',
-          type: 'raster',
-          source: 'esri-physical',
-        },
-        {
-          id: 'esri-reference-layer',
-          type: 'raster',
-          source: 'esri-reference',
-        },
-      ],
-    };
+    // Clean vector basemap with Natural Earth shaded relief & razor-sharp typography (zero drop shadows)
+    const libertyVectorStyle = 'https://tiles.openfreemap.org/styles/liberty';
 
     // Strictly read-only MapLibre instance: interactive: false, locked North-Up at bearing: 0, pitch: 0
     const lmap = new maplibregl.Map({
       container: locatorContainerRef.current,
-      style: physicalReliefStyle,
+      style: libertyVectorStyle,
       center: mapCenter,
       zoom: initialZoom,
       minZoom: 0,
