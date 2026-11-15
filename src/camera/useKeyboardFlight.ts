@@ -50,7 +50,6 @@ export function useKeyboardFlight({
     const activeKeys = new Set<string>();
     let animationFrameId: number | null = null;
     let lastTimestamp: number | null = null;
-    let isElevationHeld = false;
 
     // Listen for external mode changes (e.g. safeFlyTo starting or ending)
     const unsubscribeState = cameraStateMachine.subscribe((newMode) => {
@@ -69,24 +68,6 @@ export function useKeyboardFlight({
       lastTimestamp = null;
       if (cameraStateMachine.getMode() === 'flight') {
         cameraStateMachine.setMode('idle');
-      }
-
-      // Safe terrain settlement on key release
-      if (isElevationHeld && map) {
-        isElevationHeld = false;
-        try {
-          const curCenter = map.getCenter();
-          const curPitch = map.getPitch();
-          const centerElev = map.queryTerrainElevation(curCenter);
-
-          // Only re-enable ground clamping if center is actually on terrain and pitch is not glancing the horizon
-          if (centerElev !== null && curPitch < 78) {
-            map.setCenterClampedToGround(true);
-          } else {
-            // Looking above the horizon or over off-terrain void: keep ground clamping disabled
-            map.setCenterClampedToGround(false);
-          }
-        } catch (_) {}
       }
     };
 
@@ -201,13 +182,6 @@ export function useKeyboardFlight({
       // Unlike zoom (which glides along the angled line-of-sight vector towards the ground target),
       // altitude changes camera elevation STRAIGHT UP and DOWN vertically without horizontal camera drift.
       if (altitudeDelta !== 0) {
-        if (!isElevationHeld) {
-          try {
-            map.setCenterClampedToGround(false);
-            isElevationHeld = true;
-          } catch (_) {}
-        }
-
         const tr = (map as any)._camera?.transform;
         const curCenter = map.getCenter();
         const curBearing = map.getBearing();
@@ -274,14 +248,6 @@ export function useKeyboardFlight({
       const hasHorizontalMove = moveForward !== 0 || moveStrafe !== 0;
 
       if (hasHorizontalMove) {
-        // Temporarily release center ground clamping so camera cruises level without peak-and-valley bouncing
-        if (!isElevationHeld) {
-          try {
-            map.setCenterClampedToGround(false);
-            isElevationHeld = true;
-          } catch (_) {}
-        }
-
         const curCenter = map.getCenter();
         const curBearing = map.getBearing();
 
@@ -384,7 +350,7 @@ export function useKeyboardFlight({
     // Yield flight engine immediately when user uses mouse to pan or rotate
     const canvasContainer = map.getCanvasContainer();
     const onCanvasMouseInteraction = () => {
-      if (animationFrameId !== null || activeKeys.size > 0 || isElevationHeld) {
+      if (animationFrameId !== null || activeKeys.size > 0) {
         stopFlight(true);
       }
     };

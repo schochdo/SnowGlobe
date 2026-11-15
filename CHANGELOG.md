@@ -6,6 +6,16 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `fix: eliminate camera slam/jerk on pan key release by removing dynamic ground unclamping`
+- **What was wrong before**:
+  - In commit `40c901d`, horizontal panning (`useKeyboardFlight.ts`) was modified to temporarily call `map.setCenterClampedToGround(false)` and set `isElevationHeld = true` on key down.
+  - The instant the user released the arrow keys (`handleKeyUp`), `stopFlight()` checked `if (isElevationHeld && map)` and called `map.setCenterClampedToGround(true)`.
+  - In MapLibre GL JS 3D terrain mode, toggling `setCenterClampedToGround(true)` instantly recalculates the camera transform and snaps the camera center elevation onto the underlying DEM surface. Because the camera is at a pitched angle ($45^\circ - 60^\circ$), this sudden elevation jump along the camera axis violently slammed/jerked the camera forward or backward into a different position on key release.
+- **What changed**:
+  - **Eliminated Dynamic Ground Clamping Toggling** ([`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/useKeyboardFlight.ts)):
+    - Removed `isElevationHeld`, `map.setCenterClampedToGround(false)` during flight, and `map.setCenterClampedToGround(true)` on `stopFlight`.
+    - Maintained continuous ground clamping (`setCenterClampedToGround(true)`) throughout flight. The camera center elevation tracks the 3D ground surface continuously frame-by-frame during movement, so when arrow keys are released, the camera stops dead in place with zero elevation recalculation, zero drop, and zero slam/jerk.
+
 ### `feat: mobile bottom-up tray slide animation, right-side nav cluster & GPS locate me button`
 - **What was wrong before**:
   - The mobile bottom drawer (`MobileSheet`) conditionally unmounted its full container when in peek state. When expanded, the full sheet mounted abruptly rather than smoothly sliding up from off-screen bottom.
