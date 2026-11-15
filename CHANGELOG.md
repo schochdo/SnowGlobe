@@ -6,6 +6,24 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `feat: mobile bottom-up tray slide animation, right-side nav cluster & GPS locate me button`
+- **What was wrong before**:
+  - The mobile bottom drawer (`MobileSheet`) conditionally unmounted its full container when in peek state. When expanded, the full sheet mounted abruptly rather than smoothly sliding up from off-screen bottom.
+  - On mobile, `NavigationControls` (`+`, `−`, `▲`) and `RegionalLocator` were crammed together on the top-left directly beneath the search bar, making the left side cluttered and hard to reach with one hand.
+  - There was no one-tap mechanism for users to plot their live GPS coordinates or center the map on their current position.
+- **What changed**:
+  - **Bottom-Up Mobile Tray Slide Animation** ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/MobileSheet.tsx)):
+    - Persistently rendered both the collapsed floating peek pill and the 88dvh expanded bottom sheet.
+    - Used `translate-y-full` $\to$ `translate-y-0` with `transition-transform duration-200 ease-out`, so the tray genuinely slides smoothly up from beneath the bottom bezel and glides back down on collapse.
+  - **Relocated Navigation Cluster to the Right on Mobile** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+    - Moved `NavigationControls` to `right-3` on mobile (`fixed top-[calc(env(safe-area-inset-top,0px)+64px)] right-3`), placing zoom, north-snap, and locate directly under the user's right thumb.
+    - Preserved desktop's clean paired layout on the left next to `RegionalLocator` (`hidden md:block`), avoiding any collision with the desktop top-right Layers hamburger button.
+    - Faded floating viewport controls smoothly out when the mobile directory sheet is opened to full.
+  - **Bespoke Cartographic GPS "Locate Me" Button** ([`src/components/map/NavigationControls.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/NavigationControls.tsx), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+    - Added a 4th button (`LocateFixed` icon) with active cobalt state (`#2B5B84`) and spinning acquisition indicator.
+    - Queries `navigator.geolocation.getCurrentPosition` with high accuracy and smoothly glides camera to user position via `safeFlyTo` (zoom level ~12).
+    - Plotted a cartographic location pin with a 14px cobalt core dot (`#2B5B84`), 2.5px archival white halo (`#FAF8F3`), drop shadow, and a soft translucent accuracy ring.
+
 ### `docs: update Rule 2 in GEMINI.md to mandate automatic git push to origin main`
 - **What changed**:
   - Updated Rule 2 in [`GEMINI.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/GEMINI.md) to require running `git push origin main` after every discrete fix, feature, and commit so GitHub always reflects the latest local changes.

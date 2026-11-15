@@ -320,6 +320,9 @@ export default function App() {
   const [mobileFilterPopoverOpen, setMobileFilterPopoverOpen] = useState(false);
   const mobileFilterPopoverRef = useRef<HTMLDivElement | null>(null);
   const mobileFilterBtnRef = useRef<HTMLButtonElement | null>(null);
+  const [userLocation, setUserLocation] = useState<{ lng: number; lat: number; accuracy: number } | null>(null);
+  const [isLocating, setIsLocating] = useState(false);
+  const userLocationMarkerRef = useRef<maplibregl.Marker | null>(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
 
   useEffect(() => {
@@ -2902,6 +2905,73 @@ export default function App() {
     (mapRef.current as any).easeTo({ zoom: Math.max(1.0, cur - 1), duration: 250, freezeElevation: true });
   }, []);
 
+  const handleLocateUser = useCallback(() => {
+    if (typeof navigator === 'undefined' || !navigator.geolocation) {
+      console.warn('[SkiAtlas] Geolocation is not supported by this browser.');
+      return;
+    }
+
+    if (userLocation && mapRef.current) {
+      safeFlyTo(mapRef.current, {
+        center: [userLocation.lng, userLocation.lat],
+        zoom: Math.max(mapRef.current.getZoom(), 12),
+        duration: 1200,
+      });
+    }
+
+    setIsLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setIsLocating(false);
+        const { longitude, latitude, accuracy } = pos.coords;
+        setUserLocation({ lng: longitude, lat: latitude, accuracy });
+        if (mapRef.current) {
+          safeFlyTo(mapRef.current, {
+            center: [longitude, latitude],
+            zoom: 12,
+            duration: 1500,
+          });
+        }
+      },
+      (err) => {
+        setIsLocating(false);
+        console.warn('[SkiAtlas] Geolocation error:', err.message);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+    );
+  }, [userLocation]);
+
+  // User GPS location cartographic marker
+  useEffect(() => {
+    if (!mapRef.current) return;
+    if (!userLocation) {
+      if (userLocationMarkerRef.current) {
+        userLocationMarkerRef.current.remove();
+        userLocationMarkerRef.current = null;
+      }
+      return;
+    }
+
+    if (!userLocationMarkerRef.current) {
+      const el = document.createElement('div');
+      el.className = 'user-location-marker';
+      el.setAttribute('role', 'img');
+      el.setAttribute('aria-label', 'Your current location');
+      el.innerHTML = `
+        <div style="position: relative; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px;">
+          <div style="position: absolute; width: 28px; height: 28px; border-radius: 9999px; background-color: rgba(43, 91, 132, 0.15); border: 1px solid rgba(43, 91, 132, 0.35); pointer-events: none;"></div>
+          <div style="position: relative; width: 14px; height: 14px; border-radius: 9999px; background-color: #2B5B84; border: 2.5px solid #FAF8F3; box-shadow: 0 2px 6px rgba(0,0,0,0.35);"></div>
+        </div>
+      `;
+      const marker = new maplibregl.Marker({ element: el })
+        .setLngLat([userLocation.lng, userLocation.lat])
+        .addTo(mapRef.current);
+      userLocationMarkerRef.current = marker;
+    } else {
+      userLocationMarkerRef.current.setLngLat([userLocation.lng, userLocation.lat]);
+    }
+  }, [userLocation]);
+
   const handleTiltMouseDown = useCallback((e: React.MouseEvent) => {
     if (e.button !== 0) return;
     e.preventDefault();
@@ -3588,18 +3658,26 @@ export default function App() {
         )}
       </MobileSheet>
 
-      {/* FLOATING TOP-LEFT MAP VIEWPORT CONTROLS */}
+      {/* FLOATING TOP-LEFT REGIONAL LOCATOR & DESKTOP NAVIGATION CONTROLS */}
       <div
-        className={`absolute top-[calc(env(safe-area-inset-top,0px)+64px)] md:top-[calc(env(safe-area-inset-top,0px)+56px)] left-3 md:left-8 ${
+        className={`fixed md:absolute top-[calc(env(safe-area-inset-top,0px)+64px)] md:top-[calc(env(safe-area-inset-top,0px)+56px)] left-3 md:left-8 ${
           leftDockOpen ? 'md:left-[420px]' : 'md:left-8'
-        } z-20 flex items-start gap-2 transition-[left] duration-200 ease-out select-none`}
+        } z-20 flex items-start gap-2 transition-[left,opacity] duration-200 ease-out select-none ${
+          mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
       >
-        <NavigationControls
-          onZoomIn={handleZoomIn}
-          onZoomOut={handleZoomOut}
-          onResetNorth={handleResetNorth}
-          mapBearing={mapBearing}
-        />
+        {/* On Desktop: Navigation Controls pair on the left */}
+        <div className="hidden md:block">
+          <NavigationControls
+            onZoomIn={handleZoomIn}
+            onZoomOut={handleZoomOut}
+            onResetNorth={handleResetNorth}
+            mapBearing={mapBearing}
+            onLocateUser={handleLocateUser}
+            isLocating={isLocating}
+            hasLocation={!!userLocation}
+          />
+        </div>
         <RegionalLocator
           locatorOpen={locatorOpen}
           onToggleLocator={() => {
@@ -3613,6 +3691,23 @@ export default function App() {
           mapBearing={mapBearing}
           viewportBounds={viewportBounds}
           resorts={resorts}
+        />
+      </div>
+
+      {/* MOBILE FLOATING TOP-RIGHT NAVIGATION CONTROLS (ZOOM, NORTH, LOCATE) */}
+      <div
+        className={`md:hidden fixed top-[calc(env(safe-area-inset-top,0px)+64px)] right-3 z-20 transition-opacity duration-200 select-none ${
+          mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      >
+        <NavigationControls
+          onZoomIn={handleZoomIn}
+          onZoomOut={handleZoomOut}
+          onResetNorth={handleResetNorth}
+          mapBearing={mapBearing}
+          onLocateUser={handleLocateUser}
+          isLocating={isLocating}
+          hasLocation={!!userLocation}
         />
       </div>
 

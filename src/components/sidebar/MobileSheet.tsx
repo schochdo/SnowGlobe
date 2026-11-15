@@ -95,14 +95,21 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
     onSetMobileSheetState('full');
   };
 
-  if (mobileSheetState === 'peek') {
-    return (
+  const isFull = mobileSheetState === 'full';
+
+  return (
+    <>
+      {/* 1. COLLAPSED FLOATING PEEK PILL (Visible when peek, hides when full) */}
       <div
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handlePeekClick}
-        className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-30 h-11 px-4 mb-[calc(env(safe-area-inset-bottom,0px)+12px)] bg-[#FAF8F3] border border-[#2C2A27] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.18)] flex items-center justify-between gap-3 cursor-pointer select-none max-w-[calc(100vw-24px)] whitespace-nowrap active:scale-98 transition-transform"
+        className={`md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-30 h-11 px-4 mb-[calc(env(safe-area-inset-bottom,0px)+12px)] bg-[#FAF8F3] border border-[#2C2A27] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.18)] flex items-center justify-between gap-3 cursor-pointer select-none max-w-[calc(100vw-24px)] whitespace-nowrap active:scale-98 transition-all duration-200 ${
+          isFull
+            ? 'opacity-0 translate-y-6 pointer-events-none'
+            : 'opacity-100 translate-y-0 pointer-events-auto'
+        }`}
         role="button"
         aria-label={
           selectedResort
@@ -160,29 +167,31 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
           </div>
         )}
       </div>
-    );
-  }
 
-  return (
-    <div
-      className="md:hidden fixed inset-x-0 bottom-0 z-30 flex flex-col bg-[#F7F4ED] rounded-t-2xl border-t border-[#D6D0C2] shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-[env(safe-area-inset-bottom,0px)] h-[88dvh] transition-transform duration-200 ease-out"
-    >
-      {/* Pull tab / Drag handle pill with touch gesture support */}
+      {/* 2. EXPANDED MOUNTAIN DIRECTORY & PROFILE (SLIDES UP FROM OFF-SCREEN BOTTOM) */}
       <div
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onClick={handleHandleClick}
-        className="w-full py-2.5 flex items-center justify-center cursor-pointer shrink-0 select-none touch-none"
-        title="Swipe down or tap to collapse"
+        className={`md:hidden fixed inset-x-0 bottom-0 z-30 flex flex-col bg-[#F7F4ED] rounded-t-2xl border-t border-[#D6D0C2] shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-[env(safe-area-inset-bottom,0px)] h-[88dvh] transition-transform duration-200 ease-out ${
+          isFull ? 'translate-y-0 pointer-events-auto' : 'translate-y-full pointer-events-none'
+        }`}
+        aria-hidden={!isFull}
       >
-        <div className="w-10 h-1.5 rounded-full bg-[#C4BEB1] hover:bg-[#8A847C] transition-colors" />
-      </div>
+        {/* Pull tab / Drag handle pill with touch gesture support */}
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onClick={handleHandleClick}
+          className="w-full py-2.5 flex items-center justify-center cursor-pointer shrink-0 select-none touch-none"
+          title="Swipe down or tap to collapse"
+        >
+          <div className="w-10 h-1.5 rounded-full bg-[#C4BEB1] hover:bg-[#8A847C] transition-colors" />
+        </div>
 
-      {/* Scrollable Content inside sheet */}
-      <div className="flex-1 min-h-0 overflow-hidden flex flex-col relative">
-        {children}
+        {/* Scrollable Content inside sheet */}
+        <div className="flex-1 min-h-0 overflow-hidden flex flex-col relative">
+          {children}
+        </div>
       </div>
-    </div>
+    </>
   );
 };

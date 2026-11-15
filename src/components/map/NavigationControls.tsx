@@ -1,11 +1,14 @@
 import React from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, LocateFixed } from 'lucide-react';
 
 interface NavigationControlsProps {
   onZoomIn: (e: React.MouseEvent) => void;
   onZoomOut: (e: React.MouseEvent) => void;
   onResetNorth: (e?: React.MouseEvent) => void;
   mapBearing: number;
+  onLocateUser?: () => void;
+  isLocating?: boolean;
+  hasLocation?: boolean;
 }
 
 export const NavigationControls: React.FC<NavigationControlsProps> = ({
@@ -13,6 +16,9 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
   onZoomOut,
   onResetNorth,
   mapBearing,
+  onLocateUser,
+  isLocating,
+  hasLocation,
 }) => {
   return (
     <div
@@ -51,6 +57,23 @@ export const NavigationControls: React.FC<NavigationControlsProps> = ({
           <polygon points="12,2.5 19,20.5 12,16.5 5,20.5" />
         </svg>
       </button>
+      {onLocateUser && (
+        <button
+          onClick={onLocateUser}
+          className={`w-8 h-8 flex items-center justify-center transition-colors cursor-pointer ${
+            hasLocation
+              ? 'text-[#2B5B84] bg-[#FAF8F3] hover:bg-[#EAE5D9]'
+              : 'text-[#5C5852] hover:text-[#1C1B18] hover:bg-[#EFECE4] active:bg-[#E5E0D5]'
+          }`}
+          title={hasLocation ? 'Re-center on My Location' : 'Find My Location'}
+          aria-label={hasLocation ? 'Re-center on My Location' : 'Find My Location'}
+        >
+          <LocateFixed
+            className={`w-3.5 h-3.5 ${isLocating ? 'animate-spin' : ''}`}
+            strokeWidth={hasLocation ? 2.4 : 2}
+          />
+        </button>
+      )}
     </div>
   );
 };
