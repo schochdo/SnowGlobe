@@ -6,6 +6,20 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `feat: replace cluttered Esri Topo with CARTO Positron Vector on regional locator inset`
+- **What was wrong before**:
+  - The Inset Regional Locator previously loaded Esri's `World_Topo_Map` 256px raster tiles.
+  - At regional zoom (5.8) in a 320–352px popover, the 1x raster tiles rendered microscopic (~7pt), blurry, pixelated text and dense green national park polygon fills (*"Parc National de la Vanoise"*, *"P.N.R. du Pilat"*, etc.) that created excessive visual noise and obscured the camera pointer.
+- **What changed**:
+  - **CARTO Positron Vector Basemap** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
+    - Swapped the cluttered Esri Topo raster with CARTO Positron Vector (`https://basemaps.cartocdn.com/gl/positron-gl-style/style.json`).
+    - Labels are rendered by the client GPU as crisp, scalable vector typography at native Retina display resolution with zero blurry pixels.
+    - Stripped out all national park green fills, hiking contours, and secondary roads, leaving clean landmass/water separation (`#FAFAF8` land matching Snow Globe's archival cream palette), high-contrast international/state borders, and curated regional anchor cities.
+  - **Calibrated Regional Zoom (5.8 $\rightarrow$ 5.2)**:
+    - Broadened the regional zoom preset from `5.8` to `5.2`, allowing key anchor cities (e.g. Geneva, Lyon, Turin) and the surrounding alpine arc to frame the active mountain naturally instead of being cropped at the edge.
+  - **Expanded Inset Dimensions on Desktop (`sm:w-96 sm:h-60`)**:
+    - Increased popover dimensions from `352×208px` to `384×240px` on screens $\ge 640\text{px}$, granting 35% more breathing room while preserving compact `w-80 h-52` (320×208px) proportions on mobile.
+
 ### `chore: complete purge of SkiAtlas branding across codebase in favor of Snow Globe`
 - **What was wrong before**:
   - Legacy references to "SkiAtlas" remained in internal package metadata (`package.json`), fallback base paths (`vite.config.ts`), `localStorage` cache keys (`skiatlas_wx_v3_`), global window inspection hooks (`__skiAtlasMap`), log tags, map copyrights, and testing/data-pipeline scripts.

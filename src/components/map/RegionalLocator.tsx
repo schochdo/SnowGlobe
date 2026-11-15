@@ -39,11 +39,11 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
   const lastResortIdRef = useRef<string | null>(selectedResort?.id ?? null);
 
   // Inset zoom level mapping strictly decoupled from main 3D map
-  // Region: 5.8 (surrounding cities & state/international borders)
+  // Region: 5.2 (surrounding cities & state/international borders)
   // Continent: 3.0 (continental context)
   // World: 0.5 (true global continental context)
   const getOverviewTargetZoom = useCallback((preset: 'regional' | 'continental' | 'global'): number => {
-    return preset === 'regional' ? 5.8 : preset === 'continental' ? 3.0 : 0.5;
+    return preset === 'regional' ? 5.2 : preset === 'continental' ? 3.0 : 0.5;
   }, []);
 
   // When selecting a new resort in the main application, auto-focus preset to regional
@@ -52,7 +52,7 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
     if (currentId && currentId !== lastResortIdRef.current) {
       lastResortIdRef.current = currentId;
       setLocatorZoomPreset('regional');
-      const targetZoom = 5.8;
+      const targetZoom = 5.2;
       savedZoomRef.current = targetZoom;
       if (locatorMapRef.current) {
         locatorMapRef.current.easeTo({
@@ -217,32 +217,13 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
 
     const initialZoom = savedZoomRef.current ?? getOverviewTargetZoom(locatorZoomPreset);
 
-    // Clean inline raster MapLibre style using Esri World_Topo_Map
-    const esriTopoStyle: maplibregl.StyleSpecification = {
-      version: 8,
-      sources: {
-        'esri-topo': {
-          type: 'raster',
-          tiles: [
-            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-          ],
-          tileSize: 256,
-          attribution: 'Esri',
-        },
-      },
-      layers: [
-        {
-          id: 'esri-topo-layer',
-          type: 'raster',
-          source: 'esri-topo',
-        },
-      ],
-    };
+    // High-resolution vector basemap: CARTO Positron Vector (crisp Retina text, zero clutter, clean borders)
+    const positronVectorStyle = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
     // Strictly read-only MapLibre instance: interactive: false, locked North-Up at bearing: 0, pitch: 0
     const lmap = new maplibregl.Map({
       container: locatorContainerRef.current,
-      style: esriTopoStyle,
+      style: positronVectorStyle,
       center: mapCenter,
       zoom: initialZoom,
       minZoom: 0,
@@ -412,7 +393,7 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
       </button>
 
       {locatorOpen && (
-        <div className="absolute left-0 top-0 w-80 sm:w-88 bg-[#FAF8F3] border border-[#D6D0C2] rounded-md shadow-xl overflow-hidden z-30 animate-slide-down">
+        <div className="absolute left-0 top-0 w-80 sm:w-96 bg-[#FAF8F3] border border-[#D6D0C2] rounded-md shadow-xl overflow-hidden z-30 animate-slide-down">
           {/* Header: Title + Region | Continent | World pills + Close button */}
           <div className="px-3 py-2 bg-[#FAF8F3] border-b border-[#D6D0C2] flex items-center justify-between">
             <div className="flex items-center gap-1.5 min-w-0 pr-2">
@@ -432,7 +413,7 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
                     ? 'bg-[#1C1B18] text-[#FAF8F3] border-[#1C1B18]'
                     : 'bg-[#FAF8F3] text-[#5C5852] hover:text-[#1C1B18] border-[#D6D0C2]'
                 }`}
-                title="Zoom to Region (5.8)"
+                title="Zoom to Region (5.2)"
               >
                 Region
               </button>
@@ -490,7 +471,7 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
           </div>
 
           {/* Read-Only MapLibre Inset Map Canvas */}
-          <div className="relative w-full h-52 bg-[#FAF8F3] overflow-hidden select-none">
+          <div className="relative w-full h-52 sm:h-60 bg-[#FAF8F3] overflow-hidden select-none">
             <div ref={locatorContainerRef} className="w-full h-full pointer-events-none" />
           </div>
         </div>
