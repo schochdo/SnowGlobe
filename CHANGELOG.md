@@ -4,6 +4,27 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ---
 
+## 2026-11-15
+
+### `feat: replace client-side heuristics with 3-tier deterministic topological graph classification pipeline`
+- **What was wrong before**:
+  - The client application was evaluating OpenStreetMap ski trail geometries atomically per LineString at runtime, using brittle proximity heuristics (e.g. `isNearLift <= 1000m`).
+  - This caused continuous long downhill runs to fracture when their middle segments wound through natural valleys > 1km from lift cables (e.g. `Valpreveyre` in France, `Skisafari` in Switzerland, `Innamorati` in Italy). The middle sections were misclassified as `touring` and disappeared when touring was toggled off.
+  - Upstream OSM mapper errors (e.g. `Rendezvous Trail` at Jackson Hole, an out-of-bounds summer hiking path tagged `piste:type=downhill` dropping into Granite Canyon) displayed as inbounds ski runs.
+  - Doing heavy geometric proximity and classification inference in client-side React during map render cycles added CPU overhead and created regression risks across different geographic regions.
+- **What changed**:
+  - **Zero-Dependency Topological Engine** ([`src/utils/pisteTopologyGraph.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/pisteTopologyGraph.ts), [`data_pipeline/pisteTopologyGraph.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/pisteTopologyGraph.cjs)):
+    - Implemented a 3-tier topological classifier:
+      1. **Strict Discipline Segregation**: Isolates Nordic cross-country and ski touring routes, preventing mixed-use tracks (e.g. Scandinavia base trails and USFS logging roads) from ever bleeding into downhill.
+      2. **Topological Graph Chaining**: Builds spatial cell hash grids and name-junction graphs to propagate `lift_served = true` bidirectionally up to 8,000m from lift terminals along connected run segments, eliminating the 1,000m proximity fracture.
+      3. **Summer Trail Sink Detection & Overrides**: Detects tight summer hiking switchbacks (>125° hairpins) and dead-end canyon sinks starting near summits that never return to lifts, plus an explicit way-override dictionary (suppressing Jackson Hole's `Rendezvous Trail`).
+  - **Offline Dataset Pre-Baking** ([`scripts/apply_piste_topology.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/apply_piste_topology.cjs), [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/export_all_ski_areas.cjs), [`data_pipeline/export_resort_trails.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/export_resort_trails.cjs)):
+    - Integrated graph classification into data extraction scripts so `atlas_category` is pre-baked directly into bundled JSON datasets, and any `ignore` features are stripped out before shipping to the client.
+    - Processed all 5,905 trail files (300,405 pistes classified and validated).
+  - **O(1) Fast-Path Client Ingestion** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+    - In `ingestTrailFeatures`, pre-baked `atlas_category` tags (`downhill`, `nordic`, `touring`) are trusted immediately in O(1) time without running runtime GIS proximity loops.
+    - Dynamic raw Overpass API queries pass through `classifySkiAreaTopology` before ingestion.
+
 ## 2026-11-14
 
 ### `fix: eliminate terrain camera bounce, enforce strict nordic classification & calibrate dobrinishte`

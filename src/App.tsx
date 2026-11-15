@@ -27,6 +27,7 @@ import { CompassGimbal } from './components/map/CompassGimbal';
 import { AttributionBadge } from './components/map/AttributionBadge';
 import { TrailProfileCard } from './components/map/TrailProfileCard';
 import { analyzeTrailFeature, aggregateConnectedTrailFeatures } from './utils/trailAnalysis';
+import { classifySkiAreaTopology, type AtlasCategory } from './utils/pisteTopologyGraph';
 import { createMapStyle } from './utils/mapStyles';
 import { registerTerrainAnalysisProtocols } from './utils/terrainAnalysis';
 import type {
@@ -1093,27 +1094,35 @@ export default function App() {
           continue;
         }
       } else if (p?.kind === 'piste') {
-        let coords: [number, number][] = [];
-        if (f.geometry?.type === 'LineString' && Array.isArray(f.geometry.coordinates)) {
-          coords = f.geometry.coordinates;
-        } else if (f.geometry?.type === 'Polygon' && Array.isArray(f.geometry.coordinates?.[0])) {
-          coords = f.geometry.coordinates[0];
-        } else if (f.geometry?.type === 'MultiLineString' && Array.isArray(f.geometry.coordinates?.[0])) {
-          coords = f.geometry.coordinates[0];
-        }
-        const lengthMeters = calculateLineLengthMeters(coords);
+        if (p.atlas_category === 'ignore') continue;
 
-        let isNearLift = false;
-        if (operatingLiftSegmentsRef.current.length > 0) {
-          isNearLift = isPisteNearLift(coords, operatingLiftSegmentsRef.current, 1000);
-        } else if (isPermanent && resortCategory === 'downhill') {
-          // Fallback if no lifts are mapped at this ski area in OSM
-          isNearLift = true;
-        }
+        let category: AtlasCategory;
+        if (p.atlas_category && ['downhill', 'nordic', 'touring'].includes(p.atlas_category)) {
+          // O(1) FAST PATH: trust deterministic pre-baked category from offline topology pipeline
+          category = p.atlas_category as AtlasCategory;
+        } else {
+          let coords: [number, number][] = [];
+          if (f.geometry?.type === 'LineString' && Array.isArray(f.geometry.coordinates)) {
+            coords = f.geometry.coordinates;
+          } else if (f.geometry?.type === 'Polygon' && Array.isArray(f.geometry.coordinates?.[0])) {
+            coords = f.geometry.coordinates[0];
+          } else if (f.geometry?.type === 'MultiLineString' && Array.isArray(f.geometry.coordinates?.[0])) {
+            coords = f.geometry.coordinates[0];
+          }
+          const lengthMeters = calculateLineLengthMeters(coords);
 
-        const category = classifyOsmPiste(p, isNearLift, lengthMeters);
-        if (category === 'ignore') continue;
-        p.atlas_category = category;
+          let isNearLift = false;
+          if (operatingLiftSegmentsRef.current.length > 0) {
+            isNearLift = isPisteNearLift(coords, operatingLiftSegmentsRef.current, 1000);
+          } else if (isPermanent && resortCategory === 'downhill') {
+            // Fallback if no lifts are mapped at this ski area in OSM
+            isNearLift = true;
+          }
+
+          category = classifyOsmPiste(p, isNearLift, lengthMeters);
+          if (category === 'ignore') continue;
+          p.atlas_category = category;
+        }
 
         // Preserve original OSM type if not already saved
         if (!p.osm_piste_type && p['piste:type']) {
@@ -1409,8 +1418,16 @@ export default function App() {
             }
 
             if (feats.length) {
-              ingestTrailFeatures(feats);
-              fetchedBboxKeysSetRef.current.add(bboxKey);
+              const opLifts = feats.filter(f => f.properties?.kind === 'lift');
+              const opPistes = feats.filter(f => f.properties?.kind === 'piste');
+              classifySkiAreaTopology(opPistes, opLifts);
+              const validFeats = feats.filter(
+                f => f.properties?.kind !== 'piste' || f.properties?.atlas_category !== 'ignore'
+              );
+              if (validFeats.length) {
+                ingestTrailFeatures(validFeats);
+                fetchedBboxKeysSetRef.current.add(bboxKey);
+              }
             }
           }
         }

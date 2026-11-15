@@ -39,6 +39,8 @@ const bboxStmt = db.prepare(`
   LIMIT 3000
 `);
 
+const { classifySkiAreaTopology } = require('./pisteTopologyGraph.cjs');
+
 const outDir = path.join(__dirname, '../public/data/trails');
 if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir, { recursive: true });
@@ -75,7 +77,20 @@ function filterTrails(rows) {
     features.push(f);
   }
 
-  return features;
+  // Run 3-Tier Topological Graph Classifier across pistes and lifts
+  const lifts = features.filter(f => f.properties?.kind === 'lift');
+  const pistes = features.filter(f => f.properties?.kind === 'piste');
+  classifySkiAreaTopology(pistes, lifts);
+
+  // Strip out any feature where properties.atlas_category === 'ignore'
+  const validFeatures = features.filter(f => {
+    if (f.properties?.kind === 'piste') {
+      return f.properties.atlas_category !== 'ignore';
+    }
+    return true;
+  });
+
+  return validFeatures;
 }
 
 console.log(`Starting systematic trail export for all ski areas...`);

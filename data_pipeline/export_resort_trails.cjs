@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { DatabaseSync } = require('node:sqlite');
+const { classifySkiAreaTopology } = require('./pisteTopologyGraph.cjs');
 
 const dbPath = path.join(__dirname, 'trails.db');
 const db = new DatabaseSync(dbPath);
@@ -102,9 +103,22 @@ for (const r of atlasResorts) {
     features.push(f);
   }
 
-  const pisteCount = features.filter(f => f.properties?.kind === 'piste').length;
-  const polyCount = features.filter(f => f.geometry?.type === 'Polygon' || f.geometry?.type === 'MultiPolygon').length;
-  const liftCount = features.filter(f => f.properties?.kind === 'lift').length;
+  // Run 3-Tier Topological Graph Classifier across pistes and lifts
+  const lifts = features.filter(f => f.properties?.kind === 'lift');
+  const pistes = features.filter(f => f.properties?.kind === 'piste');
+  classifySkiAreaTopology(pistes, lifts);
+
+  // Strip out any feature where properties.atlas_category === 'ignore'
+  const validFeatures = features.filter(f => {
+    if (f.properties?.kind === 'piste') {
+      return f.properties.atlas_category !== 'ignore';
+    }
+    return true;
+  });
+
+  const pisteCount = validFeatures.filter(f => f.properties?.kind === 'piste').length;
+  const polyCount = validFeatures.filter(f => f.geometry?.type === 'Polygon' || f.geometry?.type === 'MultiPolygon').length;
+  const liftCount = validFeatures.filter(f => f.properties?.kind === 'lift').length;
 
   const fc = {
     type: 'FeatureCollection',
@@ -113,12 +127,12 @@ for (const r of atlasResorts) {
       name: r.name,
       matched_area_id: chosenArea?.properties?.id,
       matched_area_name: chosenArea?.properties?.name,
-      feature_count: features.length,
+      feature_count: validFeatures.length,
       pistes: pisteCount,
       polygons: polyCount,
       lifts: liftCount,
     },
-    features,
+    features: validFeatures,
   };
 
   // Write by atlas slug: e.g. crested-butte.json, jackson-hole.json
