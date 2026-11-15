@@ -1,4 +1,4 @@
-# SkiAtlas — Agent Rules
+# Snow Globe — Agent Rules
 
 These rules apply to every AI agent working in this repository, regardless of model or session.
 

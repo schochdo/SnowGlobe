@@ -122,7 +122,7 @@ def main():
         """
 
         url = 'https://query.wikidata.org/sparql?query=' + urllib.parse.quote(query) + '&format=json'
-        req = urllib.request.Request(url, headers={'User-Agent': 'SkiAtlasBot/1.0 (contact@skiatlas.org)'})
+        req = urllib.request.Request(url, headers={'User-Agent': 'SnowGlobeBot/1.0 (contact@snowglobe.local)'})
 
         bindings = []
         try:
@@ -209,7 +209,7 @@ def main():
         clean = re.sub(r'\s*\(.*?\)', '', p_name).strip()
 
         nom_url = f"https://nominatim.openstreetmap.org/search?q={urllib.parse.quote(clean)}&format=json&limit=5"
-        req = urllib.request.Request(nom_url, headers={'User-Agent': 'SkiAtlasSummitBot/1.0 (contact@skiatlas.org)'})
+        req = urllib.request.Request(nom_url, headers={'User-Agent': 'SnowGlobeSummitBot/1.0 (contact@snowglobe.local)'})
 
         try:
             with urllib.request.urlopen(req, timeout=10) as resp:

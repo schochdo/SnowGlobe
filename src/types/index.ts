@@ -1,5 +1,5 @@
 /* =========================================================================
-   SKIATLAS CORE TYPES & INTERFACES
+   SNOW GLOBE CORE TYPES & INTERFACES
    ========================================================================= */
 
 export type PassNetwork = 'Ikon' | 'Epic' | 'Indy' | 'Mountain Collective' | 'Independent';

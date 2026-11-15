@@ -29,7 +29,7 @@ async function captureSeelenkogel() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         // Jump to Hinterer Seelenkogel
         map.jumpTo({
           center: [11.044444, 46.801389],

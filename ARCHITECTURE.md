@@ -1,4 +1,4 @@
-# SkiAtlas — Architecture & Design Reference
+# Snow Globe — Architecture & Design Reference
 
 > This document is the authoritative reference for AI agents and developers working on this codebase. Read this before making any changes.
 
@@ -6,7 +6,7 @@
 
 ## 1. What This Is
 
-**SkiAtlas** is a cartographic editorial application for exploring ski areas worldwide. It is a **single-page React app** with a MapLibre GL JS map at its core. There is no backend — all data is either bundled at build time or fetched client-side from public APIs.
+**Snow Globe** is a cartographic editorial application for exploring ski areas worldwide. It is a **single-page React app** with a MapLibre GL JS map at its core. There is no backend — all data is either bundled at build time or fetched client-side from public APIs.
 
 **Stack:** React 18 · TypeScript · MapLibre GL JS · Tailwind CSS · Vite
 
@@ -27,7 +27,7 @@ These are permanent constraints. Do not violate them.
 ## 3. File Structure
 
 ```
-SkiAtlas/
+SnowGlobe/
 ├── src/
 │   ├── App.tsx                    ← Core orchestrator & map viewport (~2,800 lines)
 │   ├── main.tsx                   ← React root mount

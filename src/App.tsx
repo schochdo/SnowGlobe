@@ -1534,7 +1534,7 @@ export default function App() {
 
     mapRef.current = map;
     (window as any)._skiMap = map;
-    (window as any).__skiAtlasMap = map;
+    (window as any).__snowGlobeMap = map;
 
     // Enable native linear drag-to-rotate around center with ground clamping
     try {
@@ -2907,7 +2907,7 @@ export default function App() {
 
   const handleLocateUser = useCallback(() => {
     if (typeof navigator === 'undefined' || !navigator.geolocation) {
-      console.warn('[SkiAtlas] Geolocation is not supported by this browser.');
+      console.warn('[Snow Globe] Geolocation is not supported by this browser.');
       return;
     }
 
@@ -2935,7 +2935,7 @@ export default function App() {
       },
       (err) => {
         setIsLocating(false);
-        console.warn('[SkiAtlas] Geolocation error:', err.message);
+        console.warn('[Snow Globe] Geolocation error:', err.message);
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
     );

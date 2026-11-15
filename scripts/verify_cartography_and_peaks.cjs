@@ -6,7 +6,7 @@ async function run() {
   const pages = await listRes.json();
   const page = pages.find(p => p.type === 'page' && p.url.includes('5173'));
   if (!page) {
-    console.error('Could not find SkiAtlas page on localhost:9223');
+    console.error('Could not find Snow Globe page on localhost:9223');
     process.exit(1);
   }
 
@@ -37,7 +37,7 @@ async function run() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const m = window.__skiAtlasMap;
+        const m = window.__snowGlobeMap;
         if (m) {
           m.jumpTo({ center: [-106.85, 39.15], zoom: 9.3, pitch: 0, bearing: 0 });
           m.fire('moveend');
@@ -57,7 +57,7 @@ async function run() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const m = window.__skiAtlasMap;
+        const m = window.__snowGlobeMap;
         if (m) {
           m.jumpTo({ center: [-106.4818, 39.4668], zoom: 13.5, pitch: 50, bearing: 25 });
           m.fire('moveend');
@@ -76,7 +76,7 @@ async function run() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const m = window.__skiAtlasMap;
+        const m = window.__snowGlobeMap;
         if (m) {
           m.jumpTo({ center: [-106.6933, 39.0858], zoom: 13.8, pitch: 45, bearing: -20 });
           m.fire('moveend');

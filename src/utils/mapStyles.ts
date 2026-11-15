@@ -88,7 +88,7 @@ export const createMapStyle = (
         tiles: ['slope://tiles.mapterhorn.com/{z}/{x}/{y}.webp'],
         tileSize: 512,
         maxzoom: 15,
-        attribution: '© SkiAtlas Terrain Analysis',
+        attribution: '© Snow Globe Terrain Analysis',
       },
       // 8. Dynamic Client-Side Aspect Compass Solar Exposure Overlay (N, E, S, W)
       'aspect-tiles': {
@@ -96,7 +96,7 @@ export const createMapStyle = (
         tiles: ['aspect://tiles.mapterhorn.com/{z}/{x}/{y}.webp'],
         tileSize: 512,
         maxzoom: 15,
-        attribution: '© SkiAtlas Terrain Analysis',
+        attribution: '© Snow Globe Terrain Analysis',
       },
     },
     layers: [

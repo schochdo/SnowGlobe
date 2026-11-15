@@ -1,10 +1,20 @@
-# SkiAtlas — Changelog
+# Snow Globe — Changelog
 
 All notable changes in reverse chronological order. Format: `[date] type: description`.
 
 ---
 
 ## 2026-11-14
+
+### `chore: complete purge of SkiAtlas branding across codebase in favor of Snow Globe`
+- **What was wrong before**:
+  - Legacy references to "SkiAtlas" remained in internal package metadata (`package.json`), fallback base paths (`vite.config.ts`), `localStorage` cache keys (`skiatlas_wx_v3_`), global window inspection hooks (`__skiAtlasMap`), log tags, map copyrights, and testing/data-pipeline scripts.
+  - An offhand example URL mentioned in a previous conversation turn inadvertently pointed to an unrelated, live third-party automated scraper site (`skiatlas.com`), which has zero affiliation with this project.
+- **What changed**:
+  - **Project & Package Identity**: Renamed package name to `"snow-globe"` in [`package.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/package.json) and set Vite base to `'./'` in [`vite.config.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/vite.config.ts).
+  - **Map Window Hooks & Cache**: Replaced `window.__skiAtlasMap` with `window.__snowGlobeMap` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) and across all verification and capture scripts in [`scripts/`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts). Replaced `skiatlas_wx_v3_` cache key prefix with `snowglobe_wx_v3_` in [`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/weather.ts).
+  - **Console & Copyright**: Replaced `[SkiAtlas]` console prefixes with `[Snow Globe]` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) and updated cartographic attribution in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts) to `© Snow Globe Terrain Analysis`.
+  - **Documentation & User-Agents**: Updated [`README.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/README.md), [`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/ARCHITECTURE.md), [`DATA_SOURCES.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/DATA_SOURCES.md), [`GEMINI.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/GEMINI.md), and data pipeline User-Agent strings in [`scripts/`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts) to reference Snow Globe.
 
 ### `docs: document offline tile caching architecture in Section 12 of ARCHITECTURE.md`
 - **What changed**:
@@ -728,7 +738,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `docs: document data provenance in DATA_SOURCES.md and add on-demand sources modal`
 - **What was changed**:
-  - **Comprehensive Data Documentation (`DATA_SOURCES.md`)**: Created an authoritative specification of all 7 foundational datasets powering SkiAtlas: 3D Terrain (Mapterhorn DEM), Satellite Orthophotos (Esri & EOX Sentinel-2), Ski Areas & Trails (OpenSkiData & OSM), Historic Fire Lookouts (NHLR & FFLA), Mountain Summits (USGS GNIS & Natural Earth), International Boundaries (Natural Earth 10m Land Mesh), and Alpine Snowfall (Open-Meteo Ensemble). Details providers, URLs, resolutions, calibrations, and verification standards.
+  - **Comprehensive Data Documentation (`DATA_SOURCES.md`)**: Created an authoritative specification of all 7 foundational datasets powering Snow Globe: 3D Terrain (Mapterhorn DEM), Satellite Orthophotos (Esri & EOX Sentinel-2), Ski Areas & Trails (OpenSkiData & OSM), Historic Fire Lookouts (NHLR & FFLA), Mountain Summits (USGS GNIS & Natural Earth), International Boundaries (Natural Earth 10m Land Mesh), and Alpine Snowfall (Open-Meteo Ensemble). Details providers, URLs, resolutions, calibrations, and verification standards.
   - **Zero-Clutter In-App Modal (`AttributionBadge.tsx`)**: Upgraded the quiet `20×20px` `ⓘ` button in the lower corner of the map to open an on-demand, editorial "Cartographic Provenance & Sources" modal with domain cards for each dataset. During normal exploration, the screen remains 100% clean and uncluttered.
 
 ## 2026-11-07
@@ -1809,7 +1819,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `fix: eliminate duplicate blurry raster country labels and introduce crisp vector boundary lines`
 - **What was wrong before**:
   - Two country labels were appearing simultaneously on the map canvas. One was huge and pixelated/blurry ("bad resolution"), while the other was crisp vector text.
-  - **Root Cause**: In commit `1636ef0`, `tileSize: 512` was applied to Esri's `World_Boundaries_and_Places` raster tiles (`boundaries-dark-tiles` and `boundaries-light-tiles`). Because Esri's raster tiles have native 256x256 pixel dimensions, setting `tileSize: 512` caused MapLibre to scale each raster tile by 200%, blowing up the baked-in bitmap text to double size with heavy blur and pixelation. Meanwhile, SkiAtlas's dedicated `geo-reference-countries` symbol layer was also rendering sharp, native vector labels over the same countries, producing double country labels.
+  - **Root Cause**: In commit `1636ef0`, `tileSize: 512` was applied to Esri's `World_Boundaries_and_Places` raster tiles (`boundaries-dark-tiles` and `boundaries-light-tiles`). Because Esri's raster tiles have native 256x256 pixel dimensions, setting `tileSize: 512` caused MapLibre to scale each raster tile by 200%, blowing up the baked-in bitmap text to double size with heavy blur and pixelation. Meanwhile, Snow Globe's dedicated `geo-reference-countries` symbol layer was also rendering sharp, native vector labels over the same countries, producing double country labels.
 - **Solution**:
   - **Retired Stretched Esri Raster Overlays**:
     - Completely removed `boundaries-dark-tiles`, `boundaries-light-tiles`, `basemap-boundaries-dark`, and `basemap-boundaries-light` from [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts).
@@ -1869,7 +1879,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Generated unified `public/data/trails/manifest.json`.
   - **Universal Static Spatial Matching in Map Viewport**:
     - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), updated `fetchOverpassBbox` so that when static loading is used, it searches across all 6,592 ski areas in `allGlobalFeaturesRef.current` (not just the 76 curated flagships).
-    - As the user zooms or pans into ANY mountain worldwide (Wolf Creek, Mt. Bachelor, Solitude, Niseko, Zermatt, etc.), SkiAtlas identifies all ski areas in frame and loads their pre-baked static trail GeoJSON directly from CDN/storage in ~15ms with 0 backend dependencies.
+    - As the user zooms or pans into ANY mountain worldwide (Wolf Creek, Mt. Bachelor, Solitude, Niseko, Zermatt, etc.), Snow Globe identifies all ski areas in frame and loads their pre-baked static trail GeoJSON directly from CDN/storage in ~15ms with 0 backend dependencies.
   - **Static Host Optimization & Circuit Breaker**:
     - Added `hasLocalServerRef` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to remember if `/api/trails` is available. On static hosts (GitHub Pages), the first 404 sets `hasLocalServerRef.current = false`, completely eliminating all subsequent 404 API calls and routing directly to static trail files.
   - **Resilient Overpass POST Fallback**:
@@ -2216,7 +2226,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `feat: configure GitHub Pages CI/CD workflow and static trail data fallbacks`
 - **What changed**:
   - Added `.github/workflows/deploy.yml` for automated GitHub Pages build and deployment on pushes to `main`.
-  - Configured `base` in `vite.config.ts` to support GitHub Pages subpath (`/SkiAtlas/`) when built in GitHub Actions, while defaulting to root `/` in local development.
+  - Configured `base` in `vite.config.ts` to support GitHub Pages subpath (`./` or repo subpath) when built in GitHub Actions, while defaulting to root `/` in local development.
   - Implemented `getStaticDataUrl` helper in `src/App.tsx` and updated static assets (`major_peaks.geojson`, `global_ski_areas.json`, and resort trail JSONs) to resolve against `import.meta.env.BASE_URL`.
   - Added static pre-baked trail fallback in `fetchOverpassBbox` and eager static trail loading in `handleSelectResort` so trails load instantly on static hosts where `/api/trails` is not available.
   - Fixed namespace import in `src/utils/trailAnalysis.ts` (`import * as maplibregl from 'maplibre-gl'`) to ensure clean `tsc --noEmit` validation.
@@ -3098,7 +3108,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - High-contrast halo: Increased `text-halo-width` to `2.8px` with `0.5px` blur in `#FAF8F3`.
     - Priority rendering: Set `symbol-sort-key: 1` (curated) and `2` (global) with `symbol-sort-key: 10` for peaks, ensuring resort labels never yield or collide.
 - **Wild Backcountry Trail Elimination ([`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
-  - **Excluded Wilderness Pistes**: SkiAtlas is an atlas of ski resorts. Excluded `skitour`, `backcountry`, `fatbike`, `hike`, `sled`, and `playground` pistes.
+  - **Excluded Wilderness Pistes**: Snow Globe is an atlas of ski resorts. Excluded `skitour`, `backcountry`, `fatbike`, `hike`, `sled`, and `playground` pistes.
   - **Isolated Resort Boundaries**: Wilderness routes tagged with `grooming=backcountry` or `piste:type=skitour` without any ski resort association (`resort_id IS NULL` and > 6km from any resort) are strictly filtered out in `trailsPlugin.ts`, in client ingest `fetchOverpassBbox`, and in MapLibre GPU `nonSkiExclusion`.
   - In-bounds freeride terrain inside ski resorts (e.g. *Saudan Couloir* at Whistler Blackcomb or *East Face* at Snowbird) remains fully rendered.
   - Mount of the Holy Cross now displays 0 ski trails.
@@ -3157,21 +3167,21 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `fix: isolate authentic Open-Meteo responses in 24h cache and eliminate synthetic fallback cache poisoning`
 - **User Intent & Problem Context**:
-  - The user noticed that the numbers on SkiAtlas cards did not match Open-Meteo's website: *"Those openmeteo forecasts are not matching what I see on the site... I do want to make sure the data is accurate, though. How do I do that if it is not matching what openmeteo says?"*
+  - The user noticed that the numbers on Snow Globe cards did not match Open-Meteo's website: *"Those openmeteo forecasts are not matching what I see on the site... I do want to make sure the data is accurate, though. How do I do that if it is not matching what openmeteo says?"*
 - **Root Cause Analysis**:
   - Earlier today, when Open-Meteo returned `HTTP 429` (Rate Limit Exceeded), the emergency fallback generator synthesized seasonal estimates (e.g. `23.8"` for Snowbird) to keep the UI functional.
   - However, `saveCachedWeather()` saved both genuine API data and synthetic fallback data under the same 24-hour cache key (`skiatlas_wx_v2_`).
-  - When Open-Meteo's daily limit reset at 00:00 UTC, `isCachedWeatherFresh()` saw the fallback in `localStorage` as "fresh" and skipped querying Open-Meteo, locking SkiAtlas into displaying synthetic numbers instead of the genuine live forecast.
+  - When Open-Meteo's daily limit reset at 00:00 UTC, `isCachedWeatherFresh()` saw the fallback in `localStorage` as "fresh" and skipped querying Open-Meteo, locking Snow Globe into displaying synthetic numbers instead of the genuine live forecast.
 - **Architectural Resolution ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/weather.ts))**:
   - **`isRealApi` Provenance Tracking**: Added `isRealApi: boolean` to cached payloads. Only authentic `HTTP 200` responses from `api.open-meteo.com` are marked as `isRealApi: true`.
   - **Fallback Never Caches as Fresh**: Fallback estimates are strictly in-memory stopgaps during active network failures or 429 rate limits; they are never treated as fresh 24h forecasts.
   - **Cache Version Bump (`skiatlas_wx_v3_`)**: Invalidated legacy fallback entries from earlier today across all user sessions.
   - **Exact Decimal Precision Match**: Verified that `daily.snowfall_sum` values from Open-Meteo convert directly to inches ($\text{cm} / 2.54$) matching Open-Meteo's weather models to the tenth of an inch.
 - **Verification via Headless Chrome CDP & Direct API Comparison**:
-  - **Snowbird**: Open-Meteo API returned $2.17\text{ cm}$ ($0.85\text{ in}$) $\rightarrow$ SkiAtlas card displays **`0.9"`**.
-  - **Jackson Hole**: Open-Meteo API returned $11.44\text{ cm}$ ($4.50\text{ in}$) $\rightarrow$ SkiAtlas card displays **`4.5"`**.
-  - **Breckenridge**: Open-Meteo API returned $5.04\text{ cm}$ ($1.98\text{ in}$) $\rightarrow$ SkiAtlas card displays **`2.0"`**.
-  - **Alta**: Open-Meteo API returned $2.17\text{ cm}$ ($0.85\text{ in}$) $\rightarrow$ SkiAtlas card displays **`0.9"`**.
+  - **Snowbird**: Open-Meteo API returned $2.17\text{ cm}$ ($0.85\text{ in}$) $\rightarrow$ Snow Globe card displays **`0.9"`**.
+  - **Jackson Hole**: Open-Meteo API returned $11.44\text{ cm}$ ($4.50\text{ in}$) $\rightarrow$ Snow Globe card displays **`4.5"`**.
+  - **Breckenridge**: Open-Meteo API returned $5.04\text{ cm}$ ($1.98\text{ in}$) $\rightarrow$ Snow Globe card displays **`2.0"`**.
+  - **Alta**: Open-Meteo API returned $2.17\text{ cm}$ ($0.85\text{ in}$) $\rightarrow$ Snow Globe card displays **`0.9"`**.
   - Production build clean (`npm run build` passed in 435ms).
 
 ---
@@ -5784,7 +5794,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Prefixed Nordic centers with `🎿 ` and rendered in high-contrast bold typography with 2.5px crisp white halo.
 - **Active Area Callout Pin & Top Editorial Breadcrumb**:
   - Added `selected-resort-source` with a high-contrast radiant ring, central pin, and multi-line callout badge (`text-allow-overlap: true`, `text-ignore-placement: true`) floating directly above the selected area's coordinates.
-  - Added a quiet editorial breadcrumb in the top header (`SkiAtlas / [Area Name] ([Region], [Country])`) so the active area is always immediately identifiable at a glance.
+  - Added a quiet editorial breadcrumb in the top header (`Snow Globe / [Area Name] ([Region], [Country])`) so the active area is always immediately identifiable at a glance.
 - **Accurate Framing for Nordic Cross-Country Networks**:
   - Centered directly on `[resort.lng, resort.lat]` without alpine midpoint offset, set True North bearing (`bearing: 0`), and applied adaptive zoom scaling based on total trail network length (`trail_km`) with low-oblique $28^\circ$ pitch.
 
@@ -5874,7 +5884,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `fix: redesign top-left north arrow with high-contrast alpine vermilion needle and bold N glyph`
 - **Visibility Enhancement**: Previously, the True North reorientation arrow inside the top-left zoom stack was rendered as a tiny 16px (`w-4 h-4`) black/gray diamond without color or cardinal lettering. The South tip was beige on cream paper, rendering half the needle practically invisible against the button background.
 - **Substantial Sizing**: Increased the icon footprint to 22×22px (`w-5.5 h-5.5`), comfortably filling the 32×32px button while maintaining balanced cartographic margins.
-- **Alpine Vermilion Faceting**: Styled the North pointer in vivid Alpine Vermilion (`#E04836` lit facet / `#B84A39` shaded facet), harmonizing with the vermilion palette used across SkiAtlas and in the bottom navigation dial.
+- **Alpine Vermilion Faceting**: Styled the North pointer in vivid Alpine Vermilion (`#E04836` lit facet / `#B84A39` shaded facet), harmonizing with the vermilion palette used across Snow Globe and in the bottom navigation dial.
 - **High-Contrast South Needle & Pivot**: Outlined the South needle with a sharp `#1C1B18` stroke and `#D6D0C2` / `#FAF8F3` fill, anchored by an ink-black pivot ring with an inner brass dot.
 - **Prominent 'N' Cardinal Stamp**: Added a bold serif `N` letter in `#B84A39` atop the North pointer tip, creating an unmistakable, immediate visual anchor for True North heading.
 

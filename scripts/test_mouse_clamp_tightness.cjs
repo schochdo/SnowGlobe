@@ -38,7 +38,7 @@ async function testMouseClamp() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         map.jumpTo({
           center: [-106.37, 39.63],
           zoom: 15.5,
@@ -54,7 +54,7 @@ async function testMouseClamp() {
   const s1 = await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         return {
           clamped: map.getCenterClampedToGround(),
           centerElev: Math.round(map.getCenterElevation()),
@@ -76,7 +76,7 @@ async function testMouseClamp() {
   const s2 = await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         return {
           clamped: map.getCenterClampedToGround(),
           centerElev: Math.round(map.getCenterElevation()),
@@ -100,7 +100,7 @@ async function testMouseClamp() {
     const sample = await send('Runtime.evaluate', {
       expression: `
         (() => {
-          const map = window.__skiAtlasMap;
+          const map = window.__snowGlobeMap;
           return {
             clamped: map.getCenterClampedToGround(),
             centerElev: Math.round(map.getCenterElevation()),
@@ -121,7 +121,7 @@ async function testMouseClamp() {
   const s4 = await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         return {
           clamped: map.getCenterClampedToGround(),
           centerElev: Math.round(map.getCenterElevation()),
@@ -143,7 +143,7 @@ async function testMouseClamp() {
   const s5 = await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         return {
           clamped: map.getCenterClampedToGround(),
           centerElev: Math.round(map.getCenterElevation()),

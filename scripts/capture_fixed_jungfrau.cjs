@@ -40,8 +40,8 @@ async function capture() {
   const jumpRes = await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
-        if (!map) return "No __skiAtlasMap";
+        const map = window.__snowGlobeMap;
+        if (!map) return "No __snowGlobeMap";
         if (map.getLayer('basemap-topo')) map.setLayoutProperty('basemap-topo', 'visibility', 'visible');
         if (map.getLayer('basemap-satellite')) map.setLayoutProperty('basemap-satellite', 'visibility', 'none');
         if (map.getLayer('basemap-osm')) map.setLayoutProperty('basemap-osm', 'visibility', 'none');

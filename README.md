@@ -1,6 +1,6 @@
-# SkiAtlas
+# Snow Globe
 
-Global interactive ski atlas with live weather, trail cartography, and resort discovery.
+Global interactive ski terrain atlas with live weather, trail cartography, and resort discovery.
 
 ## Quick Start
 

@@ -1,8 +1,8 @@
-# SkiAtlas — Data Sources & Cartographic Provenance
+# Snow Globe — Data Sources & Cartographic Provenance
 
-This document provides a comprehensive accounting of the datasets, authorities, coordinate reference systems, and verification standards powering SkiAtlas.
+This document provides a comprehensive accounting of the datasets, authorities, coordinate reference systems, and verification standards powering Snow Globe.
 
-SkiAtlas is built on an anti-SaaS, domain-integrity standard: every label, elevation, vector, and snow metric displayed on screen reflects authentic, physically verified real-world provenance.
+Snow Globe is built on an anti-SaaS, domain-integrity standard: every label, elevation, vector, and snow metric displayed on screen reflects authentic, physically verified real-world provenance.
 
 ---
 

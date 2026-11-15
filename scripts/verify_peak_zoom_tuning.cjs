@@ -39,7 +39,7 @@ async function run() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         map.jumpTo({
           center: [-70.08, -32.80],
           zoom: 10.7,
@@ -61,7 +61,7 @@ async function run() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         map.jumpTo({
           center: [-106.85, 39.15],
           zoom: 9.3,

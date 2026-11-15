@@ -40,7 +40,7 @@ async function captureDerby() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         if (map.getLayer('basemap-satellite')) map.setLayoutProperty('basemap-satellite', 'visibility', 'visible');
         if (map.getLayer('basemap-topo')) map.setLayoutProperty('basemap-topo', 'visibility', 'none');
         if (map.getLayer('basemap-osm')) map.setLayoutProperty('basemap-osm', 'visibility', 'none');

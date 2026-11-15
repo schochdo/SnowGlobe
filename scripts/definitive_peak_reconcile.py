@@ -55,7 +55,7 @@ def get_tile(tx, ty):
     if not os.path.exists(cache_path):
         url = f"https://tiles.mapterhorn.com/{ZOOM}/{tx}/{ty}.webp"
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "SkiAtlas/1.0"})
+            req = urllib.request.Request(url, headers={"User-Agent": "SnowGlobe/1.0"})
             with urllib.request.urlopen(req, timeout=8) as resp, open(cache_path, "wb") as f:
                 f.write(resp.read())
         except Exception:

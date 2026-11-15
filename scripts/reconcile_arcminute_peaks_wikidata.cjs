@@ -32,7 +32,7 @@ async function reconcileBatch(limit = 50) {
 
     try {
       const searchUrl = `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(cleanName)}&language=en&format=json`;
-      const sRes = await fetch(searchUrl, { headers: { 'User-Agent': 'SkiAtlasBot/1.0 (mountain geodetic reconciliation)' } });
+      const sRes = await fetch(searchUrl, { headers: { 'User-Agent': 'SnowGlobeBot/1.0 (mountain geodetic reconciliation)' } });
       const sData = await sRes.json();
 
       if (!sData.search || sData.search.length === 0) {
@@ -72,7 +72,7 @@ async function reconcileBatch(limit = 50) {
 
       // Fetch entity data
       const entityUrl = `https://www.wikidata.org/wiki/Special:EntityData/${candidate.id}.json`;
-      const eRes = await fetch(entityUrl, { headers: { 'User-Agent': 'SkiAtlasBot/1.0 (mountain geodetic reconciliation)' } });
+      const eRes = await fetch(entityUrl, { headers: { 'User-Agent': 'SnowGlobeBot/1.0 (mountain geodetic reconciliation)' } });
       const eData = await eRes.json();
       const entity = eData.entities[candidate.id];
       const claims = entity.claims;

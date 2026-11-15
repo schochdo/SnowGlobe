@@ -75,7 +75,7 @@ def haversine_km(lat1, lon1, lat2, lon2):
     return R * c
 
 def fetch_json(url):
-    req = urllib.request.Request(url, headers={'User-Agent': 'SkiAtlas-DataPipeline/1.0'})
+    req = urllib.request.Request(url, headers={'User-Agent': 'SnowGlobe-DataPipeline/1.0'})
     with urllib.request.urlopen(req, timeout=20) as resp:
         return json.loads(resp.read().decode('utf-8'))
 

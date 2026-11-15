@@ -37,7 +37,7 @@ async function verifyAll() {
   const elevRes = await send('Runtime.evaluate', {
     expression: `
       (async () => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         map.jumpTo({ center: [-107.335, 39.432], zoom: 14, pitch: 50 });
         await new Promise(r => setTimeout(r, 600));
 

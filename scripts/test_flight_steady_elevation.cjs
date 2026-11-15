@@ -38,7 +38,7 @@ async function testFlight() {
   await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         map.jumpTo({
           center: [-106.37, 39.63],
           zoom: 13.5,
@@ -54,7 +54,7 @@ async function testFlight() {
   const initRes = await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         return {
           center: map.getCenter(),
           elevation: map.getCenterElevation(),
@@ -77,7 +77,7 @@ async function testFlight() {
     const s = await send('Runtime.evaluate', {
       expression: `
         (() => {
-          const map = window.__skiAtlasMap;
+          const map = window.__snowGlobeMap;
           return {
             center: map.getCenter(),
             elevation: Math.round(map.getCenterElevation()),
@@ -99,7 +99,7 @@ async function testFlight() {
   const postReleaseRes = await send('Runtime.evaluate', {
     expression: `
       (() => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         return {
           elevation: Math.round(map.getCenterElevation()),
           ground: Math.round(map.queryTerrainElevation(map.getCenter()))

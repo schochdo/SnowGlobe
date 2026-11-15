@@ -35,7 +35,7 @@ async function verifyPeaks() {
   const res = await send('Runtime.evaluate', {
     expression: `
       (async () => {
-        const map = window.__skiAtlasMap;
+        const map = window.__snowGlobeMap;
         if (!map) return { error: 'no map' };
 
         // Test querying several key mountain locations

@@ -10,8 +10,8 @@ import type { DailyForecast, ResortWeatherData, SkiResort } from '../types';
    ========================================================================= */
 
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours (once per day)
-const CACHE_PREFIX = 'skiatlas_wx_v3_'; // v3: only genuine Open-Meteo responses are cached as fresh
-const CIRCUIT_BREAKER_KEY = 'skiatlas_wx_circuit_tripped_until';
+const CACHE_PREFIX = 'snowglobe_wx_v3_'; // v3: only genuine Open-Meteo responses are cached as fresh
+const CIRCUIT_BREAKER_KEY = 'snowglobe_wx_circuit_tripped_until';
 const CIRCUIT_TRIP_MS = 24 * 60 * 60 * 1000; // Suspend for 24 hours on limit
 
 interface CachePayload {
@@ -61,7 +61,7 @@ export function tripWeatherCircuit(durationMs: number = CIRCUIT_TRIP_MS): void {
     const until = Date.now() + durationMs;
     window.localStorage.setItem(CIRCUIT_BREAKER_KEY, until.toString());
     console.warn(
-      `[SkiAtlas Weather] Circuit breaker tripped until ${new Date(until).toISOString()}. Network queries to Open-Meteo suspended to protect API quotas.`
+      `[Snow Globe Weather] Circuit breaker tripped until ${new Date(until).toISOString()}. Network queries to Open-Meteo suspended to protect API quotas.`
     );
   } catch {
     // Quota limits or private browsing

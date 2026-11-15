@@ -114,7 +114,7 @@ async function reconcile() {
     try {
       const sUrl = `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(cleanName)}&language=en&format=json`;
       const sRes = await fetchWithTimeout(sUrl, {
-        headers: { 'User-Agent': 'SkiAtlasBot/1.0 (mountain research cartography; mailto:admin@skiatlas.org)' }
+        headers: { 'User-Agent': 'SnowGlobeBot/1.0 (mountain research cartography; mailto:admin@snowglobe.local)' }
       });
 
       if (!sRes.ok) {
@@ -168,7 +168,7 @@ async function reconcile() {
       // Fetch entity coordinates
       const eUrl = `https://www.wikidata.org/wiki/Special:EntityData/${candidate.id}.json`;
       const eRes = await fetchWithTimeout(eUrl, {
-        headers: { 'User-Agent': 'SkiAtlasBot/1.0 (mountain research cartography; mailto:admin@skiatlas.org)' }
+        headers: { 'User-Agent': 'SnowGlobeBot/1.0 (mountain research cartography; mailto:admin@snowglobe.local)' }
       });
 
       if (!eRes.ok) {
