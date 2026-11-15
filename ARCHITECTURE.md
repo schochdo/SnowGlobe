@@ -263,3 +263,14 @@ To prevent undoing previous sanitization work or re-introducing upstream bugs, f
 4. **Resort Name Sanitization**:
    - Verify `cleanResortName()` in `src/utils/classification.ts` runs on ingestion to suppress multilingual script concatenation (e.g., Cyrillic/CJK concatenations when English Latin names exist).
 
+---
+
+## 12. Parked & Future Initiatives
+
+- **Offline Tile & Elevation Caching (PWA / Airplane Mode)**:
+  - *Goal*: Allow offline map browsing for single ski areas or backcountry hiking zones without cellular data.
+  - *Data footprint*: ~3–5 MB per ski area across zoom levels 11–15 (imagery ~1.2 MB, Mapterhorn DEM ~1.8 MB, trail GeoJSON ~0.2 MB).
+  - *Implementation path*: PWA `manifest.json`, Service Worker (`sw.js`) with `CacheStorage` proxy for tile domains (Esri World Imagery, AWS Terrarium DEM), and a "Save Offline" action button on `MountainProfile`.
+  - *Status*: Parked for future consideration (most target areas currently have active cellular coverage).
+
+

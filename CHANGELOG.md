@@ -6,6 +6,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `docs: document offline tile caching architecture in Section 12 of ARCHITECTURE.md`
+- **What changed**:
+  - Added Section 12 ("Parked & Future Initiatives") to [`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/ARCHITECTURE.md) documenting the offline tile caching architecture, data footprint math (~3–5 MB per ski area), and PWA Service Worker roadmap for future reference.
+
 ### `fix: eliminate camera slam/jerk on pan key release by removing dynamic ground unclamping`
 - **What was wrong before**:
   - In commit `40c901d`, horizontal panning (`useKeyboardFlight.ts`) was modified to temporarily call `map.setCenterClampedToGround(false)` and set `isElevationHeld = true` on key down.
