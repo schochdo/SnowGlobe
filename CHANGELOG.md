@@ -6,6 +6,18 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-15
 
+### `fix: resolve GitHub Pages CI build failure by switching setup-node to major version 22 and adding .nojekyll`
+- **What was wrong before**:
+  - GitHub deployment workflow runs on `push` to `main` were failing, causing continuous email alerts.
+  - **Root Cause**:
+    1. In [`.github/workflows/deploy.yml`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/.github/workflows/deploy.yml), `actions/setup-node@v4` was configured with `node-version-file: '.nvmrc'` pinning to exact patch `22.23.4`. On GitHub-hosted runners (`ubuntu-latest`), strict patch lookups fail when the exact runner image manifest or pre-cached binaries lag or differ from upstream releases.
+    2. Lack of `.nojekyll` in `public/` (and the repo root) could cause GitHub Pages backend generators to treat folders with special assets as Jekyll sites, failing deployments.
+- **What changed**:
+  - **Node.js Setup-Node Configuration** ([`.github/workflows/deploy.yml`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/.github/workflows/deploy.yml)):
+    - Switched `actions/setup-node@v4` to `node-version: '22'` to allow `setup-node` to resolve the latest installed Node 22 LTS on the runner without strict patch lookup failure.
+  - **Added `.nojekyll`** ([`public/.nojekyll`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/.nojekyll), [`.nojekyll`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/.nojekyll)):
+    - Created empty `.nojekyll` files to guarantee static file serving without Jekyll processing.
+
 ### `feat: consolidate topology single source of truth, enforce architecture guardrails & create canary suite`
 - **What was wrong before**:
   1. **Topology Logic Drift Risk**:
