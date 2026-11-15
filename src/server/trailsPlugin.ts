@@ -1,6 +1,7 @@
 import type { Plugin } from 'vite';
 import path from 'path';
 import fs from 'fs';
+import { classifySkiAreaTopology } from '../utils/pisteTopologyGraph.ts';
 
 let DatabaseSyncClass: any = null;
 try {
@@ -98,7 +99,8 @@ export function localTrailsPlugin(): Plugin {
   function handleTrailsRequest(req: any, res: any) {
     try {
       const url = new URL(req.url || '', `http://${req.headers.host || 'localhost'}`);
-      const resort = url.searchParams.get('resort');
+      const pathSegment = url.pathname.replace(/^\/api\/trails\/?/, '').replace(/^\//, '').split('?')[0].trim();
+      const resort = url.searchParams.get('resort') || (pathSegment.length > 0 ? pathSegment : null);
       const bbox = url.searchParams.get('bbox');
 
       // 1. Check if pre-exported JSON exists in public/data/trails/
@@ -107,7 +109,7 @@ export function localTrailsPlugin(): Plugin {
         if (fs.existsSync(staticPath)) {
           res.setHeader('Content-Type', 'application/json');
           res.setHeader('Access-Control-Allow-Origin', '*');
-          res.setHeader('Cache-Control', 'public, max-age=3600');
+          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
           const stream = fs.createReadStream(staticPath);
           stream.pipe(res);
           return;
@@ -230,6 +232,17 @@ export function localTrailsPlugin(): Plugin {
             return true;
           });
 
+          // Apply 3-Tier Topological Graph Classifier across pistes & operating lifts
+          const opLifts = features.filter((f) => f.properties?.kind === 'lift');
+          const opPistes = features.filter((f) => f.properties?.kind === 'piste');
+          classifySkiAreaTopology(opPistes, opLifts);
+          features = features.filter((f) => {
+            if (f.properties?.kind === 'piste') {
+              return f.properties.atlas_category !== 'ignore';
+            }
+            return true;
+          });
+
           const responseData = {
             type: 'FeatureCollection',
             features,
@@ -237,7 +250,7 @@ export function localTrailsPlugin(): Plugin {
 
           res.setHeader('Content-Type', 'application/json');
           res.setHeader('Access-Control-Allow-Origin', '*');
-          res.setHeader('Cache-Control', 'public, max-age=3600');
+          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
           res.end(JSON.stringify(responseData));
         } catch (err: any) {
           console.error('[LocalTrailsPlugin] Error handling request:', err);

@@ -6,6 +6,32 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-15
 
+### `fix: resolve live viewport bbox overwrites, local server cache headers, and generic name graph bridging`
+- **What was wrong before**:
+  - Spot-checking Jackson Hole, Queyras, and Mt. Baker appeared unchanged in the browser:
+    1. **Dev Server Caching & Routing Mismatch** (`src/server/trailsPlugin.ts`):
+       - Responses were sent with `Cache-Control: public, max-age=3600`, causing browsers to serve stale cached responses directly from disk on subsequent visits.
+       - Viewport bbox queries (`/api/trails?bbox=...`) queried SQLite `trails.db` directly and returned raw unclassified features without running `classifySkiAreaTopology`, and with no `atlas_category` tags.
+    2. **Transient Viewport BBox Overwrite in Ingestion** (`src/App.tsx`):
+       - Whenever any mountain was viewed, `fetchOverpassBbox` fired for the viewport. When raw unclassified features arrived from SQLite `trails.db`, `ingestTrailFeatures` blindly overwrote `liveFeaturesMapRef` (`liveFeaturesMapRef.current.set(fid, f)`).
+       - For Jackson Hole, raw unclassified `Rendezvous Trail` was pulled from `trails.db` and classified as downhill by proximity to the tram, re-adding it to the map.
+       - For Queyras, the middle segment of `Valpreveyre` (1,080m from any lift) was reclassified as touring by the legacy atomic distance check, mutating its `piste:type` to `skitour` and causing the gap to reappear when touring was OFF.
+    3. **Generic Name Graph Bridging** (`src/utils/pisteTopologyGraph.ts`, `data_pipeline/pisteTopologyGraph.cjs`):
+       - In `pisteTopologyGraph.ts`, `nameMap` indexed all trail names with `length >= 3` without checking `isRealName()`.
+       - As a result, all trails named `"Unnamed Trail"` across an entire resort were indexed into the same name bucket. At Mt. Baker, an inbounds unnamed downhill trail bridged 1.3 km across the mountain to an unnamed Shuksan Arm ridge trail, which in turn chained to Blueberry Chutes and misclassified it as `downhill`.
+- **What changed**:
+  - **Dev Server Real-Time Pipeline & Cache Busting** ([`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts)):
+    - Integrated `classifySkiAreaTopology(opPistes, opLifts)` directly into the Vite middleware SQLite query handler, ensuring all dynamic bbox queries return topologically classified features and strip `atlas_category === 'ignore'`.
+    - Added `Cache-Control: no-cache, no-store, must-revalidate` across static and dynamic trail responses so dev builds never serve stale disk caches.
+    - Supported both query parameter `?resort=${slug}` and URL path `/api/trails/${slug}`.
+  - **Curated Trail Immutability & BBox Classification** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+    - In `ingestTrailFeatures`, added a strict guard: transient viewport bbox queries (`!isPermanent`) can never overwrite pre-loaded, curated resort trail features (`permanentTrailIdsRef.has(fid)`).
+    - In `fetchOverpassBbox`, wrapped any raw unclassified pistes through `classifySkiAreaTopology` before ingestion.
+  - **Generic Name Filtering & Way Overrides** ([`src/utils/pisteTopologyGraph.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/pisteTopologyGraph.ts), [`data_pipeline/pisteTopologyGraph.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/pisteTopologyGraph.cjs)):
+    - Added `isRealName()` guard to prevent `"Unnamed Trail"`, `"unnamed"`, `"way "`, and `"track "` from ever entering `nameMap`.
+    - Added OpenSkiData SHA-1 hash `'79ad96794a239398407a1f5da587f4068b74116a'` (Rendezvous Trail) to `OSM_WAY_OVERRIDES`.
+    - Re-ran `scripts/apply_piste_topology.cjs` across all 5,905 datasets. Mt. Baker's `Blueberry Chutes` is now properly classified as `touring` (hidden when touring is OFF), Jackson Hole's `Rendezvous Trail` is permanently suppressed, and all 3 segments of Queyras's `Valpreveyre` connect seamlessly as `downhill`.
+
 ### `feat: replace client-side heuristics with 3-tier deterministic topological graph classification pipeline`
 - **What was wrong before**:
   - The client application was evaluating OpenStreetMap ski trail geometries atomically per LineString at runtime, using brittle proximity heuristics (e.g. `isNearLift <= 1000m`).

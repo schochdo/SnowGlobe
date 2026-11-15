@@ -65,6 +65,20 @@ function countHairpinSwitchbacks(coords: [number, number][]): number {
 }
 
 // ~22-meter spatial hash cell key for fast O(1) junction snapping
+function isRealName(name?: string): boolean {
+  if (!name) return false;
+  const n = name.trim().toLowerCase();
+  return (
+    n.length > 2 &&
+    n !== 'unnamed trail' &&
+    n !== 'unnamed' &&
+    n !== 'unknown' &&
+    n !== 'untitled' &&
+    !n.startsWith('track') &&
+    !n.startsWith('way ')
+  );
+}
+
 function cellKey(lng: number, lat: number): string {
   return `${Math.round(lng * 4500)},${Math.round(lat * 4500)}`;
 }
@@ -220,7 +234,7 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
     const rawName = String(pisteFeatures[idx].properties?.name || pisteFeatures[idx].properties?.['piste:name'] || '')
       .toLowerCase()
       .trim();
-    if (rawName.length >= 3) {
+    if (isRealName(rawName)) {
       let nList = nameMap.get(rawName);
       if (!nList) {
         nList = [];
@@ -268,7 +282,7 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
     const rawName = String(pisteFeatures[idx].properties?.name || pisteFeatures[idx].properties?.['piste:name'] || '')
       .toLowerCase()
       .trim();
-    if (rawName.length >= 3) {
+    if (isRealName(rawName)) {
       const sameName = nameMap.get(rawName);
       if (sameName) {
         for (const nIdx of sameName) neighbors.add(nIdx);

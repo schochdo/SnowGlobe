@@ -1140,6 +1140,10 @@ export default function App() {
       if (!f.id && p?.id) {
         f.id = p.id;
       }
+      // Never let transient viewport bbox queries overwrite curated permanent resort trails
+      if (!isPermanent && permanentTrailIdsRef.current.has(fid)) {
+        continue;
+      }
       liveFeaturesMapRef.current.set(fid, f);
       if (isPermanent) {
         permanentTrailIdsRef.current.add(fid);
@@ -1258,9 +1262,17 @@ export default function App() {
         if (res.ok) {
           const data = await res.json();
           if (data.features && data.features.length) {
-            ingestTrailFeatures(data.features);
-            fetchedBboxKeysSetRef.current.add(bboxKey);
-            apiSuccess = true;
+            const rawPistes = data.features.filter((f: any) => f.properties?.kind === 'piste' && !f.properties?.atlas_category);
+            if (rawPistes.length > 0) {
+              const opLifts = data.features.filter((f: any) => f.properties?.kind === 'lift');
+              classifySkiAreaTopology(rawPistes, opLifts);
+            }
+            const valid = data.features.filter((f: any) => f.properties?.kind !== 'piste' || f.properties?.atlas_category !== 'ignore');
+            if (valid.length) {
+              ingestTrailFeatures(valid);
+              fetchedBboxKeysSetRef.current.add(bboxKey);
+              apiSuccess = true;
+            }
           }
         } else if (res.status === 404) {
           hasLocalServerRef.current = false;
