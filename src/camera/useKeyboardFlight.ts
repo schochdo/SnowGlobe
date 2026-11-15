@@ -50,6 +50,8 @@ export function useKeyboardFlight({
     const activeKeys = new Set<string>();
     let animationFrameId: number | null = null;
     let lastTimestamp: number | null = null;
+    let isElevationHeld = false;
+    let flightElevation: number | null = null;
 
     // Listen for external mode changes (e.g. safeFlyTo starting or ending)
     const unsubscribeState = cameraStateMachine.subscribe((newMode) => {
@@ -68,6 +70,29 @@ export function useKeyboardFlight({
       lastTimestamp = null;
       if (cameraStateMachine.getMode() === 'flight') {
         cameraStateMachine.setMode('idle');
+      }
+
+      // Smooth terrain settlement on flight end:
+      // Re-anchors center to terrain using MapLibre's native recalculateZoomAndCenter
+      // preserving exact camera eye altitude and position in 3D space with zero bounce and zero slam.
+      if (isElevationHeld && map) {
+        isElevationHeld = false;
+        flightElevation = null;
+        try {
+          const cam = (map as any)._camera;
+          if (cam && typeof cam.releaseElevation === 'function') {
+            const tookDem = cam.releaseElevation();
+            if (typeof cam.applyTransformChange === 'function') {
+              cam.applyTransformChange((tr: any) => {
+                if (map.terrain && typeof cam.putCenterBackOnTerrain === 'function') {
+                  cam.putCenterBackOnTerrain(tr, map.terrain, tookDem);
+                } else {
+                  tr.setElevation(0);
+                }
+              });
+            }
+          }
+        } catch (_) {}
       }
     };
 
@@ -234,6 +259,10 @@ export function useKeyboardFlight({
               center: [nextCenterLng, nextCenterLat],
               zoom: nextZoom,
             });
+
+            if (flightElevation !== null) {
+              flightElevation = map.getCenterElevation?.() ?? flightElevation;
+            }
           }
         } else {
           // Fallback if camera transform elevation is unavailable: adjust zoom cleanly
@@ -248,6 +277,17 @@ export function useKeyboardFlight({
       const hasHorizontalMove = moveForward !== 0 || moveStrafe !== 0;
 
       if (hasHorizontalMove) {
+        // Hold elevation steady during horizontal cruising so camera does not bounce
+        // up and down with peak and valley terrain contours
+        if (!isElevationHeld) {
+          const cam = (map as any)._camera;
+          flightElevation = map.getCenterElevation?.() ?? 0;
+          if (cam && map.terrain && typeof cam.holdElevation === 'function') {
+            cam.holdElevation(cam.transform, 'gesture');
+            isElevationHeld = true;
+          }
+        }
+
         const curCenter = map.getCenter();
         const curBearing = map.getBearing();
 
@@ -288,9 +328,13 @@ export function useKeyboardFlight({
           }
         }
 
-        map.jumpTo({
+        const jumpOptions: any = {
           center: [nextLng, nextLat],
-        });
+        };
+        if (flightElevation !== null && isFinite(flightElevation)) {
+          jumpOptions.elevation = flightElevation;
+        }
+        map.jumpTo(jumpOptions);
       }
 
       // Live update camera altitude metric during flight
@@ -350,7 +394,7 @@ export function useKeyboardFlight({
     // Yield flight engine immediately when user uses mouse to pan or rotate
     const canvasContainer = map.getCanvasContainer();
     const onCanvasMouseInteraction = () => {
-      if (animationFrameId !== null || activeKeys.size > 0) {
+      if (animationFrameId !== null || activeKeys.size > 0 || isElevationHeld) {
         stopFlight(true);
       }
     };

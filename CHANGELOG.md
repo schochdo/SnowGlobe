@@ -6,6 +6,28 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `fix: eliminate terrain camera bounce, enforce strict nordic classification & calibrate dobrinishte`
+- **What was wrong before**:
+  1. **Camera Bouncing Over Mountains**:
+     - During keyboard panning flight in 3D terrain mode, `jumpTo({ center: [nextLng, nextLat] })` was called without holding elevation.
+     - Because MapLibre GL JS clamps the ground center to the digital elevation model (`centerClampedToGround: true`), the center elevation tracked every ridge and valley.
+     - With the camera tilted at a pitch ($45^\circ - 75^\circ$), every elevation rise or dip pushed the camera eye altitude up and down by thousands of feet frame-by-frame, creating violent vertical bouncing when flying over mountain ranges (most noticeable at lower flight elevations that were still high above the mountains).
+     - In commit `8581dc6`, an earlier attempt at ground unclamping had been removed because simply flipping `setCenterClampedToGround(true)` on key release caused an abrupt camera slam/jerk.
+  2. **Levi, Finland Nordic Trail Bleed-Through & Highlight Discrepancy**:
+     - In `classifyOsmPiste` Rule 3, trails with `uses.includes('hike')` and within 1,000m of a ski lift were reclassified as `downhill` if `types.includes('nordic')` was true, mistaking multi-use Scandinavian Nordic tracks at the base of Levi for steep alpine summit bootpacks. This forced them onto the downhill layer where they stayed visible even when Nordic was toggled OFF.
+     - In `aggregateConnectedTrailFeatures` (`src/utils/trailAnalysis.ts`), candidate matching checked name and difficulty but lacked a discipline/category guard (`atlas_category`), allowing graph connectivity to merge adjacent Nordic segments with downhill pistes into an orange highlight MultiLineString on click.
+  3. **Dobrinishte, Bulgaria Inaccurate Statistics**:
+     - Dobrinishte ski area (`cf7cc7637ca0e3e98b533a13cd9fd8c4636e729d`) in `public/data/global_ski_areas.json` had an inflated acreage of 2,145 acres (5x larger than Bansko) and lacked an official website URL.
+- **What changed**:
+  - **Cruising Elevation Hold & Smooth Settle** ([`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/useKeyboardFlight.ts)):
+    - Engages MapLibre's native `camera.holdElevation(tr, 'gesture')` on horizontal translation start, holding `flightElevation` steady so the camera cruises completely level without tracking peak-and-valley surface contours.
+    - On flight end (`stopFlight`), seamlessly releases the hold with `camera.releaseElevation()` and invokes `camera.putCenterBackOnTerrain(tr, map.terrain, tookDem)`. This executes MapLibre's internal `recalculateZoomAndCenter`, re-anchoring the center to the ground surface with the camera exactly where it is in 3D space—eliminating both terrain bounce during flight and slam/jerk on key release.
+  - **Strict Bootpack & Category Segregation** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), [`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/trailAnalysis.ts)):
+    - Restricted `classifyOsmPiste` Rule 3 to only reclassify features if they are explicitly named bootpacks/hike access routes or have alpine steep difficulty (`advanced`, `expert`, `extreme`). Multi-use Nordic tracks at Levi now fall through strictly to Rule 4 (`nordic`), respecting the Nordic toggle.
+    - Added a category guard in `aggregateConnectedTrailFeatures` preventing graph connectivity traversal from ever jumping between differing disciplines (`atlas_category` / `piste:type`).
+  - **Dobrinishte Resort Data Correction** ([`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json)):
+    - Corrected skiable acres to 70 and added the official website (`https://bezbog.com/`).
+
 ### `feat: switch regional locator inset to OpenFreeMap Liberty vector basemap`
 - **What was wrong before**:
   - The Esri World Boundaries and Places raster overlay baked heavy black drop shadows and blurry raster outlines into its text, causing place names and country labels to render as unreadable fuzzy blobs.

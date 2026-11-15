@@ -173558,13 +173558,14 @@
         "vertical_ft": 2427,
         "summit_elev_ft": 7302,
         "base_elev_ft": 4875,
-        "skiable_acres": 2145,
+        "skiable_acres": 70,
         "pass_networks": [
           "Independent"
         ],
         "primary_pass": "Independent",
         "pass_color": "#8A847C",
         "summary": "Alpine downhill ski area in Blagoevgrad, Bulgaria, offering scenic mountain slopes and winter recreation.",
+        "website": "https://bezbog.com/",
         "lift_count": 4,
         "run_count": 12,
         "avg_snowfall_in": 140,

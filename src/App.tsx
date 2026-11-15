@@ -268,13 +268,15 @@ function classifyOsmPiste(
   // 3. HIKE-TO SUMMIT ACCESS & INBOUNDS BOOTPACKS
   // Check if feature represents a hike-to summit bootpack or inbounds freeride access route
   // (e.g. "Peak Hike Access" at Crested Butte tagged in OSM as piste:type=nordic with uses=["hike"] and expert difficulty).
-  const isHikeAccess =
-    (Array.isArray(tags.uses) && tags.uses.includes('hike')) ||
-    (tags.name && (tags.name.toLowerCase().includes('hike access') || tags.name.toLowerCase().includes('bootpack')));
+  // Multi-use nordic trails with easy/novice difficulty (e.g. Scandinavian base tracks) must NEVER be misclassified as downhill.
+  const isExplicitBootpack = Boolean(
+    tags.name && (tags.name.toLowerCase().includes('hike access') || tags.name.toLowerCase().includes('bootpack'))
+  );
   const hasAlpineDifficulty = ['advanced', 'expert', 'extreme'].includes(
     tags.difficulty || tags['piste:difficulty'] || ''
   );
-  if (isHikeAccess && isNearLift && (hasAlpineDifficulty || types.includes('nordic') || types.includes('downhill'))) {
+  const isHikeAccess = isExplicitBootpack || (hasAlpineDifficulty && Array.isArray(tags.uses) && tags.uses.includes('hike'));
+  if (isHikeAccess && isNearLift && (hasAlpineDifficulty || isExplicitBootpack || types.includes('downhill'))) {
     return 'downhill';
   }
 

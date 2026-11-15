@@ -152,6 +152,13 @@ export function aggregateConnectedTrailFeatures(
     const fIsLift = fp.kind === 'lift' || !!fp.aerialway;
     if (fIsLift !== isLift) continue;
 
+    // Pistes must share the same discipline/category (downhill, nordic, touring)
+    if (!isLift) {
+      const catA = selectedProps.atlas_category || selectedProps['piste:type'] || '';
+      const catB = fp.atlas_category || fp['piste:type'] || '';
+      if (catA && catB && catA !== catB) continue;
+    }
+
     const fRawName = fp.name || fp['piste:name'] || fp['name:en'] || '';
     const fNormName = normalizeTrailName(fRawName);
 
