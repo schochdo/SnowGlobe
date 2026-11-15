@@ -6,6 +6,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `feat: replace empty CARTO basemap with Esri World Physical Shaded Relief & Reference on locator inset`
+- **What was wrong before**:
+  - CARTO Voyager and Positron at zoom 5.2 in mountainous inland regions (e.g. Savoie/Alps) rendered 97% blank off-white space because they lack digital elevation hillshading and suppress place labels until higher zooms, creating a featureless void.
+- **What changed**:
+  - **Esri World Physical Map + Reference Composite** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
+    - Replaced the vector style with an inline composite of **Esri World Physical Map** (`World_Physical_Map`) and **Esri Boundaries & Places** (`World_Boundaries_and_Places`).
+    - Delivers actual mountain shaded relief, high-altitude snowpack, green valley floors, and blue alpine lakes (Lake Geneva, etc.) overlaid with clean international borders and primary reference cities (Geneva, Lyon, Turin, Milan).
+    - Eliminates both the blank white void of CARTO and the dense, unreadable park clutter of Esri Topo.
+
 ### `feat: switch regional locator inset basemap to CARTO Voyager Vector`
 - **What was wrong before**:
   - CARTO Positron Vector was overly stripped and stark white in inland mountainous regions, lacking landcover differentiation and visual geographical landmarks.

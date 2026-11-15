@@ -217,13 +217,46 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
 
     const initialZoom = savedZoomRef.current ?? getOverviewTargetZoom(locatorZoomPreset);
 
-    // High-resolution vector basemap: CARTO Voyager Vector (warm parchment tones, crisp Retina text, clean borders)
-    const voyagerVectorStyle = 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json';
+    // National Geographic-style physical shaded relief + clean borders and anchor cities
+    const physicalReliefStyle: maplibregl.StyleSpecification = {
+      version: 8,
+      sources: {
+        'esri-physical': {
+          type: 'raster',
+          tiles: [
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}',
+          ],
+          tileSize: 256,
+          attribution: 'Esri Physical',
+          maxzoom: 8,
+        },
+        'esri-reference': {
+          type: 'raster',
+          tiles: [
+            'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}',
+          ],
+          tileSize: 256,
+          attribution: 'Esri Reference',
+        },
+      },
+      layers: [
+        {
+          id: 'esri-physical-layer',
+          type: 'raster',
+          source: 'esri-physical',
+        },
+        {
+          id: 'esri-reference-layer',
+          type: 'raster',
+          source: 'esri-reference',
+        },
+      ],
+    };
 
     // Strictly read-only MapLibre instance: interactive: false, locked North-Up at bearing: 0, pitch: 0
     const lmap = new maplibregl.Map({
       container: locatorContainerRef.current,
-      style: voyagerVectorStyle,
+      style: physicalReliefStyle,
       center: mapCenter,
       zoom: initialZoom,
       minZoom: 0,
