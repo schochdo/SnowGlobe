@@ -10,17 +10,18 @@ Before making any change, read these files:
 
 Skipping this step leads to undoing previous work.
 
-## 2. Commit after every change
+## 2. Commit and push after every change
 
 After every discrete fix or feature:
 ```bash
 git add -A
 git commit -m "<type>: <description>"
+git push origin main
 ```
 
 Types: `feat` | `fix` | `refactor` | `docs` | `chore`
 
-Never leave changes uncommitted at the end of a session.
+Never leave changes uncommitted or unpushed at the end of a session. Always push directly to `origin main`.
 
 ## 3. Update CHANGELOG.md with every commit
 

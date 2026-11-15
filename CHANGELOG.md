@@ -6,6 +6,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `docs: update Rule 2 in GEMINI.md to mandate automatic git push to origin main`
+- **What changed**:
+  - Updated Rule 2 in [`GEMINI.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/GEMINI.md) to require running `git push origin main` after every discrete fix, feature, and commit so GitHub always reflects the latest local changes.
+
 ### `feat: simplify animations, eliminate filter gliding expansion & add light slide transitions`
 - **What was wrong before**:
   - Tapping the `Filters` button on mobile previously called `setMobileSheetState('full')`, triggering a heavy 300ms gliding animation where the 88dvh bottom sheet expanded across the entire phone and faded out the top bar.
