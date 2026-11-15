@@ -250,22 +250,40 @@ To prevent undoing previous sanitization work or re-introducing upstream bugs, f
 - **In-Season Spot Edits (As Needed)**: For landmark new lifts (e.g., replacement gondolas or trams at flagship resorts), edit individual resort trail files in `public/data/trails/<slug>.json` or `src/data/resorts.ts` directly.
 
 ### Upstream Ingestion QA Checklist (Run After Any Raw Pull)
-1. **URL Sanitization & Healing Pipeline**:
+1. **Topological Graph Classification (`apply_piste_topology.cjs`)**:
+   - Run `node scripts/apply_piste_topology.cjs` after any database rebuild.
+   - Executes the 3-Tier Topological Classifier (`pisteTopologyGraph`) to pre-bake deterministic `atlas_category` tags (`downhill`, `nordic`, `touring`, `ignore`) onto all 5,905 resort GeoJSON files.
+   - Enforces the **Universal Physical Gradient Law** ($\ge 1,200\text{m}$, $\le 4.5^\circ$ slope, un-groomed $\to$ `ignore`/`touring`) and the **Gravity Sink Law** (lowest terminus $> 350\text{m}$ from lifts without return connectivity $\to$ `touring`).
+   - No hardcoded IDs or whack-a-mole overrides allowed.
+2. **URL Sanitization & Healing Pipeline**:
    - Run `node scripts/run_url_audit.cjs` followed by `python3 scripts/apply_comprehensive_url_cleanup.py`.
    - **Deep-Path 404 Rescuing**: Automatically heals stale seasonal subpaths back to verified active root portals.
    - **Dead Link Zeroing**: Purges dead domains, NXDOMAINs, discontinued `business.site` links, and spam landers to `""` so the link button cleanly omits itself in `MountainProfile`.
    - **Runtime Firewall**: Never remove the domain filter in `getResortWebsite()` (`src/utils/classification.ts`) or `src/App.tsx`.
-2. **Nordic Acreage Hygiene**:
+3. **Nordic Acreage Hygiene**:
    - Upstream OpenSkiData often assigns entire national park boundary acreage to Nordic centers (e.g. 30,000 acres to Pyhätunturi-Luosto or 19,000 acres to Katahdin).
    - Ensure `category === 'nordic'` entries have `skiable_acres` zeroed out so they do not falsely outrank major alpine downhill resorts. Trail network length (`trail_km` / `trail_mi`) is the metric for Nordic centers.
-3. **Geometry Filtering (Piste Casing Lines)**:
+4. **Geometry Filtering (Piste Casing Lines)**:
    - When importing piste lines, ensure `LineString` and `MultiLineString` geometry filters are preserved on `live-pistes-casing`, `live-pistes-lines`, and `live-pistes-labels` to prevent polygon boundary strokes (3-parallel-line visual glitch).
-4. **Resort Name Sanitization**:
+5. **Resort Name Sanitization**:
    - Verify `cleanResortName()` in `src/utils/classification.ts` runs on ingestion to suppress multilingual script concatenation (e.g., Cyrillic/CJK concatenations when English Latin names exist).
 
 ---
 
-## 12. Parked & Future Initiatives
+## 12. Trail Classification & Topological Engine
+
+To solve the lack of relational resort boundaries and network topology in OpenStreetMap without brittle proximity heuristics, the system uses a **3-Tier Topological Graph Classifier** (`src/utils/pisteTopologyGraph.ts` and `data_pipeline/pisteTopologyGraph.cjs`):
+
+1. **Tier 1 — Strict Discipline Segregation**: Isolates Nordic cross-country (`piste:type=nordic`) and uphill touring (`skitour`) before downhill evaluation. Non-ski clutter without winter attributes is marked `ignore`.
+2. **Tier 2 — Universal Physical Gradient Law (Kinematics)**: Evaluates 3D coordinates. If a trail has length $\ge 1,200\text{m}$, average pitch $\le 4.5^\circ$ ($< 8\%$ grade), and lacks machine grooming (`classic`, `skating`, `scooter`), it cannot physically sustain downhill skiing. Demoted to `ignore` or `touring`.
+3. **Tier 3 — Spatial Graph Chaining & Gravity Sink Law**:
+   - Builds a ~22m spatial hash grid and propagates `lift_served = true` up to 8,000m from lift terminals along connected run segments.
+   - **Gravity Sink Law**: If the lowest elevation terminus of a candidate run terminates $> 350\text{m}$ from any lift and connects to no downstream run returning to a lift, it is an unserviced backcountry descent. Automatically classified as `touring`.
+4. **Client-Side Immutability**: The client MapLibre renderer treats pre-baked `atlas_category` as authoritative and never mutates it using client-side radius checks.
+
+---
+
+## 13. Parked & Future Initiatives
 
 - **Offline Tile & Elevation Caching (PWA / Airplane Mode)**:
   - *Goal*: Allow offline map browsing for single ski areas or backcountry hiking zones without cellular data.
