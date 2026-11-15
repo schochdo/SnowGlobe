@@ -217,13 +217,13 @@ export const RegionalLocator: React.FC<RegionalLocatorProps> = ({
 
     const initialZoom = savedZoomRef.current ?? getOverviewTargetZoom(locatorZoomPreset);
 
-    // High-resolution vector basemap: CARTO Positron Vector (crisp Retina text, zero clutter, clean borders)
-    const positronVectorStyle = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
+    // High-resolution vector basemap: CARTO Voyager Vector (warm parchment tones, crisp Retina text, clean borders)
+    const voyagerVectorStyle = 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json';
 
     // Strictly read-only MapLibre instance: interactive: false, locked North-Up at bearing: 0, pitch: 0
     const lmap = new maplibregl.Map({
       container: locatorContainerRef.current,
-      style: positronVectorStyle,
+      style: voyagerVectorStyle,
       center: mapCenter,
       zoom: initialZoom,
       minZoom: 0,

@@ -6,6 +6,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ## 2026-11-14
 
+### `feat: switch regional locator inset basemap to CARTO Voyager Vector`
+- **What was wrong before**:
+  - CARTO Positron Vector was overly stripped and stark white in inland mountainous regions, lacking landcover differentiation and visual geographical landmarks.
+- **What changed**:
+  - **CARTO Voyager Vector Basemap** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
+    - Swapped the basemap style to `https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json`.
+    - Restored warm landcover tones, soft natural tinting, distinct hydrography, and crisp Retina vector labels while avoiding topographic clutter.
+
 ### `feat: replace cluttered Esri Topo with CARTO Positron Vector on regional locator inset`
 - **What was wrong before**:
   - The Inset Regional Locator previously loaded Esri's `World_Topo_Map` 256px raster tiles.
