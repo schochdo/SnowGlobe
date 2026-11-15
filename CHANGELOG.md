@@ -11,14 +11,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Legacy references to "SkiAtlas" remained in internal package metadata (`package.json`), fallback base paths (`vite.config.ts`), `localStorage` cache keys (`skiatlas_wx_v3_`), global window inspection hooks (`__skiAtlasMap`), log tags, map copyrights, and testing/data-pipeline scripts.
   - An offhand example URL mentioned in a previous conversation turn inadvertently pointed to an unrelated, live third-party automated scraper site (`skiatlas.com`), which has zero affiliation with this project.
 - **What changed**:
-  - **Project & Package Identity**: Renamed package name to `"snow-globe"` in [`package.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/package.json) and set Vite base to `'./'` in [`vite.config.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/vite.config.ts).
-  - **Map Window Hooks & Cache**: Replaced `window.__skiAtlasMap` with `window.__snowGlobeMap` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) and across all verification and capture scripts in [`scripts/`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts). Replaced `skiatlas_wx_v3_` cache key prefix with `snowglobe_wx_v3_` in [`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/weather.ts).
-  - **Console & Copyright**: Replaced `[SkiAtlas]` console prefixes with `[Snow Globe]` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) and updated cartographic attribution in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts) to `© Snow Globe Terrain Analysis`.
-  - **Documentation & User-Agents**: Updated [`README.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/README.md), [`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/ARCHITECTURE.md), [`DATA_SOURCES.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/DATA_SOURCES.md), [`GEMINI.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/GEMINI.md), and data pipeline User-Agent strings in [`scripts/`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts) to reference Snow Globe.
+  - **Project & Package Identity**: Renamed package name to `"snow-globe"` in [`package.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/package.json) and set Vite base to `'./'` in [`vite.config.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/vite.config.ts).
+  - **Map Window Hooks & Cache**: Replaced `window.__skiAtlasMap` with `window.__snowGlobeMap` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) and across all verification and capture scripts in [`scripts/`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts). Replaced `skiatlas_wx_v3_` cache key prefix with `snowglobe_wx_v3_` in [`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/services/weather.ts).
+  - **Console & Copyright**: Replaced `[SkiAtlas]` console prefixes with `[Snow Globe]` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) and updated cartographic attribution in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts) to `© Snow Globe Terrain Analysis`.
+  - **Documentation & User-Agents**: Updated [`README.md`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/README.md), [`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/ARCHITECTURE.md), [`DATA_SOURCES.md`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/DATA_SOURCES.md), [`GEMINI.md`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/GEMINI.md), and data pipeline User-Agent strings in [`scripts/`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts) to reference Snow Globe.
 
 ### `docs: document offline tile caching architecture in Section 12 of ARCHITECTURE.md`
 - **What changed**:
-  - Added Section 12 ("Parked & Future Initiatives") to [`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/ARCHITECTURE.md) documenting the offline tile caching architecture, data footprint math (~3–5 MB per ski area), and PWA Service Worker roadmap for future reference.
+  - Added Section 12 ("Parked & Future Initiatives") to [`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/ARCHITECTURE.md) documenting the offline tile caching architecture, data footprint math (~3–5 MB per ski area), and PWA Service Worker roadmap for future reference.
 
 ### `fix: eliminate camera slam/jerk on pan key release by removing dynamic ground unclamping`
 - **What was wrong before**:
@@ -26,7 +26,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The instant the user released the arrow keys (`handleKeyUp`), `stopFlight()` checked `if (isElevationHeld && map)` and called `map.setCenterClampedToGround(true)`.
   - In MapLibre GL JS 3D terrain mode, toggling `setCenterClampedToGround(true)` instantly recalculates the camera transform and snaps the camera center elevation onto the underlying DEM surface. Because the camera is at a pitched angle ($45^\circ - 60^\circ$), this sudden elevation jump along the camera axis violently slammed/jerked the camera forward or backward into a different position on key release.
 - **What changed**:
-  - **Eliminated Dynamic Ground Clamping Toggling** ([`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/useKeyboardFlight.ts)):
+  - **Eliminated Dynamic Ground Clamping Toggling** ([`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/camera/useKeyboardFlight.ts)):
     - Removed `isElevationHeld`, `map.setCenterClampedToGround(false)` during flight, and `map.setCenterClampedToGround(true)` on `stopFlight`.
     - Maintained continuous ground clamping (`setCenterClampedToGround(true)`) throughout flight. The camera center elevation tracks the 3D ground surface continuously frame-by-frame during movement, so when arrow keys are released, the camera stops dead in place with zero elevation recalculation, zero drop, and zero slam/jerk.
 
@@ -36,21 +36,21 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - On mobile, `NavigationControls` (`+`, `−`, `▲`) and `RegionalLocator` were crammed together on the top-left directly beneath the search bar, making the left side cluttered and hard to reach with one hand.
   - There was no one-tap mechanism for users to plot their live GPS coordinates or center the map on their current position.
 - **What changed**:
-  - **Bottom-Up Mobile Tray Slide Animation** ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/MobileSheet.tsx)):
+  - **Bottom-Up Mobile Tray Slide Animation** ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/MobileSheet.tsx)):
     - Persistently rendered both the collapsed floating peek pill and the 88dvh expanded bottom sheet.
     - Used `translate-y-full` $\to$ `translate-y-0` with `transition-transform duration-200 ease-out`, so the tray genuinely slides smoothly up from beneath the bottom bezel and glides back down on collapse.
-  - **Relocated Navigation Cluster to the Right on Mobile** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Relocated Navigation Cluster to the Right on Mobile** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Moved `NavigationControls` to `right-3` on mobile (`fixed top-[calc(env(safe-area-inset-top,0px)+64px)] right-3`), placing zoom, north-snap, and locate directly under the user's right thumb.
     - Preserved desktop's clean paired layout on the left next to `RegionalLocator` (`hidden md:block`), avoiding any collision with the desktop top-right Layers hamburger button.
     - Faded floating viewport controls smoothly out when the mobile directory sheet is opened to full.
-  - **Bespoke Cartographic GPS "Locate Me" Button** ([`src/components/map/NavigationControls.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/NavigationControls.tsx), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Bespoke Cartographic GPS "Locate Me" Button** ([`src/components/map/NavigationControls.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/NavigationControls.tsx), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Added a 4th button (`LocateFixed` icon) with active cobalt state (`#2B5B84`) and spinning acquisition indicator.
     - Queries `navigator.geolocation.getCurrentPosition` with high accuracy and smoothly glides camera to user position via `safeFlyTo` (zoom level ~12).
     - Plotted a cartographic location pin with a 14px cobalt core dot (`#2B5B84`), 2.5px archival white halo (`#FAF8F3`), drop shadow, and a soft translucent accuracy ring.
 
 ### `docs: update Rule 2 in GEMINI.md to mandate automatic git push to origin main`
 - **What changed**:
-  - Updated Rule 2 in [`GEMINI.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/GEMINI.md) to require running `git push origin main` after every discrete fix, feature, and commit so GitHub always reflects the latest local changes.
+  - Updated Rule 2 in [`GEMINI.md`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/GEMINI.md) to require running `git push origin main` after every discrete fix, feature, and commit so GitHub always reflects the latest local changes.
 
 ### `feat: simplify animations, eliminate filter gliding expansion & add light slide transitions`
 - **What was wrong before**:
@@ -59,18 +59,18 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Category buttons (Downhill, Nordic, Heli/Cat, Touring) and pass network pills in `FilterModal.tsx` used `transition-all`, creating an artificial geometry/padding swelling sensation on toggle.
   - Panels and floating HUD controls throughout the interface used sluggish 300ms `ease-in-out` transitions.
 - **What changed**:
-  - **Mobile Filter Popover with Light Slide** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Mobile Filter Popover with Light Slide** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Eliminated the full-screen gliding expansion when tapping `Filters` in the mobile floating bar.
     - Rendered a lightweight mobile filter dropdown popover anchored beneath the top bar with `.animate-slide-down` (150ms ease-out) and automatic outside-click dismiss.
     - Inside the full sheet, tapping `Filters` toggles criteria cleanly in-place without triggering full-sheet transitions.
-  - **Stabilized Directory Search & Filters Toggle** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)):
+  - **Stabilized Directory Search & Filters Toggle** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx)):
     - Kept the search input, `Filters` toggle button (`aria-expanded`, active charcoal styling when open), and collapse controls stably pinned at the top.
     - Rendered the filter panel in the list body with light sliding `.animate-slide-down` and a sticky subheader with `Reset All` and `Done` actions.
-  - **Immediate, Crisp Button Transitions** ([`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/FilterModal.tsx)):
+  - **Immediate, Crisp Button Transitions** ([`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/FilterModal.tsx)):
     - Replaced `transition-all` on category buttons and pass network pills with `transition-colors duration-150`, eliminating layout reflow and button swelling.
-  - **Snappy Lightweight Panel Transitions** ([`src/components/sidebar/LeftDock.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/LeftDock.tsx), [`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/MobileSheet.tsx), [`src/components/map/CartographicLegend.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/CartographicLegend.tsx), [`src/components/map/CompassGimbal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/CompassGimbal.tsx), [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), [`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx)):
+  - **Snappy Lightweight Panel Transitions** ([`src/components/sidebar/LeftDock.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/LeftDock.tsx), [`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/MobileSheet.tsx), [`src/components/map/CartographicLegend.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/CartographicLegend.tsx), [`src/components/map/CompassGimbal.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/CompassGimbal.tsx), [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), [`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
     - Accelerated transition speeds from 300ms `ease-in-out` down to 200ms `ease-out`, targeting specific transform/position properties (`transition-transform`, `transition-[left]`).
-    - Added `@keyframes slideDownFade` and `@keyframes slideUpFade` (150ms ease-out) in [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/index.css) and removed hover thumb scale ballooning.
+    - Added `@keyframes slideDownFade` and `@keyframes slideUpFade` (150ms ease-out) in [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/index.css) and removed hover thumb scale ballooning.
 
 ### `fix: correct inverted mobile two-finger rotate gesture & continuous angle delta unwrapping`
 - **What was wrong before**:
@@ -79,10 +79,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Consequently, rotating two fingers to the right (clockwise) caused the map terrain to rotate left, and rotating fingers to the left caused the terrain to rotate right.
   - Additionally, measuring `dAngle` as `curAngle - t0_a0` against a static start angle with a simple $[-180^\circ, 180^\circ]$ wrap check caused visual snapping and angle inversion when rotating continuously past $180^\circ$.
 - **What changed**:
-  - **Inverted Bearing Delta to Match Direct Finger Manipulation** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Inverted Bearing Delta to Match Direct Finger Manipulation** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Subtracted `effectiveAngle` from `t0_bearing` (`nextBearing = Math.round(t0_bearing - effectiveAngle)`) so that rotating fingers clockwise directly rotates the terrain clockwise under the user's fingers, maintaining 1:1 direct tactile physics.
     - Also calibrated Mac trackpad Safari twist gesture (`gestureStartBearing - e.rotation`) to match.
-  - **Continuous Angle Delta Unwrapping** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Continuous Angle Delta Unwrapping** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Tracked incremental step deltas (`stepAngle = curAngle - prevTouchAngle`) with $[-180^\circ, 180^\circ]$ boundary crossing checks and accumulated them into `accumulatedAngleDelta`.
     - Allows continuous multi-turn rotations without $180^\circ$ jump artifacts.
 
@@ -92,7 +92,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: replace awkward line tick with cartographic navigation chevron on locator map`
 - **What was wrong before**:
-  - The camera location marker on the regional inset locator map ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx)) previously drew a static 20px circular outline with a single 6px line tick protruding outward along the camera bearing angle.
+  - The camera location marker on the regional inset locator map ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)) previously drew a static 20px circular outline with a single 6px line tick protruding outward along the camera bearing angle.
   - At non-zero bearings (e.g. looking Southwest at 215°), this rendered as an awkward stray red stick sticking out of the circle, resembling a magnifying glass handle or glitch rather than a clear directional heading.
 - **What changed**:
   - Replaced the circular outline and tick with a classic cartographic navigation chevron in vermilion (`#B84A39`) with a 3.5px archival white (`#FAF8F3`) halo border and 25% translucent fill.
@@ -102,7 +102,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: reorder layers list placing borders & places above summits and fire lookouts`
 - **What was wrong before**:
-  - In the map Layers menu ([`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx)), Geographic Reference (Borders & Places) was positioned at the bottom of the point features list below Mountain Summits and Fire Lookouts.
+  - In the map Layers menu ([`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx)), Geographic Reference (Borders & Places) was positioned at the bottom of the point features list below Mountain Summits and Fire Lookouts.
   - Users frequently need foundational geographic reference (country and province boundaries, major places) before inspecting specific point topography.
 - **What changed**:
   - Repositioned the "Geographic Reference (Borders & Places)" section to the top of the Layers list, above "Horizon Summits" and "Fire Lookouts & Towers".
@@ -111,11 +111,11 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: replace plane icon with bespoke helicopter icon for heli/cat filter`
 - **What was wrong before**:
-  - The "Heli/Cat" category toggle button in [`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/FilterModal.tsx) used Lucide's generic commercial airplane icon (`Plane`), which miscommunicated backcountry heli-skiing and snowcat operations as commercial fixed-wing aviation.
+  - The "Heli/Cat" category toggle button in [`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/FilterModal.tsx) used Lucide's generic commercial airplane icon (`Plane`), which miscommunicated backcountry heli-skiing and snowcat operations as commercial fixed-wing aviation.
 - **What changed**:
-  - Created a bespoke, editorial cartographic `HelicopterIcon` component in [`src/components/icons/HelicopterIcon.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/icons/HelicopterIcon.tsx) matching `lucide-react`'s exact geometric language (24x24 viewBox, stroke="currentColor", strokeWidth="2", rounded caps and joins).
+  - Created a bespoke, editorial cartographic `HelicopterIcon` component in [`src/components/icons/HelicopterIcon.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/icons/HelicopterIcon.tsx) matching `lucide-react`'s exact geometric language (24x24 viewBox, stroke="currentColor", strokeWidth="2", rounded caps and joins).
   - Modeled after iconic alpine mountain rescue and heli-skiing rotorcraft (Eurocopter AS350 AStar / Bell 206) with a balanced top rotor blade, streamlined cabin with windshield, upward-angled stabilizer tail fin, and landing skids with upturned tips.
-  - Replaced `<Plane className="w-4 h-4 shrink-0" />` with `<HelicopterIcon className="w-4 h-4 shrink-0" />` in [`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/FilterModal.tsx).
+  - Replaced `<Plane className="w-4 h-4 shrink-0" />` with `<HelicopterIcon className="w-4 h-4 shrink-0" />` in [`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/FilterModal.tsx).
 
 
 ### `feat: drop ski touring routes toggle from layers menu`
@@ -123,7 +123,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - In `src/components/map/BasemapMenu.tsx`, "Ski Touring Routes" was listed as an overlay toggle under the "Layers" tab alongside cartographic features (Summits, Fire Lookouts, Borders, Slope/Aspect).
   - This created duplicate and conflicting control surfaces since Touring is already an activity discipline filter in the sidebar directory.
 - **What changed**:
-  - Removed the "Ski Touring Routes" section and its props from the Layers popover menu ([`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)).
+  - Removed the "Ski Touring Routes" section and its props from the Layers popover menu ([`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)).
   - Reserved the "Layers" menu strictly for physical/cartographic map features (Horizon Summits, Fire Lookouts, Geographic Reference, Terrain Overlays, 3D Elevation Mesh).
 
 ### `fix: eliminate undefined ActiveSelectionBanner reference causing render crash`
@@ -138,7 +138,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Clicking the "Filters" button previously kept the top search bar visible while collapsing the quick-matches and sort bar underneath it, creating a stacked double-header layout with a secondary nested "Filter Criteria" bar.
   - This accordion-like height collapse felt like an abrupt scale/zoom shift.
 - **What changed**:
-  - **Full-Panel Filter Takeover** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)):
+  - **Full-Panel Filter Takeover** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx)):
     - When filters are open (`isFiltersOpen === true`), the entire sidebar panel switches to the dedicated Filter Criteria view, completely hiding the search bar, quick-match results, and sort controls.
     - Rendered the top header with a bold `FILTER CRITERIA` title, `Sliders` icon, active filter count badge, optional `Reset All`, and a clean bordered `Done` button on the right matching the requested design.
     - Used a smooth crossfade transition (`animate-in fade-in duration-150`) with zero zoom or scale transforms.
@@ -149,14 +149,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - OpenStreetMap represents continuous ski lifts (aerialways, funiculars, gondolas) and ski runs as multiple split `way` elements due to intermediate stations, passing loops, road crossings, or bridges (e.g. *Funiculaire Vevey–Mont-Pèlerin* is split into 14 separate ways).
   - Clicking any lift or trail on the map previously selected only that single clicked `way` feature, highlighting an isolated 50m–150m segment and producing inaccurate, truncated metrics (e.g. 50 ft of vertical drop instead of the full 1,360 ft ascent).
 - **What changed**:
-  - **Graph Connectivity Traversal & Segment Aggregation** ([`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/trailAnalysis.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Graph Connectivity Traversal & Segment Aggregation** ([`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/trailAnalysis.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Implemented `aggregateConnectedTrailFeatures(selectedFeat, allFeatures)` which performs a BFS connectivity traversal from the clicked feature across all active loaded features.
     - Groups adjoining segments that share the same normalized name (`normalizeTrailName`, stripping accents and normalizing hyphens) and facility kind (`lift` vs `piste`) within a 150m station/bridge threshold (or 15m for unnamed runs).
     - Merges their geometries into a single composite `MultiLineString` GeoJSON feature with full property metadata.
-  - **Full-Route Terrain Analysis** ([`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/trailAnalysis.ts)):
+  - **Full-Route Terrain Analysis** ([`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/trailAnalysis.ts)):
     - Enhanced `analyzeTrailFeature` to evaluate all lines within `MultiLineString` geometries, deriving true minimum/maximum elevations, full-line vertical drop/rise, cumulative 3D route distance, and fall-line aspect from true summit to base.
     - Pushes the complete aggregated `MultiLineString` to `selected-trail-source` so the entire route lights up continuously on click.
-  - **Type Definitions** ([`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/types/index.ts)):
+  - **Type Definitions** ([`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/types/index.ts)):
     - Added `feature?: any` and `segmentCount?: number` to `TrailInspectionData`.
 
 ### `feat: adopt Esri World_Topo_Map raster basemap on regional locator inset`
@@ -164,7 +164,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The Inset Locator Map previously relied on a custom CARTO Voyager vector style coupled with an AWS Terrarium DEM hillshade layer and extensive layer-traversal loops to hide roads, restyle borders, adjust water fills, and force symbol layer visibility.
   - This required continuous maintenance and layer hacking to keep city, state, country, and terrain elements balanced across zoom levels.
 - **What changed**:
-  - **Single Pre-Rendered Raster Basemap** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx)):
+  - **Single Pre-Rendered Raster Basemap** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
     - Replaced the CARTO style URL, AWS Terrarium DEM hillshade source/layer, and all post-load `getStyle().layers` loops with an inline MapLibre raster style specification powered by Esri `World_Topo_Map` (`https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}`).
     - Provides professionally balanced shaded relief, hydrography, transport corridors, administrative borders, and multi-tier place labels out of the box with zero runtime overhead or layer manipulation.
     - Retained the live Region viewport outline frame (`locator-viewport-line`), center camera directional target marker (`#B84A39`), and quick zoom presets (`Region` 5.8, `Continent` 3.0, `World` 0.5).
@@ -174,7 +174,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - In `src/components/header/FilterModal.tsx`, the 4 discipline toggle buttons (`Downhill`, `Nordic`, `Heli/Cat`, `Touring`) used a horizontal icon + uppercase text layout (`flex items-center justify-center gap-1.5` with `uppercase tracking-wider`) inside a 4-column grid.
   - In a constrained 300px sidebar or mobile sheet, each button has only ~65px width. With a 14px icon, 6px gap, and horizontal padding, longer text labels like `DOWNHILL` and `HELI/CAT` overflowed the button boundary and were cut off as `DOWN...` and `HELI/C...` due to `truncate`.
 - **What changed**:
-  - **Stacked Layout & Zero Truncation** ([`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/FilterModal.tsx)):
+  - **Stacked Layout & Zero Truncation** ([`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/FilterModal.tsx)):
     - Switched the button layout to vertical stacking (`flex flex-col items-center justify-center gap-1 text-center py-2 px-1`).
     - Placed the monochrome 16px Lucide icon on top (`w-4 h-4 shrink-0`) and the label underneath with `text-[10.5px] font-bold leading-tight tracking-tight whitespace-nowrap`.
     - Converted label styling to title-case (`Downhill`, `Nordic`, `Heli/Cat`, `Touring`) without artificial wide uppercase tracking.
@@ -187,7 +187,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Excessive Repetition**: `'symbol-spacing'` was configured as low as 200px–350px, causing the same country names to repeat incessantly across the screen.
   - **Unbounded Zoom Visibility**: Minzoom was set to 2.8 with no maxzoom, causing placement failures on jagged crests at regional scales and cluttering close-up ski run inspections.
 - **What changed**:
-  - **Consolidated Matched-Pair Label Layer** ([`src/layers/boundaryLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/boundaryLayers.ts), [`src/layers/types.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/types.ts), [`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/layerThemeManager.ts)):
+  - **Consolidated Matched-Pair Label Layer** ([`src/layers/boundaryLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/boundaryLayers.ts), [`src/layers/types.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/types.ts), [`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/layerThemeManager.ts)):
     - Consolidated separate left/right border layers into a single matched-pair symbol layer (`world-country-border-labels`) using a two-line formatted text field: `['format', ['upcase', name_left], {}, '\n', {}, ['upcase', name_right], {}]`. Both countries now render together across the boundary line with `'text-line-height': 1.65` and `'text-offset': [0, 0]`, eliminating orphaned single-sided labels.
   - **Strict Bending & Self-Collision Prevention**:
     - Reduced `'text-max-angle'` to `20` (down from 65), set `'text-rotation-alignment': 'map'`, `'text-pitch-alignment': 'map'`, and `'text-keep-upright': true`.
@@ -204,7 +204,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Premature State/Province Boundaries**: Sub-national boundary layers (`boundary_state`) rendered at zoom levels below 4.5, adding visual noise to continental overviews.
   - **World Zoom Extent**: `World` mode was set to zoom 1.2, which was too close to display a true global continental overview.
 - **What changed**:
-  - **Bathymetry Masked by Water Layer** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx)):
+  - **Bathymetry Masked by Water Layer** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
     - Inserted `inset-hillshade` before the first `water` fill layer (`firstWaterId`), allowing opaque flat `#DCE5EC` water polygons to cleanly mask all ocean elevation data while land relief remains visible.
     - Explicitly hid `water_shadow` and `bathymetry` layers.
   - **Refined Administrative Boundaries & Coastlines**:
@@ -222,15 +222,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Scope & Sort Heavy Borders & Blue Highlights**: The scope segmented buttons (`All | In View`) and sort pills (`A-Z`, `Vert`, `Acres`, `7d`) were rendered in nested bordered boxes with bright blue text (`#2B5B84`) on active snow sort.
   - **Default Rainbow Tints & Emoji Buttons in Filters**: Discipline toggles used colorful emoji icons (`⛷️`, `🎿`, `🚁`, `🏔️`) with bright blue borders. Pass network pills all lit up in multi-colored tints (`#B84A39`, `#2E5A44`, `#2B5B84`, `#C2842F`) even when no pass filter was applied, and slider track fills and thumbs used bright SaaS blue (`#2B5B84`).
 - **What changed**:
-  - **Exclusive Filter Criteria Mode** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)):
+  - **Exclusive Filter Criteria Mode** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx)):
     - When `Filters` is clicked, the sidebar body renders exclusively the `FILTER CRITERIA` panel, completely hiding quick-matches, sort controls, and resort cards until `Done` is clicked.
     - Top `Filters` toggle button displays a compact count badge (e.g. `Filters · 2`) when any non-default filter is active, styled in solid charcoal ink (`bg-[#2C2A27] text-[#FAF8F3]`) when the filter view is open.
-  - **Consolidated Unified Quick-Matches** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)):
+  - **Consolidated Unified Quick-Matches** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx)):
     - Merged fire lookouts and mountain summits into a single, borderless quick-match section right below the search input, separated by a clean 1px horizontal divider.
     - Capped to the top 5 matches total, removed repeated sub-labels, and used crisp monochrome `△` (Lookout) and `▲` (Summit) icons with right-aligned tabular elevation.
-  - **Unified Scope & Sort Row** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)):
+  - **Unified Scope & Sort Row** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx)):
     - Unified `[ All | In View ]` and `[ A-Z | Vert | Acres | 7d ]` on a single clean row sharing the `#EAE5D9` track, using solid charcoal ink (`bg-[#2C2A27] text-[#FAF8F3]`) for active states with zero blue highlights or heavy double borders.
-  - **Editorial Atlas Filter Palette** ([`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/FilterModal.tsx), [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/index.css)):
+  - **Editorial Atlas Filter Palette** ([`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/FilterModal.tsx), [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/index.css)):
     - Replaced emojis with clean monochrome Lucide icons (`MountainSnow`, `Trees`, `Plane`, `Route`) and `#2C2A27` solid ink when active.
     - Simplified pass networks (`Ikon`, `Epic`, `Indy`, `Mtn Collective`, `Unaffiliated`) to neutral pills (`bg-[#F4F1EA] border-[#D8D3C8] text-[#5C5852]`) without rainbow background tints; only highlighting the active pass dot/border with `#2C2A27` when filtered, with a single subtle `Reset` action.
     - Range sliders restyled to `#2C2A27` charcoal track fill and thumb borders, with crisp 2px tick marks (`w-[2px] h-1.5 bg-[#8A847C]`).
@@ -242,7 +242,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Furthermore, CARTO Voyager sets restrictive default minimum zoom levels on place labels (`place_town` minzoom 8, `place_villages` minzoom 10, `place_city_r5/r6` minzoom 8), meaning regional anchor cities and ski towns (Mammoth Lakes, Bishop, Crested Butte, Reno, Fresno) were clipped out at zoom 6.5 or lower.
   - The default `Region` mode zoom was set to 6.5, which framed the viewport too tightly to see key surrounding anchor cities for orientation.
 - **What changed**:
-  - **Hillshade Placement Underneath All Labels** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx)):
+  - **Hillshade Placement Underneath All Labels** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
     - Found the first `symbol` layer (`layers.find((l) => l.type === 'symbol')?.id`) and passed it as `beforeId` to `lmap.addLayer(hillshadeLayer, firstSymbolId)`, guaranteeing that relief shading renders strictly beneath all text labels and cartographic symbols.
   - **Place Label Restoration & Styling**:
     - Ensured place and water symbol layers retain `layout.visibility = 'visible'` while hiding only minor street names and POI icons.
@@ -264,9 +264,9 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - In OpenStreetMap, the hike-to bootpack to Crested Butte Peak was mapped as `piste:type=nordic` with `uses=["hike"]` and `difficulty="expert"`.
     - `classifyOsmPiste` checked `types.includes('nordic')` and classified it as Nordic cross-country skiing, causing an expert downhill summit hike to render under the Nordic layer.
 - **What changed**:
-  - **Removed Destructive Server-Side Mutation** ([`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts)):
+  - **Removed Destructive Server-Side Mutation** ([`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts)):
     - Removed the block that mutated `grooming=backcountry` downhill pistes to `skitour` and `is_touring=true`. The server now faithfully returns the authoritative data stored in `trails.db`.
-  - **Summit Bootpack / Hike-To Access Classification** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Summit Bootpack / Hike-To Access Classification** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - In `classifyOsmPiste()`, added a dedicated check for summit bootpacks and inbounds hike-to access routes: any trail with `uses: ["hike"]`, name containing `"hike access"` or `"bootpack"`, or alpine difficulty (`advanced`, `expert`, `extreme`) within 1,000m of a chairlift is classified as `'downhill'`.
     - `Peak Hike Access` is now strictly classified as `'downhill'`, displaying when Downhill is active and never appearing under Nordic.
 
@@ -276,7 +276,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The inset camera marker used an oversized 48px radial-gradient cone that felt intrusive and dominated the compact overview canvas.
   - Quick-preset zoom buttons (`Region`, `Continent`, `World`) displayed a bright default browser focus outline ring upon click, disrupting the warm archival paper palette (`#FAF8F3`).
 - **What changed**:
-  - **AWS Terrarium Shaded-Relief Layer** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx)):
+  - **AWS Terrarium Shaded-Relief Layer** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx)):
     - Integrated `raster-dem` source using AWS Terrarium elevation tiles (`https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png`).
     - Added `inset-hillshade` layer with `hillshade-exaggeration: 0.45` and `hillshade-shadow-color: '#6E7F8D'`, positioned directly underneath country borders and labels so mountain topography (e.g. Japanese Alps, Rockies, European Alps) is immediately legible.
   - **Balanced Cartographic Clutter Filtering**:
@@ -299,7 +299,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Conversely, when `fetchResortStaticTrails()` loaded `public/data/trails/mt-baker.json` with `isPermanent = true`, every feature in the file received `isNearLift = true`.
     - An out-of-bounds trail on Table Mountain / Ptarmigan Ridge (`id: 033de4db3c652135d4d312e7de026bfb36b8317e`, an unnamed intermediate backcountry line 1,365m away from any lift) was misclassified as an inbounds downhill run, appearing as an isolated blue line outside the resort when Touring was off.
 - **What changed**:
-  - **Universal 1,000m Geodesic Lift Proximity** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Universal 1,000m Geodesic Lift Proximity** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Replaced the brittle `isPermanent` flag with true spatial analysis: `ingestTrailFeatures()` now maintains `operatingLiftSegmentsRef` and tests all incoming pistes against operating `aerialway` lift lines using `isPisteNearLift(coords, liftSegments, 1000)`.
     - Samples vertices along the line (`step = Math.max(1, Math.floor(coords.length / 12))`) and start/end coordinates to ensure curved runs, wide bowls, and runouts are accurately captured.
     - Uses latitude-aware bounding box buffers (`1200 / (cosMid * 111320)`) to ensure high-latitude ski areas (Scandinavia, Alaska, Hokkaido) compute fast and accurate segment distances.
@@ -320,7 +320,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Disconnected Road Stubs Cluttering Touring Layer**:
     - Short disconnected logging road fragments tagged `highway=track`, `service`, `unclassified`, or `residential` without names were ingested as touring trails, while multi-segment relation tours risked dropping metadata.
 - **What changed**:
-  - **Prioritize `skitour` in `classifyOsmPiste`** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Prioritize `skitour` in `classifyOsmPiste`** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Evaluated `types.includes('skitour')` before downhill checks, ensuring all uphill skin tracks and ski touring routes are strictly classified as `'touring'` and never `'downhill'`.
   - **Tighten Lift Proximity to 250m Lift Segments**:
     - Extracted line segments from operating `aerialway` lifts instead of giant `landuse=winter_sports` bounding boxes.
@@ -331,18 +331,18 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Relation Propagation & Road Stub Filtering**:
     - Propagated `name`, `name:en`, `piste:name`, `piste:name:en`, `piste:type`, `piste:grooming`, `piste:difficulty`, and `patrolled` from parent relations (`route=piste`, `route=ski`, `piste:type`) to member ways.
     - Added `calculateLineLengthMeters()`: if a feature classifies as `'touring'`, returns `'ignore'` if it has no name, carries a road tag (`track`, `service`, `unclassified`, `residential`), and total line length is under 350 meters.
-  - **Airtight Zero Touring Bleed-Through Filter** ([`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/layerThemeManager.ts)):
+  - **Airtight Zero Touring Bleed-Through Filter** ([`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/layerThemeManager.ts)):
     - Added strict negative exclusion rule when `!showTouring`: completely excludes any feature with `atlas_category === 'touring'`, `resort_category === 'touring'`, `is_touring === true`, `piste:type === 'skitour'`, or `'skitour'` contained in `piste:type`.
     - Added auto-deselect in `src/App.tsx` when Touring toggle is turned off if the selected trail is touring.
 
 ### `fix: iPad safe-area-inset-top, theme-color tinting & conditional fullscreen toggle`
 - **What changed**:
-  - **Safari Theme Color & Apple Web App Tags** ([`index.html`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/index.html)):
+  - **Safari Theme Color & Apple Web App Tags** ([`index.html`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/index.html)):
     - Ensured `viewport-fit=cover` is set on viewport meta tag.
     - Added `<meta name="theme-color" content="#FAF8F3" />` so Safari address and tab bars blend seamlessly into our archival paper palette.
     - Set `<meta name="apple-mobile-web-app-capable" content="yes" />`, `<meta name="apple-mobile-web-app-status-bar-style" content="default" />`, and `<meta name="apple-mobile-web-app-title" content="Snow Globe" />` for borderless standalone Home Screen app support on iOS and iPadOS.
     - Updated body background to `#FAF8F3`.
-  - **Page Bounce Lock & Safe Area Inset Support** ([`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/index.css), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), [`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/TopNavBar.tsx), [`src/components/sidebar/LeftDock.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/LeftDock.tsx), [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx)):
+  - **Page Bounce Lock & Safe Area Inset Support** ([`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/index.css), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), [`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/TopNavBar.tsx), [`src/components/sidebar/LeftDock.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/LeftDock.tsx), [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx)):
     - Set `overscroll-behavior: none;` and `background-color: #FAF8F3;` on `html, body, #root` so rubber-band scroll never reveals white seams or triggers iPadOS fullscreen exit.
     - Added `env(safe-area-inset-top, 0px)` offsets to top-anchored headers and floating map controls:
       - `TopNavBar`: `h-[calc(44px+env(safe-area-inset-top,0px))] pt-[env(safe-area-inset-top,0px)]`.
@@ -350,14 +350,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
       - Mobile top bar: `top-[calc(env(safe-area-inset-top,0px)+12px)]`.
       - Navigation & locator controls: `top-[calc(env(safe-area-inset-top,0px)+64px)] md:top-[calc(env(safe-area-inset-top,0px)+56px)]`.
       - Basemap layer menu: `top-[calc(env(safe-area-inset-top,0px)+64px)] md:top-[calc(env(safe-area-inset-top,0px)+56px)]`.
-  - **Conditional Fullscreen Toggle on iOS/iPadOS** ([`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/TopNavBar.tsx)):
+  - **Conditional Fullscreen Toggle on iOS/iPadOS** ([`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/TopNavBar.tsx)):
     - Detected iOS/iPadOS via `/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)`.
     - Hid the HTML5 `requestFullscreen()` button on iOS and iPadOS touch devices where fullscreen mode triggers an intrusive floating exit `X` button and exits on scroll, leaving fullscreen accessible on desktop browsers while mobile/tablet users use Home Screen standalone mode.
 - **Why**: Prevents UI overlap with iPadOS status bar and Dynamic Island, harmonizes Safari chrome with the archival paper aesthetic, and prevents disruptive iPadOS fullscreen exit UI.
 
 ### `refactor: strictly read-only cartographic locator diagram with heading cone`
 - **What changed**:
-  - **100% Read-Only Inset Map & Zero Camera Hijacking** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **100% Read-Only Inset Map & Zero Camera Hijacking** ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Initialized inset MapLibre instance with `interactive: false` and `pointer-events-none` on container canvas, eliminating click, drag, scroll-zoom, double-click, and touch handlers.
     - Removed click-to-center handlers that previously moved the main camera when clicking inside the inset.
     - Deleted the entire bottom footer bar (`Click map to center main view` and `Reset Global`) and removed the `+ / -` micro zoom buttons from the canvas.
@@ -384,87 +384,87 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: mobile full-bleed 3d map, floating 44px pill & un-stacked directory headers`
 - **What changed**:
-  - **Full-Viewport Map on Mobile** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), [`src/camera/cameraUtils.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/cameraUtils.ts), [`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/TopNavBar.tsx), [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx)):
+  - **Full-Viewport Map on Mobile** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), [`src/camera/cameraUtils.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/camera/cameraUtils.ts), [`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/TopNavBar.tsx), [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx)):
     - Removed bottom map padding when the drawer is collapsed on mobile screens (`padding.bottom = 0`), reclaiming 80px–220px so the 3D globe and mountain terrain render full-bleed edge-to-edge.
     - Hid the desktop `TopNavBar` on mobile screens (`hidden md:flex`) and added a compact floating top bar (`md:hidden fixed top-3 left-3 right-3 z-20 flex gap-2`) styled in our archival paper theme (`bg-[#FAF8F3] border border-[#2C2A27]`):
       - Left: Compact search trigger/input (`h-10`) that displays the active query and expands the directory sheet on tap.
       - Right: Compact `Filters` button (`h-10 px-3`) with active filter count pill, opening the filter panel directly inside the sheet, and `Layers` button toggling the basemap menu beneath the top bar (`top-16 md:top-14`).
     - Adjusted `NavigationControls` container positioning to `top-16 md:top-14` to clear the floating top bar cleanly.
-  - **Compact 44px Floating Bottom Pill** ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/MobileSheet.tsx)):
+  - **Compact 44px Floating Bottom Pill** ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/MobileSheet.tsx)):
     - Replaced the edge-to-edge 80px peek bar with a compact, centered floating pill (`h-11 px-4 mb-[calc(env(safe-area-inset-bottom,0px)+12px)] bg-[#FAF8F3] border border-[#2C2A27] rounded-full`):
       - When no feature is selected: displays `▲ {inViewCount} in view · Directory` (tapping expands to 88dvh).
       - When a resort is selected: displays `{name} · {vertical} · {snow7d} [Details ↑]` on a single clean line.
       - When a trail is selected: displays `{name} · {vertical} [Details ↑]`.
     - Maintained snappy 2-state drawer transitions (`peek` vs `full`) based on swipe velocity (`|v| > 0.4 px/ms`) or displacement exceeding 35% viewport height.
-  - **Un-Stacked Mobile Directory Headers** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)):
+  - **Un-Stacked Mobile Directory Headers** ([`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx)):
     - Sticky compact top header inside the sheet:
       - Row 1: Search input + `Filters` toggle button with active badge count + collapse chevron.
       - Row 2: Combined Scope (`[ ALL MATCHING ] [ IN VIEW ]`) and Sort pills (`[ A-Z ] [ Vert ] [ Acres ] [ 7d ❄ ]`) on one row.
       - Peak and lookout search matches render inline directly below search when active.
     - Rendered `FilterPanel` (disciplines, pass networks, vertical/acreage sliders) as an absolute overlay view inside the sheet rather than collapsible accordions above resort cards, ensuring resort cards are immediately visible without scrolling.
-  - **2-to-1 Finger Lift Jerk Suppression** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **2-to-1 Finger Lift Jerk Suppression** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - In mobile touch event handling, when `touches.length` drops from 2 to 1, single-finger pan is suppressed for 120ms (`map.dragPan.disable()`, `_touchPan?.reset()`, and `suppressPanUntil = performance.now() + 120`), eliminating phantom pan jerk when lifting one finger slightly before the other after a pinch, rotate, or pitch tilt gesture.
 - **Why**: Drastically improves mobile ergonomics, eliminates stacked header clutter, maximizes 3D map visibility, and prevents jarring touch jerks.
 
 ### `feat: add npm run stop script to terminate local dev server`
-- Added `"stop": "pkill -f 'vite.*3000' || true"` to [`package.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/package.json).
+- Added `"stop": "pkill -f 'vite.*3000' || true"` to [`package.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/package.json).
 - Allows cleanly shutting down any running Vite dev server on port 3000 from the terminal via `npm run stop`.
 
 ### `fix: calibrate default active filter baseline and reset state`
 - **What changed**:
-  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), aligned `activeFiltersCount` computation with the default state (all 5 pass networks enabled, downhill only, 500 ft / 150 m min vertical, 100 ac / 50 ha min area, 0 nordic miles, touring off).
+  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), aligned `activeFiltersCount` computation with the default state (all 5 pass networks enabled, downhill only, 500 ft / 150 m min vertical, 100 ac / 50 ha min area, 0 nordic miles, touring off).
   - Previously, `activeFiltersCount` checked `!showTouring` instead of `showTouring` as an active deviation, which caused the UI to report `1 active filter` immediately on page load when touring routes were defaulted to off.
   - Updated `handleResetFilters()` to reset `showTouring` to `false` matching initial application load state.
 - **Why**: Ensures zero active filters are displayed on initial load and that resetting filters returns cleanly to the intended defaults.
 
 ### `fix: camera flight & mobile touch audit pass`
 - **Audit & Edge-case Fixes**:
-  - **Input Guard**: Added `SELECT` to `isInputElementFocused()` in [`src/camera/cameraUtils.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/cameraUtils.ts) alongside `INPUT`, `TEXTAREA`, and `isContentEditable` to ensure keyboard navigation never fires while dropdowns or search bars are focused. Verified `window` `'blur'`, `'focus'`, and `document` `'visibilitychange'` listeners halt RAF loops and clear keys cleanly.
-  - **Native Touch Conflict**: Explicitly called `map.touchZoomRotate.disableRotation()` in addition to `map.touchPitch.disable()` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) so native rotation does not fight our intent arbiter, and ensured rotation stays disabled upon gesture release.
+  - **Input Guard**: Added `SELECT` to `isInputElementFocused()` in [`src/camera/cameraUtils.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/camera/cameraUtils.ts) alongside `INPUT`, `TEXTAREA`, and `isContentEditable` to ensure keyboard navigation never fires while dropdowns or search bars are focused. Verified `window` `'blur'`, `'focus'`, and `document` `'visibilitychange'` listeners halt RAF loops and clear keys cleanly.
+  - **Native Touch Conflict**: Explicitly called `map.touchZoomRotate.disableRotation()` in addition to `map.touchPitch.disable()` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) so native rotation does not fight our intent arbiter, and ensured rotation stays disabled upon gesture release.
   - **Touch Math NaN/Division Guard**: Guarded pinch-zoom distance ratio with `t0_d0 > 1e-4 && curDist > 1e-4` and verified `isFinite(zoomChange)` and `isFinite(dAngle)` to protect against division-by-zero or NaN when touch points coincide.
   - **Zero Monkey-Patches**: Confirmed zero occurrences of `moveCenterOntoTerrain` or `putCenterBackOnTerrain`. Verified safe settlement relies solely on public `queryTerrainElevation` and `setCenterClampedToGround` with `pitch < 78`.
   - **Mercator Scaling & Public Camera Transform**: Verified altitude elevator and horizontal displacement calculate proper geographic and ground offsets with `dt` scaling.
 
 ### `refactor: camera flight settlement, dynamic pitch clamp, mobile gesture arbiter & 2-state drawer`
 - **What changed**:
-  - **Removed private `_camera` monkey-patches & safe settlement** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), [`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/useKeyboardFlight.ts)):
+  - **Removed private `_camera` monkey-patches & safe settlement** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), [`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/camera/useKeyboardFlight.ts)):
     - Removed `cam.moveCenterOntoTerrain = () => {}` monkey-patching.
     - Set `map.setCenterClampedToGround(false)` immediately when keyboard flight altitude movement initiates.
     - On flight settlement (key release), safely queries `map.queryTerrainElevation(map.getCenter())`. Only re-enables `map.setCenterClampedToGround(true)` if `centerElev !== null` and `map.getPitch() < 78`. Keeps ground clamping disabled when looking above the horizon or over off-terrain void so the camera never snaps, jerks, or throws.
-  - **Dynamic zoom-based max pitch clamp** ([`src/camera/cameraUtils.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/cameraUtils.ts), [`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/useKeyboardFlight.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Dynamic zoom-based max pitch clamp** ([`src/camera/cameraUtils.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/camera/cameraUtils.ts), [`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/camera/useKeyboardFlight.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Implemented `clampPitch(pitch, zoom)` dynamically clamping to `Math.max(0, Math.min(82, (zoom - 3.5) * 18))`.
     - Integrated dynamic pitch clamping into `W`/`S` flight controls, map `zoom` handlers, and touch pitch controls, keeping low-zoom/globe views flat without horizon clipping.
-  - **Mobile two-finger gesture disambiguation arbiter** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx)):
+  - **Mobile two-finger gesture disambiguation arbiter** ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx)):
     - Disabled `map.touchPitch.disable()` to eliminate conflict and jitter with pinch zoom.
     - Added a two-finger touch arbiter on the map container: records initial midpoint, distance, angle, and camera transform. Once touch movement exceeds a 12px deadzone, locks into `'pitch'` mode if vertical shift dominates ($|dy| > 1.5 \cdot |dd|$ and $|\Delta a| < 8^\circ$) or `'zoom-rotate'` mode otherwise.
     - Added a 6° deadzone on twist rotation with clockwise fingers mapped intuitively to clockwise map rotation.
-  - **Simplified 2-state velocity drawer** ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/MobileSheet.tsx), [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx)):
+  - **Simplified 2-state velocity drawer** ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/MobileSheet.tsx), [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx)):
     - Collapsed intermediate 3-state (`peek` -> `half` -> `full`) into a 2-state drawer (`peek` vs `full`).
     - Snaps immediately on touch release if swipe velocity $|v| > 0.4\text{ px/ms}$ or displacement exceeds a 35% viewport height threshold.
 - **Why**: Eliminates private API monkey-patches, prevents extreme-pitch settlement crashes, makes mobile touch interaction smooth and predictable without gesture contention, and eliminates sluggish intermediate half-drawer stalls.
 
 ### `feat: separate vertical elevator altitude from glider line-of-sight zoom`
 - **What changed**:
-  - Rewrote the manual altitude handler in [`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/camera/useKeyboardFlight.ts).
+  - Rewrote the manual altitude handler in [`src/camera/useKeyboardFlight.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/camera/useKeyboardFlight.ts).
   - Previously, `Q`/`E` simply altered `map.setZoom`, which moved along the angled view line identically to `Z`/`X`.
   - Now, `Q`/`E` (or `PageDown`/`PageUp`) behaves like a **helicopter elevator**: the camera's geographical position (`cameraLngLat`) remains stationary while altitude changes purely vertically. To maintain perspective without tilting or drifting, the ground intersection center is translated along the camera bearing by $\Delta \text{Alt} \cdot \tan(\text{pitch})$ and zoom is mathematically adjusted by $-\log_2(\text{nextDist} / \text{prevDist})$.
   - Meanwhile, `Z`/`X` (or `+`/`-`) behaves like an **airplane / glider**: it flies directly down or up the angled line-of-sight glide slope towards the fixed ground focal target.
 - **Why**: Allows true vertical altitude adjustment (climbing or descending in place above terrain) completely distinct from gliding forward/backward into the terrain.
 
 ### `docs: update cartographic legend with full camera controls and altitude navigation`
-- Updated the Navigation & Gesture Guide in [`src/components/map/CartographicLegend.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/CartographicLegend.tsx) to document `Q`/`E` (change altitude / descend / ascend), `Z`/`X` or `+`/`-` (zoom), and `Shift` (2.5× flight speed multiplier).
+- Updated the Navigation & Gesture Guide in [`src/components/map/CartographicLegend.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/CartographicLegend.tsx) to document `Q`/`E` (change altitude / descend / ascend), `Z`/`X` or `+`/`-` (zoom), and `Shift` (2.5× flight speed multiplier).
 
 ### `fix: remove automatic zoom-based terrain exaggeration scaling`
 - **What changed**:
-  - Completely removed the automatic zoom-based terrain relief scaling curve and `map.setTerrain` calls inside the map `zoom` listener in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+  - Completely removed the automatic zoom-based terrain relief scaling curve and `map.setTerrain` calls inside the map `zoom` listener in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
   - Bound `map.setTerrain` exclusively to user interaction via the Terrain Relief Multiplier slider and preset buttons (`0`, `0.7`, `1.0`, `2.0`), map/style initial load, projection toggles, and 3D terrain toggles.
   - When `terrainExaggeration <= 0`, `map.setTerrain(null)` is called. For any value `> 0`, `Number(terrainExaggeration)` is passed directly.
-  - Verified no "Auto" terrain toggles exist in [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx).
+  - Verified no "Auto" terrain toggles exist in [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx).
 - **Why**: The zoom-interpolation listener was resetting terrain relief to 0 (flat) during map zoom transitions. Exaggeration is now strictly user-controlled.
 
 ### `refactor: lock in clean 3-bucket piste classifier with lift proximity`
 - **What changed**:
-  - Replaced `classifyOsmPiste` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) with the exact 3-bucket classifier:
+  - Replaced `classifyOsmPiste` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) with the exact 3-bucket classifier:
     1. Ignores non-ski activities (walking, snowshoeing, sledding, fatbiking).
     2. Separates Resort Downhill (`downhill`, `freeride`, `connection` with lift/resort proximity and not `patrolled=no`) from Backcountry Downhill Touring (`patrolled=no` or not lift-served).
     3. Retains all `skitour` routes in `touring`.
@@ -518,7 +518,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: deterministic piste categorization overhaul with resort-proximity classification`
 - **What changed**:
-  - **`classifyOsmPiste()` module-level function** added to [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) before the `App` component. Accepts OSM tags and an `isInsideResortOrNearLift` boolean; returns `'downhill' | 'touring' | 'nordic' | 'ignore'`.
+  - **`classifyOsmPiste()` module-level function** added to [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) before the `App` component. Accepts OSM tags and an `isInsideResortOrNearLift` boolean; returns `'downhill' | 'touring' | 'nordic' | 'ignore'`.
   - **Four deterministic rules** replace the previous ad-hoc multi-condition classification block:
     1. **RULE 1**: Discard all non-ski types (snowshoeing, fat-biking, sledding, etc.) not in `['downhill', 'freeride', 'connection', 'nordic', 'skitour']`.
     2. **RULE 2**: Downhill/freeride/connection → `'downhill'` if inside resort or has operator; `'touring'` if `patrolled=no` or not near a known resort.
@@ -530,9 +530,9 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Resort & lift bounding boxes** constructed from `landuse=winter_sports` and `aerialway` ways/relations, expanded 0.005° (~500m buffer), and used by `isPointNearResortOrLift()` to classify each piste as inbounds vs. backcountry.
   - **Parent relation tags propagated** to member ways before classification so that pistes tagged only at the relation level (route=piste) inherit `piste:type`, `piste:difficulty`, `patrolled`, and `name`.
   - **Closed bowl polygons preserved**: ways where first node == last node and `piste:type` is set are stored as `Polygon` geometry (Highland Bowl, freeride terrain polygons) instead of being dropped.
-  - **English-first trail labels**: All three label layers (`PISTES_POLYGONS_LABELS`, `PISTES_LABELS`, `PISTES_LIFTS_LABELS`) in [`src/layers/trailLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/trailLayers.ts) now use `['coalesce', ['get', 'name:en'], ['get', 'piste:name:en'], ['get', 'name'], ['get', 'piste:name'], '']`.
+  - **English-first trail labels**: All three label layers (`PISTES_POLYGONS_LABELS`, `PISTES_LABELS`, `PISTES_LIFTS_LABELS`) in [`src/layers/trailLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/trailLayers.ts) now use `['coalesce', ['get', 'name:en'], ['get', 'piste:name:en'], ['get', 'name'], ['get', 'piste:name'], '']`.
   - **Touring color detection enhanced**: All three difficulty color `case` expressions in `PISTES_LINES`, `PISTES_POLYGONS_FILL`, and `PISTES_POLYGONS_OUTLINE` now also check `['==', ['get', 'atlas_category'], 'touring']` before falling back to `piste:type` and `is_touring`.
-  - **`syncTrailFilterAndVisibility` overhauled** in [`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/layerThemeManager.ts): replaced complex `heliCatExclusion`/`touringExclusion` variable patterns with clean `atlas_category` equality checks, while retaining backward-compatible fallback conditions (using `['!', ['has', 'atlas_category']]`) for pre-existing features that predate the new field.
+  - **`syncTrailFilterAndVisibility` overhauled** in [`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/layerThemeManager.ts): replaced complex `heliCatExclusion`/`touringExclusion` variable patterns with clean `atlas_category` equality checks, while retaining backward-compatible fallback conditions (using `['!', ['has', 'atlas_category']]`) for pre-existing features that predate the new field.
 - **Why this approach**:
   - Deterministic classification eliminates the brittleness of multi-condition ad-hoc logic and correctly handles OSM edge cases (unpatrolled inbounds terrain, relation-only tagging, closed bowl polygons). The resort-proximity check using `landuse=winter_sports` and `aerialway` footprints is semantically robust — if a piste is next to a lift or inside a designated winter sports area, it is classified as inbounds downhill terrain regardless of whether `patrolled=yes` was explicitly set.
 - **Build result**: `✓ built in 1.91s` — 0 TypeScript errors, 0 warnings.
@@ -544,16 +544,16 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `fix: restore comprehensive 4-mountain Aspen Snowmass trail network and flip layers/basemap tab order`
 - **What was wrong before**:
   - **Missing Aspen Trails**: Viewing Aspen Snowmass displayed trails only on Snowmass and the lower western fringe of Ruthie's, while the upper slopes of Aspen Mountain (Ajax) — including the Silver Queen Gondola line, Sundeck summit, Dipsy Doodle, Silver Bell, 1 & 2 Leaf, and Hero's — had zero trail vector overlays despite visible ski runs on the satellite imagery.
-  - **Tab Hierarchy in Basemap Popover**: In [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), the segmented control placed `[ 🌐 Basemap ]` on the left and defaulted to it when opened, requiring extra interaction to reach map layers, 3D exaggeration, horizon summits, and ski touring controls.
+  - **Tab Hierarchy in Basemap Popover**: In [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), the segmented control placed `[ 🌐 Basemap ]` on the left and defaulted to it when opened, requiring extra interaction to reach map layers, 3D exaggeration, horizon summits, and ski touring controls.
 - **Root Cause**:
   - `public/data/trails/aspen-snowmass.json` was previously exported using a narrow bounding box centered solely around Snowmass Village (`lat: 39.2083, lng: -106.9497`), ending at `maxLng: -106.855`. Because Aspen Mountain is 12 km to the east at `-106.819`, its entire upper mountain network was excluded from the flagship bundle.
 - **What changed**:
   - **Flipped Layers and Basemap Tabs**:
-    - In [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), flipped the segmented tab control so `[ 🗂️ Layers ]` is on the left and appears first, and set `activeTab` to default to `'layers'`.
+    - In [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), flipped the segmented tab control so `[ 🗂️ Layers ]` is on the left and appears first, and set `activeTab` to default to `'layers'`.
     - Updated the trigger button title/aria-label to `"Layers & Basemaps"`.
   - **Comprehensive Aspen Snowmass 4-Mountain Trail Bundle**:
-    - Re-exported [`public/data/trails/aspen-snowmass.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/trails/aspen-snowmass.json) with expanded multi-mountain bounds covering all four mountains in the complex (Snowmass, Aspen Mountain / Ajax, Aspen Highlands, and Buttermilk), expanding coverage from 197 to 623 verified pistes, lifts, and terrain polygons.
-    - Updated [`data_pipeline/export_resort_trails.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/export_resort_trails.cjs) and [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts) to detect multi-mountain complexes and automatically query expanded bounds.
+    - Re-exported [`public/data/trails/aspen-snowmass.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/trails/aspen-snowmass.json) with expanded multi-mountain bounds covering all four mountains in the complex (Snowmass, Aspen Mountain / Ajax, Aspen Highlands, and Buttermilk), expanding coverage from 197 to 623 verified pistes, lifts, and terrain polygons.
+    - Updated [`data_pipeline/export_resort_trails.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/export_resort_trails.cjs) and [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts) to detect multi-mountain complexes and automatically query expanded bounds.
     - Synced all 623 features across `aspen-snowmass.json`, `aspen-mountain.json`, `aspen-highlands.json`, and `buttermilk.json` in both `public/data/trails/` and `dist/data/trails/`.
 - **Why this specific approach was chosen**:
   - Satisfies user expectation that selecting Aspen Snowmass reveals the complete contiguous trail system across all 4 mountains of the Aspen complex without artificial cutoffs.
@@ -587,7 +587,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
       - `Mount Tinniswood` (`peak-1653`): `[-123.838921, 50.313681]` (2,548m DEM apex)
       - `McGinnis Peak` (`peak-1809`): `[-146.302872, 63.543888]` (3,556m DEM apex)
   - **Cache Busting**:
-    - Updated the GeoJSON source URL cache buster in both [`src/layers/poiLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/poiLayers.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to `major_peaks.geojson?v=20261108_dem_apex_reconciled` to guarantee immediate client reload without stale browser cache.
+    - Updated the GeoJSON source URL cache buster in both [`src/layers/poiLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/poiLayers.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to `major_peaks.geojson?v=20261108_dem_apex_reconciled` to guarantee immediate client reload without stale browser cache.
 - **Why this specific approach was chosen**:
   - Ensures every mountain peak pin sits mathematically at the physical highest elevation pixel in the 3D Mapterhorn terrain, eliminating any visual discrepancy when orbiting mountains in 3D pitch.
 
@@ -598,18 +598,18 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **What changed**:
   - **First-Class Touring Category & Toggle State**:
     - Expanded `SkiActivityCategory` to `'downhill' | 'nordic' | 'heli_cat' | 'touring'`.
-    - Added global `showTouring` state with full toggle support in both [`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/FilterModal.tsx) (4-column category grid: `[ ⛷️ Downhill ] [ 🎿 Nordic ] [ 🚁 Heli/Cat ] [ 🏔️ Touring ]`) and [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx) (Layers popover "Ski Touring Routes" toggle).
+    - Added global `showTouring` state with full toggle support in both [`src/components/header/FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/FilterModal.tsx) (4-column category grid: `[ ⛷️ Downhill ] [ 🎿 Nordic ] [ 🚁 Heli/Cat ] [ 🏔️ Touring ]`) and [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx) (Layers popover "Ski Touring Routes" toggle).
   - **Quality Filtering for Significant Routes**:
-    - In both [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), admitted genuine touring lines while strictly rejecting unnamed noise, non-ski recreational activities (`fatbike`, `hike`, `sled`, `playground`), and defunct traces.
+    - In both [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), admitted genuine touring lines while strictly rejecting unnamed noise, non-ski recreational activities (`fatbike`, `hike`, `sled`, `playground`), and defunct traces.
     - Tagged admitted routes with `is_touring = true` and `piste:type = 'skitour'`.
   - **Dynamic GPU-Level MapLibre Layer Filtering**:
-    - In [`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/layerThemeManager.ts), updated `syncTrailFilterAndVisibility` and `syncResortPointFilters` to instantly toggle touring routes and destinations at 60fps on the GPU without requiring network re-queries.
+    - In [`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/layerThemeManager.ts), updated `syncTrailFilterAndVisibility` and `syncResortPointFilters` to instantly toggle touring routes and destinations at 60fps on the GPU without requiring network re-queries.
   - **Authentic Cartographic Piste Styling**:
-    - In [`src/layers/trailLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/trailLayers.ts), styled touring routes with warm tour amber (`#D97706`) for unrated lines while preserving authentic difficulty vermilion (`#B84A39`) and black (`#1C1B18`) for extreme couloirs and chutes.
+    - In [`src/layers/trailLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/trailLayers.ts), styled touring routes with warm tour amber (`#D97706`) for unrated lines while preserving authentic difficulty vermilion (`#B84A39`) and black (`#1C1B18`) for extreme couloirs and chutes.
   - **Curated Tuckerman Ravine Flagship & Trail Bundle**:
-    - Added Tuckerman Ravine (Mount Washington, NH) to [`src/data/resorts.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/data/resorts.ts) with authentic elevation (3,800' base, 6,288' summit, 2,488' vert), 1,200 acres, and verified editorial history.
-    - Exported all 35 authentic chutes, gullies, and runs (Hillmans Highway, John Sherburne Ski Trail, The Chute, Left Gully, Right Gully, The Lip, The Sluice, Gulf of Slides, etc.) to [`public/data/trails/tuckerman-ravine.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/trails/tuckerman-ravine.json) and registered them in `data_pipeline/trails.db`.
-    - Enhanced [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx) to display "Lines / Chutes" and "Backcountry" terrain stats for touring entries.
+    - Added Tuckerman Ravine (Mount Washington, NH) to [`src/data/resorts.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/data/resorts.ts) with authentic elevation (3,800' base, 6,288' summit, 2,488' vert), 1,200 acres, and verified editorial history.
+    - Exported all 35 authentic chutes, gullies, and runs (Hillmans Highway, John Sherburne Ski Trail, The Chute, Left Gully, Right Gully, The Lip, The Sluice, Gulf of Slides, etc.) to [`public/data/trails/tuckerman-ravine.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/trails/tuckerman-ravine.json) and registered them in `data_pipeline/trails.db`.
+    - Enhanced [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx) to display "Lines / Chutes" and "Backcountry" terrain stats for touring entries.
 - **Why this specific approach was chosen**:
   - Fulfills the user's desire to enjoy significant, legendary ski touring terrain like Tuckerman Ravine with complete toggle control, allowing users to keep downhill views pure or activate touring routes on demand.
 
@@ -619,18 +619,18 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **What was wrong before**:
   - Country boundary labels (`name_left` and `name_right` along international borders) completely disappeared across all zoom levels.
 - **Root Cause**:
-  - **Root Cause #1 (Excessive `symbol-spacing`)**: In [`src/layers/boundaryLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/boundaryLayers.ts), `symbol-spacing` was set to `1600px` at zoom 3.5, `2600px` at zoom 5.5, and `3600px` at zoom 7.0. Because `symbol-spacing` in MapLibre GL is measured in screen pixels, MapLibre required border lines in the viewport to exceed 1600–3600 pixels in length to place a label. On standard screens (1440–1920px wide), almost no border segment met this requirement, causing MapLibre to reject and drop all labels.
+  - **Root Cause #1 (Excessive `symbol-spacing`)**: In [`src/layers/boundaryLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/boundaryLayers.ts), `symbol-spacing` was set to `1600px` at zoom 3.5, `2600px` at zoom 5.5, and `3600px` at zoom 7.0. Because `symbol-spacing` in MapLibre GL is measured in screen pixels, MapLibre required border lines in the viewport to exceed 1600–3600 pixels in length to place a label. On standard screens (1440–1920px wide), almost no border segment met this requirement, causing MapLibre to reject and drop all labels.
   - **Root Cause #2 (Premature `maxzoom: 7.2` & Opacity Cutoff)**: Both left and right label layers had `maxzoom: 7.2` and an opacity interpolation ending at `7.2, 0.0`. This abruptly terminated all country boundary labels as soon as the user zoomed into ski regions or mountain passes (zooms 7.5–14+), leaving thick border lines unlabelled (e.g. Chile/Argentina at Portillo, Switzerland/Italy at Zermatt).
   - **Root Cause #3 (Strict `text-max-angle: 45`)**: Mountain boundaries follow jagged alpine crests and continental divides. With `text-max-angle` at 45°, MapLibre suppressed text whenever neighboring line segments turned by >45°.
   - **Root Cause #4 (Delayed `minzoom: 3.2`)**: The `minzoom: 3.2` threshold prevented labels from showing on wide continental and globe views.
 - **What changed**:
-  - In [`src/layers/boundaryLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/boundaryLayers.ts):
+  - In [`src/layers/boundaryLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/boundaryLayers.ts):
     - Lowered `minzoom` to `2.8` and removed `maxzoom` so country boundary labels remain persistent from sub-continental zoom all the way down into mountain ski valleys.
     - Replaced screen-busting `symbol-spacing` with responsive pixel interpolation: `3.0: 600px, 6.0: 450px, 9.0: 350px, 12.0: 250px, 15.0: 200px`.
     - Relaxed `text-max-angle` from 45° to 65° to accommodate natural alpine ridge curvature without label rejection.
     - Updated `text-size` to scale smoothly (`3.0: 9.0px, 6.0: 10.5px, 9.0: 11.5px, 12.0: 12.5px, 15.0: 13.5px`).
     - Updated `text-opacity` to remain steady (`2.8: 0.0, 3.4: 0.85, 6.0: 0.95, 14.0: 0.90`) without any high-zoom fadeout.
-  - In [`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/layerThemeManager.ts):
+  - In [`src/layers/layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/layerThemeManager.ts):
     - Aligned theme sync colors to `#FFFFFF` on dark basemaps with `#0F0E0D` halo, and `#0F172A` on light basemaps with `#FAF8F3` halo.
 - **Why this specific approach was chosen**:
   - Restores reliable, high-contrast sovereign nation labeling along every international boundary line at both global overviews and high-resolution mountain resort scales, honoring the editorial cartographic aesthetic.
@@ -642,7 +642,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Viewing Ski Portillo displayed spurious trails across the international border in Mendoza, Argentina (in the alpine cirques around Cerro Iglesia and near Refugio Casa del Gringo / Cristo Redentor), as well as distant backcountry routes 5 km to the west in Cajón Ojos de Agua.
 - **Root Cause**:
   - In OpenStreetMap, mountaineers mapped backcountry ski touring ascents and off-piste couloirs around Cerro Iglesia and Las Cuevas in Argentina, tagging them with `piste:type=downhill` or `piste:type=skitour`.
-  - When Portillo's trail dataset was pre-exported to [`public/data/trails/portillo.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/trails/portillo.json), an overly wide bounding box (~14 km wide) swept across the continental divide and national border, pulling in 19 Argentine lines and 3 western valley routes and erroneously attributing them to Ski Portillo.
+  - When Portillo's trail dataset was pre-exported to [`public/data/trails/portillo.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/trails/portillo.json), an overly wide bounding box (~14 km wide) swept across the continental divide and national border, pulling in 19 Argentine lines and 3 western valley routes and erroneously attributing them to Ski Portillo.
 - **What changed**:
   - Sanitized `public/data/trails/portillo.json` to strictly bound features to Portillo's authentic Chilean footprint (`-70.155` to `-70.115` lng, `-32.850` to `-32.827` lat).
   - Preserved all 15 authentic lifts (Va-et-Vient slingshots, Juncalillo chair, Plateau, Roca Jack, etc.) and all 31 verified ski runs (Super C, Roca Jack, Lake Run, Bajada del Tren, Garganta, etc.).
@@ -654,8 +654,8 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `fix: restore visible track bar on terrain relief and overlay opacity sliders`
 - **What was wrong before**:
-  - In [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), the range inputs for "Terrain Relief Multiplier" and "Overlay Opacity" lacked inline `background` styles.
-  - In [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/index.css), `.tufte-slider` had no fallback background, while its WebKit/Moz runnable tracks were set to `transparent`.
+  - In [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), the range inputs for "Terrain Relief Multiplier" and "Overlay Opacity" lacked inline `background` styles.
+  - In [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/index.css), `.tufte-slider` had no fallback background, while its WebKit/Moz runnable tracks were set to `transparent`.
   - As a result, the slider track was completely invisible/transparent, leaving the thumb circle floating in blank space with no visible bar beneath it.
 - **What changed**:
   - Added a baseline `background: #D6D0C2` to `.tufte-slider` in `src/index.css` so range inputs always render a visible track even without explicit inline styles.
@@ -667,7 +667,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `fix: heighten visibility and click affordance of directory filters button`
 - **What was wrong before**:
-  - The collapsible "Filters" bar in [`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx) used the same light cream background (`#FAF8F3`) as the surrounding dock panel, causing it to blend completely into the container.
+  - The collapsible "Filters" bar in [`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx) used the same light cream background (`#FAF8F3`) as the surrounding dock panel, causing it to blend completely into the container.
   - The "Show ⌵" affordance on the right used low-contrast, muted text (`#736E67`), making it unclear that the element was an interactive, expandable card.
 - **What changed**:
   - Set a permanent darker warm-tint background (`bg-[#EFECE4]`) with a crisp defined border (`border-[#C4BEB1]`), matching the hover state contrast permanently so the filter bar immediately stands out.
@@ -685,16 +685,16 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Clunky Two-Step Bottom Sheet**: Expanding the mobile sheet from collapsed `peek` required a frustrating two-step process: tapping peek only opened to `half` (50dvh), requiring a second tap on an ambiguous chevron button to reach `full` size. In addition, selecting a resort card while in full mode unexpectedly collapsed the sheet back to half-screen.
   - **Missing Touch Dragging**: There was no touch-drag gesture support (`onTouchStart`/`onTouchMove`/`onTouchEnd`) on the mobile sheet pill or header, making it impossible to swipe the sheet up or down.
 - **What changed**:
-  - **Restored Natural MapLibre Touch Controls** in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx):
+  - **Restored Natural MapLibre Touch Controls** in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx):
     - Removed the bearing inversion monkey patch, restoring authentic 1:1 map rotation with user fingers.
     - Enabled native midpoint-anchored pinch-to-zoom (`map.touchZoomRotate.enable()`), keeping the terrain under the fingers firmly pinned in place.
     - Removed low-threshold `touchPitch` overrides so two-finger pitch only activates on intentional vertical swipes without interrupting pinch-zoom.
-  - **Streamlined Mobile Bottom Sheet** in [`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/MobileSheet.tsx):
+  - **Streamlined Mobile Bottom Sheet** in [`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/MobileSheet.tsx):
     - Added comprehensive touch drag listeners (`onTouchStart`, `onTouchMove`, `onTouchEnd`) on the pill handle and header strip: swiping up expands directly to `full`, while swiping down collapses smoothly.
     - Single tap on collapsed `peek` bar or pill handle expands directly to `full` height (`88dvh`) for instant access to the directory search or mountain profile.
     - Replaced confusing chevron/minus button soup with intuitive controls: `Maximize2` (to expand from half to full), `Minimize2` (split view toggle from full to half), and `ChevronDown` (minimize to peek).
     - Preserved full sheet mode when selecting a resort card from the directory list so the view doesn't yank down unexpectedly.
-  - **Updated Mobile Profile Controls** in [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx):
+  - **Updated Mobile Profile Controls** in [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx):
     - Aligned profile header with `Maximize2` / `Minimize2` / `ChevronDown` controls for seamless cross-component consistency.
 - **Why this specific approach was chosen**:
   - Leverages MapLibre's built-in multi-touch gesture arbitration rather than brittle monkey-patching, providing standard mobile map behavior familiar from Google Maps and Apple Maps, while giving the bottom sheet instant 1-tap full expansion and natural touch-drag ergonomics.
@@ -703,32 +703,32 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `refactor: extract OpenSkiData ingestion, deduplication, and catalog pipeline into src/services/resorts subsystem`
 - **What was changed**:
-  - **Dedicated Resort Pipeline Subsystem (`src/services/resorts/`)**: Extracted all client-side spatial and token deduplication, quality filters, URL hygiene, catalog assembly, and dynamic GeoJSON synchronization out of [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+  - **Dedicated Resort Pipeline Subsystem (`src/services/resorts/`)**: Extracted all client-side spatial and token deduplication, quality filters, URL hygiene, catalog assembly, and dynamic GeoJSON synchronization out of [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
   - **Domain Modularization**:
-    - [`deduplication.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/resorts/deduplication.ts): Spatial proximity (<800m), vicinity (<15km) substring matching, and significant token analysis (`isDuplicateAgainstCurated`). Quality filters purging closed, defunct, abandoned, or zero-infrastructure ghost entries (`isDefunctOrClosed`, `isGhostOrZeroInfra`). URL sanitization with spam/casino domain blacklists and protocol repair (`sanitizeWebsiteUrl`).
-    - [`resortCatalog.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/resorts/resortCatalog.ts): OpenSkiData ingestion (`fetchGlobalSkiAreas`), feature classification, and catalog merging (`mergeResortsWithWeather`) which preserves active live weather states when global data resolves.
-    - [`resortFiltering.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/resorts/resortFiltering.ts): Directory filtering and sorting (`filterResortCatalog`), viewport in-bounds detection (`filterResortsInBounds`), dynamic source synchronization (`syncDynamicMapSources`), and selected resort pin updates (`updateSelectedResortPin`).
+    - [`deduplication.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/services/resorts/deduplication.ts): Spatial proximity (<800m), vicinity (<15km) substring matching, and significant token analysis (`isDuplicateAgainstCurated`). Quality filters purging closed, defunct, abandoned, or zero-infrastructure ghost entries (`isDefunctOrClosed`, `isGhostOrZeroInfra`). URL sanitization with spam/casino domain blacklists and protocol repair (`sanitizeWebsiteUrl`).
+    - [`resortCatalog.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/services/resorts/resortCatalog.ts): OpenSkiData ingestion (`fetchGlobalSkiAreas`), feature classification, and catalog merging (`mergeResortsWithWeather`) which preserves active live weather states when global data resolves.
+    - [`resortFiltering.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/services/resorts/resortFiltering.ts): Directory filtering and sorting (`filterResortCatalog`), viewport in-bounds detection (`filterResortsInBounds`), dynamic source synchronization (`syncDynamicMapSources`), and selected resort pin updates (`updateSelectedResortPin`).
   - **Codebase Simplification**: `src/App.tsx` shrank further from 3,498 lines down to 3,069 lines (total reduction of 2,469 lines across refactoring sessions), eliminating monolithic loops and regex filters from component code.
 - **Why this specific approach was chosen**:
   - Isolates data validation, deduplication, and coordinate geometry from UI component closures, dramatically speeding up Hot Module Replacement (HMR) and enabling independent unit testing of deduplication algorithms.
 
 ### `refactor: extract vector layer management and reactive styling into modular src/layers subsystem`
 - **What was changed**:
-  - **Modular Vector Layer Architecture (`src/layers/`)**: Extracted over 2,000 lines of imperative `addSource`, `addLayer`, layout/paint properties, and reactive filter/theme synchronization out of [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+  - **Modular Vector Layer Architecture (`src/layers/`)**: Extracted over 2,000 lines of imperative `addSource`, `addLayer`, layout/paint properties, and reactive filter/theme synchronization out of [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
   - **Domain Modularization**:
-    - [`trailLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/trailLayers.ts): Live vector ski pistes, difficulty fills/casings, aerialway lifts, hit-target buffers, and selected trail highlight vectors.
-    - [`boundaryLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/boundaryLayers.ts): Natural Earth 10m international land boundaries, 50m state borders, and 4-tier geographic reference places.
-    - [`resortLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/resortLayers.ts): Curated flagship ski atlas concentric rings, selected resort marker pulse, and global OpenSkiData mineral cluster hierarchy.
-    - [`poiLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/poiLayers.ts): Major mountain summits (with strict mathematical elevation sorting) and authentic historic fire lookouts.
-    - [`layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/layers/layerThemeManager.ts): Dedicated synchronization functions for basemap light/dark themes, metric/imperial elevation units, discipline visibility (downhill, nordic, heli/cat), and GPU slider filters.
-    - [`url.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/url.ts): Extracted standalone `getStaticDataUrl` helper resolving Vite public asset subpaths.
+    - [`trailLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/trailLayers.ts): Live vector ski pistes, difficulty fills/casings, aerialway lifts, hit-target buffers, and selected trail highlight vectors.
+    - [`boundaryLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/boundaryLayers.ts): Natural Earth 10m international land boundaries, 50m state borders, and 4-tier geographic reference places.
+    - [`resortLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/resortLayers.ts): Curated flagship ski atlas concentric rings, selected resort marker pulse, and global OpenSkiData mineral cluster hierarchy.
+    - [`poiLayers.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/poiLayers.ts): Major mountain summits (with strict mathematical elevation sorting) and authentic historic fire lookouts.
+    - [`layerThemeManager.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/layers/layerThemeManager.ts): Dedicated synchronization functions for basemap light/dark themes, metric/imperial elevation units, discipline visibility (downhill, nordic, heli/cat), and GPU slider filters.
+    - [`url.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/url.ts): Extracted standalone `getStaticDataUrl` helper resolving Vite public asset subpaths.
   - **Codebase Simplification**: `src/App.tsx` shrank from 5,538 lines down to ~3,498 lines (over 36% smaller), converting massive raw configuration blocks into declarative subsystem calls.
 - **Why this specific approach was chosen**:
   - Consolidating MapLibre layer specifications into domain-specific modules isolates styling and filter logic from the React view state, prevents accidental layer collision or z-index regressions, and enables isolated testing of map layers.
 
 ### `refactor: extract camera controls and 60fps keyboard flight engine into modular src/camera subsystem`
 - **What was changed**:
-  - **Modular Architecture (`src/camera/`)**: Extracted 330+ lines of raw keyboard flight logic, `requestAnimationFrame` loops, transform calls, and camera matrix math out of [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) into a dedicated camera subsystem.
+  - **Modular Architecture (`src/camera/`)**: Extracted 330+ lines of raw keyboard flight logic, `requestAnimationFrame` loops, transform calls, and camera matrix math out of [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) into a dedicated camera subsystem.
   - **Finite State Machine (`cameraStateMachine.ts`)**: Implemented a formal FSM (`'idle' | 'flight' | 'flyto' | 'inspect'`) coordinating keyboard cruising, mouse interactions, and programmatic transitions (`safeFlyTo`). Keystrokes or canvas clicks cleanly interrupt running programmatic flights without race conditions.
   - **Terrain Clearance Guards (`cameraUtils.ts`)**: Built-in predictive terrain obstacle detection (`LOOKAHEAD_SECONDS = 0.6`) and camera eye clearance floors (`MIN_CAMERA_CLEARANCE_METERS = 25.0`), preventing the camera from clipping into mountain slopes or getting locked when zooming in.
   - **Clean React Hook (`useKeyboardFlight.ts`)**: Declarative hook managing window key events, active velocity integration, ground clamping release during flight for level cruising, and instant cancellation on blur or canvas mouse gestures.
@@ -747,7 +747,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **What was wrong before**:
   - In the resort mountain profile's 7-day snowfall forecast bar chart, two consecutive days were simultaneously labeled as `[Today]` (e.g. `[Today] [Today] Sun Mon Tue Wed Thu`), confusing the daily timeline.
 - **Root Cause**:
-  - In [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx), the logic was `isToday = idx === 0 || (dateObj.getDate() === now.getDate() ...)`.
+  - In [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx), the logic was `isToday = idx === 0 || (dateObj.getDate() === now.getDate() ...)`.
   - Because `idx === 0` was unconditionally hardcoded to `true`, and the calendar day comparison also matched index 1 when user local time was near midnight or offset from the forecast timezone, both index 0 and index 1 evaluated to `isToday = true`.
 - **Solution**:
   - Pre-identified the single authentic matching calendar index (`matchedIdx`) via exact year/month/day comparison, defaulting to `0` only if today's date is not within the forecast range.
@@ -768,7 +768,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - By relying strictly on shared terrestrial country boundaries, all offshore maritime arcs, territorial water lines, and lines extending into oceans, straits, or open seas are 100% eliminated. Lines terminate strictly at physical coastlines.
   - **Ray-Casting Point-in-Polygon Side Verification**:
     - Every boundary line's normal vector was sampled across multiple points against sovereign polygon geometries to ensure `name_left` and `name_right` are 100% positioned on their authentic sovereign side of the border.
-  - **Bumped Boundary Cache Buster**: Updated [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to `v=20261108_ne10m_land_mesh`.
+  - **Bumped Boundary Cache Buster**: Updated [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to `v=20261108_ne10m_land_mesh`.
 
 ### `feat: streamline filter & directory UX, deduplicate actions, highlight slider ranges, and polish typography`
 - **What was wrong before**:
@@ -796,7 +796,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **What was wrong before**:
   - When panning around with keyboard arrow keys in rugged mountain terrain (such as around Mount McGuire), the camera flew at a steady, level cruising altitude, but when releasing the arrow key, the camera violently jumped or snapped to a different zoom level and center position.
 - **Root Cause**:
-  - In `stopFlight` inside [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), whenever key flight stopped, an elevation-recovery block called `cam.applyTransformChange(tr => cam.putCenterBackOnTerrain(tr, terrain, false))` and `map.setCenterClampedToGround(true)`.
+  - In `stopFlight` inside [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), whenever key flight stopped, an elevation-recovery block called `cam.applyTransformChange(tr => cam.putCenterBackOnTerrain(tr, terrain, false))` and `map.setCenterClampedToGround(true)`.
   - In MapLibre 5, `putCenterBackOnTerrain(tr, terrain, false)` invokes `transform.recalculateZoomAndCenter(terrain)`. In steep 3D terrain with 4,000–5,000 ft vertical relief (canyons vs. peaks), casting a ray from the camera through the focal center onto a distant slope or valley recalculated the camera's zoom and center coordinates, while `setCenterClampedToGround(true)` snapped the transform's elevation to the newly sampled DEM height on the next render frame. This caused a massive visual kick the instant an arrow key was released.
 - **Solution**:
   - **Removed Jump-Inducing Post-Flight Transform**: Simplified `stopFlight` to halt the animation loop and clear key state without invoking `putCenterBackOnTerrain` or re-enabling `centerClampedToGround(true)`.
@@ -834,8 +834,8 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Leon Peak Lookout was a low 10x10 ft rustic log-and-stone cabin built in 1911 by early Forest Service personnel that was abandoned in 1916 due to frequent, violent lightning strikes on the exposed 11,236' summit. Over a century of weather reduced it to historic foundation remnants.
 - **Solution**:
   - **Eliminated Footer Truncation**: Expanded popup container width to `maxWidth: '340px'` in MapLibre options and CSS (`min-width: 220px; max-width: 320px;` in HTML), and removed `max-width: 170px` / `text-overflow: ellipsis` / `white-space: nowrap` from the agency span so text fits on a single line or wraps gracefully without truncation.
-  - **Historic Ruins & Abandoned Badges**: Added dedicated status pills in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx): `Historic Ruins` (stone/slate pill for foundation and remnant sites) and `Abandoned Tower` (soft amber pill for decommissioned towers).
-  - **Leon Peak Reconciled**: Updated Leon Peak Lookout in [`public/data/fire_lookouts.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/fire_lookouts.geojson) to its authentic surveyed benchmark elevation **$11,236'$** ($3,425\text{ m}$), assigned managing agency **`USFS Grand Mesa NF`**, and set status to **`Historic Ruins`**.
+  - **Historic Ruins & Abandoned Badges**: Added dedicated status pills in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx): `Historic Ruins` (stone/slate pill for foundation and remnant sites) and `Abandoned Tower` (soft amber pill for decommissioned towers).
+  - **Leon Peak Reconciled**: Updated Leon Peak Lookout in [`public/data/fire_lookouts.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/fire_lookouts.geojson) to its authentic surveyed benchmark elevation **$11,236'$** ($3,425\text{ m}$), assigned managing agency **`USFS Grand Mesa NF`**, and set status to **`Historic Ruins`**.
   - **Colorado Inventory Polish**: Upgraded agencies and statuses across Colorado towers (Devil's Head, Fairview Peak, Hahns Peak, Mesa Verde Park Point, Shadow Mountain).
 
 
@@ -853,7 +853,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Agency Attribute Enrichment**: Transferred extracted national forest and county metadata into the structured `agency` field (e.g. `USFS Payette NF`, `USFS Stanislaus NF`, `CAL FIRE`, `USFS Eldorado NF`), keeping map labels concise while displaying authentic managing agency details in the popup footer.
   - **HTML Entity & Character Sanitation**: Decoded all HTML entities (`&#39;` -> `'`, `&quot;` -> stripped) and sanitized character corruptions (`Ō` -> `O`, quotes and underscores stripped).
   - **Celtic/Irish Capitalization**: Applied title-casing rules for names with apostrophes and Celtic prefixes (`O'Leary`, `O'Bannon`, `O'Haco`, `McCormick's`, `McGuire`, `McCool`).
-  - **Purged Relics & Cache Busting**: Removed generic category relics and duplicate points, updated [`scripts/build_fire_lookouts.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/build_fire_lookouts.py), and incremented the client GeoJSON cache key to `v=20261108_v2` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+  - **Purged Relics & Cache Busting**: Removed generic category relics and duplicate points, updated [`scripts/build_fire_lookouts.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/build_fire_lookouts.py), and incremented the client GeoJSON cache key to `v=20261108_v2` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
 
 
 ### `fix: eliminate camera navigation jump on flight release and fix keyboard zoom freeze`
@@ -904,7 +904,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Stein Mountain Verified**: Confirmed single authentic summit record (`lookout-1858`) at `[-113.88064, 45.45908]` ($8,527'$, `USFS Salmon-Challis NF`, `Active Watchtower`), with the $15\text{ km}$ west duplicate permanently removed.
   - **Full Dataset Deduplication**: Reconciled Jureano Mountain ($8,345'$ at true summit `[-114.24298, 45.20392]`), Sheephorn ($8,620'$ at `[-114.0911, 44.8825]`), Loneman Mountain in Glacier NP ($7,181'$ at `[-113.76899, 48.4889]`), and Drake Peak ($8,333'$).
   - **Purged Non-Tower Recreation Artifacts**: Removed 8 campground, trailhead, and picnic area points that lacked fire towers.
-  - **Expanded Deduplication Range**: In [`scripts/build_fire_lookouts.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/build_fire_lookouts.py), widened same-state normalized-name deduplication threshold to $25\text{ km}$ and added strict keyword exclusion for campgrounds and trailheads.
+  - **Expanded Deduplication Range**: In [`scripts/build_fire_lookouts.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/build_fire_lookouts.py), widened same-state normalized-name deduplication threshold to $25\text{ km}$ and added strict keyword exclusion for campgrounds and trailheads.
 
 
 ### `fix: eliminate close button collision, remove redundant standing status, and polish lookout popups`
@@ -918,7 +918,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Omitted Redundant "Standing" Status**: Completely removed the `STANDING` label. Status badges now only render when communicating distinctive operational status: `Active Watchtower` (green pill) for staffed active lookouts, `Cabin Rental` (warm orange pill) for public recreation cabins, or `Historic Site` (amber pill).
   - **Deduplication & Agency Sanitation**: Removed the duplicate Stein Mountain Lookout record and correctly attributed `lookout-1858` to `USFS Salmon-Challis NF`. Cleaned raw NHLR scrape strings from `USFS / NPS / State (NHLR)` to `Historic Registry (NHLR)`.
   - **Spaced & Cleaned Footer Metrics**: Expanded popup width to `min-width: 200px; max-width: 280px;`, styled elevation in monospace with `white-space: nowrap`, and added `gap: 12px` between elevation and the managing agency/state so metrics never collide.
-  - **Refined Close Button Styling**: In [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/index.css), gave the popup close button an exact 22x22px hit target with subtle hover background (`#EFECE4`), centered alignment, and seamless border radius.
+  - **Refined Close Button Styling**: In [`src/index.css`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/index.css), gave the popup close button an exact 22x22px hit target with subtle hover background (`#EFECE4`), centered alignment, and seamless border radius.
 
 
 ### `fix: eliminate camera bouncing when zooming at an angle over 3D mountain terrain`
@@ -961,14 +961,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
      - **Root Cause**: MapLibre's `jumpTo({ center })` method evaluates terrain elevation under `center` on every animation frame (60fps) when `getCenterClampedToGround()` is true. Over mountainous terrain, `tr.elevation` jumped by thousands of feet with every ridge and canyon, causing the camera eye altitude ($camAlt = tr.elevation + d \cdot \cos(pitch)$) to violently bounce.
      - **Fix**: Temporarily set `map.setCenterClampedToGround(false)` on horizontal keyboard flight initiation so `tr.elevation` remains fixed throughout the flight path. On key release, calculate the exact terrain-projected center and zoom using `map.calculateCameraOptionsFromCameraLngLatAltRotation(...)` to re-anchor the focal center to the ground with zero camera eye displacement, restoring `setCenterClampedToGround(true)` for mouse gestures.
   3. **Connected Regional, Continental, and World Preset Buttons**:
-     - In [`RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx), updated `handleSetLocatorPreset` so clicking `[ Region ]`, `[ Continent ]`, or `[ World ]` not only frames the 200px overview popup, but also simultaneously navigates the main map viewport to the corresponding scale (`onResetToGlobal` for World, continental zoom $3.8$ for Continent, regional zoom $7.2$ for Region).
+     - In [`RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx), updated `handleSetLocatorPreset` so clicking `[ Region ]`, `[ Continent ]`, or `[ World ]` not only frames the 200px overview popup, but also simultaneously navigates the main map viewport to the corresponding scale (`onResetToGlobal` for World, continental zoom $3.8$ for Continent, regional zoom $7.2$ for Region).
      - Synced the locator preset toggle button highlighting to reflect live camera zoom as the user navigates.
   4. **De-cluttered Country Border Labels at Mountain Zooms**:
-     - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), set `maxzoom: 8.0` on `world-country-border-labels-left` and `world-country-border-labels-right` and increased `symbol-spacing` from 450–700px to 1200–2400px. Country border labels (e.g. `CANADA` / `UNITED STATES` along the 49th parallel) now smoothly fade out before mountain/resort zoom levels and appear at most once across the screen width.
+     - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), set `maxzoom: 8.0` on `world-country-border-labels-left` and `world-country-border-labels-right` and increased `symbol-spacing` from 450–700px to 1200–2400px. Country border labels (e.g. `CANADA` / `UNITED STATES` along the 49th parallel) now smoothly fade out before mountain/resort zoom levels and appear at most once across the screen width.
 
 ### `feat: position search input above filters in directory sidebar`
 - **What was changed**:
-  - In [`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx), reordered the directory sidebar controls so the Search input bar (and matching mountain summit suggestions) sits directly at the top of the pane above the collapsible Filters section.
+  - In [`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx), reordered the directory sidebar controls so the Search input bar (and matching mountain summit suggestions) sits directly at the top of the pane above the collapsible Filters section.
   - Matches the standard, intuitive mental model where users first search or query destinations before applying faceted filtering.
 
 ### `fix: restore center ground clamping and native elevation hold to eliminate camera freeze at 80k feet`
@@ -986,16 +986,16 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `fix: round distance, snow, and area metrics to nearest 1/10 to eliminate unformatted float sloppiness`
 - **What was wrong before**:
-  - In [`formatDistance`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/formatters.ts), when `unitsMetric` was enabled (`km`), the function returned the raw template string `${km} km` without any rounding. For calculated 3D trail lengths (e.g. `0.5397295742373059`), the trail card rendered unsightly floating-point strings like `↗ LENGTH 0.5397295742373059 km`.
+  - In [`formatDistance`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/formatters.ts), when `unitsMetric` was enabled (`km`), the function returned the raw template string `${km} km` without any rounding. For calculated 3D trail lengths (e.g. `0.5397295742373059`), the trail card rendered unsightly floating-point strings like `↗ LENGTH 0.5397295742373059 km`.
   - While imperial miles were rounded to the nearest tenth, distances under `0.05 mi` rounded to `0 mi`, and metric values were completely unrounded.
   - Imperial snowfall in `formatSnow` leaked unrounded decimal values when given floating-point snow amounts.
 - **Solution**:
-  - In [`src/utils/formatters.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/formatters.ts):
+  - In [`src/utils/formatters.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/formatters.ts):
     - `formatDistance`: Rounded metric kilometers to the nearest 1/10 (`Math.round(km * 10) / 10`) with a floor of `0.1 km` for any non-zero trail segment, matching imperial miles (`Math.max(0.1, Math.round(km * 0.621371 * 10) / 10)`).
     - `formatSnow`: Rounded both metric centimeters and imperial inches to the nearest 1/10 (`Math.round(val * 10) / 10`).
     - `formatAcres`: Ensured small metric areas ($< 10\text{ ha}$) round to the nearest 1/10.
     - `formatVert`: Guaranteed vertical drop and elevation round to integer values with localized commas.
-  - In [`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/trailAnalysis.ts):
+  - In [`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/trailAnalysis.ts):
     - Pre-rounded `lengthKm` to the nearest 1/10 during 3D vector length calculation.
 
 ### `fix: correct meteorology 7-day forecast calendar date shift, call out Today, and expand fire lookouts zoom range`
@@ -1004,7 +1004,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - **Root Cause**: In JavaScript, passing `"YYYY-MM-DD"` date strings (e.g. `"2026-11-07"`) to `new Date(day.date)` parses as UTC midnight (`00:00:00Z`). In US timezones (e.g. Mountain Time, UTC-7), UTC midnight is 5:00 PM on Friday evening! `toLocaleDateString` converted this UTC midnight into Friday, shifting the entire 7-day calendar backward by one full day. Furthermore, `weekday: 'narrow'` produced single ambiguous letters (`S` for Saturday/Sunday, `T` for Tuesday/Thursday).
   - **Fire Lookouts Visibility at Regional Zooms**: When toggling on the Fire Lookouts layer, users browsing at standard multi-state or continental viewports (zooms 4.0 to 6.8) saw no lookouts because the layer minzoom was set to `7.0`.
 - **Solution**:
-  - **Local Calendar Date Parsing**: In [`MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx), split `"YYYY-MM-DD"` directly into integer `[year, month, day]` and construct local calendar date `new Date(year, month - 1, day)`. Completely eliminates the UTC midnight timezone shift across all timezones.
+  - **Local Calendar Date Parsing**: In [`MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx), split `"YYYY-MM-DD"` directly into integer `[year, month, day]` and construct local calendar date `new Date(year, month - 1, day)`. Completely eliminates the UTC midnight timezone shift across all timezones.
   - **Prominent "Today" Callout & Unambiguous Weekdays**:
     - Replaced ambiguous single-letter labels with **"Today"** for the active day and clear 3-letter abbreviations (`Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`) for all other days.
     - Added an editorial active pill badge (`Today` highlighted in archival paper `#EAE5D9` with border) and accented bar color (`#2E5A44`).
@@ -1013,7 +1013,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Lowered Tier 1 (Apex Lookouts $\ge 7,000'$) marker minzoom from `7.0` to `4.8` (labels at `5.8`), allowing lookouts across the Cascades, Sierras, and Rockies to immediately appear upon toggling the layer.
     - Lowered Tier 2 ($4,500' - 7,000'$) marker minzoom to `6.5` (labels at `7.8`).
     - Lowered Tier 3 ($< 4,500'$) marker minzoom to `8.0` (labels at `9.5`).
-  - **Layers Tab Active Indicator**: In [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), added an active dot indicator on the `[ Layers ]` tab button when any layer is active.
+  - **Layers Tab Active Indicator**: In [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), added an active dot indicator on the `[ Layers ]` tab button when any layer is active.
 
 ### `feat: add curated fire lookouts and watchtowers layer to map settings layers panel`
 - **What was changed**:
@@ -1037,7 +1037,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Visual styling: Warm amber/burnt-orange circle marker (`#D96B27`) with crisp white stroke and architectural glyph (`⌂`).
     - Dynamic auto-contrast label paint switching between dark satellite modes (`#FDBA74`) and light cartographic modes (`#9A3412`).
   - **Map Settings Drawer Integration**:
-    - Added a dedicated **Fire Lookouts & Towers** toggle card in the **Layers tab** of [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx) directly adjacent to **Horizon Summits**.
+    - Added a dedicated **Fire Lookouts & Towers** toggle card in the **Layers tab** of [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx) directly adjacent to **Horizon Summits**.
     - Displays active/off pill indicator, icon glyph (`Flame`), and descriptive hover tooltip.
   - **Interactive Inspection**:
     - Clicking any fire lookout smoothly navigates the 3D camera via `safeFlyTo` (zoom 13.5, pitch 58°).
@@ -1045,12 +1045,12 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: add single-value icon toggles for Earth Projection (Globe/2D) and Units (°F/°C) to top navigation bar`
 - **What was changed**:
-  - **Earth Projection Toggle in Header**: Added a dedicated `[ 🌐 ]` / `[ 🗺️ ]` button directly to [`TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/TopNavBar.tsx) next to the units toggle.
+  - **Earth Projection Toggle in Header**: Added a dedicated `[ 🌐 ]` / `[ 🗺️ ]` button directly to [`TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/TopNavBar.tsx) next to the units toggle.
     - Shows **only one value at a time**: displays the Globe icon when in 3D globe mode, and the folded 2D Map icon when in flat map mode.
     - Clicking the button toggles between 3D Globe and 2D Flat Map.
   - **Single-Value Units Toggle**: Streamlined the temperature/units toggle from a 2-segment pill (`[ °F | °C ]`) into a single button displaying only the currently active unit (`°F` or `°C`).
     - Clicking the button flips to the other unit (e.g. clicking `°F` switches to metric `°C`).
-  - **Uncluttered Map Drawer**: Removed the redundant Earth Projection section from [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), leaving the Basemap tab purely dedicated to the 5 cartographic basemaps.
+  - **Uncluttered Map Drawer**: Removed the redundant Earth Projection section from [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), leaving the Basemap tab purely dedicated to the 5 cartographic basemaps.
   - **Cohesive Swiss Header Cluster**: Grouped three matching $28\times28\text{px}$ tactile buttons (`[ 🌐 / 🗺️ ]`, `[ °F / °C ]`, `[ ⛶ ]`) on the right side of the navbar with consistent borders, hover states, and shadows.
 
 ### `fix: decouple ground clearance from focal center to eliminate vertical bouncing at cruising altitudes`
@@ -1081,8 +1081,8 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: partition map drawer into Basemap and Layers tabs and elevate minimalist °F/°C unit toggle to header`
 - **What was changed**:
-  - **Minimalist `°F` / `°C` Toggle in Top Header**: Placed a Swiss-crafted minimalist segmented pill (`[ °F | °C ]`) directly in [`TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/TopNavBar.tsx) next to the Fullscreen button. Removed the units selector from map menus, treating units of measure as the global app-wide preference they actually are.
-  - **Two-Tab Map Drawer (`Basemap` | `Layers`)**: Divided [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx) cleanly into two dedicated tabs:
+  - **Minimalist `°F` / `°C` Toggle in Top Header**: Placed a Swiss-crafted minimalist segmented pill (`[ °F | °C ]`) directly in [`TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/TopNavBar.tsx) next to the Fullscreen button. Removed the units selector from map menus, treating units of measure as the global app-wide preference they actually are.
+  - **Two-Tab Map Drawer (`Basemap` | `Layers`)**: Divided [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx) cleanly into two dedicated tabs:
     - **Basemap Tab**: 5 cartographic raster/vector styles (Satellite 3D, Cloudless, OSM, Clean Voyager, Alpine Topo) + Earth Projection (`[ 🌐 3D Globe | 🗺️ Flat Map ]`).
     - **Layers Tab**: Horizon Summits, Geographic Reference (Borders & Places), Terrain Overlays (None, Slope Angle, Aspect with opacity slider and micro-legend), and 3D Terrain Relief (Multiplier slider + quick presets).
   - **Eliminated Scrolling**: Neither tab requires scrolling on standard viewports, resolving the tall 600px vertical stack into two crisp, single-glance panels.
@@ -1090,17 +1090,17 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: relocate resort filters above search bar with collapsible accordion and streamline Map Settings menu`
 - **What was changed**:
-  - **Collapsible Filter Accordion**: Moved the full resort filter panel directly **above the search bar** inside the left directory tray ([`DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)).
+  - **Collapsible Filter Accordion**: Moved the full resort filter panel directly **above the search bar** inside the left directory tray ([`DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx)).
   - **Starts Collapsed**: Configured initial state to collapsed (`isFiltersOpen = false`), displaying an uncluttered bar with a filter icon, active filter count badge, quick reset action, and expand toggle (`Show` / `Hide` with animated chevron).
   - **Scroll-Safe Expansion**: When expanded, the filter panel (Categories: Downhill / Nordic / Heli, Pass Networks, Vertical Drop, Skiable Acreage, and Nordic Trail Network sliders) renders inside a capped scrollable container (`max-h-[46vh]`), preventing the search bar or directory controls from being pushed off-screen.
-  - **Single-Purpose Map Settings Menu**: Streamlined [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx) from a two-tab interface into a dedicated **Map Settings** drawer (Cartographic Base, Earth Projection, Units of Measure, Horizon Summits, Geographic Reference, Terrain Overlays, and 3D Terrain Relief), eliminating redundant tab navigation.
+  - **Single-Purpose Map Settings Menu**: Streamlined [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx) from a two-tab interface into a dedicated **Map Settings** drawer (Cartographic Base, Earth Projection, Units of Measure, Horizon Summits, Geographic Reference, Terrain Overlays, and 3D Terrain Relief), eliminating redundant tab navigation.
 
 
 ### `feat: move Earth Projection and Units of Measure controls into Map tab`
 - **What was changed**:
-  - Relocated the **Earth Projection** (`3D Globe` vs. `Flat Map`) and **Units of Measure** (`Imperial` vs. `Metric`) segmented controls directly into the **Map** tab (`activeTab === 'map'`) of [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx).
+  - Relocated the **Earth Projection** (`3D Globe` vs. `Flat Map`) and **Units of Measure** (`Imperial` vs. `Metric`) segmented controls directly into the **Map** tab (`activeTab === 'map'`) of [`BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx).
   - Positioned them right beneath **Cartographic Base** and above **Horizon Summits**, grouping global projection and measurement scale with map appearance and basemap settings.
-  - Removed the display controls from [`FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/FilterModal.tsx), keeping the **Filters** tab strictly focused on resort queries (Categories, Pass Networks, Vertical Drop, Skiable Acreage, and Nordic Distance sliders).
+  - Removed the display controls from [`FilterModal.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/FilterModal.tsx), keeping the **Filters** tab strictly focused on resort queries (Categories, Pass Networks, Vertical Drop, Skiable Acreage, and Nordic Distance sliders).
 
 ### `fix: calibrate trail click buffer and hit-target widths for accurate trail selection`
 - **What was wrong before**:
@@ -1128,7 +1128,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `docs: document data pipeline, upstream ingestion protocols, and QA checklists in ARCHITECTURE.md`
 - **What was changed**:
-  - Added **Section 11 (Data Pipeline, Upstream Ingestion & Maintenance Procedures)** to [`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/ARCHITECTURE.md).
+  - Added **Section 11 (Data Pipeline, Upstream Ingestion & Maintenance Procedures)** to [`ARCHITECTURE.md`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/ARCHITECTURE.md).
   - Codified the **Annual Macro Refresh (Late October/November)** vs. **In-Season Spot Edits** cadence.
   - Documented the exact post-ingestion QA checklist: automated URL audit and healing (`scripts/apply_comprehensive_url_cleanup.py`), Nordic acreage sanitization (zeroing park boundary acreages), geometry filtering to prevent polygon 3-line artifacts, and name sanitization (`cleanResortName()`).
   - Corrected Section 10 to reflect the current Modular Architecture standard.
@@ -1136,19 +1136,19 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `fix: comprehensive global ski resort URL cleanup, dead-link purging, and subpath healing`
 - **What was changed**:
   - **Comprehensive Multi-Protocol Network Audit**: Ran automated HTTP and DNS audits across all 3,305 unique website links and 3,155 hostnames in the global ski area atlas.
-  - **Deep-Path 404 Rescuing (46 Ski Areas)**: Detected broken subpaths where old season pages or CMS restructuring returned 404s, but the base portal is active. Healed links back to their authoritative working root domains (e.g. Chatel Portes du Soleil, Kronplatz Dolomiti, Engadin St. Moritz, Ski Amadé, Corralco, Sommets Olympia, Koli, Artouste, Lackenhof, etc.) in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json).
+  - **Deep-Path 404 Rescuing (46 Ski Areas)**: Detected broken subpaths where old season pages or CMS restructuring returned 404s, but the base portal is active. Healed links back to their authoritative working root domains (e.g. Chatel Portes du Soleil, Kronplatz Dolomiti, Engadin St. Moritz, Ski Amadé, Corralco, Sommets Olympia, Koli, Artouste, Lackenhof, etc.) in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json).
   - **Rebranded Resort Domain Update**: Upgraded Kranzberg Mittenwald from expired `skiparadies-kranzberg.de` to active `https://www.familienparadies-kranzberg.de/`.
   - **Dead, Expired & Spam Link Purging (12 Ski Areas)**: Zeroed out (`""`) verified dead links (NXDOMAINs, discontinued Google `business.site` URLs, dead PDFs, 410 Gone, and spam SEO link farms like `jetskisrentalfortlauderdale`) so that `MountainProfile` cleanly omits the link button rather than sending users to broken/spam sites.
-  - **Runtime Firewall Fortification**: Extended domain routing and safety filters in [`src/utils/classification.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to intercept known defunct or spam hosts dynamically.
-  - **Reproducible Pipeline Scripts**: Saved [`scripts/run_url_audit.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/run_url_audit.cjs) and [`scripts/apply_comprehensive_url_cleanup.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/apply_comprehensive_url_cleanup.py) in the repository for automated ongoing maintenance.
+  - **Runtime Firewall Fortification**: Extended domain routing and safety filters in [`src/utils/classification.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to intercept known defunct or spam hosts dynamically.
+  - **Reproducible Pipeline Scripts**: Saved [`scripts/run_url_audit.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/run_url_audit.cjs) and [`scripts/apply_comprehensive_url_cleanup.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/apply_comprehensive_url_cleanup.py) in the repository for automated ongoing maintenance.
 
 ### `fix: correct broken Elferlifte website URL and document global resort link data provenance`
 - **What was changed**:
-  - **Repaired Stubaital Elfer URL**: Updated `properties.website` for `11er Neustift/Neder` (`id: 14e44f003d9b6e9b2b4b0558cb95b247b4008b3c`) from `https://www.stubai.at/skigebiete/elferlifte/` to the active official URL `https://www.stubai.at/skigebiete/elferbahnen/` in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json).
-  - **URL Sanitization Routing**: Added automatic path rewrite rules in [`getResortWebsite()`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) routing legacy `/elferlifte/` references to `/elferbahnen/`.
+  - **Repaired Stubaital Elfer URL**: Updated `properties.website` for `11er Neustift/Neder` (`id: 14e44f003d9b6e9b2b4b0558cb95b247b4008b3c`) from `https://www.stubai.at/skigebiete/elferlifte/` to the active official URL `https://www.stubai.at/skigebiete/elferbahnen/` in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json).
+  - **URL Sanitization Routing**: Added automatic path rewrite rules in [`getResortWebsite()`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) routing legacy `/elferlifte/` references to `/elferbahnen/`.
 - **Data Provenance Context**:
-  - The ~91 curated flagship resorts in [`src/data/resorts.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/data/resorts.ts) use hand-vetted official homepages.
-  - The broader 5,519 worldwide ski areas in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json) are ingested from **OpenSkiData / OpenStreetMap (OSM)** tags (`website=*`, `contact:website=*`).
+  - The ~91 curated flagship resorts in [`src/data/resorts.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/data/resorts.ts) use hand-vetted official homepages.
+  - The broader 5,519 worldwide ski areas in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json) are ingested from **OpenSkiData / OpenStreetMap (OSM)** tags (`website=*`, `contact:website=*`).
   - 404 errors on European areas (such as Stubaital) stem from OSM contributors mapping deep, season-specific CMS subpaths (e.g. `/skigebiete/elferlifte/`) rather than persistent domains, which break whenever regional tourism boards restructure their CMS routes without setting up 301 redirects.
 
 ---
@@ -1270,7 +1270,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     2. The live camera sync effect called `lmap.jumpTo({ center: targetCenter, zoom: targetZoom })` on every single frame of camera motion, constantly overwriting any manual zoom level (e.g. from `+`/`-` or scroll) back to a preset constant.
     3. Clicking anywhere on the mini map or flying triggered camera coordinate updates that in turn wiped out the locator map's zoom.
 - **Solution**:
-  - Uncoupled live camera panning from zoom reset in [`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx):
+  - Uncoupled live camera panning from zoom reset in [`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx):
     - Changed the camera sync effect to only update center (`lmap.jumpTo({ center: targetCenter })`), leaving the inset map's current zoom completely untouched during live camera panning and flight.
     - Added `savedZoomRef` and `zoomend` listener to persist user-adjusted zoom levels across map interactions and modal re-openings.
     - Configured intentional reset triggers:
@@ -1285,10 +1285,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Adding 2,450 mountain peaks directly into the ski area directory card list was unacceptable as it would pollute ski area vertical/acreage rankings and resort filtering.
 - **Solution**:
   - Implemented a dedicated mountain peak quick-fly subsystem:
-    - Added `MajorPeak` type in [`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/types/index.ts).
-    - Loaded peak metadata asynchronously from the cached `major_peaks.geojson` on mount in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+    - Added `MajorPeak` type in [`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/types/index.ts).
+    - Loaded peak metadata asynchronously from the cached `major_peaks.geojson` on mount in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
     - Added `matchingPeaks` computed filtering for queries $\ge 2$ characters.
-    - Added an unobtrusive "Mountain Summits" quick-fly strip right below the search input in [`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx) showing matching peak names and elevation (formatted strictly in metric or imperial according to user preferences).
+    - Added an unobtrusive "Mountain Summits" quick-fly strip right below the search input in [`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx) showing matching peak names and elevation (formatted strictly in metric or imperial according to user preferences).
     - Added <kbd>Enter</kbd> keyboard handling: pressing Enter prioritizes matching ski areas; if no ski areas match the query, it smoothly flies the camera directly to the apex of the top matching mountain summit (`safeFlyTo` at zoom 12.8, pitch 56°).
     - Added an empty-state action button when 0 ski areas match: *"Found mountain summit: [▲ Peak · Elevation → Pan & Zoom]"*.
     - Connected peak click and cursor hover handlers directly to the 3D map so clicking any peak dot or label on the map smoothly swoops and tilts into that summit.
@@ -1303,26 +1303,26 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Solution**:
   - Corrected `peak-1308`: renamed from `Parsenn` to canonical **Weissfluhgipfel** ($9,327\text{ ft} / 2,843\text{ m}$) and relocated to the true surveyed summit with the observatory above Davos (`[9.796389, 46.833889]`).
   - Purged non-peak features: `Karakoram Pass` (`peak-319`), `High Hut Lookout` (`peak-2568`), `Snowbowl Hut Overlook` (`peak-2718`), `Ingalls Peak, South Ridge` (`peak-2576`), and `Elk Thurston Ridge` (`peak-1502`).
-  - Bumped dataset cache buster in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to `?v=20261106_dem_clean_summits`.
+  - Bumped dataset cache buster in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to `?v=20261106_dem_clean_summits`.
 
 ### `fix: use correct key query parameter for CARTO Voyager tiles`
 - **What was wrong before**:
   - The Clean OSM (Voyager) basemap displayed an `API KEY REQUIRED` watermark tile.
   - **Root Cause**: CARTO's basemap tile API requires the query parameter `?key=YOUR_API_KEY` rather than `?api_key=YOUR_API_KEY`. Requests formatted with `api_key` were treated as unauthenticated, returning the 2,049-byte watermark tile.
 - **Solution**:
-  - Updated tile URL format in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts) to use `?key=${cartoApiKey}`.
+  - Updated tile URL format in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts) to use `?key=${cartoApiKey}`.
   - Configured fallback to the authorized free basemap key for seamless rendering in remote builds.
   - Verified with direct tile requests that authentic 4.4KB map tiles return with zero watermark.
 
 ### `feat: add seamless EOX Cloudless Satellite and Clean OSM (CARTO Voyager) basemaps`
 - **What was added**:
-  - Expanded `BasemapMode` in [`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/types/index.ts) to include `'cloudless'` and `'carto'`.
-  - Added two new cartographic base options to [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx) alongside existing Satellite 3D, OpenStreetMap, and Alpine Topo:
+  - Expanded `BasemapMode` in [`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/types/index.ts) to include `'cloudless'` and `'carto'`.
+  - Added two new cartographic base options to [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx) alongside existing Satellite 3D, OpenStreetMap, and Alpine Topo:
     - **Satellite (Cloudless)**: EOX Sentinel-2 global summer cloud-free mosaic (`https://tiles.maps.eox.at/wmts/...`). Resolves the seasonal patchwork quilt seams and jarring rectangular flight boundaries of standard satellite imagery.
     - **Clean OSM (Voyager)**: CARTO Voyager No-Labels with subtle terrain relief shading. Eliminates upside-down/inverted text when rotating or flying south in 3D terrain while providing clean, pastel landcover.
-  - Configured Vite environment variable handling in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts) for `VITE_CARTO_API_KEY`.
+  - Configured Vite environment variable handling in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts) for `VITE_CARTO_API_KEY`.
   - Added `.env.local` to store the CARTO key locally with 100% Git isolation.
-  - Updated [`.github/workflows/deploy.yml`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/.github/workflows/deploy.yml) to inject `VITE_CARTO_API_KEY` from GitHub repository secrets during automated deployment.
+  - Updated [`.github/workflows/deploy.yml`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/.github/workflows/deploy.yml) to inject `VITE_CARTO_API_KEY` from GitHub repository secrets during automated deployment.
 
 ### `feat: definitive global peak deduplication and high-point DEM apex snapping engine`
 - **What was wrong before**:
@@ -1331,10 +1331,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Multiple mountains suffered from corrupted coordinates (e.g. Zanzber Kangri in Tibet having swapped lat/lon pointing near the North Pole, Mount Emu in Australia placed in Argentina, Nangkartshang Peak in Nepal having a negative sign placing it in the Gulf of Mexico, Mount Tyndall placed on Mount Williamson, Mount Hood in Alberta sharing identical coordinates with Mount Packenham, and Jichu Drake in Bhutan placed on Kangchenjunga).
   - Dense clusters had subsidiary climbing needles and secondary ridge bumps (e.g. 4 Palisade crest pinnacles within 5m of North Palisade, Liberty Bell towers within 10m, Monte Rosa sub-bumps within 50m of Dufourspitze, Castle Mountain / Eisenhower Peak duplicates).
 - **Comprehensive Solution**:
-  - **Programmatic DEM Topographic High-Point Engine ([`scripts/definitive_peak_reconcile.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/definitive_peak_reconcile.py))**:
+  - **Programmatic DEM Topographic High-Point Engine ([`scripts/definitive_peak_reconcile.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/definitive_peak_reconcile.py))**:
     - Leveraged the exact global 30-meter Copernicus DEM tiles from Mapterhorn (`tiles.mapterhorn.com`) that MapLibre uses to extrude 3D terrain.
     - Cached 1,906 global DEM tiles covering all mountain ranges worldwide.
-    - Evaluated every peak in [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson) and mathematically snapped its coordinates to the true local topographic apex vertex (over 2,050 peaks snapped directly to their highest physical DEM point).
+    - Evaluated every peak in [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson) and mathematically snapped its coordinates to the true local topographic apex vertex (over 2,050 peaks snapped directly to their highest physical DEM point).
   - **Authoritative Coordinate Corrections**:
     - Fixed 20 corrupted/displaced records to surveyed geodetic ground truth (Zanzber Kangri, Mount Emu, Nangkartshang, Mount Tyndall, Mount Hood AB, Jichu Drake, Thamserku, Wisshorn, Naranjo de Bulnes, Neverón de Urriellu, Cerro Colorado, Aguja de la S, Tamer, Orsaro, Mount Gayley, Ojstrica, Breitenberg, Mädelegabel, Hochfrottspitze).
   - **Massif Sub-Peak & Alias Deduplication**:
@@ -1342,7 +1342,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Reduced global dataset from 2,492 to 2,458 clean, unique, authoritative summits.
     - Verified **zero** duplicate coordinates and only 1 legitimate close caldera pair (Guagua/Rucu Pichincha 122m) globally.
   - **App Layer**:
-    - Bumped dataset cache buster in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to `?v=20261106_dem_apex_reconciled`.
+    - Bumped dataset cache buster in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to `?v=20261106_dem_apex_reconciled`.
 
 ### `fix: deduplicate twin peaks and eliminate offset coarse coordinates`
 - **What was wrong before**:
@@ -1350,7 +1350,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Example**: In the Himalayas near Lake Manasarovar, two markers were rendered for *Gurla Mandhata* (25,243'): one correctly placed on the glaciated 7,694 m summit (`peak-74` at `[81.299167, 30.438333]`), and a duplicate marker (`peak-75` at `[81.2833, 30.2833]`) positioned 17.3 km away on a dry brown ridge.
   - **Root Cause**: Earlier ingestion merged multiple summit catalogs containing name variants (e.g. `Gurla Mandata` vs `Gurla Mandhata`, `Melungtse` vs `Menlungtse`, `Ortler` vs `Cima Ortles`) and coarse arcminute rounded coordinates (e.g. `30° 17' N, 81° 17' E`). During geodetic reconciliation, the accurate coordinate snapped to the high-resolution DEM summit, while the coarse coordinate exceeded the 4 km snapping threshold and remained as an orphaned twin.
 - **Solution**:
-  - Identified and removed 11 duplicate summit records from [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson):
+  - Identified and removed 11 duplicate summit records from [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson):
     - `peak-75` (duplicate coarse coordinate of `peak-74` Gurla Mandhata)
     - `peak-87` (duplicate of `peak-86` Melungtse / Menlungtse)
     - `peak-140` (duplicate of `peak-123` Leo Pargial / Reo pargil)
@@ -1363,7 +1363,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - `peak-929` (massif duplicate of `peak-1252` Dufourspitze)
     - `peak-2392` (massif duplicate of `peak-2384` South Sister Volcano)
   - Standardized `peak-74` name and label properties to canonical `Gurla Mandhata`.
-  - Bumped dataset cache buster in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to `?v=20261106_deduped_peaks`.
+  - Bumped dataset cache buster in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to `?v=20261106_deduped_peaks`.
 
 ### `fix: suppress labels for untitled trails, lifts, and polygon freeride areas`
 - **What was wrong before**:
@@ -1375,15 +1375,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - `live-pistes-labels` (trail lines)
     - `live-pistes-polygons-labels` (glades, bowls, and freeride zones)
     - `live-pistes-lifts-labels` (aerialway cable alignment)
-  - Updated both initial layer creation and reactive filter management in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) with dedicated `liftLabelFilter` so untitled/unnamed lifts remain suppressed across all filter states.
-  - Updated [`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/trailAnalysis.ts) so selecting an untitled lift or trail in 3D inspection cleanly defaults to "Mountain Aerialway" or "Ski Trail" instead of displaying raw placeholder text.
+  - Updated both initial layer creation and reactive filter management in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) with dedicated `liftLabelFilter` so untitled/unnamed lifts remain suppressed across all filter states.
+  - Updated [`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/trailAnalysis.ts) so selecting an untitled lift or trail in 3D inspection cleanly defaults to "Mountain Aerialway" or "Ski Trail" instead of displaying raw placeholder text.
 
 ### `fix: use top-level step expression for zoom-based peak text-field evaluation`
 - **What was wrong before**:
   - After unifying peak labels into a single layer, all peak labels failed to render on the map.
   - **Root Cause**: In the MapLibre GL style specification, a `"zoom"` expression cannot be nested arbitrarily inside `case` or `all` operators within layout properties. Nesting `['>=', ['zoom'], 8.0]` inside `case` produced the validation error: `"zoom" expression may only be used as input to a top-level "step" or "interpolate" expression`, causing MapLibre to reject the entire layer.
 - **Solution**:
-  - Restructured `text-field` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) using a top-level `['step', ['zoom'], ...]` expression:
+  - Restructured `text-field` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) using a top-level `['step', ['zoom'], ...]` expression:
     - Below zoom 8.0: Only Tier 1 peaks evaluate to their label (subordinates evaluate to `""`).
     - Zoom 8.0 to 10.0: Tier 1 and Tier 2 peaks evaluate to their label.
     - Zoom 10.0+: All peak tiers (1, 2, 3) evaluate to their label.
@@ -1391,7 +1391,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `fix: revert osm-tiles to standard OpenStreetMap to avoid CARTO API key requirement`
 - **What was changed**:
-  - Reverted `osm-tiles` in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts) back to standard public OpenStreetMap tiles (`https://{a/b/c}.tile.openstreetmap.org/{z}/{x}/{y}.png`).
+  - Reverted `osm-tiles` in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts) back to standard public OpenStreetMap tiles (`https://{a/b/c}.tile.openstreetmap.org/{z}/{x}/{y}.png`).
   - **Reason**: CARTO now requires an API key for direct tile endpoint requests (`basemaps.cartocdn.com`), which displays an `API KEY REQUIRED` watermark tile if an unauthenticated key is used. Standard OSM requires zero API keys or authentication.
 
 ### `fix: unify peak labels into single symbol layer for deterministic elevation precedence`
@@ -1400,13 +1400,13 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause (Multi-Layer Symbol Collision Inversion)**: Although `major-peaks-label-tier1` was added after `tier2` and `tier3`, MapLibre GL JS isolates distinct style layers into separate symbol buckets in worker memory. Features were sorted by `sortKey` only within each layer's independent bucket. Across different layers and tile boundary traversals, separate buckets caused collision priority inversions where a lower peak in one layer could claim screen space before an adjacent peak in another layer was placed.
   - Furthermore, raster OpenStreetMap tiles (`osm-tiles`) had street and town names baked directly into the raster PNG pixels. When the camera rotated or pitched in 3D terrain mode, the baked-in raster text rotated upside down, becoming illegible.
 - **Solution**:
-  - **Unified Single Symbol Layer ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **Unified Single Symbol Layer ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - Replaced the three separate label layers (`major-peaks-label-tier1/2/3`) with a single unified `major-peaks-label` symbol layer.
     - Inside a single symbol layer, MapLibre GL JS sorts all features in worker memory via `features.sort((a, b) => a.sortKey - b.sortKey)`.
     - Configured `symbol-sort-key: ['-', 50000, ['coalesce', ['get', 'elevation_ft'], 0]]`. Grand Teton (sort key 36,230) is mathematically guaranteed to be sorted before Mount Owen (37,073), Middle Teton (37,195), and Teewinot (37,674). In any collision, Grand Teton is evaluated first and claims the collision box, suppressing subordinate summits.
     - Preserved 3-tier zoom emergence dynamically via a `case` expression on `text-field`: Tier 1 (Apex Giants) emerges at z6.0+, Tier 2 (Major Summits) at z8.0+, and Tier 3 (Local Alpine Summits) at z10.0+.
     - Updated reactive visibility and metric/imperial unit toggle effects in `src/App.tsx` to maintain dynamic zoom-tier filtering.
-  - **CARTO Voyager No-Labels Basemap ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts))**:
+  - **CARTO Voyager No-Labels Basemap ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts))**:
     - Switched `osm-tiles` raster source to CARTO Voyager No-Labels (`https://{a/b/c/d}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png`).
     - Eliminates upside-down raster text during 3D camera rotation while preserving high-contrast OpenStreetMap cartography (roads, hydrology, landcover).
     - All map typography (peaks, ski resorts, cities, international boundaries) is rendered via vector SDF glyphs with `text-rotation-alignment: 'viewport'`, ensuring all labels remain upright, crisp, and legible at any camera bearing and tilt angle.
@@ -1417,11 +1417,11 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause**: An earlier data ingest rounded geographic coordinates to the nearest arc-minute (`1' = 1/60°`). At 43°N, an arcminute of latitude is 1,852 meters and longitude is ~1,350 meters, introducing physical offsets of up to 1 km. A previous reconciliation script (`reconcile_all_arcminute_peaks.cjs`) failed on Fremont Peak and hundreds of others because it prematurely matched unrelated search candidates in other states (e.g. Arizona) before testing local entities, and assumed Wikidata elevation amounts were always formatted in meters when some entities recorded elevation in feet (`Q3710`).
   - Furthermore, Baltoro Kangri had transposed/swapped latitude and longitude.
 - **Solution**:
-  - Created [`scripts/reconcile_all_peaks.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/reconcile_all_peaks.py) to geodetically reconcile coarse/arcminute peaks using Wikidata SPARQL batch queries and OpenStreetMap (Nominatim).
+  - Created [`scripts/reconcile_all_peaks.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/reconcile_all_peaks.py) to geodetically reconcile coarse/arcminute peaks using Wikidata SPARQL batch queries and OpenStreetMap (Nominatim).
   - Enforced strict geodetic verification: candidates must be within $\le 4.0\text{ km}$ of the mountain's known location (physical arcminute error bound), match elevation within $\pm 500\text{ ft}$ (normalizing both meter and foot units), match the peak name/variants, and possess high-precision coordinates.
   - Fixed swapped coordinates for Baltoro Kangri (`[76.66975, 35.647969]`).
   - Snapped 480 global summits to exact surveyed benchmarks, including Fremont Peak in Wyoming (`[-109.617, 43.1167]` $\rightarrow$ `[-109.618, 43.1247]`), Keeler Needle, and Mauna Loa.
-  - Re-ran classification and updated [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson) with cache buster `?v=20261106_snapped_summits`.
+  - Re-ran classification and updated [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson) with cache buster `?v=20261106_snapped_summits`.
 
 ### `fix: enforce strict elevation precedence for dense peak labels and invert layer placement order`
 - **What was wrong before**:
@@ -1430,22 +1430,22 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #2 (Layer Order in City Labels)**: Similarly, alpine hubs (Tier 4) were added after megacities (Tier 1), causing small towns to be placed ahead of major metropolitan centers.
   - **Root Cause #3 (Excessive Text Padding)**: `text-padding: 14` on Tier 1 created an unnecessarily large invisible exclusion bubble, preventing adjacent distinct summits along a crest from displaying their labels even when ample screen space existed.
 - **Solution**:
-  - **Inverted Layer Addition Order ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **Inverted Layer Addition Order ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - Reordered peak layers so all circle markers are added first (`tier3` -> `tier2` -> `tier1`), followed by labels in reverse order (`tier3` -> `tier2` -> `tier1`).
     - Because MapLibre processes from highest index downwards, `major-peaks-label-tier1` is now placed FIRST in the collision index, ensuring apex giants (Mount Whitney, Denali, Mount Rainier, Mount Elbert, Mont Blanc, Matterhorn) always claim their label positions before any subordinate summit is evaluated.
     - Similarly inverted city reference layers (`tier4` -> `tier3` -> `tier2` -> `tier1`) so megacities claim placement priority over small towns.
-  - **Strict Elevation-Based Sort Key ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), [`scripts/classify_major_peaks.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/classify_major_peaks.py))**:
+  - **Strict Elevation-Based Sort Key ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), [`scripts/classify_major_peaks.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/classify_major_peaks.py))**:
     - Configured `symbol-sort-key: ['-', 50000, ['coalesce', ['get', 'elevation_ft'], 0]]` across all peak label layers.
     - In MapLibre, symbols sort ascending by sort key (lowest key placed first). Subtracting elevation from 50,000 ensures that within every tier, every foot of elevation grants strict placement precedence: Mount Whitney (35,505) beats Russell (35,915), which beats Muir (35,988), which beats Irvine (36,086).
     - Reduced `text-padding` to `4px`, preventing unnatural exclusion gaps along alpine crests while eliminating text overlaps.
-    - Updated `scripts/classify_major_peaks.py` and regenerated [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson) with cache buster `v=20261106_precedence`.
+    - Updated `scripts/classify_major_peaks.py` and regenerated [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson) with cache buster `v=20261106_precedence`.
 
 ### `chore: extend GitHub Pages deploy polling timeout to 20 minutes to prevent transient timeout failures`
 - **What was wrong before**:
   - The GitHub Actions `Deploy to GitHub Pages / deploy` job failed at `10m 5s` on an earlier push (`ace326a`), sending a failure notification email.
   - **Root Cause**: `actions/deploy-pages@v4` defaults to a `600000ms` (10-minute) status polling timeout. When GitHub's backend Pages deployment cluster takes slightly longer to unpack and synchronize artifacts containing large map datasets, the polling loop times out and marks the run failed even though the build succeeded.
 - **Solution**:
-  - Added `timeout: 1200000` (20 minutes) to `actions/deploy-pages@v4` in [`.github/workflows/deploy.yml`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/.github/workflows/deploy.yml) to provide ample buffer against transient GitHub CDN queue delays.
+  - Added `timeout: 1200000` (20 minutes) to `actions/deploy-pages@v4` in [`.github/workflows/deploy.yml`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/.github/workflows/deploy.yml) to provide ample buffer against transient GitHub CDN queue delays.
   - Verified via GitHub REST API that subsequent deployment runs for commits `408fe6c` and `ee90673` succeeded completely.
 
 ### `feat: 3-tier mountain peak hierarchy with high-altitude regional visibility for major summits`
@@ -1454,14 +1454,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - When flying at high camera elevations (e.g., 40,000–80,000 ft, zoom 6.0–9.9) viewing prominent volcanic massifs and continental giants (such as Mount Wrangell, Mount Sanford, Mount Blackburn in Alaska, or Denali, Mount Rainier, Mont Blanc, Matterhorn), zero peak markers or labels appeared. The user had to descend down to low altitudes (z10.0+) before labels emerged.
   - A flat cutoff meant either all 2,492 peaks were enabled (flooding dense areas like Colorado with hundreds of 12ers/13ers) or none appeared until low altitude.
 - **Solution**:
-  - **3-Tier Cartographic Mountain Hierarchy ([`scripts/classify_major_peaks.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/classify_major_peaks.py))**:
+  - **3-Tier Cartographic Mountain Hierarchy ([`scripts/classify_major_peaks.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/classify_major_peaks.py))**:
     - **Tier 1 (Ultra & Iconic Apex Giants, `minzoom: 6.0`)**: 270 famous world massifs, state/regional apex summits, and volcanic giants (Mount Wrangell, Mount Sanford, Mount Blackburn, Denali, Logan, Saint Elias, Rainier, Shasta, Whitney, Elbert, Mont Blanc, Matterhorn, Everest, Fuji, Kilimanjaro, Cook/Aoraki). These emerge at high camera altitudes (z6.0+) with generous collision padding (14px).
     - **Tier 2 (Major Regional Summits, `minzoom: 8.0`)**: 577 high-prominence crests and high-elevation alpine peaks (Grand Teton, Sneffels, Maroon Bells, Pikes Peak, Titlis, Breithorn). Emerge at mid-altitude views (z8.0+).
     - **Tier 3 (Local Alpine Summits & Ski Valley Horizons, `minzoom: 10.0`)**: 1,645 local summits and ridge peaks. Emerge when exploring local ski valleys and in-bounds resort terrain (z10.0+).
-  - **Dedicated Map Layers ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **Dedicated Map Layers ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - Created dedicated layer pairs (`major-peaks-marker-tier1/2/3` and `major-peaks-label-tier1/2/3`) filtering by tier.
     - Synchronized toggle visibility, metric unit conversion, and basemap contrast switching across all three tiers.
-  - Rebuilt [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson) and bumped cache query to `v=20261106_hierarchy`.
+  - Rebuilt [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson) and bumped cache query to `v=20261106_hierarchy`.
 
 ### `fix: restore complete international land borders and eliminate erroneous water gaps`
 - **What was wrong before**:
@@ -1472,13 +1472,13 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #2 (Antimeridian Ray-Casting Polygon Bug)**: An earlier custom ray-casting point-in-polygon implementation failed on the Eurasian land polygon because it wraps the antimeridian (-180° / +180°). Every point in Scandinavia, Finland, and northern Russia above 65°N produced an even number of ray crossings, incorrectly classifying ~800 km of real alpine land borders as "ocean water".
   - **Root Cause #3 (Interior Water Chopping)**: An earlier script evaluated point-by-point land status across the entire length of borders, severing real land boundaries whenever they crossed an inland lake, river, or estuary.
 - **Solution**:
-  - **Built Dedicated Pipeline ([`scripts/build_world_boundaries.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/build_world_boundaries.py))**:
+  - **Built Dedicated Pipeline ([`scripts/build_world_boundaries.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/build_world_boundaries.py))**:
     - Extracted authentic OpenStreetMap continuous vector line geometries from baseline data.
     - **Enforced Strict Interior Continuity**: Real international land borders are never severed across inland terrain, lakes, or rivers.
     - **Targeted Pure Maritime Filtering**: Filtered out only the 44 pure ocean/maritime pairs between non-land-bordering nations (e.g. France/UK, Russia/US, Japan/Russia, China/Taiwan, Caribbean waters).
     - **True Coastal Terminal Trimming**: Trimmed only actual offshore ocean tails extending into open seas beyond the coastline (Bay of Biscay for France/Spain, Svinesund for Norway/Sweden, Menton for France/Italy, De Panne for Belgium/France, Zwin for Netherlands/Belgium, Flensburg for Denmark/Germany, Point Roberts for US/Canada).
     - **Topological Junction Snapping**: Snapped 149 true country tripoints and 57 multi-line junction clusters seamlessly with zero offset stubs.
-  - Rebuilt [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/world_boundaries.geojson) (544 country features, 581 state features) and bumped the asset cache query in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+  - Rebuilt [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/world_boundaries.geojson) (544 country features, 581 state features) and bumped the asset cache query in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
 
 ### `feat: establish distinct typography and color hierarchy for peaks, resorts, and towns`
 - **What was wrong before**:
@@ -1491,7 +1491,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - **Ski Resorts (`resorts-labels`, `resorts-heli-cat-labels`, `selected-resort-label`, `global-unclustered-label`)**: Elevated to authoritative `Open Sans Bold` in midnight navy (`#0F172A`) with thick protective halos on light basemaps, and snow white (`#FFFFFF`) with midnight halos on satellite, cementing ski areas as the primary subject.
     - **Cities & Towns (`geo-reference-*`)**: Distinct civil typography using `Open Sans Semibold` uppercase with wide letter spacing (0.12) for Megacities (Tier 1), and neutral slate/charcoal `Open Sans Regular` for Major Cities, Regional Hubs, and Alpine base villages (Tiers 2–4).
   - **Universal Viewport Billboarding**:
-    - Configured `'text-rotation-alignment': 'viewport'`, `'text-pitch-alignment': 'viewport'`, and `'text-keep-upright': true` across all ski resort and peak layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), ensuring all labels remain upright during 3D terrain pitch and camera orbit.
+    - Configured `'text-rotation-alignment': 'viewport'`, `'text-pitch-alignment': 'viewport'`, and `'text-keep-upright': true` across all ski resort and peak layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), ensuring all labels remain upright during 3D terrain pitch and camera orbit.
   - **Dynamic Basemap Switching**:
     - Added reactive paint property updates in the basemap switch `useEffect` for `major-peaks-label`, `resorts-labels`, `resorts-heli-cat-labels`, `global-unclustered-label`, and `selected-resort-label` to preserve contrast across satellite, outdoor terrain, and OSM modes.
 
@@ -1502,10 +1502,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Cities lacked a standard cartographic population hierarchy; all available cities competed under flat zoom thresholds regardless of whether they were a 10M+ metropolis or a small hub.
 - **Solution**:
   - **Always Right-Side Up Billboarding (`'viewport'` alignment)**:
-    - Updated all city layers (`geo-reference-megacities`, `geo-reference-major-cities`, `geo-reference-regional-cities`, `geo-reference-alpine-hubs`) in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) with `'text-rotation-alignment': 'viewport'`, `'text-pitch-alignment': 'viewport'`, and `'text-keep-upright': true`.
+    - Updated all city layers (`geo-reference-megacities`, `geo-reference-major-cities`, `geo-reference-regional-cities`, `geo-reference-alpine-hubs`) in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) with `'text-rotation-alignment': 'viewport'`, `'text-pitch-alignment': 'viewport'`, and `'text-keep-upright': true`.
     - City labels now billboard directly toward the viewer, remaining strictly horizontal and right-side up regardless of camera azimuth rotation or steep 3D terrain pitch.
   - **4-Tier Cartographic Population Hierarchy (5,646 world cities & hubs)**:
-    - Built [`data_pipeline/build_geo_reference.py`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/build_geo_reference.py) to extract and standardize Natural Earth 10m populated places combined with curated ski hubs into [`public/data/geo_reference.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/geo_reference.geojson) (1.4 MB static asset, saving ~25 KB of JavaScript bundle size):
+    - Built [`data_pipeline/build_geo_reference.py`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/build_geo_reference.py) to extract and standardize Natural Earth 10m populated places combined with curated ski hubs into [`public/data/geo_reference.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/geo_reference.geojson) (1.4 MB static asset, saving ~25 KB of JavaScript bundle size):
       - **Tier 1 (Megacities & Global Hubs, 1M+ or national capitals)**: `minzoom: 3.0`, 10–15.5px typography, visible when zoomed out across continents.
       - **Tier 2 (Major Cities & Regional Capitals, 250k–1M)**: `minzoom: 5.0`, 9–13.5px typography, introducing regional anchors like Salt Lake City, Calgary, Reno, Boise, Innsbruck, and Salzburg.
       - **Tier 3 (Regional Cities & Gateways, 50k–250k)**: `minzoom: 7.0`, 9–12px typography, surfacing mountain gateway centers like Boulder, Bozeman, Missoula, Bend, Annecy, and Bolzano.
@@ -1521,7 +1521,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - `wallowalaketramway.com` had expired and been captured by an online casino redirect operator — same pattern as 15 other drop-catcher hijacks cleared in the previous session.
   - The real Wallowa Lake Tramway / Eagle Cap Wilderness tram operates at `wallowalaketram.com`.
 - **Solution**:
-  - Replaced `https://wallowalaketramway.com/activities/` with `https://wallowalaketram.com/` in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json).
+  - Replaced `https://wallowalaketramway.com/activities/` with `https://wallowalaketram.com/` in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json).
 
 ### `fix: recalibrate border label spacing for dynamic density across zoom range`
 - **What was wrong before**:
@@ -1530,7 +1530,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - `symbol-avoid-edges: true` was culling candidates near screen edges, often the only valid candidate in view at higher altitudes.
   - `text-max-angle: 38°` was rejecting too many anchor candidates on sinuous Alpine ridges, starving the label engine especially at lower zoom where pixel angles are more pronounced.
   - `minzoom: 3.8` was cutting off labels before they faded in naturally.
-- **Solution** (in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) layers `world-country-border-labels-left` / `right`):
+- **Solution** (in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) layers `world-country-border-labels-left` / `right`):
   - **`symbol-avoid-edges: false`** — allows labels to anchor near viewport edges, ensuring at least one label is always found even when the border runs diagonally across the screen.
   - **`symbol-spacing` now increases with zoom** (450px at z3.5 → 1200px at z14.5) instead of decreasing — counterintuitive but correct: at higher zoom the border is longer on screen so spacing must grow to avoid 3+ repetitions per window; at lower zoom the border is shorter so smaller spacing is needed to find even one anchor.
   - **`text-max-angle: 45°`** (up from 38°) — allows labels on naturally curvy mountain ridges without excessive rejection.
@@ -1543,9 +1543,9 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `fix: purge 1,073 closed, abandoned, and historic ski areas from atlas dataset`
 - **What was changed**:
-  - Purged all 1,073 permanently closed, abandoned, defunct, and lost ski areas (such as Bluebird Backcountry, Marble Mountain, Climax, Ciao Ontake) from [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json), ensuring only the 5,519 actively operating ski areas worldwide are served to users.
+  - Purged all 1,073 permanently closed, abandoned, defunct, and lost ski areas (such as Bluebird Backcountry, Marble Mountain, Climax, Ciao Ontake) from [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json), ensuring only the 5,519 actively operating ski areas worldwide are served to users.
   - Reduced the `global_ski_areas.json` bundle payload from 6.3 MB down to 5.2 MB (saving > 1 MB of unnecessary JSON over the wire).
-  - Hardened runtime closure filtering in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) and backend pipeline in [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/export_all_ski_areas.cjs) to explicitly discard any feature marked `historic`, `abandoned`, `disused`, `defunct`, or `is_closed`.
+  - Hardened runtime closure filtering in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) and backend pipeline in [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/export_all_ski_areas.cjs) to explicitly discard any feature marked `historic`, `abandoned`, `disused`, `defunct`, or `is_closed`.
 
 ### `fix: purge cross-domain scam drop-catchers, dead NXDOMAIN links, and canonicalize resort homepages`
 - **What was changed**:
@@ -1553,15 +1553,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Cleared 15 newly discovered expired domains that had redirected to offshore slot casinos, gambling sites, hair removal clinics, domain auctioneers, and YouTube videos (including `Bluebird Backcountry` -> Thai PG Slot casino, `Monte Fumaiolo` -> Indonesian slot site, `Oukaimden` -> slot demo, `Henryk Ski` -> WinWin Casino, `Adventure Mountain` -> Indonesian betting, `Cuyamaca Peak` -> Indonesian gambling, `Kelowna Mountain` & `Skilift Beuerberg` -> Nicsell domain auctions, `Panoramalifte Hopfen` -> DomainCatcher).
   - Cleared 76 dead `NXDOMAIN` URLs where the registration has completely lapsed from DNS, eliminating dead-end browser errors and shutting down future drop-catcher attack surfaces.
   - Updated 254 legitimate cross-domain redirects to their active canonical destination homepages directly (e.g. `cardrona-treblecone.com`, `frutt.ch`, `gurgl.com`, `aramon.com/formigal-panticosa`, `rosakhutor.ru`, `baqueira.es`), ensuring users land immediately on the verified resort homepage.
-  - Expanded client-side domain security filters in [`getResortWebsite()`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) with all discovered malicious redirect targets.
+  - Expanded client-side domain security filters in [`getResortWebsite()`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) with all discovered malicious redirect targets.
 
 ### `feat: suppress non-Latin scripts when English exists and sweep global URLs for scams/drop-catchers`
 - **What was changed**:
-  - Systematically sanitized all resort names across [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json) and runtime pipelines ([`cleanResortName()`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/classification.ts)): suppressed Cyrillic, Chinese, Japanese, Korean, Georgian, Greek, Arabic, and Hebrew portions whenever an English/Latin version is provided (903 resorts cleaned).
+  - Systematically sanitized all resort names across [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json) and runtime pipelines ([`cleanResortName()`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/classification.ts)): suppressed Cyrillic, Chinese, Japanese, Korean, Georgian, Greek, Arabic, and Hebrew portions whenever an English/Latin version is provided (903 resorts cleaned).
   - Preserved authentic native script names untouched for all ski areas lacking an English/Latin translation (273 resorts).
   - Executed a full concurrent HTTP network sweep across all 3,616 resort URLs in the global dataset, detecting expired drop-catcher domains, casino landers, and parked landing pages.
   - Sanitized 12 flagged URLs: updated Sayama Ski Resort to its authentic Seibu official domain (`https://www.seibu-leisure.co.jp/ski_web/`) and cleared compromised/parked domains (such as `aktyz.kg` redirecting to an online casino, `skigora.ru`, `natanay.ru`, `skizentrum-ludwigsstadt.de`, `vetlab-ufa.ru`, `kocianka.com`).
-  - Added real-time URL sanitization guards in [`getResortWebsite()`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) against known malicious drop-catcher and casino redirect networks.
+  - Added real-time URL sanitization guards in [`getResortWebsite()`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) against known malicious drop-catcher and casino redirect networks.
 
 ### `fix: clean bloated multilingual resort names and replace hijacked casino domain with verified official website`
 - **What was wrong before**:
@@ -1573,11 +1573,11 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The Ukrainian Paralympic Committee Western Rehabilitation & Sports Center migrated their official web presence to the authentic governmental domain `https://westsportcenter.in.ua/`, while the legacy `.com.ua` domain lapsed and was captured by a domain drop-catcher.
 - **Solution**:
   - **Verified Website Routing**:
-    - Replaced the hijacked `westsportcenter.com.ua` domain in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json) and backend data pipelines with the verified official WordPress site [`https://westsportcenter.in.ua/`](https://westsportcenter.in.ua/).
-    - Updated [`getResortWebsite()`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) with domain redirect guards routing legacy references directly to the authentic domain and rejecting casino/scam redirect patterns (`parik24`, `1xbet`, `vulkan777`, `.casino`).
+    - Replaced the hijacked `westsportcenter.com.ua` domain in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json) and backend data pipelines with the verified official WordPress site [`https://westsportcenter.in.ua/`](https://westsportcenter.in.ua/).
+    - Updated [`getResortWebsite()`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/classification.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) with domain redirect guards routing legacy references directly to the authentic domain and rejecting casino/scam redirect patterns (`parik24`, `1xbet`, `vulkan777`, `.casino`).
   - **Editorial Cartographic Name Sanitization**:
     - Shortened the target resort name to `"Western Rehabilitation & Sports Center"`.
-    - Implemented [`cleanResortName()`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/classification.ts) to automatically clean comma-separated multilingual repeats, prioritizing concise English/Latin names for international cartographic clarity while preserving parenthetical village qualifiers.
+    - Implemented [`cleanResortName()`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/classification.ts) to automatically clean comma-separated multilingual repeats, prioritizing concise English/Latin names for international cartographic clarity while preserving parenthetical village qualifiers.
     - Curated clean names for 35 excessively bloated resort titles worldwide (e.g. `National Alpine Skiing Centre (Xiaohaituo)`, `Olympic Center Jahorina`, `Mount Hermon Ski Resort`, `Valgrande-Pajares`, `Kotelnica Białczańska`).
 
 ### `fix: restore dual-sided border labeling by eliminating collision suppression`
@@ -1589,7 +1589,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Because the left-side layer evaluates first in MapLibre's rendering queue, MapLibre's collision index detected a collision with the right-side label and silently suppressed the right-side label across every international border.
 - **Solution**:
   - **Collision-Free Label Separation (`text-padding: 2px`, `text-offset: ±1.4em`)**:
-    - Tightened `text-padding` from 16px to 2px across both label layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+    - Tightened `text-padding` from 16px to 2px across both label layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
     - Expanded perpendicular `text-offset` to `[0, -1.4]` (left) and `[0, 1.4]` (right), establishing a clear 20px buffer between the companion collision boxes.
     - Guarantees that MapLibre's collision engine never suppresses either side, rendering both sovereign nations concurrently along the boundary line.
 
@@ -1609,7 +1609,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Early Regional Visibility (`minzoom: 3.8`)**:
     - Lowered `minzoom` to 3.8 to align with regional framing.
   - **Asset Version Hash Cache-Busting**:
-    - Added `?v=20261101_land` to `getStaticDataUrl('data/world_boundaries.geojson')` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), ensuring all clients instantly receive the clean, water-free, snapped vector boundaries without browser cache retention.
+    - Added `?v=20261101_land` to `getStaticDataUrl('data/world_boundaries.geojson')` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), ensuring all clients instantly receive the clean, water-free, snapped vector boundaries without browser cache retention.
 
 ### `fix: snap international border tripoints and eliminate junction gaps`
 - **What was wrong before**:
@@ -1617,7 +1617,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause (Asynchronous Polygon Vertex Boundaries)**: In raw OpenStreetMap polygon data, each sovereign country's administrative boundary was digitized or simplified with minor independent coordinate deviations. At Mount Tumba, the North Macedonia / Greece line terminated at `[22.9276, 41.3385]`, 311 meters short of the summit (`[22.9283, 41.3413]`), while the Bulgaria / Greece line started at `[22.9284, 41.3405]`. This left an open gap and two parallel offset prongs rather than a clean, connected 3-way T-junction.
 - **Solution**:
   - **Topological Junction Snapping Pipeline**:
-    - Identified all 127 true geographic country triplets sharing mutual borders and 52 multi-line junction clusters across [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/world_boundaries.geojson).
+    - Identified all 127 true geographic country triplets sharing mutual borders and 52 multi-line junction clusters across [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/world_boundaries.geojson).
     - Calculated the precise summit/confluence junction point (e.g. Mount Tumba peak at `[22.9281, 41.3401]`) and snapped the terminal endpoints of all meeting lines directly to that shared vertex.
     - Cleaned and deduplicated all line geometries, completely closing the gaps and ensuring all international borders join seamlessly at tripoints with zero offset stubs.
 
@@ -1630,7 +1630,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #3 (Tight Collision Padding `text-padding: 4px`)**: Insufficient collision padding allowed neighboring labels to crowd together.
 - **Solution**:
   - **Strict Curvature Rejection (`text-max-angle: 25`)**:
-    - Reduced `text-max-angle` from 60° to 25° across both border label layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+    - Reduced `text-max-angle` from 60° to 25° across both border label layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
     - MapLibre strictly rejects any placement candidate where the boundary bends sharply, placing labels exclusively on straight or gently curving segments where text remains flat, smooth, and easily readable.
   - **Calibrated High-Zoom Frequency (`symbol-spacing: 750–1400px`)**:
     - Adjusted zoom-interpolated spacing:
@@ -1660,7 +1660,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
       - France/Italy terminates at the Mediterranean coastline in Menton (`[7.5299, 43.7884]`).
       - Canada/United States 49th parallel starts on land at the Pacific coast (`[-122.0981, 49.0024]`) and ends on the Atlantic coast in Maine (`[-67.218, 45.1666]`), eliminating the oceanic Juan de Fuca and Gulf of Maine tails.
       - Denmark/Germany terminates at the North Sea and Baltic shorelines.
-  - Rebuilt [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/world_boundaries.geojson) with 486 clean land-only border segments and preserved state administrative boundaries.
+  - Rebuilt [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/world_boundaries.geojson) with 486 clean land-only border segments and preserved state administrative boundaries.
 
 ### `fix: persist country border labels across all zoom levels with zoom-responsive spacing`
 - **What was wrong before**:
@@ -1669,7 +1669,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #2 (Fixed `symbol-spacing: 1200` Screen Pixels)**: While 1200px spacing was originally introduced to prevent repeating labels at continental zoom levels, `symbol-spacing` is measured in screen pixels. As a user zooms in to inspect ski regions, passes, and mountain ridges (z7–z16+), the visible border segment inside the viewport shrinks to a few hundred pixels. Because MapLibre required 1200 screen pixels between label anchors, candidate placement points fell outside the viewport or failed the 45° angle test, causing the labels to vanish completely.
 - **Solution**:
   - **Unbounded Zoom Visibility**:
-    - Removed `maxzoom: 14.0` from both left and right country border label layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), ensuring border labels remain permanently visible at all zoom levels when zooming into border destinations (e.g. Zermatt/Cervinia, Portes du Soleil, Ischgl/Samnaun).
+    - Removed `maxzoom: 14.0` from both left and right country border label layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), ensuring border labels remain permanently visible at all zoom levels when zooming into border destinations (e.g. Zermatt/Cervinia, Portes du Soleil, Ischgl/Samnaun).
     - Set `minzoom: 4.5` so border labels only emerge once the map is fairly zoomed in to sub-continental regional framing, avoiding clutter at global scales.
   - **Zoom-Responsive `symbol-spacing` Interpolation**:
     - Replaced the fixed 1200px spacing with dynamic camera zoom interpolation:
@@ -1686,13 +1686,13 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The `geo-reference-cities` layer in `src/App.tsx` lacked zoom and importance tiering, allowing tiny mountain villages to render at regional zoom levels (z4.0) alongside or in place of primary gateway cities.
 - **Solution**:
   - **Comprehensive Global Metros & Capitals Dataset**:
-    - Expanded [`src/data/geographicReference.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/data/geographicReference.ts) with 154 carefully curated reference cities and capitals across all continents (Rome, Paris, London, Berlin, Madrid, Vienna, Bern, Washington D.C., Chicago, Tokyo, Sydney, etc.).
+    - Expanded [`src/data/geographicReference.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/data/geographicReference.ts) with 154 carefully curated reference cities and capitals across all continents (Rome, Paris, London, Berlin, Madrid, Vienna, Bern, Washington D.C., Chicago, Tokyo, Sydney, etc.).
   - **3-Tier Geographic Hierarchy**:
     - **Tier 1 (Major World Cities & Capitals)**: `kind: 'major_city'`, `minzoom: 3.5`, `importance: 1` — prominent regional orientation.
     - **Tier 2 (Regional Gateways & Airport Hubs)**: `kind: 'gateway'`, `minzoom: 5.0`, `importance: 2` — ski travel corridors (e.g., Denver, Salt Lake City, Geneva, Innsbruck, Munich).
     - **Tier 3 (Alpine Mountain Hubs & Ski Towns)**: `kind: 'alpine_hub'`, `minzoom: 7.0`, `importance: 3` — mountain valleys (e.g., Madonna di Campiglio, Chamonix, Zermatt, Aspen).
   - **Dedicated Map Layers & Collision Sorting**:
-    - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), split the rendering into `geo-reference-cities` (z3.5+) and `geo-reference-alpine-hubs` (z7.0+).
+    - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), split the rendering into `geo-reference-cities` (z3.5+) and `geo-reference-alpine-hubs` (z7.0+).
     - Applied `'symbol-sort-key': ['get', 'importance']` so major cities always take precedence in MapLibre collision detection and are never displaced by small towns.
     - Synchronized both layers in the basemap theme observer for sharp auto-contrast on both 3D Satellite and vector topographic maps.
 
@@ -1703,9 +1703,9 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - `export_all_ski_areas.cjs` checked `if (idStmt.all(id).length > 0)` and skipped the spatial query whenever any relation member existed. Analysis showed that over 50% of the world's ski areas (over 3,000 areas) had missing terrain, dropping tens of thousands of pistes globally on static hosting and pre-baked loads.
 - **Systematic Solution**:
   - **Universal Spatial Extent Export Pipeline**:
-    - Re-architected [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/export_all_ski_areas.cjs) to query the physical spatial bounding box of the mountain for **every** ski area across all 6,592 global locations.
+    - Re-architected [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/export_all_ski_areas.cjs) to query the physical spatial bounding box of the mountain for **every** ski area across all 6,592 global locations.
     - Combined spatial extent queries with relation queries (`[...spatialRows, ...relRows]`) and deduplicated by unique feature ID, capturing 100% of the mountain's terrain plus any outlying relation-linked features.
-    - Re-exported all 5,874 static GeoJSON files in [`public/data/trails/`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/trails/) with complete trail and terrain polygon datasets.
+    - Re-exported all 5,874 static GeoJSON files in [`public/data/trails/`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/trails/) with complete trail and terrain polygon datasets.
   - **Guaranteed Consistency Across Hosting Environments**:
     - Whether running locally via Vite dev server against SQLite or deployed statically to GitHub Pages / CDN, every mountain worldwide now serves complete, high-definition terrain without relying on incomplete OSM relation tagging.
 
@@ -1716,11 +1716,11 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #2 (Server Static Interception & Stale Fallback)**: In `src/server/trailsPlugin.ts`, `/api/trails?resort=...` prioritized streaming the static JSON file in `public/data/trails/${resort}.json`. Furthermore, its fallback SQLite query also executed `JOIN resort_trails` and only queried spatial bounds if `features.length === 0`, preventing the full dataset in `trails.db` from ever being returned.
 - **Solution**:
   - **Full Spatial Bounding Re-Export for All 76 Flagship Resorts**:
-    - Ran [`data_pipeline/export_resort_trails.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/export_resort_trails.cjs) with full spatial bounding box queries (`dLng = 0.065, dLat = 0.05`), re-exporting all 76 curated flagship resorts. Restored Crested Butte to 372 features (122 terrain polygons), Breckenridge to 401 features (17 terrain polygons), and Jackson Hole to 249 features.
+    - Ran [`data_pipeline/export_resort_trails.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/export_resort_trails.cjs) with full spatial bounding box queries (`dLng = 0.065, dLat = 0.05`), re-exporting all 76 curated flagship resorts. Restored Crested Butte to 372 features (122 terrain polygons), Breckenridge to 401 features (17 terrain polygons), and Jackson Hole to 249 features.
   - **Hardened Universal Export Pipeline**:
-    - Updated [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/export_all_ski_areas.cjs) so that curated flagship resorts always query spatial mountain extent, ensuring future bulk exports never overwrite curated files with stripped relational data.
+    - Updated [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/export_all_ski_areas.cjs) so that curated flagship resorts always query spatial mountain extent, ensuring future bulk exports never overwrite curated files with stripped relational data.
   - **Spatial Priority in Local Trails API**:
-    - Updated [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts) to resolve resort coordinates first and query spatial mountain extent against `trails.db`, ensuring all steeps, chutes, and terrain polygons are returned regardless of relation tagging.
+    - Updated [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts) to resolve resort coordinates first and query spatial mountain extent against `trails.db`, ensuring all steeps, chutes, and terrain polygons are returned regardless of relation tagging.
 
 ### `fix: correct border label sovereign side placement and prevent collision suppression`
 - **What was wrong before**:
@@ -1732,12 +1732,12 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #4 (Missing Moselle River Boundary)**: The Germany-Luxembourg border along the Moselle river was broken into fragmented snippets due to the German-Luxembourg joint river condominium in OSM.
 - **Solution**:
   - **Point-in-Polygon Side Verification & Direction Normalization**:
-    - Pre-normalized all 617 international boundary LineStrings in [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/world_boundaries.geojson) to travel West-to-East ($dx \ge 0$), guaranteeing MapLibre never flips rendering directions.
+    - Pre-normalized all 617 international boundary LineStrings in [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/world_boundaries.geojson) to travel West-to-East ($dx \ge 0$), guaranteeing MapLibre never flips rendering directions.
     - Verified all border sides using point-in-polygon tests against authentic OSM national polygons: Germany is verified as `name_left` (negative offset, North-East) and France as `name_right` (positive offset, South-West).
   - **Unified Continuous Luxembourg/Germany Boundary**:
     - Extracted the continuous 191-point authentic OSM boundary running from the Schengen tripoint (`[6.3677, 49.4694]`) to the Belgium tripoint (`[6.1294, 50.1213]`) with `name_left: Luxembourg` and `name_right: Germany`.
   - **Zero-Collision Label Offset & Tight Padding**:
-    - Set `text-offset` to `[0, -1.3]` (left) and `[0, 1.3]` (right) and tightened `text-padding` to `4px` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+    - Set `text-offset` to `[0, -1.3]` (left) and `[0, 1.3]` (right) and tightened `text-padding` to `4px` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
     - Preserved `symbol-spacing: 1200` to maintain clean 1–2 label frequency across the viewport while ensuring both border nations render reliably without mutual collision suppression.
 
 ### `fix: reduce border label frequency to 1-2 per viewport`
@@ -1754,10 +1754,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Border labeling rendered a merged hyphenated/slashed string ("France / Germany") rather than placing each nation's name on its own sovereign side of the boundary.
 - **Solution**:
   - **Sourced Authentic OpenStreetMap Boundary Geometries**:
-    - Replaced Natural Earth data with actual OpenStreetMap planetary country boundaries extracted directly from OpenStreetMap relations via [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/world_boundaries.geojson).
+    - Replaced Natural Earth data with actual OpenStreetMap planetary country boundaries extracted directly from OpenStreetMap relations via [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/world_boundaries.geojson).
     - Extracted 617 shared border lines (e.g. 513 points for France/Germany; 676 points for France/Switzerland; 1,082 points for Italy/Switzerland; 2,091 points for US/Canada) that match the OpenStreetMap basemap with 100% precision.
   - **Dedicated Per-Side Country Labels**:
-    - Replaced the merged label with two dedicated, line-offset symbol layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx):
+    - Replaced the merged label with two dedicated, line-offset symbol layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx):
       - `world-country-border-labels-left`: Evaluates `name_left` with a negative normal offset (`text-offset: [0, -1.2]`), rendering uppercase country text strictly inside the left country's territory (e.g., `FRANCE` on the French side).
       - `world-country-border-labels-right`: Evaluates `name_right` with a positive normal offset (`text-offset: [0, 1.2]`), rendering uppercase country text strictly inside the right country's territory (e.g., `GERMANY` on the German side).
     - Enabled on all basemap modes with auto-contrast haloing.
@@ -1788,13 +1788,13 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #2 (Distracting Macro Country Centroids)**: The centroid labels in `GEOGRAPHIC_REFERENCE_GEOJSON` (`kind: 'country'`) floated over the middle of countries at zooms 1.2 to 5.5, creating unwanted screen clutter. Users only need to know country boundaries when zoomed in near the borders.
 - **Solution**:
   - **Upgraded to Natural Earth 10m High-Resolution Land Boundaries**:
-    - Rebuilt [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/world_boundaries.geojson) (1,094 features, 1.83 MB) using Natural Earth's maximum-precision 10m dataset (`ne_10m_admin_0_boundary_lines_land`) combined with 50m state/province lines.
+    - Rebuilt [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/world_boundaries.geojson) (1,094 features, 1.83 MB) using Natural Earth's maximum-precision 10m dataset (`ne_10m_admin_0_boundary_lines_land`) combined with 50m state/province lines.
     - Captures true geographic detail along alpine ridges, mountain crests, and river valleys with smooth curvature.
   - **Removed Macro Country Centroids**:
-    - Completely removed sovereign nation centroid labels (`kind: 'country'`) from [`src/data/geographicReference.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/data/geographicReference.ts).
+    - Completely removed sovereign nation centroid labels (`kind: 'country'`) from [`src/data/geographicReference.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/data/geographicReference.ts).
     - Preserved useful gateway hubs (Geneva, Zurich, Denver, Calgary) and alpine valley ski centers (Chamonix, Aspen, Zermatt) at their appropriate zoom ranges.
   - **Localized Border Line Labels**:
-    - Added `world-country-border-labels` symbol layer in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) along the international border lines (`minzoom: 5.5, maxzoom: 13.0`).
+    - Added `world-country-border-labels` symbol layer in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) along the international border lines (`minzoom: 5.5, maxzoom: 13.0`).
     - Drapes clean, line-aligned labels directly along the border on both sides (e.g. `FRANCE / GERMANY`, `FRANCE / SWITZERLAND`, `SWITZERLAND / ITALY`, `AUSTRIA / GERMANY`, `CANADA / UNITED STATES`).
     - Luminous halo and uppercase tracking ensure perfect legibility over satellite orthophotos.
 
@@ -1810,8 +1810,8 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Restricted `world-country-borders`, `world-state-borders`, `geo-reference-countries`, and `geo-reference-cities` visibility strictly to Satellite 3D (`showCountryOutlines && basemapMode === 'satellite' ? 'visible' : 'none'`).
     - OSM and Alpine Topo display only their native cartographic labels with zero duplication or layer collision.
   - **Single-Font Vector SDF Fontstack**:
-    - Switched glyphs in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts) to `https://fonts.openmaptiles.org/{fontstack}/{range}.pbf`.
-    - Standardized all 11 symbol layers across [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to `'text-font': ['Open Sans Regular']`, ensuring HTTP 200 binary PBF glyph delivery. Text is rendered natively via WebGL SDF shaders for razor-sharp subpixel clarity across all zoom levels and Retina screens.
+    - Switched glyphs in [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts) to `https://fonts.openmaptiles.org/{fontstack}/{range}.pbf`.
+    - Standardized all 11 symbol layers across [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to `'text-font': ['Open Sans Regular']`, ensuring HTTP 200 binary PBF glyph delivery. Text is rendered natively via WebGL SDF shaders for razor-sharp subpixel clarity across all zoom levels and Retina screens.
   - **Map-Aligned Rotation & Perspective Drape**:
     - Updated `geo-reference-countries` and `geo-reference-cities` layout to `'text-rotation-alignment': 'map'`, `'text-pitch-alignment': 'map'`, and `'text-keep-upright': true`.
     - Country and city labels on Satellite 3D now rotate, pitch, and drape seamlessly with the 3D globe and terrain during camera orbits while never flipping upside down.
@@ -1822,14 +1822,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause**: In commit `1636ef0`, `tileSize: 512` was applied to Esri's `World_Boundaries_and_Places` raster tiles (`boundaries-dark-tiles` and `boundaries-light-tiles`). Because Esri's raster tiles have native 256x256 pixel dimensions, setting `tileSize: 512` caused MapLibre to scale each raster tile by 200%, blowing up the baked-in bitmap text to double size with heavy blur and pixelation. Meanwhile, Snow Globe's dedicated `geo-reference-countries` symbol layer was also rendering sharp, native vector labels over the same countries, producing double country labels.
 - **Solution**:
   - **Retired Stretched Esri Raster Overlays**:
-    - Completely removed `boundaries-dark-tiles`, `boundaries-light-tiles`, `basemap-boundaries-dark`, and `basemap-boundaries-light` from [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts).
+    - Completely removed `boundaries-dark-tiles`, `boundaries-light-tiles`, `basemap-boundaries-dark`, and `basemap-boundaries-light` from [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts).
     - Eliminated the low-resolution raster text duplication entirely.
   - **Introduced Lightweight Global Vector Boundaries**:
-    - Created optimized [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/world_boundaries.geojson) (126 KB) containing 440 international country borders and state/province administrative lines from Natural Earth.
-    - Added `world-country-borders` and `world-state-borders` vector line layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+    - Created optimized [`public/data/world_boundaries.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/world_boundaries.geojson) (126 KB) containing 440 international country borders and state/province administrative lines from Natural Earth.
+    - Added `world-country-borders` and `world-state-borders` vector line layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
     - Boundary lines render natively as GPU-accelerated vector strokes with zero raster blur, dynamic zoom-scaled stroke widths, and auto-contrast colors by basemap (luminous `#FAF8F3` over Satellite 3D, crisp `#1C1B18` over OSM and Alpine Topo).
   - **Single Authoritative Vector Country & City Labels**:
-    - `geo-reference-countries` and `geo-reference-cities` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) now serve as the sole, authoritative reference labels, delivering crisp, high-resolution vector typography with rotation-invariant view-aligned billboarding.
+    - `geo-reference-countries` and `geo-reference-cities` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) now serve as the sole, authoritative reference labels, delivering crisp, high-resolution vector typography with rotation-invariant view-aligned billboarding.
 
 ### `fix: resolve overlapping labels via cross-source deduplication and layer collision padding`
 - **What was wrong before**:
@@ -1840,11 +1840,11 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #3 (Missing symbol collision padding)**: `resorts-heli-cat-labels`, `resorts-labels`, and `global-unclustered-label` lacked `'text-padding': 8`, causing nearby distinct operations (e.g. Alaska Heliskiing Haines vs SEABA Heli-Skiing, 800m apart) to crash into each other at medium zooms instead of colliding cleanly.
 - **Solution**:
   - **Systematic Cross-Source Deduplication & Normalization**:
-    - Added `cleanNameForMatching` and `getSignificantTokens` with a curated stop-word dictionary in [`src/utils/classification.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/classification.ts).
-    - In `loadGlobalSkiAreas` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), pre-computed cleaned token sets for curated downhill, nordic, and heli/cat flagships.
+    - Added `cleanNameForMatching` and `getSignificantTokens` with a curated stop-word dictionary in [`src/utils/classification.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/classification.ts).
+    - In `loadGlobalSkiAreas` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), pre-computed cleaned token sets for curated downhill, nordic, and heli/cat flagships.
     - Suppressed duplicate global features matching coordinate pins within 800m, substring matches within 15km, or matching significant brand tokens within 12km (while safely preserving distinct adjacent resorts like Alta vs Snowbird, Park City vs Deer Valley, and Stowe vs Smugglers' Notch).
   - **Base Layer Exclusion for Active Selected Resort**:
-    - In the GPU filtering effect in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), added `notSelected` filter (`['!=', ['coalesce', ['get', 'id'], ''], selectedResort.id]`) to `resorts-labels`, `resorts-heli-cat-labels`, and `global-unclustered-label`.
+    - In the GPU filtering effect in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), added `notSelected` filter (`['!=', ['coalesce', ['get', 'id'], ''], selectedResort.id]`) to `resorts-labels`, `resorts-heli-cat-labels`, and `global-unclustered-label`.
     - Added `selectedResort` to the dependency array. When any resort is selected, only the high-emphasis `selected-resort-label` renders its text.
   - **Collision Padding & Symbol Hierarchy**:
     - Added `'text-padding': 8`, `'text-optional': true`, `'text-allow-overlap': false`, and `'text-ignore-placement': false` across `resorts-labels`, `resorts-heli-cat-labels`, and `global-unclustered-label`.
@@ -1858,11 +1858,11 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #3 (Acreage zoom pull-back)**: Zoom calculation scaled inversely with skiable acreage ($13.6 - \log_2(\text{acres}) \cdot 0.35$). Mica's 300,000-acre tenure pulled the camera back to $z \approx 9.36$ in the middle of vast wilderness with no visible pin or marker.
 - **Solution**:
   - **Dedicated Selected Active Resort Pin & Target Ring**:
-    - Added `selected-resort-source` with `selected-resort-pulse`, `selected-resort-dot`, and `selected-resort-label` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+    - Added `selected-resort-source` with `selected-resort-pulse`, `selected-resort-dot`, and `selected-resort-label` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
     - When any mountain or lodge is selected, its exact location is prominently rendered with a pulsing target ring, solid white-bordered pip, and bold nameplate with collision avoidance disabled (`text-allow-overlap: true`).
     - Stays permanently visible across all zoom levels ($z=0$ to $z=24$).
   - **Integrated Heli/Cat Operations into Map Sources**:
-    - Included `HELI_CAT_OPERATIONS` alongside `GLOBAL_SKI_ATLAS` in `curatedFeatures`, `filteredCurated`, and prefetch batches in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
+    - Included `HELI_CAT_OPERATIONS` alongside `GLOBAL_SKI_ATLAS` in `curatedFeatures`, `filteredCurated`, and prefetch batches in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
     - Added dedicated heli/cat layers (`resorts-heli-cat-ring`, `resorts-heli-cat-dot`, `resorts-heli-cat-labels`) that remain visible up to high zoom ($z=18$).
   - **Optimized Heli/Cat Camera Framing**:
     - In `handleSelectResort` and `handleSelectGlobalResort`, set heli/cat operations to fly to $z=12.2$ at 42° pitch centered directly on the lodge coordinates, framing the valley and surrounding peaks cleanly.
@@ -1873,15 +1873,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Adding single static JSON files (`brian-head.json`, `wolf-creek.json`) was an unsustainable "whack-a-mole" approach.
 - **Solution**:
   - **Systematic Universal Trail Pre-Export**:
-    - Created and executed [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/export_all_ski_areas.cjs).
+    - Created and executed [`data_pipeline/export_all_ski_areas.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/export_all_ski_areas.cjs).
     - Iterated across all 6,592 worldwide ski areas in `public/data/global_ski_areas.json` and all curated resorts in `src/data/resorts.ts`.
     - Queried `data_pipeline/trails.db` for every resort by ID and spatial summit/base extent, exporting 5,802 discrete static GeoJSON trail datasets to `public/data/trails/{id}.json` (190,136 total trail and lift features worldwide).
     - Generated unified `public/data/trails/manifest.json`.
   - **Universal Static Spatial Matching in Map Viewport**:
-    - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), updated `fetchOverpassBbox` so that when static loading is used, it searches across all 6,592 ski areas in `allGlobalFeaturesRef.current` (not just the 76 curated flagships).
+    - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), updated `fetchOverpassBbox` so that when static loading is used, it searches across all 6,592 ski areas in `allGlobalFeaturesRef.current` (not just the 76 curated flagships).
     - As the user zooms or pans into ANY mountain worldwide (Wolf Creek, Mt. Bachelor, Solitude, Niseko, Zermatt, etc.), Snow Globe identifies all ski areas in frame and loads their pre-baked static trail GeoJSON directly from CDN/storage in ~15ms with 0 backend dependencies.
   - **Static Host Optimization & Circuit Breaker**:
-    - Added `hasLocalServerRef` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to remember if `/api/trails` is available. On static hosts (GitHub Pages), the first 404 sets `hasLocalServerRef.current = false`, completely eliminating all subsequent 404 API calls and routing directly to static trail files.
+    - Added `hasLocalServerRef` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to remember if `/api/trails` is available. On static hosts (GitHub Pages), the first 404 sets `hasLocalServerRef.current = false`, completely eliminating all subsequent 404 API calls and routing directly to static trail files.
   - **Resilient Overpass POST Fallback**:
     - Converted the arbitrary backcountry terrain fallback from GET to HTTP POST (`method: 'POST'`, `Content-Type: application/x-www-form-urlencoded`), eliminating the 406 Not Acceptable error for unmapped wilderness terrain.
 - **What was wrong before**:
@@ -1890,7 +1890,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #2 (High Zoom Gate)**: `handleMapMoveEnd` strictly gated trail fetching to $z \ge 10.5$. Users surveying a mountain at zoom 9 or 10 never triggered the spatial query.
   - **Root Cause #3 (Resort ID Query Bypass)**: `fetchResortStaticTrails` only looked for static files in `public/data/trails/` and never queried the local SQLite database via `/api/trails?resort=${id}`.
 - **Solution**:
-  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx):
+  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx):
     - Lowered the zoom trigger threshold from $z \ge 10.5$ to $z \ge 9.2$ so trails stream in seamlessly as the user approaches any mountain.
     - Updated `fetchOverpassBbox` to use `fetchedBboxKeysSetRef` that only records keys *after* a fetch successfully returns features, preventing aborted wheel zooms from locking out regions.
     - Updated `fetchResortStaticTrails` to query `/api/trails?resort=${resortId}` first against the local SQLite database before checking static fallback files.
@@ -1906,14 +1906,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The Esri reference overlay tiles (`World_Boundaries_and_Places` and `World_Boundaries_and_Places_Alternate`) were rendered at `tileSize: 256`, which made text labels and borders microscopic and illegible on high-DPI and Retina displays.
   - Zooming into Brian Head Resort in Southern Utah displayed no ski trails or lifts because Brian Head was not in the curated resort atlas, lacked pre-baked static GeoJSON files in `public/data/trails/`, and `localTrailsPlugin` was not configured on preview servers.
 - **Solution**:
-  - **Removed Clean Canvas**: Completely removed Clean Canvas from [`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/types/index.ts), [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts), and [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), returning to the 3 robust basemap options (Satellite 3D, OpenStreetMap, Alpine Topo).
-  - **Legible 2x Scaled Reference Labels**: In [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts), set `tileSize: 512` for `boundaries-dark-tiles` and `boundaries-light-tiles`. This doubles the rendered physical size of Esri's surveyed boundary lines and place labels on Retina screens, rendering them crisp, bold, and fully readable.
-  - **Enlarged Viewport Vector Labels**: In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), boosted font size ranges and halo widths for countries (`12px–17px`) and cities/alpine centers (`12px–16.5px`).
+  - **Removed Clean Canvas**: Completely removed Clean Canvas from [`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/types/index.ts), [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts), and [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), returning to the 3 robust basemap options (Satellite 3D, OpenStreetMap, Alpine Topo).
+  - **Legible 2x Scaled Reference Labels**: In [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts), set `tileSize: 512` for `boundaries-dark-tiles` and `boundaries-light-tiles`. This doubles the rendered physical size of Esri's surveyed boundary lines and place labels on Retina screens, rendering them crisp, bold, and fully readable.
+  - **Enlarged Viewport Vector Labels**: In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), boosted font size ranges and halo widths for countries (`12px–17px`) and cities/alpine centers (`12px–16.5px`).
   - **Added Brian Head Resort & Trails**:
-    - Added Brian Head Resort (Southern Utah, summit 10,920', base 9,600', 1,320' vert, 650 acres, 8 lifts, 71 trails) to [`src/data/resorts.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/data/resorts.ts).
+    - Added Brian Head Resort (Southern Utah, summit 10,920', base 9,600', 1,320' vert, 650 acres, 8 lifts, 71 trails) to [`src/data/resorts.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/data/resorts.ts).
     - Exported 107 trails and lifts from `trails.db` to `public/data/trails/brian-head.json` and `public/data/trails/d17554e2aaa5a02bbc98023dd1f5cf4e17c6107e.json`, and updated `manifest.json`.
-    - Extended [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts) to mount `/api/trails` in `configurePreviewServer` in addition to `configureServer`.
-    - Added a direct live Overpass API fallback in `fetchOverpassBbox` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) so zooming into any ski area worldwide will automatically load piste and lift geometries even on static hosts.
+    - Extended [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts) to mount `/api/trails` in `configurePreviewServer` in addition to `configureServer`.
+    - Added a direct live Overpass API fallback in `fetchOverpassBbox` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) so zooming into any ski area worldwide will automatically load piste and lift geometries even on static hosts.
 
 ---
 
@@ -1924,8 +1924,8 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The map failed to load entirely on initial render with an uncaught `ReferenceError: showHillshade is not defined` inside `createMapStyle()`. In `src/utils/mapStyles.ts`, the `hillshade-relief` layer referenced `showHillshade`, but `showHillshade` had not been declared in the function arguments.
   - Additionally, newly introduced symbol layers (`geo-reference-countries` and `geo-reference-cities`) requested font stacks (`Open Sans Bold, Arial Unicode MS Bold` and `Open Sans SemiBold`) not present on `demotiles.maplibre.org`, causing font loading 404 warnings.
 - **Solution**:
-  - In [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts), added `showHillshade: boolean = true` parameter to `createMapStyle()`.
-  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), passed `showHillshade` into `createMapStyle(...)` during map instantiation.
+  - In [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts), added `showHillshade: boolean = true` parameter to `createMapStyle()`.
+  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), passed `showHillshade` into `createMapStyle(...)` during map instantiation.
   - Standardized fontstack declarations across all vector label layers to `['Open Sans Regular', 'Arial Unicode MS Regular']`, which is confirmed available and served with HTTP 200 from the demotiles glyphs endpoint.
   - Verified clean map boot and WebGL rendering with headless browser automation.
 
@@ -1938,9 +1938,9 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Raster tiles (such as OpenStreetMap and Esri reference overlays) have labels baked into 2D raster tiles oriented strictly North-up (0°). When navigating or orbiting in 3D terrain mode (e.g., viewing a mountain range looking South or East), the ground-baked text rotates with the surface, ending up upside-down or sideways.
   - Furthermore, standard basemaps like OpenStreetMap already have labels baked into the tiles, so placing an external label layer on top produces duplicate, clashing text.
 - **Solution**:
-  - **Clean Canvas Basemap (`clean`)**: Added CartoDB Light No-Labels (`light_nolabels`) as a 4th basemap option across [`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/types/index.ts), [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts), and [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx). This provides worldwide landcover, shorelines, water bodies, and road networks with zero pre-rendered text from $z=0$ to $z=19$, completely eliminating duplicate text conflicts. Hillshading relief is smoothly blended in over mountainous terrain.
-  - **Rotation-Invariant Viewport Billboarding**: Created [`src/data/geographicReference.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/data/geographicReference.ts) containing curated sovereign nation centroids and key international ski gateways / alpine mountain centers. Added `geo-reference-countries` and `geo-reference-cities` WebGL symbol layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) configured with `'text-rotation-alignment': 'viewport'`, `'text-pitch-alignment': 'viewport'`, and `'text-keep-upright': true`. Country and city labels billboard directly to the camera viewport, remaining right-side up and readable at every bearing (0° to 360°) and pitch angle.
-  - **Dynamic Contrast & Auto-Styling**: Configured vector labels and Esri boundary lines in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to automatically adapt contrast: light text with dark halo casing on dark Satellite 3D, and dark ink typography with light halo casing on Clean Canvas, OSM, and Alpine Topo.
+  - **Clean Canvas Basemap (`clean`)**: Added CartoDB Light No-Labels (`light_nolabels`) as a 4th basemap option across [`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/types/index.ts), [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts), and [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx). This provides worldwide landcover, shorelines, water bodies, and road networks with zero pre-rendered text from $z=0$ to $z=19$, completely eliminating duplicate text conflicts. Hillshading relief is smoothly blended in over mountainous terrain.
+  - **Rotation-Invariant Viewport Billboarding**: Created [`src/data/geographicReference.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/data/geographicReference.ts) containing curated sovereign nation centroids and key international ski gateways / alpine mountain centers. Added `geo-reference-countries` and `geo-reference-cities` WebGL symbol layers in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) configured with `'text-rotation-alignment': 'viewport'`, `'text-pitch-alignment': 'viewport'`, and `'text-keep-upright': true`. Country and city labels billboard directly to the camera viewport, remaining right-side up and readable at every bearing (0° to 360°) and pitch angle.
+  - **Dynamic Contrast & Auto-Styling**: Configured vector labels and Esri boundary lines in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to automatically adapt contrast: light text with dark halo casing on dark Satellite 3D, and dark ink typography with light halo casing on Clean Canvas, OSM, and Alpine Topo.
   - **Preserved Existing Basemaps**: Retained all three existing basemaps (Satellite 3D, OpenStreetMap, Alpine Topo) intact without dropping any data sources or requiring custom tile server infrastructure.
 
 ---
@@ -1952,9 +1952,9 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The UI featured a redundant, static "Major Cities" toggle with ~500 hard-coded point markers that lacked multi-scale settlement hierarchy and duplicated labels already provided by the authoritative Esri reference overlay.
   - The reference overlay used a single style (`World_Boundaries_and_Places` with light text / dark casing) across all basemaps. While this looked crisp over dark Satellite 3D imagery, light text with dark halos lacked contrast and readability over light basemaps (OpenStreetMap and Alpine Topo).
 - **Solution**:
-  - **Retired Redundant Major Cities**: Removed `major-cities-source`, `major-cities-glow`, `major-cities-point`, and `major-cities-labels` from [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), and deleted [`src/data/majorCities.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/data/majorCities.ts), saving 79 KB from the production JavaScript bundle.
-  - **Consolidated Menu Reference Control**: In [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx), consolidated the reference controls into a single **"Borders & Places"** toggle, retiring the separate city pins and eliminating label conflicts.
-  - **Auto-Contrast Reference Styling by Basemap**: In [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx):
+  - **Retired Redundant Major Cities**: Removed `major-cities-source`, `major-cities-glow`, `major-cities-point`, and `major-cities-labels` from [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), and deleted [`src/data/majorCities.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/data/majorCities.ts), saving 79 KB from the production JavaScript bundle.
+  - **Consolidated Menu Reference Control**: In [`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx), consolidated the reference controls into a single **"Borders & Places"** toggle, retiring the separate city pins and eliminating label conflicts.
+  - **Auto-Contrast Reference Styling by Basemap**: In [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts) and [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx):
     - When on Satellite 3D (`basemapMode === 'satellite'`), the overlay uses `World_Boundaries_and_Places` (`basemap-boundaries-dark`) with light typography and dark halos.
     - When on OSM or Alpine Topo (`basemapMode !== 'satellite'`), the overlay automatically switches to `World_Boundaries_and_Places_Alternate` (`basemap-boundaries-light`) with crisp dark typography and subtle light halos.
     - Connected both layers to the reactive basemap and visibility state for instant, seamless transitions.
@@ -1966,8 +1966,8 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `chore: address October security advisories, pin secure Node LTS runtime, and audit dependencies`
 - **What changed**:
   - **Pinned Node.js Runtime**: Created `.nvmrc` and `.node-version` pinning Node.js to `22.23.4` (the patched LTS release addressing the eMudhra certificate compromise, TLS hostname verification flaws, and Brotli decompression vulnerabilities disclosed on October 19–21).
-  - **Engine Constraint**: Declared `"engines": { "node": ">=22.23.4" }` in [`package.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/package.json).
-  - **CI Workflow Hardening**: Updated [`.github/workflows/deploy.yml`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/.github/workflows/deploy.yml) to read `node-version-file: '.nvmrc'` for automated GitHub Pages builds.
+  - **Engine Constraint**: Declared `"engines": { "node": ">=22.23.4" }` in [`package.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/package.json).
+  - **CI Workflow Hardening**: Updated [`.github/workflows/deploy.yml`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/.github/workflows/deploy.yml) to read `node-version-file: '.nvmrc'` for automated GitHub Pages builds.
   - **Pruned Unused Server Dependencies**: Removed unused server packages (`express`, `@types/express`) strictly aligning with client-only architecture rules and immediately resolving the high-severity `body-parser` trailing bytes DoS advisory (`GHSA-27r3-jxmh-p828`).
   - **Audit Clearance**: Verified zero known vulnerabilities across all dependencies (`npm audit` reports 0 vulnerabilities). Confirmed repository contains no PHP runtimes or Docker images.
 
@@ -1981,10 +1981,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - These custom vector lines drew heavy, generalized borders and duplicate labels that conflicted with the basemap.
   - Furthermore, in `createMapStyle`, the authoritative Esri surveyed reference overlay (`basemap-boundaries`) was ordered beneath the opaque raster OSM and Topo basemaps, causing it to be obscured on those views while the coarse vector lines remained visible on top.
 - **Solution**:
-  - **Removed Legacy GeoJSON Layers**: Completely removed `country-boundaries-source`, `country-boundaries-casing`, `country-boundaries-line`, `country-macro-labels`, and `country-border-labels` from [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx).
-  - **Pruned Unneeded Asset Files**: Deleted `public/data/country_boundaries.geojson` and [`src/data/countryBoundaries.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/data/countryBoundaries.ts), eliminating 5.4MB of dead asset payload.
-  - **Repositioned Authoritative Reference Overlay**: In [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts), reordered `basemap-boundaries` above the basemaps and hillshade/slope overlays so Esri's sub-meter surveyed boundary lines and place labels drape directly onto the 3D terrain mesh across all basemap modes (Satellite, OSM, Topo) when Country Outlines is toggled on.
-  - **Direct Toggle Binding**: Passed `showCountryOutlines` directly into `createMapStyle` and simplified the visibility update effect in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) to control `basemap-boundaries` exclusively.
+  - **Removed Legacy GeoJSON Layers**: Completely removed `country-boundaries-source`, `country-boundaries-casing`, `country-boundaries-line`, `country-macro-labels`, and `country-border-labels` from [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx).
+  - **Pruned Unneeded Asset Files**: Deleted `public/data/country_boundaries.geojson` and [`src/data/countryBoundaries.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/data/countryBoundaries.ts), eliminating 5.4MB of dead asset payload.
+  - **Repositioned Authoritative Reference Overlay**: In [`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts), reordered `basemap-boundaries` above the basemaps and hillshade/slope overlays so Esri's sub-meter surveyed boundary lines and place labels drape directly onto the 3D terrain mesh across all basemap modes (Satellite, OSM, Topo) when Country Outlines is toggled on.
+  - **Direct Toggle Binding**: Passed `showCountryOutlines` directly into `createMapStyle` and simplified the visibility update effect in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) to control `basemap-boundaries` exclusively.
 
 ---
 
@@ -2349,18 +2349,18 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     2. **Zero grooming mentions** — strictly omit any mention of grooming status (no "groomed", "ungroomed", or "backcountry" labels).
     3. Editorial cartographic layout adhering to anti-SaaS principles.
 - **Architectural Resolution**:
-  - **Type Definitions ([`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/types/index.ts))**:
+  - **Type Definitions ([`src/types/index.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/types/index.ts))**:
     - Created `TrailInspectionData` interface capturing trail ID, name, kind (`'piste' | 'lift'`), difficulty, aerialway type, capacity, duration, occupancy, lit/gladed flags, top and base elevations, vertical drop/rise, 3D surface length, average/max slope angles and grade percent, fall-line aspect, and anchor geographic coordinates.
-  - **Geometry & Terrain Analysis Engine ([`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/trailAnalysis.ts))**:
+  - **Geometry & Terrain Analysis Engine ([`src/utils/trailAnalysis.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/trailAnalysis.ts))**:
     - Implemented `analyzeTrailFeature` which extracts 3D coordinates `[lng, lat, elev_m]` from GeoJSON `LineString`, `MultiLineString`, and `Polygon` geometries (falling back to live DEM sampling via `map.queryTerrainElevation()` when needed).
     - Computes 3D surface length via 3D Pythagorean distance, vertical drop $\Delta H = z_{\max} - z_{\min}$, average pitch $\arctan(\Delta H / \text{dist}_{2D})$, maximum pitch across coordinate segments, and true fall-line aspect vector $\theta = \arctan2(\Delta x, \Delta y)$ from the summit benchmark to base terminus.
-  - **Editorial Trail Profile Card ([`src/components/map/TrailProfileCard.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/TrailProfileCard.tsx))**:
+  - **Editorial Trail Profile Card ([`src/components/map/TrailProfileCard.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/TrailProfileCard.tsx))**:
     - Handcrafted floating cartographic inspection card styled in warm off-white `#FCFAF7/95` with stone hairline borders and serif typography.
     - Features international difficulty badges (`●` Novice/Easy, `■` Intermediate, `◆` Advanced, `◆◆` Expert, `⬢` Freeride, and cable car icon for aerialways).
     - Displays vertical rise/drop (`formatVert`), length (`formatDistance`), pitch/gradient ($^\circ$ and $\%$), solar aspect cardinal direction, top and base elevation benchmarks, and carrier/occupancy metrics for chairlifts.
     - Strictly omits grooming status anywhere in the interface.
     - Dynamically anchors near the clicked geographic coordinates on desktop (with dock and viewport boundary clamping) and docks into an accessible card on mobile.
-  - **Map Orchestration & Highlighting ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **Map Orchestration & Highlighting ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - Added dedicated `selected-trail-source` GeoJSON source and highlight layers (`selected-trail-casing`, `selected-trail-line`, `selected-trail-polygon-fill`, `selected-trail-polygon-outline`) illuminating selected pistes in warm amber gold `#D97706` with a crisp `#FAF8F3` halo.
     - Configured pointer cursor on hover for trail and lift layers without triggering any hover tooltips (click-only interaction).
     - Wired `map.on('click')` with a 6-pixel click tolerance box, prioritizing linear downhill trails/lifts over enclosing polygon areas.
@@ -2419,12 +2419,12 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     3. *"The camera up and down movement is very jerky now, too. Probably related to the bouncing camera."*
 - **Root Cause Analysis**:
   1. **A/D Steering Inversion**:
-     - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), `KeyA` incremented `rotateBearing` ($+1$) while `KeyD` decremented it ($-1$). In standard compass bearing (where North is $0^\circ$, East is $90^\circ$, and West is $270^\circ$), pressing 'A' to turn left requires rotating counter-clockwise (decreasing bearing), while pressing 'D' to turn right requires rotating clockwise (increasing bearing). The signs were inverted.
+     - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), `KeyA` incremented `rotateBearing` ($+1$) while `KeyD` decremented it ($-1$). In standard compass bearing (where North is $0^\circ$, East is $90^\circ$, and West is $270^\circ$), pressing 'A' to turn left requires rotating counter-clockwise (decreasing bearing), while pressing 'D' to turn right requires rotating clockwise (increasing bearing). The signs were inverted.
   2. **Camera Vertical Bouncing & Jerky Elevation**:
      - In the prior commit, `flightStep` attempted to solve camera options via `calculateCameraOptionsFromCameraLngLatAltRotation` on every frame.
      - Because `calculateCameraOptionsFromCameraLngLatAltRotation` projects the camera gaze forward across the physical 3D terrain mesh, any movement across undulating ridges, valleys, and peaks caused the projected ground intersection distance to oscillate violently.
      - This altered `zoom`, `center`, and `elevation` at 60Hz. Simultaneously, MapLibre's internal terrain ground clamping fought these adjustments, causing the camera to vibrate, bounce up and down, and jerk during flight.
-- **Architectural Resolution ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Architectural Resolution ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Corrected Steering Rotation**:
     - `KeyA`: `rotateBearing -= 1` (turns camera left / counter-clockwise).
     - `KeyD`: `rotateBearing += 1` (turns camera right / clockwise).
@@ -2481,9 +2481,9 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **User Intent & Problem Context**:
   - The user reported: *"Yet another wrong peak location"* (attaching a screenshot of `▲ Blackcomb Peak · 7,992'` rendered in dense forest on Whistler Mountain between ski runs *Where's Joe*, *Last Resort*, and *Watch Out*).
 - **Root Cause Analysis**:
-  - In [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), `peak-add-4` (Blackcomb Peak) had its coordinates recorded as `[-122.905, 50.086]`.
+  - In [`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), `peak-add-4` (Blackcomb Peak) had its coordinates recorded as `[-122.905, 50.086]`.
   - These coordinates were located in mid-mountain trees on Whistler Mountain at an elevation of only $1,129\text{ m}$ ($3,705\text{ ft}$), miles west of the true Blackcomb Peak massif across the Fitzsimmons Creek valley.
-- **Architectural Resolution ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson))**:
+- **Architectural Resolution ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson))**:
   - Re-anchored `peak-add-4` (Blackcomb Peak) to the official surveyed geodetic benchmark (OSM node `2057435315` / BC Geographical Names):
     - Coordinates: `[-122.87083, 50.08139]`
     - Elevation: $2,436\text{ m}$ ($7,992\text{ ft}$)
@@ -2549,7 +2549,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
      - `maxTileCacheSize` was set to `250`, while `_maxTileCacheZoomLevels` defaulted to `5`.
      - In oblique 3D views, a single viewport spans 5–8 zoom levels and dozens of tiles. When the user rotated 90°–180°, newly visible tiles exceeded the low `_outOfViewCache` limit (clamped to only 100–150 tiles for 512px tiles).
      - As a result, behind-the-camera tiles were destroyed from memory. When the camera swung back, MapLibre had to re-fetch and re-decode every tile, causing noticeable reload flashes and unnecessary network round-trips.
-- **Architectural Resolution ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Architectural Resolution ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   1. **True Camera-Centric Flight Physics via `calculateCameraOptionsFromCameraLngLatAltRotation`**:
      - Refactored `flightStep` to operate directly on the camera eye's world coordinate and altitude (`curCamLngLat`, `curCamAlt`).
      - Ascending ('E') and descending ('Q') now directly alter the camera eye height `nextCamAlt` with a minimum ground clearance buffer of 15m (`MIN_CLEARANCE`).
@@ -2606,12 +2606,12 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **User Intent & Problem Context**:
   - The user asked: *"How is there a point for Lincoln Peak but not Mt Baker?"* (attaching a screenshot of the glaciated Mount Baker massif where `▲ Lincoln Peak · 9,081'` was rendered, but the main $10,781\text{ ft}$ volcano summit had no peak marker).
 - **Root Cause Analysis**:
-  - In commit `4b8c32a`, an automated peak cleanup script ([`scripts/apply_final_clean_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/apply_final_clean_peaks.cjs)) was executed to reconcile prominent peaks with surveyed geodetic benchmarks.
+  - In commit `4b8c32a`, an automated peak cleanup script ([`scripts/apply_final_clean_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/apply_final_clean_peaks.cjs)) was executed to reconcile prominent peaks with surveyed geodetic benchmarks.
   - The script matched overrides strictly by name: `const override = surveyedOverrides[name]`.
   - The dictionary contained an override: `'Mount Baker': { name: 'Mount Baker (Ruwenzori)', coords: [29.894444, 0.366389], elev_m: 4844, elev_ft: 15889 }` intended for Mount Baker in Uganda / DRC.
   - Because `peak-2617` (Mount Baker, Washington, $10,781\text{ ft}$) shared the exact same name, it was unintentionally matched and overwritten with the African coordinates and name (`Mount Baker (Ruwenzori)`), leaving Lincoln Peak ($9,081\text{ ft}$) as the only summit labeled on the Mount Baker massif.
   - A systematic audit revealed that several other homonymous peaks (e.g. `Mount Olympus` in Greece and Utah, `Cathedral Peak` in Colorado and South Africa, `Mount Washington` in Oregon, Washington, and New Hampshire) were similarly affected by name-collision overrides.
-- **Architectural Resolution ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/apply_final_clean_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/apply_final_clean_peaks.cjs))**:
+- **Architectural Resolution ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/apply_final_clean_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/apply_final_clean_peaks.cjs))**:
   - **Restored Mount Baker (`peak-2617`)**:
     - Re-anchored to official USGS GNIS ID 1516084 geodetic benchmark: `[-121.814532, 48.776895]`, elevation $10,781\text{ ft}$ ($3,286\text{ m}$), with `label_ft`: `▲ Mount Baker · 10,781'` and `sort_key: 29219`.
   - **Restored Additional Homonymous Peaks**:
@@ -2619,7 +2619,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Restored `Cathedral Peak` in the Elk Mountains (Aspen), CO (`[-106.852778, 39.034722]`, $13,943\text{ ft}$).
     - Restored `Mount Washington` in the Oregon Cascades (`[-121.838593, 44.332229]`, $7,794\text{ ft}$), Olympic Mountains (`[-123.246002, 47.531343]`, $6,255\text{ ft}$), and Arizona (`[-110.758333, 31.338611]`, $7,221\text{ ft}$).
     - Restored `Echo Peak` at Lake Tahoe, CA (`[-120.072962, 38.856574]`, $8,895\text{ ft}$) and `Black Mountain` in New Mexico (`[-105.067222, 36.433333]`, $10,892\text{ ft}$).
-  - Cleaned [`scripts/apply_final_clean_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/apply_final_clean_peaks.cjs) to prevent future script runs from applying ambiguous global name overrides.
+  - Cleaned [`scripts/apply_final_clean_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/apply_final_clean_peaks.cjs) to prevent future script runs from applying ambiguous global name overrides.
 - **Verification via Headless Chrome CDP**:
   - `baker_lincoln_rendered.png`: Captured from the exact perspective of the user's screenshot looking south-southeast at the Mount Baker massif.
   - Both `▲ Mount Baker · 10,781'` and `▲ Lincoln Peak · 9,081'` render with vermilion pinpoint markers directly anchored to their respective 3D summit apexes on the Coleman Glacier and Black Buttes ridge.
@@ -2674,10 +2674,10 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
      - When the user then right-clicks to orbit or pitch, MapLibre rotates around this phantom elevation (often hundreds or thousands of feet above or below the terrain surface). This creates an enormous parallax lever arm that swings the camera off-axis, making right-click orbit feel disconnected and erratic ("does not move from the center").
      - On page reload, map initialization sets `setCenterClampedToGround(true)`, immediately re-anchoring the pivot directly to the mountain surface (explaining why refreshing fixed it).
   2. **Missing Right-Click Handler Cleanup & Orphan Protection**:
-     - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), canvas mousedown, window pointerup, and window mouseenter listeners were hardcoded to check only `e.button === 0` (left click) and bitmask `1`.
+     - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), canvas mousedown, window pointerup, and window mouseenter listeners were hardcoded to check only `e.button === 0` (left click) and bitmask `1`.
      - Right-click (`e.button === 2`, bitmask `2`) drag events (`_mouseRotate`, `_mousePitch`) had zero cleanup triggers. If a right-click drag ended outside the window, over an HTML UI overlay, or was interrupted by a browser context menu, `_lastPoint` or `_active` stayed orphaned on `_mouseRotate` and `_mousePitch`.
      - In that orphaned state, subsequent right-clicks either failed to start (`if (this._lastPoint) return;`) or calculated huge Delta jumps from a stale mouse position.
-- **Architectural Resolution ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Architectural Resolution ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Debounced Ground Clamping Restoration in Flight Engine**:
     - `stopFlight(immediate)` now restores `setCenterClampedToGround(true)` and resets `flightElevation = null` after a 250ms debounce (preserving smooth altitude across rapid key taps while releasing to true ground clamping once keys are released).
     - Window blur, visibility change, and programmatic flight interrupts immediately restore ground clamping without delay.
@@ -2749,14 +2749,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
      - Furthermore, `tileCountMaxMinRatio = 3` uniformly demotes all tiles on screen once the total tile count exceeds $3\times$ pitch 0.
      - Finally, the default `raster-fade-duration` of 300ms produced a sluggish, foggy crossfade whenever new raster tiles arrived.
 - **Architectural Resolution**:
-  - **Restored Standard Esri World Imagery ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts))**:
+  - **Restored Standard Esri World Imagery ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts))**:
     - Reverted `satellite-tiles` back to Standard Esri World Imagery: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}` with `maxzoom: 19`.
     - Eliminated sharp boundary seams, harsh contrast transitions, and missing coverage boxes across all mountains and valleys.
-  - **Calibrated 3D Level of Detail (LOD) ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **Calibrated 3D Level of Detail (LOD) ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - Applied `map.setSourceTileLodParams(3.5, 6.0, 'satellite-tiles')` and `map.setSourceTileLodParams(4.0, 5.0, 'terrain-dem')` on map load and basemap switch.
     - Constraining `maxZoomLevelsOnScreen` to 3.5 and increasing `tileCountMaxMinRatio` to 6.0 prevents MapLibre from demoting middle-distance alpine slopes to low zoom levels. Pitching up to 70°+ maintains zoom 14-16 coverage across the mountain face.
     - Set `maxTileCacheSize: 250` on `new maplibregl.Map(...)` so recently loaded tiles are not prematurely purged during 3D camera sweeps.
-  - **Zero Raster Fade Duration ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts))**:
+  - **Zero Raster Fade Duration ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts))**:
     - Added `'raster-fade-duration': 0` to `basemap-satellite`, `basemap-osm`, and `basemap-topo` layers, eliminating the 300ms crossfade blurriness.
 - **Verification via Headless Chrome CDP**:
   - **Whitefish Mountain Resort, MT** (`wf_standard_lod_calibrated.png` & `wf_closeup_lod.png`): Captured at pitch 72° and pitch 68°. Seam cuts and black boundaries completely gone; continuous forest and valley terrain. In closeup view, in-view tiles are 175 at z14, 198 at z15, and 56 at z16, displaying razor-sharp ski trails, lift lines, and trees.
@@ -2807,19 +2807,19 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     1. *"Is there a way to show the camera elevation next to the scale bar?"*
     2. *"The reason I am asking is, as well as curiosity, the camera elevation would not go below a certain level until I refreshed the page. Probably a bug."*
 - **Root Cause Analysis (Camera Elevation Floor Bug)**:
-  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), keyboard flight engine manual descent (`KeyQ` / `PageDown`) checked `map.queryTerrainElevation(curCenter)` where `curCenter` is the crosshair focal point on the map.
+  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), keyboard flight engine manual descent (`KeyQ` / `PageDown`) checked `map.queryTerrainElevation(curCenter)` where `curCenter` is the crosshair focal point on the map.
   - When the camera is pitched forward looking towards distant mountain summits (e.g. 14,000 ft peaks at Breckenridge or Vail), `curCenter` is miles ahead on a high summit.
   - The collision check forced `flightElevation >= rawGround + 5.0` based on that distant summit's elevation. Consequently:
     - Pressing `KeyQ` to descend while looking at a summit actually pushed `flightElevation` up to the summit elevation ($14,000'+$).
     - Once clamped up, `flightElevation` was permanently latched above that elevation, blocking the user from flying down into valleys until the page was reloaded.
     - On mouse interaction, `flightElevation` was also never re-anchored, allowing old flight elevations to persist across pan/zoom gestures.
 - **Architectural Resolution**:
-  - **Camera Eye Ground Clearance Protection ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **Camera Eye Ground Clearance Protection ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - During descent (`KeyQ` / `PageDown`), collision protection now samples `getCameraLngLat()` and checks clearance between `getCameraAltitude()` and `groundUnderCam`.
     - Distant peaks on the horizon no longer block descent into local valleys; the camera can freely fly down to 5 meters above the local terrain surface directly underneath the viewer.
     - During forward flight, clearance checks sample the camera's path rather than the distant horizon focal point.
     - On canvas mouse interaction (drag, pan, scroll), `flightElevation` is cleared to `null` so subsequent flights re-anchor freshly to the current view.
-  - **Live Camera Elevation Indicator ([`src/components/map/CartographicLegend.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/CartographicLegend.tsx), [`src/utils/formatters.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/formatters.ts))**:
+  - **Live Camera Elevation Indicator ([`src/components/map/CartographicLegend.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/CartographicLegend.tsx), [`src/utils/formatters.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/formatters.ts))**:
     - Added `formatCameraAltitude()` formatter with strict unit hygiene:
       - Mountain/regional scope: `▲ 14,157'` (imperial) or `▲ 4,315 m` (metric).
       - Sub-orbital/orbital space scope: `▲ 17,794 mi` (imperial) or `▲ 28,636 km` (metric).
@@ -2872,15 +2872,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **User Intent & Problem Context**:
   - The user requested: *"Change the behavior for Display and Filters to close the panel if user clicks outside it"*.
 - **Root Cause**:
-  - In [`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/TopNavBar.tsx), the container wrapping the "Display & Filters" button and floating `<FilterModal>` lacked click-outside and escape-key event listeners.
-  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), a legacy `filtersMenuRef` was declared and evaluated in an effect, but was never attached to any element in the DOM tree, causing outside clicks to be completely ignored.
+  - In [`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/TopNavBar.tsx), the container wrapping the "Display & Filters" button and floating `<FilterModal>` lacked click-outside and escape-key event listeners.
+  - In [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), a legacy `filtersMenuRef` was declared and evaluated in an effect, but was never attached to any element in the DOM tree, causing outside clicks to be completely ignored.
 - **Architectural Resolution**:
-  - **Self-Contained Outside Click Handler ([`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/header/TopNavBar.tsx))**:
+  - **Self-Contained Outside Click Handler ([`src/components/header/TopNavBar.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/header/TopNavBar.tsx))**:
     - Attached `filtersRef` to the `<div ref={filtersRef} className="relative">` container wrapping both the trigger button and the popover panel.
     - Added an outside-click handler listening to `pointerdown` and `mousedown` that invokes `onCloseFilters()`.
     - Added an `Escape` key listener to dismiss the panel on keyboard command.
     - Preserved click interactions inside the panel (sliders, pass toggles, projection choices, metric switch) without unintended closure.
-  - **Modular Cleanup ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **Modular Cleanup ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - Passed `onCloseFilters={() => setFiltersMenuOpen(false)}` to `TopNavBar`.
     - Removed dangling, unattached refs and redundant outside-click effects (`filtersMenuRef`, `basemapMenuRef`, `mapLegendRef`, `attributionRef`), keeping instrument event lifecycles modularly self-contained.
 - **Verification via Headless Chrome CDP**:
@@ -2934,7 +2934,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause**:
   - Previously, to eliminate peak clutter at the statewide regional view of Colorado (zoom 9.3, ~17 km scale bar), peak labels were set to `minzoom: 12.0` and markers to `11.5`.
   - However, at a 7 km scale bar (zoom ~10.7), the user is viewing mountain perspective (e.g. looking across the Andes behind Portillo or looking at peaks across a valley). Hiding peaks up to zoom 12.0 prevented prominent peaks like *Aconcagua* ($22,841'$) and *Cerro Cuerno* ($17,920'$) from being identified on the horizon.
-- **Architectural Resolution ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Architectural Resolution ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Calibrated `minzoom` Threshold**: Adjusted `major-peaks-label` and `major-peaks-marker` `minzoom` to **`10.0`**.
   - **Scale Separation**:
     - **Regional Scale (Zoom 6.0 – 9.9, $\ge 15\text{ km}$ scale)**: Peak labels and markers remain completely hidden. The state/continental view remains 100% clean and uncluttered with prominent ski area labels.
@@ -2991,17 +2991,17 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     1. *"The elevation camera control with the keyboard is buggy. It will not maintain the elevation and slams down to a lower elevation instead. At least in some areas."*
     2. *"I clicked on Cardrona's point and the mini map popped up. I clicked on neighboring points and the mini map did not pop up. I don't care one way or the other, but the behavior needs to be consistent."*
     3. *"I think the MOUNTAIN PROFILE text should go above the table with the mountain stats and not up top with the name"*
-- **Camera Elevation Control Fix ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Camera Elevation Control Fix ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Root Cause**: In `stopFlight()`, `flightElevation` was being wiped to `null` and `setCenterClampedToGround(true)` was being invoked on every key release. Because MapLibre GL JS forces the camera center to the terrain surface when `centerClampedToGround` is true, the camera instantly plummeted thousands of feet down to ground level the moment the user released `PageUp` or `E`. On the next keypress, it re-initialized from ground level rather than holding altitude.
   - **Resolution**:
     - Removed `flightElevation = null` and `setCenterClampedToGround(true)` from `stopFlight()`.
     - Preserved `flightElevation` persistently across key presses, pauses, and turns.
     - Ground clearance protection remains active during forward flight and manual descent so the camera cannot clip into mountains.
   - **CDP Verified**: Ascending with `E` to 1,847m held perfectly at 1,847m after release and during forward flight (0m deviation).
-- **Mini-Map (Regional Locator) Consistency ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Mini-Map (Regional Locator) Consistency ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Root Cause**: `handleSelectResort()` (for curated resorts like Cardrona) had an automatic `setLocatorOpen(true)` call, whereas `handleSelectGlobalResort()` (for global ski areas like Treble Cone or Soho Basin) did not.
   - **Resolution**: Removed automatic `setLocatorOpen(true)` from resort selection. Clicking any resort point now consistently focuses and flies to the resort without unexpectedly popping open the mini-map window. The mini-map opens exclusively and reliably on demand via the `[ 🌐 Regional Overview ]` button (and updates its viewport/pin if already open).
-- **Mountain Profile Header Layout ([`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx))**:
+- **Mountain Profile Header Layout ([`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx))**:
   - Removed the redundant `· MOUNTAIN PROFILE` tag from the top header next to the region/country line.
   - Placed a clean, bold `MOUNTAIN PROFILE` section title directly above the mountain stats table (`Lifts`, `Pistes`, `Acres`, `Vertical`, `Summit`, `Base`).
 - **Production Build Clean**: `npm run build` completed with 0 errors.
@@ -3048,7 +3048,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The user asked: *"Are there any higher quality free satellite sources? With fewer clouds and better edge joins?"* and attached an image over Sunlight Mountain showing thick puffy clouds covering the ridge with a harsh triangular seam across the terrain.
 - **Root Cause Analysis**:
   - The default Esri World Imagery tile endpoint (`server.arcgisonline.com`) strictly prioritizes the *most recent* imagery capture dates. In mountainous terrain, recent satellite passes frequently capture cloud banks, atmospheric haze, or harsh seasonal seams spliced over older cloud-free passes.
-- **Architectural Resolution ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts))**:
+- **Architectural Resolution ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts))**:
   - Upgraded the satellite basemap source to **Esri World Imagery (Clarity)** (`https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}`).
   - Esri maintains the Clarity archive specifically as a free, public global service curated for **minimal cloud cover, zero atmospheric obstruction, high contrast, and seamless edge joins**, selecting older cloudless scenes whenever newer standard imagery is obstructed by weather or clouds.
   - Verified global coverage across Colorado (Sunlight, Aspen), the European Alps (Zermatt, Chamonix), Japan (Niseko), the Andes (Portillo), and New Zealand (Treble Cone).
@@ -3100,19 +3100,19 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     1. *"At this scale, the peaks should not be labeled, but the ski areas should be more prominently labeled."* (Uploaded image showing regional Colorado view at zoom 9.5 completely covered in dozens of red peak labels like Sopris, Maroon Bells, Elbert, drowning out ski resorts like Aspen and Crested Butte).
     2. *"Here we go again. Peaks not in the right place."* (Uploaded images showing New York Peak dot ~900m off the ridge down in a valley basin, and Mount of the Holy Cross dot displaced 300m down a ridge face).
     3. *"There is also a ski trail down holy cross peak. That is not a resort."* (Uploaded image showing a red downhill ski line running down the wilderness face of Mount of the Holy Cross).
-- **Cartographic Hierarchy & Regional Prominence ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Cartographic Hierarchy & Regional Prominence ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Suppress Regional Peaks**: Raised `major-peaks-label` `minzoom` from 7.5 to `12.0` and `major-peaks-marker` from 7.5 to `11.5`. Peaks only render when zoomed in to explore local mountains and terrain, completely eliminating peak clutter at regional zoom levels (zoom 6–11.4).
   - **Elevate Ski Area Labels**: Upgraded `resorts-labels` and `global-unclustered-label`:
     - Font: Upgraded to `Open Sans Bold` / `Arial Unicode MS Bold`.
     - Dynamic sizing: Interpolated smoothly across zoom (`6: 12px`, `9: 13.5px`, `12: 15px`, `15: 17px`).
     - High-contrast halo: Increased `text-halo-width` to `2.8px` with `0.5px` blur in `#FAF8F3`.
     - Priority rendering: Set `symbol-sort-key: 1` (curated) and `2` (global) with `symbol-sort-key: 10` for peaks, ensuring resort labels never yield or collide.
-- **Wild Backcountry Trail Elimination ([`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Wild Backcountry Trail Elimination ([`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Excluded Wilderness Pistes**: Snow Globe is an atlas of ski resorts. Excluded `skitour`, `backcountry`, `fatbike`, `hike`, `sled`, and `playground` pistes.
   - **Isolated Resort Boundaries**: Wilderness routes tagged with `grooming=backcountry` or `piste:type=skitour` without any ski resort association (`resort_id IS NULL` and > 6km from any resort) are strictly filtered out in `trailsPlugin.ts`, in client ingest `fetchOverpassBbox`, and in MapLibre GPU `nonSkiExclusion`.
   - In-bounds freeride terrain inside ski resorts (e.g. *Saudan Couloir* at Whistler Blackcomb or *East Face* at Snowbird) remains fully rendered.
   - Mount of the Holy Cross now displays 0 ski trails.
-- **Geodetic Summit Benchmark Reconciliation ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson))**:
+- **Geodetic Summit Benchmark Reconciliation ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson))**:
   - Identified that 115 Colorado peaks in `major_peaks.geojson` had truncated arcminute coordinates ($1/60^\circ \approx 0.0167^\circ$), displacing them by 200m to 3.9km from true geography.
   - Reconciled all 115 peaks against official USGS GNIS / OpenStreetMap surveyed geodetic benchmarks:
     - **New York Peak**: Corrected from `[-106.683, 39.0833]` (displaced 1,063m into valley) $\rightarrow$ exact summit benchmark `[-106.693318, 39.085837]`.
@@ -3172,7 +3172,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Earlier today, when Open-Meteo returned `HTTP 429` (Rate Limit Exceeded), the emergency fallback generator synthesized seasonal estimates (e.g. `23.8"` for Snowbird) to keep the UI functional.
   - However, `saveCachedWeather()` saved both genuine API data and synthetic fallback data under the same 24-hour cache key (`skiatlas_wx_v2_`).
   - When Open-Meteo's daily limit reset at 00:00 UTC, `isCachedWeatherFresh()` saw the fallback in `localStorage` as "fresh" and skipped querying Open-Meteo, locking Snow Globe into displaying synthetic numbers instead of the genuine live forecast.
-- **Architectural Resolution ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/weather.ts))**:
+- **Architectural Resolution ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/services/weather.ts))**:
   - **`isRealApi` Provenance Tracking**: Added `isRealApi: boolean` to cached payloads. Only authentic `HTTP 200` responses from `api.open-meteo.com` are marked as `isRealApi: true`.
   - **Fallback Never Caches as Fresh**: Fallback estimates are strictly in-memory stopgaps during active network failures or 429 rate limits; they are never treated as fresh 24h forecasts.
   - **Cache Version Bump (`skiatlas_wx_v3_`)**: Invalidated legacy fallback entries from earlier today across all user sessions.
@@ -3225,11 +3225,11 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **User Intent & Problem Context**:
   - The user observed that the generic Open-Meteo docs page did not automatically highlight snow variables, lacked the mountain's name, and created visual clutter: *"Those openmeteo forecasts are not matching what I see on the site. The site also does not automatically select snow. And there is no name for the location on the site. If you can click the snow and link to the site, this is not necessary either. Drop this openmeteo link."*
 - **Clean Editorial Restoration**:
-  - **`ResortCard.tsx` ([`src/components/sidebar/ResortCard.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/ResortCard.tsx))**:
+  - **`ResortCard.tsx` ([`src/components/sidebar/ResortCard.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/ResortCard.tsx))**:
     - Reverted the 7-day snow chip to a clean, non-linking badge without external link icons.
     - Removed the `[ Open-Meteo ↗ ]` action button from the selected card drawer, leaving only the primary `[ Deselect ]` and `[ Mountain Profile > ]` actions.
     - Removed unused `ExternalLink` icon import.
-  - **`MountainProfile.tsx` ([`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx))**:
+  - **`MountainProfile.tsx` ([`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx))**:
     - Removed the `Open-Meteo ↗` link from the `Summit Meteorology` header, keeping the focus entirely on the domain meteorology bars and metrics.
 - **Verification via Headless Chrome CDP**:
   - Verified on resort cards that snow chips and selected card action rows have 0 external Open-Meteo links.
@@ -3276,7 +3276,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **User Intent & Problem Context**:
   - The user requested: *"Can we link to the openmeteo page on the card (I assume there is an associated page)?"*
   - Users inspecting ski areas want quick one-click access to the full Open-Meteo meteorological models, hourly wind/temperature charts, and synoptic details for that specific mountain coordinate.
-- **Direct Coordinate Deep Links ([`src/components/sidebar/ResortCard.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/ResortCard.tsx), [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx))**:
+- **Direct Coordinate Deep Links ([`src/components/sidebar/ResortCard.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/ResortCard.tsx), [`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx))**:
   - **Forecast Chip Deep Link**:
     - Converted the 7-day snow chip on resort cards into an interactive external link:
       `https://open-meteo.com/en/docs?latitude=${lat}&longitude=${lng}`
@@ -3333,14 +3333,14 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - The user instructed: *"Once a day is more than enough. Let's not ever hammer openmeteo again."*
   - Previously, caching was set to 2 hours, and failed or rate-limited requests still permitted subsequent requests in the loop to fire, risking quota exhaustion on dev reloads and multiple sessions.
 - **Architectural Safeguards & 24-Hour Rate Policy**:
-  - **24-Hour Cache TTL ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/weather.ts))**:
+  - **24-Hour Cache TTL ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/services/weather.ts))**:
     - Changed `CACHE_TTL_MS` from 2 hours to 24 hours (`24 * 60 * 60 * 1000`). Once a forecast is cached for a resort, zero network requests will be made for that resort for the next 24 hours.
     - Verified in CDP that upon page reload, total network requests fired to Open-Meteo is **0**.
-  - **Automatic 24-Hour Circuit Breaker ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/weather.ts))**:
+  - **Automatic 24-Hour Circuit Breaker ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/services/weather.ts))**:
     - Added persistent circuit breaker (`isWeatherCircuitTripped()`, `tripWeatherCircuit()`).
     - If Open-Meteo ever returns `HTTP 429` (Too Many Requests), `400` with rate limit text, or if an API error mentions limits, the circuit breaker immediately trips for 24 hours.
     - While tripped, all subsequent calls across the app bypass the network entirely and instantly serve cached or deterministic fallback forecasts.
-  - **Prefetch Loop Termination ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **Prefetch Loop Termination ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - `prefetchAll` checks `isWeatherCircuitTripped()` before starting and between batches. If the breaker is active or trips mid-run, the loop terminates immediately (`break`), preventing any further requests from being sent.
 - **Verification**:
   - Monitored network traffic via CDP on page reload: confirmed 0 requests made when cached.
@@ -3399,12 +3399,12 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   3. **Duplicate Broken Startup Batch Fetch**:
      - A secondary `batchFetchWeather` effect at line 2544 only queried 20 resorts, only computed `snowfall_72h_in`, omitted `snowfall_7d_in`, mapped by fragile array index, and overwrote state with `snowfall_7d_in: 0`.
 - **Systematic Solution & Architecture**:
-  - **`weather.ts` ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/services/weather.ts))**:
+  - **`weather.ts` ([`src/services/weather.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/services/weather.ts))**:
     - **Client-Side Cache (`localStorage`, 2-hr TTL)**: Added `getCachedWeather()`, `saveCachedWeather()`, and `isCachedWeatherFresh()`. Freshly cached weather is returned immediately with 0ms latency, reducing daily API calls by >95% and eliminating rate limit exhaustion.
     - **Deterministic Seasonal Fallback Synthesis**: Added `generateFallbackForecast()` which derives realistic 7-day storm cycles, elevation-based freezing levels, and daily snowfall distributions based on resort annual snowfall (`avg_snowfall_in`), summit elevation, and seasonal factor.
     - **Startup Initializer**: Added `getInitialWeather()` so resort cards immediately render their 7-day snowfall chips on the very first frame without blank flashes or layout shifting.
     - **Graceful Network Degradation**: If Open-Meteo returns HTTP 429 or network errors, `fetchLiveWeather` falls back to cached data or seasonal synoptic forecasts with `is_live: true`.
-  - **`App.tsx` ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+  - **`App.tsx` ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
     - Initialized `resorts` state with `getInitialWeather(r)` for immediate startup card display.
     - Updated `fetchGlobal()` to preserve existing weather using a `Map<string, ResortWeatherData>()` from `prev` state instead of resetting to neutral.
     - Removed the broken duplicate `batchFetchWeather` effect entirely.
@@ -3456,18 +3456,18 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - On resort cards in the directory list (e.g. `黒伏高原スノーパーク　ジャングル・ジャングル, Kurobushi Kogen Snow Park Jangle Jungle`), long titles and locations were clipped with ellipses (`Ku...` and `Yamagata Prefecture...`) due to `truncate` forcing single-line overflow.
   - In addition, the ski category badge (`⛷️`) wrapped onto its own line below the clipped name.
 - **Natural Wrapping & Inline Badge Layout**:
-  - **`ResortCard.tsx` ([`src/components/sidebar/ResortCard.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/ResortCard.tsx))**:
+  - **`ResortCard.tsx` ([`src/components/sidebar/ResortCard.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/ResortCard.tsx))**:
     - Replaced `truncate` on `h3` with `break-words leading-snug`, allowing multi-line bilingual and descriptive resort names to wrap naturally without running out of frame or clipping with ellipses.
     - Moved the category badge (`⛷️`) and pass network pills (`Ikon`, etc.) inline inside the `h3` using `inline-flex align-middle ml-1.5`, so they sit neatly at the end of the title text instead of being orphaned on an extra row.
     - Replaced `truncate` on the location line (`Yamagata Prefecture, Japan`) with `break-words leading-tight`.
     - Allowed mountain stats to flex-wrap cleanly (`flex flex-wrap items-center gap-x-1.5 gap-y-0.5`).
-  - **`MountainProfile.tsx` ([`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/profile/MountainProfile.tsx))**:
+  - **`MountainProfile.tsx` ([`src/components/profile/MountainProfile.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/profile/MountainProfile.tsx))**:
     - Removed `truncate` from the profile header `h2`, enabling `break-words leading-snug`.
-  - **`RegionalLocator.tsx` ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx))**:
+  - **`RegionalLocator.tsx` ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx))**:
     - Removed `truncate` from the pinned resort banner title and region/country metadata, allowing clean multi-line display.
-  - **`MobileSheet.tsx` ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/MobileSheet.tsx))**:
+  - **`MobileSheet.tsx` ([`src/components/sidebar/MobileSheet.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/MobileSheet.tsx))**:
     - Replaced `truncate` on mobile header with `break-words leading-snug`.
-- **Verification via Headless Chrome CDP ([`scripts/capture_card_clip.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/capture_card_clip.cjs))**:
+- **Verification via Headless Chrome CDP ([`scripts/capture_card_clip.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/capture_card_clip.cjs))**:
   - Verified that `黒伏高原スノーパーク　ジャングル・ジャングル, Kurobushi Kogen Snow Park Jangle Jungle` displays in full across two lines with the `⛷️` badge tucked at the end, and `Yamagata Prefecture, Japan` displays in full with zero truncation.
   - Production build clean (`npm run build` passed in 329ms).
 
@@ -3512,7 +3512,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **User Intent & Problem Context**:
   - Previously, clicking the top-left regional locator button (`[ 🧭 Yamagata Prefecture ]`) opened the inset map popup at `top-10`, leaving the trigger button floating above the window.
   - In addition, long region names (e.g. `Yamagata Prefecture`) rendered inside the preset buttons overflowed the header and truncated the title to `Reg...`.
-- **Top-Aligned Cartographic Pop-Out Window ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx))**:
+- **Top-Aligned Cartographic Pop-Out Window ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx))**:
   - **Cover Button & Top-Align**: Changed popup positioning from `top-10` to `top-0 left-0`, aligning the top edge of the inset map window with `NavigationControls` (`+` button) and completely covering the button while open.
   - **Placeholder Layout Stability**: While open, the underlying trigger button becomes `invisible pointer-events-none`, keeping its exact layout width in the flex header row so adjacent controls never shift.
   - **Tactile Pop-Out Animation**: Added `origin-top-left transition-all duration-200 animate-in fade-in-0 zoom-in-95`, giving the window a tactile expanding pop-out effect directly from the button upon press.
@@ -3520,7 +3520,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Comprehensive Outside-Click & Escape Dismissal**:
     - Listening to both `pointerdown` and `mousedown` outside the menu ref ensures clicking anywhere on the main map, zoom buttons, or sidebar immediately dismisses the popup window and smoothly reveals the compact button.
     - Added `Escape` key listener to close the window instantly.
-- **Verification via Headless Chrome CDP ([`scripts/test_locator_top_aligned.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/test_locator_top_aligned.cjs), [`scripts/test_locator_escape.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/test_locator_escape.cjs))**:
+- **Verification via Headless Chrome CDP ([`scripts/test_locator_top_aligned.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/test_locator_top_aligned.cjs), [`scripts/test_locator_escape.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/test_locator_escape.cjs))**:
   - Verified that on open, the window top-aligns at `top-0 left-0` and covers the button with full header readability.
   - Verified dismissal on `✕` click, outside canvas click, and `Escape` key press.
   - Clean build verified with `npm run build` (324ms).
@@ -3565,7 +3565,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `feat: global mountain peaks overhaul with hybrid prominence filtering and authoritative geodetic survey benchmarks`
 - **Systematic Problem Diagnosis**:
   - The previous raw scrape from `open-peaks/data` contained over 410 peaks with coordinates truncated to whole arcminutes without seconds ($\pm 1.5\text{ km}$ displacement error worldwide), along with low-elevation noise (Hong Kong city hills, sea stacks, road culverts) and corrupted scraper values (e.g. latitude/longitude 0).
-- **Hybrid Prominence & Geodetic Benchmark Overhaul ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson))**:
+- **Hybrid Prominence & Geodetic Benchmark Overhaul ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson))**:
   1. **Topographic Prominence & Noise Elimination**:
      - Filtered out 358 non-mountain entries below $4,000\text{ ft}$ while strictly preserving whitelisted iconic ski resort summits (Mount Mansfield, Killington, Whiteface, Ben Nevis, Åreskutan, Hemsedal, etc.) and global horizon landmarks (Table Mountain, Mount Taranaki).
      - Purged corrupted entries with latitude or longitude of 0 (e.g., `Wutai Shan`, `Yulong Xue Shan`, `Nilkantha`) and generic un-named numbers (`Peak 7480`).
@@ -3624,7 +3624,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: At the Ötztal Alps border between Austria (Tyrol) and Italy (South Tyrol), `Hinterer Seelenkogel` ($11,385'$) was displaced $\approx 450\text{ meters}$ to the southeast down an alpine bowl (`[11.05, 46.8]`), visibly detached from the official OpenStreetMap/OpenTopoMap summit marker on the international ridge line (`[11.044444, 46.801389]`).
   - **The Truncation Pattern**: `11.05` ($11^\circ 03'$) and `46.8` ($46^\circ 48'$) were rounded to whole arcminutes without arcseconds during the original Wikipedia scrape.
-- **Cartographic Precision Correction ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson))**:
+- **Cartographic Precision Correction ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson))**:
   - Coordinates updated from `[11.05, 46.8]` to official surveyed border summit node: **`[11.044444, 46.801389]`** ($3,470\text{ m}$ / $11,385\text{ ft}$).
   - The vermilion peak pin now aligns directly with OpenTopoMap's surveyed peak triangle on the Tirol/Südtirol border ridge.
 
@@ -3672,7 +3672,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - "Mount Madoriama" is not a real mountain; it is the obstacle course tower from the Japanese television special *Sasuke* / *American Ninja Warrior* (Mt. Midoriyama) that was scraped from Wikipedia into `open-peaks/data`.
     - An automated audit of `public/data/major_peaks.geojson` identified 28 corrupted peaks under 1,000 ft, including famous 12,000–18,000 ft volcanoes with botched scrape elevations (e.g., `Mount Rinjani` listed at 13 ft instead of 12,224 ft, `Antisana` listed at 16 ft instead of 18,875 ft, `Mount Baloy` at 7 ft), as well as road culverts and flat state high points (e.g., Delaware's 443 ft `Ebright Azimuth`, Florida's 344 ft `Britton Hill`).
     - Furthermore, over 410 peaks in the dataset possess coordinates truncated to whole arcminutes, causing $\pm 1.5\text{ km}$ displacement off actual mountain summits worldwide.
-- **Immediate Fix ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson))**:
+- **Immediate Fix ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson))**:
   - Purged `peak-199` (Mount Madoriama, 2,999 ft) and all 28 corrupted sub-1,000 ft entries, reducing total features from 3,002 to 2,973.
 - **Systematic Architecture Proposed**:
   - Outlined automated DEM summit-snapping via raster local-maximum hill climbing, prominence filtering ($\ge 1,000\text{ ft}$ / $300\text{ m}$), and migration to authoritative geodetic survey benchmarks (USGS GNIS, Swisstopo, Andrew Kirmse Global Prominence) to permanently end manual coordinate fixes.
@@ -3724,12 +3724,12 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - At close zoom (z=15), the camera is only a few hundred meters from the mountain face. Having an orbit pivot floating high above the ground creates a long tangential lever arm: dragging the mouse rotates the camera around empty air, causing the mountain below to sweep wildly across the screen with extreme parallax error.
     - Furthermore, un-clamped raycasting ignores the vertical exaggeration scaling factor (0.70x), exaggerating the disconnect between mouse input and ground motion.
     - On full page reload, MapLibre initializes with native ground clamping enabled (`_centerClampedToGround = true`), which immediately re-anchors the pivot directly onto the mountain surface—matching the user's observation that page reload fixed the feel.
-- **Implementation Fix ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Implementation Fix ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Immediate Clamping Restoration in `stopFlight()`**:
     - Re-enabled `(mapRef.current as any)?.setCenterClampedToGround?.(true)` the moment keyboard flight ceases (key release, blur, or programmatic interrupt).
   - **Guaranteed Clamping on Mouse & Pointer Events (`onCanvasMouseInteraction`)**:
     - Added explicit defensive call to `(mapRef.current as any)?.setCenterClampedToGround?.(true)` inside `onCanvasMouseInteraction` for all `mousedown`, `pointerdown`, and `wheel` events on the canvas container, ensuring ground clamping is active before MapLibre's `HandlerManager` starts `dragRotate`, `dragPan`, or `scrollZoom`.
-- **Verification via Headless Chrome CDP ([`scripts/test_mouse_clamp_tightness.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/test_mouse_clamp_tightness.cjs))**:
+- **Verification via Headless Chrome CDP ([`scripts/test_mouse_clamp_tightness.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/test_mouse_clamp_tightness.cjs))**:
   - Validated camera state before, during, and after flight at Vail Mountain (`z=15.5`, `pitch=65°`):
     1. Pre-flight right-click drag: `clamped: true`, `centerElev: 1897m`, `terrain: 1897m` (tight pivot).
     2. During flight: un-clamped cruise holding altitude smoothly.
@@ -3777,7 +3777,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In Colorado's Flat Tops Wilderness, `Derby Peak` ($12,185'$) had coordinates of `[-107.117, 39.9667]`. The vermilion summit dot was displaced by $1.05\text{ km}$ to the southeast, dropping off the 1,500-foot vertical basalt cliff escarpment and landing down in the spruce/fir forest floor at the base of the mountain rather than on the summit crest.
   - **The Scraper Mechanism**: The coordinate `39.9667, -107.117` corresponds exactly to $39^\circ 58' \text{N}, 107^\circ 07' \text{W}$ (whole arcminutes without seconds). At $40^\circ\text{N}$, $1'$ of latitude is $\approx 1.85\text{ km}$ and $1'$ of longitude is $\approx 1.42\text{ km}$. Rounding to whole arcminutes shifted Derby Peak 767 meters south and 710 meters east directly off the plateau rim.
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Derby Peak Corrected**:
     - Coordinates updated to official USGS GNIS geodetic surveyed summit benchmark: **`[-107.125329, 39.973596]`**.
     - The vermilion summit marker now clamps cleanly onto the physical summit crest of Derby Peak above the amphitheater and snow patch at the top of the Flat Tops plateau.
@@ -3842,7 +3842,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In the Bernese Alps, `Blüemlisalphorn` was misspelled as `Blemlisalphorn` with an elevation of $12,008'$ and coordinates of `[7.76667, 46.5]`. The vermilion summit dot was placed directly onto the crevassed icefield of the Blüemlisalpgletscher glacier, approximately $1.31\text{ km}$ north-northwest of its true summit ridge.
   - **The Scraper Mechanism**: The original Wikipedia scrape converted coordinates recorded as `46° 30′ N, 7° 46′ E` ($46.5^\circ, 7.76667^\circ$), omitting seconds. $1'$ of latitude in the Bernese Oberland is $\approx 1.85\text{ km}$. Rounding to whole arcminutes shifted the summit dot 1,230 meters north into the glacier basin. In addition, the German umlaut "ü" was stripped into "e" (`Blemlisalphorn`).
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Blüemlisalphorn Corrected**:
     - Name updated to official Swiss German toponym: **`Blüemlisalphorn`** (Blümlisalp).
     - Coordinates updated to swisstopo official geodetic surveyed summit node: **`[7.772511, 46.488896]`** (snaps directly onto the prominent rock pinnacle summit horn).
@@ -3922,7 +3922,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In Colorado's Flat Tops Wilderness, `Derby Peak` ($12,185'$) had coordinates of `[-107.117, 39.9667]`. The vermilion summit dot was displaced by $1.05\text{ km}$ to the southeast, dropping off the 1,500-foot vertical basalt cliff escarpment and landing down in the spruce/fir forest floor at the base of the mountain rather than on the summit crest.
   - **The Scraper Mechanism**: The coordinate `39.9667, -107.117` corresponds exactly to $39^\circ 58' \text{N}, 107^\circ 07' \text{W}$ (whole arcminutes without seconds). At $40^\circ\text{N}$, $1'$ of latitude is $\approx 1.85\text{ km}$ and $1'$ of longitude is $\approx 1.42\text{ km}$. Rounding to whole arcminutes shifted Derby Peak 767 meters south and 710 meters east directly off the plateau rim.
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Derby Peak Corrected**:
     - Coordinates updated to official USGS GNIS geodetic surveyed summit benchmark: **`[-107.125329, 39.973596]`**.
     - The vermilion summit marker now clamps cleanly onto the physical summit crest of Derby Peak above the amphitheater and snow patch at the top of the Flat Tops plateau.
@@ -3989,7 +3989,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #1 (Continuously Chasing Underlying Ground Height)**: In `src/App.tsx`, the flight engine sampled `rawGround` under the moving center coordinate on every frame and computed `diff = targetGroundElev - smoothedElevation`. When flying over valleys, ravines, or bowls, `diff` was negative, forcing `smoothedElevation` to plunge down towards the valley floor; when reaching the opposite ridge, `diff` was positive, forcing `smoothedElevation` to climb back up. Even though low-pass exponential damping was applied, the target was still following the ground contour, causing constant vertical bouncing.
   - **Root Cause #2 (Keyup Settle & Ground Snap)**: Releasing navigation keys initiated a 400ms settle phase that pulled the elevation down to `map.queryTerrainElevation(center)` and called `setCenterClampedToGround(true)`. This dropped the camera down to the dirt whenever the user paused flying, and subsequent flights immediately started on the ground again.
   - **Root Cause #3 (Idle Elevation Pull)**: While adjusting pitch (W/S) or bearing (A/D) without horizontal motion, the flight loop continuously damped any difference between `smoothedElevation` and `rawGround`, pulling the camera down into the ground.
-- **Steady-Altitude Flight Architecture ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Steady-Altitude Flight Architecture ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Steady Altitude Rule (Cruise when well above ground)**: When `flightElevation` is at or above the required ground clearance (`minAllowedElevation = rawGround + MIN_CLEARANCE`), the flight loop now **completely ignores the ground height** below. `deltaElevation` remains $0$, maintaining a perfectly level, steady flight trajectory across valleys, lakes, ravines, and descending bowls.
   - **Minimum Height Rule (Terrain Clearance Protection)**: If approaching rising terrain, a mountain ridge, or a summit where `minAllowedElevation > flightElevation`, the flight loop smoothly lifts the altitude (`climbDelta = minAllowedElevation - flightElevation`) with an exponential response curve ($1 - e^{-6.0 \cdot dt}$) and an absolute floor to guarantee the camera never clips into or tunnels under the mountain.
   - **Eliminated Ground Snapping & Settle Drop**: Removed the keyup settle phase and removed `setCenterClampedToGround(true)` from `stopFlight()`. Stopping flight now holds the exact coordinates and altitude where the user released the keys.
@@ -4044,7 +4044,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In Colorado's Flat Tops Wilderness, `Derby Peak` ($12,185'$) had coordinates of `[-107.117, 39.9667]`. The vermilion summit dot was displaced by $1.05\text{ km}$ to the southeast, dropping off the 1,500-foot vertical basalt cliff escarpment and landing down in the spruce/fir forest floor at the base of the mountain rather than on the summit crest.
   - **The Scraper Mechanism**: The coordinate `39.9667, -107.117` corresponds exactly to $39^\circ 58' \text{N}, 107^\circ 07' \text{W}$ (whole arcminutes without seconds). At $40^\circ\text{N}$, $1'$ of latitude is $\approx 1.85\text{ km}$ and $1'$ of longitude is $\approx 1.42\text{ km}$. Rounding to whole arcminutes shifted Derby Peak 767 meters south and 710 meters east directly off the plateau rim.
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Derby Peak Corrected**:
     - Coordinates updated to official USGS GNIS geodetic surveyed summit benchmark: **`[-107.125329, 39.973596]`**.
     - The vermilion summit marker now clamps cleanly onto the physical summit crest of Derby Peak above the amphitheater and snow patch at the top of the Flat Tops plateau.
@@ -4109,7 +4109,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In the Bernese Alps, `Blüemlisalphorn` was misspelled as `Blemlisalphorn` with an elevation of $12,008'$ and coordinates of `[7.76667, 46.5]`. The vermilion summit dot was placed directly onto the crevassed icefield of the Blüemlisalpgletscher glacier, approximately $1.31\text{ km}$ north-northwest of its true summit ridge.
   - **The Scraper Mechanism**: The original Wikipedia scrape converted coordinates recorded as `46° 30′ N, 7° 46′ E` ($46.5^\circ, 7.76667^\circ$), omitting seconds. $1'$ of latitude in the Bernese Oberland is $\approx 1.85\text{ km}$. Rounding to whole arcminutes shifted the summit dot 1,230 meters north into the glacier basin. In addition, the German umlaut "ü" was stripped into "e" (`Blemlisalphorn`).
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Blüemlisalphorn Corrected**:
     - Name updated to official Swiss German toponym: **`Blüemlisalphorn`** (Blümlisalp).
     - Coordinates updated to swisstopo official geodetic surveyed summit node: **`[7.772511, 46.488896]`** (snaps directly onto the prominent rock pinnacle summit horn).
@@ -4189,7 +4189,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In Colorado's Flat Tops Wilderness, `Derby Peak` ($12,185'$) had coordinates of `[-107.117, 39.9667]`. The vermilion summit dot was displaced by $1.05\text{ km}$ to the southeast, dropping off the 1,500-foot vertical basalt cliff escarpment and landing down in the spruce/fir forest floor at the base of the mountain rather than on the summit crest.
   - **The Scraper Mechanism**: The coordinate `39.9667, -107.117` corresponds exactly to $39^\circ 58' \text{N}, 107^\circ 07' \text{W}$ (whole arcminutes without seconds). At $40^\circ\text{N}$, $1'$ of latitude is $\approx 1.85\text{ km}$ and $1'$ of longitude is $\approx 1.42\text{ km}$. Rounding to whole arcminutes shifted Derby Peak 767 meters south and 710 meters east directly off the plateau rim.
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Derby Peak Corrected**:
     - Coordinates updated to official USGS GNIS geodetic surveyed summit benchmark: **`[-107.125329, 39.973596]`**.
     - The vermilion summit marker now clamps cleanly onto the physical summit crest of Derby Peak above the amphitheater and snow patch at the top of the Flat Tops plateau.
@@ -4257,7 +4257,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     2. **Wikipedia disambiguation suffix artifact**: Silberhorn appeared as `▲ Silberhorn (Alps) · 12,123'` because the upstream open peaks dataset retained raw Wikipedia article titles intended to disambiguate against `Silberhorn (New Zealand)`. Across the dataset, 56 features suffered from parenthetical disambiguations (`Storm Mountain (Kananaskis)`, `Breithorn (Simplon)`) or inverted Romance toponyms (`Canali (Cima)`, `Castello (Torre)`, `Nero (Monte)`, `Roma (Punta)`).
     3. **Legacy elevation conversion mismatch**: Mönch was scraped with `elevation_m: 4107` and `elevation_ft: 13448`. $4,107\text{ m} \times 3.28084 = 13,474\text{ ft}$, but English Wikipedia retained an outdated 19th-century $4,099\text{ m}$ figure ($13,448'$) in text. Across the dataset, 47 features exhibited severe elevation discrepancies (e.g., Mount Kanlaon listed at 8 ft instead of 8,038 ft; Säntis at 7 ft instead of 8,209 ft; Dreiherrnspitze at 1,066 ft instead of 11,476 ft; Siula Grande at 2,115 ft instead of 20,814 ft).
   - **The Scraper Mechanism**: The original upstream repository (`open-peaks/data`) scraped Wikipedia infoboxes. Older Wikipedia articles entered coordinates as `{{coord|46|34|N|7|59|E}}` (degrees and minutes only, omitting seconds). Because $1'$ of latitude is $\sim 1.85\text{ km}$ ($1\text{ nautical mile}$) and $1'$ of longitude at $46^\circ\text{N}$ is $\sim 1.28\text{ km}$, truncating seconds placed summits into valleys, glaciers, and neighboring slopes.
-- **Cartographic & Data Pipeline Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic & Data Pipeline Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Cleaned All 56 Toponymic Artifacts**:
     - Disambiguations removed: `Silberhorn (Alps)` $\to$ `Silberhorn`, `Storm Mountain (Kananaskis)` $\to$ `Storm Mountain`, `Point Lookout (New South Wales)` $\to$ `Point Lookout`, `Denali (Mount McKinley)` $\to$ `Denali`, `Borah Peak (Mount Borah)` $\to$ `Borah Peak`.
     - Distinct geographic peaks given proper toponyms: `Breithorn (Simplon)` $\to$ `Simplon-Breithorn`.
@@ -4339,7 +4339,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In Colorado's Flat Tops Wilderness, `Derby Peak` ($12,185'$) had coordinates of `[-107.117, 39.9667]`. The vermilion summit dot was displaced by $1.05\text{ km}$ to the southeast, dropping off the 1,500-foot vertical basalt cliff escarpment and landing down in the spruce/fir forest floor at the base of the mountain rather than on the summit crest.
   - **The Scraper Mechanism**: The coordinate `39.9667, -107.117` corresponds exactly to $39^\circ 58' \text{N}, 107^\circ 07' \text{W}$ (whole arcminutes without seconds). At $40^\circ\text{N}$, $1'$ of latitude is $\approx 1.85\text{ km}$ and $1'$ of longitude is $\approx 1.42\text{ km}$. Rounding to whole arcminutes shifted Derby Peak 767 meters south and 710 meters east directly off the plateau rim.
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Derby Peak Corrected**:
     - Coordinates updated to official USGS GNIS geodetic surveyed summit benchmark: **`[-107.125329, 39.973596]`**.
     - The vermilion summit marker now clamps cleanly onto the physical summit crest of Derby Peak above the amphitheater and snow patch at the top of the Flat Tops plateau.
@@ -4404,7 +4404,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In the Bernese Alps, `Blüemlisalphorn` was misspelled as `Blemlisalphorn` with an elevation of $12,008'$ and coordinates of `[7.76667, 46.5]`. The vermilion summit dot was placed directly onto the crevassed icefield of the Blüemlisalpgletscher glacier, approximately $1.31\text{ km}$ north-northwest of its true summit ridge.
   - **The Scraper Mechanism**: The original Wikipedia scrape converted coordinates recorded as `46° 30′ N, 7° 46′ E` ($46.5^\circ, 7.76667^\circ$), omitting seconds. $1'$ of latitude in the Bernese Oberland is $\approx 1.85\text{ km}$. Rounding to whole arcminutes shifted the summit dot 1,230 meters north into the glacier basin. In addition, the German umlaut "ü" was stripped into "e" (`Blemlisalphorn`).
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Blüemlisalphorn Corrected**:
     - Name updated to official Swiss German toponym: **`Blüemlisalphorn`** (Blümlisalp).
     - Coordinates updated to swisstopo official geodetic surveyed summit node: **`[7.772511, 46.488896]`** (snaps directly onto the prominent rock pinnacle summit horn).
@@ -4484,7 +4484,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In Colorado's Flat Tops Wilderness, `Derby Peak` ($12,185'$) had coordinates of `[-107.117, 39.9667]`. The vermilion summit dot was displaced by $1.05\text{ km}$ to the southeast, dropping off the 1,500-foot vertical basalt cliff escarpment and landing down in the spruce/fir forest floor at the base of the mountain rather than on the summit crest.
   - **The Scraper Mechanism**: The coordinate `39.9667, -107.117` corresponds exactly to $39^\circ 58' \text{N}, 107^\circ 07' \text{W}$ (whole arcminutes without seconds). At $40^\circ\text{N}$, $1'$ of latitude is $\approx 1.85\text{ km}$ and $1'$ of longitude is $\approx 1.42\text{ km}$. Rounding to whole arcminutes shifted Derby Peak 767 meters south and 710 meters east directly off the plateau rim.
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Derby Peak Corrected**:
     - Coordinates updated to official USGS GNIS geodetic surveyed summit benchmark: **`[-107.125329, 39.973596]`**.
     - The vermilion summit marker now clamps cleanly onto the physical summit crest of Derby Peak above the amphitheater and snow patch at the top of the Flat Tops plateau.
@@ -4551,7 +4551,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #1 (Continuously Chasing Underlying Ground Height)**: In `src/App.tsx`, the flight engine sampled `rawGround` under the moving center coordinate on every frame and computed `diff = targetGroundElev - smoothedElevation`. When flying over valleys, ravines, or bowls, `diff` was negative, forcing `smoothedElevation` to plunge down towards the valley floor; when reaching the opposite ridge, `diff` was positive, forcing `smoothedElevation` to climb back up. Even though low-pass exponential damping was applied, the target was still following the ground contour, causing constant vertical bouncing.
   - **Root Cause #2 (Keyup Settle & Ground Snap)**: Releasing navigation keys initiated a 400ms settle phase that pulled the elevation down to `map.queryTerrainElevation(center)` and called `setCenterClampedToGround(true)`. This dropped the camera down to the dirt whenever the user paused flying, and subsequent flights immediately started on the ground again.
   - **Root Cause #3 (Idle Elevation Pull)**: While adjusting pitch (W/S) or bearing (A/D) without horizontal motion, the flight loop continuously damped any difference between `smoothedElevation` and `rawGround`, pulling the camera down into the ground.
-- **Steady-Altitude Flight Architecture ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Steady-Altitude Flight Architecture ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Steady Altitude Rule (Cruise when well above ground)**: When `flightElevation` is at or above the required ground clearance (`minAllowedElevation = rawGround + MIN_CLEARANCE`), the flight loop now **completely ignores the ground height** below. `deltaElevation` remains $0$, maintaining a perfectly level, steady flight trajectory across valleys, lakes, ravines, and descending bowls.
   - **Minimum Height Rule (Terrain Clearance Protection)**: If approaching rising terrain, a mountain ridge, or a summit where `minAllowedElevation > flightElevation`, the flight loop smoothly lifts the altitude (`climbDelta = minAllowedElevation - flightElevation`) with an exponential response curve ($1 - e^{-6.0 \cdot dt}$) and an absolute floor to guarantee the camera never clips into or tunnels under the mountain.
   - **Eliminated Ground Snapping & Settle Drop**: Removed the keyup settle phase and removed `setCenterClampedToGround(true)` from `stopFlight()`. Stopping flight now holds the exact coordinates and altitude where the user released the keys.
@@ -4606,7 +4606,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In Colorado's Flat Tops Wilderness, `Derby Peak` ($12,185'$) had coordinates of `[-107.117, 39.9667]`. The vermilion summit dot was displaced by $1.05\text{ km}$ to the southeast, dropping off the 1,500-foot vertical basalt cliff escarpment and landing down in the spruce/fir forest floor at the base of the mountain rather than on the summit crest.
   - **The Scraper Mechanism**: The coordinate `39.9667, -107.117` corresponds exactly to $39^\circ 58' \text{N}, 107^\circ 07' \text{W}$ (whole arcminutes without seconds). At $40^\circ\text{N}$, $1'$ of latitude is $\approx 1.85\text{ km}$ and $1'$ of longitude is $\approx 1.42\text{ km}$. Rounding to whole arcminutes shifted Derby Peak 767 meters south and 710 meters east directly off the plateau rim.
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Derby Peak Corrected**:
     - Coordinates updated to official USGS GNIS geodetic surveyed summit benchmark: **`[-107.125329, 39.973596]`**.
     - The vermilion summit marker now clamps cleanly onto the physical summit crest of Derby Peak above the amphitheater and snow patch at the top of the Flat Tops plateau.
@@ -4671,7 +4671,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In the Bernese Alps, `Blüemlisalphorn` was misspelled as `Blemlisalphorn` with an elevation of $12,008'$ and coordinates of `[7.76667, 46.5]`. The vermilion summit dot was placed directly onto the crevassed icefield of the Blüemlisalpgletscher glacier, approximately $1.31\text{ km}$ north-northwest of its true summit ridge.
   - **The Scraper Mechanism**: The original Wikipedia scrape converted coordinates recorded as `46° 30′ N, 7° 46′ E` ($46.5^\circ, 7.76667^\circ$), omitting seconds. $1'$ of latitude in the Bernese Oberland is $\approx 1.85\text{ km}$. Rounding to whole arcminutes shifted the summit dot 1,230 meters north into the glacier basin. In addition, the German umlaut "ü" was stripped into "e" (`Blemlisalphorn`).
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Blüemlisalphorn Corrected**:
     - Name updated to official Swiss German toponym: **`Blüemlisalphorn`** (Blümlisalp).
     - Coordinates updated to swisstopo official geodetic surveyed summit node: **`[7.772511, 46.488896]`** (snaps directly onto the prominent rock pinnacle summit horn).
@@ -4751,7 +4751,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: In Colorado's Flat Tops Wilderness, `Derby Peak` ($12,185'$) had coordinates of `[-107.117, 39.9667]`. The vermilion summit dot was displaced by $1.05\text{ km}$ to the southeast, dropping off the 1,500-foot vertical basalt cliff escarpment and landing down in the spruce/fir forest floor at the base of the mountain rather than on the summit crest.
   - **The Scraper Mechanism**: The coordinate `39.9667, -107.117` corresponds exactly to $39^\circ 58' \text{N}, 107^\circ 07' \text{W}$ (whole arcminutes without seconds). At $40^\circ\text{N}$, $1'$ of latitude is $\approx 1.85\text{ km}$ and $1'$ of longitude is $\approx 1.42\text{ km}$. Rounding to whole arcminutes shifted Derby Peak 767 meters south and 710 meters east directly off the plateau rim.
-- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/scripts/clean_major_peaks.cjs))**:
+- **Cartographic Summit Precision Fixes ([`public/data/major_peaks.geojson`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/major_peaks.geojson), [`scripts/clean_major_peaks.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/scripts/clean_major_peaks.cjs))**:
   - **Derby Peak Corrected**:
     - Coordinates updated to official USGS GNIS geodetic surveyed summit benchmark: **`[-107.125329, 39.973596]`**.
     - The vermilion summit marker now clamps cleanly onto the physical summit crest of Derby Peak above the amphitheater and snow patch at the top of the Flat Tops plateau.
@@ -4818,7 +4818,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #1 (Missing `mouseupWindow` in MapLibre GL JS `mouse.ts`)**: MapLibre's `HandlerManager` binds window-level `mousemove` and `mouseup` to `document` and dispatches `'mouseupWindow'`. However, `assignEvents` in `mouse.ts` only assigned `handler.mouseup = handler.dragEnd`, omitting `handler.mouseupWindow`. When the user released the mouse over an overlay (the header, LeftDock drawer, basemap popover, zoom buttons) or outside the canvas, `dragEnd` was never called. `_lastPoint` remained orphaned on `mousePan`, causing all subsequent `dragStart` attempts to immediately return (`if (this._lastPoint) return`). During dragging, `point.sub(lastPoint)` then computed deltas against an old, stale coordinate.
   - **Root Cause #2 (Flight Engine Keydown Shift Leak & Infinite `jumpTo` Conflict)**: In `src/App.tsx`, `handleKeyDown` checked `NAVIGATION_KEYS.has(e.code) || e.code === 'ShiftLeft' || e.code === 'ShiftRight'`. Pressing Shift (e.g. for Shift-scroll 3D camera pitch or keyboard acceleration) added `ShiftLeft` to `activeKeys`. If `keyup` was suppressed (such as by macOS Command shortcuts, window switching, or clicking buttons), `activeKeys` never emptied, and `flightStep` ran indefinitely at 60 FPS in a `requestAnimationFrame` loop. On every frame, `map.jumpTo({ elevation })` was called, invoking `this.stop()` on the camera and canceling mouse drag movements as fast as the user tried to move, creating the "mini movement back and forth" effect.
   - **Root Cause #3 (Overly Aggressive Capture Watchdog Resetting Active Drags)**: Previous watchdog code intercepted `pointerdown` and `mousedown` with `ensureDragPanReady()`, disabling and re-enabling `dragPan` whenever `map.dragPan.isActive()` was true (such as during smooth inertia glides or between pointerdown and mousedown), aborting legitimate new drags.
-- **Architectural Fixes ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Architectural Fixes ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - **Bound `mouseupWindow = handler.dragEnd`**: Assigned `mouseupWindow = handler.dragEnd` directly onto `map.dragPan._mousePan`, `map.dragRotate._mouseRotate`, and `map.dragRotate._mousePitch`. Mouse releases over UI drawers, headers, or outside the canvas now cleanly fire `dragEnd` through MapLibre's native handler pipeline.
   - **Targeted Orphaned Handler Reset**: Replaced `ensureDragPanReady` (which called `disable()`/`enable()`) with `resetOrphanedDragHandlers()` calling `handler.reset()`. It only clears state when `(e.buttons & 1) === 0` (no mouse button pressed) and `_lastPoint` was left behind, completely protecting smooth inertia glides and active drags.
   - **Decoupled Modifier Keys from Flight Loop**: Removed `ShiftLeft` / `ShiftRight` from `handleKeyDown`'s trigger condition so pressing Shift alone never starts `flightStep`.
@@ -4839,12 +4839,12 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - Sourced and structured a global index of 3,002 major summits (>10,000' / >3,000m and iconic ski peaks worldwide across North America, the Alps, Pyrenees, Dolomites, Andes, Japanese Alps, New Zealand Southern Alps, and Himalayas).
   - Enriched with flagship ski summits (Lone Mountain at Big Sky, Aiguille du Midi at Chamonix, Tofana di Mezzo at Cortina, Whistler Peak, Blackcomb Peak, Mount Werner at Steamboat, Notch Mountain, Mount Jackson).
   - Pre-computed dual-unit labels (`label_ft`: `▲ [Name] · [Elev]'` and `label_m`: `▲ [Name] · [Elev] m`), formatted strings, and an inverse elevation collision sort key (`sort_key = 40000 - elevation_ft`).
-- **MapLibre 3D Elevation Clamping & Collision Management ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **MapLibre 3D Elevation Clamping & Collision Management ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - Added `major-peaks-source`, `major-peaks-marker` (vermilion `#B84A39` pinpoint dot with warm white halo), and `major-peaks-label` (Open Sans Bold, halo 2.2px, single-line `text-max-width: 26`, anchored above the marker).
   - Because MapLibre GL JS projects GeoJSON points onto the active 3D DEM elevation surface (`projectTileWithElevation`), summit markers naturally clamp directly to the physical peaks on the horizon.
   - Enabled ascending `symbol-sort-key: ['get', 'sort_key']`, guaranteeing prominent 14ers and major skyline summits take precedence over lower foothills during collision detection.
   - Added unit reactivity: dynamically swaps between imperial (`label_ft`) and metric (`label_m`) whenever `unitsMetric` changes.
-- **Cartographic Horizon Summits Control ([`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/BasemapMenu.tsx))**:
+- **Cartographic Horizon Summits Control ([`src/components/map/BasemapMenu.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/BasemapMenu.tsx))**:
   - Added a dedicated "Horizon Summits" section with a "Mountain Summits" toggle in the Cartographic Controls menu (defaulting to ON).
   - Styled with editorial anti-SaaS cartographic aesthetics (warm paper tones, vermilion `Mountain` icon, `Active` / `Off` state pill).
 - **Verification**:
@@ -4861,7 +4861,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #2 (`symbol-spacing` ignored in `line-center`)**: In the MapLibre GL style specification, `symbol-spacing` strictly requires `symbol-placement: 'line'`. In `line-center`, `symbol-spacing` is completely bypassed.
   - **Root Cause #3 (Missing Feature IDs & `promoteId`)**: In `src/server/trailsPlugin.ts`, the SQLite pipeline previously ran `delete f.id;` on every feature. Because features lacked top-level IDs and `live-pistes-vector` had no `promoteId`, MapLibre's worker generated non-promoted symbol keys (`keyWithFeatureId`), preventing `CrossTileSymbolIndex` from matching segments across tile boundaries.
   - **Root Cause #4 (Low `text-padding`)**: Default `text-padding: 2px` allowed adjacent trail and lift labels to crowd tightly against parallel lines.
-- **Cartographic Label Deduplication & Spacing ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx), [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts))**:
+- **Cartographic Label Deduplication & Spacing ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx), [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts))**:
   - **Promoted Feature Identity**: Preserved `f.id = f.properties.id` in `trailsPlugin.ts` and `src/App.tsx`, and configured `promoteId: 'id'` on `live-pistes-vector`. MapLibre now recognizes tile fragments of the same lift or run as a single unified feature across tile edges.
   - **Adaptive Line Placement with Generous Spacing**:
     - Changed `live-pistes-lifts-labels` to `'symbol-placement': 'line'`, `'symbol-spacing': 700`, and `'text-padding': 14`. MapLibre enforces `anchorIsTooClose` deduplication, ensuring chairlifts and gondolas display only a single clean label (or at most one well-separated label on exceptionally long cross-valley lifts).
@@ -4877,7 +4877,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Root Cause Diagnosis**:
   - **What was wrong before**: When viewing the map with the "Alpine Topo" basemap at zoom levels 8.0–9.5 (such as around Aosta and 4 Vallées), the shaded relief and baked-in geographic text ("Aosta", "4280m", "A5") became extremely blurry, fuzzy, and pixelated. This did not occur on Satellite or OpenStreetMap basemaps.
   - **Root Cause in `src/utils/mapStyles.ts`**: The Topo basemap was configured as an artificial cross-fade between `World_Physical_Map` (`maxzoom: 8`) and `World_Topo_Map`. Because Esri's `World_Physical_Map` service provides no native tiles above zoom 8, MapLibre was forced to overscale zoom 8 tiles up to 2.83x between zoom 8.0 and 9.5 while `World_Topo_Map` was only semi-transparent. This created a muddy, blown-up blur with overlapping duplicate labels and conflicting relief shading.
-- **Clean Continuous Topography ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/utils/mapStyles.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx))**:
+- **Clean Continuous Topography ([`src/utils/mapStyles.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/utils/mapStyles.ts), [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx))**:
   - Removed the low-resolution `World_Physical_Map` source and layer.
   - Set `World_Topo_Map` (`basemap-topo`) to full opacity (`raster-opacity: 1.0`) across all zoom levels (0 to 19). Esri World Topo natively provides continuous, crisp vector-rendered contours, relief, and spot elevations at every zoom without blurry upscaling or cross-fade lag.
   - Kept the hardware-accelerated Mapterhorn DEM hillshade (`alpine-painted-hillshade`) atop the crisp topo base for enhanced alpine ridge definition.
@@ -4887,7 +4887,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ---
 
 ### `refactor: drop redundant text pill from overview pin dot to eliminate cartographic clutter`
-- Removed the floating label badge pill (`.locator-pin-badge`) from the pinned location dot on the Regional Overview inset map in [`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx).
+- Removed the floating label badge pill (`.locator-pin-badge`) from the pinned location dot on the Regional Overview inset map in [`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx).
 - Preserved the clean, high-contrast 4-tier GPU bullseye target pin (concentric vermilion wash, cream contrast ring, solid vermilion center, and white micro-pip), ensuring surrounding map labels, valleys, and regional boundaries remain completely unobstructed.
 - Resort and region names remain prominently and cleanly communicated in the dedicated header banner above the map canvas.
 
@@ -4903,7 +4903,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **What was wrong before**: When viewing Tyrol, Austria (or other regions without a selected resort card), clicking "World" on the Regional Overview inset map centered at `[0, 25]` (in the Sahara Desert, Algeria), shoving Tyrol and the Alps off the upper border of the inset map. Additionally, when unselected at regional zoom, there was no pin dot on the overview map to identify where the user was looking.
   - **Root Cause in `RegionalLocator.tsx`**: `getOverviewTargetCenter` had a hardcoded shortcut `if (preset === 'global') return [0, 25];` which completely ignored `mapCenter` and defaulted to latitude 25°N, longitude 0° in southern Algeria whenever `selectedResort` was null.
   - **Missing Regional Preset for Browsing**: Quick zoom presets only displayed `[ State / Country ]` if `selectedResort` was non-null, hiding regional zoom when users were exploring regions like Tyrol without an active card selection.
-- **Adaptive Region-Centered Overview ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/map/RegionalLocator.tsx))**:
+- **Adaptive Region-Centered Overview ([`src/components/map/RegionalLocator.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/map/RegionalLocator.tsx))**:
   - **True Centering on Active Location**: Both World and Continental overview presets now center directly on the active location (`selectedResort ? [selectedResort.lng, selectedResort.lat] : mapCenter`), with latitude balance (`Math.max(-25, Math.min(48, targetLat))`) to ensure Tyrol, Austria (or Colorado, Hokkaido, Andes, New Zealand) is dead center horizontally and vertically in the world map without polar clipping.
   - **Pinned Area Marker**: In addition to selected resorts, when browsing any alpine region at `mapZoom >= 4`, the overview map renders a prominent vermilion pin dot, concentric contrast rings, and attached label pill (`● Tyrol`, `● Colorado`, etc.) along with the main camera viewport bounding box.
   - **Contextual Presets**: Available presets dynamically adapt to `[ Region Name ]` (e.g. `[ Tyrol ]`), `[ Continent ]`, and `[ World ]`, allowing one-click zooming between regional, continental, and global scales.
@@ -4920,15 +4920,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #1 (Coarse Binary Logic in `build_trails_db.cjs`)**: When parsing OpenSkiMap's `runs.geojson`, the pipeline previously executed `'piste:type': props.uses?.includes('nordic') ? 'nordic' : 'downhill'`. Any OpenStreetMap way tagged with winter fatbiking, snowshoeing, or town walking (`uses: ['fatbike']`, `['hike']`, `['sled']`, `['ice_skate']`, `['playground']`) that did not contain the string `'nordic'` was classified as `'downhill'`.
   - **Root Cause #2 (Aggressive Fallback Difficulty Assignment)**: Unrated features (`props.difficulty: null`) were defaulted to `'intermediate'`, forcing every paved municipal road, asphalt loop, and dirt rec path to receive cobalt blue `#1565C0` downhill trail styling.
   - **Root Cause #3 (Permissive Client Filters in `src/App.tsx`)**: In `App.tsx`, downhill mode allowed any feature satisfying `['!=', ['get', 'piste:type'], 'nordic']`. As a result, non-nordic municipal paths were never filtered out on the client.
-- **Authoritative Ski Classification Pipeline ([`data_pipeline/build_trails_db.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/build_trails_db.cjs))**:
+- **Authoritative Ski Classification Pipeline ([`data_pipeline/build_trails_db.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/build_trails_db.cjs))**:
   - Implemented multi-use inspection: classifies `pisteType` into `'downhill'`, `'connection'`, `'nordic'`, `'skitour'`, `'fatbike'`, `'hike'`, `'sled'`, `'sleigh'`, `'ice_skate'`, or `'playground'`.
   - Strictly skips non-ski municipal features (public vehicular roads, residential streets, concrete/gravel town rec paths, playgrounds, ice rinks, and sledding hills) that have no downhill, nordic, or ski touring use and no ski difficulty rating (skipped 9,969 non-ski features worldwide; indexed 220,510 pure ski runs in 9.9s).
   - Preserves legitimate summit bootpack hikes and hike-to freeride bowls (such as `Peak Hike Access` with `props.difficulty: 'expert'`) as downhill freeride terrain.
   - Preserved authentic difficulty: unrated features remain `difficulty: null`, rendering with neutral styling rather than being forced into blue intermediate lines.
-- **Server-Side Hot-Reload & Defense-in-Depth ([`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts))**:
+- **Server-Side Hot-Reload & Defense-in-Depth ([`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts))**:
   - Added timestamp-based hot-reloading (`mtimeMs` check on SQLite database handle) to prevent stale database connection caching across data rebuilds.
   - Added strict server filter excluding any piste with `piste:type` in `['fatbike', 'hike', 'sled', 'sleigh', 'ice_skate', 'playground', 'other']`.
-- **MapLibre GPU Layer Filtering Rigor ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L1435-L1480))**:
+- **MapLibre GPU Layer Filtering Rigor ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L1435-L1480))**:
   - Updated `showDownhill` filter to explicitly require `['any', ['==', ['get', 'piste:type'], 'downhill'], ['==', ['get', 'piste:type'], 'connection'], ['all', ['!', ['has', 'piste:type']], ['!=', ['get', 'piste:type'], 'nordic']]]`.
   - Dedicated `showNordic` condition requiring `['==', ['get', 'piste:type'], 'nordic']`, cleanly isolating cross-country trails to when Nordic mode is activated in filters.
   - Explicit global GPU exclusion for municipal and non-ski features (`fatbike`, `hike`, `sled`, `sleigh`, `ice_skate`, `playground`).
@@ -4941,7 +4941,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `refactor: remove redundant Selected Area banner above active resort card`
 - **Eliminated Duplicate Header in Left Sidebar Directory**:
   - **What was wrong before**: When a resort was selected, the directory list displayed a sticky banner `● SELECTED AREA / [Resort Name] [✕ Deselect]` directly above the selected resort card, which already contained the identical resort title, pass chips, geographic location, stats, and its own `[✕ Deselect]` and `[Mountain Profile >]` buttons. This created visual noise, redundant layout chrome, and duplicate action targets.
-  - **Cleanup in [`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/components/sidebar/DirectoryList.tsx)**: Removed `<ActiveSelectionBanner />` and its component file, allowing the prominent active resort card (with its 2px editorial outline, drop shadow, and embedded deselect/profile controls) to display cleanly beneath the directory scope tabs (`[ ALL MATCHING ] [ IN FRAME ]`).
+  - **Cleanup in [`src/components/sidebar/DirectoryList.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/components/sidebar/DirectoryList.tsx)**: Removed `<ActiveSelectionBanner />` and its component file, allowing the prominent active resort card (with its 2px editorial outline, drop shadow, and embedded deselect/profile controls) to display cleanly beneath the directory scope tabs (`[ ALL MATCHING ] [ IN FRAME ]`).
   - **Verification**: Verified via headless Chrome CDP visual inspection and screenshot comparison that the active resort card displays cleanly and directly under the directory controls without duplicated headers.
 
 ---
@@ -4952,7 +4952,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - **Root Cause #1 (Orphaned Drag State from Missed Mouseup)**: In MapLibre's `DragPanHandler`, a pan begins on `mousedown` by setting `this._lastPoint` and `this._active = true`. If the user dragged towards the edge of the window, over the `LeftDock` directory drawer, or if a trackpad gesture was interrupted, the browser would miss or swallow the corresponding `mouseup`. Because `this._lastPoint` was never cleared, all subsequent `dragStart` calls immediately returned without initiating a pan (`if (this._lastPoint) return`). Right-mouse rotation (`mouseRotate`) and arrow keys (`jumpTo` requestAnimationFrame loop) bypass `mousePan`, which is why they continued working.
   - **Root Cause #2 (Shift-Key BoxZoom Interception)**: MapLibre had `boxZoom` enabled by default. Holding `Shift` (e.g. from Shift-scroll 3D camera pitch tilt or keyboard acceleration) when left-clicking would trigger `BoxZoomHandler`, which has higher priority than `DragPanHandler` and locks out panning.
   - **Root Cause #3 (Trackpad Gesture Lifecycle Desync)**: WebKit/Blink proprietary trackpad gestures (`gesturestart`, `gesturechange`, `gestureend`) called `e.preventDefault()`. If gestures were interrupted mid-pinch or mid-twist, `gestureend` could fail to fire cleanly, leaving trackpad event tracking desynchronized.
-- **Implementation of Comprehensive Self-Healing Watchdog ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L550-L650))**:
+- **Implementation of Comprehensive Self-Healing Watchdog ([`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L550-L650))**:
   - **Canvas PointerDown Capture Healing**: Intercepts `mousedown` and `pointerdown` at the capture phase on `map.getCanvasContainer()`. If `map.dragPan.isActive()` is unexpectedly true at the start of a new click (proving a previous `mouseup` was dropped), it immediately resets `dragPan` (`disable()` then `enable()`), instantly clearing `_lastPoint` so the new drag starts seamlessly.
   - **Disabled `boxZoom`**: Set `boxZoom: false` in MapLibre constructor and explicitly called `map.boxZoom.disable()`, preventing Shift key usage from ever hijacking left-click panning.
   - **Global Window Lifecycle Safety Net**: Added listeners on `window` and `document` for `mouseup`, `pointerup`, `blur`, `focus`, `visibilitychange`, and `mouseenter`. If mouse buttons are released outside the canvas or window, `dragPan` is cleanly verified and recovered without aborting smooth inertia glides.
@@ -5230,8 +5230,8 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `fix: filter out random backcountry trails and enforce tight resort bounding boxes`
 - **Filtered Out Random Trails & Orphan Backcountry Traces**:
   - **What was wrong**: When panning the map or selecting a resort (e.g. Stowe, VT), random backcountry hiking loops, woods paths, and orphaned OpenStreetMap ways (such as *Papa's Trail*, *Upper Gorge Loop*, and disconnected forest segments in Vermont's Sterling Forest) were rendered over the trees. This occurred because `/api/trails?bbox=` queried the `trails` table without joining `resort_trails`, dumping thousands of unlinked non-resort routes onto the map.
-  - **The fix**: Updated `/api/trails` in [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts) to strictly `JOIN resort_trails rt ON t.id = rt.trail_id`. Every trail returned is now verified to belong to a recognized, mapped ski area.
-  - **Indexed Speed**: Added `idx_rt_trail` index on `resort_trails(trail_id)` in SQLite and [`data_pipeline/build_trails_db.cjs`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/data_pipeline/build_trails_db.cjs), reducing bounding box query time from 136ms down to 3.2ms.
+  - **The fix**: Updated `/api/trails` in [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts) to strictly `JOIN resort_trails rt ON t.id = rt.trail_id`. Every trail returned is now verified to belong to a recognized, mapped ski area.
+  - **Indexed Speed**: Added `idx_rt_trail` index on `resort_trails(trail_id)` in SQLite and [`data_pipeline/build_trails_db.cjs`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/data_pipeline/build_trails_db.cjs), reducing bounding box query time from 136ms down to 3.2ms.
 - **Tightened Resort & Viewport Bounding Boxes**:
   - **What was wrong**: Resort selection previously requested a massive 50 km × 40 km bounding box (`+/- 0.22` lat, `+/- 0.25` lng), sweeping up trails across whole mountain ranges and adjacent valleys. Map panning clamped bounding boxes to an arbitrary minimum of 18 km (`Math.max(0.08)`), expanding queries into distant forests even when zoomed in tight on a single lift.
   - **The fix**:
@@ -5447,9 +5447,9 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - **Other Major Flagships**: Multiple world-class resorts had inverted or valley-facing bearings (e.g., Steamboat was at 245° facing the flat valley instead of 105° looking up Mt. Werner; Arapahoe Basin was at 310° facing down the highway into Keystone instead of 200° looking up the East Wall/Lenawee; Lake Louise was at 200° facing the highway instead of 50° looking up Mt. Whitehorn; Niseko was at 110° facing Mount Yotei instead of 315° looking up Mount Annupuri; Åre was at 175° facing across Lake Åresjön instead of 25° looking up Åreskutan; St. Anton was at 170° facing the valley instead of 340° looking up Valluga).
   - **Exact Lift & Fall-Line Bearing Calibration**:
     - Audited physical OSM lift geometries across all 50 curated flagships and 31,023 chairlifts/cableways in `data_pipeline/trails.db`.
-    - Calibrated `default_bearing` for all 50 flagships in [`GLOBAL_SKI_ATLAS`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L370) so the camera always stands in the base village looking directly up the main lift corridors to the summit peaks (Jackson Hole: **290°** up Tram/Bridger lines; Grand Targhee: **92°** up Dreamcatcher/Blackfoot; Steamboat: **105°**; A-Basin: **200°**; Lake Louise: **50°**; Revelstoke: **95°**; Niseko: **315°**; St. Anton: **340°**; Åre: **25°**; Zermatt: **180°**; Breckenridge: **265°**; Big Sky: **255°**; etc.).
+    - Calibrated `default_bearing` for all 50 flagships in [`GLOBAL_SKI_ATLAS`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L370) so the camera always stands in the base village looking directly up the main lift corridors to the summit peaks (Jackson Hole: **290°** up Tram/Bridger lines; Grand Targhee: **92°** up Dreamcatcher/Blackfoot; Steamboat: **105°**; A-Basin: **200°**; Lake Louise: **50°**; Revelstoke: **95°**; Niseko: **315°**; St. Anton: **340°**; Åre: **25°**; Zermatt: **180°**; Breckenridge: **265°**; Big Sky: **255°**; etc.).
   - **Global Ski Areas Dataset Enrichment**:
-    - Ran a high-performance spatial-grid lift vector analyzer over all 6,593 ski areas in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json).
+    - Ran a high-performance spatial-grid lift vector analyzer over all 6,593 ski areas in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json).
     - Populated exact lift-derived `default_bearing` on 4,697 ski areas with local lift geometries, with hemisphere-aware fallbacks (180° for North, 0° for South) for remaining areas.
   - **Unified & Intuitive Camera Framing**:
     - **Pitch Elevated to 46°**: Replaced flat 38° pitch with 46°, providing the classic 3D alpine trail map perspective with peaks towering dramatically against the horizon.
@@ -5463,8 +5463,8 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 - **Average Annual Snowfall Telemetry**:
   - **What was missing**: Users could view live 72-hour and upcoming 7-day storm forecasts, but had no baseline historical context for average annual snowfall (`avg_snowfall_in`) to evaluate mountain snow climate.
   - **Dataset Coverage**:
-    - **Top 50 Flagships & 14 Heli/Cat Operations**: Populated with exact, ground-truth 30-year historical study plot climate averages in [`GLOBAL_SKI_ATLAS`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L353) and [`HELI_CAT_OPERATIONS`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L1442) (e.g. Niseko: 600", Alta/Snowbird: 500", Jackson Hole: 458", Whistler Blackcomb: 465", Vail: 354", Stowe: 314").
-    - **Global Ski Areas**: Enriched all 6,593 ski areas in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json) with verified patrol study plot averages for 310+ top mountains and elevation-adjusted regional climatological baselines.
+    - **Top 50 Flagships & 14 Heli/Cat Operations**: Populated with exact, ground-truth 30-year historical study plot climate averages in [`GLOBAL_SKI_ATLAS`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L353) and [`HELI_CAT_OPERATIONS`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L1442) (e.g. Niseko: 600", Alta/Snowbird: 500", Jackson Hole: 458", Whistler Blackcomb: 465", Vail: 354", Stowe: 314").
+    - **Global Ski Areas**: Enriched all 6,593 ski areas in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json) with verified patrol study plot averages for 310+ top mountains and elevation-adjusted regional climatological baselines.
   - **UI Integration**:
     - **Mountain Dossier Meteorology**: Expanded the Summit Meteorology grid to 3 columns: **72h Snow**, **7-Day Snow**, and **Avg Annual** (`formatSnow(r.avg_snowfall_in)`).
     - **Resort Cards**: Rendered annual average snowfall inline alongside vertical drop and acreage in the left directory dock (e.g., `Utah, USA · 3,240' vert · 2,500 ac · 500"/yr`).
@@ -5475,7 +5475,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `refactor: purge marketing summary blurbs from mountain dossier`
 - **Removed AI Summary Blurbs**:
   - **What was wrong**: The top summary card in the mountain dossier displayed generic AI-generated marketing prose ("crown jewel", "undisputed heavyweight", "pulsating nightlife") that clashed with the objective cartographic design.
-  - **Direct Telemetry Layout**: Purged the narrative summary box from the dossier in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx). The dossier now leads directly into verified infrastructure metrics (trails, lifts, vertical drop, summit/base elevation, skiable acreage), official links, verified pass badges, and elevation-aware live weather telemetry.
+  - **Direct Telemetry Layout**: Purged the narrative summary box from the dossier in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx). The dossier now leads directly into verified infrastructure metrics (trails, lifts, vertical drop, summit/base elevation, skiable acreage), official links, verified pass badges, and elevation-aware live weather telemetry.
 
 ---
 
@@ -5486,12 +5486,12 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Commercial subscription pass product is explicitly labeled **"Indy Pass"** across filter toggles, card tags, and mountain dossiers (with explanatory tooltip: *"Indy Pass (180+ Independent Partner Resorts)"*).
     - Standalone ski areas not on any commercial pass network are explicitly labeled **"Unaffiliated"** (with tooltip: *"Unaffiliated / Independent (No Multi-Pass)"*).
 - **Pass Network Accuracy Audit & Corrections**:
-  - **Flagship European Partnerships**: Corrected flagship affiliations in [`GLOBAL_SKI_ATLAS`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L810-L930):
+  - **Flagship European Partnerships**: Corrected flagship affiliations in [`GLOBAL_SKI_ATLAS`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L810-L930):
     - **Courchevel** & **Val Thorens** (Les 3 Vallées, France) — Affiliated with **Epic Pass** (7 days lodging partner), not Ikon.
     - **Verbier** (4 Vallées, Switzerland) — Affiliated with **Epic Pass** (5 days lodging partner).
     - **Val d’Isère / Tignes** (France) — Affiliated with **Epic Pass** (2 days partner).
     - **Arapahoe Basin** (Colorado, USA) — Tagged on both **Ikon Pass** and **Mountain Collective**.
-  - **Global Pass Network Coverage**: Audited and enriched 271 ski areas in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/public/data/global_ski_areas.json) across all official rosters:
+  - **Global Pass Network Coverage**: Audited and enriched 271 ski areas in [`public/data/global_ski_areas.json`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/public/data/global_ski_areas.json) across all official rosters:
     - **Epic Pass**: 73 resorts (Vail Resorts owned mountains, RCR Canada, Hakuba Valley, Rusutsu, Ski Arlberg, Les 3 Vallées, Skirama Dolomiti, Verbier).
     - **Ikon Pass**: 81 resorts (Alterra owned, Boyne Resorts, Powdr Corp, Aspen Snowmass, SkiBig3, Dolomiti Superski, Kitzbühel, Zermatt, St. Moritz, Niseko, Valle Nevado, Portillo, etc.).
     - **Indy Pass**: 113 verified authentic independent partners across the US, Canada, and Japan (Jay Peak, Tamarack, Brundage, Silver Mountain, Hoodoo, Sunlight, Monarch, Ski Cooper, Trollhaugen, Lutsen, Granite Peak, Cannon, Bolton Valley, etc.).
@@ -5536,15 +5536,15 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
     - Across the dataset: 2,323 non-operating lifts (1,042 abandoned, 907 disused, 331 proposed, 13 planned, 30 under construction).
 - **Comprehensive Multi-Tier Lift Operational Filtering**:
   - **Database Cleanup**: Purged all 2,323 non-operating lifts from `data_pipeline/trails.db` (`DELETE FROM trails WHERE kind = 'lift' AND status != 'operating'`).
-  - **API Middleware Filtering**: Added strict operational check in [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/server/trailsPlugin.ts), ensuring `/api/trails` drops any non-operating lifts and features containing `(proposed)`, `(planned)`, `(abandoned)`, etc.
-  - **MapLibre GPU Layer Filters**: Updated `live-pistes-lifts` and `live-pistes-lifts-labels` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) with strict status and name guards (`['==', ['coalesce', ['get', 'status'], 'operating'], 'operating']`).
+  - **API Middleware Filtering**: Added strict operational check in [`src/server/trailsPlugin.ts`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/server/trailsPlugin.ts), ensuring `/api/trails` drops any non-operating lifts and features containing `(proposed)`, `(planned)`, `(abandoned)`, etc.
+  - **MapLibre GPU Layer Filters**: Updated `live-pistes-lifts` and `live-pistes-lifts-labels` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) with strict status and name guards (`['==', ['coalesce', ['get', 'status'], 'operating'], 'operating']`).
   - **Static Trail JSON Sanitization**: Scrubbed 166 non-operating lifts across 47 pre-exported files in `public/data/trails/`.
 
 ---
 
 ### `feat: elevate top 50 flagship atlas to world-class heavyweight ski titans`
 - **Flagship Alignment to World-Class Scale & Pedigree**:
-  - Replaced smaller regional and boutique hills in [`GLOBAL_SKI_ATLAS`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L353) (Monarch, Brundage, Bridger Bowl, Big Bear, Grand Targhee, Silverton, Mt. Baker, Furano, Myoko Kogen) with iconic global titan resorts:
+  - Replaced smaller regional and boutique hills in [`GLOBAL_SKI_ATLAS`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L353) (Monarch, Brundage, Bridger Bowl, Big Bear, Grand Targhee, Silverton, Mt. Baker, Furano, Myoko Kogen) with iconic global titan resorts:
     - **Davos Klosters** (Graubünden, Switzerland) — Cradle of winter sports, Parsenn 12 km descent, Jakobshorn, 6,674' vert, 6,400 ac.
     - **Park City Mountain** (Utah, USA) — Largest ski and snowboard resort in the United States (7,300 ac, 43 lifts, 3,226' vert).
     - **Breckenridge** (Colorado, USA) — Tenmile Range icon featuring North America's highest chairlift (Imperial Express SuperChair at 12,840', 3,398' vert, 2,908 ac).
@@ -5563,7 +5563,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 ### `fix: comprehensive dataset quality sweep, exclude defunct ski areas, and repair websites`
 - **Exclusion of Defunct / Closed Ski Areas**:
   - **What was wrong**: 1,049 permanently closed, defunct, or abandoned ski areas (e.g., `Snow Forest`, `Plumas Eureka Ski Bowl`, `Wolverton Ski Bowl`, `Kratka Ridge`, `Echo Summit`, `Berthoud Pass`, `Pikes Peak`, `Marble Mountain NY`) were being ingested from `global_ski_areas.json` without any closure checks, cluttering map clusters and the directory tray. Additionally, 23 historic lost ski areas (e.g. `Cortina Valley`, `Raton Ski Basin (Closed)`, `Osceola Tow`, `Pine Ridge`) were erroneously marked `status: 'operating'` with placeholder or misleading links.
-  - **Fix**: Implemented strict multi-tier exclusion in `fetchGlobal` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx) and updated dataset tags in `public/data/global_ski_areas.json`:
+  - **Fix**: Implemented strict multi-tier exclusion in `fetchGlobal` in [`src/App.tsx`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx) and updated dataset tags in `public/data/global_ski_areas.json`:
     - Filtered `status === 'abandoned' | 'closed' | 'disused' | 'defunct'` or `is_closed === true`.
     - Filtered archetypes or infrastructure marked `Defunct` / `Lost Ski Area` or names containing `(Closed)`, `(abandoned)`, or `(defunct)`.
     - Added defense-in-depth closure guards in `filteredResorts` and `matchingCategoryCounts`.
@@ -5598,7 +5598,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
   - In Southern California's San Bernardino Mountains, **Big Bear Mountain Resort** is a single unified Alterra / Ikon Pass resort brand consisting of two distinct ski mountains 2 miles apart: **Snow Summit** (cruisers, family skiing, 15 lifts, 240 ac) and **Bear Mountain** (all-mountain freestyle terrain parks, 12 lifts, 198 ac), plus nearby **Snow Valley Mountain Resort** (acquired in 2023).
   - Previously, `Bear Mountain` was missing from `global_ski_areas.json`, and `Snow Summit` had no mention of Big Bear in its title, creating confusion over whether Big Bear existed or whether Snow Summit was an independent area.
 - **Added Big Bear Mountain Resort to Curated Seed Atlas**:
-  - Added `Big Bear Mountain Resort` to `GLOBAL_SKI_ATLAS` in [`src/App.tsx#L757-L777`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L757-L777) (27 lifts, 63 runs, 1,844' vert, 438 ac, Ikon pass, 195° fall-line bearing).
+  - Added `Big Bear Mountain Resort` to `GLOBAL_SKI_ATLAS` in [`src/App.tsx#L757-L777`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L757-L777) (27 lifts, 63 runs, 1,844' vert, 438 ac, Ikon pass, 195° fall-line bearing).
 - **Added Bear Mountain to Global Database & Updated Mountain Names**:
   - Added `Bear Mountain (Big Bear)` feature (`id: '78bac1237b378a398d712ba2cc962ddf9d1c6479'`) to `public/data/global_ski_areas.json` with 12 lifts, 27 pistes, and 1,665' vertical, immediately linking with its 39 vector pistes in `trails.db`.
   - Renamed `Snow Summit` to `Snow Summit (Big Bear)` and `Snow Valley` to `Snow Valley (Big Bear)` with `Ikon` pass affiliations and unified `https://www.bigbearmountainresort.com` official websites.
@@ -5638,7 +5638,7 @@ All notable changes in reverse chronological order. Format: `[date] type: descri
 
 ### `feat: add cable-aligned ski lift labels with editorial vermilion styling`
 - **Cable-Aligned Aerialway Labels**:
-  - Added dedicated vector symbol layer `live-pistes-lifts-labels` in [`src/App.tsx#L2529-L2571`](file:///Users/macstudio/Documents/Antigravity/SkiAtlas/src/App.tsx#L2529-L2571) displaying official lift names (*"Aerial Tram"*, *"Sublette Quad Chair"*, etc.) centered directly along the aerialway cable lines (`symbol-placement: 'line-center'`).
+  - Added dedicated vector symbol layer `live-pistes-lifts-labels` in [`src/App.tsx#L2529-L2571`](file:///Users/macstudio/Documents/Antigravity/SnowGlobe/src/App.tsx#L2529-L2571) displaying official lift names (*"Aerial Tram"*, *"Sublette Quad Chair"*, etc.) centered directly along the aerialway cable lines (`symbol-placement: 'line-center'`).
   - Aligns with the cable line rotation angle while keeping text strictly upright (`text-keep-upright: true`) and offset slightly perpendicular to the cable (`text-offset: [0, -0.75]`), ensuring the dashed terracotta line remains visible.
 - **Editorial Mountain Styling**:
   - Styled in deep alpine vermilion (`#8F3628`) with an off-white cotton-rag halo (`#FAF8F3`, width 2.5), establishing instant visual hierarchy against dark charcoal trail names.
