@@ -15,6 +15,12 @@ console.time('apply_topology');
 let updatedFiles = 0;
 let strippedFeatures = 0;
 let totalPistes = 0;
+const globalCategoryCounts = {
+  downhill: 0,
+  nordic: 0,
+  touring: 0,
+  ignore: 0,
+};
 
 for (let i = 0; i < files.length; i++) {
   const file = files[i];
@@ -24,11 +30,18 @@ for (let i = 0; i < files.length; i++) {
     const data = JSON.parse(content);
     if (!data.features || !Array.isArray(data.features)) continue;
 
-    const lifts = data.features.filter(f => f.properties?.kind === 'lift');
+    const lifts = data.features.filter(f => f.properties?.kind === 'lift' || f.properties?.kind === 'aerialway');
     const pistes = data.features.filter(f => f.properties?.kind === 'piste');
     totalPistes += pistes.length;
 
     classifySkiAreaTopology(pistes, lifts);
+
+    for (const p of pistes) {
+      const cat = p.properties?.atlas_category || 'ignore';
+      if (globalCategoryCounts[cat] !== undefined) {
+        globalCategoryCounts[cat]++;
+      }
+    }
 
     const initialCount = data.features.length;
     data.features = data.features.filter(f => {
@@ -60,3 +73,5 @@ for (let i = 0; i < files.length; i++) {
 
 console.timeEnd('apply_topology');
 console.log(`Done! Updated ${updatedFiles} files, classified ${totalPistes} pistes, stripped ${strippedFeatures} ignored features.`);
+console.log('Final Global Category Counts:');
+console.table(globalCategoryCounts);

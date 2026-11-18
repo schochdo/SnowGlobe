@@ -1,5 +1,15 @@
 ## [Unreleased]
 
+### Feat
+- **Topological classification refinement & full 5,905-resort re-bake**:
+  1. **Protected Untagged Catwalks in Tier 2**: In the `>= 1,200m` length and `<= 4.5 deg` low-gradient filter, protected untagged groomed ski-outs (`piste:difficulty` = `novice` or `easy`). Only rejects low-gradient features if grooming is explicitly `backcountry`/`no`, or missing grooming with `highway` in (`path`, `footway`, `track`) without novice/easy difficulty.
+  2. **Respected `landuse=winter_sports` Boundary Polygons**: Added ray-casting point-in-polygon verification for `landuse=winter_sports` boundary polygons. Downhill and freeride candidates inside verified boundaries classify immediately as inbounds `downhill` and are protected from Gravity Sink Law demotion.
+  3. **Directed Downhill BFS Seeding**: In Tier 3 BFS seeding, only seeds `lift_served = true` from segments within 350m of a lift's upper station / upper 70% of its elevation span. Enforces downhill elevation monotonicity (`nextMinZ <= currentMaxZ + 15m`) during propagation to prevent valley base runs from propagating uphill to un-lifted summits.
+  4. **Widen Downhill Junction Snapping to ~65m & Indexed Polygon Perimeters**: Expanded `neighborCellKeys` from ±1 cell (~22m) to ±3 cells (~65m) to bridge cliff bands and minor mapper gaps. Fully indexed all perimeter vertices and centroids of `Polygon` and `MultiPolygon` glade/bowl features (such as Crested Butte's `Treeline` and `Phoenix Steps`).
+  5. **Capped Trail-Name Graph Bridging Distance to 150m**: Multi-segment pistes sharing a normalized name are only bridged during BFS if their nearest endpoints are within 150 meters, preventing out-of-bounds cross-ridge name collisions.
+  6. **Added Crested Butte Canary Assertions**: Added Crested Butte (`Phoenix Steps`, `Staircase`, `Treeline`) to `scripts/verify_topology_canary.cjs`, confirming 100% PASS (6/6 edge case assertions).
+  7. **Re-Baked All 5,905 Resorts**: Executed `scripts/apply_piste_topology.cjs` across all 5,905 resort datasets: classified 299,527 pistes (Downhill: 191,565; Nordic: 99,461; Touring: 8,501; Ignore: 0).
+
 ### Fixed
 - **Safari trackpad double-zoom:** Disabled MapLibre's `scrollZoom` during Safari `gesturechange` events to prevent both the custom gesture handler and MapLibre's built-in handler from independently adjusting zoom on the same pinch input.
 - **Zoom buttons bypass camera state machine:** `handleZoomIn`/`handleZoomOut` now cancel active keyboard flight and route through `safeEaseTo` instead of calling `map.easeTo()` directly, preventing frame-fighting between the zoom animation and the flight loop.

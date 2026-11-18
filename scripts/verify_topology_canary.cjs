@@ -22,6 +22,7 @@ const TEST_RESORTS = [
   { id: 'whistler-blackcomb', file: 'public/data/trails/whistler-blackcomb.json', label: 'Whistler Blackcomb' },
   { id: 'chamonix', file: 'public/data/trails/chamonix.json', label: 'Chamonix Mont-Blanc' },
   { id: 'zermatt', file: 'public/data/trails/zermatt.json', label: 'Zermatt / Matterhorn' },
+  { id: 'crested-butte', file: 'public/data/trails/crested-butte.json', label: 'Crested Butte' },
 ];
 
 console.log('='.repeat(78));
@@ -38,6 +39,7 @@ const edgeAssertions = {
   queyrasValpreveyreDownhill: false,
   whistlerCatwalksDownhill: false,
   leviBaseTracksNordic: false,
+  crestedButteDownhillBowlGlades: false,
 };
 
 // Raw un-pruned 4.1-mile Jackson Hole summer hiking path (id: 548d46ed)
@@ -200,6 +202,24 @@ for (const resort of TEST_RESORTS) {
     }
   }
 
+  if (resort.id === 'crested-butte') {
+    const pSteps = clonedPistes.find(p => p.properties?.name === 'Phoenix Steps');
+    const staircases = clonedPistes.filter(p => p.properties?.name === 'Staircase');
+    const treeline = clonedPistes.find(p => p.properties?.name === 'Treeline');
+
+    const pStepsDownhill = pSteps?.properties?.atlas_category === 'downhill';
+    const staircaseDownhill = staircases.length > 0 && staircases.every(p => p.properties?.atlas_category === 'downhill');
+    const treelineDownhill = treeline?.properties?.atlas_category === 'downhill';
+
+    if (pStepsDownhill && staircaseDownhill && treelineDownhill) {
+      edgeAssertions.crestedButteDownhillBowlGlades = true;
+    } else {
+      failures.push(
+        `Crested Butte: Expected Phoenix Steps ('${pSteps?.properties?.atlas_category}'), Staircase (${JSON.stringify(staircases.map(s => s.properties?.atlas_category))}), Treeline ('${treeline?.properties?.atlas_category}') to be 'downhill'`
+      );
+    }
+  }
+
   tableRows.push({
     Resort: resort.label,
     Downhill: counts.downhill,
@@ -223,6 +243,7 @@ console.log(`  ${check(edgeAssertions.jackson41MiPathIgnored)} : Jackson Hole 4.
 console.log(`  ${check(edgeAssertions.queyrasValpreveyreDownhill)} : Queyras Valpreveyre == 'downhill' (1km Spatial Fracture BFS)`);
 console.log(`  ${check(edgeAssertions.whistlerCatwalksDownhill)} : Whistler flat catwalks == 'downhill' (Machine Groomed Flow)`);
 console.log(`  ${check(edgeAssertions.leviBaseTracksNordic)} : Levi base tracks == 'nordic' (Strict Discipline Segregation)`);
+console.log(`  ${check(edgeAssertions.crestedButteDownhillBowlGlades)} : Crested Butte Phoenix Steps / Staircase / Treeline == 'downhill' (Cliff Band & Polygon Snapping)`);
 
 console.log('='.repeat(78));
 

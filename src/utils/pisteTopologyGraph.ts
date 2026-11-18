@@ -57,6 +57,60 @@ function countHairpinSwitchbacks(coords: [number, number, number?][]): number {
   return hairpins;
 }
 
+// Ray-casting point-in-polygon algorithm for boundary validation
+function pointInRing(x: number, y: number, ring: [number, number][]): boolean {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const xi = ring[i][0], yi = ring[i][1];
+    const xj = ring[j][0], yj = ring[j][1];
+    const intersect = ((yi > y) !== (yj > y)) && (x < ((xj - xi) * (y - yi)) / (yj - yi) + xi);
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
+
+function pointInPolygonGeom(lng: number, lat: number, geom: TopologyFeature['geometry']): boolean {
+  if (!geom || !geom.coordinates) return false;
+  if (geom.type === 'Polygon') {
+    const rings = geom.coordinates;
+    if (!rings || rings.length === 0) return false;
+    if (!pointInRing(lng, lat, rings[0])) return false;
+    for (let h = 1; h < rings.length; h++) {
+      if (pointInRing(lng, lat, rings[h])) return false;
+    }
+    return true;
+  }
+  if (geom.type === 'MultiPolygon') {
+    for (const poly of geom.coordinates) {
+      if (!poly || poly.length === 0) continue;
+      if (pointInRing(lng, lat, poly[0])) {
+        let inHole = false;
+        for (let h = 1; h < poly.length; h++) {
+          if (pointInRing(lng, lat, poly[h])) {
+            inHole = true;
+            break;
+          }
+        }
+        if (!inHole) return true;
+      }
+    }
+    return false;
+  }
+  return false;
+}
+
+// Compute centroid of coordinates
+function computeCentroid(coords: [number, number, number?][]): [number, number] {
+  let sumLng = 0;
+  let sumLat = 0;
+  for (const c of coords) {
+    sumLng += c[0];
+    sumLat += c[1];
+  }
+  const n = Math.max(1, coords.length);
+  return [sumLng / n, sumLat / n];
+}
+
 // ~22-meter spatial hash cell key for fast O(1) junction snapping
 function isRealName(name?: string): boolean {
   if (!name) return false;
@@ -76,12 +130,13 @@ function cellKey(lng: number, lat: number): string {
   return `${Math.round(lng * 4500)},${Math.round(lat * 4500)}`;
 }
 
+// Widen downhill junction snapping to ±3 cells (~65m) to bridge cliff bands and minor mapper gaps
 function neighborCellKeys(lng: number, lat: number): string[] {
   const cx = Math.round(lng * 4500);
   const cy = Math.round(lat * 4500);
   const keys: string[] = [];
-  for (let dx = -1; dx <= 1; dx++) {
-    for (let dy = -1; dy <= 1; dy++) {
+  for (let dx = -3; dx <= 3; dx++) {
+    for (let dy = -3; dy <= 3; dy++) {
       keys.push(`${cx + dx},${cy + dy}`);
     }
   }
@@ -96,12 +151,44 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
   pisteFeatures: T[],
   liftFeatures: TopologyFeature[] = []
 ): T[] {
-  // 1. Collect all lift sample points (interpolated every ~50m along lift lines so mid-stations & terminals match)
+  // 0. Extract any boundary polygons (landuse=winter_sports)
+  const winterSportsPolygons: TopologyFeature[] = [];
+  const allFeatures = [...pisteFeatures, ...liftFeatures];
+  for (const f of allFeatures) {
+    const lu = String(f.properties?.landuse || '').toLowerCase();
+    if (lu === 'winter_sports' && (f.geometry?.type === 'Polygon' || f.geometry?.type === 'MultiPolygon')) {
+      winterSportsPolygons.push(f);
+    }
+  }
+
+  // 1. Collect all lift sample points (interpolated every ~50m along lift lines)
+  // Also collect upperLiftPoints (upper station / upper 70% of span by Z coordinate)
   const liftPoints: [number, number][] = [];
+  const upperLiftPoints: [number, number][] = [];
+
   for (const lift of liftFeatures) {
     const coords = extractFlatCoords(lift.geometry);
+    let liftMinZ = Infinity;
+    let liftMaxZ = -Infinity;
+    for (const c of coords) {
+      if (c.length >= 3 && typeof c[2] === 'number' && isFinite(c[2])) {
+        if (c[2] < liftMinZ) liftMinZ = c[2];
+        if (c[2] > liftMaxZ) liftMaxZ = c[2];
+      }
+    }
+    const hasLiftZ = isFinite(liftMinZ) && isFinite(liftMaxZ) && liftMaxZ > liftMinZ;
+    const zThreshold = hasLiftZ ? liftMinZ + 0.30 * (liftMaxZ - liftMinZ) : -Infinity;
+
     for (let i = 0; i < coords.length; i++) {
-      liftPoints.push([coords[i][0], coords[i][1]]);
+      const [lng, lat, z] = coords[i];
+      liftPoints.push([lng, lat]);
+      const isUpper = hasLiftZ
+        ? (typeof z === 'number' && isFinite(z) && z >= zThreshold)
+        : (i >= Math.floor(coords.length * 0.3));
+      if (isUpper) {
+        upperLiftPoints.push([lng, lat]);
+      }
+
       if (i > 0) {
         const [x1, y1] = coords[i - 1];
         const [x2, y2] = coords[i];
@@ -109,7 +196,17 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
         const steps = Math.floor(dist / 50);
         for (let s = 1; s < steps; s++) {
           const t = s / steps;
-          liftPoints.push([x1 + (x2 - x1) * t, y1 + (y2 - y1) * t]);
+          const interpPt: [number, number] = [x1 + (x2 - x1) * t, y1 + (y2 - y1) * t];
+          liftPoints.push(interpPt);
+          const interpZ = (typeof coords[i - 1][2] === 'number' && typeof coords[i][2] === 'number')
+            ? (coords[i - 1][2]! + (coords[i][2]! - coords[i - 1][2]!) * t)
+            : undefined;
+          const interpIsUpper = hasLiftZ
+            ? (typeof interpZ === 'number' && isFinite(interpZ) && interpZ >= zThreshold)
+            : (i >= Math.floor(coords.length * 0.3));
+          if (interpIsUpper) {
+            upperLiftPoints.push(interpPt);
+          }
         }
       }
     }
@@ -122,10 +219,21 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
     return false;
   };
 
+  const isPointWithinMetersOfUpperLift = (lng: number, lat: number, radiusM: number): boolean => {
+    const pts = upperLiftPoints.length > 0 ? upperLiftPoints : liftPoints;
+    for (let i = 0; i < pts.length; i++) {
+      if (fastDistMeters(lng, lat, pts[i][0], pts[i][1]) <= radiusM) return true;
+    }
+    return false;
+  };
+
   // 2. Pre-screen disciplines & identify candidate Downhill graph nodes
   const downhillCandidates: number[] = [];
+  const verifiedInbounds = new Set<number>();
   const coordsByIdx: [number, number, number?][][] = new Array(pisteFeatures.length);
   const lengthByIdx: number[] = new Array(pisteFeatures.length);
+  const minZByIdx: number[] = new Array(pisteFeatures.length);
+  const maxZByIdx: number[] = new Array(pisteFeatures.length);
   const bottomPtByIdx: [number, number][] = new Array(pisteFeatures.length);
 
   for (let i = 0; i < pisteFeatures.length; i++) {
@@ -151,6 +259,8 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
         }
       }
     }
+    minZByIdx[i] = minZ;
+    maxZByIdx[i] = maxZ;
     bottomPtByIdx[i] = bPt;
 
     const hasElevation = isFinite(minZ) && isFinite(maxZ) && maxZ > minZ;
@@ -218,10 +328,15 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
 
     // UNIVERSAL PHYSICAL GRADIENT LAW (Slope & Energy Law):
     // A downhill ski run requires gravity to overcome friction. Machine-groomed snow (classic, skating, scooter) on flat terrain is Nordic.
-    // Long trails (>1,200m) with average pitch <= 4.5 deg (<8% grade) that lack machine grooming cannot physically sustain downhill skiing.
-    // (e.g. Jackson Hole 4.1-mile perimeter hiking path). Demote to ignore or touring.
+    // Long trails (>=1,200m) with average pitch <= 4.5 deg (<8% grade) that lack machine grooming cannot physically sustain downhill skiing.
+    // Untagged resort ski-outs (novice/easy difficulty) are protected unless explicitly tagged backcountry/no grooming.
     const isMachineGroomed = ['classic', 'skating', 'scooter'].includes(grooming);
-    if (hasElevation && lengthByIdx[i] > 1200 && avgSlopeDeg <= 4.5 && !isMachineGroomed) {
+    const isEasyGrade = diff === 'novice' || diff === 'easy';
+    const isBadGrooming = grooming === 'backcountry' || grooming === 'no';
+    const isMissingGroomWithBadHighway = !grooming && ['path', 'footway', 'track'].includes(highway) && !isEasyGrade;
+    const shouldRejectLowGradient = !isMachineGroomed && (isBadGrooming || isMissingGroomWithBadHighway);
+
+    if (hasElevation && lengthByIdx[i] >= 1200 && avgSlopeDeg <= 4.5 && shouldRejectLowGradient) {
       if (types.has('skitour')) {
         props.atlas_category = 'touring';
       } else if (['track', 'service', 'path', 'footway', 'unclassified'].includes(highway) || !isRealName(name) || diff === 'freeride') {
@@ -232,33 +347,58 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
       continue;
     }
 
+    // Boundary Polygon Check: If feature lies inside a landuse=winter_sports polygon,
+    // it is inbounds downhill terrain by definition.
+    if (winterSportsPolygons.length > 0 && (types.has('downhill') || types.has('freeride'))) {
+      const midCoord = coords.length > 0 ? coords[Math.floor(coords.length / 2)] : null;
+      if (midCoord && winterSportsPolygons.some(poly => pointInPolygonGeom(midCoord[0], midCoord[1], poly.geometry))) {
+        props.atlas_category = 'downhill';
+        verifiedInbounds.add(i);
+        downhillCandidates.push(i);
+        continue;
+      }
+    }
+
     downhillCandidates.push(i);
   }
 
-  // 3. TIER 1: Build Spatial Adjacency Graph for Downhill Candidates (Solves Valpreveyre 1km Fracture)
+  // 3. TIER 1: Build Spatial Adjacency Graph for Downhill Candidates
   const gridMap = new Map<string, number[]>();
   const nameMap = new Map<string, number[]>();
+
+  const addToGrid = (lng: number, lat: number, idx: number) => {
+    const key = cellKey(lng, lat);
+    let list = gridMap.get(key);
+    if (!list) {
+      list = [];
+      gridMap.set(key, list);
+    }
+    list.push(idx);
+  };
 
   for (const idx of downhillCandidates) {
     const coords = coordsByIdx[idx];
     if (coords.length === 0) continue;
 
-    // Index start, end, and every 5th vertex for polygon/bowl & mid-run junctions
-    const sampleIndices = new Set<number>([0, coords.length - 1]);
-    for (let k = 0; k < coords.length; k += 5) sampleIndices.add(k);
-
-    for (const k of sampleIndices) {
-      const [lng, lat] = coords[k];
-      const key = cellKey(lng, lat);
-      let list = gridMap.get(key);
-      if (!list) {
-        list = [];
-        gridMap.set(key, list);
+    const geomType = pisteFeatures[idx].geometry?.type;
+    if (geomType === 'Polygon' || geomType === 'MultiPolygon') {
+      // Index all perimeter vertices for polygons/bowls/glades
+      for (const [lng, lat] of coords) {
+        addToGrid(lng, lat, idx);
       }
-      list.push(idx);
+      // Also index centroid
+      const centroid = computeCentroid(coords);
+      addToGrid(centroid[0], centroid[1], idx);
+    } else {
+      // Index start, end, and every 5th vertex for line strings
+      const sampleIndices = new Set<number>([0, coords.length - 1]);
+      for (let k = 0; k < coords.length; k += 5) sampleIndices.add(k);
+      for (const k of sampleIndices) {
+        addToGrid(coords[k][0], coords[k][1], idx);
+      }
     }
 
-    // Also index by normalized trail name within the same resort so multi-segment named pistes chain cleanly
+    // Also index by normalized trail name within the same resort
     const rawName = String(pisteFeatures[idx].properties?.name || pisteFeatures[idx].properties?.['piste:name'] || '')
       .toLowerCase()
       .trim();
@@ -272,17 +412,29 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
     }
   }
 
-  // 4. Seed BFS with all downhill segments within 350m of any lift (or all candidates if no lifts exist in dataset)
+  // 4. Seed BFS with all downhill segments within 350m of upper lift station / upper 70% of lift span
   const liftServed = new Set<number>();
   const queue: { idx: number; dist: number }[] = [];
 
+  // Features verified inbounds by winter_sports polygon are automatic seeds
+  for (const idx of verifiedInbounds) {
+    liftServed.add(idx);
+    queue.push({ idx, dist: 0 });
+  }
+
   if (liftPoints.length === 0) {
-    // Fallback if a small resort dataset has no aerialway features loaded yet
-    for (const idx of downhillCandidates) liftServed.add(idx);
+    // Fallback if dataset has no aerialway features loaded yet
+    for (const idx of downhillCandidates) {
+      if (!liftServed.has(idx)) {
+        liftServed.add(idx);
+        queue.push({ idx, dist: 0 });
+      }
+    }
   } else {
     for (const idx of downhillCandidates) {
+      if (liftServed.has(idx)) continue;
       const coords = coordsByIdx[idx];
-      const touchesLift = coords.some(([lng, lat]) => isPointWithinMetersOfLift(lng, lat, 350));
+      const touchesLift = coords.some(([lng, lat]) => isPointWithinMetersOfUpperLift(lng, lat, 350));
       if (touchesLift) {
         liftServed.add(idx);
         queue.push({ idx, dist: 0 });
@@ -297,7 +449,28 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
     const coords = coordsByIdx[idx];
     const neighbors = new Set<number>();
 
-    const checkPoints = [coords[0], coords[coords.length - 1], coords[Math.floor(coords.length / 2)]].filter(Boolean);
+    const geomType = pisteFeatures[idx].geometry?.type;
+    let checkPoints: [number, number][];
+    if (geomType === 'Polygon' || geomType === 'MultiPolygon') {
+      const step = coords.length > 30 ? Math.ceil(coords.length / 30) : 1;
+      checkPoints = [];
+      for (let k = 0; k < coords.length; k += step) {
+        checkPoints.push([coords[k][0], coords[k][1]]);
+      }
+      checkPoints.push(computeCentroid(coords));
+    } else {
+      checkPoints = [
+        [coords[0][0], coords[0][1]],
+        [coords[coords.length - 1][0], coords[coords.length - 1][1]],
+        [coords[Math.floor(coords.length / 2)][0], coords[Math.floor(coords.length / 2)][1]],
+      ];
+      if (coords.length > 20) {
+        for (let k = 5; k < coords.length - 1; k += 10) {
+          checkPoints.push([coords[k][0], coords[k][1]]);
+        }
+      }
+    }
+
     for (const [lng, lat] of checkPoints) {
       for (const nKey of neighborCellKeys(lng, lat)) {
         const bucket = gridMap.get(nKey);
@@ -307,18 +480,48 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
       }
     }
 
+    // Name-graph bridging: require nearest endpoints to be <= 150m
     const rawName = String(pisteFeatures[idx].properties?.name || pisteFeatures[idx].properties?.['piste:name'] || '')
       .toLowerCase()
       .trim();
     if (isRealName(rawName)) {
       const sameName = nameMap.get(rawName);
       if (sameName) {
-        for (const nIdx of sameName) neighbors.add(nIdx);
+        const myCoords = coordsByIdx[idx];
+        const myStart = myCoords[0];
+        const myEnd = myCoords[myCoords.length - 1];
+        for (const nIdx of sameName) {
+          if (nIdx === idx) continue;
+          const nCoords = coordsByIdx[nIdx];
+          if (nCoords && nCoords.length > 0) {
+            const nStart = nCoords[0];
+            const nEnd = nCoords[nCoords.length - 1];
+            const minDist = Math.min(
+              fastDistMeters(myStart[0], myStart[1], nStart[0], nStart[1]),
+              fastDistMeters(myStart[0], myStart[1], nEnd[0], nEnd[1]),
+              fastDistMeters(myEnd[0], myEnd[1], nStart[0], nStart[1]),
+              fastDistMeters(myEnd[0], myEnd[1], nEnd[0], nEnd[1])
+            );
+            if (minDist <= 150) {
+              neighbors.add(nIdx);
+            }
+          }
+        }
       }
     }
 
+    const currentMaxZ = maxZByIdx[idx];
     for (const nIdx of neighbors) {
       if (liftServed.has(nIdx)) continue;
+
+      // Downhill elevation monotonicity: prevent valley base runs from propagating uphill to un-lifted summits
+      const nextMinZ = minZByIdx[nIdx];
+      if (isFinite(currentMaxZ) && isFinite(nextMinZ) && currentMaxZ > 0 && nextMinZ > 0) {
+        if (nextMinZ > currentMaxZ + 15) {
+          continue; // Uphill jump exceeds 15m tolerance
+        }
+      }
+
       const nextDist = dist + lengthByIdx[nIdx];
       if (nextDist <= MAX_CHAIN_METERS) {
         liftServed.add(nIdx);
@@ -329,6 +532,11 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
 
   // 6. Finalize Downhill vs. Backcountry Touring + Universal Gravity Sink Law
   for (const idx of downhillCandidates) {
+    if (verifiedInbounds.has(idx)) {
+      pisteFeatures[idx].properties.atlas_category = 'downhill';
+      continue;
+    }
+
     const feat = pisteFeatures[idx];
     const props = feat.properties || {};
     const coords = coordsByIdx[idx];
