@@ -1924,20 +1924,12 @@ export default function App() {
     const handleMapZoom = () => {
       // Do not fight programmatic flights across continents
       if (isProgrammaticFlightActive) return;
+      // Skip during keyboard flight — the flight loop enforces clampPitch() per-frame
+      if (cameraStateMachine.getMode() === 'flight') return;
       const z = map.getZoom();
-      // Ensure camera does not dip below terrain surface when pitched steeply at high zoom close to ground.
-      // Guard: skip this correction while keyboard flight is active — firing setPitch() on moveend
-      // during/immediately after key release produces a secondary jerk frame on top of the key-release snap.
-      // The flight loop already enforces clampPitch() per-frame; this guard only applies to mouse/flyto moves.
-      if (z > 16.0 && cameraStateMachine.getMode() !== 'flight') {
-        const maxPitchAtZoom = Math.max(55, Math.round(75 - ((z - 16.0) / 4.5) * 20));
-        if (map.getPitch() > maxPitchAtZoom) {
-          map.setPitch(maxPitchAtZoom);
-          setMapPitch(maxPitchAtZoom);
-        }
-      }
-      // Ensure globe always stays centered when in view:
-      // When zooming out to globe level, smoothly constrain pitch toward 0° so globe never drops down
+      // Progressive pitch ceiling: smoothly tapers max pitch from 82° at high zoom down to 0° at globe level.
+      // Formula: maxPitch = (zoom - 3.5) * 18, clamped to [0, 82].
+      // This single formula subsumes the old z>16 block (which computed a weaker ceiling that this always dominated).
       const maxAllowedPitch = Math.max(0, Math.min(82, (z - 3.5) * 18));
       if (map.getPitch() > maxAllowedPitch) {
         map.setPitch(maxAllowedPitch);
@@ -2018,17 +2010,6 @@ export default function App() {
         } catch (_) {}
       }
       const z = map.getZoom();
-      // Ensure camera does not dip below terrain surface when pitched steeply at high zoom close to ground.
-      // Guard: skip this correction while keyboard flight is active — firing setPitch() on moveend
-      // during/immediately after key release produces a secondary jerk frame on top of the key-release snap.
-      // The flight loop already enforces clampPitch() per-frame; this guard only applies to mouse/flyto moves.
-      if (z > 16.0 && cameraStateMachine.getMode() !== 'flight') {
-        const maxPitchAtZoom = Math.max(55, Math.round(75 - ((z - 16.0) / 4.5) * 20));
-        if (map.getPitch() > maxPitchAtZoom) {
-          map.setPitch(maxPitchAtZoom);
-          setMapPitch(maxPitchAtZoom);
-        }
-      }
       if (z >= 9.2 && fetchOverpassBboxRef.current) {
         try {
           const center = map.getCenter();
