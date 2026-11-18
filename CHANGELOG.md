@@ -1,6 +1,10 @@
 ## [Unreleased]
 
 ### Fixed
+- **Safari trackpad double-zoom:** Disabled MapLibre's `scrollZoom` during Safari `gesturechange` events to prevent both the custom gesture handler and MapLibre's built-in handler from independently adjusting zoom on the same pinch input.
+- **Zoom buttons bypass camera state machine:** `handleZoomIn`/`handleZoomOut` now cancel active keyboard flight and route through `safeEaseTo` instead of calling `map.easeTo()` directly, preventing frame-fighting between the zoom animation and the flight loop.
+- **Safari trackpad double-zoom:** Disabled MapLibre's `scrollZoom` during Safari `gesturechange` events to prevent both the custom gesture handler and MapLibre's built-in handler from independently adjusting zoom on the same pinch input.
+- **Zoom buttons bypass camera state machine:** `handleZoomIn`/`handleZoomOut` now cancel active keyboard flight and route through `safeEaseTo` instead of calling `map.easeTo()` directly, preventing frame-fighting between the zoom animation and the flight loop.
 - **Camera jerk at arrow-key release:** Two compounding causes removed:
   1. `stopFlight()` was calling `cam.releaseElevation()` + `cam.putCenterBackOnTerrain()` via private MapLibre APIs on key release. These produce a synchronous discontinuous terrain re-anchor (the visible snap/jerk). Removed — MapLibre's own compositor re-settles the camera smoothly on the next rendered frame without intervention.
   2. `handleMapMoveEnd` was calling `map.setPitch()` on the `moveend` event that fires immediately after key release, adding a second jerk frame at high zoom / high pitch. Guarded with `cameraStateMachine.getMode() !== 'flight'` — the flight loop already enforces `clampPitch()` per-frame so this post-move correction is unnecessary during keyboard flight.

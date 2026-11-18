@@ -1621,6 +1621,10 @@ export default function App() {
       gestureStartBearing = map.getBearing();
       gestureStartZoom = map.getZoom();
       isGestureActive = true;
+      // Disable MapLibre's scrollZoom during Safari gesture events to prevent double-zoom:
+      // Safari fires both gesturechange and wheel events for trackpad pinch, so both handlers
+      // would independently adjust zoom if scrollZoom stays enabled.
+      try { map.scrollZoom.disable(); } catch (_) {}
     };
 
     const onGestureChange = (e: any) => {
@@ -1632,6 +1636,7 @@ export default function App() {
         if (isGestureActive) {
           isGestureActive = false;
           resetOrphanedDragHandlers();
+          try { map.scrollZoom.enable({ around: 'center' }); } catch (_) {}
         }
       }, 400);
 
@@ -1658,6 +1663,8 @@ export default function App() {
       if (!isIosDevice) {
         setMapBearing(Math.round(map.getBearing()));
         resetOrphanedDragHandlers();
+        // Re-enable scrollZoom after gesture completes (was disabled in onGestureStart)
+        try { map.scrollZoom.enable({ around: 'center' }); } catch (_) {}
       }
     };
 
@@ -2905,16 +2912,23 @@ export default function App() {
     e.preventDefault();
     e.stopPropagation();
     if (!mapRef.current) return;
+    // Cancel keyboard flight if active, then use safeEaseTo so it coordinates with the state machine
+    if (cameraStateMachine.getMode() === 'flight') {
+      cameraStateMachine.cancelProgrammaticFlight(mapRef.current);
+    }
     const cur = mapRef.current.getZoom();
-    (mapRef.current as any).easeTo({ zoom: Math.min(20.5, cur + 1), duration: 250, freezeElevation: true });
+    safeEaseTo(mapRef.current, { zoom: Math.min(20.5, cur + 1), duration: 250, freezeElevation: true });
   }, []);
 
   const handleZoomOut = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (!mapRef.current) return;
+    if (cameraStateMachine.getMode() === 'flight') {
+      cameraStateMachine.cancelProgrammaticFlight(mapRef.current);
+    }
     const cur = mapRef.current.getZoom();
-    (mapRef.current as any).easeTo({ zoom: Math.max(1.0, cur - 1), duration: 250, freezeElevation: true });
+    safeEaseTo(mapRef.current, { zoom: Math.max(1.0, cur - 1), duration: 250, freezeElevation: true });
   }, []);
 
   const handleLocateUser = useCallback(() => {
