@@ -1609,9 +1609,13 @@ export default function App() {
     document.addEventListener('gesturestart', onDocGesture, { passive: false });
     document.addEventListener('gesturechange', onDocGesture, { passive: false });
 
+    // Detect actual iOS touch devices (iPhone, iPad) — NOT Mac laptops with trackpads.
+    // iPads report navigator.platform === 'MacIntel' with maxTouchPoints > 1, same as Mac laptops.
+    // We disambiguate by checking for real touch event support ('ontouchend' in document) which
+    // is true on iOS but false on macOS, ensuring Mac trackpad twist-to-rotate still works.
     const isIosDevice = typeof navigator !== 'undefined' && (
       /iPhone|iPad|iPod/.test(navigator.userAgent) ||
-      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1 && 'ontouchend' in document)
     );
 
     const onGestureStart = (e: any) => {
