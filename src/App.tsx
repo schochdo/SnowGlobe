@@ -73,6 +73,7 @@ import {
   safeEaseTo,
   isProgrammaticFlightActive,
   setIsProgrammaticFlightActive,
+  cameraStateMachine,
   computeGlobeFitZoom,
   DEFAULT_NORTH_AMERICA_CENTER,
   useKeyboardFlight,
@@ -1917,9 +1918,11 @@ export default function App() {
       // Do not fight programmatic flights across continents
       if (isProgrammaticFlightActive) return;
       const z = map.getZoom();
-      // Ensure camera does not dip below terrain surface when pitched steeply at high zoom close to ground
-      // Continuous progressive pitch constraint: smoothly tapers from 75° at z=16 down to 55° at z=20.5 with zero discrete jumps
-      if (z > 16.0) {
+      // Ensure camera does not dip below terrain surface when pitched steeply at high zoom close to ground.
+      // Guard: skip this correction while keyboard flight is active — firing setPitch() on moveend
+      // during/immediately after key release produces a secondary jerk frame on top of the key-release snap.
+      // The flight loop already enforces clampPitch() per-frame; this guard only applies to mouse/flyto moves.
+      if (z > 16.0 && cameraStateMachine.getMode() !== 'flight') {
         const maxPitchAtZoom = Math.max(55, Math.round(75 - ((z - 16.0) / 4.5) * 20));
         if (map.getPitch() > maxPitchAtZoom) {
           map.setPitch(maxPitchAtZoom);
@@ -2008,9 +2011,11 @@ export default function App() {
         } catch (_) {}
       }
       const z = map.getZoom();
-      // Ensure camera does not dip below terrain surface when pitched steeply at high zoom close to ground
-      // Continuous progressive pitch constraint: smoothly tapers from 75° at z=16 down to 55° at z=20.5 with zero discrete jumps
-      if (z > 16.0) {
+      // Ensure camera does not dip below terrain surface when pitched steeply at high zoom close to ground.
+      // Guard: skip this correction while keyboard flight is active — firing setPitch() on moveend
+      // during/immediately after key release produces a secondary jerk frame on top of the key-release snap.
+      // The flight loop already enforces clampPitch() per-frame; this guard only applies to mouse/flyto moves.
+      if (z > 16.0 && cameraStateMachine.getMode() !== 'flight') {
         const maxPitchAtZoom = Math.max(55, Math.round(75 - ((z - 16.0) / 4.5) * 20));
         if (map.getPitch() > maxPitchAtZoom) {
           map.setPitch(maxPitchAtZoom);

@@ -1,6 +1,13 @@
 ## [Unreleased]
 
 ### Fixed
+- **Camera jerk at arrow-key release:** Two compounding causes removed:
+  1. `stopFlight()` was calling `cam.releaseElevation()` + `cam.putCenterBackOnTerrain()` via private MapLibre APIs on key release. These produce a synchronous discontinuous terrain re-anchor (the visible snap/jerk). Removed — MapLibre's own compositor re-settles the camera smoothly on the next rendered frame without intervention.
+  2. `handleMapMoveEnd` was calling `map.setPitch()` on the `moveend` event that fires immediately after key release, adding a second jerk frame at high zoom / high pitch. Guarded with `cameraStateMachine.getMode() !== 'flight'` — the flight loop already enforces `clampPitch()` per-frame so this post-move correction is unnecessary during keyboard flight.
+
+## [Unreleased - prev]
+
+### Fixed
 - **GitHub Pages base path after repo rename to SnowGlobe:** Added `BASE_URL=/SnowGlobe/` to the CI build env in `deploy.yml`. GitHub Pages serves project repos at `/<repo-name>/`; without an explicit `base`, Vite emitted relative `./` paths that broke all asset and data loads at the sub-path URL. Local dev is unaffected (`BASE_URL` unset → Vite falls back to `'./'`).
 
 # Snow Globe — Changelog

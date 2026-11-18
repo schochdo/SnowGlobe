@@ -72,27 +72,14 @@ export function useKeyboardFlight({
         cameraStateMachine.setMode('idle');
       }
 
-      // Smooth terrain settlement on flight end:
-      // Re-anchors center to terrain using MapLibre's native recalculateZoomAndCenter
-      // preserving exact camera eye altitude and position in 3D space with zero bounce and zero slam.
-      if (isElevationHeld && map) {
+      // Clear the held-elevation flag on flight end.
+      // We intentionally do NOT call cam.releaseElevation() / putCenterBackOnTerrain() here —
+      // those private MapLibre calls produce a synchronous discontinuous snap to terrain that is
+      // exactly the "jerk at key release" the user sees. MapLibre's own terrain compositor
+      // re-anchors the center smoothly on the next rendered frame without any help from us.
+      if (isElevationHeld) {
         isElevationHeld = false;
         flightElevation = null;
-        try {
-          const cam = (map as any)._camera;
-          if (cam && typeof cam.releaseElevation === 'function') {
-            const tookDem = cam.releaseElevation();
-            if (typeof cam.applyTransformChange === 'function') {
-              cam.applyTransformChange((tr: any) => {
-                if (map.terrain && typeof cam.putCenterBackOnTerrain === 'function') {
-                  cam.putCenterBackOnTerrain(tr, map.terrain, tookDem);
-                } else {
-                  tr.setElevation(0);
-                }
-              });
-            }
-          }
-        } catch (_) {}
       }
     };
 
