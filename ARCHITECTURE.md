@@ -205,7 +205,72 @@ GLOBAL_SKI_ATLAS (static)
 
 ---
 
-## 8. Resort Cards (Left Dock)
+## 8. Camera, Flight Engine & Gesture Subsystem
+
+The camera system balances 60fps high-speed keyboard cruising across rugged 3D terrain, native trackpad gestures, precision touchscreens, and programmatic easing without elevation slamming, clipping, or double-zoom artifacts.
+
+### 8.1 Finite State Machine (`src/camera/cameraStateMachine.ts`)
+
+The camera operates under 4 discrete modes:
+- `'idle'`: Static viewing or manual mouse pan/orbit.
+- `'flight'`: Active 60fps keyboard cruising (`useKeyboardFlight`).
+- `'flyto'`: Programmatic eased transition (`safeFlyTo`, `safeEaseTo`) to resorts, lookouts, or home bounds.
+- `'inspect'`: Stationary close-up inspection of selected terrain features.
+
+**State Machine Invariants:**
+1. **Manual Preemption**: Any manual user interaction (mouse drag, keyboard navigation key, UI zoom button) immediately calls `cameraStateMachine.cancelProgrammaticFlight(map)` to preempt any running `flyTo` animation.
+2. **Safe Navigation Wrappers**: Never call `map.flyTo()` or `map.easeTo()` directly from components. Always use `safeFlyTo()` or `safeEaseTo()`. These wrappers validate coordinates (`isFinite`, NaN checks), enforce center ground clamping, and coordinate mode transitions through the state machine.
+3. **Zoom Button Coordination**: UI zoom buttons (`+` / `-`) cancel active flight before easing via `safeEaseTo({ zoom, freezeElevation: true })`, preventing frame-fighting with the keyboard loop.
+
+### 8.2 60 FPS Keyboard Flight Engine (`src/camera/useKeyboardFlight.ts`)
+
+Implements smooth, level, momentum-calibrated flight across 3D terrain:
+
+| Input Keys | Action | Behavior |
+|---|---|---|
+| `ArrowUp` / `ArrowDown` | Forward / Backward | Horizontal surface cruising along camera heading |
+| `ArrowLeft` / `ArrowRight` | Strafe Left / Right | Lateral cruising perpendicular to camera heading |
+| `KeyW` / `KeyS` | Pitch Tilt | Smoothly tilts camera eye up toward horizon / down toward nadir |
+| `KeyA` / `KeyD` | Heading Rotate | Spins camera azimuth bearing left / right |
+| `KeyQ` / `KeyE` (or `PgDn` / `PgUp`) | Vertical Altitude | Pure vertical "helicopter elevator" — adjusts altitude straight up/down without lateral drift |
+| `KeyZ` / `KeyX` (or `-` / `+`) | Zoom In / Out | Adjusts focal magnification along view vector |
+| `Shift` (held) | Sprint | 2.0x–2.5x speed multiplier across all flight axes |
+
+**Flight Kinematics & Gotchas:**
+- **Predictive Ground Clearance**: `sampleTerrainObstacle` probes terrain 0.6 seconds ahead along the trajectory, enforcing a minimum 25m clearance floor (`MIN_CAMERA_CLEARANCE_METERS`) so the camera eye never penetrates mountain faces.
+- **Elevation Hold During Panning**: During horizontal cruising, elevation is held steady to prevent unpleasant bobbing over peaks and valleys.
+- **NEVER Call `releaseElevation` on Key Release**: On flight end (`stopFlight`), **never** invoke private MapLibre elevation re-anchoring APIs (`cam.releaseElevation()` / `cam.putCenterBackOnTerrain()`). These methods execute a synchronous, discontinuous elevation jump that causes visible camera "slamming" or "jerking". MapLibre's native terrain compositor settles center elevation naturally on subsequent frames without intervention.
+- **Guard MoveEnd Pitch Corrections**: Never fire synchronous `map.setPitch()` corrections inside `moveend` handlers while `cameraStateMachine.getMode() === 'flight'`.
+
+### 8.3 Trackpad & Wheel Controller (`src/App.tsx`)
+
+- **Safari Trackpad Pinch & Rotate**: Safari fires native `gesturestart`, `gesturechange`, and `gestureend` events for trackpad pinches and twists.
+  - **Double-Zoom Prevention**: MapLibre's built-in `scrollZoom` **must be disabled** during active Safari gesture events (`map.scrollZoom.disable()`). Because Safari dispatches both `gesturechange` and `wheel` events for trackpad pinches, leaving `scrollZoom` enabled results in both handlers incrementing zoom simultaneously (2x jerky double-zoom). `scrollZoom` is re-enabled on `gestureend` or a 400ms watchdog timeout.
+- **Chrome / Brave Trackpad Pinch**: Dispatched as `wheel` events with `e.ctrlKey === true`. Intercepted with `e.preventDefault()` to prevent Chromium browser tab zoom while allowing MapLibre's centered `scrollZoom` to process the event cleanly.
+- **Modifier Scroll Controls**:
+  - `Shift + Two-Finger Scroll`: Direct 3D camera pitch tilt.
+  - `Option/Alt + Two-Finger Scroll`: Direct camera azimuth rotation.
+- **iOS vs. macOS Detection**: iPads report `navigator.platform === 'MacIntel'` with `maxTouchPoints > 1`, identical to MacBook trackpads. Disambiguate by checking `'ontouchend' in document` — true on iOS/iPadOS touchscreens, false on macOS. Real iPads skip trackpad gesture handlers in favor of touch handlers; MacBooks keep custom gesture twist-to-rotate enabled.
+
+### 8.4 Tablet & Mobile Touch Arbiter (`src/App.tsx`)
+
+- **Built-in `touchPitch` Disabled**: MapLibre's default `touchPitch` triggers accidental pitch tilts during two-finger pinch-zooms. It is permanently disabled via `map.touchPitch.disable()`.
+- **Two-Finger Intent Arbiter (12px Deadzone)**:
+  - If vertical displacement strongly dominates (`|dy| > 1.5 * |dd|` and rotation `< 8°`), the gesture locks to `'pitch'` mode, modifying pitch smoothly and disabling `touchZoomRotate`.
+  - Otherwise, the gesture locks to `'zoom-rotate'`, enabling smooth pinch-zoom and rotation around the touch midpoint.
+- **Touch-Lift Jerk Suppression**: When releasing from 2 fingers to 1 (`lastTouchCount === 2 && remainingTouches === 1`), single-finger panning is suppressed for 120ms to prevent the remaining finger from jerking the camera.
+
+### 8.5 Progressive Pitch Constraint
+
+At all times, maximum pitch is governed by a continuous progressive ceiling:
+$$\text{maxAllowedPitch} = \text{clamp}\left(0, 82, (\text{zoom} - 3.5) \times 18\right)$$
+- Zoom $\le 3.5$: pitch locked to $0^\circ$ (keeps the 3D globe centered without dipping below the horizon).
+- Zoom $3.5 \to 8.0$: smoothly scales from $0^\circ \to 81^\circ$.
+- Zoom $\ge 8.0$: capped at $82^\circ$ for safe oblique mountain viewing.
+
+---
+
+## 9. Resort Cards (Left Dock)
 
 Each card shows:
 - Resort name (serif, bold)
@@ -221,7 +286,7 @@ Each card shows:
 
 ---
 
-## 9. Sorting Logic
+## 10. Sorting Logic
 
 Located in `filteredResorts` useMemo (not `displayedResorts`).
 
@@ -237,7 +302,7 @@ if (sortBy === 'snow') {
 
 ---
 
-## 10. Known Constraints & Gotchas
+## 11. Known Constraints & Gotchas
 
 - **Modular Architecture** — `src/App.tsx` coordinates dedicated sub-components (`src/components/`), services (`src/services/`), data modules (`src/data/`), types (`src/types/`), and utilities (`src/utils/`). Do not re-collapse into a monolithic file.
 - **No backend** — all data is client-side. Do not add a server dependency.
@@ -250,7 +315,7 @@ if (sortBy === 'snow') {
 
 ---
 
-## 11. Data Pipeline, Upstream Ingestion & Maintenance Procedures
+## 12. Data Pipeline, Upstream Ingestion & Maintenance Procedures
 
 To prevent undoing previous sanitization work or re-introducing upstream bugs, follow these documented procedures when refreshing data:
 
@@ -279,20 +344,22 @@ To prevent undoing previous sanitization work or re-introducing upstream bugs, f
 
 ---
 
-## 12. Trail Classification & Topological Engine
+## 13. Trail Classification & Topological Engine
 
 To solve the lack of relational resort boundaries and network topology in OpenStreetMap without brittle proximity heuristics, the system uses a **3-Tier Topological Graph Classifier** (`src/utils/pisteTopologyGraph.ts` and `data_pipeline/pisteTopologyGraph.cjs`):
 
 1. **Tier 1 — Strict Discipline Segregation**: Isolates Nordic cross-country (`piste:type=nordic`) and uphill touring (`skitour`) before downhill evaluation. Non-ski clutter without winter attributes is marked `ignore`.
-2. **Tier 2 — Universal Physical Gradient Law (Kinematics)**: Evaluates 3D coordinates. If a trail has length $\ge 1,200\text{m}$, average pitch $\le 4.5^\circ$ ($< 8\%$ grade), and lacks machine grooming (`classic`, `skating`, `scooter`), it cannot physically sustain downhill skiing. Demoted to `ignore` or `touring`.
-3. **Tier 3 — Spatial Graph Chaining & Gravity Sink Law**:
-   - Builds a ~22m spatial hash grid and propagates `lift_served = true` up to 8,000m from lift terminals along connected run segments.
+2. **Tier 2 — Universal Physical Gradient Law (Kinematics)**: Evaluates 3D coordinates. If a trail has length $\ge 1,200\text{m}$, average pitch $\le 4.5^\circ$ ($< 8\%$ grade), and lacks machine grooming (`classic`, `skating`, `scooter`), it cannot physically sustain downhill skiing. Demoted to `ignore` or `touring`. Catwalks and ski-outs with novice/easy difficulty are preserved. Features within `landuse=winter_sports` polygons are immediately classified as `downhill`.
+3. **Tier 3 — Directed Downhill BFS & Gravity Sink Law**:
+   - Builds a ~65m ($\pm 3$ cells) spatial hash grid and propagates `lift_served = true` up to 8,000m from upper lift terminals along connected run segments.
+   - Fully indexes perimeter vertices and centroids of polygon glades and bowls.
+   - Enforces downhill elevation monotonicity during propagation (`nextMinZ <= currentMaxZ + 15m`) and caps trail-name bridging to 150m.
    - **Gravity Sink Law**: If the lowest elevation terminus of a candidate run terminates $> 350\text{m}$ from any lift and connects to no downstream run returning to a lift, it is an unserviced backcountry descent. Automatically classified as `touring`.
 4. **Client-Side Immutability**: The client MapLibre renderer treats pre-baked `atlas_category` as authoritative and never mutates it using client-side radius checks.
 
 ---
 
-## 13. AI / Developer Guardrails & Strict Module Boundaries
+## 14. AI / Developer Guardrails & Strict Module Boundaries
 
 To ensure fast, isolated, and bug-free development without cross-subsystem drift, all AI agents and developers must observe these hard boundaries:
 
@@ -306,13 +373,20 @@ To ensure fast, isolated, and bug-free development without cross-subsystem drift
    - `data_pipeline/pisteTopologyGraph.cjs` is a thin CommonJS adapter that re-exports `src/utils/pisteTopologyGraph.ts` so Node scripts and Vite/client never diverge.
    - Never duplicate classification rules or introduce localized heuristics into `src/App.tsx`, `src/layers/`, or `data_pipeline/`.
 
-3. **Isolated Single-Area Modifications**:
+3. **Camera & Navigation Subsystem Invariants**:
+   - **Never call raw `map.flyTo()` or `map.easeTo()` directly**: Always use `safeFlyTo()` or `safeEaseTo()` to route through the `CameraStateMachine`.
+   - **Never call `releaseElevation()` or `putCenterBackOnTerrain()` on key release**: MapLibre settles terrain elevation smoothly across subsequent rendered frames. Synchronous private API re-anchoring causes camera snapping/slamming.
+   - **Always disable `scrollZoom` during Safari `gesturechange`**: Prevents 2x double-zoom accumulation on trackpad pinch.
+   - **Always disambiguate iOS from macOS via `'ontouchend' in document`**: Prevents MacBook trackpads from being misclassified as touchscreens.
+   - **Never fire synchronous pitch corrections on `moveend` during active flight**: The flight engine enforces progressive pitch per-frame.
+
+4. **Isolated Single-Area Modifications**:
    - Single-area tasks (e.g. tuning UI controls, adjusting camera flight, styling vector layers) must touch only their target modules according to the 1-line-per-file directory map in Section 3.
    - Always run the headless canary verification suite (`node scripts/verify_topology_canary.cjs`) before committing any changes touching trail classification or data pipeline logic.
 
 ---
 
-## 14. Parked & Future Initiatives
+## 15. Parked & Future Initiatives
 
 - **Offline Tile & Elevation Caching (PWA / Airplane Mode)**:
   - *Goal*: Allow offline map browsing for single ski areas or backcountry hiking zones without cellular data.
