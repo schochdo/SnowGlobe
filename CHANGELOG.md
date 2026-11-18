@@ -1,3 +1,8 @@
+## [Unreleased]
+
+### Fixed
+- **GitHub Pages base path after repo rename to SnowGlobe:** Added `BASE_URL=/SnowGlobe/` to the CI build env in `deploy.yml`. GitHub Pages serves project repos at `/<repo-name>/`; without an explicit `base`, Vite emitted relative `./` paths that broke all asset and data loads at the sub-path URL. Local dev is unaffected (`BASE_URL` unset → Vite falls back to `'./'`).
+
 # Snow Globe — Changelog
 
 All notable changes in reverse chronological order. Format: `[date] type: description`.

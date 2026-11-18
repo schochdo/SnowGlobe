@@ -35,6 +35,7 @@ jobs:
         run: npm run build
         env:
           GITHUB_ACTIONS: 'true'
+          BASE_URL: '/SnowGlobe/'
           VITE_CARTO_API_KEY: ${{ secrets.VITE_CARTO_API_KEY }}
 
       - name: Setup Pages
