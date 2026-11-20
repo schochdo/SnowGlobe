@@ -2977,6 +2977,38 @@ export default function App() {
       const marker = new maplibregl.Marker({ element: el })
         .setLngLat([userLocation.lng, userLocation.lat])
         .addTo(mapRef.current);
+
+      // MapLibre GL v4/v5/v6 bug workaround: Marker._update calculates 3D terrain elevation
+      // screen projection into this._flatPos, but sets DOM transform using unprojected this._pos
+      // (sea-level / flat ellipsoid projection). This causes DOM markers to float in mid-air above
+      // mountains when tilted/pitched. We intercept _update to clamp this._pos to this._flatPos.
+      const internalMarker = marker as unknown as {
+        _update?: (e?: { type?: string }) => void;
+        _map?: { terrain?: unknown };
+        _pos?: { x: number; y: number };
+        _flatPos?: { x: number; y: number };
+        _subpixelPositioning?: boolean;
+        _element?: HTMLElement;
+      };
+      if (typeof internalMarker._update === 'function') {
+        const origUpdate = internalMarker._update;
+        internalMarker._update = function (e?: { type?: string }) {
+          origUpdate.call(this, e);
+          if (this._map?.terrain && this._flatPos && this._element) {
+            this._pos = this._flatPos;
+            const round = !this._subpixelPositioning && e?.type !== 'move';
+            const px = round ? Math.round(this._flatPos.x) : this._flatPos.x;
+            const py = round ? Math.round(this._flatPos.y) : this._flatPos.y;
+            this._element.style.transform = this._element.style.transform.replace(
+              /translate\([^)]+\)/,
+              `translate(${px}px, ${py}px)`
+            );
+          }
+        };
+        // Re-run immediately so initial position clamps to current DEM terrain surface
+        internalMarker._update();
+      }
+
       userLocationMarkerRef.current = marker;
     } else {
       userLocationMarkerRef.current.setLngLat([userLocation.lng, userLocation.lat]);

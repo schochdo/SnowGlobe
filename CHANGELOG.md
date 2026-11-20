@@ -1,6 +1,9 @@
 ## [Unreleased]
 
 ### Fixed
+- **Clamp user location marker to 3D DEM terrain surface**:
+  - **What was wrong**: In 3D terrain mode (and especially on mobile when tilted/pitched), the user's blue GPS location dot could visibly float in mid-air above the mountain surface or appear displaced along the elevation vector. MapLibre GL's built-in `Marker._update()` calculates terrain-projected coordinates into `this._flatPos` via `locationToScreenPoint()`, but applies DOM screen positioning using unprojected `this._pos` (flat sea-level projection), failing to clamp DOM markers to the active DEM elevation mesh.
+  - **The fix**: Wrapped `Marker._update` on the user location marker instance to synchronize `this._pos = this._flatPos` and replace the DOM element translate coordinate whenever 3D DEM terrain is active. The marker now clamps flush to the actual terrain surface regardless of camera pitch, heading, or altitude.
 - **Strict category discipline for trails and infrastructure layers**:
   - **What was wrong**: When only the "Heli/Cat" category filter was toggled on (or when Downhill was off while Heli/Cat was on), standard inbounds downhill trails and aerialway lifts at resorts like Crested Butte continued to render on the map. This occurred because `syncTrailFilterAndVisibility` contained an obsolete condition (`if (showHeliCat && !showDownhill)`) that added downhill pistes to the allowed trail filter, and set `const liftVisible = showDownhill || showHeliCat`.
   - **The fix**: Removed the leaky downhill trail fallback from `syncTrailFilterAndVisibility` and set `liftVisible = showDownhill`. If no category is selected, nothing renders; if Downhill is selected, downhill trails and lifts render; if Heli/Cat is selected, only Heli/Cat operations render.
