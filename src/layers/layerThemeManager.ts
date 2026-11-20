@@ -214,18 +214,6 @@ export function syncTrailFilterAndVisibility(
     ]);
   }
 
-  if (showHeliCat && !showDownhill) {
-    allowedConditions.push([
-      'all',
-      ['!=', ['get', 'kind'], 'lift'],
-      ['!=', ['get', 'atlas_category'], 'touring'],
-      ['!=', ['coalesce', ['get', 'is_touring'], false], true],
-      ['!=', ['get', 'piste:type'], 'skitour'],
-      ['!', ['in', 'skitour', ['downcase', ['coalesce', ['get', 'piste:type'], '']]]],
-      ['any', ['==', ['get', 'piste:type'], 'downhill'], ['==', ['get', 'piste:type'], 'connection']],
-    ]);
-  }
-
   if (showTouring) {
     allowedConditions.push(['==', ['get', 'atlas_category'], 'touring']);
     allowedConditions.push([
@@ -334,7 +322,7 @@ export function syncTrailFilterAndVisibility(
     if (anyTrails) map.setFilter('live-pistes-polygons-labels', polyLabelFilter);
   }
 
-  const liftVisible = showDownhill || showHeliCat;
+  const liftVisible = showDownhill;
   const baseLiftConditions: any[] = [
     ['==', ['get', 'kind'], 'lift'],
     ['==', ['coalesce', ['get', 'status'], 'operating'], 'operating'],

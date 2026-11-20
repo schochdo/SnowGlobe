@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+### Fixed
+- **Strict category discipline for trails and infrastructure layers**:
+  - **What was wrong**: When only the "Heli/Cat" category filter was toggled on (or when Downhill was off while Heli/Cat was on), standard inbounds downhill trails and aerialway lifts at resorts like Crested Butte continued to render on the map. This occurred because `syncTrailFilterAndVisibility` contained an obsolete condition (`if (showHeliCat && !showDownhill)`) that added downhill pistes to the allowed trail filter, and set `const liftVisible = showDownhill || showHeliCat`.
+  - **The fix**: Removed the leaky downhill trail fallback from `syncTrailFilterAndVisibility` and set `liftVisible = showDownhill`. If no category is selected, nothing renders; if Downhill is selected, downhill trails and lifts render; if Heli/Cat is selected, only Heli/Cat operations render.
+
 ### Feat
 - **Topological classification refinement & full 5,905-resort re-bake**:
   1. **Protected Untagged Catwalks in Tier 2**: In the `>= 1,200m` length and `<= 4.5 deg` low-gradient filter, protected untagged groomed ski-outs (`piste:difficulty` = `novice` or `easy`). Only rejects low-gradient features if grooming is explicitly `backcountry`/`no`, or missing grooming with `highway` in (`path`, `footway`, `track`) without novice/easy difficulty.
