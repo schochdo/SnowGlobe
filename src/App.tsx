@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import { Search, Sliders, Layers } from 'lucide-react';
+import { Search, Sliders, Layers, X } from 'lucide-react';
 import * as maplibregl from 'maplibre-gl';
 import type { Map as MapLibreMap, GeoJSONSource } from 'maplibre-gl';
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
@@ -3418,16 +3418,31 @@ export default function App() {
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
-        <button
-          onClick={handleOpenMobileSearch}
-          className="flex-1 h-10 bg-[#FAF8F3] border border-[#2C2A27] rounded-md px-3 flex items-center gap-2 text-left text-xs font-medium text-[#5C5852] shadow-sm cursor-pointer select-none truncate hover:bg-[#EFECE4] transition-colors"
-          aria-label="Search ski areas, peaks, countries"
-        >
-          <Search className="w-4 h-4 text-[#8A847C] shrink-0" />
-          <span className="truncate text-[#1C1B18] font-semibold">
-            {searchQuery || 'Search alpine resorts, peaks...'}
-          </span>
-        </button>
+        <div className="flex-1 h-10 bg-[#FAF8F3] border border-[#2C2A27] rounded-md px-3 flex items-center gap-2 shadow-sm min-w-0 transition-colors">
+          <button
+            onClick={handleOpenMobileSearch}
+            className="flex-1 flex items-center gap-2 text-left text-xs font-medium text-[#5C5852] cursor-pointer select-none truncate hover:text-[#1C1B18] transition-colors min-w-0 py-2 -my-2"
+            aria-label="Search ski areas, peaks, countries"
+          >
+            <Search className="w-4 h-4 text-[#8A847C] shrink-0" />
+            <span className="truncate text-[#1C1B18] font-semibold">
+              {searchQuery || 'Search'}
+            </span>
+          </button>
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSearchQuery('');
+              }}
+              className="text-[#8A847C] hover:text-[#1C1B18] p-1 -mr-1 rounded cursor-pointer shrink-0"
+              aria-label="Clear search"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
 
         <button
           ref={mobileFilterBtnRef}

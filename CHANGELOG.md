@@ -1,6 +1,12 @@
 ## [Unreleased]
 
 ### Fixed
+- **Mobile search placeholder and sort pill text truncation**:
+  - **What was wrong**: On mobile devices with narrow viewports, the search input placeholder `Search alpine resorts, peaks, countries...` was clipped (`Search alpine resorts, pea...`). Simultaneously, the 4th sort button (`7d ❄ ▼`) overflowed in the sort pill container, truncating the label to `7c...` or clipping the snowflake icon and sort order chevron arrow. Furthermore, the compact floating top search bar on mobile lacked a quick 'x' button to clear active searches directly from the top bar.
+  - **The fix**:
+    - Simplified the search placeholder across the directory search input and mobile compact top bar to concise `"Search"`.
+    - Added an 'x' clear button to the mobile compact top bar when a query is active, allowing instant search clearing without needing to open the full drawer.
+    - Updated directory sort pill styles with `text-[10.5px] sm:text-[11px]`, padding `px-0.5 sm:px-1`, and `whitespace-nowrap`, eliminating label truncation so `7d ❄ ▼` renders completely and crisply on mobile screens.
 - **Clamp user location marker to 3D DEM terrain surface**:
   - **What was wrong**: In 3D terrain mode (and especially on mobile when tilted/pitched), the user's blue GPS location dot could visibly float in mid-air above the mountain surface or appear displaced along the elevation vector. MapLibre GL's built-in `Marker._update()` calculates terrain-projected coordinates into `this._flatPos` via `locationToScreenPoint()`, but applies DOM screen positioning using unprojected `this._pos` (flat sea-level projection), failing to clamp DOM markers to the active DEM elevation mesh.
   - **The fix**: Wrapped `Marker._update` on the user location marker instance to synchronize `this._pos = this._flatPos` and replace the DOM element translate coordinate whenever 3D DEM terrain is active. The marker now clamps flush to the actual terrain surface regardless of camera pitch, heading, or altitude.

@@ -192,7 +192,7 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
             <Search className="absolute left-2.5 w-4 h-4 text-[#8A847C] pointer-events-none" />
             <input
               type="text"
-              placeholder="Search alpine resorts, peaks, countries..."
+              placeholder="Search"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               onKeyDown={(e) => {
@@ -216,7 +216,8 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
               <button
                 type="button"
                 onClick={() => onSearchChange('')}
-                className="absolute right-2 text-[#8A847C] hover:text-[#1C1B18] cursor-pointer"
+                className="absolute right-2 text-[#8A847C] hover:text-[#1C1B18] cursor-pointer p-0.5 rounded"
+                aria-label="Clear search"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -330,7 +331,7 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
               <button
                 type="button"
                 onClick={() => onSortClick('name')}
-                className={`flex-1 py-1 px-1 rounded text-[11px] font-semibold text-center transition-colors cursor-pointer flex items-center justify-center truncate ${
+                className={`flex-1 py-1 px-0.5 sm:px-1 rounded text-[10.5px] sm:text-[11px] font-semibold text-center transition-colors cursor-pointer flex items-center justify-center whitespace-nowrap ${
                   sortBy === 'name'
                     ? 'bg-[#2C2A27] text-[#FAF8F3] font-bold'
                     : 'text-[#5C5852] hover:text-[#1C1B18]'
@@ -342,7 +343,7 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
               <button
                 type="button"
                 onClick={() => onSortClick('vert')}
-                className={`flex-1 py-1 px-1 rounded text-[11px] font-semibold text-center transition-colors cursor-pointer flex items-center justify-center truncate ${
+                className={`flex-1 py-1 px-0.5 sm:px-1 rounded text-[10.5px] sm:text-[11px] font-semibold text-center transition-colors cursor-pointer flex items-center justify-center whitespace-nowrap ${
                   sortBy === 'vert'
                     ? 'bg-[#2C2A27] text-[#FAF8F3] font-bold'
                     : 'text-[#5C5852] hover:text-[#1C1B18]'
@@ -354,7 +355,7 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
               <button
                 type="button"
                 onClick={() => onSortClick('acres')}
-                className={`flex-1 py-1 px-1 rounded text-[11px] font-semibold text-center transition-colors cursor-pointer flex items-center justify-center truncate ${
+                className={`flex-1 py-1 px-0.5 sm:px-1 rounded text-[10.5px] sm:text-[11px] font-semibold text-center transition-colors cursor-pointer flex items-center justify-center whitespace-nowrap ${
                   sortBy === 'acres'
                     ? 'bg-[#2C2A27] text-[#FAF8F3] font-bold'
                     : 'text-[#5C5852] hover:text-[#1C1B18]'
@@ -366,7 +367,7 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
               <button
                 type="button"
                 onClick={() => onSortClick('snow')}
-                className={`flex-1 py-1 px-1 rounded text-[11px] font-semibold text-center transition-colors cursor-pointer flex items-center justify-center truncate ${
+                className={`flex-1 py-1 px-0.5 sm:px-1 rounded text-[10.5px] sm:text-[11px] font-semibold text-center transition-colors cursor-pointer flex items-center justify-center whitespace-nowrap ${
                   sortBy === 'snow'
                     ? 'bg-[#2C2A27] text-[#FAF8F3] font-bold'
                     : 'text-[#5C5852] hover:text-[#1C1B18]'
