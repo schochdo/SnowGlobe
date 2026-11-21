@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+### Feat
+- **PWA Web App Manifest and Home Screen Icons**:
+  - Added `public/manifest.json` configured with `standalone` display mode, `#FAF8F3` theme/background color, and custom-styled high-res alpine peak/snowflake vector and PNG icons (`icon.svg`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png`).
+  - Linked manifest and touch icons in `index.html` with relative paths (`./`) compatible with GitHub Pages hosting, providing a clean app icon and title when added to the iOS Home Screen.
+
 ### Fixed
 - **Mobile search placeholder and sort pill text truncation**:
   - **What was wrong**: On mobile devices with narrow viewports, the search input placeholder `Search alpine resorts, peaks, countries...` was clipped (`Search alpine resorts, pea...`). Simultaneously, the 4th sort button (`7d ❄ ▼`) overflowed in the sort pill container, truncating the label to `7c...` or clipping the snowflake icon and sort order chevron arrow. Furthermore, the compact floating top search bar on mobile lacked a quick 'x' button to clear active searches directly from the top bar.
