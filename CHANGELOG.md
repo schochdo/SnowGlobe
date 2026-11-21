@@ -1,6 +1,10 @@
 ## [Unreleased]
 
 ### Feat
+- **Mobile sheet interactive physics & direct drag tracking**:
+  - **What changed**: Integrated real-time 1:1 finger tracking (`translate3d`) when swiping the mobile sheet handle down, with spring-like cubic bezier transition snapping (`cubic-bezier(0.32, 0.72, 0, 1)`) and responsive velocity thresholding (`0.3 px/ms`). Tapping the drag handle or swiping down smoothly dismisses the sheet to the floating peek pill.
+  - **Removed redundant chevron**: Removed the redundant `<ChevronDown />` minimize button from the mountain profile header and directory list header on mobile, leaving a clean, uncluttered layout where the top drag handle and swipe gestures naturally control sheet expansion and dismissal.
+
 - **PWA Web App Manifest and Home Screen Icons**:
   - Added `public/manifest.json` configured with `standalone` display mode, `#FAF8F3` theme/background color, and custom-styled high-res alpine peak/snowflake vector and PNG icons (`icon.svg`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png`).
   - Linked manifest and touch icons in `index.html` with relative paths (`./`) compatible with GitHub Pages hosting, providing a clean app icon and title when added to the iOS Home Screen.

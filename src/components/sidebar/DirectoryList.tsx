@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, X, Sliders, ChevronDown } from 'lucide-react';
+import { Search, X, Sliders } from 'lucide-react';
 import type { SkiResort, SortBy, SortOrder, DirectoryScope, MajorPeak, FireLookout, PassNetwork } from '../../types';
 import { ResortCard } from './ResortCard';
 import { FilterPanel } from '../header/FilterModal';
@@ -39,7 +39,6 @@ interface DirectoryListProps {
   onSelectResort: (id: string) => void;
   onDeselectResort: () => void;
   onViewProfile: () => void;
-  onCollapseSheet?: () => void;
   isFiltersOpen?: boolean;
   onToggleFilters?: () => void;
   onCloseFilters?: () => void;
@@ -94,7 +93,6 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
   onSelectResort,
   onDeselectResort,
   onViewProfile,
-  onCollapseSheet,
   isFiltersOpen: externalFiltersOpen,
   onToggleFilters,
   onCloseFilters,
@@ -238,19 +236,6 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
             <Sliders className="w-3.5 h-3.5" />
             <span>Filters{activeFiltersCount > 0 ? ` · ${activeFiltersCount}` : ''}</span>
           </button>
-
-          {/* Optional Mobile Collapse Button */}
-          {onCollapseSheet && (
-            <button
-              type="button"
-              onClick={onCollapseSheet}
-              className="md:hidden p-1.5 text-[#8A847C] hover:text-[#1C1B18] hover:bg-[#EAE5D9] rounded transition-colors cursor-pointer shrink-0"
-              title="Minimize to peek"
-              aria-label="Minimize to peek"
-            >
-              <ChevronDown className="w-4 h-4" />
-            </button>
-          )}
         </div>
 
         {/* Consolidated Quick-Fly Matches (Lookouts & Summits) */}

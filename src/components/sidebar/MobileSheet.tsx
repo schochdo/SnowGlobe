@@ -29,55 +29,79 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
   const touchCurrentY = useRef<number | null>(null);
   const touchStartTime = useRef<number | null>(null);
   const isDragging = useRef<boolean>(false);
+  const [dragOffset, setDragOffset] = React.useState<number>(0);
+  const [isSwiping, setIsSwiping] = React.useState<boolean>(false);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartY.current = e.touches[0].clientY;
     touchCurrentY.current = e.touches[0].clientY;
     touchStartTime.current = performance.now();
     isDragging.current = false;
+    setIsSwiping(true);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchStartY.current === null) return;
     touchCurrentY.current = e.touches[0].clientY;
     const dy = touchCurrentY.current - touchStartY.current;
-    if (Math.abs(dy) > 10) {
+
+    if (Math.abs(dy) > 5) {
       isDragging.current = true;
+    }
+
+    if (mobileSheetState === 'full') {
+      // Swiping down: sheet follows finger smoothly (clamped to positive dy)
+      // Allow a tiny rubber band if dragged up (< 0)
+      if (dy > 0) {
+        setDragOffset(dy);
+      } else {
+        setDragOffset(dy * 0.15); // gentle resistance upwards
+      }
+    } else {
+      // Swiping up from peek
+      if (dy < 0) {
+        setDragOffset(dy);
+      } else {
+        setDragOffset(dy * 0.15);
+      }
     }
   };
 
   const handleTouchEnd = () => {
-    if (touchStartY.current === null || touchCurrentY.current === null) {
-      touchStartY.current = null;
-      touchCurrentY.current = null;
-      touchStartTime.current = null;
-      isDragging.current = false;
-      return;
-    }
-
-    const dy = touchCurrentY.current - touchStartY.current;
-    const dt = Math.max(1, performance.now() - (touchStartTime.current ?? performance.now()));
-    const velocity = dy / dt; // px/ms (negative = upward swipe, positive = downward swipe)
-    const distance = Math.abs(dy);
-    const windowH = typeof window !== 'undefined' ? window.innerHeight : 800;
-    const heightThreshold = windowH * 0.35;
-
-    // Responsive 2-state drawer: snap between 'peek' and 'full' based on velocity (>0.4 px/ms) or 35% height threshold
-    if (mobileSheetState === 'peek') {
-      // Swiping up from peek expands to full
-      if (velocity < -0.4 || dy < -heightThreshold || dy < -30) {
-        onSetMobileSheetState('full');
-      }
-    } else {
-      // Swiping down from full collapses to peek
-      if (velocity > 0.4 || dy > heightThreshold || dy > 50) {
-        onSetMobileSheetState('peek');
-      }
-    }
+    setIsSwiping(false);
+    const startY = touchStartY.current;
+    const currentY = touchCurrentY.current;
+    const startTime = touchStartTime.current;
 
     touchStartY.current = null;
     touchCurrentY.current = null;
     touchStartTime.current = null;
+    setDragOffset(0);
+
+    if (startY === null || currentY === null) {
+      isDragging.current = false;
+      return;
+    }
+
+    const dy = currentY - startY;
+    const dt = Math.max(1, performance.now() - (startTime ?? performance.now()));
+    const velocity = dy / dt; // px/ms (negative = upward swipe, positive = downward swipe)
+    const windowH = typeof window !== 'undefined' ? window.innerHeight : 800;
+    const heightThreshold = windowH * 0.25;
+
+    // Responsive 2-state drawer: snap between 'peek' and 'full' based on velocity (>0.3 px/ms) or 25% height threshold
+    if (mobileSheetState === 'peek') {
+      // Swiping up from peek expands to full
+      if (velocity < -0.3 || dy < -heightThreshold || dy < -30) {
+        onSetMobileSheetState('full');
+      }
+    } else {
+      // Swiping down from full collapses to peek
+      if (velocity > 0.3 || dy > heightThreshold || dy > 40) {
+        onSetMobileSheetState('peek');
+      }
+    }
+
     setTimeout(() => {
       isDragging.current = false;
     }, 60);
@@ -96,6 +120,13 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
   };
 
   const isFull = mobileSheetState === 'full';
+
+  // Compute transform style for live 1:1 finger tracking
+  const sheetTransform = isFull
+    ? isSwiping && dragOffset > 0
+      ? `translate3d(0, ${dragOffset}px, 0)`
+      : 'translate3d(0, 0, 0)'
+    : 'translate3d(0, 100%, 0)';
 
   return (
     <>
@@ -170,8 +201,12 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
 
       {/* 2. EXPANDED MOUNTAIN DIRECTORY & PROFILE (SLIDES UP FROM OFF-SCREEN BOTTOM) */}
       <div
-        className={`md:hidden fixed inset-x-0 bottom-0 z-30 flex flex-col bg-[#F7F4ED] rounded-t-2xl border-t border-[#D6D0C2] shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-[env(safe-area-inset-bottom,0px)] h-[88dvh] transition-transform duration-200 ease-out ${
-          isFull ? 'translate-y-0 pointer-events-auto' : 'translate-y-full pointer-events-none'
+        style={{
+          transform: sheetTransform,
+          transition: isSwiping ? 'none' : 'transform 240ms cubic-bezier(0.32, 0.72, 0, 1)',
+        }}
+        className={`md:hidden fixed inset-x-0 bottom-0 z-30 flex flex-col bg-[#F7F4ED] rounded-t-2xl border-t border-[#D6D0C2] shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-[env(safe-area-inset-bottom,0px)] h-[88dvh] will-change-transform ${
+          isFull ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
         aria-hidden={!isFull}
       >
@@ -181,7 +216,7 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
           onClick={handleHandleClick}
-          className="w-full py-2.5 flex items-center justify-center cursor-pointer shrink-0 select-none touch-none"
+          className="w-full py-3 flex items-center justify-center cursor-pointer shrink-0 select-none touch-none active:opacity-70"
           title="Swipe down or tap to collapse"
         >
           <div className="w-10 h-1.5 rounded-full bg-[#C4BEB1] hover:bg-[#8A847C] transition-colors" />

@@ -3570,8 +3570,6 @@ export default function App() {
           <MountainProfile
             resort={selectedResort}
             unitsMetric={unitsMetric}
-            mobileSheetState={mobileSheetState}
-            onSetMobileSheetState={setMobileSheetState}
             onDeselect={handleDeselectResort}
           />
         ) : (
@@ -3649,8 +3647,6 @@ export default function App() {
           <MountainProfile
             resort={selectedResort}
             unitsMetric={unitsMetric}
-            mobileSheetState={mobileSheetState}
-            onSetMobileSheetState={setMobileSheetState}
             onDeselect={handleDeselectResort}
           />
         ) : (
@@ -3679,7 +3675,6 @@ export default function App() {
             onSelectResort={handleSelectResort}
             onDeselectResort={handleDeselectResort}
             onViewProfile={() => setPanelView('profile')}
-            onCollapseSheet={() => setMobileSheetState('peek')}
             isFiltersOpen={mobileFiltersOpen}
             onToggleFilters={() => setMobileFiltersOpen((prev) => !prev)}
             onCloseFilters={() => setMobileFiltersOpen(false)}

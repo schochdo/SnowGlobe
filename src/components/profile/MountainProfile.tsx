@@ -1,6 +1,6 @@
 import React from 'react';
-import { ChevronDown, Maximize2, Minimize2, X, Globe, ExternalLink, Snowflake } from 'lucide-react';
-import type { SkiResort, MobileSheetState } from '../../types';
+import { X, Globe, ExternalLink, Snowflake } from 'lucide-react';
+import type { SkiResort } from '../../types';
 import { formatSnow, formatVert, formatAcres, formatDistance } from '../../utils/formatters';
 import {
   PASS_COLORS,
@@ -13,16 +13,12 @@ import {
 interface MountainProfileProps {
   resort: SkiResort;
   unitsMetric: boolean;
-  mobileSheetState: MobileSheetState;
-  onSetMobileSheetState: (state: MobileSheetState) => void;
   onDeselect: () => void;
 }
 
 export const MountainProfile: React.FC<MountainProfileProps> = ({
   resort,
   unitsMetric,
-  mobileSheetState,
-  onSetMobileSheetState,
   onDeselect,
 }) => {
   const stats = getResortStats(resort);
@@ -51,16 +47,6 @@ export const MountainProfile: React.FC<MountainProfileProps> = ({
             </h2>
           </div>
           <div className="flex items-center gap-1 shrink-0 -mr-1 -mt-0.5">
-            {/* On mobile, show intuitive sheet collapse button */}
-            <div className="md:hidden flex items-center gap-1 mr-1 pr-1 border-r border-[#D6D0C2]">
-              <button
-                onClick={() => onSetMobileSheetState('peek')}
-                className="p-1.5 text-[#8A847C] hover:text-[#1C1B18] hover:bg-[#EAE5D9] rounded transition-colors cursor-pointer"
-                title="Minimize to peek"
-              >
-                <ChevronDown className="w-4 h-4" />
-              </button>
-            </div>
             <button
               onClick={onDeselect}
               className="p-1 hover:bg-[#EFECE4] text-[#8A847C] hover:text-[#1C1B18] rounded-md transition-colors cursor-pointer"
