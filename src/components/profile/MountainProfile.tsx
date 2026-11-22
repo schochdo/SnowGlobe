@@ -198,13 +198,13 @@ export const MountainProfile: React.FC<MountainProfileProps> = ({
             <div className="bg-[#F7F4ED] p-2.5 border border-[#D6D0C2] rounded-md">
               <div className="text-[10px] font-semibold text-[#5C5852] uppercase tracking-wider truncate">72h Snow</div>
               <div className="text-base font-bold text-[#3B627E] mt-0.5">
-                {formatSnow(snow72, unitsMetric)}
+                {resort.weather?.is_live ? formatSnow(snow72, unitsMetric) : '—'}
               </div>
             </div>
             <div className="bg-[#F7F4ED] p-2.5 border border-[#D6D0C2] rounded-md">
               <div className="text-[10px] font-semibold text-[#5C5852] uppercase tracking-wider truncate">7-Day Snow</div>
               <div className="text-base font-bold text-[#3B627E] mt-0.5">
-                {resort.weather?.daily_forecast ? formatSnow(snow7d, unitsMetric) : '—'}
+                {resort.weather?.is_live && resort.weather?.daily_forecast?.length ? formatSnow(snow7d, unitsMetric) : '—'}
               </div>
             </div>
             <div className="bg-[#F7F4ED] p-2.5 border border-[#D6D0C2] rounded-md">

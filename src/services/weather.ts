@@ -20,23 +20,6 @@ interface CachePayload {
   data: ResortWeatherData;
 }
 
-function hashString(str: string): number {
-  let hash = 5381;
-  for (let i = 0; i < str.length; i++) {
-    hash = ((hash << 5) + hash) + str.charCodeAt(i);
-    hash |= 0;
-  }
-  return Math.abs(hash);
-}
-
-function pseudoRandom(seed: number): () => number {
-  let s = seed;
-  return () => {
-    s = (s * 1664525 + 1013904223) % 4294967296;
-    return s / 4294967296;
-  };
-}
-
 export function isWeatherCircuitTripped(): boolean {
   if (typeof window === 'undefined' || !window.localStorage) return false;
   try {
@@ -112,7 +95,7 @@ export function saveCachedWeather(resortId: string, data: ResortWeatherData, isR
   }
 }
 
-export function getNeutralWeather(resort: SkiResort): ResortWeatherData {
+export function getNeutralWeather(resort: SkiResort, statusText: string = 'Checking Open-Meteo...'): ResortWeatherData {
   const elev = resort.summit_elev_ft || 8000;
   const baseTempF = Math.round(30 - (elev / 1000) * 1.5);
   return {
@@ -122,111 +105,18 @@ export function getNeutralWeather(resort: SkiResort): ResortWeatherData {
     snowfall_7d_cm: 0,
     current_temp_f: baseTempF,
     current_temp_c: Math.round(((baseTempF - 32) * 5) / 9),
-    summit_wind_gust_mph: 15,
+    summit_wind_gust_mph: 0,
     freezing_level_ft: Math.max(0, elev - 2500),
     rain_to_base_risk: false,
     daily_forecast: [],
     is_live: false,
-    last_updated: 'Checking Open-Meteo...',
-  };
-}
-
-/**
- * Generates a realistic, deterministic seasonal forecast for a ski area
- * based on elevation, latitude, and annual snowfall averages.
- * Used temporarily when offline or during active rate limiting.
- */
-export function generateFallbackForecast(resort: SkiResort): ResortWeatherData {
-  const elev = resort.summit_elev_ft || 8000;
-  const baseTempF = Math.round(28 - (elev / 1000) * 1.6);
-  const baseTempC = Math.round(((baseTempF - 32) * 5) / 9);
-
-  // Seed with resort ID and current date (stable for the day)
-  const today = new Date();
-  const dateKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-  const seed = hashString(`${resort.id}_${dateKey}`);
-  const rand = pseudoRandom(seed);
-
-  const annualSnow = resort.avg_snowfall_in || (elev > 8000 ? 350 : 200);
-
-  // Month-based seasonality: late Oct/early Nov early winter vs high winter vs southern hemisphere
-  const month = today.getMonth(); // 0 = Jan, 9 = Oct
-  const isNorthern = resort.lat >= 0;
-  let seasonFactor = 0.5;
-
-  if (isNorthern) {
-    if (month >= 11 || month <= 2) seasonFactor = 1.0; // Dec - Mar (high winter)
-    else if (month === 10 || month === 3) seasonFactor = 0.75; // Nov / Apr
-    else if (month === 9) seasonFactor = (elev > 7500 || resort.lat > 44) ? 0.6 : 0.25; // Oct
-    else if (month === 4) seasonFactor = 0.3; // May
-    else seasonFactor = (elev > 10000) ? 0.15 : 0.0; // Summer
-  } else {
-    // Southern Hemisphere (Chile, NZ, Australia)
-    if (month >= 5 && month <= 7) seasonFactor = 1.0; // Jun - Aug
-    else if (month === 4 || month === 8) seasonFactor = 0.6; // May / Sep
-    else seasonFactor = 0.05;
-  }
-
-  // Weekly storm potential
-  const baseWeeklySnowIn = (annualSnow / 22) * seasonFactor;
-
-  const daily_forecast: DailyForecast[] = [];
-  let total7dIn = 0;
-  let total72hIn = 0;
-
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(today);
-    d.setDate(d.getDate() + i);
-    const dStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-
-    // Storm cycle distribution: ~30-40% of days see snow
-    const isStormDay = rand() > 0.62;
-    const daySnowIn = isStormDay ? Math.round((rand() * (baseWeeklySnowIn / 1.6)) * 10) / 10 : 0;
-    const daySnowCm = Math.round(daySnowIn * 2.54 * 10) / 10;
-
-    const tMaxF = baseTempF + Math.round(rand() * 8) - 2;
-    const tMinF = tMaxF - Math.round(8 + rand() * 10);
-    const tMaxC = Math.round(((tMaxF - 32) * 5) / 9);
-    const tMinC = Math.round(((tMinF - 32) * 5) / 9);
-
-    daily_forecast.push({
-      date: dStr,
-      snowfall_in: daySnowIn,
-      snowfall_cm: daySnowCm,
-      temp_max_f: tMaxF,
-      temp_min_f: tMinF,
-      temp_max_c: tMaxC,
-      temp_min_c: tMinC,
-    });
-
-    total7dIn += daySnowIn;
-    if (i < 3) total72hIn += daySnowIn;
-  }
-
-  total7dIn = Math.round(total7dIn * 10) / 10;
-  total72hIn = Math.round(total72hIn * 10) / 10;
-  const total7dCm = Math.round(total7dIn * 2.54 * 10) / 10;
-  const total72hCm = Math.round(total72hIn * 2.54 * 10) / 10;
-
-  return {
-    snowfall_72h_in: total72hIn,
-    snowfall_7d_in: total7dIn,
-    snowfall_72h_cm: total72hCm,
-    snowfall_7d_cm: total7dCm,
-    current_temp_f: baseTempF,
-    current_temp_c: baseTempC,
-    summit_wind_gust_mph: Math.round(15 + rand() * 20),
-    freezing_level_ft: Math.max(0, elev - Math.round(1500 + rand() * 1500)),
-    rain_to_base_risk: false,
-    daily_forecast,
-    is_live: true,
-    last_updated: 'Seasonal Baseline',
+    last_updated: statusText,
   };
 }
 
 /**
  * Returns initial weather data on startup:
- * Uses fresh real Open-Meteo cache if present, otherwise initial neutral/fallback
+ * Uses fresh real Open-Meteo cache if present, otherwise neutral placeholder
  * so resort cards render cleanly while background prefetch loads authentic data.
  */
 export function getInitialWeather(resort: SkiResort): ResortWeatherData {
@@ -248,14 +138,14 @@ export async function fetchLiveWeather(resort: SkiResort): Promise<ResortWeather
   if (isWeatherCircuitTripped()) {
     const cached = getCachedWeather(resort.id);
     if (cached && cached.is_live) return cached;
-    return generateFallbackForecast(resort);
+    return getNeutralWeather(resort, 'Weather unavailable');
   }
 
   // 3. Attempt live satellite & model forecast from Open-Meteo
   try {
     const summitElevFt = resort.summit_elev_ft || (resort.base_elev_ft ? resort.base_elev_ft + 2000 : 3000);
     const summitElevM = Math.round(summitElevFt * 0.3048);
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${resort.lat}&longitude=${resort.lng}&elevation=${summitElevM}&hourly=snowfall,freezing_level_height,wind_gusts_10m,temperature_2m&daily=snowfall_sum,temperature_2m_max,temperature_2m_min&timezone=auto`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${resort.lat}&longitude=${resort.lng}&elevation=${summitElevM}&current=temperature_2m,wind_gusts_10m&hourly=snowfall,freezing_level_height,wind_gusts_10m,temperature_2m&daily=snowfall_sum,temperature_2m_max,temperature_2m_min&timezone=auto`;
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 6000);
@@ -268,7 +158,7 @@ export async function fetchLiveWeather(resort: SkiResort): Promise<ResortWeather
       tripWeatherCircuit();
       const cached = getCachedWeather(resort.id);
       if (cached && cached.is_live) return cached;
-      return generateFallbackForecast(resort);
+      return getNeutralWeather(resort, 'Weather unavailable');
     }
 
     if (!res.ok) {
@@ -280,7 +170,7 @@ export async function fetchLiveWeather(resort: SkiResort): Promise<ResortWeather
       } catch {}
       const cached = getCachedWeather(resort.id);
       if (cached && cached.is_live) return cached;
-      return generateFallbackForecast(resort);
+      return getNeutralWeather(resort, 'Weather unavailable');
     }
 
     const data = await res.json();
@@ -290,13 +180,14 @@ export async function fetchLiveWeather(resort: SkiResort): Promise<ResortWeather
       }
       const cached = getCachedWeather(resort.id);
       if (cached && cached.is_live) return cached;
-      return generateFallbackForecast(resort);
+      return getNeutralWeather(resort, 'Weather unavailable');
     }
 
     const hourlySnow: number[] = data?.hourly?.snowfall || [];
+    const nowHourIdx = Math.max(0, Math.min((hourlySnow.length || 1) - 1, new Date().getHours()));
     let snow72cm = 0;
-    const hoursToSum = Math.min(72, hourlySnow.length);
-    for (let i = 0; i < hoursToSum; i++) {
+    const endIdx = Math.min(nowHourIdx + 72, hourlySnow.length);
+    for (let i = nowHourIdx; i < endIdx; i++) {
       snow72cm += hourlySnow[i] || 0;
     }
     const snow72in = Math.round((snow72cm / 2.54) * 10) / 10;
@@ -321,8 +212,10 @@ export async function fetchLiveWeather(resort: SkiResort): Promise<ResortWeather
       };
     });
 
-    const curTempC = Math.round(data?.hourly?.temperature_2m?.[0] ?? -3);
+    const curTempC = Math.round(data?.current?.temperature_2m ?? data?.hourly?.temperature_2m?.[nowHourIdx] ?? 0);
     const curTempF = Math.round((curTempC * 9) / 5 + 32);
+    const curWindKmh = data?.current?.wind_gusts_10m ?? data?.hourly?.wind_gusts_10m?.[nowHourIdx] ?? 0;
+    const curFreezingM = data?.hourly?.freezing_level_height?.[nowHourIdx] ?? 2500;
 
     const liveData: ResortWeatherData = {
       snowfall_72h_in: snow72in,
@@ -331,9 +224,9 @@ export async function fetchLiveWeather(resort: SkiResort): Promise<ResortWeather
       snowfall_7d_cm: Math.round(snow7dCm * 10) / 10,
       current_temp_f: curTempF,
       current_temp_c: curTempC,
-      summit_wind_gust_mph: Math.round((data?.hourly?.wind_gusts_10m?.[0] || 15) * 0.621371),
-      freezing_level_ft: Math.round((data?.hourly?.freezing_level_height?.[0] || 2500) * 3.28084),
-      rain_to_base_risk: Boolean(data?.hourly?.temperature_2m?.[0] > 1.5 && (data?.hourly?.snowfall?.[0] || 0) > 0),
+      summit_wind_gust_mph: Math.round(curWindKmh * 0.621371),
+      freezing_level_ft: Math.round(curFreezingM * 3.28084),
+      rain_to_base_risk: Boolean(curTempC > 1.5 && (hourlySnow[nowHourIdx] || 0) > 0),
       daily_forecast,
       is_live: true,
       last_updated: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
@@ -346,6 +239,6 @@ export async function fetchLiveWeather(resort: SkiResort): Promise<ResortWeather
     // Network failure, timeout, or abort
     const cached = getCachedWeather(resort.id);
     if (cached && cached.is_live) return cached;
-    return generateFallbackForecast(resort);
+    return getNeutralWeather(resort, 'Weather unavailable');
   }
 }

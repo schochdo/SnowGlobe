@@ -1519,6 +1519,53 @@ export default function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Secondary viewport/directory weather prefetch for non-curated resorts
+  const fetchedWeatherIdsRef = useRef<Set<string>>(new Set());
+
+  useEffect(() => {
+    if (isWeatherCircuitTripped()) return;
+
+    const pending = displayedResorts
+      .slice(0, 20)
+      .filter((r) => !r.weather?.is_live && !fetchedWeatherIdsRef.current.has(r.id));
+
+    if (pending.length === 0) return;
+
+    let cancelled = false;
+    const BATCH = 5;
+
+    async function prefetchDisplayed() {
+      for (let i = 0; i < pending.length; i += BATCH) {
+        if (cancelled || isWeatherCircuitTripped()) break;
+
+        const batch = pending.slice(i, i + BATCH);
+        batch.forEach((r) => fetchedWeatherIdsRef.current.add(r.id));
+
+        const results = await Promise.allSettled(batch.map((r) => fetchLiveWeather(r)));
+        if (cancelled) break;
+
+        setResorts((prev) => {
+          const updated = [...prev];
+          results.forEach((result, j) => {
+            if (result.status === 'fulfilled' && result.value) {
+              const id = batch[j].id;
+              const idx = updated.findIndex((r) => r.id === id);
+              if (idx !== -1) updated[idx] = { ...updated[idx], weather: result.value! };
+            }
+          });
+          return updated;
+        });
+
+        if (i + BATCH < pending.length) {
+          await new Promise((res) => setTimeout(res, 250));
+        }
+      }
+    }
+
+    prefetchDisplayed();
+    return () => { cancelled = true; };
+  }, [displayedResorts]);
+
   /* =========================================================================
      MAP INITIALIZATION (MapLibre GL)
      ========================================================================= */

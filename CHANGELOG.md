@@ -1,6 +1,15 @@
 ## [Unreleased]
 
 ### Fixed
+- **Weather Engine Integrity & Viewport Prefetching (Phase 1)**:
+  - **What was wrong**: `generateFallbackForecast()` in `src/services/weather.ts` invented pseudo-random 7-day snowfall forecasts and stamped them `is_live: true` whenever Open-Meteo timed out or rate-limited. Additionally, `fetchLiveWeather()` read `hourly.*[0]` (midnight local time) instead of the current hour, and non-curated resorts (~5,442 ski areas) never prefetched live weather in the directory until manually clicked.
+  - **The fix**:
+    - Deleted `generateFallbackForecast()`, `pseudoRandom()`, and `hashString()` from `src/services/weather.ts`. API failures now fall back to real cached data or an honest `is_live: false` (`'Weather unavailable'`) state.
+    - Added `&current=temperature_2m,wind_gusts_10m` to Open-Meteo queries and indexed `hourly` arrays at the current local hour (`nowHourIdx`) for 72h snowfall, freezing level, and rain risk.
+    - Guarded `72h Snow` and `7-Day Snow` in `MountainProfile.tsx` with `is_live` so unavailable forecasts render `'—'` instead of `0"`.
+    - Added a secondary `useEffect` in `src/App.tsx` to prefetch live weather for the top 20 visible `displayedResorts` in batches of 5 (250ms delay) with a session-level `fetchedWeatherIdsRef` guard.
+
+### Fixed
 - **iOS Safari and iPadOS Fullscreen, Viewport Safe-Area, and Gesture Conflicts**:
   - **What was wrong**:
     1. *Status Bar Collision*: Top header, titles, and floating buttons collided directly with the iOS system clock, battery indicator, and Dynamic Island/notch in full-screen/standalone mode.
