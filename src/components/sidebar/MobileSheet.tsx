@@ -136,7 +136,7 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handlePeekClick}
-        className={`md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-30 h-11 px-4 mb-[calc(env(safe-area-inset-bottom,0px)+12px)] bg-[#FAF8F3] border border-[#2C2A27] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.18)] flex items-center justify-between gap-3 cursor-pointer select-none max-w-[calc(100vw-24px)] whitespace-nowrap active:scale-98 transition-all duration-200 ${
+        className={`md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-30 h-11 px-4 mb-[calc(max(12px,env(safe-area-inset-bottom,0px)))] bg-[#FAF8F3] border border-[#2C2A27] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.18)] flex items-center justify-between gap-3 cursor-pointer select-none max-w-[calc(100vw-24px)] whitespace-nowrap active:scale-98 transition-all duration-200 ${
           isFull
             ? 'opacity-0 translate-y-6 pointer-events-none'
             : 'opacity-100 translate-y-0 pointer-events-auto'
@@ -205,7 +205,7 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
           transform: sheetTransform,
           transition: isSwiping ? 'none' : 'transform 240ms cubic-bezier(0.32, 0.72, 0, 1)',
         }}
-        className={`md:hidden fixed inset-x-0 bottom-0 z-30 flex flex-col bg-[#F7F4ED] rounded-t-2xl border-t border-[#D6D0C2] shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-[env(safe-area-inset-bottom,0px)] h-[88dvh] will-change-transform ${
+        className={`md:hidden fixed inset-x-0 bottom-0 z-30 flex flex-col bg-[#F7F4ED] rounded-t-2xl border-t border-[#D6D0C2] shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-[max(12px,env(safe-area-inset-bottom,0px))] h-[88dvh] will-change-transform ${
           isFull ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
         aria-hidden={!isFull}

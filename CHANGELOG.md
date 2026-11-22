@@ -1,5 +1,27 @@
 ## [Unreleased]
 
+### Fixed
+- **iOS Safari and iPadOS Fullscreen, Viewport Safe-Area, and Gesture Conflicts**:
+  - **What was wrong**:
+    1. *Status Bar Collision*: Top header, titles, and floating buttons collided directly with the iOS system clock, battery indicator, and Dynamic Island/notch in full-screen/standalone mode.
+    2. *Broken Native Fullscreen*: Triggering HTML5 `requestFullscreen()` or `webkitRequestFullscreen()` on iOS/iPadOS caused Apple's intrusive modal overlay with an enormous "X" button that automatically aborted fullscreen upon scrolling or dragging the map.
+    3. *Bottom Gesture Collision*: Mobile floating peek pill and expanded sheets overlapped with the iOS home swipe indicator bar.
+    4. *Rubber-band Overscroll*: Dragging or swiping triggered Safari's elastic page overscroll / pull-to-refresh bouncing.
+  - **The fix**:
+    - **Viewport Meta Tags (`index.html`)**: Added `viewport-fit=cover`, `apple-mobile-web-app-capable=yes`, `apple-mobile-web-app-status-bar-style=black-translucent`, and `theme-color=#FAF8F3`.
+    - **Safe Area Insets across UI Components**:
+      - `TopNavBar.tsx`: Adjusted top padding to `pt-[max(0px,env(safe-area-inset-top,0px))]` and horizontal padding to `pl-[max(16px,env(safe-area-inset-left,0px))]`, `pr-[max(16px,env(safe-area-inset-right,0px))]`.
+      - `App.tsx`: Applied `max(12px, env(safe-area-inset-*))` to the mobile floating search/filter bar, filter dropdown popover, top-left GPS locator, and top-right navigation/basemap controls.
+      - `BasemapMenu.tsx`: Positioned with safe insets and added safe bottom padding.
+      - `LeftDock.tsx`: Added safe-area padding for top, bottom, and left insets.
+      - `MobileSheet.tsx`: Updated floating collapsed pill with `mb-[calc(max(12px,env(safe-area-inset-bottom,0px)))]` and expanded sheet with `pb-[max(12px,env(safe-area-inset-bottom,0px))]`.
+    - **Prevent Safari Elastic Overscroll & Map Gesture Conflicts (`src/index.css`)**:
+      - Added `overscroll-behavior: none;` and `-webkit-overscroll-behavior: none;` to `html`, `body`, and `#root`.
+      - Added `touch-action: none;` and `overscroll-behavior: none;` to `.maplibregl-canvas` and `.maplibregl-map` so touch drags manipulate the map camera rather than triggering Safari browser swipe navigation.
+    - **Bypass Intrusive Native Fullscreen on iOS/iPadOS (`App.tsx` & `TopNavBar.tsx`)**:
+      - Suppressed native HTML5 `requestFullscreen()` / `webkitRequestFullscreen()` calls on iOS and iPadOS devices (including desktop-spoofed iPadOS via `navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1`). In `App.tsx`, toggling fullscreen on iOS safely switches the CSS viewport container state without triggering Apple's floating modal "X" overlay.
+
+
 ### Feat
 - **Mobile Brand Header in Slide-up Drawer**:
   - **What changed**: Added the editorial brand wordmark (**SNOW** [🏔️ Crest] **GLOBE**) into the top of the mobile drawer sheet directly under the pull handle.

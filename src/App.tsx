@@ -405,6 +405,24 @@ export default function App() {
   }, []);
 
   const toggleFullscreen = () => {
+    // Suppress native HTML5 requestFullscreen on all iOS/iPadOS devices:
+    // Calling requestFullscreen/webkitRequestFullscreen on iOS triggers Apple's modal overlay,
+    // which shows an enormous floating 'X' close button and automatically aborts fullscreen
+    // the instant the user drags or pans the 3D map.
+    const isIOSDevice =
+      typeof navigator !== 'undefined' &&
+      (/iPad|iPhone|iPod/.test(navigator.userAgent || '') ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+
+    if (isIOSDevice) {
+      // On iOS/iPadOS, simply toggle the clean full-viewport edge-to-edge UI state without native modal overlay
+      setIsFullscreen((prev) => !prev);
+      setTimeout(() => {
+        if (mapRef.current) mapRef.current.resize();
+      }, 150);
+      return;
+    }
+
     const doc = document as any;
     const docEl = document.documentElement as any;
 
@@ -458,8 +476,6 @@ export default function App() {
           setIsFullscreen(true);
         })
         .catch(() => {
-          // Fallback for tablets / iPadOS Safari where native Element.requestFullscreen is restricted:
-          // Toggle full-viewport edge-to-edge mode
           setIsFullscreen(true);
           try { window.scrollTo(0, 1); } catch (_) {}
         })
@@ -3445,7 +3461,7 @@ export default function App() {
 
       {/* MOBILE COMPACT FLOATING TOP BAR (< 768px) */}
       <div
-        className={`md:hidden fixed top-[calc(env(safe-area-inset-top,0px)+12px)] left-3 right-3 z-20 flex items-center gap-2 transition-opacity duration-200 select-none ${
+        className={`md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+6px)] left-[max(12px,env(safe-area-inset-left,0px))] right-[max(12px,env(safe-area-inset-right,0px))] z-20 flex items-center gap-2 transition-opacity duration-200 select-none ${
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
@@ -3520,7 +3536,7 @@ export default function App() {
       {mobileFilterPopoverOpen && mobileSheetState !== 'full' && (
         <div
           ref={mobileFilterPopoverRef}
-          className="md:hidden fixed top-[calc(env(safe-area-inset-top,0px)+58px)] left-3 right-3 sm:left-auto sm:right-3 sm:w-92 z-30 bg-[#FAF8F3] border border-[#2C2A27] rounded-md p-3.5 shadow-xl max-h-[calc(100dvh-5.5rem)] overflow-y-auto animate-slide-down select-none"
+          className="md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+54px)] left-[max(12px,env(safe-area-inset-left,0px))] right-[max(12px,env(safe-area-inset-right,0px))] sm:left-auto sm:right-3 sm:w-92 z-30 bg-[#FAF8F3] border border-[#2C2A27] rounded-md p-3.5 shadow-xl max-h-[calc(100dvh-5.5rem-max(0px,env(safe-area-inset-top,0px)))] overflow-y-auto animate-slide-down select-none"
         >
           {/* Header */}
           <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#D6D0C2]">
@@ -3727,7 +3743,7 @@ export default function App() {
 
       {/* FLOATING TOP-LEFT REGIONAL LOCATOR & DESKTOP NAVIGATION CONTROLS */}
       <div
-        className={`fixed md:absolute top-[calc(env(safe-area-inset-top,0px)+64px)] md:top-[calc(env(safe-area-inset-top,0px)+56px)] left-3 md:left-8 ${
+        className={`fixed md:absolute top-[calc(max(12px,env(safe-area-inset-top,0px))+56px)] md:top-[calc(max(0px,env(safe-area-inset-top,0px))+56px)] left-[max(12px,env(safe-area-inset-left,0px))] md:left-8 ${
           leftDockOpen ? 'md:left-[420px]' : 'md:left-8'
         } z-20 flex items-start gap-2 transition-[left,opacity] duration-200 ease-out select-none ${
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
@@ -3763,7 +3779,7 @@ export default function App() {
 
       {/* MOBILE FLOATING TOP-RIGHT NAVIGATION CONTROLS (ZOOM, NORTH, LOCATE) */}
       <div
-        className={`md:hidden fixed top-[calc(env(safe-area-inset-top,0px)+64px)] right-3 z-20 transition-opacity duration-200 select-none ${
+        className={`md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+56px)] right-[max(12px,env(safe-area-inset-right,0px))] z-20 transition-opacity duration-200 select-none ${
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
