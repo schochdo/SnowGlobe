@@ -703,8 +703,39 @@ export default function App() {
     return { downhill, nordic, heli_cat, touring: Math.max(touring, 1) };
   }, [resorts, effectiveMinVerticalFt, effectiveMinAcreage, effectiveMinNordicKm, selectedPasses]);
 
+  const ALL_PASS_NETWORKS: PassNetwork[] = useMemo(
+    () => ['Ikon', 'Epic', 'Indy', 'Mountain Collective', 'Independent'],
+    []
+  );
+
+  const handleTogglePass = useCallback(
+    (pass: PassNetwork) => {
+      setSelectedPasses((prev) => {
+        // Intuitive selection mechanic:
+        // If all passes are currently active (default unrestricted state),
+        // clicking a pass isolates/selects that specific pass.
+        if (prev.length === ALL_PASS_NETWORKS.length) {
+          return [pass];
+        }
+
+        // If the pass is already selected
+        if (prev.includes(pass)) {
+          const next = prev.filter((p) => p !== pass);
+          // If deselecting leaves 0 passes, restore all passes (no dead empty filter)
+          return next.length === 0 ? ALL_PASS_NETWORKS : next;
+        }
+
+        // If the pass is not selected, add it to the active selection
+        const next = [...prev, pass];
+        // If all are now selected, it naturally returns the full roster
+        return next;
+      });
+    },
+    [ALL_PASS_NETWORKS]
+  );
+
   const handleResetFilters = () => {
-    setSelectedPasses(['Ikon', 'Epic', 'Indy', 'Mountain Collective', 'Independent']);
+    setSelectedPasses(ALL_PASS_NETWORKS);
     setMinVerticalFt(500);
     setMinVerticalM(150);
     setMinAreaAcres(100);
@@ -3538,14 +3569,8 @@ export default function App() {
             onToggleTouring={() => setShowTouring(!showTouring)}
             categoryFilterCounts={categoryFilterCounts}
             selectedPasses={selectedPasses}
-            onTogglePass={(pass) => {
-              setSelectedPasses((prev) =>
-                prev.includes(pass) ? prev.filter((p) => p !== pass) : [...prev, pass]
-              );
-            }}
-            onSetAllPasses={() =>
-              setSelectedPasses(['Ikon', 'Epic', 'Indy', 'Mountain Collective', 'Independent'])
-            }
+            onTogglePass={handleTogglePass}
+            onSetAllPasses={() => setSelectedPasses(ALL_PASS_NETWORKS)}
             onClearPasses={() => setSelectedPasses([])}
             unitsMetric={unitsMetric}
             minVerticalM={minVerticalM}
@@ -3606,14 +3631,8 @@ export default function App() {
             onToggleTouring={() => setShowTouring(!showTouring)}
             categoryFilterCounts={categoryFilterCounts}
             selectedPasses={selectedPasses}
-            onTogglePass={(pass) => {
-              setSelectedPasses((prev) =>
-                prev.includes(pass) ? prev.filter((p) => p !== pass) : [...prev, pass]
-              );
-            }}
-            onSetAllPasses={() =>
-              setSelectedPasses(['Ikon', 'Epic', 'Indy', 'Mountain Collective', 'Independent'])
-            }
+            onTogglePass={handleTogglePass}
+            onSetAllPasses={() => setSelectedPasses(ALL_PASS_NETWORKS)}
             onClearPasses={() => setSelectedPasses([])}
             minVerticalM={minVerticalM}
             onChangeMinVerticalM={setMinVerticalM}
@@ -3686,14 +3705,8 @@ export default function App() {
             onToggleTouring={() => setShowTouring(!showTouring)}
             categoryFilterCounts={categoryFilterCounts}
             selectedPasses={selectedPasses}
-            onTogglePass={(pass) => {
-              setSelectedPasses((prev) =>
-                prev.includes(pass) ? prev.filter((p) => p !== pass) : [...prev, pass]
-              );
-            }}
-            onSetAllPasses={() =>
-              setSelectedPasses(['Ikon', 'Epic', 'Indy', 'Mountain Collective', 'Independent'])
-            }
+            onTogglePass={handleTogglePass}
+            onSetAllPasses={() => setSelectedPasses(ALL_PASS_NETWORKS)}
             onClearPasses={() => setSelectedPasses([])}
             minVerticalM={minVerticalM}
             onChangeMinVerticalM={setMinVerticalM}

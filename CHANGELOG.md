@@ -1,6 +1,14 @@
 ## [Unreleased]
 
 ### Feat
+- **Intuitive Pass Network Filter Selection Mechanic**:
+  - **What was confusing**: Because all pass networks (`Ikon`, `Epic`, `Indy`, `Mountain Collective`, `Independent`) start active in the default unrestricted state, clicking a pass button like `Ikon` was deselecting it instead of isolating it, requiring 4 clicks to view just Ikon resorts.
+  - **The fix**: Implemented an intuitive "select to isolate, click to add" state machine (`handleTogglePass`):
+    - When all passes are active, clicking any pass (e.g., `Ikon`) instantly selects and isolates that specific pass, deselecting the others.
+    - Subsequent clicks on other passes (e.g., `Epic`) append them to the active filter set (`[Ikon, Epic]`).
+    - Clicking an already-isolated pass or deselecting the last active pass restores the full roster, preventing a dead empty state.
+    - The `Reset` button continues to restore all passes with one tap.
+
 - **Geographic Domain Metric Hygiene & Piste Length Equivalence (Europe vs. North America)**:
   - **What was wrong**: European resorts frequently displayed inflated or nonsensical "30,000 ac" numbers because OSM municipal/winter-sports cadastral boundary polygons were converted to acres. In reality, European ski domains measure and market terrain strictly in linear kilometers of groomed piste (`km`), not acres.
   - **The fix**:
