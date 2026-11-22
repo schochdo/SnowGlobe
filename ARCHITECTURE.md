@@ -386,7 +386,29 @@ To ensure fast, isolated, and bug-free development without cross-subsystem drift
 
 ---
 
-## 15. Parked & Future Initiatives
+## 15. Geographic Domain & Size Equivalence Conversions (Europe vs. North America)
+
+### The Domain Mismatch Problem
+- **North America**: Ski resorts advertise and define terrain by **inbounds lift-accessible skiable acreage** (e.g. Whistler: 8,171 ac; Vail: 5,317 ac; Mt. Bachelor: 4,323 ac).
+- **Europe & International**: Ski domains measure and advertise terrain strictly by **linear kilometers of groomed piste** (e.g. *Les 3 Vallées*: 600 km; *Zermatt / Cervinia*: 360 km; *Val d'Isère / Tignes*: 300 km).
+- **Ingestion Artifact (The "30,000 Acres" Bug)**: In OpenStreetMap, European resorts often feature expansive `landuse=winter_sports` or municipal administrative boundaries enclosing entire valleys, villages, forests, and non-skiable rock faces. Ingestion pipelines that blindly convert these boundary polygon areas to acres produce nonsensical numbers (e.g. *Les Portes du Soleil: 30,000 ac*).
+
+### The Mathematical & Domain Bridge (`getEquivalentResortSize`)
+To maintain strict editorial integrity without forcing European pistes into fake land polygons or excluding them from size filters:
+1. **Display Hygiene**:
+   - European and international resorts (France, Switzerland, Austria, Italy, etc.) **never display acreage**. Their cards and mountain dossiers display authentic **Piste Length** (`km`, or `mi` when imperial is selected) derived from vector geometry or official resort records.
+   - North American resorts display verified inbounds **Skiable Acres** (`ac`, or `ha` in metric).
+2. **Equivalence Ratio (1 km piste $\approx$ 10 acres)**:
+   - In alpine resort design, 1 linear kilometer of groomed downhill piste with an average cleared and groomed corridor width of ~40–50 meters represents:
+     $$1,000\text{ m} \times 45\text{ m} = 45,000\text{ m}^2 \approx 11.1\text{ acres}$$
+   - We adopt a clean **$1\text{ km} = 10\text{ acres}$** scaling factor (`getEquivalentResortSize()` in `src/utils/classification.ts`).
+3. **Filtering & Sorting Behavior**:
+   - The size filter slider uses this bridge so moving the slider (e.g. `1,000 ac · 100 km`) seamlessly filters small local ski hills worldwide without dropping major European domains or inflating them with administrative boundary hulls.
+   - The directory sort bar lists `[ Size ]`, ranking North American acreage alongside European domain piste length on an equivalent scale.
+
+---
+
+## 16. Parked & Future Initiatives
 
 - **Offline Tile & Elevation Caching (PWA / Airplane Mode)**:
   - *Goal*: Allow offline map browsing for single ski areas or backcountry hiking zones without cellular data.

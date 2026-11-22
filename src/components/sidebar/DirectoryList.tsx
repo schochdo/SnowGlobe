@@ -346,7 +346,7 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
                     : 'text-[#5C5852] hover:text-[#1C1B18]'
                 }`}
               >
-                <span>{showNordic && !showDownhill && !showHeliCat && !showTouring ? 'Network' : 'Acres'}</span>
+                <span>{showNordic && !showDownhill && !showHeliCat && !showTouring ? 'Network' : 'Size'}</span>
                 {sortBy === 'acres' && <span className="text-[9px] ml-0.5">{sortOrder === 'desc' ? '▼' : '▲'}</span>}
               </button>
               <button

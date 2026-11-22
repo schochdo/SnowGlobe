@@ -29,6 +29,87 @@ export const PASS_SHORT_LABELS: Record<PassNetwork, string> = {
 };
 
 /* =========================================================================
+   GEOGRAPHIC DOMAIN & UNIT CONVERSION PROTOCOLS
+   ========================================================================= */
+
+/**
+ * European and international ski regions that measure alpine domains in linear
+ * kilometers of groomed piste rather than North American inbounds cadastral acres.
+ */
+export const EUROPEAN_COUNTRIES = new Set([
+  'France',
+  'Switzerland',
+  'Austria',
+  'Italy',
+  'Germany',
+  'Andorra',
+  'Spain',
+  'Norway',
+  'Sweden',
+  'Finland',
+  'Slovenia',
+  'Slovakia',
+  'Poland',
+  'Czech Republic',
+  'Bulgaria',
+  'Romania',
+  'Greece',
+  'Georgia',
+  'Turkey',
+  'Bosnia and Herzegovina',
+  'Serbia',
+  'Montenegro',
+  'North Macedonia',
+  'Ukraine',
+]);
+
+/**
+ * Returns true if a ski area is located in Europe or regions where pistes are
+ * measured in linear kilometers rather than acreage.
+ */
+export function isEuropeanResort(country?: string | null): boolean {
+  if (!country) return false;
+  return EUROPEAN_COUNTRIES.has(country.trim());
+}
+
+/**
+ * Domain Equivalence Scaling:
+ * 1 km of groomed European piste represents approximately 10–12 acres of skiable
+ * corridor (assuming an average cleared/groomed piste width of ~40–50 meters:
+ * 1,000m × 45m = 45,000 m² ≈ 11.1 acres).
+ *
+ * For filtering and sorting across both North America and Europe:
+ * - If a resort has valid skiable_acres > 0 and is not European: returns skiable_acres.
+ * - If a resort is European or only has trail_km: returns trail_km * 10 (or runs * 10 fallback).
+ */
+export function getEquivalentResortSize(resort: {
+  country?: string | null;
+  skiable_acres?: number | null;
+  trail_km?: number | null;
+  run_count?: number | null;
+  category?: string | null;
+}): number {
+  if (resort.category === 'nordic') {
+    return (resort.trail_km || resort.run_count || 0) * 10;
+  }
+
+  const isEuro = isEuropeanResort(resort.country);
+
+  // If European or acreage is zero/null, use linear piste network length * 10
+  if (isEuro || !resort.skiable_acres || resort.skiable_acres <= 0) {
+    if (resort.trail_km && resort.trail_km > 0) {
+      return Math.round(resort.trail_km * 10);
+    }
+    if (resort.run_count && resort.run_count > 0) {
+      return Math.round(resort.run_count * 10);
+    }
+    return 0;
+  }
+
+  return resort.skiable_acres;
+}
+
+/* =========================================================================
    CATEGORY CLASSIFICATION HELPER
    ========================================================================= */
 
@@ -160,8 +241,12 @@ export function getResortStats(resort: SkiResort | null | undefined): {
   lifts: number | null;
   pistes: number | null;
   acres: number | null;
+  trailKm: number | null;
+  isEuropean: boolean;
 } {
-  if (!resort) return { lifts: null, pistes: null, acres: null };
+  if (!resort) return { lifts: null, pistes: null, acres: null, trailKm: null, isEuropean: false };
+
+  const isEuro = isEuropeanResort(resort.country);
 
   let lifts: number | null =
     resort.lift_count !== undefined && resort.lift_count !== null && resort.lift_count > 0
@@ -174,8 +259,13 @@ export function getResortStats(resort: SkiResort | null | undefined): {
       : null;
 
   let acres: number | null =
-    resort.skiable_acres && resort.skiable_acres > 0
+    !isEuro && resort.skiable_acres && resort.skiable_acres > 0
       ? resort.skiable_acres
+      : null;
+
+  let trailKm: number | null =
+    resort.trail_km && resort.trail_km > 0
+      ? resort.trail_km
       : null;
 
   if (lifts === null && resort.infrastructure) {
@@ -188,7 +278,7 @@ export function getResortStats(resort: SkiResort | null | undefined): {
     if (m) pistes = parseInt(m[1], 10);
   }
 
-  return { lifts, pistes, acres };
+  return { lifts, pistes, acres, trailKm, isEuropean: isEuro };
 }
 
 export function getResortWebsite(resort: SkiResort | null | undefined): string | null {

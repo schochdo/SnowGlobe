@@ -284,16 +284,16 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
             )}
           </div>
 
-          {/* Min Skiable Area Slider */}
+          {/* Min Mountain Size Slider (Acres in NA / Piste Length in Europe) */}
           <div className="space-y-1.5">
             <div className="flex justify-between items-baseline">
-              <span className="text-[12.5px] text-[#4A463F] font-semibold">
-                {unitsMetric ? 'Min Skiable Area' : 'Min Skiable Acres'}
+              <span className="text-[12.5px] text-[#4A463F] font-semibold" title="Filters by inbounds skiable acres (North America) or equivalent piste length (Europe/International)">
+                {unitsMetric ? 'Min Mountain Size' : 'Min Mountain Size'}
               </span>
               <span className="text-[13.5px] text-[#1C1B18] font-bold tabular-nums">
                 {unitsMetric
-                  ? (minAreaHa > 0 ? `${minAreaHa.toLocaleString()} ha` : 'Any')
-                  : (minAreaAcres > 0 ? `${minAreaAcres.toLocaleString()} ac` : 'Any')}
+                  ? (minAreaHa > 0 ? `${minAreaHa.toLocaleString()} ha · ${Math.round(minAreaHa * 0.25).toLocaleString()} km` : 'Any')
+                  : (minAreaAcres > 0 ? `${minAreaAcres.toLocaleString()} ac · ${Math.round(minAreaAcres / 10).toLocaleString()} km` : 'Any')}
               </span>
             </div>
             {unitsMetric ? (
@@ -307,7 +307,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                   onChange={(e) => onChangeMinAreaHa(Number(e.target.value))}
                   style={{ background: getSliderTrackBackground(minAreaHa, 1200) }}
                   className="w-full tufte-slider cursor-pointer"
-                  aria-label="Minimum skiable area filter in hectares"
+                  aria-label="Minimum mountain size filter in hectares / kilometers"
                 />
                 {/* 5 Major Anchor Ticks */}
                 <div className="relative w-full flex justify-between px-[6px] pointer-events-none -mt-0.5">
@@ -336,7 +336,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                   onChange={(e) => onChangeMinAreaAcres(Number(e.target.value))}
                   style={{ background: getSliderTrackBackground(minAreaAcres, 3000) }}
                   className="w-full tufte-slider cursor-pointer"
-                  aria-label="Minimum skiable acreage filter in acres"
+                  aria-label="Minimum mountain size filter in acres / kilometers"
                 />
                 {/* 5 Major Anchor Ticks */}
                 <div className="relative w-full flex justify-between px-[6px] pointer-events-none -mt-0.5">

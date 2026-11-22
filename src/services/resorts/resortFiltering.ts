@@ -3,7 +3,7 @@ import type { SkiResort, PassNetwork } from '../../types';
 import type { ResortFilterCriteria, ResortCatalogSortOptions } from './types';
 import { GLOBAL_SKI_ATLAS } from '../../data/resorts';
 import { HELI_CAT_OPERATIONS } from '../../data/heliCat';
-import { PASS_COLORS } from '../../utils/classification';
+import { PASS_COLORS, getEquivalentResortSize } from '../../utils/classification';
 import { SOURCE_IDS } from '../../layers/types';
 
 /**
@@ -39,10 +39,13 @@ export function filterResortCatalog(
     const passMatch = r.pass_networks ? r.pass_networks.some((p) => selectedPasses.includes(p)) : true;
     if (!passMatch) return false;
 
-    // Downhill alpine resorts filtered by vertical drop and skiable acreage
+    // Downhill alpine resorts filtered by vertical drop and equivalent domain size (acres or piste km * 10)
     if (cat === 'downhill') {
       if (effectiveMinVerticalFt > 0 && (r.vertical_drop_ft === null || r.vertical_drop_ft === undefined || r.vertical_drop_ft < effectiveMinVerticalFt)) return false;
-      if (effectiveMinAcreage > 0 && (r.skiable_acres === null || r.skiable_acres === undefined || r.skiable_acres < effectiveMinAcreage)) return false;
+      if (effectiveMinAcreage > 0) {
+        const equivSize = getEquivalentResortSize(r);
+        if (equivSize < effectiveMinAcreage) return false;
+      }
     } else if (cat === 'nordic') {
       // Nordic cross-country networks filtered by trail network length (km)
       if (effectiveMinNordicKm > 0 && ((r.trail_km || 0) < effectiveMinNordicKm)) return false;
@@ -69,8 +72,8 @@ export function filterResortCatalog(
       const diff = (a.vertical_drop_ft || 0) - (b.vertical_drop_ft || 0);
       return diff * multiplier;
     } else if (sortBy === 'acres') {
-      const valA = a.category === 'nordic' ? (a.trail_km || a.run_count || 0) : (a.skiable_acres || 0);
-      const valB = b.category === 'nordic' ? (b.trail_km || b.run_count || 0) : (b.skiable_acres || 0);
+      const valA = getEquivalentResortSize(a);
+      const valB = getEquivalentResortSize(b);
       const diff = valA - valB;
       return diff * multiplier;
     } else {

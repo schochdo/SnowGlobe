@@ -1,5 +1,15 @@
 ## [Unreleased]
 
+### Feat
+- **Geographic Domain Metric Hygiene & Piste Length Equivalence (Europe vs. North America)**:
+  - **What was wrong**: European resorts frequently displayed inflated or nonsensical "30,000 ac" numbers because OSM municipal/winter-sports cadastral boundary polygons were converted to acres. In reality, European ski domains measure and market terrain strictly in linear kilometers of groomed piste (`km`), not acres.
+  - **The fix**:
+    - **Display Hygiene**: Purged inflated acreage from European resorts in `public/data/global_ski_areas.json` and `src/data/resorts.ts`. Cards and mountain dossiers now display authentic piste kilometers (e.g. *Les 3 Vallées: 600 km pistes*; *Alpe d'Huez: 250 km pistes*; *Zermatt: 360 km pistes*) or miles when imperial is toggled. North American resorts continue to display verified inbounds skiable acres.
+    - **Domain Equivalence Scaling (`getEquivalentResortSize`)**: Implemented a physical domain bridge based on average groomed trail corridor width (~45m $\rightarrow$ $1\text{ km} \approx 10\text{ acres}$):
+      $$\text{Equivalent Size} = \text{piste\_km} \times 10$$
+    - **Unified Filter & Sort Controls**: The size filter slider now adjusts dynamically as `Min Mountain Size` (e.g. `1,000 ac · 100 km`), and the directory sort bar lists `[ Size ]`, ranking global mega-resorts naturally alongside each other without dropping European flagships or bloating them with boundary hulls.
+    - **Documented Architecture**: Documented the full domain mismatch analysis, physical corridor rationale, and conversion formulas in Section 15 of `ARCHITECTURE.md`.
+
 ### Fixed
 - **Corrected Mt. Bachelor skiable acreage and average annual snowfall**:
   - **What was wrong**: In `global_ski_areas.json`, Mt. Bachelor had erroneous data points: `skiable_acres` was set to `6,608` ac (conflating total permit boundary/elevation figures) and `avg_snowfall_in` was listed as `140"/yr` (an incorrect regional baseline placeholder).
