@@ -1,6 +1,13 @@
 ## [Unreleased]
 
 ### Fixed
+- **Resort Stats Hygiene & Major Resort Ground-Truth Expansion (Phase 2)**:
+  - **What was wrong**: `public/data/global_ski_areas.json` contained fabricated/bucketed `avg_snowfall_in` across all 5,519 entries (`200"`, `140"`, `40"`, etc.), unverified OSM polygon-derived `skiable_acres`, and 1,623 boilerplate AI summaries (`"offering scenic mountain slopes and winter recreation."`).
+  - **The fix**:
+    - Created and executed `scripts/sanitize_global_ski_areas.cjs` to apply verified official specs (`skiable_acres`, `vertical_ft`, `summit_elev_ft`, `base_elev_ft`, `avg_snowfall_in`, `pass_networks`) to 39 major North American resorts.
+    - Nulled out `avg_snowfall_in` on 5,480 unverified records, zeroed out unverified polygon-derived `skiable_acres` on 2,101 records, and stripped all 1,623 boilerplate summaries so UI cards and profiles only display verifiable metrics.
+
+### Fixed
 - **Weather Engine Integrity & Viewport Prefetching (Phase 1)**:
   - **What was wrong**: `generateFallbackForecast()` in `src/services/weather.ts` invented pseudo-random 7-day snowfall forecasts and stamped them `is_live: true` whenever Open-Meteo timed out or rate-limited. Additionally, `fetchLiveWeather()` read `hourly.*[0]` (midnight local time) instead of the current hour, and non-curated resorts (~5,442 ski areas) never prefetched live weather in the directory until manually clicked.
   - **The fix**:
