@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Feat
+- **Mobile Brand Header in Slide-up Drawer**:
+  - **What changed**: Added the editorial brand wordmark (**SNOW** [🏔️ Crest] **GLOBE**) into the top of the mobile drawer sheet directly under the pull handle.
+  - Tapping the crest/wordmark smoothly resets the 3D globe to the global North America extent.
+  - Provides a polished, native iOS app appearance when running in full-screen PWA/web app mode rather than an unbranded cut-off drawer.
+
 - **Intuitive Pass Network Filter Selection Mechanic**:
   - **What was confusing**: Because all pass networks (`Ikon`, `Epic`, `Indy`, `Mountain Collective`, `Independent`) start active in the default unrestricted state, clicking a pass button like `Ikon` was deselecting it instead of isolating it, requiring 4 clicks to view just Ikon resorts.
   - **The fix**: Implemented an intuitive "select to isolate, click to add" state machine (`handleTogglePass`):

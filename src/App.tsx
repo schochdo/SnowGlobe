@@ -3694,6 +3694,7 @@ export default function App() {
             onSelectResort={handleSelectResort}
             onDeselectResort={handleDeselectResort}
             onViewProfile={() => setPanelView('profile')}
+            onResetToGlobal={handleResetToGlobalExtent}
             isFiltersOpen={mobileFiltersOpen}
             onToggleFilters={() => setMobileFiltersOpen((prev) => !prev)}
             onCloseFilters={() => setMobileFiltersOpen(false)}
