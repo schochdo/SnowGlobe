@@ -144,6 +144,51 @@ REMOVE_IDS = {
     'peak-1502', # Elk Thurston Ridge (hiking trail ridge)
 }
 
+TILE_SIZE = 512
+
+def get_elevation_at_global_px(gx, gy):
+    tx = int(gx // TILE_SIZE)
+    ty = int(gy // TILE_SIZE)
+    lx = int(gx % TILE_SIZE)
+    ly = int(gy % TILE_SIZE)
+    img = get_tile(tx, ty)
+    if not img:
+        return None
+    r, g, b = img.getpixel((lx, ly))
+    return (r * 256 + g + b / 256.0) - 32768.0
+
+def is_local_summit(gx, gy, center_elev):
+    # Must be >= all 8 immediate neighbors in 3x3 window
+    for dx in (-1, 0, 1):
+        for dy in (-1, 0, 1):
+            if dx == 0 and dy == 0:
+                continue
+            ne = get_elevation_at_global_px(gx + dx, gy + dy)
+            if ne is None or ne > center_elev:
+                return False
+    # Must be at least 2.0m higher than the minimum of its 5x5 window perimeter
+    min_perim = center_elev
+    for dx in (-2, -1, 0, 1, 2):
+        for dy in (-2, -1, 0, 1, 2):
+            if abs(dx) < 2 and abs(dy) < 2:
+                continue
+            pe = get_elevation_at_global_px(gx + dx, gy + dy)
+            if pe is not None and pe < min_perim:
+                min_perim = pe
+    return (center_elev - min_perim) >= 2.0
+
+def global_px_to_deg(gx, gy):
+    lon_deg = (gx / (N * TILE_SIZE)) * 360.0 - 180.0
+    y_norm = 1.0 - 2.0 * (gy / (N * TILE_SIZE))
+    lat_rad = math.atan(math.sinh(math.pi * y_norm))
+    return (round(math.degrees(lat_rad), 6), round(lon_deg, 6))
+
+def haversine_m(lon1, lat1, lon2, lat2):
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = math.sin(dlat / 2) ** 2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) ** 2
+    return 6371000.0 * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+
 def main():
     with open(GEOJSON_PATH, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -175,8 +220,8 @@ def main():
     features = [f for f in features if f['id'] not in REMOVE_IDS]
     print(f"Features after removing duplicate / sub-peak entries: {len(features)}")
 
-    # Step 3: Topographic Apex DEM Snapping
-    print("\nExecuting global DEM apex snapping across all peaks...")
+    # Step 3: True 2D Local-Maximum Topographic Apex DEM Snapping
+    print("\nExecuting global 2D local-maximum DEM apex snapping across all peaks...")
     t0 = time.time()
     snapped_count = 0
     significant_count = 0
@@ -187,71 +232,99 @@ def main():
         stated_m = stated_ft / 3.28084
         coarse = is_coarse(lon, lat)
 
-        tx, ty = deg2num(lat, lon)
-        img = get_tile(tx, ty)
-        if not img:
-            continue
-
-        w, h = img.size
-        px = ((lon + 180.0) / 360.0 * N - tx) * w
+        gx0_f = (lon + 180.0) / 360.0 * N * TILE_SIZE
         lat_rad = math.radians(lat)
-        py = ((1.0 - math.asinh(math.tan(lat_rad)) / math.pi) / 2.0 * N - ty) * h
+        gy0_f = (1.0 - math.asinh(math.tan(lat_rad)) / math.pi) / 2.0 * N * TILE_SIZE
+        gx0 = int(round(gx0_f))
+        gy0 = int(round(gy0_f))
 
-        cx0 = int(round(px))
-        cy0 = int(round(py))
-        if not (0 <= cx0 < w and 0 <= cy0 < h):
+        curr_elev = get_elevation_at_global_px(gx0, gy0)
+        if curr_elev is None:
             continue
 
-        r0, g0, b0 = img.getpixel((cx0, cy0))
-        curr_elev = (r0 * 256 + g0 + b0 / 256.0) - 32768
+        m_per_px = 40075016.686 * math.cos(lat_rad) / (N * TILE_SIZE)
+        radius = 45 if coarse else 22
+        max_elev_diff = max(180.0, stated_m * 0.08)
 
-        # Radius: for coarse peaks, search up to 40 pixels (~1.5 km); for others 18 pixels (~650m)
-        radius = 40 if coarse else 18
-        max_elev = curr_elev
-        best_px = px
-        best_py = py
-        min_dist_sq = 0.0
+        best_cost = float('inf')
+        best_gx = None
+        best_gy = None
+        best_elev = curr_elev
 
         for dx in range(-radius, radius + 1):
             for dy in range(-radius, radius + 1):
                 dist_sq = dx * dx + dy * dy
                 if dist_sq > radius * radius:
                     continue
-                cx = max(0, min(w - 1, cx0 + dx))
-                cy = max(0, min(h - 1, cy0 + dy))
-
-                pr, pg, pb = img.getpixel((cx, cy))
-                pelev = (pr * 256 + pg + pb / 256.0) - 32768
-
-                # Plausibility filter: summit candidate must be within 18% or 1000m of stated peak elevation
-                if abs(pelev - stated_m) > max(1000.0, stated_m * 0.18):
+                gx = gx0 + dx
+                gy = gy0 + dy
+                pelev = get_elevation_at_global_px(gx, gy)
+                if pelev is None:
+                    continue
+                if abs(pelev - stated_m) > max_elev_diff:
+                    continue
+                if not is_local_summit(gx, gy, pelev):
                     continue
 
-                if pelev > max_elev + 0.5:
-                    max_elev = pelev
-                    best_px = px + dx
-                    best_py = py + dy
-                    min_dist_sq = dist_sq
-                elif abs(pelev - max_elev) <= 0.5 and (dist_sq < min_dist_sq or min_dist_sq == 0):
-                    best_px = px + dx
-                    best_py = py + dy
-                    min_dist_sq = dist_sq
+                dist_m = math.sqrt(dist_sq) * m_per_px
+                cost = abs(pelev - stated_m) + 0.15 * dist_m
+                if cost < best_cost:
+                    best_cost = cost
+                    best_gx = gx
+                    best_gy = gy
+                    best_elev = pelev
 
-        # If a higher topographic point was found, snap to it
-        if (best_px, best_py) != (px, py) and max_elev > curr_elev + 1.0:
-            new_lat, new_lon = num2deg(tx, ty, best_px, best_py, w, h)
-            shift_m = math.hypot((new_lon - lon) * math.cos(math.radians(lat)) * 111000, (new_lat - lat) * 111000)
+        if best_gx is not None and (best_gx != gx0 or best_gy != gy0):
+            new_lat, new_lon = global_px_to_deg(best_gx, best_gy)
+            shift_m = haversine_m(lon, lat, new_lon, new_lat)
             feat['geometry']['coordinates'] = [new_lon, new_lat]
             feat['properties']['geodetic_reconciled'] = True
-            feat['properties']['dem_elevation_m'] = round(max_elev, 1)
-            feat['properties']['dem_elevation_ft'] = round(max_elev * 3.28084)
+            feat['properties']['dem_elevation_m'] = round(best_elev, 1)
+            feat['properties']['dem_elevation_ft'] = round(best_elev * 3.28084)
             snapped_count += 1
             if shift_m >= 50.0:
                 significant_count += 1
+        else:
+            feat['properties']['dem_elevation_m'] = round(curr_elev, 1)
+            feat['properties']['dem_elevation_ft'] = round(curr_elev * 3.28084)
+
+    # Step 4: Post-Reconciliation Quality Filter
+    # 4a. Drop Tier 2/3 peaks that still mismatch DEM elevation by > 600 ft
+    filtered = []
+    dropped_mismatch = 0
+    for feat in features:
+        p = feat['properties']
+        tier = p.get('tier', 3)
+        dem_ft = p.get('dem_elevation_ft')
+        if tier >= 2 and dem_ft is not None and abs(dem_ft - p['elevation_ft']) > 600:
+            dropped_mismatch += 1
+            continue
+        filtered.append(feat)
+
+    # 4b. Drop duplicate sub-peak bumps within 400m of a higher peak
+    filtered.sort(key=lambda f: f['properties'].get('elevation_ft', 0), reverse=True)
+    kept = []
+    dropped_dups = 0
+    for feat in filtered:
+        lon, lat = feat['geometry']['coordinates']
+        is_dup = False
+        for k in kept:
+            klon, klat = k['geometry']['coordinates']
+            if abs(klat - lat) < 0.01 and abs(klon - lon) < 0.015:
+                if haversine_m(lon, lat, klon, klat) < 400.0:
+                    is_dup = True
+                    break
+        if is_dup:
+            dropped_dups += 1
+        else:
+            kept.append(feat)
+
+    features = kept
 
     t1 = time.time()
     print(f"Apex snapping complete in {t1 - t0:.2f}s!")
-    print(f"Total peaks snapped onto DEM high point: {snapped_count} ({significant_count} shifted >= 50m)")
+    print(f"Total peaks snapped onto true 2D local-max summit: {snapped_count} ({significant_count} shifted >= 50m)")
+    print(f"Dropped {dropped_mismatch} mismatched Tier 2/3 hillside peaks (>600ft) and {dropped_dups} duplicate sub-peaks (<400m)")
 
     data['features'] = features
     with open(GEOJSON_PATH, 'w', encoding='utf-8') as f:

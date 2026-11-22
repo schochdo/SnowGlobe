@@ -1,6 +1,13 @@
 ## [Unreleased]
 
 ### Fixed
+- **True 2D Local-Maximum Peak Summit Reconciliation (Phase 4)**:
+  - **What was wrong**: `scripts/definitive_peak_reconcile.py` snapped peaks to the highest pixel in a single-tile 18px–40px circle without verifying that the target pixel was a true 2D local maximum (summit apex) and clamped at tile borders, dragging peak pins onto neighboring rising hillsides.
+  - **The fix**:
+    - Rebuilt `scripts/definitive_peak_reconcile.py` with global multi-tile pixel lookup (`get_elevation_at_global_px`), a strict 2D local-maximum check (`is_local_summit`: higher than all 8 immediate neighbors and $\ge 2.0\text{m}$ above the 5×5 perimeter minimum), and a tighter elevation+distance cost function (`abs(pelev - stated_m) <= max(180m, 8%)`).
+    - Snapped 785 peaks onto true 2D local-maximum summits (104 shifted $\ge 50\text{m}$), dropped 227 mismatched Tier 2/3 hillside peaks (`>600 ft` from DEM) and 8 duplicate sub-peaks (`<400m` from a higher peak), leaving 2,218 clean peaks with 0 Tier 2/3 elevation mismatches.
+
+### Fixed
 - **Trail Export Adaptive Envelope, Multi-Token Relation Matching & Hike-To Bowl Protection (Phase 3)**:
   - **What was wrong**: `data_pipeline/export_all_ski_areas.cjs` used naive `firstWord` matching within 25km (causing mismatches like Mammoth Mountain $\to$ June Mountain) and fixed miniature bounding boxes (`±0.065° × ±0.05°` curated, `±0.045° × ±0.035°` global) that clipped outer bowls and interconnected sectors. In addition, `pisteTopologyGraph.ts` demoted inbounds hike-to bowls/ridge runs (>350m from an upper lift terminal) to `touring`.
   - **The fix**:
