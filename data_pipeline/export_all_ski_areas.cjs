@@ -100,37 +100,104 @@ const manifest = {};
 const exportedSet = new Set();
 let exportedCount = 0;
 
+const STOP_WORDS = new Set([
+  'ski', 'area', 'resort', 'mountain', 'mt', 'mount', 'park', 'valley', 'pass',
+  'peak', 'bowl', 'lodge', 'village', 'center', 'centre', 'alpine', 'winter',
+  'sports', 'club', 'hill', 'hills', 'the', 'of', 'de', 'du', 'la', 'le', 'les', 'and',
+]);
+
+function getSignificantTokens(name) {
+  return String(name || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((t) => t.length >= 2 && !STOP_WORDS.has(t));
+}
+
+function computeLiftEnvelope(rows, fallbackLng, fallbackLat, fallbackDLng, fallbackDLat) {
+  let minLng = Infinity, maxLng = -Infinity, minLat = Infinity, maxLat = -Infinity;
+  let liftCount = 0;
+
+  for (const row of rows) {
+    const f = typeof row === 'string' ? JSON.parse(row) : JSON.parse(row.geojson);
+    if (f.properties?.kind !== 'lift') continue;
+    if (f.properties?.status && f.properties.status !== 'operating') continue;
+    const coords = f.geometry?.type === 'LineString'
+      ? f.geometry.coordinates
+      : f.geometry?.type === 'MultiLineString'
+        ? f.geometry.coordinates.flat()
+        : [];
+    for (const c of coords) {
+      if (Array.isArray(c) && c.length >= 2) {
+        if (c[0] < minLng) minLng = c[0];
+        if (c[0] > maxLng) maxLng = c[0];
+        if (c[1] < minLat) minLat = c[1];
+        if (c[1] > maxLat) maxLat = c[1];
+      }
+    }
+    liftCount++;
+  }
+
+  if (liftCount === 0 || !isFinite(minLng)) {
+    return {
+      minLng: fallbackLng - fallbackDLng,
+      maxLng: fallbackLng + fallbackDLng,
+      minLat: fallbackLat - fallbackDLat,
+      maxLat: fallbackLat + fallbackDLat,
+    };
+  }
+
+  const MARGIN = 0.025; // ~2.5 km margin around outer lifts
+  return {
+    minLng: Math.min(minLng, fallbackLng) - MARGIN,
+    maxLng: Math.max(maxLng, fallbackLng) + MARGIN,
+    minLat: Math.min(minLat, fallbackLat) - MARGIN,
+    maxLat: Math.max(maxLat, fallbackLat) + MARGIN,
+  };
+}
+
 // 1. Export Curated Flagship Resorts first
 console.log(`Exporting ${atlasResorts.length} curated flagship resorts...`);
 for (const r of atlasResorts) {
-  // Find matching global ski area within 25km
+  const rTokens = getSignificantTokens(r.name);
+  // Find matching global ski areas within 25km
   const candidates = [];
   for (const g of globalAreas) {
     const [gLng, gLat] = g.geometry.coordinates;
     const d = dist(r.lat, r.lng, gLat, gLng);
     if (d < 25) {
-      candidates.push({ feat: g, dist: d });
+      const gTokens = getSignificantTokens(g.properties?.name);
+      const overlap = rTokens.filter((t) => gTokens.includes(t)).length;
+      const isDownhill = g.properties?.category === 'downhill' ? 1 : 0;
+      const score = overlap * 10 + isDownhill * 3 - d;
+      candidates.push({ feat: g, dist: d, overlap, isDownhill, score });
     }
   }
 
-  candidates.sort((a, b) => {
-    const aDownhill = a.feat.properties.category === 'downhill' ? 1 : 0;
-    const bDownhill = b.feat.properties.category === 'downhill' ? 1 : 0;
-    if (aDownhill !== bDownhill) return bDownhill - aDownhill;
-    const firstWord = r.name.toLowerCase().split(' ')[0];
-    const aNameMatch = a.feat.properties.name?.toLowerCase().includes(firstWord) ? 1 : 0;
-    const bNameMatch = b.feat.properties.name?.toLowerCase().includes(firstWord) ? 1 : 0;
-    if (aNameMatch !== bNameMatch) return bNameMatch - aNameMatch;
-    return a.dist - b.dist;
-  });
+  candidates.sort((a, b) => b.score - a.score);
 
-  const chosenArea = candidates[0]?.feat || null;
+  // Pick primary match only if it has token overlap OR is very close (< 3km) downhill
+  const validCandidates = candidates.filter((c) => c.overlap > 0 || (c.isDownhill && c.dist < 3));
+  const chosenArea = validCandidates[0]?.feat || null;
   const hexId = chosenArea?.properties?.id;
 
-  // Flagship curated resorts must ALWAYS query spatial bounds to capture
-  // all freeride bowls, chutes, glades, and unassociated steeps (not just relation members)
-  const spatialRows = bboxStmt.all(r.lng + 0.065, r.lng - 0.065, r.lat + 0.05, r.lat - 0.05);
-  const relRows = hexId ? idStmt.all(hexId) : [];
+  // Multi-area aggregation: include all downhill relations within 12km that share primary tokens
+  const matchedAreas = validCandidates.filter((c) => c.overlap > 0 && c.isDownhill && c.dist <= 12);
+  const matchedHexIds = new Set(matchedAreas.map((c) => c.feat.properties.id).filter(Boolean));
+  if (hexId) matchedHexIds.add(hexId);
+
+  // Pass 1: Gather relation rows + seed box around resort coordinates
+  const relRows = [];
+  for (const hid of matchedHexIds) {
+    relRows.push(...idStmt.all(hid));
+  }
+  const seedRows = bboxStmt.all(r.lng + 0.065, r.lng - 0.065, r.lat + 0.05, r.lat - 0.05);
+
+  // Pass 2: Adaptive envelope around all operating lifts (+0.025 deg margin)
+  const env = computeLiftEnvelope([...relRows, ...seedRows], r.lng, r.lat, 0.065, 0.05);
+  const spatialRows = bboxStmt.all(env.maxLng, env.minLng, env.maxLat, env.minLat);
   const rawRows = [...spatialRows, ...relRows];
 
   const features = filterTrails(rawRows);
@@ -192,9 +259,12 @@ for (const a of globalAreas) {
   if (exportedSet.has(id)) continue;
 
   const [lng, lat] = a.geometry.coordinates;
-  // Systematic spatial query: captures 100% of trails, steeps, bowls, chutes, and glades
-  const spatialRows = bboxStmt.all(lng + 0.045, lng - 0.045, lat + 0.035, lat - 0.035);
+  // Pass 1: Relation rows + initial seed box
   const relRows = id ? idStmt.all(id) : [];
+  const seedRows = bboxStmt.all(lng + 0.045, lng - 0.045, lat + 0.035, lat - 0.035);
+  // Pass 2: Adaptive envelope around all operating lifts (+0.025 deg margin)
+  const env = computeLiftEnvelope([...relRows, ...seedRows], lng, lat, 0.045, 0.035);
+  const spatialRows = bboxStmt.all(env.maxLng, env.minLng, env.maxLat, env.minLat);
   const rows = [...spatialRows, ...relRows];
 
   if (!rows || rows.length === 0) continue;

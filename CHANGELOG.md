@@ -1,6 +1,14 @@
 ## [Unreleased]
 
 ### Fixed
+- **Trail Export Adaptive Envelope, Multi-Token Relation Matching & Hike-To Bowl Protection (Phase 3)**:
+  - **What was wrong**: `data_pipeline/export_all_ski_areas.cjs` used naive `firstWord` matching within 25km (causing mismatches like Mammoth Mountain $\to$ June Mountain) and fixed miniature bounding boxes (`±0.065° × ±0.05°` curated, `±0.045° × ±0.035°` global) that clipped outer bowls and interconnected sectors. In addition, `pisteTopologyGraph.ts` demoted inbounds hike-to bowls/ridge runs (>350m from an upper lift terminal) to `touring`.
+  - **The fix**:
+    - Replaced `firstWord` matching in `export_all_ski_areas.cjs` with normalized multi-token overlap scoring and multi-area relation aggregation within 12km for interconnected flagship domains.
+    - Implemented a two-pass adaptive lift-envelope bounding box (`computeLiftEnvelope` with `+0.025°` margin around all operating lifts), expanding coverage across all 5,380 exported trail datasets (e.g., Chamonix grew from 31 lifts / 152 pistes to 69 lifts / 418 pistes).
+    - Added inbounds hike-to bowl protection in `src/utils/pisteTopologyGraph.ts` (upper terminus within 900m of upper lift + bottom terminus feeding back into a lift-served run or lift) while keeping all 6 canary topology assertions passing.
+
+### Fixed
 - **Resort Stats Hygiene & Major Resort Ground-Truth Expansion (Phase 2)**:
   - **What was wrong**: `public/data/global_ski_areas.json` contained fabricated/bucketed `avg_snowfall_in` across all 5,519 entries (`200"`, `140"`, `40"`, etc.), unverified OSM polygon-derived `skiable_acres`, and 1,623 boilerplate AI summaries (`"offering scenic mountain slopes and winter recreation."`).
   - **The fix**:

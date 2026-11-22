@@ -545,6 +545,28 @@ export function classifySkiAreaTopology<T extends TopologyFeature>(
     const diff = String(props.difficulty || props['piste:difficulty'] || '').toLowerCase();
 
     if (!liftServed.has(idx)) {
+      // Protect inbounds hike-to bowls & ridge runs:
+      // If the run's upper terminus is within 900m of an upper lift station AND its bottom terminus
+      // delivers the skier back into a lift-served downhill run (within ~85m) or directly to a lift (<=350m),
+      // it is an inbounds hike-to line (e.g., Highland Bowl, Headwall, Chamonix Grands Montets bowls),
+      // NOT an unserviced backcountry Gravity Sink.
+      if (coords.length >= 2 && liftPoints.length > 0) {
+        const bPt = bottomPtByIdx[idx] || coords[coords.length - 1];
+        const tPt = coords[0];
+        const upperNearLift = isPointWithinMetersOfUpperLift(tPt[0], tPt[1], 900);
+        if (upperNearLift) {
+          const bottomNearLift = isPointWithinMetersOfLift(bPt[0], bPt[1], 350);
+          const feedsLiftServedRun =
+            bottomNearLift ||
+            neighborCellKeys(bPt[0], bPt[1])
+              .flatMap(k => gridMap.get(k) || [])
+              .some(nIdx => nIdx !== idx && liftServed.has(nIdx));
+          if (feedsLiftServedRun) {
+            props.atlas_category = 'downhill';
+            continue;
+          }
+        }
+      }
       props.atlas_category = 'touring';
       continue;
     }
