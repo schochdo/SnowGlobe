@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+### Feat
+- **Android Back Gesture & Portrait Tablet Layout Polish**:
+  - **Android Back Button / Edge-Swipe Back (`src/App.tsx`)**: Pushed a lightweight `{ snowGlobeOverlay: true }` history state whenever `MobileSheet`, `BasemapMenu`, or `RegionalLocator` opens on mobile and handled `popstate` so pressing Android's Back button closes the open overlay instead of exiting the site.
+  - **Portrait Tablet Full-Bleed Default (`src/App.tsx`)**: Auto-collapsed `LeftDock` when `window.innerWidth < 1024` (in addition to `< 560px` height) so portrait iPads and Android tablets open with a full-bleed map.
+  - **Android Keyboard-Safe Sheet Bounds (`src/components/sidebar/MobileSheet.tsx`)**: Added `max-h-[calc(100dvh-16px)] min-h-[280px]` so the slide-up drawer stays usable when Android Chrome's virtual keyboard resizes `100dvh`.
+
 ### Fixed
 - **Improved Mobile Touch Ergonomics for Filter Sliders (Larger Hit Area & Edge Padding)**:
   - **What was wrong**: `.tufte-slider` had a 6px height and 14px thumb with no `touch-action: none` and zero side inset padding, making vertical/size sliders hard to grab on mobile and causing iOS Edge Swipe Back/Forward to hijack drags near the screen edges.

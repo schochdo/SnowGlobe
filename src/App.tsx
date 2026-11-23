@@ -487,15 +487,15 @@ export default function App() {
         });
     }
   };
-  // Auto-collapse LeftDock on short landscape phones (e.g., iPhone landscape ~390-430px tall)
+  // Auto-collapse LeftDock on short landscape phones (<560px tall) and portrait tablets (<1024px wide)
   const [leftDockOpen, setLeftDockOpen] = useState(() => {
     if (typeof window === 'undefined') return true;
-    return window.innerHeight >= 560;
+    return window.innerWidth >= 1024 && window.innerHeight >= 560;
   });
 
   useEffect(() => {
     const handleOrientationResize = () => {
-      if (window.innerWidth >= 768 && window.innerHeight < 560) {
+      if (window.innerWidth < 1024 || window.innerHeight < 560) {
         setLeftDockOpen(false);
       }
     };
@@ -687,6 +687,44 @@ export default function App() {
       handleDeselectTrail();
     }
   }, [showTouring, selectedTrail, handleDeselectTrail]);
+
+  // Android Back button / gesture support: close open mobile overlays instead of leaving the page
+  const hasOverlayHistoryRef = useRef(false);
+  const hasMobileOverlayOpen =
+    isMobile && (mobileSheetState === 'full' || mapMenuOpen || locatorOpen);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (hasMobileOverlayOpen && !hasOverlayHistoryRef.current) {
+      try {
+        window.history.pushState({ snowGlobeOverlay: true }, '');
+        hasOverlayHistoryRef.current = true;
+      } catch (_) {}
+    } else if (!hasMobileOverlayOpen && hasOverlayHistoryRef.current) {
+      hasOverlayHistoryRef.current = false;
+      if (window.history.state?.snowGlobeOverlay) {
+        try {
+          window.history.back();
+        } catch (_) {}
+      }
+    }
+  }, [hasMobileOverlayOpen]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      if (!hasOverlayHistoryRef.current) return;
+      hasOverlayHistoryRef.current = false;
+      if (mapMenuOpen) {
+        setMapMenuOpen(false);
+      } else if (locatorOpen) {
+        setLocatorOpen(false);
+      } else if (mobileSheetState === 'full') {
+        setMobileSheetState('peek');
+      }
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, [mapMenuOpen, locatorOpen, mobileSheetState]);
 
   const activeFiltersCount = useMemo(() => {
     let count = 0;

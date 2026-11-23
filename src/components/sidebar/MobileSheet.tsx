@@ -205,7 +205,7 @@ export const MobileSheet: React.FC<MobileSheetProps> = ({
           transform: sheetTransform,
           transition: isSwiping ? 'none' : 'transform 240ms cubic-bezier(0.32, 0.72, 0, 1)',
         }}
-        className={`md:hidden fixed inset-x-0 bottom-0 z-30 flex flex-col bg-[#F7F4ED] rounded-t-2xl border-t border-[#D6D0C2] shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-[max(12px,env(safe-area-inset-bottom,0px))] h-[88dvh] will-change-transform ${
+        className={`md:hidden fixed inset-x-0 bottom-0 z-30 flex flex-col bg-[#F7F4ED] rounded-t-2xl border-t border-[#D6D0C2] shadow-[0_-4px_24px_rgba(0,0,0,0.2)] pb-[max(12px,env(safe-area-inset-bottom,0px))] h-[88dvh] max-h-[calc(100dvh-16px)] min-h-[280px] will-change-transform ${
           isFull ? 'pointer-events-auto' : 'pointer-events-none'
         }`}
         aria-hidden={!isFull}
