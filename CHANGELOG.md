@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+### Fixed
+- **Eliminated iOS Mobile Double-Tap Two-Step Zoom**:
+  - **What was wrong**: On iOS WebKit (Safari and Brave), a double-tap triggered MapLibre's native `TapZoomHandler` on `touchend` and then fired a synthetic `dblclick` event ~250ms later, triggering `doubleClickZoom` a second time (visible as a two-step zoom jump).
+  - **The fix**: Added a capture-phase `dblclick` guard (`onTouchDblClickGuard`) on the map container in `src/App.tsx` that suppresses synthetic `dblclick` events arriving within 600ms of a `touchend`, leaving MapLibre's single smooth touch double-tap zoom intact.
+
 ### Feat
 - **Added Imperial/Metric (`FT` / `M`) Toggle to Mobile Top Bar**:
   - Added the segmented `FT` / `M` unit switcher next to the stacked-sheets map button in the mobile `<header>` (`src/App.tsx`), matching desktop's `TopNavBar` so mobile users can switch between Imperial and Metric units directly.
