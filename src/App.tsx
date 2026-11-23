@@ -1639,6 +1639,14 @@ export default function App() {
     try {
       (map as any).setCenterClampedToGround?.(true);
       map.dragRotate.enable({ around: 'center', movement: 'linear' });
+      // Tighten dragPan inertia on touchscreens so panning stops crisply without trailing "settle"
+      if (initialIsMobile) {
+        map.dragPan.enable({
+          linearity: 0.1,
+          maxSpeed: 400,
+          deceleration: 8000,
+        });
+      }
     } catch (_) {}
 
     // Enable smooth scroll wheel zoom anchored around center (prevents cursor raycast terrain kick)

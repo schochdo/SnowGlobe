@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+### Fixed
+- **Eliminated Trailing Mobile Pan "Settle"**:
+  - **What was wrong**: MapLibre's default `dragPan` inertia (`maxSpeed: 1400`, `deceleration: 2500`) caused a mushy trailing coast/terrain settle after lifting a finger on mobile.
+  - **The fix**: Configured crisp `dragPan` inertia (`linearity: 0.1, maxSpeed: 400, deceleration: 8000`) on mobile in `src/App.tsx` so panning stops cleanly where the finger lifts.
+
 ### Feat
 - **Matched Mobile `FT / M` Selector Height & Editorial Matte Styling**:
   - Set the mobile `FT / M` toggle container in `src/App.tsx` to `h-8` (matching the 32px stacked-sheets map button) and replaced the heavy black active pill with a matte archival paper active chip (`bg-[#FAF8F3] text-[#1C1B18] border-[#A8A299]`).
