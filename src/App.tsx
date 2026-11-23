@@ -523,14 +523,13 @@ export default function App() {
   const [showTouring, setShowTouring] = useState(false);
 
   // Dedicated Imperial and Metric Filter Slider States
-  // Imperial defaults: 500' vertical, 100 acres, 0 mi
-  const [minVerticalFt, setMinVerticalFt] = useState(500);
-  const [minAreaAcres, setMinAreaAcres] = useState(100);
+  // Defaults: 0 (show all resorts regardless of missing stats)
+  const [minVerticalFt, setMinVerticalFt] = useState(0);
+  const [minAreaAcres, setMinAreaAcres] = useState(0);
   const [minNordicMi, setMinNordicMi] = useState(0);
 
-  // Metric defaults: 150 m vertical (clean rounded equiv to 500'), 50 ha area (clean rounded equiv to 100 ac), 0 km
-  const [minVerticalM, setMinVerticalM] = useState(150);
-  const [minAreaHa, setMinAreaHa] = useState(50);
+  const [minVerticalM, setMinVerticalM] = useState(0);
+  const [minAreaHa, setMinAreaHa] = useState(0);
   const [minNordicKm, setMinNordicKm] = useState(0);
 
   // Unified Effective Filtering Thresholds (derived from active unit system)
@@ -678,12 +677,12 @@ export default function App() {
     let count = 0;
     if (selectedPasses.length < 5) count++;
     if (unitsMetric) {
-      if (minVerticalM !== 150) count++;
-      if (minAreaHa !== 50) count++;
+      if (minVerticalM !== 0) count++;
+      if (minAreaHa !== 0) count++;
       if (minNordicKm !== 0) count++;
     } else {
-      if (minVerticalFt !== 500) count++;
-      if (minAreaAcres !== 100) count++;
+      if (minVerticalFt !== 0) count++;
+      if (minAreaAcres !== 0) count++;
       if (minNordicMi !== 0) count++;
     }
     if (!showDownhill || showNordic || showHeliCat || showTouring) count++;
@@ -752,10 +751,10 @@ export default function App() {
 
   const handleResetFilters = () => {
     setSelectedPasses(ALL_PASS_NETWORKS);
-    setMinVerticalFt(500);
-    setMinVerticalM(150);
-    setMinAreaAcres(100);
-    setMinAreaHa(50);
+    setMinVerticalFt(0);
+    setMinVerticalM(0);
+    setMinAreaAcres(0);
+    setMinAreaHa(0);
     setMinNordicMi(0);
     setMinNordicKm(0);
     setShowDownhill(true);

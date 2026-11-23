@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Default Filter Thresholds Set to 0 (Show All Resorts by Default)**:
+  - **What was wrong**: After purging unverified OSM polygon-derived `skiable_acres` in Phase 2, the default filter thresholds (`minVerticalFt = 500`, `minAreaAcres = 100`, `minVerticalM = 150`, `minAreaHa = 50`) hid hundreds of legitimate ski areas whose `skiable_acres` was `0` and `trail_km < 10`.
+  - **The fix**: Set default `minVerticalFt`, `minVerticalM`, `minAreaAcres`, and `minAreaHa` to `0` in `src/App.tsx` (along with `activeFiltersCount` and `handleResetFilters`), so all resorts display by default regardless of missing acreage/vertical stats.
+
+### Fixed
 - **True 2D Local-Maximum Peak Summit Reconciliation (Phase 4)**:
   - **What was wrong**: `scripts/definitive_peak_reconcile.py` snapped peaks to the highest pixel in a single-tile 18px–40px circle without verifying that the target pixel was a true 2D local maximum (summit apex) and clamped at tile borders, dragging peak pins onto neighboring rising hillsides.
   - **The fix**:
