@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Prevented Unnamed Trails from Selecting Entire Ski Area on Click (Pirika & Global)**:
+  - **What was wrong**: In `src/utils/trailAnalysis.ts`, `aggregateConnectedTrailFeatures()` ran BFS connectivity matching across unnamed/generic trails (`isGeneric === true`). At resorts where pistes are unnamed in OSM (like Pirika Ski Area in Japan), clicking a single run chained across lift/base junctions and highlighted every trail on the mountain.
+  - **The fix**: Short-circuited `aggregateConnectedTrailFeatures()` to return `selectedFeat` immediately when `isGeneric` is true, so multi-segment aggregation only stitches ways that share an explicit trail name.
+
+### Fixed
 - **Display Geometry-Verified Piste Length (`trail_km`) Worldwide When Acreage Is Unavailable**:
   - **What was wrong**: `ResortCard.tsx` and `MountainProfile.tsx` only displayed `trail_km` for European resorts (`isEuropeanResort()`). Non-European resorts without verified acreage—such as 490 of 509 downhill resorts in Japan, plus South America, Oceania, and smaller North American hills—displayed blank/`—` even though they already had geometry-verified 3D `trail_km`.
   - **The fix**: Updated `ResortCard.tsx` and `MountainProfile.tsx` to display `skiable_acres` when verified (`!isEuro && skiable_acres > 0`) and seamlessly fall back to `trail_km` (`Piste Length`) worldwide whenever acreage is absent.

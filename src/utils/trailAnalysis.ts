@@ -134,6 +134,12 @@ export function aggregateConnectedTrailFeatures(
   const visitedIds = new Set<string>();
   if (startId) visitedIds.add(startId);
 
+  // Never aggregate unnamed/generic trails via BFS — otherwise clicking one unnamed run
+  // at a lift junction chains into every unnamed trail across the entire ski area (e.g. Pirika).
+  if (isGeneric) {
+    return selectedFeat;
+  }
+
   // Filter relevant candidates
   interface Candidate {
     feat: any;
