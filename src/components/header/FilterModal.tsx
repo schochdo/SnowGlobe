@@ -224,7 +224,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
               </span>
             </div>
             {unitsMetric ? (
-              <div className="space-y-1">
+              <div className="space-y-1 px-3 sm:px-0">
                 <input
                   type="range"
                   min="0"
@@ -253,7 +253,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="space-y-1">
+              <div className="space-y-1 px-3 sm:px-0">
                 <input
                   type="range"
                   min="0"
@@ -297,7 +297,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
               </span>
             </div>
             {unitsMetric ? (
-              <div className="space-y-1">
+              <div className="space-y-1 px-3 sm:px-0">
                 <input
                   type="range"
                   min="0"
@@ -326,7 +326,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 </div>
               </div>
             ) : (
-              <div className="space-y-1">
+              <div className="space-y-1 px-3 sm:px-0">
                 <input
                   type="range"
                   min="0"

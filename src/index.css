@@ -95,6 +95,7 @@ body {
   cursor: pointer;
   position: relative;
   outline: none;
+  touch-action: none;
 }
 .tufte-slider:focus {
   outline: none;
@@ -135,6 +136,25 @@ body {
   border: 2px solid #2C2A27;
   box-shadow: 0 1px 3px rgba(28, 27, 24, 0.25);
   cursor: pointer;
+}
+
+/* Larger thumb and 30px vertical touch hit target on touchscreens (iPhone / iPad) */
+@media (pointer: coarse) {
+  .tufte-slider {
+    padding: 12px 0;
+    margin: -8px 0;
+    height: 30px;
+    background-clip: content-box;
+  }
+  .tufte-slider::-webkit-slider-thumb {
+    width: 22px;
+    height: 22px;
+    margin-top: -8px;
+  }
+  .tufte-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 /* Lightweight editorial slide and fade animations */

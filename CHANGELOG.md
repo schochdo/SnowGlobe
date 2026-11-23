@@ -1,6 +1,13 @@
 ## [Unreleased]
 
 ### Fixed
+- **Improved Mobile Touch Ergonomics for Filter Sliders (Larger Hit Area & Edge Padding)**:
+  - **What was wrong**: `.tufte-slider` had a 6px height and 14px thumb with no `touch-action: none` and zero side inset padding, making vertical/size sliders hard to grab on mobile and causing iOS Edge Swipe Back/Forward to hijack drags near the screen edges.
+  - **The fix**:
+    - Added `touch-action: none` to `.tufte-slider` and a `@media (pointer: coarse)` rule in `src/index.css` expanding the vertical touch target to 30px (`padding: 12px 0; background-clip: content-box`) and thumb to 22px × 22px on touchscreens.
+    - Added horizontal inset padding (`px-3 sm:px-0`) around the Vertical Drop and Mountain Size slider containers in `src/components/header/FilterModal.tsx` to keep `0` and `max` clear of iOS screen-edge gestures.
+
+### Fixed
 - **Eliminated Rectangular Trail Cutout Holes on Mobile 3D Terrain (Winter Park & Global)**:
   - **What was wrong**: `SOURCE_IDS.LIVE_PISTES` in `src/layers/trailLayers.ts` had `maxzoom: 22` and `buffer: 128`. On mobile 3D pitched terrain (`maxTileCacheSize: 60`), generating dozens of tiny z16–z18 GeoJSON vector tiles caused foreground tile eviction/draping holes that sliced trails and lifts off along a straight rectangular tile boundary.
   - **The fix**: Set `maxzoom: 15` (matching Mapterhorn DEM's native maxzoom, which overscales crisply to z22 with 16x–64x fewer tiles) and increased `buffer: 256` on `SOURCE_IDS.LIVE_PISTES`.
