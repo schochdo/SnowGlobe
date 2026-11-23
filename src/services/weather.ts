@@ -10,9 +10,9 @@ import type { DailyForecast, ResortWeatherData, SkiResort } from '../types';
    ========================================================================= */
 
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours (once per day)
-const CACHE_PREFIX = 'snowglobe_wx_v3_'; // v3: only genuine Open-Meteo responses are cached as fresh
-const CIRCUIT_BREAKER_KEY = 'snowglobe_wx_circuit_tripped_until';
-const CIRCUIT_TRIP_MS = 24 * 60 * 60 * 1000; // Suspend for 24 hours on limit
+const CACHE_PREFIX = 'snowglobe_wx_v4_'; // v4: genuine Open-Meteo responses with current-hour indexing
+const CIRCUIT_BREAKER_KEY = 'snowglobe_wx_circuit_v4_until';
+const CIRCUIT_TRIP_MS = 2 * 60 * 1000; // Suspend for 2 minutes on transient 429 rate limit
 
 interface CachePayload {
   timestamp: number;
@@ -125,6 +125,120 @@ export function getInitialWeather(resort: SkiResort): ResortWeatherData {
     return cached;
   }
   return getNeutralWeather(resort);
+}
+
+function parseOpenMeteoResponse(data: any): ResortWeatherData {
+  const hourlySnow: number[] = data?.hourly?.snowfall || [];
+  const nowHourIdx = Math.max(0, Math.min((hourlySnow.length || 1) - 1, new Date().getHours()));
+  let snow72cm = 0;
+  const endIdx = Math.min(nowHourIdx + 72, hourlySnow.length);
+  for (let i = nowHourIdx; i < endIdx; i++) {
+    snow72cm += hourlySnow[i] || 0;
+  }
+  const snow72in = Math.round((snow72cm / 2.54) * 10) / 10;
+
+  const dailySnow: number[] = data?.daily?.snowfall_sum || [];
+  const snow7dCm = dailySnow.reduce((a, b) => a + (b || 0), 0);
+  const snow7dIn = Math.round((snow7dCm / 2.54) * 10) / 10;
+
+  const daily_forecast: DailyForecast[] = (data?.daily?.time || []).map((t: string, idx: number) => {
+    const cm = Math.round((data.daily.snowfall_sum?.[idx] || 0) * 10) / 10;
+    const inches = Math.round((cm / 2.54) * 10) / 10;
+    const tMaxC = Math.round(data.daily.temperature_2m_max?.[idx] || 0);
+    const tMinC = Math.round(data.daily.temperature_2m_min?.[idx] || 0);
+    return {
+      date: t,
+      snowfall_in: inches,
+      snowfall_cm: cm,
+      temp_max_f: Math.round((tMaxC * 9) / 5 + 32),
+      temp_min_f: Math.round((tMinC * 9) / 5 + 32),
+      temp_max_c: tMaxC,
+      temp_min_c: tMinC,
+    };
+  });
+
+  const curTempC = Math.round(data?.current?.temperature_2m ?? data?.hourly?.temperature_2m?.[nowHourIdx] ?? 0);
+  const curTempF = Math.round((curTempC * 9) / 5 + 32);
+  const curWindKmh = data?.current?.wind_gusts_10m ?? data?.hourly?.wind_gusts_10m?.[nowHourIdx] ?? 0;
+  const curFreezingM = data?.hourly?.freezing_level_height?.[nowHourIdx] ?? 2500;
+
+  return {
+    snowfall_72h_in: snow72in,
+    snowfall_7d_in: snow7dIn,
+    snowfall_72h_cm: Math.round(snow72cm * 10) / 10,
+    snowfall_7d_cm: Math.round(snow7dCm * 10) / 10,
+    current_temp_f: curTempF,
+    current_temp_c: curTempC,
+    summit_wind_gust_mph: Math.round(curWindKmh * 0.621371),
+    freezing_level_ft: Math.round(curFreezingM * 3.28084),
+    rain_to_base_risk: Boolean(curTempC > 1.5 && (hourlySnow[nowHourIdx] || 0) > 0),
+    daily_forecast,
+    is_live: true,
+    last_updated: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+  };
+}
+
+/**
+ * Multi-coordinate batch fetch: fetches up to 50 resorts in a single HTTP request
+ * using Open-Meteo's native comma-separated coordinate arrays, avoiding HTTP 429 rate limits.
+ */
+export async function fetchLiveWeatherBatch(resorts: SkiResort[]): Promise<Map<string, ResortWeatherData>> {
+  const results = new Map<string, ResortWeatherData>();
+  const toFetch: SkiResort[] = [];
+
+  for (const r of resorts) {
+    if (isCachedWeatherFresh(r.id)) {
+      const cached = getCachedWeather(r.id);
+      if (cached) {
+        results.set(r.id, cached);
+        continue;
+      }
+    }
+    toFetch.push(r);
+  }
+
+  if (toFetch.length === 0 || isWeatherCircuitTripped()) {
+    return results;
+  }
+
+  const lats = toFetch.map((r) => r.lat.toFixed(4)).join(',');
+  const lngs = toFetch.map((r) => r.lng.toFixed(4)).join(',');
+  const elevs = toFetch
+    .map((r) => {
+      const summitElevFt = r.summit_elev_ft || (r.base_elev_ft ? r.base_elev_ft + 2000 : 3000);
+      return Math.round(summitElevFt * 0.3048);
+    })
+    .join(',');
+
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lats}&longitude=${lngs}&elevation=${elevs}&current=temperature_2m,wind_gusts_10m&hourly=snowfall,freezing_level_height,wind_gusts_10m,temperature_2m&daily=snowfall_sum,temperature_2m_max,temperature_2m_min&timezone=auto`;
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeoutId);
+
+    if (res.status === 429) {
+      tripWeatherCircuit();
+      return results;
+    }
+    if (!res.ok) return results;
+
+    const json = await res.json();
+    const payloads = Array.isArray(json) ? json : [json];
+
+    for (let i = 0; i < toFetch.length && i < payloads.length; i++) {
+      const p = payloads[i];
+      if (!p || p.error) continue;
+      const liveData = parseOpenMeteoResponse(p);
+      saveCachedWeather(toFetch[i].id, liveData, true);
+      results.set(toFetch[i].id, liveData);
+    }
+  } catch {
+    // Network failure or timeout
+  }
+
+  return results;
 }
 
 export async function fetchLiveWeather(resort: SkiResort): Promise<ResortWeatherData | null> {

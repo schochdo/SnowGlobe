@@ -102,6 +102,7 @@ import {
   getNeutralWeather,
   getInitialWeather,
   fetchLiveWeather,
+  fetchLiveWeatherBatch,
   isWeatherCircuitTripped,
 } from './services/weather';
 import { GLOBAL_SKI_ATLAS } from './data/resorts';
@@ -1498,7 +1499,7 @@ export default function App() {
   useEffect(() => {
     let cancelled = false;
     const allResorts = [...GLOBAL_SKI_ATLAS, ...HELI_CAT_OPERATIONS];
-    const BATCH = 5;
+    const BATCH = 40;
 
     async function prefetchAll() {
       // If the circuit breaker is active, skip all network queries immediately
@@ -1509,21 +1510,18 @@ export default function App() {
         if (isWeatherCircuitTripped()) break; // Halt immediately if breaker trips mid-run
 
         const batch = allResorts.slice(i, i + BATCH);
-        const results = await Promise.allSettled(batch.map((r) => fetchLiveWeather(r)));
+        const weatherMap = await fetchLiveWeatherBatch(batch);
         if (cancelled) break;
-        setResorts((prev) => {
-          const updated = [...prev];
-          results.forEach((result, j) => {
-            if (result.status === 'fulfilled' && result.value) {
-              const id = batch[j].id;
-              const idx = updated.findIndex((r) => r.id === id);
-              if (idx !== -1) updated[idx] = { ...updated[idx], weather: result.value! };
-            }
-          });
-          return updated;
-        });
+        if (weatherMap.size > 0) {
+          setResorts((prev) =>
+            prev.map((r) => {
+              const wx = weatherMap.get(r.id);
+              return wx ? { ...r, weather: wx } : r;
+            })
+          );
+        }
         // Small delay between batches to be polite to the API
-        if (i + BATCH < allResorts.length) await new Promise((res) => setTimeout(res, 200));
+        if (i + BATCH < allResorts.length) await new Promise((res) => setTimeout(res, 250));
       }
     }
 
@@ -1545,34 +1543,20 @@ export default function App() {
     if (pending.length === 0) return;
 
     let cancelled = false;
-    const BATCH = 5;
 
     async function prefetchDisplayed() {
-      for (let i = 0; i < pending.length; i += BATCH) {
-        if (cancelled || isWeatherCircuitTripped()) break;
+      if (cancelled || isWeatherCircuitTripped()) return;
+      pending.forEach((r) => fetchedWeatherIdsRef.current.add(r.id));
 
-        const batch = pending.slice(i, i + BATCH);
-        batch.forEach((r) => fetchedWeatherIdsRef.current.add(r.id));
+      const weatherMap = await fetchLiveWeatherBatch(pending);
+      if (cancelled || weatherMap.size === 0) return;
 
-        const results = await Promise.allSettled(batch.map((r) => fetchLiveWeather(r)));
-        if (cancelled) break;
-
-        setResorts((prev) => {
-          const updated = [...prev];
-          results.forEach((result, j) => {
-            if (result.status === 'fulfilled' && result.value) {
-              const id = batch[j].id;
-              const idx = updated.findIndex((r) => r.id === id);
-              if (idx !== -1) updated[idx] = { ...updated[idx], weather: result.value! };
-            }
-          });
-          return updated;
-        });
-
-        if (i + BATCH < pending.length) {
-          await new Promise((res) => setTimeout(res, 250));
-        }
-      }
+      setResorts((prev) =>
+        prev.map((r) => {
+          const wx = weatherMap.get(r.id);
+          return wx ? { ...r, weather: wx } : r;
+        })
+      );
     }
 
     prefetchDisplayed();

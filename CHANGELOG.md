@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+### Fixed
+- **Multi-Coordinate Open-Meteo Batching & 2-Minute Circuit Breaker (Restored 7-Day Snow)**:
+  - **What was wrong**: Firing 97+ individual Open-Meteo HTTP requests on mount tripped Open-Meteo's per-minute HTTP 429 rate limit, which locked out all weather requests for 24 hours via `snowglobe_wx_circuit_tripped_until`. (Previously, this was masked by the now-removed fake fallback generator.)
+  - **The fix**:
+    - Added `fetchLiveWeatherBatch()` in `src/services/weather.ts` using Open-Meteo's native comma-separated multi-coordinate endpoint (up to 40 resorts in 1 single HTTP request, cutting startup network calls from ~97 down to 3).
+    - Shortened the rate-limit circuit breaker from 24 hours to 2 minutes and bumped the cache/breaker keys to `v4` (`snowglobe_wx_v4_`, `snowglobe_wx_circuit_v4_until`) so stale 24-hour lockouts clear immediately.
+
 ### Feat
 - **Full-Width Mobile Top Title Bar & Removed Duplicate Search Box**:
   - Replaced the mobile floating wordmark pill and duplicate top search box in `src/App.tsx` with a clean full-width editorial cream header bar (`<header>`) extending across the top of the screen under the iOS status bar/Dynamic Island (`env(safe-area-inset-top)`), housing the `SNOW [Crest] GLOBE` wordmark and the stacked-sheets map button.
