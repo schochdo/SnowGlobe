@@ -36,7 +36,7 @@
         "website": "https://www.u-tau.ru/",
         "lift_count": 1,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 53,
         "default_bearing": 144,
         "trail_km": 1.8,
         "trail_mi": 1.1
@@ -76,7 +76,7 @@
         "summary": "Alpine ski destination in Allier, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 3,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 24,
         "default_bearing": 178,
         "trail_km": 2.4,
         "trail_mi": 1.5
@@ -116,7 +116,7 @@
         "summary": "",
         "lift_count": 18,
         "run_count": 45,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 6,
         "trail_km": 18.4,
         "trail_mi": 11.4
@@ -238,7 +238,7 @@
         "website": "https://julius.sk",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 38,
         "default_bearing": 194,
         "trail_km": 1
       }
@@ -278,7 +278,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 75,
         "default_bearing": 180,
         "trail_km": 0.2
       }
@@ -359,7 +359,7 @@
         "website": "https://www.skijalistasrbije.rs/en/lifts-and-slopes-stara-planina",
         "lift_count": 6,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 109,
         "trail_km": 12.3,
         "trail_mi": 7.6
@@ -400,7 +400,7 @@
         "website": "https://vallei53.nl/",
         "lift_count": 4,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 9,
         "default_bearing": 180,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -441,7 +441,7 @@
         "website": "https://www.snowsnake.net/",
         "lift_count": 5,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 39,
         "default_bearing": 256,
         "trail_km": 1.9,
         "trail_mi": 1.2
@@ -481,7 +481,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 70,
         "default_bearing": 208,
         "trail_km": 1.2
       }
@@ -562,7 +562,7 @@
         "website": "http://www.spin-sport.ru/",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 47,
         "default_bearing": 349,
         "trail_km": 0.5
       }
@@ -601,7 +601,7 @@
         "summary": "Japanese powder ski area in Akita Prefecture, Japan, renowned for deep winter snowfall, gladed tree runs, and authentic mountain hospitality.",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 139,
         "default_bearing": 180,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -682,7 +682,7 @@
         "summary": "",
         "lift_count": 4,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 32,
         "default_bearing": 244,
         "trail_km": 2.9,
         "trail_mi": 1.8
@@ -723,7 +723,7 @@
         "website": "https://skihurdal.no/",
         "lift_count": 4,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 98,
         "default_bearing": 112,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -764,7 +764,7 @@
         "website": "https://kozaraski.com/",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 28,
         "default_bearing": 151,
         "trail_km": 1.4,
         "trail_mi": 0.9
@@ -805,7 +805,7 @@
         "website": "https://visitbo.no/lifjell/",
         "lift_count": 3,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 115,
         "default_bearing": 239,
         "trail_km": 4.7,
         "trail_mi": 2.9
@@ -845,7 +845,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 6,
         "default_bearing": 158,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -886,7 +886,7 @@
         "website": "https://www.skicivetta.com/",
         "lift_count": 28,
         "run_count": 116,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 114,
         "default_bearing": 192,
         "trail_km": 61.9,
         "trail_mi": 38.4
@@ -927,7 +927,7 @@
         "website": "https://www.impiantivallefura.it/",
         "lift_count": 28,
         "run_count": 90,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 66,
         "default_bearing": 239,
         "trail_km": 56,
         "trail_mi": 34.8
@@ -967,7 +967,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 5,
         "default_bearing": 351,
         "trail_km": 2.2
       }
@@ -1006,7 +1006,7 @@
         "summary": "Alpine ski destination in Vosges, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 49,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -1088,7 +1088,7 @@
         "website": "https://www.hochrindl.at/",
         "lift_count": 7,
         "run_count": 34,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 83,
         "default_bearing": 251,
         "trail_km": 12.4,
         "trail_mi": 7.7
@@ -1170,7 +1170,7 @@
         "website": "https://www.kometasport.ru/",
         "lift_count": 3,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 22,
         "default_bearing": 201,
         "trail_km": 1.4
       }
@@ -1210,7 +1210,7 @@
         "website": "https://www.brocon.it/",
         "lift_count": 5,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 98,
         "default_bearing": 232,
         "trail_km": 10.4,
         "trail_mi": 6.4
@@ -1251,7 +1251,7 @@
         "website": "https://www.schneeberglifte.at/",
         "lift_count": 4,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 70,
         "default_bearing": 181,
         "trail_km": 5,
         "trail_mi": 3.1
@@ -1292,7 +1292,7 @@
         "website": "https://www.silversummit.ca",
         "lift_count": 1,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 180,
         "trail_km": 6.6,
         "trail_mi": 4.1
@@ -1333,7 +1333,7 @@
         "website": "https://www.renaalpin.no/",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 76,
         "default_bearing": 286,
         "trail_km": 3.6,
         "trail_mi": 2.3
@@ -1373,7 +1373,7 @@
         "summary": "",
         "lift_count": 9,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 61,
         "default_bearing": 208,
         "trail_km": 8.1,
         "trail_mi": 5
@@ -1414,7 +1414,7 @@
         "website": "https://skibigmoose.com/",
         "lift_count": 2,
         "run_count": 26,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 78,
         "default_bearing": 199,
         "trail_km": 15.6,
         "trail_mi": 9.7
@@ -1495,7 +1495,7 @@
         "summary": "Alpine ski destination in Tyrol, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 37,
         "run_count": 47,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 110,
         "default_bearing": 124,
         "trail_km": 20.3,
         "trail_mi": 12.6
@@ -1576,7 +1576,7 @@
         "summary": "",
         "lift_count": 5,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 74,
         "default_bearing": 275,
         "trail_km": 2.4,
         "trail_mi": 1.5
@@ -1617,7 +1617,7 @@
         "website": "https://middagsasen.no/",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 39,
         "default_bearing": 201,
         "trail_km": 0.8
       }
@@ -1657,7 +1657,7 @@
         "website": "https://seikluskeskus.ee/en/winter/ski-resort/",
         "lift_count": 1,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 53,
         "default_bearing": 190,
         "trail_km": 2,
         "trail_mi": 1.3
@@ -1698,7 +1698,7 @@
         "website": "",
         "lift_count": 10,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 129,
         "trail_km": 3,
         "trail_mi": 1.9
@@ -1739,7 +1739,7 @@
         "website": "https://sollifjellet.no",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 110,
         "default_bearing": 290,
         "trail_km": 1.3
       }
@@ -1779,7 +1779,7 @@
         "website": "https://www.dolomitisuperski.com/en/Cortina",
         "lift_count": 39,
         "run_count": 222,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 105,
         "default_bearing": 217,
         "trail_km": 130.5,
         "trail_mi": 81.1
@@ -1861,7 +1861,7 @@
         "website": "https://hickoryskicenter.com/",
         "lift_count": 4,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 59,
         "default_bearing": 165,
         "trail_km": 5.6,
         "trail_mi": 3.5
@@ -1943,7 +1943,7 @@
         "website": "https://www.stadt-schoeneck.de/",
         "lift_count": 5,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 58,
         "default_bearing": 98,
         "trail_km": 2.6,
         "trail_mi": 1.6
@@ -1984,7 +1984,7 @@
         "website": "https://www.skilift-eggiwil.ch/",
         "lift_count": 1,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 93,
         "default_bearing": 207,
         "trail_km": 2.9,
         "trail_mi": 1.8
@@ -2025,7 +2025,7 @@
         "website": "https://himos.fi/",
         "lift_count": 17,
         "run_count": 35,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 65,
         "default_bearing": 150,
         "trail_km": 14.6,
         "trail_mi": 9.1
@@ -2066,7 +2066,7 @@
         "website": "https://www.viehberg.at/",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 46,
         "default_bearing": 251,
         "trail_km": 2.7,
         "trail_mi": 1.7
@@ -2107,7 +2107,7 @@
         "website": "https://www.mountbawbaw.com.au/",
         "lift_count": 8,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 22,
         "default_bearing": 50,
         "trail_km": 5.6,
         "trail_mi": 3.5
@@ -2188,7 +2188,7 @@
         "website": "https://www.wolfskamer.nl/",
         "lift_count": 7,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 7,
         "default_bearing": 180,
         "trail_km": 0.6
       }
@@ -2228,7 +2228,7 @@
         "website": "https://www.kronplatz.com/",
         "lift_count": 27,
         "run_count": 163,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 84,
         "default_bearing": 213,
         "trail_km": 72.5,
         "trail_mi": 45.1
@@ -2310,7 +2310,7 @@
         "website": "https://www.skilift-riedlberg.de/",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 69,
         "default_bearing": 102,
         "trail_km": 1.3,
         "trail_mi": 0.8
@@ -2350,7 +2350,7 @@
         "summary": "Alpine ski destination in Ticino, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 3,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 22,
         "default_bearing": 319,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -2390,7 +2390,7 @@
         "summary": "Alpine ski destination in Turin, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 0,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 114,
         "default_bearing": 180,
         "trail_km": 8.5,
         "trail_mi": 5.3
@@ -2430,7 +2430,7 @@
         "summary": "",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 5,
         "default_bearing": 180
       }
     },
@@ -2510,7 +2510,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 47,
         "default_bearing": 196,
         "trail_km": 2.3,
         "trail_mi": 1.4
@@ -2551,7 +2551,7 @@
         "website": "https://www.falconridgeski.com/",
         "lift_count": 4,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 46,
         "default_bearing": 190,
         "trail_km": 0.7
       }
@@ -2591,7 +2591,7 @@
         "website": "http://www.medicinelodgeskihill.com/",
         "lift_count": 4,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 33,
         "default_bearing": 209,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -2632,7 +2632,7 @@
         "website": "https://www.almasafritid.se/",
         "lift_count": 2,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 72,
         "default_bearing": 25,
         "trail_km": 7.6,
         "trail_mi": 4.7
@@ -2672,7 +2672,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 32,
         "default_bearing": 263,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -2713,7 +2713,7 @@
         "website": "https://www.mallinalto.com/",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 21,
         "default_bearing": 0
       }
     },
@@ -2752,7 +2752,7 @@
         "website": "https://www.skiparkkalnica.sk/",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 19,
         "default_bearing": 224,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -2792,7 +2792,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 121,
         "default_bearing": 294,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -2833,7 +2833,7 @@
         "website": "https://www.akanroyalvalley.jp/",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 49,
         "default_bearing": 47,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -2995,7 +2995,7 @@
         "website": "https://bousquetmountain.com/",
         "lift_count": 4,
         "run_count": 19,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 53,
         "default_bearing": 217,
         "trail_km": 5.1,
         "trail_mi": 3.2
@@ -3035,7 +3035,7 @@
         "summary": "",
         "lift_count": 0,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 21,
         "default_bearing": 180,
         "trail_km": 2.6,
         "trail_mi": 1.6
@@ -3076,7 +3076,7 @@
         "website": "https://www.espacediamant.com",
         "lift_count": 108,
         "run_count": 412,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 184,
         "default_bearing": 152,
         "trail_km": 262.7,
         "trail_mi": 163.2
@@ -3117,7 +3117,7 @@
         "website": "https://www.destination-haut-doubs.com/",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 47,
         "default_bearing": 174,
         "trail_km": 1.6,
         "trail_mi": 1
@@ -3196,7 +3196,7 @@
         "website": "",
         "lift_count": 8,
         "run_count": 19,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 51,
         "default_bearing": 263,
         "trail_km": 14.1,
         "trail_mi": 8.8
@@ -3237,7 +3237,7 @@
         "website": "https://4-host.de/sc-fridingen/",
         "lift_count": 5,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 28,
         "default_bearing": 154,
         "trail_km": 1.6,
         "trail_mi": 1
@@ -3278,7 +3278,7 @@
         "website": "https://www.skigeilo.no/",
         "lift_count": 20,
         "run_count": 99,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 112,
         "default_bearing": 246,
         "trail_km": 36.4,
         "trail_mi": 22.6
@@ -3318,7 +3318,7 @@
         "summary": "Mountain ski destination in Michigan, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 51,
         "default_bearing": 249,
         "trail_km": 0.9,
         "trail_mi": 0.6
@@ -3359,7 +3359,7 @@
         "website": "https://www.etnasci.it/",
         "lift_count": 4,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 35,
         "default_bearing": 245,
         "trail_km": 8.9,
         "trail_mi": 5.5
@@ -3439,7 +3439,7 @@
         "summary": "Alpine ski destination in Bern, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 6,
         "run_count": 24,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 87,
         "default_bearing": 156,
         "trail_km": 15.5,
         "trail_mi": 9.6
@@ -3480,7 +3480,7 @@
         "website": "http://park20.wakwak.com/~mt.granview/",
         "lift_count": 68,
         "run_count": 236,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 291,
         "default_bearing": 214,
         "trail_km": 109.5,
         "trail_mi": 68
@@ -3521,7 +3521,7 @@
         "website": "https://bryceresort.com/",
         "lift_count": 6,
         "run_count": 27,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 12,
         "default_bearing": 205,
         "trail_km": 4.4,
         "trail_mi": 2.7
@@ -3562,7 +3562,7 @@
         "website": "https://geihokukokusai.jp/",
         "lift_count": 13,
         "run_count": 25,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 46,
         "default_bearing": 250,
         "trail_km": 13.8,
         "trail_mi": 8.6
@@ -3603,7 +3603,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 92,
         "default_bearing": 222,
         "trail_km": 0.3
       }
@@ -3642,7 +3642,7 @@
         "summary": "",
         "lift_count": 35,
         "run_count": 189,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 195,
         "trail_km": 98.6,
         "trail_mi": 61.3
@@ -3683,7 +3683,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 24,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 180,
         "trail_km": 10.4,
         "trail_mi": 6.5
@@ -3724,7 +3724,7 @@
         "website": "https://fqme.qc.ca/wp-content/uploads/2019/01/FQME_Mont_des_Allemands_2022-23-2048x1448.jpg",
         "lift_count": 0,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 99,
         "default_bearing": 180,
         "trail_km": 2.5,
         "trail_mi": 1.6
@@ -3806,7 +3806,7 @@
         "website": "https://www.sattel-hochstuckli.ch/",
         "lift_count": 26,
         "run_count": 119,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 89,
         "default_bearing": 179,
         "trail_km": 75.6,
         "trail_mi": 47
@@ -3847,7 +3847,7 @@
         "website": "https://karlstift.info/",
         "lift_count": 2,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 56,
         "default_bearing": 254,
         "trail_km": 4.6,
         "trail_mi": 2.8
@@ -3927,7 +3927,7 @@
         "website": "https://www.ojiro.or.jp/",
         "lift_count": 4,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 72,
         "default_bearing": 300,
         "trail_km": 3.6,
         "trail_mi": 2.2
@@ -4010,7 +4010,7 @@
         "website": "https://www.les2alpes.com",
         "lift_count": 47,
         "run_count": 294,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 267,
         "default_bearing": 132,
         "trail_km": 121.7,
         "trail_mi": 75.6
@@ -4050,7 +4050,7 @@
         "summary": "Japanese powder ski area in Yamagata Prefecture, Japan, renowned for deep winter snowfall, gladed tree runs, and authentic mountain hospitality.",
         "lift_count": 2,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 105,
         "default_bearing": 177,
         "trail_km": 3.5,
         "trail_mi": 2.2
@@ -4091,7 +4091,7 @@
         "website": "https://mdlresort.com",
         "lift_count": 4,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 44,
         "default_bearing": 175,
         "trail_km": 3,
         "trail_mi": 1.9
@@ -4171,7 +4171,7 @@
         "website": "https://kyowasnow.net/ski/",
         "lift_count": 2,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 91,
         "default_bearing": 93,
         "trail_km": 5.4,
         "trail_mi": 3.4
@@ -4211,7 +4211,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 24,
         "default_bearing": 151,
         "trail_km": 0.7
       }
@@ -4251,7 +4251,7 @@
         "website": "https://www.hiddenvalleyresort.com/",
         "lift_count": 7,
         "run_count": 68,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 44,
         "default_bearing": 175,
         "trail_km": 11.4,
         "trail_mi": 7.1
@@ -4333,7 +4333,7 @@
         "website": "https://www.aniski.jp/ski/",
         "lift_count": 4,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 162,
         "default_bearing": 57,
         "trail_km": 9.9,
         "trail_mi": 6.1
@@ -4374,7 +4374,7 @@
         "website": "https://skilift-regensberg.ch/",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 15,
         "default_bearing": 207,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -4456,7 +4456,7 @@
         "website": "https://www.kandatsu.com/",
         "lift_count": 75,
         "run_count": 219,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 324,
         "default_bearing": 171,
         "trail_km": 101.4,
         "trail_mi": 63
@@ -4537,7 +4537,7 @@
         "website": "https://www.altabadia.org/",
         "lift_count": 74,
         "run_count": 338,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 97,
         "default_bearing": 193,
         "trail_km": 190.2,
         "trail_mi": 118.2
@@ -4578,7 +4578,7 @@
         "website": "https://www.tourisme-alpes-haute-provence.com/station-de-ski-montagne-de-lure/",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 18,
         "default_bearing": 14,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -4619,7 +4619,7 @@
         "website": "https://www.springhillwinterpark.com/",
         "lift_count": 3,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 180,
         "trail_km": 0.9,
         "trail_mi": 0.5
@@ -4698,7 +4698,7 @@
         "website": "https://www.bjski.com.cn/",
         "lift_count": 11,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 5,
         "default_bearing": 4,
         "trail_km": 2.3,
         "trail_mi": 1.5
@@ -4780,7 +4780,7 @@
         "website": "https://www.oze-info.jp/ozh_shop/ski/",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 164,
         "default_bearing": 143,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -4820,7 +4820,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 76,
         "trail_km": 1.2,
         "trail_mi": 0.8
@@ -4861,7 +4861,7 @@
         "website": "https://www.larcenaire.fr",
         "lift_count": 5,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 243,
         "trail_km": 3.2,
         "trail_mi": 2
@@ -4902,7 +4902,7 @@
         "website": "https://skilift-rotterhang.de",
         "lift_count": 8,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 63,
         "default_bearing": 174,
         "trail_km": 5,
         "trail_mi": 3.1
@@ -5025,7 +5025,7 @@
         "website": "http://www.palumbosila.it/",
         "lift_count": 4,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 58,
         "default_bearing": 185,
         "trail_km": 7.2,
         "trail_mi": 4.5
@@ -5106,7 +5106,7 @@
         "website": "https://dizinskiresort.ir/",
         "lift_count": 24,
         "run_count": 19,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 182,
         "trail_km": 18.3,
         "trail_mi": 11.3
@@ -5147,7 +5147,7 @@
         "website": "https://skicaz.com/",
         "lift_count": 3,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 70,
         "default_bearing": 269,
         "trail_km": 3.1,
         "trail_mi": 1.9
@@ -5187,7 +5187,7 @@
         "summary": "Nordic ski destination in Norrbotten, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 73,
         "default_bearing": 181,
         "trail_km": 2.2,
         "trail_mi": 1.3
@@ -5227,7 +5227,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 24,
         "default_bearing": 199,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -5309,7 +5309,7 @@
         "website": "https://www.tourismpei.com/brookvale-activity-park",
         "lift_count": 1,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 77,
         "default_bearing": 152,
         "trail_km": 3.5,
         "trail_mi": 2.2
@@ -5350,7 +5350,7 @@
         "website": "https://www.hiddenvalleyski.com/",
         "lift_count": 8,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 11,
         "default_bearing": 201,
         "trail_km": 3.5,
         "trail_mi": 2.2
@@ -5391,7 +5391,7 @@
         "website": "http://kluchi.neokom.ru/",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 63,
         "default_bearing": 63,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -5473,7 +5473,7 @@
         "website": "https://skitindastoll.is/",
         "lift_count": 3,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 186,
         "default_bearing": 52,
         "trail_km": 3.1,
         "trail_mi": 1.9
@@ -5513,7 +5513,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 295,
         "trail_km": 1.1,
         "trail_mi": 0.7
@@ -5554,7 +5554,7 @@
         "website": "https://www.memuro.net/administration/soshiki/miryoku/shin-arashiyama/",
         "lift_count": 2,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 89,
         "default_bearing": 249,
         "trail_km": 3.5,
         "trail_mi": 2.2
@@ -5595,7 +5595,7 @@
         "website": "https://c4parquedenieve.com/",
         "lift_count": 16,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 151,
         "trail_km": 30.1,
         "trail_mi": 18.7
@@ -5635,7 +5635,7 @@
         "summary": "Alpine ski destination in Hesse, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 19,
         "default_bearing": 98,
         "trail_km": 0.3
       }
@@ -5675,7 +5675,7 @@
         "website": "https://www.kayserierciyes.com.tr/",
         "lift_count": 16,
         "run_count": 40,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 109,
         "default_bearing": 237,
         "trail_km": 47.8,
         "trail_mi": 29.7
@@ -5716,7 +5716,7 @@
         "website": "https://www.bergbahnen-hindelang-oberjoch.de/",
         "lift_count": 15,
         "run_count": 64,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 145,
         "default_bearing": 192,
         "trail_km": 43.2,
         "trail_mi": 26.9
@@ -5757,7 +5757,7 @@
         "website": "https://parra.fi/",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 58,
         "default_bearing": 161,
         "trail_km": 0.8
       }
@@ -5796,7 +5796,7 @@
         "summary": "Nordic ski destination in Vestfold og Telemark, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 25,
         "trail_km": 0.9,
         "trail_mi": 0.6
@@ -5837,7 +5837,7 @@
         "website": "https://www.valdallos.com/",
         "lift_count": 39,
         "run_count": 539,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 124,
         "default_bearing": 247,
         "trail_km": 183.8,
         "trail_mi": 114.2
@@ -5878,7 +5878,7 @@
         "website": "https://www.nordkette.com/",
         "lift_count": 21,
         "run_count": 27,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 341,
         "trail_km": 8,
         "trail_mi": 5
@@ -5959,7 +5959,7 @@
         "website": "https://www.skilifte-muenstertal-wieden.de",
         "lift_count": 22,
         "run_count": 104,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 63,
         "default_bearing": 231,
         "trail_km": 71.1,
         "trail_mi": 44.2
@@ -6040,7 +6040,7 @@
         "summary": "Mountain ski destination in Quebec, Canada, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 0,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 109,
         "default_bearing": 180,
         "trail_km": 4.6,
         "trail_mi": 2.8
@@ -6080,7 +6080,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 65,
         "default_bearing": 184,
         "trail_km": 1.4,
         "trail_mi": 0.8
@@ -6121,7 +6121,7 @@
         "website": "https://www.simonhoehe.at/",
         "lift_count": 10,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 39,
         "default_bearing": 160,
         "trail_km": 6.6,
         "trail_mi": 4.1
@@ -6203,7 +6203,7 @@
         "website": "https://www.espacesanbernardo.ski/",
         "lift_count": 31,
         "run_count": 389,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 212,
         "default_bearing": 212,
         "trail_km": 127.5,
         "trail_mi": 79.3
@@ -6284,7 +6284,7 @@
         "summary": "",
         "lift_count": 5,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 47,
         "default_bearing": 273,
         "trail_km": 8.3,
         "trail_mi": 5.2
@@ -6324,7 +6324,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 111,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -6365,7 +6365,7 @@
         "website": "https://davrazkayakmerkezi.org",
         "lift_count": 7,
         "run_count": 18,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 51,
         "default_bearing": 210,
         "trail_km": 14.2,
         "trail_mi": 8.8
@@ -6445,7 +6445,7 @@
         "summary": "",
         "lift_count": 11,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 173,
         "default_bearing": 207,
         "trail_km": 26.6,
         "trail_mi": 16.5
@@ -6485,7 +6485,7 @@
         "summary": "",
         "lift_count": 5,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 28,
         "default_bearing": 180,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -6526,7 +6526,7 @@
         "website": "https://www.telefericobariloche.com.ar/",
         "lift_count": 5,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 116,
         "default_bearing": 290,
         "trail_km": 4.7
       }
@@ -6566,7 +6566,7 @@
         "website": "https://nishikawa.gassankk.co.jp/",
         "lift_count": 1,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 71,
         "default_bearing": 356,
         "trail_km": 1.2,
         "trail_mi": 0.7
@@ -6646,7 +6646,7 @@
         "summary": "",
         "lift_count": 9,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 10,
         "default_bearing": 133,
         "trail_km": 6.2,
         "trail_mi": 3.9
@@ -6687,7 +6687,7 @@
         "website": "https://www.purnu.com/",
         "lift_count": 2,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 66,
         "default_bearing": 288,
         "trail_km": 2.2,
         "trail_mi": 1.4
@@ -6728,7 +6728,7 @@
         "website": "https://www.chasseral-snow.ch/",
         "lift_count": 20,
         "run_count": 25,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 54,
         "default_bearing": 98,
         "trail_km": 21.9,
         "trail_mi": 13.6
@@ -6769,7 +6769,7 @@
         "website": "https://centropillan.cl/",
         "lift_count": 4,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 151,
         "default_bearing": 139,
         "trail_km": 10.6,
         "trail_mi": 6.6
@@ -6809,7 +6809,7 @@
         "summary": "",
         "lift_count": 14,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 132,
         "default_bearing": 207,
         "trail_km": 13.9,
         "trail_mi": 8.6
@@ -6850,7 +6850,7 @@
         "website": "https://www.laberra.ch/",
         "lift_count": 5,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 128,
         "default_bearing": 124,
         "trail_km": 9.4,
         "trail_mi": 5.8
@@ -6891,7 +6891,7 @@
         "website": "https://www.skigallix.com/",
         "lift_count": 3,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 105,
         "default_bearing": 267,
         "trail_km": 6.4,
         "trail_mi": 3.9
@@ -7010,7 +7010,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 70,
         "default_bearing": 230,
         "trail_km": 4.6
       }
@@ -7050,7 +7050,7 @@
         "website": "https://www.xscape.co.uk/yorkshire/concessions/sno-zone",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 7,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -7090,7 +7090,7 @@
         "summary": "Alpine ski destination in Baden-Württemberg, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 4,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 174,
         "trail_km": 1.6,
         "trail_mi": 1
@@ -7130,7 +7130,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 50,
         "default_bearing": 219,
         "trail_km": 1.3,
         "trail_mi": 0.8
@@ -7170,7 +7170,7 @@
         "summary": "",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 18,
         "default_bearing": 180
       }
     },
@@ -7250,7 +7250,7 @@
         "website": "https://www.turismofvg.it/",
         "lift_count": 10,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 118,
         "default_bearing": 348,
         "trail_km": 13.3,
         "trail_mi": 8.2
@@ -7290,7 +7290,7 @@
         "summary": "",
         "lift_count": 6,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 16,
         "default_bearing": 89,
         "trail_km": 7.7,
         "trail_mi": 4.8
@@ -7330,7 +7330,7 @@
         "summary": "",
         "lift_count": 12,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 82,
         "default_bearing": 198,
         "trail_km": 5.7,
         "trail_mi": 3.6
@@ -7371,7 +7371,7 @@
         "website": "https://www.maiko-resort.com/winter/",
         "lift_count": 67,
         "run_count": 208,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 257,
         "default_bearing": 229,
         "trail_km": 94.4,
         "trail_mi": 58.7
@@ -7411,7 +7411,7 @@
         "summary": "Nordic ski destination in Jamtland, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 95,
         "default_bearing": 19,
         "trail_km": 6.6,
         "trail_mi": 4.1
@@ -7451,7 +7451,7 @@
         "summary": "Alpine ski destination in Savoie, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 107,
         "run_count": 953,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 246,
         "default_bearing": 123,
         "trail_km": 390.1,
         "trail_mi": 242.4
@@ -7492,7 +7492,7 @@
         "website": "https://www.woerthersee.com/rosental/winterzauber",
         "lift_count": 3,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 80,
         "default_bearing": 178,
         "trail_km": 1.5,
         "trail_mi": 0.9
@@ -7533,7 +7533,7 @@
         "website": "https://skisport.com/hochficht/de",
         "lift_count": 9,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 57,
         "trail_km": 17.8,
         "trail_mi": 11.1
@@ -7574,7 +7574,7 @@
         "website": "https://www.sacberk.cz/",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 29,
         "default_bearing": 157,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -7614,7 +7614,7 @@
         "summary": "",
         "lift_count": 13,
         "run_count": 45,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 67,
         "default_bearing": 235,
         "trail_km": 20.9,
         "trail_mi": 13
@@ -7655,7 +7655,7 @@
         "website": "https://www.asvl-waltersdorf.de/",
         "lift_count": 5,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 28,
         "default_bearing": 215,
         "trail_km": 3,
         "trail_mi": 1.9
@@ -7695,7 +7695,7 @@
         "summary": "Alpine ski destination in Haute-Loire, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 7,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 55,
         "default_bearing": 345,
         "trail_km": 5.9,
         "trail_mi": 3.7
@@ -7736,7 +7736,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 52,
         "default_bearing": 257,
         "trail_km": 1,
         "trail_mi": 0.6
@@ -7777,7 +7777,7 @@
         "website": "https://www.peuramaa.fi/",
         "lift_count": 8,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 53,
         "default_bearing": 147,
         "trail_km": 2.5,
         "trail_mi": 1.6
@@ -7818,7 +7818,7 @@
         "website": "https://www.forcacanapine.com/",
         "lift_count": 4,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 211,
         "trail_km": 2.3
       }
@@ -7899,7 +7899,7 @@
         "website": "",
         "lift_count": 4,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 112,
         "default_bearing": 131,
         "trail_km": 5.5,
         "trail_mi": 3.4
@@ -7940,7 +7940,7 @@
         "website": "https://www.georgianpeaks.com/",
         "lift_count": 29,
         "run_count": 165,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 62,
         "default_bearing": 212,
         "trail_km": 72.6,
         "trail_mi": 45.1
@@ -8021,7 +8021,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 180,
         "trail_km": 0.7,
         "trail_mi": 0.4
@@ -8062,7 +8062,7 @@
         "website": "https://jibuzaka.co.jp/",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 31,
         "default_bearing": 136,
         "trail_km": 1.1,
         "trail_mi": 0.7
@@ -8103,7 +8103,7 @@
         "website": "https://www.grand-ballon.net/de/",
         "lift_count": 4,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 268,
         "trail_km": 8.2,
         "trail_mi": 5.1
@@ -8144,7 +8144,7 @@
         "website": "https://www.snowtomamu.jp/",
         "lift_count": 7,
         "run_count": 76,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 107,
         "default_bearing": 316,
         "trail_km": 24.2,
         "trail_mi": 15.1
@@ -8184,7 +8184,7 @@
         "summary": "",
         "lift_count": 11,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 56,
         "default_bearing": 169,
         "trail_km": 9.4,
         "trail_mi": 5.8
@@ -8265,7 +8265,7 @@
         "summary": "",
         "lift_count": 6,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 43,
         "default_bearing": 218,
         "trail_km": 4.2,
         "trail_mi": 2.6
@@ -8346,7 +8346,7 @@
         "summary": "Nordic ski destination in Norrbotten, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 8,
         "run_count": 33,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 79,
         "default_bearing": 255,
         "trail_km": 13.9,
         "trail_mi": 8.6
@@ -8427,7 +8427,7 @@
         "summary": "",
         "lift_count": 12,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 92,
         "default_bearing": 169,
         "trail_km": 5.8,
         "trail_mi": 3.6
@@ -8509,7 +8509,7 @@
         "website": "https://snowplanet.co.nz",
         "lift_count": 4,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 0,
         "default_bearing": 101,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -8549,7 +8549,7 @@
         "summary": "Nordic ski destination in Trøndelag, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 63,
         "default_bearing": 34,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -8589,7 +8589,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 50,
         "default_bearing": 183,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -8629,7 +8629,7 @@
         "summary": "",
         "lift_count": 0,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 11,
         "default_bearing": 180,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -8669,7 +8669,7 @@
         "summary": "Alpine ski destination in Haut-Rhin, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 55,
         "default_bearing": 180,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -8751,7 +8751,7 @@
         "website": "https://www.janovky.sk/",
         "lift_count": 4,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 79,
         "default_bearing": 266,
         "trail_km": 4.7,
         "trail_mi": 2.9
@@ -8792,7 +8792,7 @@
         "website": "https://www.massresort.com/",
         "lift_count": 9,
         "run_count": 46,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 13,
         "default_bearing": 213,
         "trail_km": 9.4,
         "trail_mi": 5.9
@@ -8833,7 +8833,7 @@
         "website": "https://www.sysendalen.no/",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 147,
         "default_bearing": 356,
         "trail_km": 0.7
       }
@@ -8873,7 +8873,7 @@
         "website": "https://www.montafon.at/bergbahnen-gargellen",
         "lift_count": 20,
         "run_count": 86,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 220,
         "default_bearing": 257,
         "trail_km": 58.1,
         "trail_mi": 36.1
@@ -8913,7 +8913,7 @@
         "summary": "",
         "lift_count": 4,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 59,
         "default_bearing": 195,
         "trail_km": 4.5,
         "trail_mi": 2.8
@@ -8954,7 +8954,7 @@
         "website": "https://www.skimu.cz",
         "lift_count": 28,
         "run_count": 31,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 15,
         "trail_km": 11,
         "trail_mi": 6.8
@@ -8995,7 +8995,7 @@
         "website": "https://www.skilifte-geising.de/",
         "lift_count": 6,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 47,
         "default_bearing": 179,
         "trail_km": 2.3,
         "trail_mi": 1.4
@@ -9036,7 +9036,7 @@
         "website": "https://www.hidakawai.com/",
         "lift_count": 4,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 137,
         "default_bearing": 203,
         "trail_km": 3.9,
         "trail_mi": 2.5
@@ -9076,7 +9076,7 @@
         "summary": "",
         "lift_count": 12,
         "run_count": 31,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 119,
         "default_bearing": 184,
         "trail_km": 20.4,
         "trail_mi": 12.7
@@ -9116,7 +9116,7 @@
         "summary": "Alpine ski destination in Cuneo, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 0,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 105,
         "default_bearing": 180,
         "trail_km": 11.8,
         "trail_mi": 7.3
@@ -9157,7 +9157,7 @@
         "website": "https://www.ski-sebnitz.com/",
         "lift_count": 5,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 31,
         "default_bearing": 194,
         "trail_km": 1.1,
         "trail_mi": 0.7
@@ -9198,7 +9198,7 @@
         "website": "https://ritavalkea.com/en/",
         "lift_count": 2,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 61,
         "default_bearing": 178,
         "trail_km": 3.1,
         "trail_mi": 1.9
@@ -9321,7 +9321,7 @@
         "website": "https://www.twinfarms.com/",
         "lift_count": 0,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 79,
         "default_bearing": 180,
         "trail_km": 4.3,
         "trail_mi": 2.7
@@ -9361,7 +9361,7 @@
         "summary": "",
         "lift_count": 0,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 19,
         "default_bearing": 180
       }
     },
@@ -9481,7 +9481,7 @@
         "summary": "Alpine ski destination in Bergamo, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 148,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -9521,7 +9521,7 @@
         "summary": "Alpine ski destination in Valle D'Aosta, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 44,
         "run_count": 256,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 182,
         "default_bearing": 71,
         "trail_km": 142.3,
         "trail_mi": 88.4
@@ -9562,7 +9562,7 @@
         "website": "https://www.visitmonterosa.com/",
         "lift_count": 4,
         "run_count": 20,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 113,
         "default_bearing": 28,
         "trail_km": 9.8,
         "trail_mi": 6.1
@@ -9685,7 +9685,7 @@
         "website": "https://www.whitepineresort.com/",
         "lift_count": 3,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 94,
         "default_bearing": 151,
         "trail_km": 13.2,
         "trail_mi": 8.2
@@ -9767,7 +9767,7 @@
         "website": "https://www.marisel-skibikeresort.com/",
         "lift_count": 3,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 43,
         "default_bearing": 130,
         "trail_km": 3.2,
         "trail_mi": 2
@@ -9808,7 +9808,7 @@
         "website": "https://www.skiliftfluehli.ch/",
         "lift_count": null,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 36,
         "default_bearing": 216
       }
     },
@@ -9887,7 +9887,7 @@
         "website": "https://www.fontanella.at/",
         "lift_count": 34,
         "run_count": 417,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 177,
         "default_bearing": 314,
         "trail_km": 132.3,
         "trail_mi": 82.2
@@ -9927,7 +9927,7 @@
         "summary": "",
         "lift_count": 11,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 213,
         "trail_km": 4.1
       }
@@ -9967,7 +9967,7 @@
         "website": "https://nevadosdevilcun.cl/",
         "lift_count": 4,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 389,
         "default_bearing": 102,
         "trail_km": 12.4,
         "trail_mi": 7.7
@@ -10008,7 +10008,7 @@
         "website": "",
         "lift_count": 2,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 65,
         "default_bearing": 44,
         "trail_km": 7.6,
         "trail_mi": 4.7
@@ -10049,7 +10049,7 @@
         "website": "http://www.zavjalikha.su/",
         "lift_count": 4,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 219,
         "trail_km": 12.9,
         "trail_mi": 8
@@ -10089,7 +10089,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 4,
         "default_bearing": 180,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -10130,7 +10130,7 @@
         "website": "https://www.trollresort.com/",
         "lift_count": 5,
         "run_count": 35,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 135,
         "default_bearing": 354,
         "trail_km": 31.9,
         "trail_mi": 19.8
@@ -10171,7 +10171,7 @@
         "website": "https://www.montbelu.com/",
         "lift_count": 2,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 76,
         "default_bearing": 115,
         "trail_km": 8.4,
         "trail_mi": 5.2
@@ -10211,7 +10211,7 @@
         "summary": "Mountain ski destination in Michigan, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 3,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 61,
         "default_bearing": 290,
         "trail_km": 2.9,
         "trail_mi": 1.8
@@ -10251,7 +10251,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 22,
         "default_bearing": 276,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -10291,7 +10291,7 @@
         "summary": "Alpine ski destination in Vaud, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 1,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 58,
         "default_bearing": 210,
         "trail_km": 2.7,
         "trail_mi": 1.7
@@ -10332,7 +10332,7 @@
         "website": "https://cerretolaghi.info/",
         "lift_count": 3,
         "run_count": 16,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 51,
         "default_bearing": 195,
         "trail_km": 9.4,
         "trail_mi": 5.9
@@ -10373,7 +10373,7 @@
         "website": "https://sam-hakusan.com/seymour/",
         "lift_count": 4,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 213,
         "default_bearing": 143,
         "trail_km": 8.9,
         "trail_mi": 5.5
@@ -10454,7 +10454,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 41,
         "default_bearing": 187,
         "trail_km": 1.5,
         "trail_mi": 0.9
@@ -10495,7 +10495,7 @@
         "website": "https://www.arolla.com/",
         "lift_count": 6,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 202,
         "default_bearing": 295,
         "trail_km": 25.2,
         "trail_mi": 15.7
@@ -10617,7 +10617,7 @@
         "website": "https://www.dalirnir.is/",
         "lift_count": 3,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 275,
         "default_bearing": 318,
         "trail_km": 10.5,
         "trail_mi": 6.5
@@ -10657,7 +10657,7 @@
         "summary": "Mountain ski destination in Quebec, Canada, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 0,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 134,
         "default_bearing": 180
       }
     },
@@ -10696,7 +10696,7 @@
         "website": "https://www.tainairesort.jp/",
         "lift_count": 8,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 209,
         "default_bearing": 150,
         "trail_km": 11.8,
         "trail_mi": 7.3
@@ -10737,7 +10737,7 @@
         "website": "https://www.eckbauerbahn.de/",
         "lift_count": 39,
         "run_count": 113,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 152,
         "default_bearing": 176,
         "trail_km": 42.4,
         "trail_mi": 26.3
@@ -10778,7 +10778,7 @@
         "website": "https://www.shigakogen.gr.jp/",
         "lift_count": 59,
         "run_count": 246,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 165,
         "default_bearing": 125,
         "trail_km": 117.6,
         "trail_mi": 73.1
@@ -10819,7 +10819,7 @@
         "website": "https://chekeril.ru/",
         "lift_count": 6,
         "run_count": 21,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 62,
         "default_bearing": 55,
         "trail_km": 4.6,
         "trail_mi": 2.8
@@ -10901,7 +10901,7 @@
         "website": "https://www.masumizu.net/",
         "lift_count": 16,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 62,
         "default_bearing": 153,
         "trail_km": 4.7,
         "trail_mi": 2.9
@@ -10983,7 +10983,7 @@
         "website": "",
         "lift_count": 13,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 44,
         "default_bearing": 187,
         "trail_km": 11.7,
         "trail_mi": 7.3
@@ -11065,7 +11065,7 @@
         "website": "https://www.ski-hohentauern.at/",
         "lift_count": 5,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 112,
         "default_bearing": 125,
         "trail_km": 8.1,
         "trail_mi": 5
@@ -11106,7 +11106,7 @@
         "website": "https://www.skiareal.cz/en/",
         "lift_count": 29,
         "run_count": 77,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 97,
         "default_bearing": 186,
         "trail_km": 37.4,
         "trail_mi": 23.2
@@ -11146,7 +11146,7 @@
         "summary": "",
         "lift_count": 0,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 6,
         "default_bearing": 180,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -11187,7 +11187,7 @@
         "website": "https://www.snowworld.com/",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 8,
         "default_bearing": 335,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -11228,7 +11228,7 @@
         "website": "https://www.hyounosen.jp/",
         "lift_count": 42,
         "run_count": 70,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 92,
         "default_bearing": 266,
         "trail_km": 35,
         "trail_mi": 21.8
@@ -11269,7 +11269,7 @@
         "website": "https://migovo.com.ua/winter/",
         "lift_count": 5,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 59,
         "default_bearing": 160,
         "trail_km": 1.5,
         "trail_mi": 0.9
@@ -11309,7 +11309,7 @@
         "summary": "Alpine ski destination in Doubs, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 92,
         "default_bearing": 151,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -11349,7 +11349,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 156,
         "trail_km": 1.7,
         "trail_mi": 1
@@ -11389,7 +11389,7 @@
         "summary": "",
         "lift_count": 10,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 13,
         "default_bearing": 56,
         "trail_km": 1.6,
         "trail_mi": 1
@@ -11429,7 +11429,7 @@
         "summary": "",
         "lift_count": 5,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 8,
         "default_bearing": 344,
         "trail_km": 3.4
       }
@@ -11469,7 +11469,7 @@
         "website": "https://www.lechampdufeu-ski.com/",
         "lift_count": 10,
         "run_count": 16,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 33,
         "default_bearing": 155,
         "trail_km": 6.8,
         "trail_mi": 4.2
@@ -11509,7 +11509,7 @@
         "summary": "Alpine ski destination in Savoie, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 39,
         "run_count": 284,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 196,
         "default_bearing": 119,
         "trail_km": 157,
         "trail_mi": 97.6
@@ -11673,7 +11673,7 @@
         "website": "https://www.ritten.com/de/1500-rittnerhorn?utm_source=Domainportfolio&utm_medium=Redirect&utm_campaign=rittnerhorn.com",
         "lift_count": 4,
         "run_count": 25,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 72,
         "default_bearing": 3,
         "trail_km": 12.4,
         "trail_mi": 7.7
@@ -11755,7 +11755,7 @@
         "website": "https://www.skilift-wurmstein.de/",
         "lift_count": 4,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 28,
         "default_bearing": 154,
         "trail_km": 1.8,
         "trail_mi": 1.1
@@ -11836,7 +11836,7 @@
         "website": "https://parkfrymburk.cz/cz/uvod-zima",
         "lift_count": 9,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 133,
         "trail_km": 7.9,
         "trail_mi": 4.9
@@ -11877,7 +11877,7 @@
         "website": "https://www.obergatlinburg.com/",
         "lift_count": 9,
         "run_count": 21,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 13,
         "default_bearing": 243,
         "trail_km": 2.5,
         "trail_mi": 1.6
@@ -11918,7 +11918,7 @@
         "website": "https://skihermonmountain.com/",
         "lift_count": 2,
         "run_count": 19,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 55,
         "default_bearing": 241,
         "trail_km": 3.9,
         "trail_mi": 2.5
@@ -11959,7 +11959,7 @@
         "website": "https://www.chuo-alps.com/ski/",
         "lift_count": 3,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 15,
         "default_bearing": 251,
         "trail_km": 1,
         "trail_mi": 0.6
@@ -12041,7 +12041,7 @@
         "website": "",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 47,
         "default_bearing": 220,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -12123,7 +12123,7 @@
         "website": "https://www.heidadorf.ch/freizeit",
         "lift_count": 21,
         "run_count": 54,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 78,
         "default_bearing": 120,
         "trail_km": 28.6,
         "trail_mi": 17.8
@@ -12163,7 +12163,7 @@
         "summary": "Nordic ski destination in Jonkoping, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 33,
         "default_bearing": 103,
         "trail_km": 0.4
       }
@@ -12203,7 +12203,7 @@
         "website": "https://www.cranmore.com/",
         "lift_count": 8,
         "run_count": 60,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 84,
         "trail_km": 24.5,
         "trail_mi": 15.2
@@ -12243,7 +12243,7 @@
         "summary": "Nordic ski destination in Innlandet, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 63,
         "default_bearing": 158,
         "trail_km": 5.8,
         "trail_mi": 3.6
@@ -12284,7 +12284,7 @@
         "website": "https://www.pinecreekskiresort.com/",
         "lift_count": 2,
         "run_count": 32,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 70,
         "default_bearing": 140,
         "trail_km": 17.7,
         "trail_mi": 11
@@ -12325,7 +12325,7 @@
         "website": "https://www.tsugaike.gr.jp/",
         "lift_count": 61,
         "run_count": 157,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 335,
         "default_bearing": 303,
         "trail_km": 111.3,
         "trail_mi": 69.1
@@ -12365,7 +12365,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 49,
         "default_bearing": 180,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -12443,7 +12443,7 @@
         "summary": "Nordic ski destination in Jamtland, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 13,
         "run_count": 66,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 118,
         "default_bearing": 329,
         "trail_km": 48.5,
         "trail_mi": 30.2
@@ -12483,7 +12483,7 @@
         "summary": "",
         "lift_count": 10,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 201,
         "trail_km": 1,
         "trail_mi": 0.6
@@ -12601,7 +12601,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 41,
         "default_bearing": 229,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -12642,7 +12642,7 @@
         "website": "https://www.kujyuski.co.jp/",
         "lift_count": 4,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 11,
         "default_bearing": 106,
         "trail_km": 2.2,
         "trail_mi": 1.4
@@ -12682,7 +12682,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 202,
         "trail_km": 3,
         "trail_mi": 1.9
@@ -12722,7 +12722,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 180,
         "trail_km": 0.7,
         "trail_mi": 0.4
@@ -12804,7 +12804,7 @@
         "website": "https://www.skitimothy.com/",
         "lift_count": 4,
         "run_count": 36,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 72,
         "default_bearing": 183,
         "trail_km": 24.8,
         "trail_mi": 15.4
@@ -12845,7 +12845,7 @@
         "website": "http://www.finseskisenter.no/",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 349,
         "default_bearing": 60,
         "trail_km": 0.8
       }
@@ -12924,7 +12924,7 @@
         "summary": "",
         "lift_count": 5,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 98,
         "default_bearing": 356,
         "trail_km": 1.3,
         "trail_mi": 0.8
@@ -12964,7 +12964,7 @@
         "summary": "",
         "lift_count": 10,
         "run_count": 24,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 154,
         "trail_km": 8.2,
         "trail_mi": 5.1
@@ -13005,7 +13005,7 @@
         "website": "https://www.leman-mountains-explore.com/decouvrir/les-stations/station-de-thollon-les-memises/",
         "lift_count": 26,
         "run_count": 114,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 88,
         "default_bearing": 168,
         "trail_km": 51.8,
         "trail_mi": 32.2
@@ -13046,7 +13046,7 @@
         "website": "https://www.beavervalley.ca/",
         "lift_count": 6,
         "run_count": 30,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 54,
         "default_bearing": 272,
         "trail_km": 13,
         "trail_mi": 8.1
@@ -13087,7 +13087,7 @@
         "website": "https://www.skilifte-hagenberg.at",
         "lift_count": 3,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 80,
         "default_bearing": 124,
         "trail_km": 4.7,
         "trail_mi": 2.9
@@ -13128,7 +13128,7 @@
         "website": "https://cairngormmountain.co.uk",
         "lift_count": 23,
         "run_count": 35,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 107,
         "default_bearing": 141,
         "trail_km": 0.1,
         "trail_mi": 0
@@ -13168,7 +13168,7 @@
         "summary": "",
         "lift_count": 26,
         "run_count": 45,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 83,
         "default_bearing": 31,
         "trail_km": 19.3,
         "trail_mi": 12
@@ -13209,7 +13209,7 @@
         "website": "https://www.jaworzynakrynicka.pl/",
         "lift_count": 32,
         "run_count": 63,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 266,
         "trail_km": 19.8,
         "trail_mi": 12.3
@@ -13249,7 +13249,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 56,
         "default_bearing": 349,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -13330,7 +13330,7 @@
         "lift_count": 1,
         "run_count": 1,
         "website": "https://www.davosklostersmountains.ch/pischa",
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 239,
         "default_bearing": 77,
         "trail_km": 3.3,
         "trail_mi": 2.1
@@ -13370,7 +13370,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 4,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -13411,7 +13411,7 @@
         "website": "",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 56,
         "default_bearing": 180,
         "trail_km": 0.4
       }
@@ -13451,7 +13451,7 @@
         "website": "https://www.piancavallodolomitifriulane.it/",
         "lift_count": 19,
         "run_count": 62,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 61,
         "default_bearing": 277,
         "trail_km": 15.1,
         "trail_mi": 9.4
@@ -13532,7 +13532,7 @@
         "summary": "Nordic ski destination in Dalarna, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 36,
         "default_bearing": 143,
         "trail_km": 4.1,
         "trail_mi": 2.5
@@ -13573,7 +13573,7 @@
         "website": "https://www.heiligenblut.at/",
         "lift_count": 13,
         "run_count": 69,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 240,
         "default_bearing": 52,
         "trail_km": 33.9,
         "trail_mi": 21
@@ -13614,7 +13614,7 @@
         "website": "https://kalpalinna.fi/",
         "lift_count": 7,
         "run_count": 21,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 55,
         "trail_km": 2.5,
         "trail_mi": 1.6
@@ -13655,7 +13655,7 @@
         "website": "https://www.kamui-skilinks.com/",
         "lift_count": 6,
         "run_count": 52,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 116,
         "default_bearing": 122,
         "trail_km": 24.9,
         "trail_mi": 15.5
@@ -13696,7 +13696,7 @@
         "website": "https://www.sauze.com",
         "lift_count": 19,
         "run_count": 126,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 119,
         "default_bearing": 171,
         "trail_km": 53.4,
         "trail_mi": 33.2
@@ -13777,7 +13777,7 @@
         "summary": "Nordic ski destination in Trøndelag, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 151,
         "default_bearing": 268,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -13818,7 +13818,7 @@
         "website": "https://www.zillertal.at/en/winter/holidays/ski-areas/ski-und-gletscherwelt-3000.html",
         "lift_count": 56,
         "run_count": 242,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 132,
         "default_bearing": 299,
         "trail_km": 118.4,
         "trail_mi": 73.6
@@ -13941,7 +13941,7 @@
         "website": "https://shredthemoose.com/",
         "lift_count": 0,
         "run_count": 98,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 47,
         "default_bearing": 180,
         "trail_km": 34.2,
         "trail_mi": 21.2
@@ -13982,7 +13982,7 @@
         "website": "https://www.rosswald-bahnen.ch/",
         "lift_count": 7,
         "run_count": 26,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 184,
         "default_bearing": 80,
         "trail_km": 21.4,
         "trail_mi": 13.3
@@ -14023,7 +14023,7 @@
         "website": "https://paminne.com/",
         "lift_count": 4,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 55,
         "default_bearing": 18,
         "trail_km": 1.4,
         "trail_mi": 0.9
@@ -14063,7 +14063,7 @@
         "summary": "",
         "lift_count": 11,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 27,
         "default_bearing": 193,
         "trail_km": 6.2,
         "trail_mi": 3.9
@@ -14103,7 +14103,7 @@
         "summary": "Nordic ski destination in Trøndelag, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 2,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 98,
         "default_bearing": 213,
         "trail_km": 7.9,
         "trail_mi": 4.9
@@ -14144,7 +14144,7 @@
         "website": "https://iiyama-makinoiri.snowpark.jp/",
         "lift_count": 26,
         "run_count": 72,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 270,
         "default_bearing": 218,
         "trail_km": 34.2,
         "trail_mi": 21.3
@@ -14184,7 +14184,7 @@
         "summary": "Alpine ski destination in Valais, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 22,
         "run_count": 116,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 109,
         "default_bearing": 208,
         "trail_km": 59.8,
         "trail_mi": 37.2
@@ -14225,7 +14225,7 @@
         "website": "https://www.nollenaegeri.ch/",
         "lift_count": 9,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 85,
         "default_bearing": 166,
         "trail_km": 4,
         "trail_mi": 2.5
@@ -14265,7 +14265,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 86,
         "default_bearing": 214,
         "trail_km": 1.6,
         "trail_mi": 1
@@ -14305,7 +14305,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 180,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -14385,7 +14385,7 @@
         "website": "https://www.wirzweli.ch/",
         "lift_count": 47,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 112,
         "default_bearing": 217,
         "trail_km": 3.2,
         "trail_mi": 2
@@ -14426,7 +14426,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 34,
         "default_bearing": 155,
         "trail_km": 1.1,
         "trail_mi": 0.7
@@ -14467,7 +14467,7 @@
         "website": "https://www.galtuer.com/",
         "lift_count": 10,
         "run_count": 63,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 177,
         "default_bearing": 200,
         "trail_km": 32.4,
         "trail_mi": 20.1
@@ -14549,7 +14549,7 @@
         "website": "https://www.aramon.com/formigal-panticosa",
         "lift_count": 25,
         "run_count": 150,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 220,
         "default_bearing": 225,
         "trail_km": 106.8,
         "trail_mi": 66.4
@@ -14631,7 +14631,7 @@
         "website": "",
         "lift_count": 4,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 75,
         "default_bearing": 174,
         "trail_km": 2.5,
         "trail_mi": 1.5
@@ -14672,7 +14672,7 @@
         "website": "https://bialkatatrzanska.pl",
         "lift_count": 53,
         "run_count": 109,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 61,
         "default_bearing": 219,
         "trail_km": 27.2,
         "trail_mi": 16.9
@@ -14712,7 +14712,7 @@
         "summary": "",
         "lift_count": 31,
         "run_count": 66,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 81,
         "default_bearing": 175,
         "trail_km": 17,
         "trail_mi": 10.6
@@ -14753,7 +14753,7 @@
         "website": "https://vuokatti.fi/palvelut/vuokatinrinteet/",
         "lift_count": 8,
         "run_count": 22,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 73,
         "default_bearing": 208,
         "trail_km": 9.9,
         "trail_mi": 6.2
@@ -14794,7 +14794,7 @@
         "website": "https://www.skibezovec.sk/",
         "lift_count": 4,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 15,
         "default_bearing": 87,
         "trail_km": 2.4,
         "trail_mi": 1.5
@@ -14835,7 +14835,7 @@
         "website": "https://skimacedonia.mk/ski-regions/ponikva/?lang=en",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 38,
         "default_bearing": 216,
         "trail_km": 1.1,
         "trail_mi": 0.7
@@ -14914,7 +14914,7 @@
         "website": "https://www.skidryden.com/",
         "lift_count": 4,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 50,
         "default_bearing": 180,
         "trail_km": 2.2,
         "trail_mi": 1.4
@@ -14955,7 +14955,7 @@
         "website": "https://www.schwaerzenlifte.de/",
         "lift_count": 15,
         "run_count": 20,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 78,
         "default_bearing": 236,
         "trail_km": 4.5,
         "trail_mi": 2.8
@@ -14996,7 +14996,7 @@
         "website": "https://www.inpiste.co.uk/",
         "lift_count": 0,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 4,
         "default_bearing": 180,
         "trail_km": 0,
         "trail_mi": 0
@@ -15078,7 +15078,7 @@
         "website": "https://www.ebenalp.ch/de/winter-info",
         "lift_count": 11,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 77,
         "default_bearing": 204,
         "trail_km": 17.9,
         "trail_mi": 11.1
@@ -15118,7 +15118,7 @@
         "summary": "Alpine ski destination in Verbano-Cusio-Ossola, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 9,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 116,
         "default_bearing": 347,
         "trail_km": 16.7,
         "trail_mi": 10.3
@@ -15159,7 +15159,7 @@
         "website": "https://www.ahrntal.com/",
         "lift_count": 2,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 103,
         "default_bearing": 313,
         "trail_km": 4,
         "trail_mi": 2.5
@@ -15200,7 +15200,7 @@
         "website": "",
         "lift_count": 3,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 79,
         "default_bearing": 258,
         "trail_km": 0.2,
         "trail_mi": 0.2
@@ -15240,7 +15240,7 @@
         "summary": "Alpine ski destination in Tyrol, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 4,
         "run_count": 18,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 134,
         "default_bearing": 298,
         "trail_km": 8.2,
         "trail_mi": 5.1
@@ -15280,7 +15280,7 @@
         "summary": "",
         "lift_count": 39,
         "run_count": 43,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 151,
         "default_bearing": 282,
         "trail_km": 18.6,
         "trail_mi": 11.5
@@ -15321,7 +15321,7 @@
         "website": "https://fr.tyrol.com/activites/sport/ski/domaines-skiables/umhausen-niederthai",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 146,
         "default_bearing": 193,
         "trail_km": 1.5,
         "trail_mi": 0.9
@@ -15402,7 +15402,7 @@
         "website": "https://seli-ski.gr/",
         "lift_count": 10,
         "run_count": 16,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 76,
         "default_bearing": 186,
         "trail_km": 14.6,
         "trail_mi": 9.1
@@ -15443,7 +15443,7 @@
         "website": "https://www.thaiwoo.com/",
         "lift_count": 24,
         "run_count": 93,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 21,
         "default_bearing": 200,
         "trail_km": 77.1,
         "trail_mi": 47.9
@@ -15483,7 +15483,7 @@
         "summary": "Alpine ski destination in Valais, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 106,
         "run_count": 223,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 231,
         "default_bearing": 132,
         "trail_km": 98.8,
         "trail_mi": 61.4
@@ -15523,7 +15523,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 170,
         "default_bearing": 46,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -15564,7 +15564,7 @@
         "website": "https://www.grebenzen.at/",
         "lift_count": 7,
         "run_count": 30,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 53,
         "default_bearing": 158,
         "trail_km": 13.8,
         "trail_mi": 8.6
@@ -15604,7 +15604,7 @@
         "summary": "",
         "lift_count": 7,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 58,
         "default_bearing": 195,
         "trail_km": 1.3,
         "trail_mi": 0.8
@@ -15645,7 +15645,7 @@
         "website": "https://www.pratiditivo.it/",
         "lift_count": 6,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 75,
         "default_bearing": 161,
         "trail_km": 5.1,
         "trail_mi": 3.2
@@ -15686,7 +15686,7 @@
         "website": "https://www.lescontamines.net/",
         "lift_count": 47,
         "run_count": 202,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 287,
         "default_bearing": 227,
         "trail_km": 155.8,
         "trail_mi": 96.8
@@ -15727,7 +15727,7 @@
         "website": "http://www.skilift-sternenberg.ch/",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 120,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -15768,7 +15768,7 @@
         "website": "https://www.skiantelopebutte.com/",
         "lift_count": 3,
         "run_count": 48,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 172,
         "trail_km": 19.5,
         "trail_mi": 12.1
@@ -15809,7 +15809,7 @@
         "website": "https://yllas.fi/",
         "lift_count": 26,
         "run_count": 199,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 84,
         "default_bearing": 244,
         "trail_km": 56,
         "trail_mi": 34.8
@@ -15850,7 +15850,7 @@
         "website": "https://sulitjelma-fjellandsby.no/",
         "lift_count": 1,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 204,
         "default_bearing": 156,
         "trail_km": 2,
         "trail_mi": 1.3
@@ -15891,7 +15891,7 @@
         "website": "https://www.2in1.jp/",
         "lift_count": 25,
         "run_count": 64,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 128,
         "trail_km": 35.3,
         "trail_mi": 22
@@ -15931,7 +15931,7 @@
         "summary": "",
         "lift_count": 6,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 9,
         "default_bearing": 167,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -15972,7 +15972,7 @@
         "website": "https://www.siroimori.co.jp/",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 176,
         "default_bearing": 223,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -16013,7 +16013,7 @@
         "website": "https://www.gausta.com/en-US/gausta-skisenter/",
         "lift_count": 12,
         "run_count": 46,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 142,
         "default_bearing": 134,
         "trail_km": 29.4,
         "trail_mi": 18.2
@@ -16054,7 +16054,7 @@
         "website": "https://www.stinesser-lifte.de/",
         "lift_count": 20,
         "run_count": 50,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 175,
         "default_bearing": 266,
         "trail_km": 21.9,
         "trail_mi": 13.6
@@ -16095,7 +16095,7 @@
         "website": "https://www.golskisenter.no/",
         "lift_count": 2,
         "run_count": 22,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 71,
         "default_bearing": 276,
         "trail_km": 10.1,
         "trail_mi": 6.3
@@ -16135,7 +16135,7 @@
         "summary": "",
         "lift_count": 4,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 7,
         "default_bearing": 180,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -16176,7 +16176,7 @@
         "website": "https://www.alpedhuez.com",
         "lift_count": 87,
         "run_count": 439,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 269,
         "default_bearing": 69,
         "trail_km": 187.6,
         "trail_mi": 116.5
@@ -16217,7 +16217,7 @@
         "website": "https://mutsu-taikyo.jp/ski.html",
         "lift_count": 3,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 54,
         "default_bearing": 311,
         "trail_km": 2.7,
         "trail_mi": 1.7
@@ -16257,7 +16257,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 52,
         "default_bearing": 235,
         "trail_km": 2.1,
         "trail_mi": 1.3
@@ -16339,7 +16339,7 @@
         "website": "https://www.fujiten.net/",
         "lift_count": 4,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 179,
         "trail_km": 4.9,
         "trail_mi": 3
@@ -16380,7 +16380,7 @@
         "website": "https://okutone.jp/",
         "lift_count": 16,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 178,
         "default_bearing": 142,
         "trail_km": 15.5,
         "trail_mi": 9.6
@@ -16421,7 +16421,7 @@
         "website": "https://www.sanmartino.com/",
         "lift_count": 22,
         "run_count": 72,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 133,
         "default_bearing": 173,
         "trail_km": 44,
         "trail_mi": 27.3
@@ -16462,7 +16462,7 @@
         "website": "https://www.ski-baan.nl/",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 8,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -16503,7 +16503,7 @@
         "website": "https://www.brunnialpthal.ch/",
         "lift_count": 71,
         "run_count": 248,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 165,
         "default_bearing": 23,
         "trail_km": 146.2,
         "trail_mi": 90.8
@@ -16544,7 +16544,7 @@
         "website": "https://praboure.fr/",
         "lift_count": 5,
         "run_count": 19,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 256,
         "trail_km": 4.9,
         "trail_mi": 3.1
@@ -16667,7 +16667,7 @@
         "website": "https://cardrona-treblecone.com/",
         "lift_count": 10,
         "run_count": 83,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 98,
         "default_bearing": 339,
         "trail_km": 40.6,
         "trail_mi": 25.2
@@ -16708,7 +16708,7 @@
         "website": "http://niyama.grow8.com/ski/index.html",
         "lift_count": 0,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 180,
         "trail_km": 1.4,
         "trail_mi": 0.9
@@ -16830,7 +16830,7 @@
         "summary": "Alpine ski destination in North Rhine-Westphalia, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 41,
         "default_bearing": 313,
         "trail_km": 0.6
       }
@@ -16870,7 +16870,7 @@
         "website": "https://www.paysdegex-montsjura.com/station-monts-jura/",
         "lift_count": 10,
         "run_count": 44,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 67,
         "default_bearing": 170,
         "trail_km": 21.2,
         "trail_mi": 13.2
@@ -16951,7 +16951,7 @@
         "summary": "Alpine ski destination in Haute-Savoie, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 10,
         "run_count": 30,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 137,
         "default_bearing": 203,
         "trail_km": 11.9,
         "trail_mi": 7.4
@@ -16992,7 +16992,7 @@
         "website": "https://lyziarske-stredisko-frickovce.webnode.sk/",
         "lift_count": 3,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 34,
         "default_bearing": 260,
         "trail_km": 0.9
       }
@@ -17032,7 +17032,7 @@
         "website": "https://x-jam.jp/",
         "lift_count": 38,
         "run_count": 109,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 194,
         "default_bearing": 163,
         "trail_km": 48.5,
         "trail_mi": 30.1
@@ -17153,7 +17153,7 @@
         "website": "https://www.baqueira.es:443/ca",
         "lift_count": 36,
         "run_count": 203,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 145,
         "default_bearing": 90,
         "trail_km": 162.8,
         "trail_mi": 101.2
@@ -17234,7 +17234,7 @@
         "website": "https://roccaraso.net/",
         "lift_count": 28,
         "run_count": 109,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 66,
         "default_bearing": 238,
         "trail_km": 66.5,
         "trail_mi": 41.3
@@ -17314,7 +17314,7 @@
         "website": "https://www.tjcenkovice.cz/",
         "lift_count": 10,
         "run_count": 20,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 39,
         "default_bearing": 267,
         "trail_km": 9.9,
         "trail_mi": 6.2
@@ -17354,7 +17354,7 @@
         "summary": "Alpine ski destination in Schwyz, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 8,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 106,
         "default_bearing": 171,
         "trail_km": 2.7,
         "trail_mi": 1.7
@@ -17394,7 +17394,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 4,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -17516,7 +17516,7 @@
         "website": "https://www.heumoeserlift.at/heumoeserlift/liftanlagen-und-pisten",
         "lift_count": 5,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 62,
         "default_bearing": 258,
         "trail_km": 5.7,
         "trail_mi": 3.5
@@ -17557,7 +17557,7 @@
         "website": "https://www.chuo-alps.com/hotel/ski/",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 88,
         "default_bearing": 300,
         "trail_km": 2.1
       }
@@ -17677,7 +17677,7 @@
         "summary": "Alpine ski destination in Rhineland-Palatinate, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 27,
         "default_bearing": 268,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -17797,7 +17797,7 @@
         "summary": "Mountain ski destination in Quebec, Canada, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 0,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 132,
         "default_bearing": 180,
         "trail_km": 1.5,
         "trail_mi": 0.9
@@ -17878,7 +17878,7 @@
         "website": "https://www.whitehillsresort.com/",
         "lift_count": 2,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 97,
         "default_bearing": 257,
         "trail_km": 6.7,
         "trail_mi": 4.2
@@ -17918,7 +17918,7 @@
         "summary": "",
         "lift_count": 43,
         "run_count": 58,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 101,
         "default_bearing": 272,
         "trail_km": 25.3,
         "trail_mi": 15.7
@@ -17959,7 +17959,7 @@
         "website": "https://qkamura.or.jp/haguro/ski/",
         "lift_count": 2,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 217,
         "default_bearing": 325,
         "trail_km": 2.8,
         "trail_mi": 1.8
@@ -18040,7 +18040,7 @@
         "summary": "Alpine ski destination in Baden-Württemberg, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 7,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 187,
         "trail_km": 1.7,
         "trail_mi": 1.1
@@ -18121,7 +18121,7 @@
         "summary": "Alpine ski destination in Graubunden, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 18,
         "run_count": 79,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 166,
         "default_bearing": 247,
         "trail_km": 52.9,
         "trail_mi": 32.9
@@ -18161,7 +18161,7 @@
         "summary": "Mountain ski destination in Nevada, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 50,
         "default_bearing": 234,
         "trail_km": 1
       }
@@ -18200,7 +18200,7 @@
         "summary": "",
         "lift_count": 50,
         "run_count": 127,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 47,
         "default_bearing": 221,
         "trail_km": 32.3,
         "trail_mi": 20.1
@@ -18241,7 +18241,7 @@
         "website": "https://sirdalfjellpark.no/",
         "lift_count": 11,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 232,
         "default_bearing": 267,
         "trail_km": 14.9,
         "trail_mi": 9.3
@@ -18323,7 +18323,7 @@
         "website": "https://www.engadin.ch/de/langlauf",
         "lift_count": 15,
         "run_count": 95,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 240,
         "default_bearing": 163,
         "trail_km": 39.6,
         "trail_mi": 24.6
@@ -18363,7 +18363,7 @@
         "summary": "",
         "lift_count": 26,
         "run_count": 45,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 83,
         "default_bearing": 31,
         "trail_km": 19.3,
         "trail_mi": 12
@@ -18404,7 +18404,7 @@
         "website": "https://sprucemountainmaine.wordpress.com/",
         "lift_count": 3,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 65,
         "default_bearing": 210,
         "trail_km": 2,
         "trail_mi": 1.2
@@ -18445,7 +18445,7 @@
         "website": "https://www.sadoski.net/",
         "lift_count": 1,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 41,
         "default_bearing": 180,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -18486,7 +18486,7 @@
         "website": "https://chylkovo.ru/",
         "lift_count": 5,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 54,
         "default_bearing": 148,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -18527,7 +18527,7 @@
         "website": "https://www.mdolina.ru/",
         "lift_count": 3,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 50,
         "default_bearing": 244,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -18649,7 +18649,7 @@
         "summary": "Alpine ski destination in Savoie, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 58,
         "run_count": 551,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 168,
         "default_bearing": 110,
         "trail_km": 213.5,
         "trail_mi": 132.6
@@ -18690,7 +18690,7 @@
         "website": "https://polyanaski.ru/",
         "lift_count": 70,
         "run_count": 272,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 303,
         "default_bearing": 159,
         "trail_km": 156.8,
         "trail_mi": 97.4
@@ -18731,7 +18731,7 @@
         "website": "https://wainwright.armymwr.com/programs/birch-hill-ski-snowboard-area",
         "lift_count": 3,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 46,
         "default_bearing": 306,
         "trail_km": 5.7,
         "trail_mi": 3.6
@@ -18772,7 +18772,7 @@
         "website": "https://www.chamrousse.com/",
         "lift_count": 20,
         "run_count": 125,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 178,
         "default_bearing": 79,
         "trail_km": 52.5,
         "trail_mi": 32.6
@@ -18813,7 +18813,7 @@
         "website": "https://raumaskisenter.com",
         "lift_count": 2,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 143,
         "default_bearing": 109,
         "trail_km": 3.6,
         "trail_mi": 2.2
@@ -18854,7 +18854,7 @@
         "website": "https://gullingen.no/skisenter/",
         "lift_count": 2,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 273,
         "default_bearing": 218,
         "trail_km": 1.8,
         "trail_mi": 1.1
@@ -19017,7 +19017,7 @@
         "website": "https://www.vialattea.it/esplora-la-vialattea/",
         "lift_count": 45,
         "run_count": 462,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 159,
         "default_bearing": 134,
         "trail_km": 129.4,
         "trail_mi": 80.4
@@ -19058,7 +19058,7 @@
         "website": "https://www.wiriehorn.ch/",
         "lift_count": 6,
         "run_count": 24,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 87,
         "default_bearing": 156,
         "trail_km": 15.5,
         "trail_mi": 9.6
@@ -19139,7 +19139,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 25,
         "default_bearing": 196,
         "trail_km": 5.9,
         "trail_mi": 3.7
@@ -19180,7 +19180,7 @@
         "website": "",
         "lift_count": 7,
         "run_count": 24,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 124,
         "default_bearing": 360,
         "trail_km": 12.3,
         "trail_mi": 7.7
@@ -19303,7 +19303,7 @@
         "website": "https://www.new-greenpia.com/",
         "lift_count": 3,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 275,
         "default_bearing": 194,
         "trail_km": 6.2,
         "trail_mi": 3.8
@@ -19344,7 +19344,7 @@
         "website": "https://www.skytop.com/activity/skiing/",
         "lift_count": 1,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 41,
         "default_bearing": 291,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -19385,7 +19385,7 @@
         "website": "http://www.spokbacken.se",
         "lift_count": 1,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 27,
         "default_bearing": 180,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -19425,7 +19425,7 @@
         "summary": "Nordic ski destination in Vestfold og Telemark, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 146,
         "default_bearing": 187,
         "trail_km": 0.6
       }
@@ -19465,7 +19465,7 @@
         "website": "https://www.fulufjellet.no/",
         "lift_count": 2,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 89,
         "default_bearing": 94,
         "trail_km": 7.7,
         "trail_mi": 4.8
@@ -19547,7 +19547,7 @@
         "website": "https://www.stubai.at/skigebiete/elferbahnen/",
         "lift_count": 5,
         "run_count": 59,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 136,
         "default_bearing": 177,
         "trail_km": 10.3,
         "trail_mi": 6.4
@@ -19629,7 +19629,7 @@
         "website": "https://www.flottsbro.se/",
         "lift_count": 3,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 30,
         "default_bearing": 157,
         "trail_km": 1.7,
         "trail_mi": 1
@@ -19709,7 +19709,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 31,
         "default_bearing": 180,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -19750,7 +19750,7 @@
         "website": "https://wapitiskiclub.com/",
         "lift_count": 1,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 278,
         "trail_km": 10.4,
         "trail_mi": 6.5
@@ -19791,7 +19791,7 @@
         "website": "https://www.tokamachishikankou.jp/sports/ski/nakasatokiyotsu/",
         "lift_count": 14,
         "run_count": 42,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 184,
         "default_bearing": 162,
         "trail_km": 26.7,
         "trail_mi": 16.6
@@ -19832,7 +19832,7 @@
         "website": "https://www.montafon.at/kristberg/de",
         "lift_count": 19,
         "run_count": 78,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 226,
         "default_bearing": 109,
         "trail_km": 47.1,
         "trail_mi": 29.3
@@ -19913,7 +19913,7 @@
         "summary": "Alpine ski destination in Belluno, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 3,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 213,
         "trail_km": 8.3,
         "trail_mi": 5.1
@@ -19953,7 +19953,7 @@
         "summary": "",
         "lift_count": 30,
         "run_count": 33,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 74,
         "default_bearing": 200,
         "trail_km": 8.8,
         "trail_mi": 5.5
@@ -19994,7 +19994,7 @@
         "website": "https://www.hochalmbahnen.at/",
         "lift_count": 12,
         "run_count": 31,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 187,
         "default_bearing": 258,
         "trail_km": 19.3,
         "trail_mi": 12
@@ -20034,7 +20034,7 @@
         "summary": "",
         "lift_count": 12,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 74,
         "default_bearing": 203,
         "trail_km": 5.7,
         "trail_mi": 3.5
@@ -20075,7 +20075,7 @@
         "website": "https://www.sawcreek.org/",
         "lift_count": 1,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 34,
         "default_bearing": 87,
         "trail_km": 1.2,
         "trail_mi": 0.8
@@ -20115,7 +20115,7 @@
         "summary": "Alpine ski destination in Bavaria, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 22,
         "default_bearing": 156,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -20156,7 +20156,7 @@
         "website": "https://www.lkbaba.sk/sk/lyziarske-stredisko-zochova-chata/",
         "lift_count": 3,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 20,
         "default_bearing": 194,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -20196,7 +20196,7 @@
         "summary": "",
         "lift_count": 4,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 16,
         "default_bearing": 163,
         "trail_km": 6.5,
         "trail_mi": 4
@@ -20237,7 +20237,7 @@
         "website": "https://chateau-shiozawa.jp/",
         "lift_count": 29,
         "run_count": 73,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 269,
         "default_bearing": 302,
         "trail_km": 35.1,
         "trail_mi": 21.8
@@ -20278,7 +20278,7 @@
         "website": "https://onze.jp/",
         "lift_count": 2,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 97,
         "default_bearing": 236,
         "trail_km": 2.6,
         "trail_mi": 1.6
@@ -20319,7 +20319,7 @@
         "website": "https://www.fujino-yagai-sports.jp/",
         "lift_count": 3,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 79,
         "default_bearing": 195,
         "trail_km": 3.9,
         "trail_mi": 2.4
@@ -20360,7 +20360,7 @@
         "website": "http://skiarealnaprava.cz/",
         "lift_count": 46,
         "run_count": 145,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 65,
         "default_bearing": 58,
         "trail_km": 48,
         "trail_mi": 29.8
@@ -20400,7 +20400,7 @@
         "summary": "Japanese powder ski area in Hokkaido Prefecture, Japan, renowned for deep winter snowfall, gladed tree runs, and authentic mountain hospitality.",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 122,
         "default_bearing": 180,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -20481,7 +20481,7 @@
         "website": "https://furedalen.no/",
         "lift_count": 7,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 320,
         "default_bearing": 261,
         "trail_km": 3.2,
         "trail_mi": 2
@@ -20564,7 +20564,7 @@
         "website": "https://en.chamonix.com/activities/winter/skiing-in-chamonix-mont-blanc-valley/list-of-ski-areas/la-poya-ski-resort",
         "lift_count": 35,
         "run_count": 141,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 218,
         "default_bearing": 59,
         "trail_km": 39.5,
         "trail_mi": 24.6
@@ -20605,7 +20605,7 @@
         "website": "https://www.lecollet.com",
         "lift_count": 10,
         "run_count": 53,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 189,
         "default_bearing": 128,
         "trail_km": 25.1,
         "trail_mi": 15.6
@@ -20646,7 +20646,7 @@
         "website": "https://www.ortlerskiarena.com/",
         "lift_count": 4,
         "run_count": 18,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 104,
         "default_bearing": 313,
         "trail_km": 9.5,
         "trail_mi": 5.9
@@ -20687,7 +20687,7 @@
         "website": "https://golfnorth.ca/ski/",
         "lift_count": 2,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 43,
         "default_bearing": 180,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -20727,7 +20727,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 32,
         "default_bearing": 186,
         "trail_km": 0.2
       }
@@ -20767,7 +20767,7 @@
         "website": "",
         "lift_count": 3,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 87,
         "default_bearing": 286,
         "trail_km": 0.9,
         "trail_mi": 0.5
@@ -20808,7 +20808,7 @@
         "website": "https://www.hammerfest-alpinklubb.no/",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 129,
         "default_bearing": 282,
         "trail_km": 0.7
       }
@@ -20848,7 +20848,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 105,
         "default_bearing": 347,
         "trail_km": 1.2,
         "trail_mi": 0.7
@@ -20889,7 +20889,7 @@
         "website": "",
         "lift_count": 2,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 36,
         "default_bearing": 148,
         "trail_km": 9.6,
         "trail_mi": 6
@@ -20930,7 +20930,7 @@
         "website": "https://www.eboshi.co.jp/",
         "lift_count": 11,
         "run_count": 36,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 117,
         "default_bearing": 256,
         "trail_km": 21.9,
         "trail_mi": 13.6
@@ -20971,7 +20971,7 @@
         "website": "https://www.dodgeridge.com/site/",
         "lift_count": 11,
         "run_count": 68,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 243,
         "default_bearing": 133,
         "trail_km": 34.8,
         "trail_mi": 21.6
@@ -21093,7 +21093,7 @@
         "website": "https://www.gleneden.on.ca/",
         "lift_count": 6,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 46,
         "default_bearing": 121,
         "trail_km": 3.5,
         "trail_mi": 2.2
@@ -21133,7 +21133,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 73,
         "default_bearing": 134,
         "trail_km": 1.8
       }
@@ -21173,7 +21173,7 @@
         "website": "https://www.hochkar.com/",
         "lift_count": 9,
         "run_count": 78,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 161,
         "default_bearing": 164,
         "trail_km": 20.6,
         "trail_mi": 12.8
@@ -21214,7 +21214,7 @@
         "website": "https://www.grousemountain.com/",
         "lift_count": 8,
         "run_count": 66,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 110,
         "default_bearing": 29,
         "trail_km": 17.9,
         "trail_mi": 11.1
@@ -21337,7 +21337,7 @@
         "website": "https://www.deschans.nl/",
         "lift_count": 4,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 7,
         "default_bearing": 180,
         "trail_km": 0.4,
         "trail_mi": 0.3
@@ -21377,7 +21377,7 @@
         "summary": "",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 5,
         "default_bearing": 180
       }
     },
@@ -21416,7 +21416,7 @@
         "website": "https://www.bromberg-alm.de/",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 63,
         "default_bearing": 230,
         "trail_km": 0.4
       }
@@ -21496,7 +21496,7 @@
         "website": "https://www.stations-greolieres-audibergue.com",
         "lift_count": 7,
         "run_count": 26,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 26,
         "default_bearing": 175,
         "trail_km": 17.3,
         "trail_mi": 10.8
@@ -21537,7 +21537,7 @@
         "website": "",
         "lift_count": 4,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 121,
         "default_bearing": 168,
         "trail_km": 12.2,
         "trail_mi": 7.6
@@ -21577,7 +21577,7 @@
         "summary": "Alpine ski destination in Puy-de-Dôme, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 46,
         "run_count": 179,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 197,
         "trail_km": 83.2,
         "trail_mi": 51.7
@@ -21617,7 +21617,7 @@
         "summary": "Alpine ski destination in Tyrol, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 65,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -21699,7 +21699,7 @@
         "website": "https://cherry.my1.ru/",
         "lift_count": 3,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 38,
         "default_bearing": 291,
         "trail_km": 3.2,
         "trail_mi": 2
@@ -21739,7 +21739,7 @@
         "summary": "",
         "lift_count": 6,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 99,
         "default_bearing": 300,
         "trail_km": 8.2,
         "trail_mi": 5.1
@@ -21780,7 +21780,7 @@
         "website": "https://www.anniviers.ch/",
         "lift_count": 18,
         "run_count": 100,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 237,
         "default_bearing": 55,
         "trail_km": 58.9,
         "trail_mi": 36.6
@@ -21862,7 +21862,7 @@
         "website": "https://stazione-sciistica-ventasso-laghi.webnode.it/",
         "lift_count": 2,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 52,
         "default_bearing": 196,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -21943,7 +21943,7 @@
         "website": "https://ergaki.com/",
         "lift_count": 4,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 159,
         "default_bearing": 170,
         "trail_km": 2.1,
         "trail_mi": 1.3
@@ -21984,7 +21984,7 @@
         "website": "https://www.pineresort.com/",
         "lift_count": 9,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 9,
         "default_bearing": 180,
         "trail_km": 7,
         "trail_mi": 4.4
@@ -22024,7 +22024,7 @@
         "summary": "Nordic ski destination in Uusimaa, Finland, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 105,
         "trail_km": 0.7
       }
@@ -22105,7 +22105,7 @@
         "website": "https://www.manba-ski.jp/",
         "lift_count": 14,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 51,
         "default_bearing": 269,
         "trail_km": 2.5,
         "trail_mi": 1.6
@@ -22146,7 +22146,7 @@
         "website": "https://www.avoriaz.com",
         "lift_count": 121,
         "run_count": 753,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 221,
         "default_bearing": 154,
         "trail_km": 289.7,
         "trail_mi": 180
@@ -22188,7 +22188,7 @@
         "website": "https://en.chamonix.com/activities/winter/skiing-in-chamonix-mont-blanc-valley/list-of-ski-areas/domaine-debutant-du-tourchet",
         "lift_count": 53,
         "run_count": 256,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 286,
         "default_bearing": 119,
         "trail_km": 120,
         "trail_mi": 74.5
@@ -22229,7 +22229,7 @@
         "website": "https://www.aletscharena.ch/",
         "lift_count": 47,
         "run_count": 220,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 126,
         "default_bearing": 342,
         "trail_km": 112.5,
         "trail_mi": 69.9
@@ -22311,7 +22311,7 @@
         "website": "https://www.prazdelys-sommand.com/",
         "lift_count": 23,
         "run_count": 100,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 127,
         "default_bearing": 204,
         "trail_km": 48.7,
         "trail_mi": 30.3
@@ -22351,7 +22351,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 26,
         "default_bearing": 24,
         "trail_km": 0.3
       }
@@ -22391,7 +22391,7 @@
         "website": "https://www.jungfrau.ch",
         "lift_count": 189,
         "run_count": 288,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 154,
         "default_bearing": 229,
         "trail_km": 145.9,
         "trail_mi": 90.6
@@ -22432,7 +22432,7 @@
         "website": "",
         "lift_count": 4,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 58,
         "default_bearing": 232,
         "trail_km": 1.5,
         "trail_mi": 0.9
@@ -22473,7 +22473,7 @@
         "website": "http://www.zaoliza.co.jp/",
         "lift_count": 41,
         "run_count": 108,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 122,
         "default_bearing": 101,
         "trail_km": 44.6,
         "trail_mi": 27.7
@@ -22514,7 +22514,7 @@
         "website": "https://www.ozolkalns.lv/winter",
         "lift_count": 8,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 53,
         "default_bearing": 99,
         "trail_km": 2.7,
         "trail_mi": 1.7
@@ -22554,7 +22554,7 @@
         "summary": "Nordic ski destination in Nordland, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 260,
         "default_bearing": 35,
         "trail_km": 0.8
       }
@@ -22632,7 +22632,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 19,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -22673,7 +22673,7 @@
         "website": "http://www.pianobattaglia.it/",
         "lift_count": 3,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 14,
         "default_bearing": 198,
         "trail_km": 3.4,
         "trail_mi": 2.1
@@ -22714,7 +22714,7 @@
         "website": "https://www.eikerapen.info/",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 145,
         "default_bearing": 316,
         "trail_km": 1.1
       }
@@ -22753,7 +22753,7 @@
         "summary": "Alpine ski destination in Alpes-Maritimes, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 54,
         "default_bearing": 232,
         "trail_km": 0.6
       }
@@ -22792,7 +22792,7 @@
         "summary": "",
         "lift_count": 4,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 52,
         "default_bearing": 229,
         "trail_km": 1.7,
         "trail_mi": 1
@@ -22833,7 +22833,7 @@
         "website": "https://www.kamishihoro.jp/place/00000005",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 85,
         "default_bearing": 195,
         "trail_km": 2
       }
@@ -22873,7 +22873,7 @@
         "website": "https://www.sljeme.hr/",
         "lift_count": 5,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 14,
         "default_bearing": 326,
         "trail_km": 3.5,
         "trail_mi": 2.2
@@ -22914,7 +22914,7 @@
         "website": "https://www.saalbach.com/",
         "lift_count": 107,
         "run_count": 930,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 122,
         "default_bearing": 8,
         "trail_km": 341.1,
         "trail_mi": 211.9
@@ -22955,7 +22955,7 @@
         "website": "",
         "lift_count": 4,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 52,
         "default_bearing": 123,
         "trail_km": 5.6,
         "trail_mi": 3.5
@@ -22996,7 +22996,7 @@
         "website": "https://stmary-338.com/",
         "lift_count": 0,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 98,
         "default_bearing": 180,
         "trail_km": 2.9,
         "trail_mi": 1.8
@@ -23037,7 +23037,7 @@
         "website": "https://www.skiarealklobouk.cz/cz/",
         "lift_count": 19,
         "run_count": 32,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 67,
         "default_bearing": 228,
         "trail_km": 12.1,
         "trail_mi": 7.5
@@ -23116,7 +23116,7 @@
         "website": "https://www.boltonvalley.com",
         "lift_count": 6,
         "run_count": 86,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 87,
         "default_bearing": 99,
         "trail_km": 33.8,
         "trail_mi": 21
@@ -23156,7 +23156,7 @@
         "summary": "Alpine ski destination in Belluno, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 3,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 109,
         "default_bearing": 6,
         "trail_km": 10.2,
         "trail_mi": 6.3
@@ -23196,7 +23196,7 @@
         "summary": "",
         "lift_count": 11,
         "run_count": 22,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 88,
         "default_bearing": 206,
         "trail_km": 8.8,
         "trail_mi": 5.5
@@ -23236,7 +23236,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 9,
         "default_bearing": 291,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -23277,7 +23277,7 @@
         "website": "https://www.jungfrau.ch",
         "lift_count": 77,
         "run_count": 196,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 231,
         "default_bearing": 8,
         "trail_km": 113.1,
         "trail_mi": 70.3
@@ -23358,7 +23358,7 @@
         "website": "https://www.parquearenas.com/",
         "lift_count": 0,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 272,
         "default_bearing": 0,
         "trail_km": 5,
         "trail_mi": 3.1
@@ -23440,7 +23440,7 @@
         "website": "https://zil.kg/",
         "lift_count": 7,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 75,
         "default_bearing": 181,
         "trail_km": 7.7,
         "trail_mi": 4.8
@@ -23563,7 +23563,7 @@
         "website": "https://www.makinokougen.co.jp/",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 39,
         "default_bearing": 180
       }
     },
@@ -23601,7 +23601,7 @@
         "summary": "",
         "lift_count": 10,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 67,
         "trail_km": 6.2,
         "trail_mi": 3.9
@@ -23642,7 +23642,7 @@
         "website": "https://www.montdesbrumes.be/",
         "lift_count": 5,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 27,
         "default_bearing": 118,
         "trail_km": 1.1,
         "trail_mi": 0.7
@@ -23764,7 +23764,7 @@
         "website": "",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 77,
         "default_bearing": 22,
         "trail_km": 1.3,
         "trail_mi": 0.8
@@ -23805,7 +23805,7 @@
         "website": "https://kasinaski.pl/",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 80,
         "default_bearing": 119,
         "trail_km": 2.4,
         "trail_mi": 1.5
@@ -23846,7 +23846,7 @@
         "website": "",
         "lift_count": 32,
         "run_count": 63,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 260,
         "trail_km": 19.8,
         "trail_mi": 12.3
@@ -23887,7 +23887,7 @@
         "website": "https://www.iwatake.jp/",
         "lift_count": 65,
         "run_count": 167,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 335,
         "default_bearing": 279,
         "trail_km": 123.4,
         "trail_mi": 76.7
@@ -23927,7 +23927,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 73,
         "default_bearing": 130,
         "trail_km": 0.7,
         "trail_mi": 0.4
@@ -23968,7 +23968,7 @@
         "website": "https://www.skistar.com/en/ski-destinations/salen",
         "lift_count": 46,
         "run_count": 127,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 72,
         "default_bearing": 166,
         "trail_km": 48.6,
         "trail_mi": 30.2
@@ -24009,7 +24009,7 @@
         "website": "https://www.benecko.info/zima/skiareal-benecko/",
         "lift_count": 56,
         "run_count": 120,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 97,
         "default_bearing": 270,
         "trail_km": 45.2,
         "trail_mi": 28.1
@@ -24049,7 +24049,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 59,
         "default_bearing": 285,
         "trail_km": 2.1,
         "trail_mi": 1.3
@@ -24130,7 +24130,7 @@
         "summary": "Alpine ski destination in Como, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 17,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 31,
         "default_bearing": 186,
         "trail_km": 1.2,
         "trail_mi": 0.7
@@ -24171,7 +24171,7 @@
         "website": "",
         "lift_count": 5,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 118,
         "default_bearing": 116,
         "trail_km": 3.3,
         "trail_mi": 2.1
@@ -24253,7 +24253,7 @@
         "website": "https://www.wsv-tailfingen.de",
         "lift_count": 2,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 193,
         "trail_km": 2.5,
         "trail_mi": 1.5
@@ -24293,7 +24293,7 @@
         "summary": "",
         "lift_count": 8,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 62,
         "default_bearing": 159,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -24333,7 +24333,7 @@
         "summary": "Alpine ski destination in Haute-Savoie, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 26,
         "run_count": 114,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 88,
         "default_bearing": 164,
         "trail_km": 51.8,
         "trail_mi": 32.2
@@ -24414,7 +24414,7 @@
         "summary": "",
         "lift_count": 0,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 6,
         "default_bearing": 180,
         "trail_km": 0.9,
         "trail_mi": 0.6
@@ -24455,7 +24455,7 @@
         "website": "https://sport-elstra.de/ski/",
         "lift_count": 1,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 25,
         "default_bearing": 239,
         "trail_km": 1.1,
         "trail_mi": 0.7
@@ -24496,7 +24496,7 @@
         "website": "https://www.skidklubben.se/brudarebacken/",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 26,
         "default_bearing": 221,
         "trail_km": 0.3
       }
@@ -24536,7 +24536,7 @@
         "website": "https://www.la-norma.ski/",
         "lift_count": 25,
         "run_count": 158,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 141,
         "default_bearing": 133,
         "trail_km": 74.3,
         "trail_mi": 46.2
@@ -24577,7 +24577,7 @@
         "website": "https://www.marbachegg.ch/",
         "lift_count": 6,
         "run_count": 19,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 121,
         "default_bearing": 203,
         "trail_km": 14.3,
         "trail_mi": 8.9
@@ -24618,7 +24618,7 @@
         "website": "https://oclini.com/",
         "lift_count": 9,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 103,
         "default_bearing": 160,
         "trail_km": 7,
         "trail_mi": 4.4
@@ -24658,7 +24658,7 @@
         "summary": "Alpine ski destination in Hautes-Pyrénées, France, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 28,
         "run_count": 158,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 87,
         "default_bearing": 286,
         "trail_km": 73.7,
         "trail_mi": 45.8
@@ -24699,7 +24699,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 52,
         "default_bearing": 139,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -24740,7 +24740,7 @@
         "website": "https://www.niigata-kankou.or.jp/",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 102,
         "default_bearing": 240,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -24780,7 +24780,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 7,
         "default_bearing": 119,
         "trail_km": 1.2
       }
@@ -24902,7 +24902,7 @@
         "website": "https://skipark.sk/",
         "lift_count": 10,
         "run_count": 26,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 70,
         "default_bearing": 220,
         "trail_km": 12.6,
         "trail_mi": 7.8
@@ -24943,7 +24943,7 @@
         "website": "https://www.lurisiamontepigna.com/",
         "lift_count": 19,
         "run_count": 92,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 114,
         "default_bearing": 189,
         "trail_km": 59.8,
         "trail_mi": 37.2
@@ -24984,7 +24984,7 @@
         "website": "https://blueridgemountainresort.ca/",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 35,
         "default_bearing": 180
       }
     },
@@ -25023,7 +25023,7 @@
         "website": "https://www.winterparkresort.com",
         "lift_count": 6,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 83,
         "trail_km": 1.9,
         "trail_mi": 1.2
@@ -25064,7 +25064,7 @@
         "website": "https://www.amirsoy.com/",
         "lift_count": 6,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 119,
         "default_bearing": 184,
         "trail_km": 18.5,
         "trail_mi": 11.5
@@ -25104,7 +25104,7 @@
         "summary": "Alpine ski destination in Schwyz, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 12,
         "run_count": 73,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 165,
         "default_bearing": 192,
         "trail_km": 44.4,
         "trail_mi": 27.6
@@ -25145,7 +25145,7 @@
         "website": "",
         "lift_count": 3,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 38,
         "default_bearing": 180,
         "trail_km": 0.4
       }
@@ -25184,7 +25184,7 @@
         "summary": "",
         "lift_count": 0,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 7,
         "default_bearing": 180
       }
     },
@@ -25223,7 +25223,7 @@
         "website": "https://www.suomutunturi.fi/",
         "lift_count": 4,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 69,
         "default_bearing": 237,
         "trail_km": 9.9,
         "trail_mi": 6.2
@@ -25263,7 +25263,7 @@
         "summary": "Japanese powder ski area in Akita Prefecture, Japan, renowned for deep winter snowfall, gladed tree runs, and authentic mountain hospitality.",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 93,
         "default_bearing": 294,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -25385,7 +25385,7 @@
         "summary": "",
         "lift_count": 5,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 35,
         "default_bearing": 155,
         "trail_km": 2.3,
         "trail_mi": 1.4
@@ -25426,7 +25426,7 @@
         "website": "https://oakmountainski.com/oak/",
         "lift_count": 4,
         "run_count": 21,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 85,
         "default_bearing": 352,
         "trail_km": 9.8,
         "trail_mi": 6.1
@@ -25466,7 +25466,7 @@
         "summary": "Alpine ski destination in Tyrol, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 8,
         "run_count": 63,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 105,
         "default_bearing": 171,
         "trail_km": 11,
         "trail_mi": 6.8
@@ -25507,7 +25507,7 @@
         "website": "https://www.aramon.com/cerler",
         "lift_count": 22,
         "run_count": 152,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 132,
         "default_bearing": 188,
         "trail_km": 63.3,
         "trail_mi": 39.3
@@ -25548,7 +25548,7 @@
         "website": "https://www.westernberg.de/ferienwohnungen/westernberg.html",
         "lift_count": 9,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 76,
         "default_bearing": 197,
         "trail_km": 4.9,
         "trail_mi": 3
@@ -25589,7 +25589,7 @@
         "website": "https://www.buffaloskicenter.com/",
         "lift_count": 6,
         "run_count": 37,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 72,
         "default_bearing": 259,
         "trail_km": 13,
         "trail_mi": 8.1
@@ -25630,7 +25630,7 @@
         "website": "https://lommedalen.skiperformance.com/no/",
         "lift_count": 6,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 81,
         "default_bearing": 200,
         "trail_km": 0.7,
         "trail_mi": 0.4
@@ -25752,7 +25752,7 @@
         "summary": "",
         "lift_count": 0,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 12,
         "default_bearing": 180,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -25792,7 +25792,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 17,
         "default_bearing": 53,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -25833,7 +25833,7 @@
         "website": "https://www.buscat.ro/",
         "lift_count": 2,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 276,
         "trail_km": 3.5,
         "trail_mi": 2.2
@@ -25873,7 +25873,7 @@
         "summary": "Alpine ski destination in Rhineland-Palatinate, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 32,
         "default_bearing": 303,
         "trail_km": 1.4,
         "trail_mi": 0.9
@@ -25914,7 +25914,7 @@
         "website": "https://www.kaunertaler-gletscher.at",
         "lift_count": 9,
         "run_count": 81,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 173,
         "default_bearing": 215,
         "trail_km": 30.2,
         "trail_mi": 18.8
@@ -25955,7 +25955,7 @@
         "website": "https://www.flensa.ch",
         "lift_count": 12,
         "run_count": 25,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 83,
         "default_bearing": 84,
         "trail_km": 23.2,
         "trail_mi": 14.4
@@ -25996,7 +25996,7 @@
         "website": "https://www.snowland.sk/",
         "lift_count": 7,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 247,
         "trail_km": 5.1,
         "trail_mi": 3.1
@@ -26036,7 +26036,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 21,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -26157,7 +26157,7 @@
         "summary": "",
         "lift_count": 5,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 12,
         "default_bearing": 138,
         "trail_km": 2.2,
         "trail_mi": 1.4
@@ -26197,7 +26197,7 @@
         "summary": "Nordic ski destination in Vastmanland, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 0,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 30,
         "default_bearing": 180
       }
     },
@@ -26236,7 +26236,7 @@
         "website": "https://laspendientesski.com/",
         "lift_count": 16,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 151,
         "trail_km": 30.1,
         "trail_mi": 18.7
@@ -26277,7 +26277,7 @@
         "website": "https://kutsuki-snowpark.com/",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 203,
         "trail_km": 1.4,
         "trail_mi": 0.9
@@ -26317,7 +26317,7 @@
         "summary": "Alpine ski destination in Styria, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 1,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 132,
         "default_bearing": 352,
         "trail_km": 1.9,
         "trail_mi": 1.2
@@ -26358,7 +26358,7 @@
         "website": "http://www.gubaha.com/",
         "lift_count": 9,
         "run_count": 18,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 94,
         "default_bearing": 169,
         "trail_km": 16.2,
         "trail_mi": 10.1
@@ -26399,7 +26399,7 @@
         "website": "https://smolen-ski.pl/",
         "lift_count": 4,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 34,
         "default_bearing": 120,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -26440,7 +26440,7 @@
         "website": "http://www.passostelvio.com/",
         "lift_count": 8,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 186,
         "default_bearing": 140,
         "trail_km": 17.3,
         "trail_mi": 10.7
@@ -26520,7 +26520,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 43,
         "default_bearing": 180,
         "trail_km": 0.4
       }
@@ -26560,7 +26560,7 @@
         "website": "https://www.rtc-krvavec.si/",
         "lift_count": 13,
         "run_count": 60,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 90,
         "default_bearing": 68,
         "trail_km": 16.7,
         "trail_mi": 10.4
@@ -26601,7 +26601,7 @@
         "website": "https://www.planneralm.at/",
         "lift_count": 7,
         "run_count": 30,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 175,
         "default_bearing": 129,
         "trail_km": 14.5,
         "trail_mi": 9
@@ -26683,7 +26683,7 @@
         "website": "https://www.lavex.sk/ls10helpa.htm",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 26,
         "default_bearing": 175,
         "trail_km": 0.4,
         "trail_mi": 0.2
@@ -26723,7 +26723,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 169,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -26806,7 +26806,7 @@
         "website": "https://www.der-blomberg.de/",
         "lift_count": 4,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 91,
         "default_bearing": 213,
         "trail_km": 2.3,
         "trail_mi": 1.4
@@ -26888,7 +26888,7 @@
         "website": "http://www.campostaffi.it/",
         "lift_count": 4,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 42,
         "default_bearing": 195,
         "trail_km": 8.5,
         "trail_mi": 5.3
@@ -26929,7 +26929,7 @@
         "website": "https://www.skigebiet-seefeld.at/",
         "lift_count": 49,
         "run_count": 66,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 119,
         "default_bearing": 109,
         "trail_km": 25.8,
         "trail_mi": 16
@@ -27010,7 +27010,7 @@
         "summary": "Alpine ski destination in Lower Austria, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 46,
         "default_bearing": 273,
         "trail_km": 1.4,
         "trail_mi": 0.9
@@ -27051,7 +27051,7 @@
         "website": "https://www.treetops.com/winter-getaway/skiing/",
         "lift_count": 4,
         "run_count": 21,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 226,
         "trail_km": 5.6,
         "trail_mi": 3.5
@@ -27091,7 +27091,7 @@
         "summary": "Alpine ski destination in Bern, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 14,
         "run_count": 34,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 122,
         "default_bearing": 187,
         "trail_km": 27.1,
         "trail_mi": 16.9
@@ -27172,7 +27172,7 @@
         "website": "http://hiver.gavarnie.com/",
         "lift_count": 8,
         "run_count": 31,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 194,
         "default_bearing": 205,
         "trail_km": 20.8,
         "trail_mi": 13
@@ -27213,7 +27213,7 @@
         "website": "https://www.ladurns.it/",
         "lift_count": 7,
         "run_count": 30,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 82,
         "default_bearing": 264,
         "trail_km": 24.8,
         "trail_mi": 15.4
@@ -27295,7 +27295,7 @@
         "website": "http://www.silkroadresort.com/",
         "lift_count": 8,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 197,
         "trail_km": 10.1,
         "trail_mi": 6.3
@@ -27336,7 +27336,7 @@
         "website": "https://www.brampton.ca/EN/residents/Recreation/Community-Centres/Chinguacousy-Park/pages/ching-mtching.aspx",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 40,
         "default_bearing": 180,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -27376,7 +27376,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 81,
         "default_bearing": 180,
         "trail_km": 0
       }
@@ -27416,7 +27416,7 @@
         "website": "https://www.mairie-aiguilles.com/",
         "lift_count": 3,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 180,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -27497,7 +27497,7 @@
         "website": "https://skilandfairbanks.com/",
         "lift_count": 4,
         "run_count": 63,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 55,
         "default_bearing": 177,
         "trail_km": 29,
         "trail_mi": 18
@@ -27537,7 +27537,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 44,
         "default_bearing": 222,
         "trail_km": 0.6
       }
@@ -27618,7 +27618,7 @@
         "website": "",
         "lift_count": 29,
         "run_count": 101,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 186,
         "default_bearing": 310,
         "trail_km": 57.1,
         "trail_mi": 35.5
@@ -27658,7 +27658,7 @@
         "summary": "Alpine ski destination in Vorarlberg, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 0,
         "run_count": 20,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 274,
         "default_bearing": 294,
         "trail_km": 27.1,
         "trail_mi": 16.9
@@ -27699,7 +27699,7 @@
         "website": "https://www.valbella-sciovie.com/",
         "lift_count": 3,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 181,
         "trail_km": 11.6,
         "trail_mi": 7.2
@@ -27821,7 +27821,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 80,
         "default_bearing": 180,
         "trail_km": 0.2
       }
@@ -27861,7 +27861,7 @@
         "website": "https://www.beidahu.com/",
         "lift_count": 19,
         "run_count": 85,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 29,
         "default_bearing": 158,
         "trail_km": 60.8,
         "trail_mi": 37.8
@@ -27902,7 +27902,7 @@
         "website": "https://www.golakecarroll.com/",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 32,
         "default_bearing": 180,
         "trail_km": 0.1,
         "trail_mi": 0
@@ -28024,7 +28024,7 @@
         "summary": "Nordic ski destination in Norrbotten, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 4,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 85,
         "default_bearing": 51,
         "trail_km": 5.6,
         "trail_mi": 3.5
@@ -28106,7 +28106,7 @@
         "summary": "Mountain ski destination in Quebec, Canada, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 0,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 180,
         "trail_km": 0.9,
         "trail_mi": 0.5
@@ -28186,7 +28186,7 @@
         "summary": "Nordic ski destination in Trøndelag, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 2,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 87,
         "default_bearing": 345,
         "trail_km": 2.7,
         "trail_mi": 1.7
@@ -28226,7 +28226,7 @@
         "summary": "",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 33,
         "default_bearing": 180
       }
     },
@@ -28305,7 +28305,7 @@
         "website": "https://www.mountsima.com/",
         "lift_count": 2,
         "run_count": 22,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 67,
         "default_bearing": 226,
         "trail_km": 9.8,
         "trail_mi": 6.1
@@ -28426,7 +28426,7 @@
         "summary": "Alpine ski destination in Bavaria, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 22,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -28467,7 +28467,7 @@
         "website": "https://www.hundseck.de/skilift_hundseck/",
         "lift_count": 14,
         "run_count": 52,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 152,
         "trail_km": 10.5,
         "trail_mi": 6.5
@@ -28507,7 +28507,7 @@
         "summary": "",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 30,
         "default_bearing": 190
       }
     },
@@ -28586,7 +28586,7 @@
         "summary": "",
         "lift_count": 4,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 14,
         "default_bearing": 159,
         "trail_km": 10.2,
         "trail_mi": 6.3
@@ -28627,7 +28627,7 @@
         "website": "https://www.skalkaostrava.cz/",
         "lift_count": 4,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 26,
         "default_bearing": 176,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -28668,7 +28668,7 @@
         "website": "https://skikostelec.cz/",
         "lift_count": 14,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 50,
         "default_bearing": 287,
         "trail_km": 8.7,
         "trail_mi": 5.4
@@ -28708,7 +28708,7 @@
         "summary": "Mountain ski destination in Oregon, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 79,
         "default_bearing": 180,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -28748,7 +28748,7 @@
         "summary": "",
         "lift_count": 7,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 41,
         "default_bearing": 192,
         "trail_km": 6,
         "trail_mi": 3.7
@@ -28789,7 +28789,7 @@
         "website": "https://www.skilifte-alberschwende.at/",
         "lift_count": 17,
         "run_count": 81,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 136,
         "default_bearing": 193,
         "trail_km": 26.7,
         "trail_mi": 16.6
@@ -28830,7 +28830,7 @@
         "website": "https://www.kitzski.at/",
         "lift_count": 107,
         "run_count": 816,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 148,
         "default_bearing": 43,
         "trail_km": 337.8,
         "trail_mi": 209.9
@@ -28952,7 +28952,7 @@
         "website": "https://www.jurgowski.pl/",
         "lift_count": 8,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 84,
         "default_bearing": 143,
         "trail_km": 3.8,
         "trail_mi": 2.4
@@ -28993,7 +28993,7 @@
         "website": "https://caledonskiclub.com/",
         "lift_count": 8,
         "run_count": 26,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 54,
         "default_bearing": 200,
         "trail_km": 7.3,
         "trail_mi": 4.5
@@ -29034,7 +29034,7 @@
         "website": "https://www.breimsbygdaskisenter.no/",
         "lift_count": 3,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 289,
         "default_bearing": 95,
         "trail_km": 2.8,
         "trail_mi": 1.7
@@ -29115,7 +29115,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 39,
         "default_bearing": 205,
         "trail_km": 1.3,
         "trail_mi": 0.8
@@ -29156,7 +29156,7 @@
         "website": "https://bartlettparks.org/villa-olivia/",
         "lift_count": 5,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 29,
         "default_bearing": 157,
         "trail_km": 1,
         "trail_mi": 0.6
@@ -29238,7 +29238,7 @@
         "website": "https://www.teichalmlifte.at/",
         "lift_count": 4,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 288,
         "trail_km": 4.2,
         "trail_mi": 2.6
@@ -29279,7 +29279,7 @@
         "website": "",
         "lift_count": 1,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 41,
         "default_bearing": 180,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -29320,7 +29320,7 @@
         "website": "https://bucsin.ro",
         "lift_count": 7,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 73,
         "default_bearing": 92,
         "trail_km": 5,
         "trail_mi": 3.1
@@ -29361,7 +29361,7 @@
         "website": "https://www.hohtann-belchen.de/",
         "lift_count": 38,
         "run_count": 158,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 80,
         "default_bearing": 221,
         "trail_km": 103.6,
         "trail_mi": 64.3
@@ -29401,7 +29401,7 @@
         "summary": "Alpine ski destination in Bolzano/Bozen, Italy, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 63,
         "default_bearing": 46,
         "trail_km": 2.2,
         "trail_mi": 1.3
@@ -29482,7 +29482,7 @@
         "website": "https://www.luosto.fi/",
         "lift_count": 3,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 74,
         "default_bearing": 229,
         "trail_km": 7.6,
         "trail_mi": 4.7
@@ -29564,7 +29564,7 @@
         "website": "https://www.stuhleck.at/",
         "lift_count": 14,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 169,
         "trail_km": 22.4,
         "trail_mi": 13.9
@@ -29604,7 +29604,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 71,
         "default_bearing": 208,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -29645,7 +29645,7 @@
         "website": "https://qkamura.or.jp/iwate/ski/",
         "lift_count": 11,
         "run_count": 24,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 176,
         "default_bearing": 357,
         "trail_km": 17.2,
         "trail_mi": 10.7
@@ -29808,7 +29808,7 @@
         "website": "https://www.schladming-dachstein.at/",
         "lift_count": 79,
         "run_count": 421,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 213,
         "default_bearing": 357,
         "trail_km": 238.7,
         "trail_mi": 148.3
@@ -29889,7 +29889,7 @@
         "website": "https://w-shinko.co.jp/komadori-ski/",
         "lift_count": 2,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 267,
         "trail_km": 0.9,
         "trail_mi": 0.6
@@ -29930,7 +29930,7 @@
         "website": "",
         "lift_count": 3,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 62,
         "default_bearing": 214,
         "trail_km": 1.4,
         "trail_mi": 0.9
@@ -29971,7 +29971,7 @@
         "website": "https://skisapphirevalley.com/",
         "lift_count": 3,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 7,
         "default_bearing": 189,
         "trail_km": 0.5,
         "trail_mi": 0.3
@@ -30012,7 +30012,7 @@
         "website": "https://hogevarde.no/",
         "lift_count": 15,
         "run_count": 60,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 126,
         "default_bearing": 316,
         "trail_km": 25.8,
         "trail_mi": 16
@@ -30053,7 +30053,7 @@
         "website": "https://www.eikedalen.no/",
         "lift_count": 9,
         "run_count": 33,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 370,
         "default_bearing": 327,
         "trail_km": 13.1,
         "trail_mi": 8.1
@@ -30135,7 +30135,7 @@
         "website": "http://www.gakutoresort.jp/",
         "lift_count": 4,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 162,
         "default_bearing": 93,
         "trail_km": 8.2,
         "trail_mi": 5.1
@@ -30176,7 +30176,7 @@
         "website": "https://www.pfaenderbahn.at/",
         "lift_count": 6,
         "run_count": 19,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 87,
         "trail_km": 3.1,
         "trail_mi": 1.9
@@ -30257,7 +30257,7 @@
         "summary": "",
         "lift_count": 22,
         "run_count": 33,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 88,
         "default_bearing": 227,
         "trail_km": 14.7,
         "trail_mi": 9.1
@@ -30298,7 +30298,7 @@
         "website": "https://www.skisachticky.sk/",
         "lift_count": 6,
         "run_count": 21,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 54,
         "default_bearing": 253,
         "trail_km": 9.4,
         "trail_mi": 5.8
@@ -30380,7 +30380,7 @@
         "website": "https://www.skilift-simmerberg.de/",
         "lift_count": 3,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 80,
         "default_bearing": 142,
         "trail_km": 2,
         "trail_mi": 1.2
@@ -30461,7 +30461,7 @@
         "summary": "",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 58,
         "default_bearing": 180
       }
     },
@@ -30541,7 +30541,7 @@
         "website": "https://col-de-larzelier.fr/",
         "lift_count": 25,
         "run_count": 97,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 71,
         "default_bearing": 143,
         "trail_km": 64.4,
         "trail_mi": 40
@@ -30581,7 +30581,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 188,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -30622,7 +30622,7 @@
         "website": "http://www.skiclub-warstein.de/",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 32,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -30704,7 +30704,7 @@
         "website": "https://www.skimtholly.com/",
         "lift_count": 15,
         "run_count": 18,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 34,
         "default_bearing": 232,
         "trail_km": 5.1,
         "trail_mi": 3.2
@@ -30745,7 +30745,7 @@
         "website": "https://antoinemountain.ca/",
         "lift_count": 2,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 215,
         "trail_km": 6.6,
         "trail_mi": 4.1
@@ -30786,7 +30786,7 @@
         "website": "https://skithunderhill.myshopify.com/",
         "lift_count": 2,
         "run_count": 20,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 39,
         "default_bearing": 303,
         "trail_km": 6.1,
         "trail_mi": 3.8
@@ -30826,7 +30826,7 @@
         "summary": "",
         "lift_count": 14,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 74,
         "default_bearing": 215,
         "trail_km": 5.7,
         "trail_mi": 3.5
@@ -30907,7 +30907,7 @@
         "website": "https://www.teleskislaforclaz.ch/",
         "lift_count": 52,
         "run_count": 222,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 154,
         "default_bearing": 296,
         "trail_km": 106.1,
         "trail_mi": 65.9
@@ -30947,7 +30947,7 @@
         "summary": "",
         "lift_count": 56,
         "run_count": 120,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 97,
         "default_bearing": 270,
         "trail_km": 45.2,
         "trail_mi": 28.1
@@ -30988,7 +30988,7 @@
         "website": "https://macugnaga-monterosa.com/",
         "lift_count": 9,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 116,
         "default_bearing": 347,
         "trail_km": 16.7,
         "trail_mi": 10.3
@@ -31028,7 +31028,7 @@
         "summary": "",
         "lift_count": 10,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 32,
         "default_bearing": 184,
         "trail_km": 3
       }
@@ -31189,7 +31189,7 @@
         "website": "http://deinkick.ch/",
         "lift_count": 2,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 25,
         "default_bearing": 249,
         "trail_km": 2.6,
         "trail_mi": 1.6
@@ -31230,7 +31230,7 @@
         "website": "https://bukovel.com/",
         "lift_count": 27,
         "run_count": 162,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 69,
         "default_bearing": 300,
         "trail_km": 58.7,
         "trail_mi": 36.5
@@ -31310,7 +31310,7 @@
         "summary": "Alpine ski destination in Saxony, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 2,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 33,
         "default_bearing": 256,
         "trail_km": 0.3,
         "trail_mi": 0.2
@@ -31350,7 +31350,7 @@
         "summary": "Nordic ski destination in Central Finland, Finland, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 6,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 69,
         "default_bearing": 267,
         "trail_km": 5.3,
         "trail_mi": 3.3
@@ -31391,7 +31391,7 @@
         "website": "https://www.ruskotunturi.fi/",
         "lift_count": 2,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 211,
         "trail_km": 1.2,
         "trail_mi": 0.7
@@ -31473,7 +31473,7 @@
         "website": "https://stalbansvt.myrec.com/info/activities/program_details.aspx?ProgramID=21613&AdminPreview=1",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 59,
         "default_bearing": 296,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -31514,7 +31514,7 @@
         "website": "https://skiward.com/",
         "lift_count": 6,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 36,
         "default_bearing": 158,
         "trail_km": 1.7,
         "trail_mi": 1.1
@@ -31554,7 +31554,7 @@
         "summary": "Alpine ski destination in Salzburg, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 4,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 69,
         "default_bearing": 304,
         "trail_km": 4,
         "trail_mi": 2.5
@@ -31594,7 +31594,7 @@
         "summary": "Alpine ski destination in Vorarlberg, Austria, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 29,
         "run_count": 150,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 238,
         "default_bearing": 268,
         "trail_km": 74,
         "trail_mi": 46
@@ -31635,7 +31635,7 @@
         "website": "https://www.mtpeter.com/",
         "lift_count": 6,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 33,
         "default_bearing": 140,
         "trail_km": 3.6,
         "trail_mi": 2.2
@@ -31675,7 +31675,7 @@
         "summary": "Nordic ski destination in Rogaland, Norway, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 4,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 220,
         "default_bearing": 240,
         "trail_km": 6.2,
         "trail_mi": 3.9
@@ -31716,7 +31716,7 @@
         "website": "https://www.meanderoravice.sk/o-skiparku/",
         "lift_count": 3,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 72,
         "default_bearing": 15,
         "trail_km": 3.2,
         "trail_mi": 2
@@ -31757,7 +31757,7 @@
         "website": "https://www.windsor-hotels.co.jp",
         "lift_count": 4,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 49,
         "default_bearing": 281,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -31798,7 +31798,7 @@
         "website": "https://www.platak.hr/",
         "lift_count": 6,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 78,
         "default_bearing": 67,
         "trail_km": 9.5,
         "trail_mi": 5.9
@@ -31839,7 +31839,7 @@
         "website": "https://www.cretdupuy.com/",
         "lift_count": 12,
         "run_count": 25,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 56,
         "default_bearing": 101,
         "trail_km": 21.9,
         "trail_mi": 13.6
@@ -31880,7 +31880,7 @@
         "website": "https://www.stubai.at/skigebiete/schlick2000/",
         "lift_count": 22,
         "run_count": 181,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 132,
         "default_bearing": 215,
         "trail_km": 46.2,
         "trail_mi": 28.7
@@ -31920,7 +31920,7 @@
         "summary": "Alpine ski destination in Glarus, Switzerland, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 5,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 96,
         "default_bearing": 184,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -31961,7 +31961,7 @@
         "website": "https://www.gladstonemi.org/",
         "lift_count": 5,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 49,
         "default_bearing": 278,
         "trail_km": 0.7
       }
@@ -32000,7 +32000,7 @@
         "summary": "Nordic ski destination in Varmland, Sweden, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 46,
         "default_bearing": 171,
         "trail_km": 0.5
       }
@@ -32040,7 +32040,7 @@
         "website": "https://www.ryuoo.com/",
         "lift_count": 69,
         "run_count": 247,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 194,
         "default_bearing": 139,
         "trail_km": 113.3,
         "trail_mi": 70.4
@@ -32080,7 +32080,7 @@
         "summary": "",
         "lift_count": 0,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 19,
         "default_bearing": 180,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -32121,7 +32121,7 @@
         "website": "https://www.tourister.ru/world/asia/kyrgyzstan/city/bishkek/snow/27513",
         "lift_count": 1,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 78,
         "default_bearing": 204,
         "trail_km": 6.6,
         "trail_mi": 4.1
@@ -32161,7 +32161,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 29,
         "default_bearing": 242,
         "trail_km": 5.7,
         "trail_mi": 3.6
@@ -32201,7 +32201,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 62,
         "default_bearing": 276,
         "trail_km": 0.7,
         "trail_mi": 0.4
@@ -32282,7 +32282,7 @@
         "website": "https://skigyimes.ro/",
         "lift_count": 4,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 38,
         "default_bearing": 134,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -32363,7 +32363,7 @@
         "summary": "Alpine ski destination in North Rhine-Westphalia, Germany, offering scenic mountain panoramas, classic groomed pistes, and traditional European ski heritage.",
         "lift_count": 51,
         "run_count": 258,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 56,
         "default_bearing": 238,
         "trail_km": 38.4,
         "trail_mi": 23.9
@@ -32404,7 +32404,7 @@
         "website": "https://www.bergbahn-pillersee.com/",
         "lift_count": 29,
         "run_count": 169,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 187,
         "trail_km": 67.3,
         "trail_mi": 41.8
@@ -32445,7 +32445,7 @@
         "website": "",
         "lift_count": 2,
         "run_count": 0,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 57,
         "default_bearing": 105,
         "trail_km": 1.1
       }
@@ -32485,7 +32485,7 @@
         "website": "https://www.selonnetchabanon-tourisme.fr/",
         "lift_count": 12,
         "run_count": 43,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 62,
         "default_bearing": 191,
         "trail_km": 26.2,
         "trail_mi": 16.3
@@ -32566,7 +32566,7 @@
         "website": "https://www.skilife.ski/en/chamois/",
         "lift_count": 16,
         "run_count": 51,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 94,
         "default_bearing": 20,
         "trail_km": 28.7,
         "trail_mi": 17.8
@@ -32648,7 +32648,7 @@
         "website": "https://solar-skilift.ch",
         "lift_count": 10,
         "run_count": 16,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 111,
         "default_bearing": 300,
         "trail_km": 21.5,
         "trail_mi": 13.3
@@ -32689,7 +32689,7 @@
         "website": "https://www.ankenesalpin.no/",
         "lift_count": 2,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 244,
         "default_bearing": 159,
         "trail_km": 4.7,
         "trail_mi": 2.9
@@ -32729,7 +32729,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 14,
         "default_bearing": 181,
         "trail_km": 1.1,
         "trail_mi": 0.7
@@ -32811,7 +32811,7 @@
         "website": "https://www.canaanresort.com",
         "lift_count": 10,
         "run_count": 138,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 158,
         "trail_km": 25.6,
         "trail_mi": 15.9
@@ -32892,7 +32892,7 @@
         "summary": "",
         "lift_count": 2,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 21,
         "default_bearing": 174,
         "trail_km": 1.4,
         "trail_mi": 0.9
@@ -32933,7 +32933,7 @@
         "website": "https://www.rsjavorna.cz/skijavorna/",
         "lift_count": 3,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 58,
         "default_bearing": 231,
         "trail_km": 2.1,
         "trail_mi": 1.3
@@ -32974,7 +32974,7 @@
         "lift_count": 210,
         "run_count": 1642,
         "website": "https://www.courchevel.com",
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 178,
         "default_bearing": 180,
         "trail_km": 645.6,
         "trail_mi": 401.1
@@ -33014,7 +33014,7 @@
         "summary": "Mountain ski destination in Vermont, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 1,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 69,
         "default_bearing": 191,
         "trail_km": 0.6,
         "trail_mi": 0.4
@@ -33055,7 +33055,7 @@
         "website": "https://www.tus-frammersbach.de/",
         "lift_count": 1,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 7,
         "default_bearing": 207,
         "trail_km": 1.3,
         "trail_mi": 0.8
@@ -33177,7 +33177,7 @@
         "website": "https://www.cascademountain.com/index.php",
         "lift_count": 11,
         "run_count": 60,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 37,
         "default_bearing": 197,
         "trail_km": 20.5,
         "trail_mi": 12.7
@@ -33257,7 +33257,7 @@
         "website": "https://www.visitmonterosa.com/",
         "lift_count": 5,
         "run_count": 25,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 126,
         "default_bearing": 219,
         "trail_km": 8.3,
         "trail_mi": 5.2
@@ -33297,7 +33297,7 @@
         "summary": "",
         "lift_count": 1,
         "run_count": 1,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 15,
         "default_bearing": 180,
         "trail_km": 0.2,
         "trail_mi": 0.1
@@ -33338,7 +33338,7 @@
         "website": "",
         "lift_count": null,
         "run_count": null,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 43,
         "default_bearing": 180
       }
     },
@@ -33377,7 +33377,7 @@
         "website": "https://www.myvalleedejoux.ch",
         "lift_count": 4,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 127,
         "default_bearing": 176,
         "trail_km": 6.8,
         "trail_mi": 4.2
@@ -33459,7 +33459,7 @@
         "website": "https://www.jakubovany.sk/obec-2/sport/zimne-sporty/klasicke-lyzovanie/",
         "lift_count": 4,
         "run_count": 3,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 67,
         "default_bearing": 324,
         "trail_km": 0.6,
         "trail_mi": 0.3
@@ -33500,7 +33500,7 @@
         "website": "https://krasiya.com.ua/en/",
         "lift_count": 4,
         "run_count": 7,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 64,
         "default_bearing": 165,
         "trail_km": 5.4,
         "trail_mi": 3.4
@@ -33541,7 +33541,7 @@
         "website": "https://www.lachtal.at/",
         "lift_count": 10,
         "run_count": 57,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 155,
         "default_bearing": 348,
         "trail_km": 24.3,
         "trail_mi": 15.1
@@ -33582,7 +33582,7 @@
         "website": "https://www.schladming-dachstein.at/de/schladming-dachstein-entdecken/winterberge/galsterberg",
         "lift_count": 5,
         "run_count": 25,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 129,
         "default_bearing": 190,
         "trail_km": 12.8,
         "trail_mi": 7.9
@@ -33623,7 +33623,7 @@
         "website": "https://www.riihivuori.fi/",
         "lift_count": 5,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 233,
         "trail_km": 5.1,
         "trail_mi": 3.2
@@ -33663,7 +33663,7 @@
         "summary": "Nordic ski destination in Lapland, Finland, celebrated for reliable snow-sure winter seasons, sweeping views, and arctic mountain spirit.",
         "lift_count": 7,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 81,
         "default_bearing": 125,
         "trail_km": 7.3,
         "trail_mi": 4.5
@@ -33704,7 +33704,7 @@
         "website": "https://nordstarmurmansk.ru/",
         "lift_count": 3,
         "run_count": 5,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 83,
         "default_bearing": 144,
         "trail_km": 2.6,
         "trail_mi": 1.6
@@ -33785,7 +33785,7 @@
         "summary": "",
         "lift_count": 3,
         "run_count": 2,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 5,
         "default_bearing": 300,
         "trail_km": 0.7,
         "trail_mi": 0.4
@@ -33825,7 +33825,7 @@
         "summary": "",
         "lift_count": 9,
         "run_count": 20,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 68,
         "default_bearing": 199,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -33866,7 +33866,7 @@
         "website": "https://nax-region.ch/",
         "lift_count": 6,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 213,
         "default_bearing": 114,
         "trail_km": 19.3,
         "trail_mi": 12
@@ -33907,7 +33907,7 @@
         "website": "https://www.parcmontbellevue.com/",
         "lift_count": 2,
         "run_count": 11,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 61,
         "default_bearing": 195,
         "trail_km": 3.7,
         "trail_mi": 2.3
