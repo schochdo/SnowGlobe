@@ -1,6 +1,13 @@
 ## [Unreleased]
 
 ### Fixed
+- **Mobile Vertical Globe Centering & Centered Layers/Basemap Panel**:
+  - **What was wrong**: On mobile (including Brave on iOS), `topPad` and `bottomPad` were both `0`, leaving the 3D globe visually off-center between the 44px top header bar and the 56px bottom peek pill. Additionally, `BasemapMenu` opened pinned to the right edge (`absolute right-0 w-88`), awkwardly half-covering the top-left mini-map and top-right zoom buttons.
+  - **The fix**:
+    - Set mobile map padding synchronously on initialization and reactively in `src/App.tsx` to `topPad = 44` and `bottomPad = 56`, centering the globe vertically in the visible canvas.
+    - Centered `BasemapMenu` horizontally on mobile (`fixed top-[...+52px] left-[max(12px,...)] right-[max(12px,...)] mx-auto max-w-sm`) while keeping desktop's `md:absolute md:right-0 md:top-0 md:w-88` anchor intact.
+
+### Fixed
 - **Multi-Coordinate Open-Meteo Batching & 2-Minute Circuit Breaker (Restored 7-Day Snow)**:
   - **What was wrong**: Firing 97+ individual Open-Meteo HTTP requests on mount tripped Open-Meteo's per-minute HTTP 429 rate limit, which locked out all weather requests for 24 hours via `snowglobe_wx_circuit_tripped_until`. (Previously, this was masked by the now-removed fake fallback generator.)
   - **The fix**:

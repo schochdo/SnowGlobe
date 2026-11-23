@@ -1573,8 +1573,8 @@ export default function App() {
     const initialIsMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const initialLeftPad = initialIsMobile ? 0 : (leftDockOpen ? 404 : 20);
     const initialRightPad = 0;
-    const initialTopPad = initialIsMobile ? 0 : 44;
-    const initialBottomPad = 0;
+    const initialTopPad = 44;
+    const initialBottomPad = initialIsMobile ? 56 : 0;
 
     const initialZoom = computeGlobeFitZoom(
       typeof window !== 'undefined' ? window.innerWidth : 1440,
@@ -2602,8 +2602,8 @@ export default function App() {
     const isMob = typeof window !== 'undefined' && window.innerWidth < 768;
     const leftPad = isMob ? 0 : (leftDockOpen ? 404 : 20);
     const rightPad = 0;
-    const bottomPad = 0;
-    const topPad = isMob ? 0 : 44;
+    const bottomPad = isMob ? 56 : 0;
+    const topPad = 44;
 
     try {
       const curPad = mapRef.current.getPadding();

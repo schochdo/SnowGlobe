@@ -180,7 +180,7 @@ export const BasemapMenu: React.FC<BasemapMenuProps> = ({
               e.stopPropagation();
               setIsSticky(true);
             }}
-            className="absolute right-0 top-0 w-88 max-w-[calc(100vw-1.5rem)] bg-[#FAF8F3] border border-[#D6D0C2] rounded-md p-3.5 space-y-3 z-30 text-xs shadow-xl animate-slide-down max-h-[calc(100dvh-4.5rem-max(0px,env(safe-area-inset-top,0px)))] overflow-y-auto"
+            className="fixed top-[calc(max(0px,env(safe-area-inset-top,0px))+52px)] left-[max(12px,env(safe-area-inset-left,0px))] right-[max(12px,env(safe-area-inset-right,0px))] mx-auto max-w-sm md:absolute md:left-auto md:right-0 md:top-0 md:mx-0 md:w-88 md:max-w-[calc(100vw-1.5rem)] bg-[#FAF8F3] border border-[#D6D0C2] rounded-md p-3.5 space-y-3 z-35 text-xs shadow-xl animate-slide-down max-h-[calc(100dvh-5rem-max(0px,env(safe-area-inset-top,0px)))] overflow-y-auto"
           >
             {/* Header: Segmented Tabs (Layers | Basemap) + Close button */}
             <div className="flex items-center justify-between border-b border-[#D6D0C2] pb-2.5 gap-2">
