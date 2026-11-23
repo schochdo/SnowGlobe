@@ -1,6 +1,10 @@
 ## [Unreleased]
 
 ### Feat
+- **Icon-Only Stacked Sheets Map Button on Mobile**:
+  - Replaced the `"Layers"` text+icon button on the mobile top bar in `src/App.tsx` with a compact 40×40px stacked-sheets (`<Layers />`) icon button, matching standard cartographic app conventions and giving the search bar more room.
+
+### Feat
 - **Moved Mobile Snow Globe Brand Wordmark to Top of Page**:
   - Removed the mobile-only `SNOW [Crest] GLOBE` brand row from inside the slide-up drawer (`src/components/sidebar/DirectoryList.tsx`).
   - Placed the `SNOW [Crest] GLOBE` wordmark pill centered at the top of the mobile page in `src/App.tsx` above the floating search/filter bar (respecting `env(safe-area-inset-top)`), and adjusted the mobile filter popover and right-side navigation control offsets (`+86px` / `+88px`) so nothing overlaps.

@@ -3605,11 +3605,11 @@ export default function App() {
               setMobileFilterPopoverOpen(false);
             }
           }}
-          className="h-10 px-3 bg-[#FAF8F3] border border-[#2C2A27] rounded-md flex items-center gap-1.5 text-xs font-bold text-[#1C1B18] shadow-sm cursor-pointer hover:bg-[#EFECE4] transition-colors shrink-0"
+          className="w-10 h-10 bg-[#FAF8F3] border border-[#2C2A27] rounded-md flex items-center justify-center text-[#1C1B18] shadow-sm cursor-pointer hover:bg-[#EFECE4] transition-colors shrink-0"
+          title="Map basemaps & layers"
           aria-label="Toggle map layers and basemaps"
         >
-          <Layers className="w-3.5 h-3.5" />
-          <span>Layers</span>
+          <Layers className="w-4 h-4" />
         </button>
         </div>
       </div>
