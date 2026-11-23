@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Prevented Ski Trails from Simplifying into Straight Lines at Mid-Zoom Levels**:
+  - **What was wrong**: `SOURCE_IDS.LIVE_PISTES` in `src/layers/trailLayers.ts` used `tolerance: 0.375`, causing MapLibre's `geojson-vt` Douglas-Peucker simplifier to collapse curved ski runs (e.g., at Winter Park) into straight line segments at intermediate zoom levels.
+  - **The fix**: Set `tolerance: 0` on `SOURCE_IDS.LIVE_PISTES` to preserve exact trail curves across all zoom levels.
+
+### Fixed
 - **Fixed Inverted International Border Labels Worldwide (US–Mexico & 182 Other Borders)**:
   - **What was wrong**: 181 of 383 `country_border` LineStrings in `public/data/world_boundaries.geojson` (including US–Mexico, `dx = -19.99`) were oriented East $\to$ West. Because MapLibre renders `LEFT\nRIGHT` line labels with `text-keep-upright: true`, it flipped those labels 180°, placing country names on the wrong side of the border (e.g., `MEXICO` on the US side and `UNITED STATES` on the Mexico side).
   - **The fix**: Created and ran `scripts/normalize_border_orientation.cjs` to orient all 183 East $\to$ West border segments West $\to$ East (`dx >= 0`) while swapping `name_left`/`name_right` and `adm0_left`/`adm0_right`, ensuring every international border label worldwide sits on the correct country side.

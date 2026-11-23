@@ -12,7 +12,7 @@ export function registerTrailLayers(map: MapLibreMap, showDownhill: boolean): vo
     data: { type: 'FeatureCollection', features: [] },
     maxzoom: 22,
     buffer: 128,
-    tolerance: 0.375,
+    tolerance: 0, // Preserve exact trail curves at all zoom levels (prevents Douglas-Peucker straight-line simplification)
   });
 
   // Translucent difficulty fill for freeride bowls, glades, and alpine areas
