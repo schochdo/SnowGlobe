@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Restored Mobile Double-Tap Zoom**:
+  - **What was wrong**: The capture-phase `onTouchDblClickGuard` added in `3f15bce7` blocked MapLibre's `doubleClickZoom` handler on mobile entirely.
+  - **The fix**: Removed `onTouchDblClickGuard` from `src/App.tsx` so MapLibre's native double-tap zoom works reliably again.
+
+### Fixed
 - **Prevented Unnamed Trails from Selecting Entire Ski Area on Click (Pirika & Global)**:
   - **What was wrong**: In `src/utils/trailAnalysis.ts`, `aggregateConnectedTrailFeatures()` ran BFS connectivity matching across unnamed/generic trails (`isGeneric === true`). At resorts where pistes are unnamed in OSM (like Pirika Ski Area in Japan), clicking a single run chained across lift/base junctions and highlighted every trail on the mountain.
   - **The fix**: Short-circuited `aggregateConnectedTrailFeatures()` to return `selectedFeat` immediately when `isGeneric` is true, so multi-segment aggregation only stitches ways that share an explicit trail name.

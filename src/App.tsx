@@ -1950,26 +1950,10 @@ export default function App() {
       }
     };
 
-    let lastTouchEndMs = 0;
-    const onTouchEndTracked = (e: TouchEvent) => {
-      lastTouchEndMs = performance.now();
-      onTouchEnd(e);
-    };
-
-    // Suppress iOS WebKit's synthetic `dblclick` fired ~250ms after a touch double-tap,
-    // which otherwise triggers MapLibre's doubleClickZoom a second time (2-step zoom).
-    const onTouchDblClickGuard = (e: MouseEvent) => {
-      if (performance.now() - lastTouchEndMs < 600) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-    };
-
     container.addEventListener('touchstart', onTouchStart, { passive: false });
     container.addEventListener('touchmove', onTouchMove, { passive: false });
-    container.addEventListener('touchend', onTouchEndTracked, { passive: true });
-    container.addEventListener('touchcancel', onTouchEndTracked, { passive: true });
-    container.addEventListener('dblclick', onTouchDblClickGuard, true);
+    container.addEventListener('touchend', onTouchEnd, { passive: true });
+    container.addEventListener('touchcancel', onTouchEnd, { passive: true });
 
     const canvas = map.getCanvas();
     const canvasContainer = map.getCanvasContainer();
@@ -2595,9 +2579,8 @@ export default function App() {
       container.removeEventListener('wheel', onWheel as any, { capture: true } as any);
       container.removeEventListener('touchstart', onTouchStart as any);
       container.removeEventListener('touchmove', onTouchMove as any);
-      container.removeEventListener('touchend', onTouchEndTracked as any);
-      container.removeEventListener('touchcancel', onTouchEndTracked as any);
-      container.removeEventListener('dblclick', onTouchDblClickGuard, true);
+      container.removeEventListener('touchend', onTouchEnd as any);
+      container.removeEventListener('touchcancel', onTouchEnd as any);
       canvasContainer.removeEventListener('mousedown', onCanvasMouseDown as any, { capture: true } as any);
       window.removeEventListener('mouseup', onGlobalPointerUp, { capture: true } as any);
       window.removeEventListener('pointerup', onGlobalPointerUp, { capture: true } as any);
