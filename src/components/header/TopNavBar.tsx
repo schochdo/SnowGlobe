@@ -30,7 +30,7 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
   }, []);
 
   return (
-    <header className="hidden md:flex absolute top-0 inset-x-0 z-40 h-[calc(44px+max(0px,env(safe-area-inset-top,0px)))] pt-[max(0px,env(safe-area-inset-top,0px))] pl-[max(16px,env(safe-area-inset-left,0px))] pr-[max(16px,env(safe-area-inset-right,0px))] items-center justify-between bg-[#F7F4ED] border-b border-[#D6D0C2]">
+    <header className="hidden md:flex absolute top-0 inset-x-0 z-40 h-[calc(44px+max(0px,env(safe-area-inset-top,0px)))] pt-[max(0px,env(safe-area-inset-top,0px))] pl-[max(20px,env(safe-area-inset-left,0px))] pr-[max(20px,env(safe-area-inset-right,0px))] items-center justify-between bg-[#F7F4ED] border-b border-[#D6D0C2]">
       <div className="flex items-center min-w-0">
         {/* Tracked Mountain Editorial Wordmark with Alpine Snow Globe Crest in the center */}
         <button

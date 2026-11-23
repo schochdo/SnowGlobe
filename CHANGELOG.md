@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+### Fixed
+- **iPhone Landscape Layout, Dynamic Island & Rounded Corner Clearances**:
+  - **What was wrong**: On iPhone in landscape (~844–932px wide × 390–430px tall), Tailwind's `md:` breakpoint opened the 384px `LeftDock` over half the map, and hardcoded `md:left-8` / `md:left-[420px]` offsets ignored `env(safe-area-inset-left)` for the Dynamic Island and rounded display corners.
+  - **The fix**:
+    - Auto-collapsed `LeftDock` on startup and orientation resize when `window.innerHeight < 560` (`src/App.tsx`), and narrowed `LeftDock` to `w-80` (`lg:w-96`) on compact landscape screens (`src/components/sidebar/LeftDock.tsx`).
+    - Replaced hardcoded `md:left-8` / `md:left-[420px]` with `env(safe-area-inset-left)`-aware calc offsets, increased portrait top/horizontal clearances (`max(14px, ...)` / `max(16px, ...)`), and widened `TopNavBar` horizontal safe-area padding (`max(20px, env(safe-area-inset-*))`) to clear both the Dynamic Island and rounded corners.
+    - Hid `RegionalLocator` on short landscape viewports (`[@media(max-height:500px)]:hidden`) to prevent vertical overlap with bottom map instruments.
+
 ### Feat
 - **Consolidated Mobile Filters into Search/Directory Panel Alone**:
   - Removed the duplicate `Filters` button from the mobile floating top bar in `src/App.tsx` so filters live in one place (inside the Search/Directory panel, matching desktop).

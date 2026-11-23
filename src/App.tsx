@@ -486,7 +486,21 @@ export default function App() {
         });
     }
   };
-  const [leftDockOpen, setLeftDockOpen] = useState(true);
+  // Auto-collapse LeftDock on short landscape phones (e.g., iPhone landscape ~390-430px tall)
+  const [leftDockOpen, setLeftDockOpen] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return window.innerHeight >= 560;
+  });
+
+  useEffect(() => {
+    const handleOrientationResize = () => {
+      if (window.innerWidth >= 768 && window.innerHeight < 560) {
+        setLeftDockOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleOrientationResize);
+    return () => window.removeEventListener('resize', handleOrientationResize);
+  }, []);
   const [mapMenuOpen, setMapMenuOpen] = useState(false);
   const [mapLegendOpen, setMapLegendOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -3507,7 +3521,7 @@ export default function App() {
 
       {/* MOBILE TOP HEADER: SNOW GLOBE TITLE + FLOATING SEARCH BAR (< 768px) */}
       <div
-        className={`md:hidden fixed top-[calc(max(10px,env(safe-area-inset-top,0px))+2px)] left-[max(12px,env(safe-area-inset-left,0px))] right-[max(12px,env(safe-area-inset-right,0px))] z-20 flex flex-col gap-1.5 transition-opacity duration-200 select-none ${
+        className={`md:hidden fixed top-[calc(max(14px,env(safe-area-inset-top,0px))+4px)] left-[max(16px,env(safe-area-inset-left,0px))] right-[max(16px,env(safe-area-inset-right,0px))] z-20 flex flex-col gap-1.5 transition-opacity duration-200 select-none ${
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
@@ -3807,8 +3821,10 @@ export default function App() {
 
       {/* FLOATING TOP-LEFT REGIONAL LOCATOR & DESKTOP NAVIGATION CONTROLS */}
       <div
-        className={`fixed md:absolute top-[calc(max(12px,env(safe-area-inset-top,0px))+56px)] md:top-[calc(max(0px,env(safe-area-inset-top,0px))+56px)] left-[max(12px,env(safe-area-inset-left,0px))] md:left-8 ${
-          leftDockOpen ? 'md:left-[420px]' : 'md:left-8'
+        className={`fixed md:absolute top-[calc(max(14px,env(safe-area-inset-top,0px))+90px)] md:top-[calc(max(0px,env(safe-area-inset-top,0px))+56px)] left-[max(16px,env(safe-area-inset-left,0px))] ${
+          leftDockOpen
+            ? 'md:left-[calc(max(0px,env(safe-area-inset-left,0px))+408px)]'
+            : 'md:left-[calc(max(12px,env(safe-area-inset-left,0px))+24px)]'
         } z-20 flex items-start gap-2 transition-[left,opacity] duration-200 ease-out select-none ${
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
@@ -3825,20 +3841,22 @@ export default function App() {
             hasLocation={!!userLocation}
           />
         </div>
-        <RegionalLocator
-          locatorOpen={locatorOpen}
-          onToggleLocator={() => {
-            setLocatorOpen(!locatorOpen);
-            if (!locatorOpen) setMapMenuOpen(false);
-          }}
-          onCloseLocator={() => setLocatorOpen(false)}
-          selectedResort={selectedResort}
-          mapCenter={mapCenter}
-          mapZoom={mapZoom}
-          mapBearing={mapBearing}
-          viewportBounds={viewportBounds}
-          resorts={resorts}
-        />
+        <div className="[@media(max-height:500px)]:hidden">
+          <RegionalLocator
+            locatorOpen={locatorOpen}
+            onToggleLocator={() => {
+              setLocatorOpen(!locatorOpen);
+              if (!locatorOpen) setMapMenuOpen(false);
+            }}
+            onCloseLocator={() => setLocatorOpen(false)}
+            selectedResort={selectedResort}
+            mapCenter={mapCenter}
+            mapZoom={mapZoom}
+            mapBearing={mapBearing}
+            viewportBounds={viewportBounds}
+            resorts={resorts}
+          />
+        </div>
       </div>
 
       {/* MOBILE FLOATING TOP-RIGHT NAVIGATION CONTROLS (ZOOM, NORTH, LOCATE) */}
