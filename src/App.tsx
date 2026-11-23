@@ -3505,12 +3505,47 @@ export default function App() {
         onToggleProjection={handleToggleProjection}
       />
 
-      {/* MOBILE COMPACT FLOATING TOP BAR (< 768px) */}
+      {/* MOBILE TOP HEADER: SNOW GLOBE TITLE + FLOATING SEARCH BAR (< 768px) */}
       <div
-        className={`md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+6px)] left-[max(12px,env(safe-area-inset-left,0px))] right-[max(12px,env(safe-area-inset-right,0px))] z-20 flex items-center gap-2 transition-opacity duration-200 select-none ${
+        className={`md:hidden fixed top-[calc(max(10px,env(safe-area-inset-top,0px))+2px)] left-[max(12px,env(safe-area-inset-left,0px))] right-[max(12px,env(safe-area-inset-right,0px))] z-20 flex flex-col gap-1.5 transition-opacity duration-200 select-none ${
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
+        {/* Editorial Brand Wordmark Pill at Top of Page */}
+        <div className="flex items-center justify-center">
+          <button
+            type="button"
+            onClick={handleResetToGlobalExtent}
+            className="inline-flex items-center px-3 py-1 rounded-full bg-[#FAF8F3]/95 backdrop-blur-xs border border-[#2C2A27]/80 shadow-sm select-none shrink-0 cursor-pointer group focus:outline-hidden"
+            title="Reset to Global Extent"
+            aria-label="Snow Globe: Reset to Global Extent"
+          >
+            <span className="font-bold tracking-[0.16em] text-[13px] uppercase text-[#1C1B18] group-hover:text-[#B84A39] transition-colors leading-none">
+              SNOW
+            </span>
+            <svg
+              className="w-4.5 h-4.5 mx-1.5 shrink-0 -mt-0.5 group-hover:scale-105 transition-transform"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="10.5" r="8" stroke="#1C1B18" strokeWidth="1.3" />
+              <path d="M7 20H17" stroke="#1C1B18" strokeWidth="1.4" strokeLinecap="round" />
+              <path d="M8.5 18.5L7 20M15.5 18.5L17 20" stroke="#1C1B18" strokeWidth="1.2" strokeLinecap="round" />
+              <path d="M6 16L10.5 10L13.5 14L15 12L18 16" stroke="#5C5852" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              <polygon points="10.5,10 12,12 9,12" fill="#B84A39" />
+              <circle cx="10" cy="6" r="0.75" fill="#B84A39" />
+              <circle cx="14.5" cy="7.2" r="0.65" fill="#8A847C" />
+              <circle cx="7.5" cy="9.5" r="0.5" fill="#8A847C" />
+            </svg>
+            <span className="font-bold tracking-[0.16em] text-[13px] uppercase text-[#1C1B18] group-hover:text-[#B84A39] transition-colors leading-none">
+              GLOBE
+            </span>
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2">
         <div className="flex-1 h-10 bg-[#FAF8F3] border border-[#2C2A27] rounded-md px-3 flex items-center gap-2 shadow-sm min-w-0 transition-colors">
           <button
             onClick={handleOpenMobileSearch}
@@ -3576,13 +3611,14 @@ export default function App() {
           <Layers className="w-3.5 h-3.5" />
           <span>Layers</span>
         </button>
+        </div>
       </div>
 
       {/* MOBILE COMPACT FILTER POPOVER (LIGHT SLIDING, SIMPLE EDITORIAL APPEARANCE) */}
       {mobileFilterPopoverOpen && mobileSheetState !== 'full' && (
         <div
           ref={mobileFilterPopoverRef}
-          className="md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+54px)] left-[max(12px,env(safe-area-inset-left,0px))] right-[max(12px,env(safe-area-inset-right,0px))] sm:left-auto sm:right-3 sm:w-92 z-30 bg-[#FAF8F3] border border-[#2C2A27] rounded-md p-3.5 shadow-xl max-h-[calc(100dvh-5.5rem-max(0px,env(safe-area-inset-top,0px)))] overflow-y-auto animate-slide-down select-none"
+          className="md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+86px)] left-[max(12px,env(safe-area-inset-left,0px))] right-[max(12px,env(safe-area-inset-right,0px))] sm:left-auto sm:right-3 sm:w-92 z-30 bg-[#FAF8F3] border border-[#2C2A27] rounded-md p-3.5 shadow-xl max-h-[calc(100dvh-7.5rem-max(0px,env(safe-area-inset-top,0px)))] overflow-y-auto animate-slide-down select-none"
         >
           {/* Header */}
           <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#D6D0C2]">
@@ -3825,7 +3861,7 @@ export default function App() {
 
       {/* MOBILE FLOATING TOP-RIGHT NAVIGATION CONTROLS (ZOOM, NORTH, LOCATE) */}
       <div
-        className={`md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+56px)] right-[max(12px,env(safe-area-inset-right,0px))] z-20 transition-opacity duration-200 select-none ${
+        className={`md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+88px)] right-[max(12px,env(safe-area-inset-right,0px))] z-20 transition-opacity duration-200 select-none ${
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >

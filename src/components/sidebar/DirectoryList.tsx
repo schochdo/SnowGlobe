@@ -187,51 +187,6 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
       {/* Search & Directory Controls (Sticky Top) */}
       <div className="p-2.5 sm:p-3 border-b border-[#D6D0C2] bg-[#FAF8F3] space-y-2 shrink-0">
         {/* Mobile App Wordmark & Crest Header */}
-        <div className="md:hidden flex items-center justify-between pb-1 border-b border-[#EAE5D9]">
-          <button
-            type="button"
-            onClick={onResetToGlobal}
-            className="flex items-center select-none shrink-0 cursor-pointer group text-left p-0 bg-transparent border-0 focus:outline-hidden"
-            title="Reset to Global Extent"
-            aria-label="Snow Globe: Reset to Global Extent"
-          >
-            <span className="font-bold tracking-[0.16em] text-[15px] uppercase text-[#1C1B18] group-hover:text-[#B84A39] transition-colors leading-none">
-              SNOW
-            </span>
-
-            {/* Alpine Snow Globe Crest in between SNOW and GLOBE */}
-            <svg
-              className="w-5.5 h-5.5 mx-2 shrink-0 -mt-0.5 group-hover:scale-105 transition-transform"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              {/* Glass Sphere Dome */}
-              <circle cx="12" cy="10.5" r="8" stroke="#1C1B18" strokeWidth="1.3" />
-              {/* Pedestal Base */}
-              <path d="M7 20H17" stroke="#1C1B18" strokeWidth="1.4" strokeLinecap="round" />
-              <path d="M8.5 18.5L7 20M15.5 18.5L17 20" stroke="#1C1B18" strokeWidth="1.2" strokeLinecap="round" />
-              {/* Alpine Mountain Silhouette inside Dome */}
-              <path d="M6 16L10.5 10L13.5 14L15 12L18 16" stroke="#5C5852" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-              {/* Vermilion Summit Accent */}
-              <polygon points="10.5,10 12,12 9,12" fill="#B84A39" />
-              {/* Drifting Snow Crystals */}
-              <circle cx="10" cy="6" r="0.75" fill="#B84A39" />
-              <circle cx="14.5" cy="7.2" r="0.65" fill="#8A847C" />
-              <circle cx="7.5" cy="9.5" r="0.5" fill="#8A847C" />
-            </svg>
-
-            <span className="font-bold tracking-[0.16em] text-[15px] uppercase text-[#1C1B18] group-hover:text-[#B84A39] transition-colors leading-none">
-              GLOBE
-            </span>
-          </button>
-
-          <span className="text-[10px] font-semibold tracking-wider uppercase text-[#8A847C] font-mono">
-            Alpine Atlas
-          </span>
-        </div>
-
         {/* Row 1: Search Input + Filters Button */}
         <div className="flex items-center gap-2">
           <div className="relative flex-1 flex items-center min-w-0">

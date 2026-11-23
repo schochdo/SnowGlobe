@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Feat
+- **Moved Mobile Snow Globe Brand Wordmark to Top of Page**:
+  - Removed the mobile-only `SNOW [Crest] GLOBE` brand row from inside the slide-up drawer (`src/components/sidebar/DirectoryList.tsx`).
+  - Placed the `SNOW [Crest] GLOBE` wordmark pill centered at the top of the mobile page in `src/App.tsx` above the floating search/filter bar (respecting `env(safe-area-inset-top)`), and adjusted the mobile filter popover and right-side navigation control offsets (`+86px` / `+88px`) so nothing overlaps.
+
+### Feat
 - **North American Skiable Acres & Annual Snowfall Enrichment via Wikidata/Wikipedia**:
   - **What changed**: Created and ran `scripts/enrich_na_acres_wikidata.cjs`, querying Wikidata SPARQL (`wd:Q130003`) for US/Canada ski resorts and fetching official English Wikipedia `{{Infobox ski area}}` templates via the MediaWiki API across 435 articles.
   - Enriched 257 North American downhill resorts in `public/data/global_ski_areas.json` with authentic `skiable_acres` and 223 with authentic `avg_snowfall_in` (preserving all existing verified official specs).
