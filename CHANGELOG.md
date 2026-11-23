@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Feat
+- **Matched Mobile `FT / M` Selector Height & Editorial Matte Styling**:
+  - Set the mobile `FT / M` toggle container in `src/App.tsx` to `h-8` (matching the 32px stacked-sheets map button) and replaced the heavy black active pill with a matte archival paper active chip (`bg-[#FAF8F3] text-[#1C1B18] border-[#A8A299]`).
+
 ### Fixed
 - **Restored Mobile Double-Tap Zoom**:
   - **What was wrong**: The capture-phase `onTouchDblClickGuard` added in `3f15bce7` blocked MapLibre's `doubleClickZoom` handler on mobile entirely.

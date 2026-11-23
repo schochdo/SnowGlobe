@@ -3538,14 +3538,14 @@ export default function App() {
 
         <div className="flex items-center gap-2 shrink-0">
           {/* Units Toggle (FT / M) */}
-          <div className="flex items-center bg-[#EFECE4] rounded-md border border-[#D6D0C2] p-0.5 text-[10.5px] font-bold">
+          <div className="flex items-center h-8 bg-[#EFECE4] rounded-md border border-[#D6D0C2] p-0.5 text-[10.5px] font-bold">
             <button
               type="button"
               onClick={() => handleSetUnitsMetric(false)}
-              className={`px-2 py-1 rounded-[4px] transition-colors cursor-pointer leading-none ${
+              className={`h-full px-2.5 flex items-center justify-center rounded-[4px] transition-colors cursor-pointer leading-none ${
                 !unitsMetric
-                  ? 'bg-[#1C1B18] text-[#FAF8F3] shadow-2xs'
-                  : 'text-[#5C5852] hover:text-[#1C1B18]'
+                  ? 'bg-[#FAF8F3] text-[#1C1B18] border border-[#A8A299]'
+                  : 'text-[#5C5852] hover:text-[#1C1B18] border border-transparent'
               }`}
               title="Imperial units (ft, in, ac, mi)"
               aria-label="Imperial units"
@@ -3555,10 +3555,10 @@ export default function App() {
             <button
               type="button"
               onClick={() => handleSetUnitsMetric(true)}
-              className={`px-2 py-1 rounded-[4px] transition-colors cursor-pointer leading-none ${
+              className={`h-full px-2.5 flex items-center justify-center rounded-[4px] transition-colors cursor-pointer leading-none ${
                 unitsMetric
-                  ? 'bg-[#1C1B18] text-[#FAF8F3] shadow-2xs'
-                  : 'text-[#5C5852] hover:text-[#1C1B18]'
+                  ? 'bg-[#FAF8F3] text-[#1C1B18] border border-[#A8A299]'
+                  : 'text-[#5C5852] hover:text-[#1C1B18] border border-transparent'
               }`}
               title="Metric units (m, cm, ha, km)"
               aria-label="Metric units"
