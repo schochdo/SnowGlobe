@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Eliminated Rectangular Trail Cutout Holes on Mobile 3D Terrain (Winter Park & Global)**:
+  - **What was wrong**: `SOURCE_IDS.LIVE_PISTES` in `src/layers/trailLayers.ts` had `maxzoom: 22` and `buffer: 128`. On mobile 3D pitched terrain (`maxTileCacheSize: 60`), generating dozens of tiny z16–z18 GeoJSON vector tiles caused foreground tile eviction/draping holes that sliced trails and lifts off along a straight rectangular tile boundary.
+  - **The fix**: Set `maxzoom: 15` (matching Mapterhorn DEM's native maxzoom, which overscales crisply to z22 with 16x–64x fewer tiles) and increased `buffer: 256` on `SOURCE_IDS.LIVE_PISTES`.
+
+### Fixed
 - **Prevented Ski Trails from Simplifying into Straight Lines at Mid-Zoom Levels**:
   - **What was wrong**: `SOURCE_IDS.LIVE_PISTES` in `src/layers/trailLayers.ts` used `tolerance: 0.375`, causing MapLibre's `geojson-vt` Douglas-Peucker simplifier to collapse curved ski runs (e.g., at Winter Park) into straight line segments at intermediate zoom levels.
   - **The fix**: Set `tolerance: 0` on `SOURCE_IDS.LIVE_PISTES` to preserve exact trail curves across all zoom levels.

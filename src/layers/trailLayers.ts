@@ -6,13 +6,15 @@ import { SOURCE_IDS, LAYER_IDS } from './types';
  */
 export function registerTrailLayers(map: MapLibreMap, showDownhill: boolean): void {
   // 1. Vector Ski Trails Source
+  // maxzoom: 15 aligns 1:1 with Mapterhorn DEM tiles and overscales crisply to z22,
+  // preventing foreground z16-z18 GeoJSON tile eviction holes on mobile 3D terrain.
   map.addSource(SOURCE_IDS.LIVE_PISTES, {
     type: 'geojson',
     promoteId: 'id',
     data: { type: 'FeatureCollection', features: [] },
-    maxzoom: 22,
-    buffer: 128,
-    tolerance: 0, // Preserve exact trail curves at all zoom levels (prevents Douglas-Peucker straight-line simplification)
+    maxzoom: 15,
+    buffer: 256,
+    tolerance: 0, // Preserve exact trail curves at all zoom levels
   });
 
   // Translucent difficulty fill for freeride bowls, glades, and alpine areas
