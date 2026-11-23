@@ -3519,80 +3519,38 @@ export default function App() {
         onToggleProjection={handleToggleProjection}
       />
 
-      {/* MOBILE TOP HEADER: SNOW GLOBE TITLE + FLOATING SEARCH BAR (< 768px) */}
-      <div
-        className={`md:hidden fixed top-[calc(max(14px,env(safe-area-inset-top,0px))+4px)] left-[max(16px,env(safe-area-inset-left,0px))] right-[max(16px,env(safe-area-inset-right,0px))] z-20 flex flex-col gap-1.5 transition-opacity duration-200 select-none ${
-          mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        {/* Editorial Brand Wordmark Pill at Top of Page */}
-        <div className="flex items-center justify-center">
-          <button
-            type="button"
-            onClick={handleResetToGlobalExtent}
-            className="inline-flex items-center px-3 py-1 rounded-full bg-[#FAF8F3]/95 backdrop-blur-xs border border-[#2C2A27]/80 shadow-sm select-none shrink-0 cursor-pointer group focus:outline-hidden"
-            title="Reset to Global Extent"
-            aria-label="Snow Globe: Reset to Global Extent"
+      {/* MOBILE FULL-WIDTH TOP TITLE BAR (< 768px) */}
+      <header className="md:hidden fixed top-0 inset-x-0 z-20 h-[calc(44px+max(0px,env(safe-area-inset-top,0px)))] pt-[max(0px,env(safe-area-inset-top,0px))] pl-[max(16px,env(safe-area-inset-left,0px))] pr-[max(16px,env(safe-area-inset-right,0px))] bg-[#F7F4ED] border-b border-[#D6D0C2] flex items-center justify-between select-none">
+        <button
+          type="button"
+          onClick={handleResetToGlobalExtent}
+          className="inline-flex items-center select-none shrink-0 cursor-pointer group p-0 bg-transparent border-0 focus:outline-hidden"
+          title="Reset to Global Extent"
+          aria-label="Snow Globe: Reset to Global Extent"
+        >
+          <span className="font-bold tracking-[0.16em] text-[15px] uppercase text-[#1C1B18] group-hover:text-[#B84A39] transition-colors leading-none">
+            SNOW
+          </span>
+          <svg
+            className="w-5 h-5 mx-1.5 shrink-0 -mt-0.5 group-hover:scale-105 transition-transform"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
           >
-            <span className="font-bold tracking-[0.16em] text-[13px] uppercase text-[#1C1B18] group-hover:text-[#B84A39] transition-colors leading-none">
-              SNOW
-            </span>
-            <svg
-              className="w-4.5 h-4.5 mx-1.5 shrink-0 -mt-0.5 group-hover:scale-105 transition-transform"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <circle cx="12" cy="10.5" r="8" stroke="#1C1B18" strokeWidth="1.3" />
-              <path d="M7 20H17" stroke="#1C1B18" strokeWidth="1.4" strokeLinecap="round" />
-              <path d="M8.5 18.5L7 20M15.5 18.5L17 20" stroke="#1C1B18" strokeWidth="1.2" strokeLinecap="round" />
-              <path d="M6 16L10.5 10L13.5 14L15 12L18 16" stroke="#5C5852" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-              <polygon points="10.5,10 12,12 9,12" fill="#B84A39" />
-              <circle cx="10" cy="6" r="0.75" fill="#B84A39" />
-              <circle cx="14.5" cy="7.2" r="0.65" fill="#8A847C" />
-              <circle cx="7.5" cy="9.5" r="0.5" fill="#8A847C" />
-            </svg>
-            <span className="font-bold tracking-[0.16em] text-[13px] uppercase text-[#1C1B18] group-hover:text-[#B84A39] transition-colors leading-none">
-              GLOBE
-            </span>
-          </button>
-        </div>
-
-        <div className="flex items-center gap-2">
-        <div className="flex-1 h-10 bg-[#FAF8F3] border border-[#2C2A27] rounded-md px-3 flex items-center gap-2 shadow-sm min-w-0 transition-colors">
-          <button
-            onClick={handleOpenMobileSearch}
-            className="flex-1 flex items-center gap-2 text-left text-xs font-medium text-[#5C5852] cursor-pointer select-none truncate hover:text-[#1C1B18] transition-colors min-w-0 py-2 -my-2"
-            aria-label="Search ski areas, peaks, countries"
-          >
-            <Search className="w-4 h-4 text-[#8A847C] shrink-0" />
-            <span className="truncate text-[#1C1B18] font-semibold">
-              {searchQuery || 'Search'}
-            </span>
-          </button>
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setSearchQuery('');
-              }}
-              className="text-[#8A847C] hover:text-[#1C1B18] p-1 -mr-1 rounded cursor-pointer shrink-0"
-              aria-label="Clear search"
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
-          )}
-          {activeFiltersCount > 0 && (
-            <span
-              className="bg-[#B84A39] text-[#FAF8F3] text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums shrink-0"
-              title={`${activeFiltersCount} active filter${activeFiltersCount === 1 ? '' : 's'}`}
-            >
-              {activeFiltersCount}
-            </span>
-          )}
-        </div>
+            <circle cx="12" cy="10.5" r="8" stroke="#1C1B18" strokeWidth="1.3" />
+            <path d="M7 20H17" stroke="#1C1B18" strokeWidth="1.4" strokeLinecap="round" />
+            <path d="M8.5 18.5L7 20M15.5 18.5L17 20" stroke="#1C1B18" strokeWidth="1.2" strokeLinecap="round" />
+            <path d="M6 16L10.5 10L13.5 14L15 12L18 16" stroke="#5C5852" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            <polygon points="10.5,10 12,12 9,12" fill="#B84A39" />
+            <circle cx="10" cy="6" r="0.75" fill="#B84A39" />
+            <circle cx="14.5" cy="7.2" r="0.65" fill="#8A847C" />
+            <circle cx="7.5" cy="9.5" r="0.5" fill="#8A847C" />
+          </svg>
+          <span className="font-bold tracking-[0.16em] text-[15px] uppercase text-[#1C1B18] group-hover:text-[#B84A39] transition-colors leading-none">
+            GLOBE
+          </span>
+        </button>
 
         <button
           onClick={() => {
@@ -3601,14 +3559,13 @@ export default function App() {
               setMobileFilterPopoverOpen(false);
             }
           }}
-          className="w-10 h-10 bg-[#FAF8F3] border border-[#2C2A27] rounded-md flex items-center justify-center text-[#1C1B18] shadow-sm cursor-pointer hover:bg-[#EFECE4] transition-colors shrink-0"
+          className="w-8 h-8 bg-[#FAF8F3] border border-[#D6D0C2] hover:border-[#2C2A27] rounded-md flex items-center justify-center text-[#1C1B18] cursor-pointer hover:bg-[#EFECE4] transition-colors shrink-0"
           title="Map basemaps & layers"
           aria-label="Toggle map layers and basemaps"
         >
           <Layers className="w-4 h-4" />
         </button>
-        </div>
-      </div>
+      </header>
 
       {/* MOBILE COMPACT FILTER POPOVER (LIGHT SLIDING, SIMPLE EDITORIAL APPEARANCE) */}
       {mobileFilterPopoverOpen && mobileSheetState !== 'full' && (
@@ -3821,7 +3778,7 @@ export default function App() {
 
       {/* FLOATING TOP-LEFT REGIONAL LOCATOR & DESKTOP NAVIGATION CONTROLS */}
       <div
-        className={`fixed md:absolute top-[calc(max(14px,env(safe-area-inset-top,0px))+90px)] md:top-[calc(max(0px,env(safe-area-inset-top,0px))+56px)] left-[max(16px,env(safe-area-inset-left,0px))] ${
+        className={`fixed md:absolute top-[calc(max(0px,env(safe-area-inset-top,0px))+56px)] left-[max(12px,env(safe-area-inset-left,0px))] ${
           leftDockOpen
             ? 'md:left-[calc(max(0px,env(safe-area-inset-left,0px))+408px)]'
             : 'md:left-[calc(max(12px,env(safe-area-inset-left,0px))+24px)]'
@@ -3861,7 +3818,7 @@ export default function App() {
 
       {/* MOBILE FLOATING TOP-RIGHT NAVIGATION CONTROLS (ZOOM, NORTH, LOCATE) */}
       <div
-        className={`md:hidden fixed top-[calc(max(12px,env(safe-area-inset-top,0px))+88px)] right-[max(12px,env(safe-area-inset-right,0px))] z-20 transition-opacity duration-200 select-none ${
+        className={`md:hidden fixed top-[calc(max(0px,env(safe-area-inset-top,0px))+56px)] right-[max(12px,env(safe-area-inset-right,0px))] z-20 transition-opacity duration-200 select-none ${
           mobileSheetState === 'full' ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >

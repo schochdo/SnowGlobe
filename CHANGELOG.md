@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+### Feat
+- **Full-Width Mobile Top Title Bar & Removed Duplicate Search Box**:
+  - Replaced the mobile floating wordmark pill and duplicate top search box in `src/App.tsx` with a clean full-width editorial cream header bar (`<header>`) extending across the top of the screen under the iOS status bar/Dynamic Island (`env(safe-area-inset-top)`), housing the `SNOW [Crest] GLOBE` wordmark and the stacked-sheets map button.
+  - Tightened mobile `RegionalLocator` and `NavigationControls` top offsets back to `+56px` directly below the 44px header bar.
+
 ### Fixed
 - **iPhone Landscape Layout, Dynamic Island & Rounded Corner Clearances**:
   - **What was wrong**: On iPhone in landscape (~844–932px wide × 390–430px tall), Tailwind's `md:` breakpoint opened the 384px `LeftDock` over half the map, and hardcoded `md:left-8` / `md:left-[420px]` offsets ignored `env(safe-area-inset-left)` for the Dynamic Island and rounded display corners.
