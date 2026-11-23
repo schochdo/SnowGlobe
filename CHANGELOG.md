@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Feat
+- **Added Imperial/Metric (`FT` / `M`) Toggle to Mobile Top Bar**:
+  - Added the segmented `FT` / `M` unit switcher next to the stacked-sheets map button in the mobile `<header>` (`src/App.tsx`), matching desktop's `TopNavBar` so mobile users can switch between Imperial and Metric units directly.
+
 ### Fixed
 - **Mobile Vertical Globe Centering & Centered Layers/Basemap Panel**:
   - **What was wrong**: On mobile (including Brave on iOS), `topPad` and `bottomPad` were both `0`, leaving the 3D globe visually off-center between the 44px top header bar and the 56px bottom peek pill. Additionally, `BasemapMenu` opened pinned to the right edge (`absolute right-0 w-88`), awkwardly half-covering the top-left mini-map and top-right zoom buttons.

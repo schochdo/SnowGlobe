@@ -3536,19 +3536,51 @@ export default function App() {
           </span>
         </button>
 
-        <button
-          onClick={() => {
-            setMapMenuOpen((prev) => !prev);
-            if (!mapMenuOpen) {
-              setMobileFilterPopoverOpen(false);
-            }
-          }}
-          className="w-8 h-8 bg-[#FAF8F3] border border-[#D6D0C2] hover:border-[#2C2A27] rounded-md flex items-center justify-center text-[#1C1B18] cursor-pointer hover:bg-[#EFECE4] transition-colors shrink-0"
-          title="Map basemaps & layers"
-          aria-label="Toggle map layers and basemaps"
-        >
-          <Layers className="w-4 h-4" />
-        </button>
+        <div className="flex items-center gap-2 shrink-0">
+          {/* Units Toggle (FT / M) */}
+          <div className="flex items-center bg-[#EFECE4] rounded-md border border-[#D6D0C2] p-0.5 text-[10.5px] font-bold">
+            <button
+              type="button"
+              onClick={() => handleSetUnitsMetric(false)}
+              className={`px-2 py-1 rounded-[4px] transition-colors cursor-pointer leading-none ${
+                !unitsMetric
+                  ? 'bg-[#1C1B18] text-[#FAF8F3] shadow-2xs'
+                  : 'text-[#5C5852] hover:text-[#1C1B18]'
+              }`}
+              title="Imperial units (ft, in, ac, mi)"
+              aria-label="Imperial units"
+            >
+              FT
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSetUnitsMetric(true)}
+              className={`px-2 py-1 rounded-[4px] transition-colors cursor-pointer leading-none ${
+                unitsMetric
+                  ? 'bg-[#1C1B18] text-[#FAF8F3] shadow-2xs'
+                  : 'text-[#5C5852] hover:text-[#1C1B18]'
+              }`}
+              title="Metric units (m, cm, ha, km)"
+              aria-label="Metric units"
+            >
+              M
+            </button>
+          </div>
+
+          <button
+            onClick={() => {
+              setMapMenuOpen((prev) => !prev);
+              if (!mapMenuOpen) {
+                setMobileFilterPopoverOpen(false);
+              }
+            }}
+            className="w-8 h-8 bg-[#FAF8F3] border border-[#D6D0C2] hover:border-[#2C2A27] rounded-md flex items-center justify-center text-[#1C1B18] cursor-pointer hover:bg-[#EFECE4] transition-colors shrink-0"
+            title="Map basemaps & layers"
+            aria-label="Toggle map layers and basemaps"
+          >
+            <Layers className="w-4 h-4" />
+          </button>
+        </div>
       </header>
 
       {/* MOBILE COMPACT FILTER POPOVER (LIGHT SLIDING, SIMPLE EDITORIAL APPEARANCE) */}
