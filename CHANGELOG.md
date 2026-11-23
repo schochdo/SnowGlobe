@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Display Geometry-Verified Piste Length (`trail_km`) Worldwide When Acreage Is Unavailable**:
+  - **What was wrong**: `ResortCard.tsx` and `MountainProfile.tsx` only displayed `trail_km` for European resorts (`isEuropeanResort()`). Non-European resorts without verified acreage—such as 490 of 509 downhill resorts in Japan, plus South America, Oceania, and smaller North American hills—displayed blank/`—` even though they already had geometry-verified 3D `trail_km`.
+  - **The fix**: Updated `ResortCard.tsx` and `MountainProfile.tsx` to display `skiable_acres` when verified (`!isEuro && skiable_acres > 0`) and seamlessly fall back to `trail_km` (`Piste Length`) worldwide whenever acreage is absent.
+
+### Fixed
 - **Eliminated iOS Mobile Double-Tap Two-Step Zoom**:
   - **What was wrong**: On iOS WebKit (Safari and Brave), a double-tap triggered MapLibre's native `TapZoomHandler` on `touchend` and then fired a synthetic `dblclick` event ~250ms later, triggering `doubleClickZoom` a second time (visible as a two-step zoom jump).
   - **The fix**: Added a capture-phase `dblclick` guard (`onTouchDblClickGuard`) on the map container in `src/App.tsx` that suppresses synthetic `dblclick` events arriving within 600ms of a `touchend`, leaving MapLibre's single smooth touch double-tap zoom intact.

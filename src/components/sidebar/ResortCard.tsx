@@ -85,16 +85,12 @@ export const ResortCard: React.FC<ResortCardProps> = ({
               if (r.vertical_drop_ft && r.vertical_drop_ft > 0) {
                 stats.push(formatVert(r.vertical_drop_ft, unitsMetric));
               }
-              if (isEuro) {
-                if (r.trail_km && r.trail_km > 0) {
-                  stats.push(`${formatDistance(r.trail_km, unitsMetric)} pistes`);
-                } else if (r.run_count && r.run_count > 0) {
-                  stats.push(`${r.run_count} pistes`);
-                }
-              } else {
-                if (r.skiable_acres > 0) {
-                  stats.push(formatAcres(r.skiable_acres, unitsMetric));
-                }
+              if (!isEuro && r.skiable_acres > 0) {
+                stats.push(formatAcres(r.skiable_acres, unitsMetric));
+              } else if (r.trail_km && r.trail_km > 0) {
+                stats.push(`${formatDistance(r.trail_km, unitsMetric)} pistes`);
+              } else if (r.run_count && r.run_count > 0) {
+                stats.push(`${r.run_count} pistes`);
               }
               if (r.avg_snowfall_in && r.avg_snowfall_in > 0) {
                 stats.push(`${formatSnow(r.avg_snowfall_in, unitsMetric)}/yr`);

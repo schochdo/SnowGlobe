@@ -147,17 +147,15 @@ export const MountainProfile: React.FC<MountainProfileProps> = ({
                 </div>
                 <div>
                   <div className="text-[10px] font-semibold text-[#5C5852] uppercase tracking-wider">
-                    {stats.isEuropean ? 'Piste Length' : 'Acres'}
+                    {!stats.isEuropean && stats.acres && stats.acres > 0 ? 'Acres' : 'Piste Length'}
                   </div>
                   <div className="text-sm font-bold text-[#1C1B18] mt-0.5">
-                    {stats.isEuropean
-                      ? stats.trailKm && stats.trailKm > 0
-                        ? formatDistance(stats.trailKm, unitsMetric)
-                        : resort.run_count
-                        ? `${resort.run_count} pistes`
-                        : '—'
-                      : stats.acres && stats.acres > 0
+                    {!stats.isEuropean && stats.acres && stats.acres > 0
                       ? formatAcres(stats.acres, unitsMetric)
+                      : stats.trailKm && stats.trailKm > 0
+                      ? formatDistance(stats.trailKm, unitsMetric)
+                      : resort.run_count
+                      ? `${resort.run_count} pistes`
                       : '—'}
                   </div>
                 </div>
