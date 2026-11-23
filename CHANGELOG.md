@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+### Feat
+- **Geometry-Verified 3D Trail Statistics for All Global Ski Areas**:
+  - **What changed**: Created and ran `scripts/compute_resort_stats_from_trails.cjs` across all 5,303 resorts with exported 3D trail GeoJSONs (`public/data/trails/*.json`).
+  - Computed geometry-verified `summit_elev_ft`, `base_elev_ft`, `vertical_ft` (5,203 resorts updated, preserving official specs on verified resorts), `trail_km` / `trail_mi` (4,847 resorts updated), and exact operating `lift_count` / `run_count` directly from the 3D coordinates rendered on the map.
+
 ### Fixed
 - **Default Filter Thresholds Set to 0 (Show All Resorts by Default)**:
   - **What was wrong**: After purging unverified OSM polygon-derived `skiable_acres` in Phase 2, the default filter thresholds (`minVerticalFt = 500`, `minAreaAcres = 100`, `minVerticalM = 150`, `minAreaHa = 50`) hid hundreds of legitimate ski areas whose `skiable_acres` was `0` and `trail_km < 10`.
