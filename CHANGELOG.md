@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Fixed Inverted International Border Labels Worldwide (US–Mexico & 182 Other Borders)**:
+  - **What was wrong**: 181 of 383 `country_border` LineStrings in `public/data/world_boundaries.geojson` (including US–Mexico, `dx = -19.99`) were oriented East $\to$ West. Because MapLibre renders `LEFT\nRIGHT` line labels with `text-keep-upright: true`, it flipped those labels 180°, placing country names on the wrong side of the border (e.g., `MEXICO` on the US side and `UNITED STATES` on the Mexico side).
+  - **The fix**: Created and ran `scripts/normalize_border_orientation.cjs` to orient all 183 East $\to$ West border segments West $\to$ East (`dx >= 0`) while swapping `name_left`/`name_right` and `adm0_left`/`adm0_right`, ensuring every international border label worldwide sits on the correct country side.
+
+### Fixed
 - **Eliminated Trailing Mobile Pan "Settle"**:
   - **What was wrong**: MapLibre's default `dragPan` inertia (`maxSpeed: 1400`, `deceleration: 2500`) caused a mushy trailing coast/terrain settle after lifting a finger on mobile.
   - **The fix**: Configured crisp `dragPan` inertia (`linearity: 0.1, maxSpeed: 400, deceleration: 8000`) on mobile in `src/App.tsx` so panning stops cleanly where the finger lifts.
