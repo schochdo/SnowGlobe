@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Feat
+- **Consolidated Mobile Filters into Search/Directory Panel Alone**:
+  - Removed the duplicate `Filters` button from the mobile floating top bar in `src/App.tsx` so filters live in one place (inside the Search/Directory panel, matching desktop).
+  - Kept a compact active-filter count badge inside the mobile top Search bar when filters are active, leaving the mobile top bar clean with just `[ Search ... ] [ Stacked Sheets ]`.
+
+### Feat
 - **Icon-Only Stacked Sheets Map Button on Mobile**:
   - Replaced the `"Layers"` text+icon button on the mobile top bar in `src/App.tsx` with a compact 40×40px stacked-sheets (`<Layers />`) icon button, matching standard cartographic app conventions and giving the search bar more room.
 

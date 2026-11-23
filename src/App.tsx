@@ -3570,33 +3570,15 @@ export default function App() {
               <X className="w-3.5 h-3.5" />
             </button>
           )}
-        </div>
-
-        <button
-          ref={mobileFilterBtnRef}
-          onClick={handleOpenMobileFilters}
-          className={`h-10 px-3 border border-[#2C2A27] rounded-md flex items-center gap-1.5 text-xs font-bold shadow-sm cursor-pointer transition-colors shrink-0 ${
-            mobileFilterPopoverOpen
-              ? 'bg-[#2C2A27] text-[#FAF8F3]'
-              : 'bg-[#FAF8F3] text-[#1C1B18] hover:bg-[#EFECE4]'
-          }`}
-          aria-label="Filter ski areas"
-          aria-expanded={mobileFilterPopoverOpen}
-        >
-          <Sliders className="w-3.5 h-3.5" />
-          <span>Filters</span>
           {activeFiltersCount > 0 && (
             <span
-              className={`${
-                mobileFilterPopoverOpen
-                  ? 'bg-[#FAF8F3] text-[#1C1B18]'
-                  : 'bg-[#B84A39] text-[#FAF8F3]'
-              } text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums`}
+              className="bg-[#B84A39] text-[#FAF8F3] text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums shrink-0"
+              title={`${activeFiltersCount} active filter${activeFiltersCount === 1 ? '' : 's'}`}
             >
               {activeFiltersCount}
             </span>
           )}
-        </button>
+        </div>
 
         <button
           onClick={() => {
