@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Feat
+- **North American Skiable Acres & Annual Snowfall Enrichment via Wikidata/Wikipedia**:
+  - **What changed**: Created and ran `scripts/enrich_na_acres_wikidata.cjs`, querying Wikidata SPARQL (`wd:Q130003`) for US/Canada ski resorts and fetching official English Wikipedia `{{Infobox ski area}}` templates via the MediaWiki API across 435 articles.
+  - Enriched 257 North American downhill resorts in `public/data/global_ski_areas.json` with authentic `skiable_acres` and 223 with authentic `avg_snowfall_in` (preserving all existing verified official specs).
+
+### Feat
 - **Geometry-Verified 3D Trail Statistics for All Global Ski Areas**:
   - **What changed**: Created and ran `scripts/compute_resort_stats_from_trails.cjs` across all 5,303 resorts with exported 3D trail GeoJSONs (`public/data/trails/*.json`).
   - Computed geometry-verified `summit_elev_ft`, `base_elev_ft`, `vertical_ft` (5,203 resorts updated, preserving official specs on verified resorts), `trail_km` / `trail_mi` (4,847 resorts updated), and exact operating `lift_count` / `run_count` directly from the 3D coordinates rendered on the map.

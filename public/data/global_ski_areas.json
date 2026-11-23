@@ -157,7 +157,7 @@
         "website": "https://www.batawaskihill.com/",
         "lift_count": 3,
         "run_count": 18,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 30,
         "default_bearing": 180,
         "trail_km": 2.8,
         "trail_mi": 1.7
@@ -1445,7 +1445,7 @@
         "vertical_ft": 182,
         "summit_elev_ft": 1223,
         "base_elev_ft": 1041,
-        "skiable_acres": 0,
+        "skiable_acres": 36,
         "pass_networks": [
           "Independent"
         ],
@@ -1455,7 +1455,7 @@
         "website": "https://www.discoverchicopee.com/",
         "lift_count": 8,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 52,
         "default_bearing": 232,
         "trail_km": 3.2,
         "trail_mi": 2
@@ -1810,7 +1810,7 @@
         "vertical_ft": 1532,
         "summit_elev_ft": 3179,
         "base_elev_ft": 1647,
-        "skiable_acres": 0,
+        "skiable_acres": 320,
         "pass_networks": [
           "Epic"
         ],
@@ -1820,7 +1820,7 @@
         "website": "https://www.huntermtn.com",
         "lift_count": 10,
         "run_count": 77,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 214,
         "trail_km": 31.9,
         "trail_mi": 19.8
@@ -2259,7 +2259,7 @@
         "vertical_ft": 1858,
         "summit_elev_ft": 4001,
         "base_elev_ft": 2143,
-        "skiable_acres": 0,
+        "skiable_acres": 600,
         "pass_networks": [
           "Independent"
         ],
@@ -2269,7 +2269,7 @@
         "website": "https://www.saddlebackmaine.com/",
         "lift_count": 5,
         "run_count": 79,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 225,
         "default_bearing": 148,
         "trail_km": 37.3,
         "trail_mi": 23.2
@@ -2985,7 +2985,7 @@
         "vertical_ft": 698,
         "summit_elev_ft": 1800,
         "base_elev_ft": 1102,
-        "skiable_acres": 0,
+        "skiable_acres": 200,
         "pass_networks": [
           "Independent"
         ],
@@ -3511,7 +3511,7 @@
         "vertical_ft": 439,
         "summit_elev_ft": 1692,
         "base_elev_ft": 1253,
-        "skiable_acres": 0,
+        "skiable_acres": 25,
         "pass_networks": [
           "Indy"
         ],
@@ -3958,7 +3958,7 @@
         "vertical_ft": 4514,
         "summit_elev_ft": 12384,
         "base_elev_ft": 7870,
-        "skiable_acres": 0,
+        "skiable_acres": 1010,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -3969,7 +3969,7 @@
         "website": "https://www.aspensnowmass.com/four-mountains/aspen-highlands",
         "lift_count": 20,
         "run_count": 349,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 198,
         "trail_km": 173.6,
         "trail_mi": 107.9
@@ -4241,7 +4241,7 @@
         "vertical_ft": 491,
         "summit_elev_ft": 2895,
         "base_elev_ft": 2404,
-        "skiable_acres": 0,
+        "skiable_acres": 110,
         "pass_networks": [
           "Epic"
         ],
@@ -4933,7 +4933,7 @@
         "vertical_ft": 2212,
         "summit_elev_ft": 8855,
         "base_elev_ft": 6643,
-        "skiable_acres": 0,
+        "skiable_acres": 2000,
         "pass_networks": [
           "Independent"
         ],
@@ -4943,7 +4943,7 @@
         "website": "https://www.sierraattahoe.com",
         "lift_count": 13,
         "run_count": 49,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 480,
         "default_bearing": 131,
         "trail_km": 31,
         "trail_mi": 19.3
@@ -5258,7 +5258,7 @@
         "vertical_ft": 956,
         "summit_elev_ft": 2663,
         "base_elev_ft": 1707,
-        "skiable_acres": 0,
+        "skiable_acres": 600,
         "pass_networks": [
           "Independent"
         ],
@@ -5268,7 +5268,7 @@
         "website": "https://www.middleburysnowbowl.com/",
         "lift_count": 4,
         "run_count": 27,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 200,
         "default_bearing": 220,
         "trail_km": 17.1,
         "trail_mi": 10.6
@@ -5340,7 +5340,7 @@
         "vertical_ft": 303,
         "summit_elev_ft": 864,
         "base_elev_ft": 561,
-        "skiable_acres": 0,
+        "skiable_acres": 65,
         "pass_networks": [
           "Epic"
         ],
@@ -5990,7 +5990,7 @@
         "vertical_ft": 416,
         "summit_elev_ft": 1020,
         "base_elev_ft": 604,
-        "skiable_acres": 0,
+        "skiable_acres": 220,
         "pass_networks": [
           "Independent"
         ],
@@ -6000,7 +6000,7 @@
         "website": "https://www.chestnutmtn.com/",
         "lift_count": 8,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 34,
         "default_bearing": 104,
         "trail_km": 5.3,
         "trail_mi": 3.3
@@ -6152,7 +6152,7 @@
         "vertical_ft": 2758,
         "summit_elev_ft": 7640,
         "base_elev_ft": 4882,
-        "skiable_acres": 0,
+        "skiable_acres": 1100,
         "pass_networks": [
           "Indy"
         ],
@@ -6162,7 +6162,7 @@
         "website": "https://tamarackidaho.com",
         "lift_count": 7,
         "run_count": 95,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 271,
         "trail_km": 65.5,
         "trail_mi": 40.7
@@ -8377,7 +8377,7 @@
         "vertical_ft": 791,
         "summit_elev_ft": 2322,
         "base_elev_ft": 1531,
-        "skiable_acres": 0,
+        "skiable_acres": 290,
         "pass_networks": [
           "Independent"
         ],
@@ -8387,7 +8387,7 @@
         "website": "https://www.holidayvalley.com/",
         "lift_count": 19,
         "run_count": 122,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 180,
         "default_bearing": 209,
         "trail_km": 47.6,
         "trail_mi": 29.6
@@ -9390,7 +9390,7 @@
         "vertical_ft": 890,
         "summit_elev_ft": 940,
         "base_elev_ft": 50,
-        "skiable_acres": 0,
+        "skiable_acres": 100,
         "pass_networks": [
           "Independent"
         ],
@@ -9400,7 +9400,7 @@
         "website": "https://capesmokey.ca/",
         "lift_count": 2,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 155,
         "default_bearing": 230,
         "trail_km": 7.8,
         "trail_mi": 4.8
@@ -9644,7 +9644,7 @@
         "website": "https://blacktailmountain.com/",
         "lift_count": 4,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 174,
         "trail_km": 21.7,
         "trail_mi": 13.5
@@ -10932,7 +10932,7 @@
         "vertical_ft": 3452,
         "summit_elev_ft": 13002,
         "base_elev_ft": 9550,
-        "skiable_acres": 0,
+        "skiable_acres": 2465,
         "pass_networks": [
           "Ikon"
         ],
@@ -10942,7 +10942,7 @@
         "website": "https://www.coppercolorado.com/",
         "lift_count": 58,
         "run_count": 409,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 310,
         "default_bearing": 205,
         "trail_km": 259.9,
         "trail_mi": 161.5
@@ -11024,7 +11024,7 @@
         "website": "https://www.murrayridge.com/",
         "lift_count": 2,
         "run_count": 26,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 118,
         "default_bearing": 34,
         "trail_km": 26.4,
         "trail_mi": 16.4
@@ -11540,7 +11540,7 @@
         "vertical_ft": 354,
         "summit_elev_ft": 3484,
         "base_elev_ft": 3130,
-        "skiable_acres": 0,
+        "skiable_acres": 10,
         "pass_networks": [
           "Independent"
         ],
@@ -11550,7 +11550,7 @@
         "website": "http://www.nwwintersportsman.com/BadgerMt/index2.htm",
         "lift_count": 3,
         "run_count": 8,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 222,
         "trail_km": 2.4,
         "trail_mi": 1.5
@@ -12753,7 +12753,7 @@
         "vertical_ft": 267,
         "summit_elev_ft": 707,
         "base_elev_ft": 440,
-        "skiable_acres": 0,
+        "skiable_acres": 55,
         "pass_networks": [
           "Independent"
         ],
@@ -12763,7 +12763,7 @@
         "website": "https://mountpakenham.com/",
         "lift_count": 6,
         "run_count": 27,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 216,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -13482,7 +13482,7 @@
         "vertical_ft": 2043,
         "summit_elev_ft": 3974,
         "base_elev_ft": 1931,
-        "skiable_acres": 0,
+        "skiable_acres": 225,
         "pass_networks": [
           "Epic"
         ],
@@ -13492,7 +13492,7 @@
         "website": "https://www.skiwildcat.com",
         "lift_count": 4,
         "run_count": 58,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 200,
         "default_bearing": 150,
         "trail_km": 28.1,
         "trail_mi": 17.4
@@ -16575,7 +16575,7 @@
         "vertical_ft": 1115,
         "summit_elev_ft": 7833,
         "base_elev_ft": 6718,
-        "skiable_acres": 0,
+        "skiable_acres": 240,
         "pass_networks": [
           "Ikon"
         ],
@@ -16585,7 +16585,7 @@
         "website": "https://www.bigbearmountainresort.com",
         "lift_count": 13,
         "run_count": 42,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 170,
         "trail_km": 13.4,
         "trail_mi": 8.3
@@ -17465,7 +17465,7 @@
         "vertical_ft": 1566,
         "summit_elev_ft": 10921,
         "base_elev_ft": 9355,
-        "skiable_acres": 0,
+        "skiable_acres": 1200,
         "pass_networks": [
           "Independent"
         ],
@@ -17475,7 +17475,7 @@
         "website": "https://www.sunrise.ski/",
         "lift_count": 7,
         "run_count": 50,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 166,
         "trail_km": 41.3,
         "trail_mi": 25.7
@@ -17868,7 +17868,7 @@
         "vertical_ft": 521,
         "summit_elev_ft": 1206,
         "base_elev_ft": 685,
-        "skiable_acres": 0,
+        "skiable_acres": 55,
         "pass_networks": [
           "Independent"
         ],
@@ -19099,7 +19099,7 @@
         "website": "https://www.skikimberley.com",
         "lift_count": 5,
         "run_count": 70,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 157,
         "default_bearing": 231,
         "trail_km": 60.6,
         "trail_mi": 37.6
@@ -19496,7 +19496,7 @@
         "vertical_ft": 5675,
         "summit_elev_ft": 7805,
         "base_elev_ft": 2130,
-        "skiable_acres": 0,
+        "skiable_acres": 8171,
         "pass_networks": [
           "Epic"
         ],
@@ -19506,7 +19506,7 @@
         "website": "https://www.whistlerblackcomb.com",
         "lift_count": 36,
         "run_count": 826,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 415,
         "default_bearing": 144,
         "trail_km": 344.6,
         "trail_mi": 214.1
@@ -19578,7 +19578,7 @@
         "vertical_ft": 943,
         "summit_elev_ft": 8661,
         "base_elev_ft": 7718,
-        "skiable_acres": 0,
+        "skiable_acres": 500,
         "pass_networks": [
           "Indy"
         ],
@@ -19588,7 +19588,7 @@
         "website": "https://www.pomerelle-mtn.com/",
         "lift_count": 3,
         "run_count": 46,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 500,
         "default_bearing": 216,
         "trail_km": 20.5,
         "trail_mi": 12.7
@@ -20961,7 +20961,7 @@
         "vertical_ft": 1593,
         "summit_elev_ft": 8153,
         "base_elev_ft": 6560,
-        "skiable_acres": 0,
+        "skiable_acres": 862,
         "pass_networks": [
           "Independent"
         ],
@@ -21204,7 +21204,7 @@
         "vertical_ft": 3084,
         "summit_elev_ft": 4038,
         "base_elev_ft": 954,
-        "skiable_acres": 0,
+        "skiable_acres": 212,
         "pass_networks": [
           "Independent"
         ],
@@ -23471,7 +23471,7 @@
         "vertical_ft": 2549,
         "summit_elev_ft": 7533,
         "base_elev_ft": 4984,
-        "skiable_acres": 0,
+        "skiable_acres": 950,
         "pass_networks": [
           "Indy"
         ],
@@ -23481,7 +23481,7 @@
         "website": "https://www.montanasnowbowl.com/",
         "lift_count": 6,
         "run_count": 67,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 11,
         "trail_km": 42.8,
         "trail_mi": 26.6
@@ -24080,7 +24080,7 @@
         "vertical_ft": 1015,
         "summit_elev_ft": 1470,
         "base_elev_ft": 455,
-        "skiable_acres": 0,
+        "skiable_acres": 167,
         "pass_networks": [
           "Independent"
         ],
@@ -24090,7 +24090,7 @@
         "website": "https://www.mountaincreek.com/",
         "lift_count": 14,
         "run_count": 96,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 65,
         "default_bearing": 147,
         "trail_km": 19,
         "trail_mi": 11.8
@@ -25013,7 +25013,7 @@
         "vertical_ft": 181,
         "summit_elev_ft": 2452,
         "base_elev_ft": 2271,
-        "skiable_acres": 0,
+        "skiable_acres": 40,
         "pass_networks": [
           "Independent"
         ],
@@ -25661,7 +25661,7 @@
         "vertical_ft": 3846,
         "summit_elev_ft": 10562,
         "base_elev_ft": 6716,
-        "skiable_acres": 0,
+        "skiable_acres": 3741,
         "pass_networks": [
           "Ikon"
         ],
@@ -25671,7 +25671,7 @@
         "website": "https://www.steamboat.com",
         "lift_count": 24,
         "run_count": 232,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 400,
         "default_bearing": 101,
         "trail_km": 130.1,
         "trail_mi": 80.9
@@ -26077,7 +26077,7 @@
         "website": "https://wildmountain.com/",
         "lift_count": 10,
         "run_count": 22,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 40,
         "default_bearing": 240,
         "trail_km": 6,
         "trail_mi": 3.7
@@ -26765,7 +26765,7 @@
         "website": "https://www.sunvalley.com",
         "lift_count": 17,
         "run_count": 187,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 200,
         "default_bearing": 227,
         "trail_km": 102.9,
         "trail_mi": 63.9
@@ -26960,7 +26960,7 @@
         "vertical_ft": 185,
         "summit_elev_ft": 298,
         "base_elev_ft": 113,
-        "skiable_acres": 0,
+        "skiable_acres": 36,
         "pass_networks": [
           "Independent"
         ],
@@ -26970,7 +26970,7 @@
         "website": "https://yawgoo.com/",
         "lift_count": 4,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 39,
         "default_bearing": 270,
         "trail_km": 2.8,
         "trail_mi": 1.7
@@ -27487,7 +27487,7 @@
         "vertical_ft": 1084,
         "summit_elev_ft": 2467,
         "base_elev_ft": 1383,
-        "skiable_acres": 0,
+        "skiable_acres": 530,
         "pass_networks": [
           "Independent"
         ],
@@ -28055,7 +28055,7 @@
         "vertical_ft": 3744,
         "summit_elev_ft": 13035,
         "base_elev_ft": 9291,
-        "skiable_acres": 0,
+        "skiable_acres": 1428,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -28066,7 +28066,7 @@
         "website": "https://www.arapahoebasin.com",
         "lift_count": 25,
         "run_count": 339,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 155,
         "trail_km": 160.9,
         "trail_mi": 100
@@ -29187,7 +29187,7 @@
         "vertical_ft": 1352,
         "summit_elev_ft": 10606,
         "base_elev_ft": 9254,
-        "skiable_acres": 0,
+        "skiable_acres": 680,
         "pass_networks": [
           "Ikon"
         ],
@@ -29197,7 +29197,7 @@
         "website": "https://www.eldora.com",
         "lift_count": 10,
         "run_count": 76,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 232,
         "trail_km": 30,
         "trail_mi": 18.6
@@ -29513,7 +29513,7 @@
         "vertical_ft": 2562,
         "summit_elev_ft": 10135,
         "base_elev_ft": 7573,
-        "skiable_acres": 0,
+        "skiable_acres": 1500,
         "pass_networks": [
           "Ikon"
         ],
@@ -29523,7 +29523,7 @@
         "website": "https://www.junemountain.com/",
         "lift_count": 7,
         "run_count": 36,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 133,
         "trail_km": 27.1,
         "trail_mi": 16.8
@@ -29716,7 +29716,7 @@
         "vertical_ft": 1579,
         "summit_elev_ft": 4825,
         "base_elev_ft": 3246,
-        "skiable_acres": 0,
+        "skiable_acres": 244,
         "pass_networks": [
           "Ikon"
         ],
@@ -29726,7 +29726,7 @@
         "website": "https://www.snowshoemtn.com",
         "lift_count": 13,
         "run_count": 134,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 180,
         "default_bearing": 225,
         "trail_km": 32,
         "trail_mi": 19.9
@@ -30329,7 +30329,7 @@
         "vertical_ft": 703,
         "summit_elev_ft": 4852,
         "base_elev_ft": 4149,
-        "skiable_acres": 0,
+        "skiable_acres": 91,
         "pass_networks": [
           "Independent"
         ],
@@ -30339,7 +30339,7 @@
         "website": "https://skiphoenix.ca/",
         "lift_count": 2,
         "run_count": 18,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 159,
         "trail_km": 8.6,
         "trail_mi": 5.4
@@ -30411,7 +30411,7 @@
         "vertical_ft": 235,
         "summit_elev_ft": 1348,
         "base_elev_ft": 1113,
-        "skiable_acres": 0,
+        "skiable_acres": 72,
         "pass_networks": [
           "Epic"
         ],
@@ -30421,7 +30421,7 @@
         "website": "https://www.alpinevalleyohio.com/",
         "lift_count": 5,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 278,
         "trail_km": 2.6,
         "trail_mi": 1.6
@@ -30776,7 +30776,7 @@
         "vertical_ft": 360,
         "summit_elev_ft": 1875,
         "base_elev_ft": 1515,
-        "skiable_acres": 0,
+        "skiable_acres": 60,
         "pass_networks": [
           "Independent"
         ],
@@ -31099,7 +31099,7 @@
         "vertical_ft": 836,
         "summit_elev_ft": 1071,
         "base_elev_ft": 235,
-        "skiable_acres": 0,
+        "skiable_acres": 105,
         "pass_networks": [
           "Independent"
         ],
@@ -31109,7 +31109,7 @@
         "website": "https://www.camdensnowbowl.com/",
         "lift_count": 4,
         "run_count": 43,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 70,
         "default_bearing": 237,
         "trail_km": 9.4,
         "trail_mi": 5.8
@@ -32232,7 +32232,7 @@
         "vertical_ft": 677,
         "summit_elev_ft": 5504,
         "base_elev_ft": 4827,
-        "skiable_acres": 0,
+        "skiable_acres": 260,
         "pass_networks": [
           "Independent"
         ],
@@ -32241,7 +32241,7 @@
         "summary": "Mountain ski destination in Idaho, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 1,
         "run_count": 6,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 234,
         "trail_km": 3.7,
         "trail_mi": 2.3
@@ -33167,7 +33167,7 @@
         "vertical_ft": 416,
         "summit_elev_ft": 1248,
         "base_elev_ft": 832,
-        "skiable_acres": 0,
+        "skiable_acres": 175,
         "pass_networks": [
           "Independent"
         ],
@@ -33735,7 +33735,7 @@
         "vertical_ft": 285,
         "summit_elev_ft": 1865,
         "base_elev_ft": 1580,
-        "skiable_acres": 0,
+        "skiable_acres": 25,
         "pass_networks": [
           "Independent"
         ],
@@ -33745,7 +33745,7 @@
         "website": "https://missionridge.ca/",
         "lift_count": 3,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 36,
         "default_bearing": 192,
         "trail_km": 3.7,
         "trail_mi": 2.3
@@ -35232,7 +35232,7 @@
         "vertical_ft": 1869,
         "summit_elev_ft": 4994,
         "base_elev_ft": 3125,
-        "skiable_acres": 0,
+        "skiable_acres": 1475,
         "pass_networks": [
           "Independent"
         ],
@@ -35999,7 +35999,7 @@
         "vertical_ft": 656,
         "summit_elev_ft": 7361,
         "base_elev_ft": 6705,
-        "skiable_acres": 0,
+        "skiable_acres": 120,
         "pass_networks": [
           "Independent"
         ],
@@ -36009,7 +36009,7 @@
         "website": "https://magicmountainresort.com/",
         "lift_count": 3,
         "run_count": 45,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 230,
         "default_bearing": 247,
         "trail_km": 13.2,
         "trail_mi": 8.2
@@ -37262,7 +37262,7 @@
         "website": "https://www.mteyak.org/",
         "lift_count": 2,
         "run_count": 15,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 67,
         "trail_km": 5.6,
         "trail_mi": 3.5
@@ -37375,7 +37375,7 @@
         "vertical_ft": 1472,
         "summit_elev_ft": 2620,
         "base_elev_ft": 1148,
-        "skiable_acres": 0,
+        "skiable_acres": 640,
         "pass_networks": [
           "Indy"
         ],
@@ -37385,7 +37385,7 @@
         "website": "https://skieaglecrest.com/",
         "lift_count": 3,
         "run_count": 37,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 177,
         "trail_km": 17.3,
         "trail_mi": 10.8
@@ -38062,7 +38062,7 @@
         "vertical_ft": 2091,
         "summit_elev_ft": 8565,
         "base_elev_ft": 6474,
-        "skiable_acres": 0,
+        "skiable_acres": 800,
         "pass_networks": [
           "Independent"
         ],
@@ -38072,7 +38072,7 @@
         "website": "https://www.mtbaldyresort.com/",
         "lift_count": 4,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 170,
         "default_bearing": 52,
         "trail_km": 15.1,
         "trail_mi": 9.4
@@ -38470,7 +38470,7 @@
         "vertical_ft": 1554,
         "summit_elev_ft": 4075,
         "base_elev_ft": 2521,
-        "skiable_acres": 0,
+        "skiable_acres": 320,
         "pass_networks": [
           "Independent"
         ],
@@ -39526,7 +39526,7 @@
         "vertical_ft": 223,
         "summit_elev_ft": 1254,
         "base_elev_ft": 1031,
-        "skiable_acres": 0,
+        "skiable_acres": 50,
         "pass_networks": [
           "Indy"
         ],
@@ -39536,7 +39536,7 @@
         "website": "https://www.littleswitz.com/",
         "lift_count": 12,
         "run_count": 42,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 178,
         "trail_km": 5.9,
         "trail_mi": 3.7
@@ -39769,7 +39769,7 @@
         "vertical_ft": 4514,
         "summit_elev_ft": 12384,
         "base_elev_ft": 7870,
-        "skiable_acres": 0,
+        "skiable_acres": 673,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -39780,7 +39780,7 @@
         "website": "https://www.aspensnowmass.com/four-mountains/aspen-mountain",
         "lift_count": 20,
         "run_count": 349,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 198,
         "trail_km": 173.6,
         "trail_mi": 107.9
@@ -40822,7 +40822,7 @@
         "vertical_ft": 4099,
         "summit_elev_ft": 10417,
         "base_elev_ft": 6318,
-        "skiable_acres": 0,
+        "skiable_acres": 2500,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -40833,7 +40833,7 @@
         "website": "https://www.jacksonhole.com",
         "lift_count": 17,
         "run_count": 187,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 459,
         "default_bearing": 311,
         "trail_km": 99.3,
         "trail_mi": 61.7
@@ -41836,7 +41836,7 @@
         "vertical_ft": 450,
         "summit_elev_ft": 1322,
         "base_elev_ft": 872,
-        "skiable_acres": 0,
+        "skiable_acres": 61,
         "pass_networks": [
           "Independent"
         ],
@@ -41846,7 +41846,7 @@
         "website": "https://www.theheights.ski/",
         "lift_count": 11,
         "run_count": 57,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 88,
         "default_bearing": 204,
         "trail_km": 16.1,
         "trail_mi": 10
@@ -44677,7 +44677,7 @@
         "vertical_ft": 293,
         "summit_elev_ft": 1456,
         "base_elev_ft": 1163,
-        "skiable_acres": 0,
+        "skiable_acres": 144,
         "pass_networks": [
           "Epic"
         ],
@@ -44687,7 +44687,7 @@
         "website": "https://www.skimadriver.com/",
         "lift_count": 11,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 36,
         "default_bearing": 141,
         "trail_km": 5.7,
         "trail_mi": 3.5
@@ -44758,7 +44758,7 @@
         "vertical_ft": 483,
         "summit_elev_ft": 1153,
         "base_elev_ft": 670,
-        "skiable_acres": 0,
+        "skiable_acres": 86,
         "pass_networks": [
           "Independent"
         ],
@@ -44768,7 +44768,7 @@
         "website": "https://www.bcmountainresort.com/",
         "lift_count": 6,
         "run_count": 51,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 30,
         "default_bearing": 221,
         "trail_km": 7,
         "trail_mi": 4.3
@@ -45054,7 +45054,7 @@
         "website": "https://www.titusmountain.com/",
         "lift_count": 9,
         "run_count": 50,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 233,
         "trail_km": 21.6,
         "trail_mi": 13.4
@@ -45095,7 +45095,7 @@
         "website": "https://www.skigd.com/",
         "lift_count": 6,
         "run_count": 126,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 180,
         "default_bearing": 258,
         "trail_km": 50.1,
         "trail_mi": 31.1
@@ -45656,7 +45656,7 @@
         "vertical_ft": 3894,
         "summit_elev_ft": 11370,
         "base_elev_ft": 7476,
-        "skiable_acres": 0,
+        "skiable_acres": 2614,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -45667,7 +45667,7 @@
         "website": "https://www.alta.com",
         "lift_count": 49,
         "run_count": 626,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 545,
         "default_bearing": 157,
         "trail_km": 321.9,
         "trail_mi": 200.1
@@ -48039,7 +48039,7 @@
         "vertical_ft": 1792,
         "summit_elev_ft": 8523,
         "base_elev_ft": 6731,
-        "skiable_acres": 0,
+        "skiable_acres": 655,
         "pass_networks": [
           "Independent"
         ],
@@ -48202,7 +48202,7 @@
         "vertical_ft": 2230,
         "summit_elev_ft": 10795,
         "base_elev_ft": 8565,
-        "skiable_acres": 0,
+        "skiable_acres": 560,
         "pass_networks": [
           "Independent"
         ],
@@ -48212,7 +48212,7 @@
         "website": "https://www.angelfireresort.com/",
         "lift_count": 8,
         "run_count": 112,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 210,
         "default_bearing": 158,
         "trail_km": 56.4,
         "trail_mi": 35
@@ -48768,7 +48768,7 @@
         "vertical_ft": 683,
         "summit_elev_ft": 1150,
         "base_elev_ft": 467,
-        "skiable_acres": 0,
+        "skiable_acres": 125,
         "pass_networks": [
           "Indy"
         ],
@@ -50431,7 +50431,7 @@
         "vertical_ft": 2056,
         "summit_elev_ft": 2639,
         "base_elev_ft": 583,
-        "skiable_acres": 0,
+        "skiable_acres": 450,
         "pass_networks": [
           "Epic"
         ],
@@ -50441,7 +50441,7 @@
         "website": "https://mont-sainte-anne.com",
         "lift_count": 9,
         "run_count": 89,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 187,
         "default_bearing": 301,
         "trail_km": 75.6,
         "trail_mi": 47
@@ -51039,7 +51039,7 @@
         "vertical_ft": 320,
         "summit_elev_ft": 1018,
         "base_elev_ft": 698,
-        "skiable_acres": 0,
+        "skiable_acres": 300,
         "pass_networks": [
           "Epic"
         ],
@@ -51080,7 +51080,7 @@
         "vertical_ft": 395,
         "summit_elev_ft": 877,
         "base_elev_ft": 482,
-        "skiable_acres": 0,
+        "skiable_acres": 90,
         "pass_networks": [
           "Independent"
         ],
@@ -52736,7 +52736,7 @@
         "vertical_ft": 878,
         "summit_elev_ft": 1483,
         "base_elev_ft": 605,
-        "skiable_acres": 0,
+        "skiable_acres": 363,
         "pass_networks": [
           "Independent"
         ],
@@ -52746,7 +52746,7 @@
         "website": "https://www.craigleith.com/",
         "lift_count": 29,
         "run_count": 165,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 154,
         "default_bearing": 218,
         "trail_km": 72.6,
         "trail_mi": 45.1
@@ -54036,7 +54036,7 @@
         "vertical_ft": 3750,
         "summit_elev_ft": 5479,
         "base_elev_ft": 1729,
-        "skiable_acres": 0,
+        "skiable_acres": 700,
         "pass_networks": [
           "Independent"
         ],
@@ -55252,7 +55252,7 @@
         "vertical_ft": 1484,
         "summit_elev_ft": 1536,
         "base_elev_ft": 52,
-        "skiable_acres": 0,
+        "skiable_acres": 225,
         "pass_networks": [
           "Independent"
         ],
@@ -55940,7 +55940,7 @@
         "vertical_ft": 4109,
         "summit_elev_ft": 10552,
         "base_elev_ft": 6443,
-        "skiable_acres": 0,
+        "skiable_acres": 6700,
         "pass_networks": [
           "Epic"
         ],
@@ -55950,7 +55950,7 @@
         "website": "https://www.parkcitymountain.com",
         "lift_count": 103,
         "run_count": 997,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 355,
         "default_bearing": 223,
         "trail_km": 568.8,
         "trail_mi": 353.5
@@ -57115,7 +57115,7 @@
         "vertical_ft": 3729,
         "summit_elev_ft": 10012,
         "base_elev_ft": 6283,
-        "skiable_acres": 0,
+        "skiable_acres": 4800,
         "pass_networks": [
           "Epic"
         ],
@@ -57125,7 +57125,7 @@
         "website": "https://www.skiheavenly.com",
         "lift_count": 26,
         "run_count": 169,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 360,
         "default_bearing": 174,
         "trail_km": 94.9,
         "trail_mi": 59
@@ -57965,7 +57965,7 @@
         "vertical_ft": 877,
         "summit_elev_ft": 6683,
         "base_elev_ft": 5806,
-        "skiable_acres": 0,
+        "skiable_acres": 640,
         "pass_networks": [
           "Indy"
         ],
@@ -57975,7 +57975,7 @@
         "website": "https://kellycanyonresort.com:443/",
         "lift_count": 4,
         "run_count": 64,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 200,
         "default_bearing": 161,
         "trail_km": 25.8,
         "trail_mi": 16.1
@@ -58608,7 +58608,7 @@
         "vertical_ft": 885,
         "summit_elev_ft": 1919,
         "base_elev_ft": 1034,
-        "skiable_acres": 0,
+        "skiable_acres": 75,
         "pass_networks": [
           "Epic"
         ],
@@ -60185,7 +60185,7 @@
         "vertical_ft": 2149,
         "summit_elev_ft": 7933,
         "base_elev_ft": 5784,
-        "skiable_acres": 0,
+        "skiable_acres": 200,
         "pass_networks": [
           "Independent"
         ],
@@ -60195,7 +60195,7 @@
         "website": "https://www.skicpr.com/",
         "lift_count": 4,
         "run_count": 48,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 322,
         "default_bearing": 121,
         "trail_km": 15.3,
         "trail_mi": 9.5
@@ -61075,7 +61075,7 @@
         "vertical_ft": 611,
         "summit_elev_ft": 1487,
         "base_elev_ft": 876,
-        "skiable_acres": 0,
+        "skiable_acres": 80,
         "pass_networks": [
           "Independent"
         ],
@@ -61157,7 +61157,7 @@
         "vertical_ft": 1762,
         "summit_elev_ft": 8191,
         "base_elev_ft": 6429,
-        "skiable_acres": 0,
+        "skiable_acres": 900,
         "pass_networks": [
           "Independent"
         ],
@@ -61167,7 +61167,7 @@
         "website": "https://losttrail.com/trail-map/",
         "lift_count": 8,
         "run_count": 79,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 256,
         "trail_km": 38.6,
         "trail_mi": 24
@@ -61521,7 +61521,7 @@
         "vertical_ft": 448,
         "summit_elev_ft": 1155,
         "base_elev_ft": 707,
-        "skiable_acres": 0,
+        "skiable_acres": 175,
         "pass_networks": [
           "Ikon"
         ],
@@ -62370,7 +62370,7 @@
         "vertical_ft": 544,
         "summit_elev_ft": 1744,
         "base_elev_ft": 1200,
-        "skiable_acres": 0,
+        "skiable_acres": 195,
         "pass_networks": [
           "Independent"
         ],
@@ -62380,7 +62380,7 @@
         "website": "https://www.snowriver.com/",
         "lift_count": 11,
         "run_count": 56,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 204,
         "default_bearing": 184,
         "trail_km": 26.5,
         "trail_mi": 16.4
@@ -62610,7 +62610,7 @@
         "vertical_ft": 572,
         "summit_elev_ft": 7798,
         "base_elev_ft": 7226,
-        "skiable_acres": 0,
+        "skiable_acres": 90,
         "pass_networks": [
           "Independent"
         ],
@@ -62620,7 +62620,7 @@
         "website": "https://www.travelyosemite.com/winter/badger-pass-ski-area/",
         "lift_count": 5,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 169,
         "trail_km": 5.8,
         "trail_mi": 3.6
@@ -62733,7 +62733,7 @@
         "vertical_ft": 517,
         "summit_elev_ft": 3916,
         "base_elev_ft": 3399,
-        "skiable_acres": 0,
+        "skiable_acres": 27,
         "pass_networks": [
           "Independent"
         ],
@@ -62742,7 +62742,7 @@
         "summary": "Mountain ski destination in North Carolina, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 7,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 205,
         "trail_km": 1.9,
         "trail_mi": 1.2
@@ -62773,7 +62773,7 @@
         "vertical_ft": 639,
         "summit_elev_ft": 1133,
         "base_elev_ft": 494,
-        "skiable_acres": 0,
+        "skiable_acres": 160,
         "pass_networks": [
           "Independent"
         ],
@@ -63055,7 +63055,7 @@
         "vertical_ft": 667,
         "summit_elev_ft": 1883,
         "base_elev_ft": 1216,
-        "skiable_acres": 0,
+        "skiable_acres": 277,
         "pass_networks": [
           "Indy"
         ],
@@ -63065,7 +63065,7 @@
         "website": "https://www.skigranitepeak.com/",
         "lift_count": 7,
         "run_count": 61,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 195,
         "trail_km": 20.9,
         "trail_mi": 13
@@ -64073,7 +64073,7 @@
         "vertical_ft": 648,
         "summit_elev_ft": 3104,
         "base_elev_ft": 2456,
-        "skiable_acres": 0,
+        "skiable_acres": 132,
         "pass_networks": [
           "Independent"
         ],
@@ -64083,7 +64083,7 @@
         "website": "https://www.wispresort.com/",
         "lift_count": 12,
         "run_count": 77,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 204,
         "trail_km": 16.4,
         "trail_mi": 10.2
@@ -64921,7 +64921,7 @@
         "vertical_ft": 482,
         "summit_elev_ft": 3096,
         "base_elev_ft": 2614,
-        "skiable_acres": 0,
+        "skiable_acres": 70,
         "pass_networks": [
           "Independent"
         ],
@@ -65446,7 +65446,7 @@
         "vertical_ft": 2297,
         "summit_elev_ft": 3819,
         "base_elev_ft": 1522,
-        "skiable_acres": 0,
+        "skiable_acres": 265,
         "pass_networks": [
           "Indy"
         ],
@@ -65456,7 +65456,7 @@
         "website": "https://www.waterville.com/",
         "lift_count": 11,
         "run_count": 84,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 148,
         "default_bearing": 238,
         "trail_km": 31.4,
         "trail_mi": 19.5
@@ -65568,7 +65568,7 @@
         "vertical_ft": 256,
         "summit_elev_ft": 2322,
         "base_elev_ft": 2066,
-        "skiable_acres": 0,
+        "skiable_acres": 40,
         "pass_networks": [
           "Independent"
         ],
@@ -65578,7 +65578,7 @@
         "website": "https://www.rabbithill.com/",
         "lift_count": 8,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 174,
         "trail_km": 2.6,
         "trail_mi": 1.6
@@ -66050,7 +66050,7 @@
         "vertical_ft": 397,
         "summit_elev_ft": 5584,
         "base_elev_ft": 5187,
-        "skiable_acres": 0,
+        "skiable_acres": 50,
         "pass_networks": [
           "Independent"
         ],
@@ -67063,7 +67063,7 @@
         "vertical_ft": 350,
         "summit_elev_ft": 1763,
         "base_elev_ft": 1413,
-        "skiable_acres": 0,
+        "skiable_acres": 130,
         "pass_networks": [
           "Independent"
         ],
@@ -67073,7 +67073,7 @@
         "website": "https://pknpk.com/",
         "lift_count": 10,
         "run_count": 25,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 105,
         "default_bearing": 237,
         "trail_km": 9.4,
         "trail_mi": 5.9
@@ -68155,7 +68155,7 @@
         "vertical_ft": 1084,
         "summit_elev_ft": 1539,
         "base_elev_ft": 455,
-        "skiable_acres": 0,
+        "skiable_acres": 164,
         "pass_networks": [
           "Ikon"
         ],
@@ -68165,7 +68165,7 @@
         "website": "https://www.skibluemt.com/",
         "lift_count": 15,
         "run_count": 82,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 33,
         "default_bearing": 178,
         "trail_km": 18.2,
         "trail_mi": 11.3
@@ -68520,7 +68520,7 @@
         "vertical_ft": 806,
         "summit_elev_ft": 7933,
         "base_elev_ft": 7127,
-        "skiable_acres": 0,
+        "skiable_acres": 1100,
         "pass_networks": [
           "Indy"
         ],
@@ -68530,7 +68530,7 @@
         "website": "https://anthonylakes.com/",
         "lift_count": 3,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 232,
         "trail_km": 13.1,
         "trail_mi": 8.1
@@ -69007,7 +69007,7 @@
         "vertical_ft": 284,
         "summit_elev_ft": 1151,
         "base_elev_ft": 867,
-        "skiable_acres": 0,
+        "skiable_acres": 32,
         "pass_networks": [
           "Indy"
         ],
@@ -69975,7 +69975,7 @@
         "vertical_ft": 948,
         "summit_elev_ft": 1977,
         "base_elev_ft": 1029,
-        "skiable_acres": 0,
+        "skiable_acres": 110,
         "pass_networks": [
           "Independent"
         ],
@@ -69985,7 +69985,7 @@
         "website": "https://www.wachusett.com/",
         "lift_count": 8,
         "run_count": 44,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 194,
         "trail_km": 15.2,
         "trail_mi": 9.5
@@ -70187,7 +70187,7 @@
         "website": "https://www.smuggs.com/",
         "lift_count": 21,
         "run_count": 281,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 312,
         "default_bearing": 124,
         "trail_km": 122.6,
         "trail_mi": 76.2
@@ -70544,7 +70544,7 @@
         "vertical_ft": 2609,
         "summit_elev_ft": 6244,
         "base_elev_ft": 3635,
-        "skiable_acres": 0,
+        "skiable_acres": 960,
         "pass_networks": [
           "Independent"
         ],
@@ -70554,7 +70554,7 @@
         "website": "https://skibowl.com/winter/",
         "lift_count": 12,
         "run_count": 102,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 201,
         "trail_km": 59.4,
         "trail_mi": 36.9
@@ -73534,7 +73534,7 @@
         "vertical_ft": 3031,
         "summit_elev_ft": 4193,
         "base_elev_ft": 1162,
-        "skiable_acres": 0,
+        "skiable_acres": 468,
         "pass_networks": [
           "Ikon"
         ],
@@ -73544,7 +73544,7 @@
         "website": "https://www.picomountain.com/",
         "lift_count": 29,
         "run_count": 283,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 219,
         "trail_km": 145.4,
         "trail_mi": 90.3
@@ -76407,7 +76407,7 @@
         "vertical_ft": 2015,
         "summit_elev_ft": 8791,
         "base_elev_ft": 6776,
-        "skiable_acres": 0,
+        "skiable_acres": 240,
         "pass_networks": [
           "Ikon"
         ],
@@ -76417,7 +76417,7 @@
         "website": "https://www.bigbearmountainresort.com",
         "lift_count": 30,
         "run_count": 62,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 178,
         "trail_km": 33.4,
         "trail_mi": 20.8
@@ -76701,7 +76701,7 @@
         "website": "https://www.madriverglen.com",
         "lift_count": 23,
         "run_count": 221,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 233,
         "trail_km": 107.9,
         "trail_mi": 67.1
@@ -77464,7 +77464,7 @@
         "vertical_ft": 490,
         "summit_elev_ft": 7281,
         "base_elev_ft": 6791,
-        "skiable_acres": 0,
+        "skiable_acres": 120,
         "pass_networks": [
           "Independent"
         ],
@@ -77505,7 +77505,7 @@
         "vertical_ft": 999,
         "summit_elev_ft": 7957,
         "base_elev_ft": 6958,
-        "skiable_acres": 0,
+        "skiable_acres": 150,
         "pass_networks": [
           "Independent"
         ],
@@ -77515,7 +77515,7 @@
         "website": "http://www.mtwaterman.org/",
         "lift_count": 0,
         "run_count": 24,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 180,
         "default_bearing": 180,
         "trail_km": 7.1,
         "trail_mi": 4.4
@@ -78206,7 +78206,7 @@
         "website": "https://www.skicastle.ca",
         "lift_count": 7,
         "run_count": 159,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 335,
         "default_bearing": 234,
         "trail_km": 76.3,
         "trail_mi": 47.4
@@ -79733,7 +79733,7 @@
         "vertical_ft": 743,
         "summit_elev_ft": 2999,
         "base_elev_ft": 2256,
-        "skiable_acres": 0,
+        "skiable_acres": 285,
         "pass_networks": [
           "Epic"
         ],
@@ -79743,7 +79743,7 @@
         "website": "https://www.7springs.com",
         "lift_count": 23,
         "run_count": 185,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 135,
         "default_bearing": 217,
         "trail_km": 39.3,
         "trail_mi": 24.4
@@ -80017,7 +80017,7 @@
         "vertical_ft": 514,
         "summit_elev_ft": 1219,
         "base_elev_ft": 705,
-        "skiable_acres": 0,
+        "skiable_acres": 185,
         "pass_networks": [
           "Independent"
         ],
@@ -80027,7 +80027,7 @@
         "website": "https://mountstlouis.com/",
         "lift_count": 10,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 282,
         "trail_km": 15.5,
         "trail_mi": 9.6
@@ -80828,7 +80828,7 @@
         "vertical_ft": 196,
         "summit_elev_ft": 955,
         "base_elev_ft": 759,
-        "skiable_acres": 0,
+        "skiable_acres": 120,
         "pass_networks": [
           "Epic"
         ],
@@ -80838,7 +80838,7 @@
         "website": "https://www.wilmotmountain.com/",
         "lift_count": 13,
         "run_count": 24,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 235,
         "trail_km": 5.3,
         "trail_mi": 3.3
@@ -82889,7 +82889,7 @@
         "vertical_ft": 3610,
         "summit_elev_ft": 6233,
         "base_elev_ft": 2623,
-        "skiable_acres": 0,
+        "skiable_acres": 1914,
         "pass_networks": [
           "Independent"
         ],
@@ -82899,7 +82899,7 @@
         "website": "http://www.sahalie.org/chair2/Home.aspx",
         "lift_count": 27,
         "run_count": 217,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 435,
         "default_bearing": 247,
         "trail_km": 83.4,
         "trail_mi": 51.8
@@ -84063,7 +84063,7 @@
         "vertical_ft": 1040,
         "summit_elev_ft": 1988,
         "base_elev_ft": 948,
-        "skiable_acres": 0,
+        "skiable_acres": 250,
         "pass_networks": [
           "Independent"
         ],
@@ -84186,7 +84186,7 @@
         "vertical_ft": 300,
         "summit_elev_ft": 4247,
         "base_elev_ft": 3947,
-        "skiable_acres": 0,
+        "skiable_acres": 50,
         "pass_networks": [
           "Indy"
         ],
@@ -84237,7 +84237,7 @@
         "website": "https://www.skimarmot.com",
         "lift_count": 6,
         "run_count": 97,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 173,
         "default_bearing": 251,
         "trail_km": 43.5,
         "trail_mi": 27
@@ -84920,7 +84920,7 @@
         "vertical_ft": 1863,
         "summit_elev_ft": 7132,
         "base_elev_ft": 5269,
-        "skiable_acres": 0,
+        "skiable_acres": 1112,
         "pass_networks": [
           "Indy"
         ],
@@ -84930,7 +84930,7 @@
         "website": "https://apexresort.com/",
         "lift_count": 4,
         "run_count": 77,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 236,
         "default_bearing": 239,
         "trail_km": 48.4,
         "trail_mi": 30.1
@@ -86051,7 +86051,7 @@
         "vertical_ft": 587,
         "summit_elev_ft": 1501,
         "base_elev_ft": 914,
-        "skiable_acres": 0,
+        "skiable_acres": 112,
         "pass_networks": [
           "Independent"
         ],
@@ -86497,7 +86497,7 @@
         "vertical_ft": 1456,
         "summit_elev_ft": 10431,
         "base_elev_ft": 8975,
-        "skiable_acres": 0,
+        "skiable_acres": 280,
         "pass_networks": [
           "Indy"
         ],
@@ -86507,7 +86507,7 @@
         "website": "https://www.pajarito.ski/",
         "lift_count": 6,
         "run_count": 62,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 125,
         "default_bearing": 212,
         "trail_km": 33.8,
         "trail_mi": 21
@@ -86700,7 +86700,7 @@
         "vertical_ft": 567,
         "summit_elev_ft": 1285,
         "base_elev_ft": 718,
-        "skiable_acres": 0,
+        "skiable_acres": 175,
         "pass_networks": [
           "Indy"
         ],
@@ -86710,7 +86710,7 @@
         "website": "https://spiritmt.com/winter",
         "lift_count": 8,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 90,
         "default_bearing": 269,
         "trail_km": 9.3,
         "trail_mi": 5.8
@@ -87465,7 +87465,7 @@
         "vertical_ft": 1658,
         "summit_elev_ft": 6165,
         "base_elev_ft": 4507,
-        "skiable_acres": 0,
+        "skiable_acres": 1023,
         "pass_networks": [
           "Independent"
         ],
@@ -87475,7 +87475,7 @@
         "website": "https://skilookout.com/",
         "lift_count": 5,
         "run_count": 56,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 400,
         "default_bearing": 252,
         "trail_km": 37.2,
         "trail_mi": 23.1
@@ -88194,7 +88194,7 @@
         "vertical_ft": 3013,
         "summit_elev_ft": 7932,
         "base_elev_ft": 4919,
-        "skiable_acres": 0,
+        "skiable_acres": 1021,
         "pass_networks": [
           "Epic"
         ],
@@ -88204,7 +88204,7 @@
         "website": "https://www.skinakiska.com",
         "lift_count": 7,
         "run_count": 84,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 98,
         "default_bearing": 278,
         "trail_km": 35.9,
         "trail_mi": 22.3
@@ -89659,7 +89659,7 @@
         "website": "https://cataloochee.com/",
         "lift_count": 5,
         "run_count": 37,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 170,
         "trail_km": 4.4,
         "trail_mi": 2.7
@@ -90859,7 +90859,7 @@
         "vertical_ft": 1071,
         "summit_elev_ft": 9255,
         "base_elev_ft": 8184,
-        "skiable_acres": 0,
+        "skiable_acres": 215,
         "pass_networks": [
           "Indy"
         ],
@@ -90869,7 +90869,7 @@
         "website": "https://www.sipapu.ski/",
         "lift_count": 6,
         "run_count": 64,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 185,
         "default_bearing": 227,
         "trail_km": 17.3,
         "trail_mi": 10.8
@@ -92330,7 +92330,7 @@
         "website": "https://berkshireeast.com/",
         "lift_count": 6,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 110,
         "default_bearing": 151,
         "trail_km": 19.8,
         "trail_mi": 12.3
@@ -93341,7 +93341,7 @@
         "website": "https://skibutternut.com/",
         "lift_count": 10,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 115,
         "default_bearing": 167,
         "trail_km": 12.1,
         "trail_mi": 7.5
@@ -93859,7 +93859,7 @@
         "vertical_ft": 1144,
         "summit_elev_ft": 2151,
         "base_elev_ft": 1007,
-        "skiable_acres": 0,
+        "skiable_acres": 160,
         "pass_networks": [
           "Independent"
         ],
@@ -93869,7 +93869,7 @@
         "website": "https://www.bristolmountain.com/",
         "lift_count": 6,
         "run_count": 40,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 130,
         "default_bearing": 272,
         "trail_km": 19.2,
         "trail_mi": 11.9
@@ -94917,7 +94917,7 @@
         "vertical_ft": 1394,
         "summit_elev_ft": 7178,
         "base_elev_ft": 5784,
-        "skiable_acres": 0,
+        "skiable_acres": 1180,
         "pass_networks": [
           "Indy"
         ],
@@ -94927,7 +94927,7 @@
         "website": "https://soldiermountain.com",
         "lift_count": 3,
         "run_count": 42,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 274,
         "trail_km": 22.1,
         "trail_mi": 13.7
@@ -95562,7 +95562,7 @@
         "vertical_ft": 930,
         "summit_elev_ft": 2670,
         "base_elev_ft": 1740,
-        "skiable_acres": 0,
+        "skiable_acres": 180,
         "pass_networks": [
           "Independent"
         ],
@@ -95572,7 +95572,7 @@
         "website": "https://www.elkskier.com/",
         "lift_count": 7,
         "run_count": 59,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 209,
         "trail_km": 16.6,
         "trail_mi": 10.3
@@ -95603,7 +95603,7 @@
         "vertical_ft": 1600,
         "summit_elev_ft": 8368,
         "base_elev_ft": 6768,
-        "skiable_acres": 0,
+        "skiable_acres": 1650,
         "pass_networks": [
           "Mountain Collective"
         ],
@@ -95613,7 +95613,7 @@
         "website": "https://www.sugarbowl.com",
         "lift_count": 30,
         "run_count": 202,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 500,
         "default_bearing": 144,
         "trail_km": 80.6,
         "trail_mi": 50.1
@@ -95767,7 +95767,7 @@
         "vertical_ft": 1600,
         "summit_elev_ft": 8368,
         "base_elev_ft": 6768,
-        "skiable_acres": 0,
+        "skiable_acres": 200,
         "pass_networks": [
           "Independent"
         ],
@@ -95777,7 +95777,7 @@
         "website": "https://www.skisodasprings.com/",
         "lift_count": 34,
         "run_count": 208,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 232,
         "default_bearing": 166,
         "trail_km": 82.9,
         "trail_mi": 51.5
@@ -97270,7 +97270,7 @@
         "vertical_ft": 798,
         "summit_elev_ft": 1982,
         "base_elev_ft": 1184,
-        "skiable_acres": 0,
+        "skiable_acres": 110,
         "pass_networks": [
           "Independent"
         ],
@@ -97997,7 +97997,7 @@
         "vertical_ft": 172,
         "summit_elev_ft": 2185,
         "base_elev_ft": 2013,
-        "skiable_acres": 0,
+        "skiable_acres": 72,
         "pass_networks": [
           "Independent"
         ],
@@ -98007,7 +98007,7 @@
         "website": "https://skisunridge.com/winter",
         "lift_count": 5,
         "run_count": 16,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 106,
         "trail_km": 2.6,
         "trail_mi": 1.6
@@ -98724,7 +98724,7 @@
         "vertical_ft": 1231,
         "summit_elev_ft": 5285,
         "base_elev_ft": 4054,
-        "skiable_acres": 0,
+        "skiable_acres": 550,
         "pass_networks": [
           "Indy"
         ],
@@ -98734,7 +98734,7 @@
         "website": "https://skitheloup.org/",
         "lift_count": 3,
         "run_count": 20,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 241,
         "trail_km": 10.4,
         "trail_mi": 6.4
@@ -99332,7 +99332,7 @@
         "vertical_ft": 582,
         "summit_elev_ft": 1164,
         "base_elev_ft": 582,
-        "skiable_acres": 0,
+        "skiable_acres": 100,
         "pass_networks": [
           "Epic"
         ],
@@ -99342,7 +99342,7 @@
         "website": "https://www.libertymountainresort.com/",
         "lift_count": 8,
         "run_count": 52,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 31,
         "default_bearing": 162,
         "trail_km": 9.7,
         "trail_mi": 6
@@ -101403,7 +101403,7 @@
         "vertical_ft": 2311,
         "summit_elev_ft": 8613,
         "base_elev_ft": 6302,
-        "skiable_acres": 0,
+        "skiable_acres": 3170,
         "pass_networks": [
           "Epic"
         ],
@@ -101413,7 +101413,7 @@
         "website": "https://www.northstarcalifornia.com",
         "lift_count": 20,
         "run_count": 126,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 187,
         "trail_km": 83.1,
         "trail_mi": 51.6
@@ -101444,7 +101444,7 @@
         "vertical_ft": 1657,
         "summit_elev_ft": 9470,
         "base_elev_ft": 7813,
-        "skiable_acres": 0,
+        "skiable_acres": 2300,
         "pass_networks": [
           "Epic"
         ],
@@ -101454,7 +101454,7 @@
         "website": "https://www.kirkwood.com",
         "lift_count": 13,
         "run_count": 71,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 500,
         "default_bearing": 196,
         "trail_km": 47,
         "trail_mi": 29.2
@@ -104389,7 +104389,7 @@
         "vertical_ft": 2150,
         "summit_elev_ft": 8247,
         "base_elev_ft": 6097,
-        "skiable_acres": 0,
+        "skiable_acres": 450,
         "pass_networks": [
           "Independent"
         ],
@@ -105206,7 +105206,7 @@
         "vertical_ft": 831,
         "summit_elev_ft": 2088,
         "base_elev_ft": 1257,
-        "skiable_acres": 0,
+        "skiable_acres": 220,
         "pass_networks": [
           "Indy"
         ],
@@ -105216,7 +105216,7 @@
         "website": "https://www.greekpeak.net/",
         "lift_count": 9,
         "run_count": 59,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 122,
         "default_bearing": 214,
         "trail_km": 26.8,
         "trail_mi": 16.6
@@ -105490,7 +105490,7 @@
         "vertical_ft": 1982,
         "summit_elev_ft": 4683,
         "base_elev_ft": 2701,
-        "skiable_acres": 0,
+        "skiable_acres": 600,
         "pass_networks": [
           "Ikon"
         ],
@@ -105500,7 +105500,7 @@
         "website": "https://cypressmountain.com/",
         "lift_count": 7,
         "run_count": 97,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 245,
         "default_bearing": 353,
         "trail_km": 30.4,
         "trail_mi": 18.9
@@ -106706,7 +106706,7 @@
         "vertical_ft": 299,
         "summit_elev_ft": 782,
         "base_elev_ft": 483,
-        "skiable_acres": 0,
+        "skiable_acres": 30,
         "pass_networks": [
           "Independent"
         ],
@@ -108727,7 +108727,7 @@
         "vertical_ft": 1991,
         "summit_elev_ft": 3207,
         "base_elev_ft": 1216,
-        "skiable_acres": 0,
+        "skiable_acres": 260,
         "pass_networks": [
           "Indy"
         ],
@@ -108737,7 +108737,7 @@
         "website": "https://www.skiburke.com/",
         "lift_count": 5,
         "run_count": 88,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 217,
         "default_bearing": 150,
         "trail_km": 34.9,
         "trail_mi": 21.7
@@ -109342,7 +109342,7 @@
         "website": "https://www.skimountpleasant.com/",
         "lift_count": 4,
         "run_count": 32,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 272,
         "trail_km": 4.9,
         "trail_mi": 3
@@ -110117,7 +110117,7 @@
         "website": "https://www.gpat.ca/",
         "lift_count": 2,
         "run_count": 4,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 156,
         "default_bearing": 357,
         "trail_km": 0.8,
         "trail_mi": 0.5
@@ -110431,7 +110431,7 @@
         "vertical_ft": 1242,
         "summit_elev_ft": 2952,
         "base_elev_ft": 1710,
-        "skiable_acres": 0,
+        "skiable_acres": 90,
         "pass_networks": [
           "Independent"
         ],
@@ -110441,7 +110441,7 @@
         "website": "https://massifdusud.net/",
         "lift_count": 2,
         "run_count": 34,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 236,
         "default_bearing": 172,
         "trail_km": 24.5,
         "trail_mi": 15.2
@@ -112214,7 +112214,7 @@
         "vertical_ft": 655,
         "summit_elev_ft": 4417,
         "base_elev_ft": 3762,
-        "skiable_acres": 0,
+        "skiable_acres": 140,
         "pass_networks": [
           "Independent"
         ],
@@ -112224,7 +112224,7 @@
         "website": "https://skibaldmountain.com/",
         "lift_count": 2,
         "run_count": 22,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 188,
         "trail_km": 6.5,
         "trail_mi": 4.1
@@ -112336,7 +112336,7 @@
         "vertical_ft": 1409,
         "summit_elev_ft": 2145,
         "base_elev_ft": 736,
-        "skiable_acres": 0,
+        "skiable_acres": 110,
         "pass_networks": [
           "Independent"
         ],
@@ -112377,7 +112377,7 @@
         "vertical_ft": 2188,
         "summit_elev_ft": 6778,
         "base_elev_ft": 4590,
-        "skiable_acres": 0,
+        "skiable_acres": 2000,
         "pass_networks": [
           "Indy"
         ],
@@ -112387,7 +112387,7 @@
         "website": "https://missionridge.com",
         "lift_count": 7,
         "run_count": 73,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 200,
         "default_bearing": 211,
         "trail_km": 38.6,
         "trail_mi": 24
@@ -112539,7 +112539,7 @@
         "vertical_ft": 502,
         "summit_elev_ft": 4894,
         "base_elev_ft": 4392,
-        "skiable_acres": 0,
+        "skiable_acres": 80,
         "pass_networks": [
           "Independent"
         ],
@@ -112549,7 +112549,7 @@
         "website": "https://ride-sitzmark.com/",
         "lift_count": 2,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 131,
         "trail_km": 4.9,
         "trail_mi": 3.1
@@ -112741,7 +112741,7 @@
         "vertical_ft": 1160,
         "summit_elev_ft": 7477,
         "base_elev_ft": 6317,
-        "skiable_acres": 0,
+        "skiable_acres": 240,
         "pass_networks": [
           "Indy"
         ],
@@ -112751,7 +112751,7 @@
         "website": "https://www.mtashland.com/",
         "lift_count": 5,
         "run_count": 43,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 368,
         "default_bearing": 213,
         "trail_km": 14.1,
         "trail_mi": 8.7
@@ -113189,7 +113189,7 @@
         "vertical_ft": 1600,
         "summit_elev_ft": 8368,
         "base_elev_ft": 6768,
-        "skiable_acres": 0,
+        "skiable_acres": 380,
         "pass_networks": [
           "Independent"
         ],
@@ -113199,7 +113199,7 @@
         "website": "https://www.rideboreal.com/",
         "lift_count": 34,
         "run_count": 208,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 400,
         "default_bearing": 144,
         "trail_km": 82.9,
         "trail_mi": 51.5
@@ -114077,7 +114077,7 @@
         "vertical_ft": 1998,
         "summit_elev_ft": 9567,
         "base_elev_ft": 7569,
-        "skiable_acres": 0,
+        "skiable_acres": 1200,
         "pass_networks": [
           "Independent"
         ],
@@ -114087,7 +114087,7 @@
         "website": "https://skirose.com/",
         "lift_count": 12,
         "run_count": 90,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 203,
         "trail_km": 34.4,
         "trail_mi": 21.4
@@ -114159,7 +114159,7 @@
         "vertical_ft": 4326,
         "summit_elev_ft": 8046,
         "base_elev_ft": 3720,
-        "skiable_acres": 0,
+        "skiable_acres": 2975,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -114170,7 +114170,7 @@
         "website": "https://www.panoramaresort.com",
         "lift_count": 10,
         "run_count": 161,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 205,
         "default_bearing": 129,
         "trail_km": 97.4,
         "trail_mi": 60.6
@@ -115742,7 +115742,7 @@
         "vertical_ft": 1469,
         "summit_elev_ft": 2722,
         "base_elev_ft": 1253,
-        "skiable_acres": 0,
+        "skiable_acres": 230,
         "pass_networks": [
           "Epic"
         ],
@@ -115752,7 +115752,7 @@
         "website": "https://www.mountsunapee.com/",
         "lift_count": 10,
         "run_count": 94,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 177,
         "trail_km": 36.3,
         "trail_mi": 22.5
@@ -117371,7 +117371,7 @@
         "website": "https://plattekill.com",
         "lift_count": 2,
         "run_count": 36,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 175,
         "default_bearing": 273,
         "trail_km": 16.2,
         "trail_mi": 10.1
@@ -118623,7 +118623,7 @@
         "vertical_ft": 912,
         "summit_elev_ft": 7097,
         "base_elev_ft": 6185,
-        "skiable_acres": 0,
+        "skiable_acres": 114,
         "pass_networks": [
           "Independent"
         ],
@@ -118633,7 +118633,7 @@
         "website": "https://www.skitetonmt.com/",
         "lift_count": 3,
         "run_count": 39,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 277,
         "trail_km": 15,
         "trail_mi": 9.3
@@ -119108,7 +119108,7 @@
         "vertical_ft": 1600,
         "summit_elev_ft": 8368,
         "base_elev_ft": 6768,
-        "skiable_acres": 0,
+        "skiable_acres": 435,
         "pass_networks": [
           "Independent"
         ],
@@ -119118,7 +119118,7 @@
         "website": "https://www.donnerskiranch.com/",
         "lift_count": 34,
         "run_count": 208,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 412,
         "default_bearing": 144,
         "trail_km": 82.9,
         "trail_mi": 51.5
@@ -119149,7 +119149,7 @@
         "vertical_ft": 2191,
         "summit_elev_ft": 3048,
         "base_elev_ft": 857,
-        "skiable_acres": 0,
+        "skiable_acres": 403,
         "pass_networks": [
           "Ikon"
         ],
@@ -119159,7 +119159,7 @@
         "website": "https://www.loonmtn.com/",
         "lift_count": 13,
         "run_count": 103,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 163,
         "default_bearing": 162,
         "trail_km": 50.6,
         "trail_mi": 31.4
@@ -119798,7 +119798,7 @@
         "vertical_ft": 1899,
         "summit_elev_ft": 3885,
         "base_elev_ft": 1986,
-        "skiable_acres": 0,
+        "skiable_acres": 625,
         "pass_networks": [
           "Ikon"
         ],
@@ -119808,7 +119808,7 @@
         "website": "https://www.stratton.com",
         "lift_count": 17,
         "run_count": 118,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 180,
         "default_bearing": 227,
         "trail_km": 69.2,
         "trail_mi": 43
@@ -120121,7 +120121,7 @@
         "vertical_ft": 991,
         "summit_elev_ft": 1905,
         "base_elev_ft": 914,
-        "skiable_acres": 0,
+        "skiable_acres": 100,
         "pass_networks": [
           "Indy"
         ],
@@ -120815,7 +120815,7 @@
         "vertical_ft": 2793,
         "summit_elev_ft": 8991,
         "base_elev_ft": 6198,
-        "skiable_acres": 0,
+        "skiable_acres": 3600,
         "pass_networks": [
           "Ikon"
         ],
@@ -120825,7 +120825,7 @@
         "website": "https://www.palisadestahoe.com",
         "lift_count": 44,
         "run_count": 273,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 400,
         "default_bearing": 226,
         "trail_km": 113.3,
         "trail_mi": 70.4
@@ -121622,7 +121622,7 @@
         "vertical_ft": 346,
         "summit_elev_ft": 1757,
         "base_elev_ft": 1411,
-        "skiable_acres": 0,
+        "skiable_acres": 200,
         "pass_networks": [
           "Independent"
         ],
@@ -121632,7 +121632,7 @@
         "website": "https://www.asessippi.com/",
         "lift_count": 4,
         "run_count": 22,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 98,
         "default_bearing": 181,
         "trail_km": 8.8,
         "trail_mi": 5.5
@@ -121949,7 +121949,7 @@
         "vertical_ft": 263,
         "summit_elev_ft": 1086,
         "base_elev_ft": 823,
-        "skiable_acres": 0,
+        "skiable_acres": 25,
         "pass_networks": [
           "Epic"
         ],
@@ -122271,7 +122271,7 @@
         "vertical_ft": 3533,
         "summit_elev_ft": 11567,
         "base_elev_ft": 8034,
-        "skiable_acres": 0,
+        "skiable_acres": 5317,
         "pass_networks": [
           "Epic"
         ],
@@ -122281,7 +122281,7 @@
         "website": "https://www.vail.com",
         "lift_count": 32,
         "run_count": 328,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 354,
         "default_bearing": 146,
         "trail_km": 219.2,
         "trail_mi": 136.2
@@ -122916,7 +122916,7 @@
         "vertical_ft": 1480,
         "summit_elev_ft": 2856,
         "base_elev_ft": 1376,
-        "skiable_acres": 0,
+        "skiable_acres": 205,
         "pass_networks": [
           "Independent"
         ],
@@ -122925,7 +122925,7 @@
         "summary": "Mountain ski destination in Vermont, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 6,
         "run_count": 68,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 145,
         "default_bearing": 129,
         "trail_km": 25.5,
         "trail_mi": 15.8
@@ -123158,7 +123158,7 @@
         "vertical_ft": 287,
         "summit_elev_ft": 1060,
         "base_elev_ft": 773,
-        "skiable_acres": 0,
+        "skiable_acres": 85,
         "pass_networks": [
           "Independent"
         ],
@@ -123168,7 +123168,7 @@
         "website": "https://www.skisnowvalley.com",
         "lift_count": 8,
         "run_count": 44,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 94,
         "default_bearing": 147,
         "trail_km": 8.5,
         "trail_mi": 5.3
@@ -123322,7 +123322,7 @@
         "vertical_ft": 621,
         "summit_elev_ft": 1353,
         "base_elev_ft": 732,
-        "skiable_acres": 0,
+        "skiable_acres": 100,
         "pass_networks": [
           "Indy"
         ],
@@ -123332,7 +123332,7 @@
         "website": "https://www.saskadenasix.com",
         "lift_count": 3,
         "run_count": 67,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 110,
         "default_bearing": 206,
         "trail_km": 10.4,
         "trail_mi": 6.5
@@ -123443,7 +123443,7 @@
         "vertical_ft": 319,
         "summit_elev_ft": 1557,
         "base_elev_ft": 1238,
-        "skiable_acres": 0,
+        "skiable_acres": 132,
         "pass_networks": [
           "Independent"
         ],
@@ -123976,7 +123976,7 @@
         "website": "https://echomntn.com/",
         "lift_count": 2,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 275,
         "default_bearing": 190,
         "trail_km": 3.7,
         "trail_mi": 2.3
@@ -126150,7 +126150,7 @@
         "vertical_ft": 425,
         "summit_elev_ft": 1637,
         "base_elev_ft": 1212,
-        "skiable_acres": 0,
+        "skiable_acres": 253,
         "pass_networks": [
           "Indy"
         ],
@@ -126558,7 +126558,7 @@
         "vertical_ft": 3634,
         "summit_elev_ft": 11370,
         "base_elev_ft": 7736,
-        "skiable_acres": 0,
+        "skiable_acres": 2614,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -126569,7 +126569,7 @@
         "website": "https://www.snowbird.com",
         "lift_count": 45,
         "run_count": 579,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 545,
         "default_bearing": 153,
         "trail_km": 290,
         "trail_mi": 180.2
@@ -126722,7 +126722,7 @@
         "vertical_ft": 532,
         "summit_elev_ft": 3560,
         "base_elev_ft": 3028,
-        "skiable_acres": 0,
+        "skiable_acres": 90,
         "pass_networks": [
           "Indy"
         ],
@@ -126732,7 +126732,7 @@
         "website": "https://www.winterplace.com/",
         "lift_count": 10,
         "run_count": 57,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 162,
         "trail_km": 8.9,
         "trail_mi": 5.5
@@ -128097,7 +128097,7 @@
         "vertical_ft": 538,
         "summit_elev_ft": 620,
         "base_elev_ft": 82,
-        "skiable_acres": 0,
+        "skiable_acres": 60,
         "pass_networks": [
           "Independent"
         ],
@@ -128107,7 +128107,7 @@
         "website": "https://www.martock.com/",
         "lift_count": 3,
         "run_count": 12,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 135,
         "trail_km": 5.2,
         "trail_mi": 3.2
@@ -128258,7 +128258,7 @@
         "vertical_ft": 1989,
         "summit_elev_ft": 5864,
         "base_elev_ft": 3875,
-        "skiable_acres": 0,
+        "skiable_acres": 1704,
         "pass_networks": [
           "Independent"
         ],
@@ -128268,7 +128268,7 @@
         "website": "https://www.mtspokane.com/",
         "lift_count": 8,
         "run_count": 67,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 283,
         "trail_km": 36.2,
         "trail_mi": 22.5
@@ -128540,7 +128540,7 @@
         "vertical_ft": 327,
         "summit_elev_ft": 2146,
         "base_elev_ft": 1819,
-        "skiable_acres": 0,
+        "skiable_acres": 60,
         "pass_networks": [
           "Independent"
         ],
@@ -130444,7 +130444,7 @@
         "vertical_ft": 1923,
         "summit_elev_ft": 7803,
         "base_elev_ft": 5880,
-        "skiable_acres": 0,
+        "skiable_acres": 1500,
         "pass_networks": [
           "Indy"
         ],
@@ -131174,7 +131174,7 @@
         "vertical_ft": 1561,
         "summit_elev_ft": 6677,
         "base_elev_ft": 5116,
-        "skiable_acres": 0,
+        "skiable_acres": 555,
         "pass_networks": [
           "Independent"
         ],
@@ -131184,7 +131184,7 @@
         "website": "https://www.willamettepass.ski/",
         "lift_count": 6,
         "run_count": 34,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 430,
         "default_bearing": 69,
         "trail_km": 22.8,
         "trail_mi": 14.2
@@ -131581,7 +131581,7 @@
         "vertical_ft": 1401,
         "summit_elev_ft": 2992,
         "base_elev_ft": 1591,
-        "skiable_acres": 0,
+        "skiable_acres": 468,
         "pass_networks": [
           "Independent"
         ],
@@ -131591,7 +131591,7 @@
         "website": "https://www.brettonwoods.com",
         "lift_count": 9,
         "run_count": 115,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 200,
         "default_bearing": 209,
         "trail_km": 49.9,
         "trail_mi": 31
@@ -133281,7 +133281,7 @@
         "vertical_ft": 787,
         "summit_elev_ft": 1686,
         "base_elev_ft": 899,
-        "skiable_acres": 0,
+        "skiable_acres": 593,
         "pass_networks": [
           "Indy"
         ],
@@ -133291,7 +133291,7 @@
         "website": "https://www.lutsen.com",
         "lift_count": 8,
         "run_count": 106,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 115,
         "default_bearing": 292,
         "trail_km": 35.7,
         "trail_mi": 22.2
@@ -134212,7 +134212,7 @@
         "vertical_ft": 370,
         "summit_elev_ft": 5649,
         "base_elev_ft": 5279,
-        "skiable_acres": 0,
+        "skiable_acres": 40,
         "pass_networks": [
           "Independent"
         ],
@@ -134222,7 +134222,7 @@
         "website": "https://grangeville.us/snowhaven-facebook2/ski-tickets-and-hours-of-operation/",
         "lift_count": 3,
         "run_count": 9,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 267,
         "trail_km": 3.8,
         "trail_mi": 2.4
@@ -134253,7 +134253,7 @@
         "vertical_ft": 792,
         "summit_elev_ft": 9377,
         "base_elev_ft": 8585,
-        "skiable_acres": 0,
+        "skiable_acres": 385,
         "pass_networks": [
           "Independent"
         ],
@@ -134263,7 +134263,7 @@
         "website": "https://www.leecanyonlv.com/",
         "lift_count": 6,
         "run_count": 30,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 161,
         "default_bearing": 195,
         "trail_km": 10.1,
         "trail_mi": 6.3
@@ -134900,7 +134900,7 @@
         "vertical_ft": 974,
         "summit_elev_ft": 1788,
         "base_elev_ft": 814,
-        "skiable_acres": 0,
+        "skiable_acres": 120,
         "pass_networks": [
           "Epic"
         ],
@@ -136812,7 +136812,7 @@
         "vertical_ft": 611,
         "summit_elev_ft": 1167,
         "base_elev_ft": 556,
-        "skiable_acres": 0,
+        "skiable_acres": 94,
         "pass_networks": [
           "Independent"
         ],
@@ -136822,7 +136822,7 @@
         "website": "https://campfortune.com/",
         "lift_count": 7,
         "run_count": 34,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 154,
         "trail_km": 11.4,
         "trail_mi": 7.1
@@ -137262,7 +137262,7 @@
         "vertical_ft": 1012,
         "summit_elev_ft": 1442,
         "base_elev_ft": 430,
-        "skiable_acres": 0,
+        "skiable_acres": 130,
         "pass_networks": [
           "Indy"
         ],
@@ -139888,7 +139888,7 @@
         "vertical_ft": 1143,
         "summit_elev_ft": 5691,
         "base_elev_ft": 4548,
-        "skiable_acres": 0,
+        "skiable_acres": 530,
         "pass_networks": [
           "Indy"
         ],
@@ -139898,7 +139898,7 @@
         "website": "https://www.bluewood.com",
         "lift_count": 4,
         "run_count": 43,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 200,
         "trail_km": 22.3,
         "trail_mi": 13.8
@@ -140047,7 +140047,7 @@
         "vertical_ft": 1618,
         "summit_elev_ft": 8645,
         "base_elev_ft": 7027,
-        "skiable_acres": 0,
+        "skiable_acres": 1200,
         "pass_networks": [
           "Independent"
         ],
@@ -140057,7 +140057,7 @@
         "website": "https://www.skichinapeak.com/",
         "lift_count": 11,
         "run_count": 115,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 167,
         "trail_km": 35.9,
         "trail_mi": 22.3
@@ -140776,7 +140776,7 @@
         "vertical_ft": 1430,
         "summit_elev_ft": 3055,
         "base_elev_ft": 1625,
-        "skiable_acres": 0,
+        "skiable_acres": 285,
         "pass_networks": [
           "Independent"
         ],
@@ -140786,7 +140786,7 @@
         "website": "https://www.windhammountainclub.com",
         "lift_count": 10,
         "run_count": 59,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 86,
         "default_bearing": 187,
         "trail_km": 29.3,
         "trail_mi": 18.2
@@ -141459,7 +141459,7 @@
         "vertical_ft": 876,
         "summit_elev_ft": 9649,
         "base_elev_ft": 8773,
-        "skiable_acres": 0,
+        "skiable_acres": 250,
         "pass_networks": [
           "Independent"
         ],
@@ -141469,7 +141469,7 @@
         "website": "https://snowyrangeski.com/",
         "lift_count": 5,
         "run_count": 36,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 233,
         "trail_km": 19.1,
         "trail_mi": 11.9
@@ -141663,7 +141663,7 @@
         "vertical_ft": 647,
         "summit_elev_ft": 4591,
         "base_elev_ft": 3944,
-        "skiable_acres": 0,
+        "skiable_acres": 54,
         "pass_networks": [
           "Indy"
         ],
@@ -143083,7 +143083,7 @@
         "vertical_ft": 1640,
         "summit_elev_ft": 7882,
         "base_elev_ft": 6242,
-        "skiable_acres": 0,
+        "skiable_acres": 1260,
         "pass_networks": [
           "Independent"
         ],
@@ -143093,7 +143093,7 @@
         "website": "https://www.skihomewood.com/",
         "lift_count": 7,
         "run_count": 72,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 400,
         "default_bearing": 243,
         "trail_km": 35.8,
         "trail_mi": 22.2
@@ -144293,7 +144293,7 @@
         "vertical_ft": 821,
         "summit_elev_ft": 1458,
         "base_elev_ft": 637,
-        "skiable_acres": 0,
+        "skiable_acres": 550,
         "pass_networks": [
           "Independent"
         ],
@@ -144303,7 +144303,7 @@
         "website": "https://www.mtbohemia.com/",
         "lift_count": 2,
         "run_count": 149,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 3,
         "trail_km": 38.1,
         "trail_mi": 23.7
@@ -144344,7 +144344,7 @@
         "website": "https://www.paolipeaks.com/",
         "lift_count": 6,
         "run_count": 14,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 25,
         "default_bearing": 208,
         "trail_km": 4.2,
         "trail_mi": 2.6
@@ -147164,7 +147164,7 @@
         "vertical_ft": 635,
         "summit_elev_ft": 8962,
         "base_elev_ft": 8327,
-        "skiable_acres": 0,
+        "skiable_acres": 74,
         "pass_networks": [
           "Independent"
         ],
@@ -147174,7 +147174,7 @@
         "website": "https://skicloudcroft.net",
         "lift_count": 2,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 183,
         "trail_km": 8.3,
         "trail_mi": 5.2
@@ -147733,7 +147733,7 @@
         "vertical_ft": 1010,
         "summit_elev_ft": 1945,
         "base_elev_ft": 935,
-        "skiable_acres": 0,
+        "skiable_acres": 140,
         "pass_networks": [
           "Indy"
         ],
@@ -147743,7 +147743,7 @@
         "website": "https://www.montagemountain.com/",
         "lift_count": 6,
         "run_count": 54,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 130,
         "trail_km": 12.4,
         "trail_mi": 7.7
@@ -148137,7 +148137,7 @@
         "vertical_ft": 1199,
         "summit_elev_ft": 1796,
         "base_elev_ft": 597,
-        "skiable_acres": 0,
+        "skiable_acres": 450,
         "pass_networks": [
           "Independent"
         ],
@@ -149844,7 +149844,7 @@
         "vertical_ft": 764,
         "summit_elev_ft": 6481,
         "base_elev_ft": 5717,
-        "skiable_acres": 0,
+        "skiable_acres": 300,
         "pass_networks": [
           "Independent"
         ],
@@ -149854,7 +149854,7 @@
         "website": "https://www.warner-canyon.com/",
         "lift_count": 1,
         "run_count": 21,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 212,
         "trail_km": 9,
         "trail_mi": 5.6
@@ -150730,7 +150730,7 @@
         "vertical_ft": 4660,
         "summit_elev_ft": 12530,
         "base_elev_ft": 7870,
-        "skiable_acres": 0,
+        "skiable_acres": 3362,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -150853,7 +150853,7 @@
         "vertical_ft": 339,
         "summit_elev_ft": 1132,
         "base_elev_ft": 793,
-        "skiable_acres": 0,
+        "skiable_acres": 103,
         "pass_networks": [
           "Indy"
         ],
@@ -150863,7 +150863,7 @@
         "website": "https://www.crystalmountain.com",
         "lift_count": 8,
         "run_count": 63,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 132,
         "default_bearing": 318,
         "trail_km": 15.7,
         "trail_mi": 9.7
@@ -151302,7 +151302,7 @@
         "vertical_ft": 216,
         "summit_elev_ft": 868,
         "base_elev_ft": 652,
-        "skiable_acres": 0,
+        "skiable_acres": 79,
         "pass_networks": [
           "Epic"
         ],
@@ -152234,7 +152234,7 @@
         "vertical_ft": 1002,
         "summit_elev_ft": 5685,
         "base_elev_ft": 4683,
-        "skiable_acres": 0,
+        "skiable_acres": 806,
         "pass_networks": [
           "Indy"
         ],
@@ -152244,7 +152244,7 @@
         "website": "https://hoodoo.com/",
         "lift_count": 6,
         "run_count": 47,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 360,
         "default_bearing": 226,
         "trail_km": 20.5,
         "trail_mi": 12.7
@@ -152598,7 +152598,7 @@
         "vertical_ft": 1653,
         "summit_elev_ft": 9833,
         "base_elev_ft": 8180,
-        "skiable_acres": 0,
+        "skiable_acres": 1600,
         "pass_networks": [
           "Independent"
         ],
@@ -152608,7 +152608,7 @@
         "website": "https://www.powderhorn.com/",
         "lift_count": 5,
         "run_count": 56,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 178,
         "trail_km": 36.9,
         "trail_mi": 22.9
@@ -153179,7 +153179,7 @@
         "website": "https://buckhill.com/",
         "lift_count": 12,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 259,
         "trail_km": 3.3,
         "trail_mi": 2.1
@@ -153979,7 +153979,7 @@
         "vertical_ft": 4514,
         "summit_elev_ft": 12384,
         "base_elev_ft": 7870,
-        "skiable_acres": 0,
+        "skiable_acres": 435,
         "pass_networks": [
           "Ikon"
         ],
@@ -153989,7 +153989,7 @@
         "website": "https://www.aspensnowmass.com/four-mountains/buttermilk",
         "lift_count": 20,
         "run_count": 349,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 200,
         "default_bearing": 199,
         "trail_km": 173.6,
         "trail_mi": 107.9
@@ -154030,7 +154030,7 @@
         "website": "https://www.banffnorquay.com/",
         "lift_count": 7,
         "run_count": 86,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 118,
         "default_bearing": 242,
         "trail_km": 30.1,
         "trail_mi": 18.7
@@ -154303,7 +154303,7 @@
         "vertical_ft": 483,
         "summit_elev_ft": 1132,
         "base_elev_ft": 649,
-        "skiable_acres": 0,
+        "skiable_acres": 112,
         "pass_networks": [
           "Indy"
         ],
@@ -154312,7 +154312,7 @@
         "summary": "Mountain ski destination in Michigan, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 5,
         "run_count": 45,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 275,
         "default_bearing": 4,
         "trail_km": 7.2,
         "trail_mi": 4.4
@@ -156694,7 +156694,7 @@
         "vertical_ft": 1796,
         "summit_elev_ft": 11452,
         "base_elev_ft": 9656,
-        "skiable_acres": 0,
+        "skiable_acres": 750,
         "pass_networks": [
           "Independent"
         ],
@@ -157056,7 +157056,7 @@
         "vertical_ft": 219,
         "summit_elev_ft": 265,
         "base_elev_ft": 46,
-        "skiable_acres": 0,
+        "skiable_acres": 48,
         "pass_networks": [
           "Independent"
         ],
@@ -158763,7 +158763,7 @@
         "vertical_ft": 1480,
         "summit_elev_ft": 2856,
         "base_elev_ft": 1376,
-        "skiable_acres": 0,
+        "skiable_acres": 205,
         "pass_networks": [
           "Indy"
         ],
@@ -158773,7 +158773,7 @@
         "website": "https://www.magicmtn.com",
         "lift_count": 6,
         "run_count": 68,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 145,
         "default_bearing": 129,
         "trail_km": 25.5,
         "trail_mi": 15.8
@@ -161528,7 +161528,7 @@
         "website": "https://www.tremblant.ca",
         "lift_count": 16,
         "run_count": 192,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 178,
         "default_bearing": 46,
         "trail_km": 95.4,
         "trail_mi": 59.3
@@ -163666,7 +163666,7 @@
         "vertical_ft": 1137,
         "summit_elev_ft": 1948,
         "base_elev_ft": 811,
-        "skiable_acres": 0,
+        "skiable_acres": 823,
         "pass_networks": [
           "Epic"
         ],
@@ -163676,7 +163676,7 @@
         "website": "https://www.ski-stoneham.com",
         "lift_count": 6,
         "run_count": 61,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 274,
         "trail_km": 31.4,
         "trail_mi": 19.5
@@ -163907,7 +163907,7 @@
         "vertical_ft": 2600,
         "summit_elev_ft": 11746,
         "base_elev_ft": 9146,
-        "skiable_acres": 0,
+        "skiable_acres": 777,
         "pass_networks": [
           "Independent"
         ],
@@ -163917,7 +163917,7 @@
         "website": "https://www.snowbowl.ski/",
         "lift_count": 8,
         "run_count": 57,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 260,
         "default_bearing": 100,
         "trail_km": 23.8,
         "trail_mi": 14.8
@@ -164227,7 +164227,7 @@
         "vertical_ft": 2873,
         "summit_elev_ft": 3123,
         "base_elev_ft": 250,
-        "skiable_acres": 0,
+        "skiable_acres": 1400,
         "pass_networks": [
           "Independent"
         ],
@@ -164237,7 +164237,7 @@
         "website": "https://www.alyeskaresort.com",
         "lift_count": 7,
         "run_count": 95,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 650,
         "default_bearing": 110,
         "trail_km": 38,
         "trail_mi": 23.6
@@ -167177,7 +167177,7 @@
         "vertical_ft": 1055,
         "summit_elev_ft": 4118,
         "base_elev_ft": 3063,
-        "skiable_acres": 0,
+        "skiable_acres": 200,
         "pass_networks": [
           "Independent"
         ],
@@ -167187,7 +167187,7 @@
         "website": "https://mtseymour.ca/",
         "lift_count": 5,
         "run_count": 86,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 472,
         "default_bearing": 360,
         "trail_km": 20.8,
         "trail_mi": 12.9
@@ -167218,7 +167218,7 @@
         "vertical_ft": 363,
         "summit_elev_ft": 1533,
         "base_elev_ft": 1170,
-        "skiable_acres": 0,
+        "skiable_acres": 225,
         "pass_networks": [
           "Indy"
         ],
@@ -167228,7 +167228,7 @@
         "website": "https://caberfaepeaks.com",
         "lift_count": 5,
         "run_count": 26,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 125,
         "default_bearing": 139,
         "trail_km": 7.9,
         "trail_mi": 4.9
@@ -167837,7 +167837,7 @@
         "website": "https://hurricaneridge.com/",
         "lift_count": 3,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 400,
         "default_bearing": 151,
         "trail_km": 2.5,
         "trail_mi": 1.6
@@ -168356,7 +168356,7 @@
         "vertical_ft": 728,
         "summit_elev_ft": 1401,
         "base_elev_ft": 673,
-        "skiable_acres": 0,
+        "skiable_acres": 173,
         "pass_networks": [
           "Independent"
         ],
@@ -168366,7 +168366,7 @@
         "website": "https://www.skirelais.com",
         "lift_count": 6,
         "run_count": 26,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 135,
         "default_bearing": 134,
         "trail_km": 17.1,
         "trail_mi": 10.6
@@ -168437,7 +168437,7 @@
         "vertical_ft": 4512,
         "summit_elev_ft": 13244,
         "base_elev_ft": 8732,
-        "skiable_acres": 0,
+        "skiable_acres": 2000,
         "pass_networks": [
           "Epic",
           "Mountain Collective"
@@ -168448,7 +168448,7 @@
         "website": "https://tellurideskiresort.com",
         "lift_count": 20,
         "run_count": 196,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 330,
         "default_bearing": 172,
         "trail_km": 113.8,
         "trail_mi": 70.7
@@ -169737,7 +169737,7 @@
         "vertical_ft": 3171,
         "summit_elev_ft": 13385,
         "base_elev_ft": 10214,
-        "skiable_acres": 0,
+        "skiable_acres": 1819,
         "pass_networks": [
           "Independent"
         ],
@@ -169747,7 +169747,7 @@
         "website": "https://silvertonmountain.com",
         "lift_count": 1,
         "run_count": 46,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 500,
         "default_bearing": 127,
         "trail_km": 27.3,
         "trail_mi": 17
@@ -170179,7 +170179,7 @@
         "vertical_ft": 2444,
         "summit_elev_ft": 8156,
         "base_elev_ft": 5712,
-        "skiable_acres": 0,
+        "skiable_acres": 2200,
         "pass_networks": [
           "Indy"
         ],
@@ -170189,7 +170189,7 @@
         "website": "https://www.skidiscovery.com/",
         "lift_count": 8,
         "run_count": 68,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 215,
         "default_bearing": 63,
         "trail_km": 47.5,
         "trail_mi": 29.5
@@ -171077,7 +171077,7 @@
         "vertical_ft": 1608,
         "summit_elev_ft": 8762,
         "base_elev_ft": 7154,
-        "skiable_acres": 0,
+        "skiable_acres": 664,
         "pass_networks": [
           "Indy"
         ],
@@ -171087,7 +171087,7 @@
         "website": "https://www.skithebeav.com/",
         "lift_count": 6,
         "run_count": 58,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 400,
         "default_bearing": 244,
         "trail_km": 38.1,
         "trail_mi": 23.7
@@ -171118,7 +171118,7 @@
         "vertical_ft": 3790,
         "summit_elev_ft": 10310,
         "base_elev_ft": 6520,
-        "skiable_acres": 0,
+        "skiable_acres": 200,
         "pass_networks": [
           "Independent"
         ],
@@ -171128,7 +171128,7 @@
         "website": "https://www.sandia.ski/",
         "lift_count": 6,
         "run_count": 66,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 125,
         "default_bearing": 97,
         "trail_km": 25.4,
         "trail_mi": 15.8
@@ -171481,7 +171481,7 @@
         "vertical_ft": 781,
         "summit_elev_ft": 9041,
         "base_elev_ft": 8260,
-        "skiable_acres": 0,
+        "skiable_acres": 200,
         "pass_networks": [
           "Independent"
         ],
@@ -171491,7 +171491,7 @@
         "website": "https://www.skithelemmon.com/",
         "lift_count": 3,
         "run_count": 21,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 180,
         "default_bearing": 179,
         "trail_km": 6.6,
         "trail_mi": 4.1
@@ -171643,7 +171643,7 @@
         "vertical_ft": 1954,
         "summit_elev_ft": 9880,
         "base_elev_ft": 7926,
-        "skiable_acres": 0,
+        "skiable_acres": 680,
         "pass_networks": [
           "Indy"
         ],
@@ -171653,7 +171653,7 @@
         "website": "https://sunlightmtn.com/",
         "lift_count": 3,
         "run_count": 76,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 184,
         "trail_km": 36.9,
         "trail_mi": 22.9
@@ -172172,7 +172172,7 @@
         "vertical_ft": 759,
         "summit_elev_ft": 2765,
         "base_elev_ft": 2006,
-        "skiable_acres": 0,
+        "skiable_acres": 70,
         "pass_networks": [
           "Epic"
         ],
@@ -172336,7 +172336,7 @@
         "vertical_ft": 303,
         "summit_elev_ft": 693,
         "base_elev_ft": 390,
-        "skiable_acres": 0,
+        "skiable_acres": 45,
         "pass_networks": [
           "Independent"
         ],
@@ -172346,7 +172346,7 @@
         "website": "https://www.titcombmountain.com/",
         "lift_count": 3,
         "run_count": 17,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 85,
         "default_bearing": 200,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -172780,7 +172780,7 @@
         "vertical_ft": 878,
         "summit_elev_ft": 1483,
         "base_elev_ft": 605,
-        "skiable_acres": 0,
+        "skiable_acres": 363,
         "pass_networks": [
           "Ikon"
         ],
@@ -172790,7 +172790,7 @@
         "website": "https://www.bluemountain.ca",
         "lift_count": 29,
         "run_count": 165,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 154,
         "default_bearing": 226,
         "trail_km": 72.6,
         "trail_mi": 45.1
@@ -172944,7 +172944,7 @@
         "vertical_ft": 2294,
         "summit_elev_ft": 9377,
         "base_elev_ft": 7083,
-        "skiable_acres": 0,
+        "skiable_acres": 1600,
         "pass_networks": [
           "Independent"
         ],
@@ -172954,7 +172954,7 @@
         "website": "https://www.redlodgemountain.com/",
         "lift_count": 7,
         "run_count": 64,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 229,
         "trail_km": 38.4,
         "trail_mi": 23.8
@@ -173509,7 +173509,7 @@
         "vertical_ft": 1131,
         "summit_elev_ft": 2378,
         "base_elev_ft": 1247,
-        "skiable_acres": 0,
+        "skiable_acres": 170,
         "pass_networks": [
           "Independent"
         ],
@@ -173519,7 +173519,7 @@
         "website": "https://www.jiminypeak.com/",
         "lift_count": 8,
         "run_count": 44,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 108,
         "default_bearing": 165,
         "trail_km": 18.7,
         "trail_mi": 11.6
@@ -175294,7 +175294,7 @@
         "vertical_ft": 153,
         "summit_elev_ft": 2209,
         "base_elev_ft": 2056,
-        "skiable_acres": 0,
+        "skiable_acres": 20,
         "pass_networks": [
           "Independent"
         ],
@@ -175304,7 +175304,7 @@
         "website": "https://www.snowvalley.ca/",
         "lift_count": 4,
         "run_count": 10,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 48,
         "default_bearing": 246,
         "trail_km": 1.2,
         "trail_mi": 0.8
@@ -175335,7 +175335,7 @@
         "vertical_ft": 648,
         "summit_elev_ft": 1787,
         "base_elev_ft": 1139,
-        "skiable_acres": 0,
+        "skiable_acres": 85,
         "pass_networks": [
           "Indy"
         ],
@@ -175345,7 +175345,7 @@
         "website": "https://www.whaleback.com/",
         "lift_count": 5,
         "run_count": 46,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 110,
         "default_bearing": 199,
         "trail_km": 9.1,
         "trail_mi": 5.7
@@ -177038,7 +177038,7 @@
         "vertical_ft": 1166,
         "summit_elev_ft": 11747,
         "base_elev_ft": 10581,
-        "skiable_acres": 0,
+        "skiable_acres": 470,
         "pass_networks": [
           "Indy"
         ],
@@ -177048,7 +177048,7 @@
         "website": "https://www.skicooper.com/",
         "lift_count": 5,
         "run_count": 63,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 142,
         "trail_km": 37.2,
         "trail_mi": 23.1
@@ -177079,7 +177079,7 @@
         "vertical_ft": 967,
         "summit_elev_ft": 1891,
         "base_elev_ft": 924,
-        "skiable_acres": 0,
+        "skiable_acres": 119,
         "pass_networks": [
           "Indy"
         ],
@@ -177089,7 +177089,7 @@
         "website": "https://catamountski.com/",
         "lift_count": 7,
         "run_count": 46,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 75,
         "default_bearing": 194,
         "trail_km": 18,
         "trail_mi": 11.2
@@ -179380,7 +179380,7 @@
         "vertical_ft": 315,
         "summit_elev_ft": 579,
         "base_elev_ft": 264,
-        "skiable_acres": 0,
+        "skiable_acres": 60,
         "pass_networks": [
           "Independent"
         ],
@@ -179949,7 +179949,7 @@
         "vertical_ft": 791,
         "summit_elev_ft": 2322,
         "base_elev_ft": 1531,
-        "skiable_acres": 0,
+        "skiable_acres": 290,
         "pass_networks": [
           "Independent"
         ],
@@ -179959,7 +179959,7 @@
         "website": "https://holimont.com/",
         "lift_count": 19,
         "run_count": 122,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 180,
         "default_bearing": 209,
         "trail_km": 47.6,
         "trail_mi": 29.6
@@ -180071,7 +180071,7 @@
         "vertical_ft": 1306,
         "summit_elev_ft": 2245,
         "base_elev_ft": 939,
-        "skiable_acres": 0,
+        "skiable_acres": 2200,
         "pass_networks": [
           "Independent"
         ],
@@ -180081,7 +180081,7 @@
         "website": "https://www.gunstock.com/",
         "lift_count": 6,
         "run_count": 135,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 120,
         "default_bearing": 216,
         "trail_km": 26.3,
         "trail_mi": 16.3
@@ -180833,7 +180833,7 @@
         "vertical_ft": 524,
         "summit_elev_ft": 1451,
         "base_elev_ft": 927,
-        "skiable_acres": 0,
+        "skiable_acres": 268,
         "pass_networks": [
           "Independent"
         ],
@@ -180843,7 +180843,7 @@
         "website": "https://www.devilsheadresort.com/",
         "lift_count": 8,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 55,
         "default_bearing": 359,
         "trail_km": 13.8,
         "trail_mi": 8.5
@@ -180955,7 +180955,7 @@
         "vertical_ft": 523,
         "summit_elev_ft": 3423,
         "base_elev_ft": 2900,
-        "skiable_acres": 0,
+        "skiable_acres": 54,
         "pass_networks": [
           "Independent"
         ],
@@ -181037,7 +181037,7 @@
         "vertical_ft": 2081,
         "summit_elev_ft": 7538,
         "base_elev_ft": 5457,
-        "skiable_acres": 0,
+        "skiable_acres": 636,
         "pass_networks": [
           "Independent"
         ],
@@ -181047,7 +181047,7 @@
         "website": "https://www.skipark.com/",
         "lift_count": 6,
         "run_count": 37,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 275,
         "default_bearing": 18,
         "trail_km": 29.4,
         "trail_mi": 18.3
@@ -181399,7 +181399,7 @@
         "vertical_ft": 630,
         "summit_elev_ft": 8899,
         "base_elev_ft": 8269,
-        "skiable_acres": 0,
+        "skiable_acres": 60,
         "pass_networks": [
           "Independent"
         ],
@@ -181409,7 +181409,7 @@
         "website": "https://www.ski-hesperus.com/",
         "lift_count": 1,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 212,
         "trail_km": 8,
         "trail_mi": 5
@@ -181761,7 +181761,7 @@
         "vertical_ft": 236,
         "summit_elev_ft": 1187,
         "base_elev_ft": 951,
-        "skiable_acres": 0,
+        "skiable_acres": 80,
         "pass_networks": [
           "Indy"
         ],
@@ -182168,7 +182168,7 @@
         "vertical_ft": 1304,
         "summit_elev_ft": 10911,
         "base_elev_ft": 9607,
-        "skiable_acres": 0,
+        "skiable_acres": 665,
         "pass_networks": [
           "Independent"
         ],
@@ -182178,7 +182178,7 @@
         "website": "https://www.brianhead.com",
         "lift_count": 13,
         "run_count": 73,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 360,
         "default_bearing": 148,
         "trail_km": 38.3,
         "trail_mi": 23.8
@@ -182490,7 +182490,7 @@
         "vertical_ft": 226,
         "summit_elev_ft": 1011,
         "base_elev_ft": 785,
-        "skiable_acres": 0,
+        "skiable_acres": 55,
         "pass_networks": [
           "Indy"
         ],
@@ -182500,7 +182500,7 @@
         "website": "https://mountkato.com/",
         "lift_count": 10,
         "run_count": 38,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 50,
         "default_bearing": 66,
         "trail_km": 5.3,
         "trail_mi": 3.3
@@ -182891,7 +182891,7 @@
         "vertical_ft": 3966,
         "summit_elev_ft": 6266,
         "base_elev_ft": 2300,
-        "skiable_acres": 0,
+        "skiable_acres": 1600,
         "pass_networks": [
           "Indy"
         ],
@@ -182901,7 +182901,7 @@
         "website": "https://www.silvermt.com/",
         "lift_count": 7,
         "run_count": 100,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 300,
         "default_bearing": 170,
         "trail_km": 46.4,
         "trail_mi": 28.9
@@ -182972,7 +182972,7 @@
         "vertical_ft": 1477,
         "summit_elev_ft": 5105,
         "base_elev_ft": 3628,
-        "skiable_acres": 0,
+        "skiable_acres": 1000,
         "pass_networks": [
           "Independent"
         ],
@@ -182982,7 +182982,7 @@
         "website": "https://www.mtbaker.us",
         "lift_count": 10,
         "run_count": 66,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 641,
         "default_bearing": 222,
         "trail_km": 31.8,
         "trail_mi": 19.7
@@ -183174,7 +183174,7 @@
         "vertical_ft": 376,
         "summit_elev_ft": 852,
         "base_elev_ft": 476,
-        "skiable_acres": 0,
+        "skiable_acres": 100,
         "pass_networks": [
           "Independent"
         ],
@@ -183184,7 +183184,7 @@
         "website": "https://www.perfectnorth.com/",
         "lift_count": 14,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 23,
         "default_bearing": 181,
         "trail_km": 6.2,
         "trail_mi": 3.9
@@ -183742,7 +183742,7 @@
         "vertical_ft": 585,
         "summit_elev_ft": 7914,
         "base_elev_ft": 7329,
-        "skiable_acres": 0,
+        "skiable_acres": 60,
         "pass_networks": [
           "Independent"
         ],
@@ -183752,7 +183752,7 @@
         "website": "https://www.casperwy.gov/explore/hogadon_basin_ski_area/index.php",
         "lift_count": 2,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 140,
         "default_bearing": 137,
         "trail_km": 7.2,
         "trail_mi": 4.5
@@ -184350,7 +184350,7 @@
         "vertical_ft": 4347,
         "summit_elev_ft": 11162,
         "base_elev_ft": 6815,
-        "skiable_acres": 0,
+        "skiable_acres": 5850,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -185772,7 +185772,7 @@
         "vertical_ft": 653,
         "summit_elev_ft": 5771,
         "base_elev_ft": 5118,
-        "skiable_acres": 0,
+        "skiable_acres": 170,
         "pass_networks": [
           "Independent"
         ],
@@ -187190,7 +187190,7 @@
         "vertical_ft": 231,
         "summit_elev_ft": 485,
         "base_elev_ft": 254,
-        "skiable_acres": 0,
+        "skiable_acres": 45,
         "pass_networks": [
           "Independent"
         ],
@@ -187200,7 +187200,7 @@
         "website": "https://www.lostvalleyski.com/",
         "lift_count": 3,
         "run_count": 27,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 67,
         "default_bearing": 260,
         "trail_km": 5.8,
         "trail_mi": 3.6
@@ -187354,7 +187354,7 @@
         "vertical_ft": 2133,
         "summit_elev_ft": 8513,
         "base_elev_ft": 6380,
-        "skiable_acres": 0,
+        "skiable_acres": 1100,
         "pass_networks": [
           "Indy"
         ],
@@ -187364,7 +187364,7 @@
         "website": "https://pebblecreekskiarea.com:443/",
         "lift_count": 3,
         "run_count": 59,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 128,
         "trail_km": 25.5,
         "trail_mi": 15.9
@@ -187518,7 +187518,7 @@
         "vertical_ft": 542,
         "summit_elev_ft": 1327,
         "base_elev_ft": 785,
-        "skiable_acres": 0,
+        "skiable_acres": 385,
         "pass_networks": [
           "Ikon"
         ],
@@ -188167,7 +188167,7 @@
         "vertical_ft": 1600,
         "summit_elev_ft": 8182,
         "base_elev_ft": 6582,
-        "skiable_acres": 0,
+        "skiable_acres": 290,
         "pass_networks": [
           "Independent"
         ],
@@ -190199,7 +190199,7 @@
         "vertical_ft": 2036,
         "summit_elev_ft": 6521,
         "base_elev_ft": 4485,
-        "skiable_acres": 0,
+        "skiable_acres": 1402,
         "pass_networks": [
           "Indy"
         ],
@@ -190209,7 +190209,7 @@
         "website": "https://www.skiwhitepass.com",
         "lift_count": 8,
         "run_count": 79,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 171,
         "trail_km": 42.3,
         "trail_mi": 26.3
@@ -194742,7 +194742,7 @@
         "vertical_ft": 324,
         "summit_elev_ft": 1033,
         "base_elev_ft": 709,
-        "skiable_acres": 0,
+        "skiable_acres": 140,
         "pass_networks": [
           "Independent"
         ],
@@ -194752,7 +194752,7 @@
         "website": "https://www.welchvillage.com",
         "lift_count": 10,
         "run_count": 58,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 45,
         "default_bearing": 234,
         "trail_km": 15.3,
         "trail_mi": 9.5
@@ -195394,7 +195394,7 @@
         "vertical_ft": 2769,
         "summit_elev_ft": 9391,
         "base_elev_ft": 6622,
-        "skiable_acres": 0,
+        "skiable_acres": 8000,
         "pass_networks": [
           "Independent"
         ],
@@ -195404,7 +195404,7 @@
         "website": "https://powdermountain.com/",
         "lift_count": 15,
         "run_count": 215,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 360,
         "default_bearing": 166,
         "trail_km": 179.6,
         "trail_mi": 111.6
@@ -195922,7 +195922,7 @@
         "vertical_ft": 3452,
         "summit_elev_ft": 13002,
         "base_elev_ft": 9550,
-        "skiable_acres": 0,
+        "skiable_acres": 2908,
         "pass_networks": [
           "Epic"
         ],
@@ -195932,7 +195932,7 @@
         "website": "https://www.breckenridge.com",
         "lift_count": 35,
         "run_count": 253,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 355,
         "default_bearing": 245,
         "trail_km": 144.9,
         "trail_mi": 90
@@ -195963,7 +195963,7 @@
         "vertical_ft": 2536,
         "summit_elev_ft": 3587,
         "base_elev_ft": 1051,
-        "skiable_acres": 0,
+        "skiable_acres": 428,
         "pass_networks": [
           "Independent"
         ],
@@ -195973,7 +195973,7 @@
         "website": "https://goremountain.com",
         "lift_count": 14,
         "run_count": 116,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 150,
         "default_bearing": 268,
         "trail_km": 65.3,
         "trail_mi": 40.6
@@ -197495,7 +197495,7 @@
         "vertical_ft": 1998,
         "summit_elev_ft": 9567,
         "base_elev_ft": 7569,
-        "skiable_acres": 0,
+        "skiable_acres": 1200,
         "pass_networks": [
           "Independent"
         ],
@@ -197505,7 +197505,7 @@
         "website": "https://www.skytavern.org/",
         "lift_count": 12,
         "run_count": 90,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 203,
         "trail_km": 34.4,
         "trail_mi": 21.4
@@ -198065,7 +198065,7 @@
         "vertical_ft": 770,
         "summit_elev_ft": 1351,
         "base_elev_ft": 581,
-        "skiable_acres": 0,
+        "skiable_acres": 103,
         "pass_networks": [
           "Independent"
         ],
@@ -200046,7 +200046,7 @@
         "vertical_ft": 450,
         "summit_elev_ft": 1322,
         "base_elev_ft": 872,
-        "skiable_acres": 0,
+        "skiable_acres": 61,
         "pass_networks": [
           "Independent"
         ],
@@ -200056,7 +200056,7 @@
         "website": "https://www.horseshoeresort.com/",
         "lift_count": 11,
         "run_count": 57,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 88,
         "default_bearing": 204,
         "trail_km": 16.1,
         "trail_mi": 10
@@ -201146,7 +201146,7 @@
         "website": "https://www.skimontcalm.com/",
         "lift_count": 9,
         "run_count": 23,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 110,
         "default_bearing": 201,
         "trail_km": 8.7,
         "trail_mi": 5.4
@@ -203607,7 +203607,7 @@
         "vertical_ft": 1467,
         "summit_elev_ft": 3809,
         "base_elev_ft": 2342,
-        "skiable_acres": 0,
+        "skiable_acres": 141,
         "pass_networks": [
           "Indy"
         ],
@@ -203617,7 +203617,7 @@
         "website": "http://www.shamesmountain.com",
         "lift_count": 3,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 472,
         "default_bearing": 341,
         "trail_km": 20.1,
         "trail_mi": 12.5
@@ -203767,7 +203767,7 @@
         "vertical_ft": 1719,
         "summit_elev_ft": 7071,
         "base_elev_ft": 5352,
-        "skiable_acres": 0,
+        "skiable_acres": 100,
         "pass_networks": [
           "Independent"
         ],
@@ -203777,7 +203777,7 @@
         "website": "https://nordicvalley.ski/",
         "lift_count": 6,
         "run_count": 41,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 350,
         "default_bearing": 231,
         "trail_km": 23,
         "trail_mi": 14.3
@@ -203849,7 +203849,7 @@
         "vertical_ft": 3820,
         "summit_elev_ft": 10536,
         "base_elev_ft": 6716,
-        "skiable_acres": 0,
+        "skiable_acres": 50,
         "pass_networks": [
           "Independent"
         ],
@@ -203859,7 +203859,7 @@
         "website": "https://steamboatsprings.net/131/Howelsen-Hill-Ski-Area",
         "lift_count": 23,
         "run_count": 207,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 170,
         "default_bearing": 102,
         "trail_km": 120,
         "trail_mi": 74.6
@@ -204337,7 +204337,7 @@
         "vertical_ft": 1304,
         "summit_elev_ft": 6958,
         "base_elev_ft": 5654,
-        "skiable_acres": 0,
+        "skiable_acres": 600,
         "pass_networks": [
           "Independent"
         ],
@@ -204347,7 +204347,7 @@
         "website": "https://baldyresort.com/",
         "lift_count": 3,
         "run_count": 54,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 256,
         "default_bearing": 352,
         "trail_km": 28.9,
         "trail_mi": 18
@@ -207897,7 +207897,7 @@
         "vertical_ft": 2486,
         "summit_elev_ft": 2608,
         "base_elev_ft": 122,
-        "skiable_acres": 0,
+        "skiable_acres": 406,
         "pass_networks": [
           "Independent"
         ],
@@ -207907,7 +207907,7 @@
         "website": "https://www.lemassif.com/",
         "lift_count": 9,
         "run_count": 89,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 254,
         "default_bearing": 268,
         "trail_km": 55.4,
         "trail_mi": 34.4
@@ -209003,7 +209003,7 @@
         "website": "https://www.skiturner.com/",
         "lift_count": 1,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 289,
         "trail_km": 16.2,
         "trail_mi": 10.1
@@ -209276,7 +209276,7 @@
         "vertical_ft": 1792,
         "summit_elev_ft": 7561,
         "base_elev_ft": 5769,
-        "skiable_acres": 0,
+        "skiable_acres": 2600,
         "pass_networks": [
           "Indy"
         ],
@@ -209286,7 +209286,7 @@
         "website": "https://bogusbasin.org",
         "lift_count": 11,
         "run_count": 174,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 250,
         "default_bearing": 175,
         "trail_km": 80.7,
         "trail_mi": 50.2
@@ -209560,7 +209560,7 @@
         "vertical_ft": 1406,
         "summit_elev_ft": 3428,
         "base_elev_ft": 2022,
-        "skiable_acres": 0,
+        "skiable_acres": 171,
         "pass_networks": [
           "Independent"
         ],
@@ -210168,7 +210168,7 @@
         "vertical_ft": 532,
         "summit_elev_ft": 1302,
         "base_elev_ft": 770,
-        "skiable_acres": 0,
+        "skiable_acres": 169,
         "pass_networks": [
           "Indy"
         ],
@@ -210178,7 +210178,7 @@
         "website": "https://marquettemountain.com/",
         "lift_count": 4,
         "run_count": 29,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 117,
         "default_bearing": 178,
         "trail_km": 9.8,
         "trail_mi": 6.1
@@ -210530,7 +210530,7 @@
         "vertical_ft": 1740,
         "summit_elev_ft": 2469,
         "base_elev_ft": 729,
-        "skiable_acres": 0,
+        "skiable_acres": 200,
         "pass_networks": [
           "Independent"
         ],
@@ -210653,7 +210653,7 @@
         "vertical_ft": 6222,
         "summit_elev_ft": 7906,
         "base_elev_ft": 1684,
-        "skiable_acres": 0,
+        "skiable_acres": 3121,
         "pass_networks": [
           "Ikon",
           "Mountain Collective"
@@ -210664,7 +210664,7 @@
         "website": "https://www.revelstokemountainresort.com",
         "lift_count": 7,
         "run_count": 116,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 413,
         "default_bearing": 97,
         "trail_km": 91.6,
         "trail_mi": 56.9
@@ -211338,7 +211338,7 @@
         "vertical_ft": 897,
         "summit_elev_ft": 2047,
         "base_elev_ft": 1150,
-        "skiable_acres": 0,
+        "skiable_acres": 166,
         "pass_networks": [
           "Ikon"
         ],
@@ -211348,7 +211348,7 @@
         "website": "https://www.camelbackresort.com/",
         "lift_count": 15,
         "run_count": 80,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 50,
         "default_bearing": 189,
         "trail_km": 14.9,
         "trail_mi": 9.3
@@ -211459,7 +211459,7 @@
         "vertical_ft": 1900,
         "summit_elev_ft": 8484,
         "base_elev_ft": 6584,
-        "skiable_acres": 0,
+        "skiable_acres": 1680,
         "pass_networks": [
           "Independent"
         ],
@@ -211469,7 +211469,7 @@
         "website": "https://www.bearvalley.com/",
         "lift_count": 9,
         "run_count": 97,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 359,
         "default_bearing": 142,
         "trail_km": 50.2,
         "trail_mi": 31.2
@@ -212146,7 +212146,7 @@
         "vertical_ft": 1583,
         "summit_elev_ft": 8433,
         "base_elev_ft": 6850,
-        "skiable_acres": 0,
+        "skiable_acres": 210,
         "pass_networks": [
           "Indy"
         ],
@@ -212156,7 +212156,7 @@
         "website": "https://www.skimaverick.com/",
         "lift_count": 1,
         "run_count": 22,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 180,
         "default_bearing": 289,
         "trail_km": 13.1,
         "trail_mi": 8.2
@@ -212308,7 +212308,7 @@
         "vertical_ft": 365,
         "summit_elev_ft": 564,
         "base_elev_ft": 199,
-        "skiable_acres": 0,
+        "skiable_acres": 51,
         "pass_networks": [
           "Independent"
         ],
@@ -212318,7 +212318,7 @@
         "website": "https://mountsouthington.com/",
         "lift_count": 7,
         "run_count": 13,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 40,
         "default_bearing": 263,
         "trail_km": 2.9,
         "trail_mi": 1.8
@@ -213285,7 +213285,7 @@
         "vertical_ft": 1003,
         "summit_elev_ft": 3505,
         "base_elev_ft": 2502,
-        "skiable_acres": 0,
+        "skiable_acres": 129,
         "pass_networks": [
           "Independent"
         ],
@@ -213295,7 +213295,7 @@
         "website": "https://www.wintergreenresort.com",
         "lift_count": 9,
         "run_count": 48,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 35,
         "default_bearing": 237,
         "trail_km": 10.1,
         "trail_mi": 6.3
@@ -213525,7 +213525,7 @@
         "vertical_ft": 874,
         "summit_elev_ft": 5850,
         "base_elev_ft": 4976,
-        "skiable_acres": 0,
+        "skiable_acres": 80,
         "pass_networks": [
           "Indy"
         ],
@@ -213535,7 +213535,7 @@
         "website": "https://www.bearpawskibowl.org/",
         "lift_count": 2,
         "run_count": 27,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 140,
         "default_bearing": 253,
         "trail_km": 6.2,
         "trail_mi": 3.8
@@ -214537,7 +214537,7 @@
         "vertical_ft": 2167,
         "summit_elev_ft": 3323,
         "base_elev_ft": 1156,
-        "skiable_acres": 0,
+        "skiable_acres": 667,
         "pass_networks": [
           "Epic"
         ],
@@ -214547,7 +214547,7 @@
         "website": "https://www.okemo.com",
         "lift_count": 21,
         "run_count": 137,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 199,
         "default_bearing": 281,
         "trail_km": 75,
         "trail_mi": 46.6
@@ -214619,7 +214619,7 @@
         "vertical_ft": 703,
         "summit_elev_ft": 1221,
         "base_elev_ft": 518,
-        "skiable_acres": 0,
+        "skiable_acres": 69,
         "pass_networks": [
           "Indy"
         ],
@@ -214629,7 +214629,7 @@
         "website": "https://www.calabogie.com/",
         "lift_count": 3,
         "run_count": 28,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 80,
         "default_bearing": 194,
         "trail_km": 13.8,
         "trail_mi": 8.6
@@ -214822,7 +214822,7 @@
         "vertical_ft": 294,
         "summit_elev_ft": 1122,
         "base_elev_ft": 828,
-        "skiable_acres": 0,
+        "skiable_acres": 90,
         "pass_networks": [
           "Independent"
         ],
@@ -215024,7 +215024,7 @@
         "vertical_ft": 542,
         "summit_elev_ft": 1327,
         "base_elev_ft": 785,
-        "skiable_acres": 0,
+        "skiable_acres": 248,
         "pass_networks": [
           "Indy"
         ],
@@ -215034,7 +215034,7 @@
         "website": "https://www.nubsnob.com/",
         "lift_count": 16,
         "run_count": 107,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 123,
         "default_bearing": 274,
         "trail_km": 39.5,
         "trail_mi": 24.6
@@ -218192,7 +218192,7 @@
         "vertical_ft": 1302,
         "summit_elev_ft": 3277,
         "base_elev_ft": 1975,
-        "skiable_acres": 0,
+        "skiable_acres": 178,
         "pass_networks": [
           "Independent"
         ],
@@ -218202,7 +218202,7 @@
         "website": "https://www.bromley.com",
         "lift_count": 8,
         "run_count": 70,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 145,
         "default_bearing": 337,
         "trail_km": 22.7,
         "trail_mi": 14.1
@@ -218636,7 +218636,7 @@
         "vertical_ft": 2793,
         "summit_elev_ft": 8991,
         "base_elev_ft": 6198,
-        "skiable_acres": 0,
+        "skiable_acres": 3600,
         "pass_networks": [
           "Ikon"
         ],
@@ -218646,7 +218646,7 @@
         "website": "https://www.palisadestahoe.com",
         "lift_count": 65,
         "run_count": 400,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 400,
         "default_bearing": 221,
         "trail_km": 196.6,
         "trail_mi": 122.2
@@ -219003,7 +219003,7 @@
         "vertical_ft": 425,
         "summit_elev_ft": 806,
         "base_elev_ft": 381,
-        "skiable_acres": 0,
+        "skiable_acres": 80,
         "pass_networks": [
           "Independent"
         ],
@@ -219013,7 +219013,7 @@
         "website": "https://powderridgepark.com/",
         "lift_count": 8,
         "run_count": 16,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 60,
         "default_bearing": 261,
         "trail_km": 4.8,
         "trail_mi": 3
@@ -219044,7 +219044,7 @@
         "vertical_ft": 3610,
         "summit_elev_ft": 6233,
         "base_elev_ft": 2623,
-        "skiable_acres": 0,
+        "skiable_acres": 1914,
         "pass_networks": [
           "Independent"
         ],
@@ -219053,7 +219053,7 @@
         "summary": "Mountain ski destination in Washington, United States, offering fall-line downhill terrain, alpine tree skiing, and local winter sports culture.",
         "lift_count": 27,
         "run_count": 217,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 435,
         "default_bearing": 246,
         "trail_km": 83.4,
         "trail_mi": 51.8
@@ -219975,7 +219975,7 @@
         "vertical_ft": 1321,
         "summit_elev_ft": 8193,
         "base_elev_ft": 6872,
-        "skiable_acres": 0,
+        "skiable_acres": 640,
         "pass_networks": [
           "Independent"
         ],
@@ -219985,7 +219985,7 @@
         "website": "https://www.showdownmontana.com/",
         "lift_count": 4,
         "run_count": 43,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 240,
         "default_bearing": 296,
         "trail_km": 26,
         "trail_mi": 16.2
@@ -220342,7 +220342,7 @@
         "vertical_ft": 2201,
         "summit_elev_ft": 4041,
         "base_elev_ft": 1840,
-        "skiable_acres": 0,
+        "skiable_acres": 265,
         "pass_networks": [
           "Indy"
         ],
@@ -220352,7 +220352,7 @@
         "website": "https://www.cannonmt.com/",
         "lift_count": 9,
         "run_count": 120,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 160,
         "default_bearing": 177,
         "trail_km": 43.5,
         "trail_mi": 27
@@ -221148,7 +221148,7 @@
         "vertical_ft": 501,
         "summit_elev_ft": 1822,
         "base_elev_ft": 1321,
-        "skiable_acres": 0,
+        "skiable_acres": 38,
         "pass_networks": [
           "Independent"
         ],
@@ -223566,7 +223566,7 @@
         "vertical_ft": 2015,
         "summit_elev_ft": 8791,
         "base_elev_ft": 6776,
-        "skiable_acres": 0,
+        "skiable_acres": 198,
         "pass_networks": [
           "Ikon"
         ],
@@ -223576,7 +223576,7 @@
         "website": "https://www.bigbearmountainresort.com",
         "lift_count": 30,
         "run_count": 62,
-        "avg_snowfall_in": null,
+        "avg_snowfall_in": 100,
         "default_bearing": 179,
         "trail_km": 33.4,
         "trail_mi": 20.8
