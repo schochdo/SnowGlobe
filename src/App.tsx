@@ -1115,6 +1115,7 @@ export default function App() {
      ========================================================================= */
 
   const loadedResortTrailsRef = useRef<Set<string>>(new Set());
+  const inFlightResortTrailsRef = useRef<Set<string>>(new Set());
   const permanentTrailIdsRef = useRef<Set<string>>(new Set());
   const fetchedBboxKeysSetRef = useRef<Set<string>>(new Set());
   const hasLocalServerRef = useRef(true);
@@ -1129,7 +1130,7 @@ export default function App() {
     for (const f of features) {
       const p = f.properties;
       if (p?.kind === 'lift' || p?.aerialway) {
-        const fid = String(f.id || p?.id || '');
+        const fid = String(p?.id ?? f.id ?? '');
         if (fid && knownLiftIdsRef.current.has(fid)) continue;
         const status = (p.status || 'operating').toLowerCase();
         const n = (p.name || '').toLowerCase();
@@ -1236,9 +1237,12 @@ export default function App() {
           p['piste:type'] = 'downhill';
         }
       }
-      const fid = String(f.id || p?.id);
-      if (!f.id && p?.id) {
-        f.id = p.id;
+      const fid = String(p?.id ?? f.id ?? '');
+      if (p && fid && !p.id) {
+        p.id = fid;
+      }
+      if ('id' in f) {
+        delete f.id;
       }
       // Never let transient viewport bbox queries overwrite curated permanent resort trails
       if (!isPermanent && permanentTrailIdsRef.current.has(fid)) {
@@ -1273,48 +1277,53 @@ export default function App() {
   }, []);
 
   const fetchResortStaticTrails = useCallback(async (resortId: string, knownCategory?: string) => {
-    if (loadedResortTrailsRef.current.has(resortId)) return;
-    let category = knownCategory;
-    if (!category) {
-      const gFeat = allGlobalFeaturesRef.current?.find((f) => f.properties?.id === resortId);
-      if (gFeat) {
-        category = gFeat.properties?.category;
-      } else {
-        const atlasResort = GLOBAL_SKI_ATLAS.find((r) => r.id === resortId);
-        if (atlasResort) category = atlasResort.category;
+    if (loadedResortTrailsRef.current.has(resortId) || inFlightResortTrailsRef.current.has(resortId)) return;
+    inFlightResortTrailsRef.current.add(resortId);
+    try {
+      let category = knownCategory;
+      if (!category) {
+        const gFeat = allGlobalFeaturesRef.current?.find((f) => f.properties?.id === resortId);
+        if (gFeat) {
+          category = gFeat.properties?.category;
+        } else {
+          const atlasResort = GLOBAL_SKI_ATLAS.find((r) => r.id === resortId);
+          if (atlasResort) category = atlasResort.category;
+        }
       }
-    }
-    category = category || 'downhill';
+      category = category || 'downhill';
 
-    if (hasLocalServerRef.current) {
+      if (hasLocalServerRef.current) {
+        try {
+          // 1. Try local SQLite API first (instant query from trails.db)
+          const apiRes = await fetch(`${import.meta.env.BASE_URL.replace(/\/$/, '')}/api/trails?resort=${resortId}`);
+          if (apiRes.ok) {
+            const data = await apiRes.json();
+            if (data.features && data.features.length) {
+              ingestTrailFeatures(data.features, true, category);
+              loadedResortTrailsRef.current.add(resortId);
+              return;
+            }
+          } else if (apiRes.status === 404) {
+            hasLocalServerRef.current = false;
+          }
+        } catch (_) {
+          hasLocalServerRef.current = false;
+        }
+      }
       try {
-        // 1. Try local SQLite API first (instant query from trails.db)
-        const apiRes = await fetch(`${import.meta.env.BASE_URL.replace(/\/$/, '')}/api/trails?resort=${resortId}`);
-        if (apiRes.ok) {
-          const data = await apiRes.json();
+        // 2. Try static pre-exported file in public/data/trails/
+        const res = await fetch(getStaticDataUrl(`data/trails/${resortId}.json`));
+        if (res.ok) {
+          const data = await res.json();
           if (data.features && data.features.length) {
             ingestTrailFeatures(data.features, true, category);
             loadedResortTrailsRef.current.add(resortId);
-            return;
           }
-        } else if (apiRes.status === 404) {
-          hasLocalServerRef.current = false;
         }
-      } catch (_) {
-        hasLocalServerRef.current = false;
-      }
+      } catch (_) {}
+    } finally {
+      inFlightResortTrailsRef.current.delete(resortId);
     }
-    try {
-      // 2. Try static pre-exported file in public/data/trails/
-      const res = await fetch(getStaticDataUrl(`data/trails/${resortId}.json`));
-      if (res.ok) {
-        const data = await res.json();
-        if (data.features && data.features.length) {
-          ingestTrailFeatures(data.features, true, category);
-          loadedResortTrailsRef.current.add(resortId);
-        }
-      }
-    } catch (_) {}
   }, [ingestTrailFeatures]);
 
   const fetchOverpassBbox = useCallback(async (south: number, west: number, north: number, east: number) => {
@@ -1359,13 +1368,13 @@ export default function App() {
       }
     }
 
-    // Static local loading: find ANY ski area in this bounding box area (±0.04° margin)
+    // Static local loading: find ANY ski area in this bounding box area (±0.12° margin)
     if (!apiSuccess) {
       let matchedAny = false;
 
       // 1. Curated flagships
       for (const r of GLOBAL_SKI_ATLAS) {
-        if (r.lat >= south - 0.04 && r.lat <= north + 0.04 && r.lng >= west - 0.04 && r.lng <= east + 0.04) {
+        if (r.lat >= south - 0.12 && r.lat <= north + 0.12 && r.lng >= west - 0.12 && r.lng <= east + 0.12) {
           const cat = r.category || 'downhill';
           if (cat === 'nordic' && !showNordic) continue;
           if (cat === 'downhill' && !showDownhill) continue;
@@ -1380,7 +1389,7 @@ export default function App() {
       if (allGlobalFeaturesRef.current && allGlobalFeaturesRef.current.length > 0) {
         for (const f of allGlobalFeaturesRef.current) {
           const pt = f.geometry?.coordinates;
-          if (pt && pt[1] >= south - 0.04 && pt[1] <= north + 0.04 && pt[0] >= west - 0.04 && pt[0] <= east + 0.04) {
+          if (pt && pt[1] >= south - 0.12 && pt[1] <= north + 0.12 && pt[0] >= west - 0.12 && pt[0] <= east + 0.12) {
             if (f.properties?.id) {
               const cat = f.properties?.category || 'downhill';
               if (cat === 'nordic' && !showNordic) continue;
@@ -1395,7 +1404,9 @@ export default function App() {
       }
 
       if (matchedAny) {
-        fetchedBboxKeysSetRef.current.add(bboxKey);
+        if (allGlobalFeaturesRef.current && allGlobalFeaturesRef.current.length > 0) {
+          fetchedBboxKeysSetRef.current.add(bboxKey);
+        }
         return;
       }
 
@@ -1484,7 +1495,6 @@ export default function App() {
 
               const feat: any = {
                 type: 'Feature',
-                id: String(el.id),
                 geometry:
                   isClosed && isPiste
                     ? { type: 'Polygon', coordinates: [coords] }
@@ -2172,6 +2182,10 @@ export default function App() {
     map.on('move', handleMapMove);
     map.on('moveend', handleMapMoveEnd);
 
+    let rttRevCounter = 0;
+    let rttBumpRaf: number | null = null;
+    const pendingRttSources = new Set<string>();
+
     map.on('load', () => {
       // Strictly enforce SINGLE planet - zero repeating earths in 2D or 3D
       map.setRenderWorldCopies(false);
@@ -2233,6 +2247,33 @@ export default function App() {
         basemapMode,
         curatedFeatures,
         globalFeatures: allGlobalFeaturesRef.current,
+      });
+
+      // Work around MapLibre 6.14 OverscaledTileID.isChildOf RTT cache bug at z > 15:
+      // bump source feature-state revision so TerrainTileManager invalidates stale drapes.
+      map.on('sourcedata', (e: any) => {
+        if (
+          (e.sourceId === 'live-pistes-vector' || e.sourceId === 'selected-trail-source') &&
+          e.tile &&
+          e.tile.tileID?.isOverscaled?.() &&
+          map.getTerrain()
+        ) {
+          pendingRttSources.add(e.sourceId);
+          if (rttBumpRaf === null) {
+            rttBumpRaf = requestAnimationFrame(() => {
+              rttBumpRaf = null;
+              rttRevCounter++;
+              for (const sid of pendingRttSources) {
+                try {
+                  if (map.getSource(sid)) {
+                    map.setFeatureState({ source: sid, id: 0 }, { _rttRev: rttRevCounter });
+                  }
+                } catch (_) {}
+              }
+              pendingRttSources.clear();
+            });
+          }
+        }
       });
 
       // Click on curated resort
@@ -2438,7 +2479,7 @@ export default function App() {
             // Resolve candidate features against liveFeaturesMapRef so features clicked via labels
             // or tile clips have their full canonical geometry and properties
             const resolvedFeats = trailFeats.map((f: any) => {
-              const fid = String(f.id || f.properties?.id);
+              const fid = String(f.properties?.id ?? f.id ?? '');
               const canonical = liveFeaturesMapRef.current.get(fid);
               return canonical || f;
             });
@@ -2634,6 +2675,7 @@ export default function App() {
       window.removeEventListener('focus', onWindowBlur);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       window.removeEventListener('mouseenter', onWindowMouseEnter);
+      if (rttBumpRaf !== null) cancelAnimationFrame(rttBumpRaf);
       map.remove();
     };
   }, []);

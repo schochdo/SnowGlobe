@@ -69,11 +69,12 @@ function filterTrails(rows) {
       }
     }
 
-    const fid = String(f.id || p.id || '');
+    const fid = String(p.id ?? f.id ?? '');
     if (fid && seenIds.has(fid)) continue;
     if (fid) seenIds.add(fid);
 
-    if (!f.id && p.id) f.id = p.id;
+    if (!p.id && fid) p.id = fid;
+    delete f.id;
     features.push(f);
   }
 

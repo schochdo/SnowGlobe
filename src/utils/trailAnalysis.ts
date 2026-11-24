@@ -130,7 +130,7 @@ export function aggregateConnectedTrailFeatures(
   // If named, allow up to 150m to bridge intermediate stations and road crossings
   const maxGapMeters = isGeneric ? 15 : 150;
 
-  const startId = String(selectedFeat.id || selectedProps.id || '');
+  const startId = String(selectedProps.id ?? selectedFeat.id ?? '');
   const visitedIds = new Set<string>();
   if (startId) visitedIds.add(startId);
 
@@ -151,7 +151,7 @@ export function aggregateConnectedTrailFeatures(
   const candidates: Candidate[] = [];
   for (const f of allFeatures) {
     if (!f || f === selectedFeat) continue;
-    const fid = String(f.id || f.properties?.id || '');
+    const fid = String(f.properties?.id ?? f.id ?? '');
     if (startId && fid === startId) continue;
 
     const fp = f.properties || {};
@@ -254,12 +254,12 @@ export function aggregateConnectedTrailFeatures(
     }
   }
 
+  mergedProps.id = selectedProps.id ?? selectedFeat.id;
   mergedProps.is_aggregated = true;
   mergedProps.segment_count = connectedFeatures.length;
 
   return {
     type: 'Feature',
-    id: selectedFeat.id || selectedProps.id,
     geometry: {
       type: 'MultiLineString',
       coordinates: combinedLines,
@@ -373,7 +373,7 @@ export function analyzeTrailFeature(
   }
 
   return {
-    id: String(feature.id || p.id || Math.random()),
+    id: String(p.id ?? feature.id ?? Math.random()),
     name,
     kind: isLift ? 'lift' : 'piste',
     difficulty: p.difficulty || p['piste:difficulty'],

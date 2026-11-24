@@ -99,7 +99,8 @@ for (const r of atlasResorts) {
       }
     }
 
-    if (!f.id && p.id) f.id = p.id;
+    if (!p.id && f.id) p.id = String(f.id);
+    delete f.id;
     features.push(f);
   }
 

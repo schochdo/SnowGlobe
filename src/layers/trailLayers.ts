@@ -10,7 +10,7 @@ export function registerTrailLayers(map: MapLibreMap, showDownhill: boolean): vo
   // preventing foreground z16-z18 GeoJSON tile eviction holes on mobile 3D terrain.
   map.addSource(SOURCE_IDS.LIVE_PISTES, {
     type: 'geojson',
-    promoteId: 'id',
+    generateId: true,
     data: { type: 'FeatureCollection', features: [] },
     maxzoom: 15,
     buffer: 256,
@@ -348,7 +348,11 @@ export function registerTrailLayers(map: MapLibreMap, showDownhill: boolean): vo
   // 2. Clicked Trail / Slope Selected Highlight Source & Layers
   map.addSource(SOURCE_IDS.SELECTED_TRAIL, {
     type: 'geojson',
+    generateId: true,
     data: { type: 'FeatureCollection', features: [] },
+    maxzoom: 15,
+    buffer: 256,
+    tolerance: 0,
   });
 
   map.addLayer({

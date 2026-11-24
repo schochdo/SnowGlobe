@@ -1,5 +1,18 @@
 ## [Unreleased]
 
+### Fixed
+- **Eliminated Global Trail Tile Crashes from 64-bit Protobuf Varint Overflows (Winter Park & 62 Resorts Worldwide)**:
+  - **What was wrong**:
+    1. *64-bit Varint Overflow in `@maplibre/vt-pbf`*: OpenSkiData trail features carry 40-char hexadecimal SHA-1 string IDs, and `SOURCE_IDS.LIVE_PISTES` used `promoteId: 'id'` (plus top-level string `feature.id`). In MapLibre GL JS's worker, `FeatureWrapper` parses string MVT IDs with `parseInt(id, 10)` and serializes them via `writeBigVarint`. Any SHA-1 ID whose leading decimal digits parse to $\ge 2^{64}$ (such as Winter Park's `Endeavor`: `70193303018519974843d62998a9c53ab5c19f4d` $\to 7.019 \times 10^{19}$, plus 61 other ski areas worldwide) threw `Given varint doesn't fit into 10 bytes`, failing `loadTile` for the entire tile (`13/1688..1689/3104` and `15/6756/12418..12419` at Winter Park) on both desktop and mobile.
+    2. *Overscaled 3D Terrain `RenderToTexture` Cache*: At `z > 15` over 3D terrain, `TerrainTileManager.releaseRTT` failed to invalidate drape FBOs for overscaled GeoJSON tiles (`16:15/...`) due to `OverscaledTileID.isChildOf` requiring strictly greater `overscaledZ`.
+    3. *Concurrent Static Fetches & Viewport Margin*: `fetchResortStaticTrails` lacked an in-flight lock, and `fetchOverpassBbox` used a tight `±0.04°` margin and cached bbox keys before `global_ski_areas.json` finished loading.
+  - **The fix**:
+    - Replaced `promoteId: 'id'` with `generateId: true` on `SOURCE_IDS.LIVE_PISTES`, `SOURCE_IDS.SELECTED_TRAIL` (also aligned to `maxzoom: 15, buffer: 256, tolerance: 0`), `SOURCE_IDS.MAJOR_PEAKS`, and `SOURCE_IDS.FIRE_LOOKOUTS` so MapLibre generates safe sequential 32-bit integer MVT IDs.
+    - Canonicalized all application feature-ID lookups (`src/App.tsx`, `src/utils/trailAnalysis.ts`, `src/server/trailsPlugin.ts`, `data_pipeline/`) to read `properties.id` first and strip top-level string `f.id`.
+    - Added a rAF-batched `setFeatureState` revision bump on overscaled 3D terrain `sourcedata` events in `src/App.tsx` to cleanly invalidate stale RTT drapes at `z > 15`.
+    - Added `inFlightResortTrailsRef` deduplication in `fetchResortStaticTrails`, widened `fetchOverpassBbox` static resort discovery to `±0.12°`, and guarded bbox memoization until `allGlobalFeaturesRef` is populated.
+  - **Why this approach was chosen**: `generateId: true` eliminates MVT varint overflows universally across all 5,906 global trail datasets without altering immutable `public/data/trails/*.json` files, while `properties.id` keeps exact SHA-1 identifiers intact for trail inspection and connected-segment aggregation.
+
 ### Feat
 - **Android Back Gesture & Portrait Tablet Layout Polish**:
   - **Android Back Button / Edge-Swipe Back (`src/App.tsx`)**: Pushed a lightweight `{ snowGlobeOverlay: true }` history state whenever `MobileSheet`, `BasemapMenu`, or `RegionalLocator` opens on mobile and handled `popstate` so pressing Android's Back button closes the open overlay instead of exiting the site.

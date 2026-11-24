@@ -147,7 +147,8 @@ export function localTrailsPlugin(): Plugin {
               const bboxRows = bboxStmt.all(centerLng + dLng, centerLng - dLng, centerLat + dLat, centerLat - dLat) as { geojson: string }[];
               features = bboxRows.map((r) => {
                 const f = JSON.parse(r.geojson);
-                if (!f.id && f.properties?.id) f.id = f.properties.id;
+                if (f.properties && !f.properties.id && f.id) f.properties.id = String(f.id);
+                delete f.id;
                 return f;
               });
             }
@@ -162,7 +163,8 @@ export function localTrailsPlugin(): Plugin {
               const rows = stmt.all(resort) as { geojson: string }[];
               features = rows.map((r) => {
                 const f = JSON.parse(r.geojson);
-                if (!f.id && f.properties?.id) f.id = f.properties.id;
+                if (f.properties && !f.properties.id && f.id) f.properties.id = String(f.id);
+                delete f.id;
                 return f;
               });
             }
@@ -182,7 +184,8 @@ export function localTrailsPlugin(): Plugin {
                 const rows = stmt.all(maxLng, minLng, maxLat, minLat) as { geojson: string; resort_id: string | null }[];
                 features = rows.map((r) => {
                   const f = JSON.parse(r.geojson);
-                  if (!f.id && f.properties?.id) f.id = f.properties.id;
+                  if (f.properties && !f.properties.id && f.id) f.properties.id = String(f.id);
+                  delete f.id;
                   if (r.resort_id && f.properties) {
                     f.properties.resort_id = r.resort_id;
                   }

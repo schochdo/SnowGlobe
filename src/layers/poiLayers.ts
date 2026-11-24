@@ -20,7 +20,7 @@ export function registerPoiLayers(
   // 1. Major Mountain Summits Source
   map.addSource(SOURCE_IDS.MAJOR_PEAKS, {
     type: 'geojson',
-    promoteId: 'id',
+    generateId: true,
     data: getStaticDataUrl('data/major_peaks.geojson?v=20261108_dem_apex_reconciled'),
   });
 
@@ -145,7 +145,7 @@ export function registerPoiLayers(
   // 2. Fire Lookouts & Watchtowers Source
   map.addSource(SOURCE_IDS.FIRE_LOOKOUTS, {
     type: 'geojson',
-    promoteId: 'id',
+    generateId: true,
     data: getStaticDataUrl('data/fire_lookouts.geojson?v=20261108_v4'),
   });
 
