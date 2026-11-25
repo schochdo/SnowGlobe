@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Replaced Stale Curated Japan & Scandinavia `skiable_acres` with Verified Piste Lengths (`src/data/resorts.ts`)**:
+  - **What was wrong**: Four curated Japanese resorts (`rusutsu`: `1,050 ac`, `hakuba-happo-one`: `1,280 ac`, `niseko-united`: `2,191 ac`, `nozawa-onsen`: `740 ac`) and two Scandinavian resorts (`hemsedal`: `1,100 ac`, `are-sweden`: `2,200 ac`) in `src/data/resorts.ts` still carried stale/inflated hand-entered acreages (e.g., Rusutsu is officially 212 ha / ~523 ac and Happo-One is 220 ha / ~543 ac, and Japan measures resorts in trail/piste length like Europe, matching all 505 other Japanese areas in `public/data/global_ski_areas.json`).
+  - **The fix**: Set `skiable_acres: 0` and added verified official `trail_km` piste lengths (`rusutsu`: `42 km`, `hakuba-happo-one`: `23 km`, `niseko-united`: `50 km`, `nozawa-onsen`: `44.5 km`, `hemsedal`: `43 km`, `are-sweden`: `91 km`), so `ResortCard.tsx`, `MountainProfile.tsx`, and `getEquivalentResortSize()` display and rank them cleanly by Piste Length.
+
+### Fixed
 - **Purged Inaccurate Coarse-Grid ERA5 Annual Snowfall Estimates (`public/data/global_ski_areas.json`)**:
   - **What was wrong**: Commits `a13f13a2`, `2e77b493`, and `ae37b49a` populated 1,954 non-curated resorts in `public/data/global_ski_areas.json` with 3-year Open-Meteo ERA5 `avg_snowfall_in` estimates via `scripts/compute_era5_annual_snowfall.cjs`. Because Open-Meteo ERA5 `snowfall_sum` assumes a fixed 7:1 snow-to-liquid ratio on a ~9–25 km grid (further clustered into `0.15°` cells), it severely smeared orography and underestimated cold/lake-or-sea-effect alpine snowfall (e.g., Furano listed at `93"`, Rusutsu at `98"`, Niseko Moiwa at `144"`).
   - **The fix**: Restored `public/data/global_ski_areas.json` to commit `99ade0ec` (retaining all 262 verified official and Wikipedia-infobox `avg_snowfall_in` entries and resetting all 1,954 ERA5 estimates to `null` so `MountainProfile` displays `—` honestly) and removed `scripts/compute_era5_annual_snowfall.cjs`.
