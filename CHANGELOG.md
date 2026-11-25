@@ -1,6 +1,11 @@
 ## [Unreleased]
 
 ### Fixed
+- **Purged Inaccurate Coarse-Grid ERA5 Annual Snowfall Estimates (`public/data/global_ski_areas.json`)**:
+  - **What was wrong**: Commits `a13f13a2`, `2e77b493`, and `ae37b49a` populated 1,954 non-curated resorts in `public/data/global_ski_areas.json` with 3-year Open-Meteo ERA5 `avg_snowfall_in` estimates via `scripts/compute_era5_annual_snowfall.cjs`. Because Open-Meteo ERA5 `snowfall_sum` assumes a fixed 7:1 snow-to-liquid ratio on a ~9–25 km grid (further clustered into `0.15°` cells), it severely smeared orography and underestimated cold/lake-or-sea-effect alpine snowfall (e.g., Furano listed at `93"`, Rusutsu at `98"`, Niseko Moiwa at `144"`).
+  - **The fix**: Restored `public/data/global_ski_areas.json` to commit `99ade0ec` (retaining all 262 verified official and Wikipedia-infobox `avg_snowfall_in` entries and resetting all 1,954 ERA5 estimates to `null` so `MountainProfile` displays `—` honestly) and removed `scripts/compute_era5_annual_snowfall.cjs`.
+
+### Fixed
 - **Locked International Border Labels to True Sovereign Sides Across Curves & 360° Camera Rotations**:
   - **What was wrong**:
     1. `WORLD_COUNTRY_BORDER_LABELS` in `src/layers/boundaryLayers.ts` rendered both country names in a single multiline block (`LEFT\nRIGHT`) with `text-offset: [0, 0]`. When `text-offset` is zero, vertical line separation lives in glyph `a_pos_offset.y`, so whenever MapLibre's `text-keep-upright: true` flipped a label 180°—either on a locally East $\to$ West bend of a winding border (e.g., France–Switzerland curving West around Geneva, putting `FRANCE` in Switzerland and `SWITZERLAND` in France) or when rotating the 3D camera South—both lines swapped across the border.
