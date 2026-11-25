@@ -1,6 +1,15 @@
 ## [Unreleased]
 
 ### Fixed
+- **Locked International Border Labels to True Sovereign Sides Across Curves & 360° Camera Rotations**:
+  - **What was wrong**:
+    1. `WORLD_COUNTRY_BORDER_LABELS` in `src/layers/boundaryLayers.ts` rendered both country names in a single multiline block (`LEFT\nRIGHT`) with `text-offset: [0, 0]`. When `text-offset` is zero, vertical line separation lives in glyph `a_pos_offset.y`, so whenever MapLibre's `text-keep-upright: true` flipped a label 180°—either on a locally East $\to$ West bend of a winding border (e.g., France–Switzerland curving West around Geneva, putting `FRANCE` in Switzerland and `SWITZERLAND` in France) or when rotating the 3D camera South—both lines swapped across the border.
+    2. Three borders in `public/data/world_boundaries.geojson` (`Russia/Lithuania`, `Azerbaijan/Armenia`, `Gibraltar/Spain`) had swapped `name_left`/`name_right` attributes from single-sample normal probing in `scripts/build_world_boundaries_ne10m.cjs`.
+  - **The fix**:
+    - Replaced the single multiline border label layer in `src/layers/boundaryLayers.ts` with paired side-locked layers (`WORLD_COUNTRY_BORDER_LABELS_LEFT` with `'text-offset': [0, -0.95]` and `WORLD_COUNTRY_BORDER_LABELS_RIGHT` with `'text-offset': [0, 0.95]`, `text-padding: 2`), and bumped `world_boundaries.geojson` cache query to `?v=20261124_side_verified`. In MapLibre's `placeGlyphAlongLine`, `lineOffsetY` is multiplied by `direction` in `transformToOffsetNormal`, making `±0.95em` normal offsets mathematically invariant when `flip = true`.
+    - Updated `scripts/build_world_boundaries_ne10m.cjs` to use 15-point majority voting across both normals and fixed the 3 swapped borders in `public/data/world_boundaries.geojson` (383/383 `country_border` features verified against Natural Earth 10m polygons).
+
+### Fixed
 - **Eliminated Global Trail Tile Crashes from 64-bit Protobuf Varint Overflows (Winter Park & 62 Resorts Worldwide)**:
   - **What was wrong**:
     1. *64-bit Varint Overflow in `@maplibre/vt-pbf`*: OpenSkiData trail features carry 40-char hexadecimal SHA-1 string IDs, and `SOURCE_IDS.LIVE_PISTES` used `promoteId: 'id'` (plus top-level string `feature.id`). In MapLibre GL JS's worker, `FeatureWrapper` parses string MVT IDs with `parseInt(id, 10)` and serializes them via `writeBigVarint`. Any SHA-1 ID whose leading decimal digits parse to $\ge 2^{64}$ (such as Winter Park's `Endeavor`: `70193303018519974843d62998a9c53ab5c19f4d` $\to 7.019 \times 10^{19}$, plus 61 other ski areas worldwide) threw `Given varint doesn't fit into 10 bytes`, failing `loadTile` for the entire tile (`13/1688..1689/3104` and `15/6756/12418..12419` at Winter Park) on both desktop and mobile.

@@ -78,31 +78,31 @@ function build() {
           let name_left = getCleanName(n1);
           let name_right = getCleanName(n2);
 
-          // Test normal along 5 points to determine sovereign side with precision
-          let determined = false;
-          for (let s = 1; s <= 4; s++) {
-            const midIdx = Math.floor((line.length * s) / 5);
-            const mid = line[midIdx];
-            const next = line[midIdx + 1] || line[midIdx - 1];
-            const dx = next[0] - mid[0], dy = next[1] - mid[1];
-            const len = Math.hypot(dx, dy) || 0.001;
+          // Majority vote across up to 15 segment midpoints along the polyline to determine sovereign side
+          let votesN1Left = 0;
+          let votesN2Left = 0;
+          const step = Math.max(1, Math.floor((line.length - 1) / 15));
+          for (let k = 0; k < line.length - 1; k += step) {
+            const p1 = line[k], p2 = line[k + 1];
+            const mx = (p1[0] + p2[0]) / 2, my = (p1[1] + p2[1]) / 2;
+            const dx = p2[0] - p1[0], dy = p2[1] - p1[1];
+            const len = Math.hypot(dx, dy);
+            if (len < 1e-7) continue;
+            // Geographic left normal (-dy, +dx) and right normal (+dy, -dx)
             const nx = -dy / len, ny = dx / len;
 
-            for (const delta of [0.002, 0.005, 0.01, 0.02, 0.05]) {
-              const testPt = [mid[0] + nx * delta, mid[1] + ny * delta];
-              if (pointInGeo(testPt, g1)) {
-                name_left = getCleanName(n1);
-                name_right = getCleanName(n2);
-                determined = true;
-                break;
-              } else if (pointInGeo(testPt, g2)) {
-                name_left = getCleanName(n2);
-                name_right = getCleanName(n1);
-                determined = true;
-                break;
-              }
+            for (const delta of [0.002, 0.008, 0.02]) {
+              const ptLeft = [mx + nx * delta, my + ny * delta];
+              const ptRight = [mx - nx * delta, my - ny * delta];
+              const l1 = pointInGeo(ptLeft, g1), l2 = pointInGeo(ptLeft, g2);
+              const r1 = pointInGeo(ptRight, g1), r2 = pointInGeo(ptRight, g2);
+              if ((l1 && !l2) || (r2 && !r1)) { votesN1Left++; break; }
+              if ((l2 && !l1) || (r1 && !r2)) { votesN2Left++; break; }
             }
-            if (determined) break;
+          }
+          if (votesN2Left > votesN1Left) {
+            name_left = getCleanName(n2);
+            name_right = getCleanName(n1);
           }
 
           countryFeatures.push({

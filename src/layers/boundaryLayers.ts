@@ -17,7 +17,7 @@ export function registerBoundaryLayers(
   // World Country & Administrative Boundary Lines
   map.addSource(SOURCE_IDS.WORLD_BOUNDARIES, {
     type: 'geojson',
-    data: getStaticDataUrl('data/world_boundaries.geojson?v=20261108_ne10m_land_mesh'),
+    data: getStaticDataUrl('data/world_boundaries.geojson?v=20261124_side_verified'),
   });
 
   // Country International Borders
@@ -74,65 +74,70 @@ export function registerBoundaryLayers(
     },
   });
 
-  // Consolidated Matched-Pair Country Border Labels (Clean non-colliding, non-orphaned)
-  map.addLayer({
-    id: LAYER_IDS.WORLD_COUNTRY_BORDER_LABELS,
-    type: 'symbol',
-    source: SOURCE_IDS.WORLD_BOUNDARIES,
-    filter: [
-      'all',
-      ['==', ['get', 'kind'], 'country_border'],
-      ['any', ['has', 'name_left'], ['has', 'adm0_left']],
-      ['any', ['has', 'name_right'], ['has', 'adm0_right']],
-    ],
-    minzoom: 9,
-    maxzoom: 14.5,
-    layout: {
-      visibility,
-      'symbol-placement': 'line',
-      'symbol-spacing': [
-        'interpolate', ['linear'], ['zoom'],
-        8, 450,
-        11, 800,
-        14, 1300,
+  // Flip-invariant Left/Right Country Border Labels:
+  // Separate symbol layers use `text-offset: [0, ±0.95]`, which MapLibre converts into
+  // `lineOffsetY * direction` along the polyline normal—staying locked to the true
+  // sovereign side across curved borders and 360° camera rotations even when upright-flipped.
+  const borderSides: Array<{
+    id: string;
+    nameKey: 'name_left' | 'name_right';
+    admKey: 'adm0_left' | 'adm0_right';
+    offsetY: number;
+  }> = [
+    { id: LAYER_IDS.WORLD_COUNTRY_BORDER_LABELS_LEFT, nameKey: 'name_left', admKey: 'adm0_left', offsetY: -0.95 },
+    { id: LAYER_IDS.WORLD_COUNTRY_BORDER_LABELS_RIGHT, nameKey: 'name_right', admKey: 'adm0_right', offsetY: 0.95 },
+  ];
+
+  for (const side of borderSides) {
+    map.addLayer({
+      id: side.id,
+      type: 'symbol',
+      source: SOURCE_IDS.WORLD_BOUNDARIES,
+      filter: [
+        'all',
+        ['==', ['get', 'kind'], 'country_border'],
+        ['any', ['has', side.nameKey], ['has', side.admKey]],
       ],
-      'symbol-sort-key': 0.5,
-      'symbol-avoid-edges': false,
-      'text-field': [
-        'format',
-        ['upcase', ['coalesce', ['get', 'name_left'], ['get', 'adm0_left'], '']],
-        {},
-        '\n',
-        {},
-        ['upcase', ['coalesce', ['get', 'name_right'], ['get', 'adm0_right'], '']],
-        {},
-      ],
-      'text-font': ['Open Sans Bold'],
-      'text-size': 10,
-      'text-letter-spacing': 0.25,
-      'text-line-height': 1.65,
-      'text-offset': [0, 0],
-      'text-max-angle': 20,
-      'text-rotation-alignment': 'map',
-      'text-pitch-alignment': 'map',
-      'text-keep-upright': true,
-      'text-padding': 4,
-      'text-allow-overlap': false,
-    },
-    paint: {
-      'text-color': '#FAF8F3',
-      'text-halo-color': 'rgba(28, 27, 24, 0.78)',
-      'text-halo-width': 1.25,
-      'text-halo-blur': 0.5,
-      'text-opacity': [
-        'interpolate', ['linear'], ['zoom'],
-        9.0, 0.85,
-        10.0, 0.95,
-        14.0, 0.95,
-        14.5, 0.70,
-      ],
-    },
-  });
+      minzoom: 9,
+      maxzoom: 14.5,
+      layout: {
+        visibility,
+        'symbol-placement': 'line',
+        'symbol-spacing': [
+          'interpolate', ['linear'], ['zoom'],
+          8, 450,
+          11, 800,
+          14, 1300,
+        ],
+        'symbol-sort-key': 0.5,
+        'symbol-avoid-edges': false,
+        'text-field': ['upcase', ['coalesce', ['get', side.nameKey], ['get', side.admKey], '']],
+        'text-font': ['Open Sans Bold'],
+        'text-size': 10,
+        'text-letter-spacing': 0.25,
+        'text-offset': [0, side.offsetY],
+        'text-max-angle': 20,
+        'text-rotation-alignment': 'map',
+        'text-pitch-alignment': 'map',
+        'text-keep-upright': true,
+        'text-padding': 2,
+        'text-allow-overlap': false,
+      },
+      paint: {
+        'text-color': '#FAF8F3',
+        'text-halo-color': 'rgba(28, 27, 24, 0.78)',
+        'text-halo-width': 1.25,
+        'text-halo-blur': 0.5,
+        'text-opacity': [
+          'interpolate', ['linear'], ['zoom'],
+          9.0, 0.85,
+          10.0, 0.95,
+          14.0, 0.95,
+          14.5, 0.70,
+        ],
+      },
+    });
+  }
 
   // Geographic Reference Places: 4-Tier Population & Alpine Horizon Hierarchy
   map.addSource(SOURCE_IDS.GEO_REFERENCE, {
