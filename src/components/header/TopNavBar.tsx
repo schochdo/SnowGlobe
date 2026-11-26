@@ -6,8 +6,6 @@ interface TopNavBarProps {
   onResetToGlobal: () => void;
   isFullscreen: boolean;
   onToggleFullscreen: () => void;
-  unitsMetric: boolean;
-  onSetUnitsMetric: (toMetric: boolean) => void;
   earthProjection: EarthProjectionMode;
   onToggleProjection: () => void;
 }
@@ -16,8 +14,6 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
   onResetToGlobal,
   isFullscreen,
   onToggleFullscreen,
-  unitsMetric,
-  onSetUnitsMetric,
   earthProjection,
   onToggleProjection,
 }) => {
@@ -86,17 +82,6 @@ export const TopNavBar: React.FC<TopNavBarProps> = ({
           ) : (
             <Map className="w-3.5 h-3.5 text-[#1C1B18]" />
           )}
-        </button>
-
-        {/* Minimalist Units Toggle: Shows only active unit (°F or °C); clicking flips to the other */}
-        <button
-          type="button"
-          onClick={() => onSetUnitsMetric(!unitsMetric)}
-          className="h-7 min-w-7 px-1.5 bg-[#FAF8F3] hover:bg-[#EFECE4] border border-[#D6D0C2] text-[#1C1B18] font-bold text-[11px] rounded-md transition-colors cursor-pointer flex items-center justify-center select-none shadow-2xs focus:outline-hidden"
-          title={unitsMetric ? 'Metric units active (°C, m). Click for Imperial (°F, ft)' : 'Imperial units active (°F, ft). Click for Metric (°C, m)'}
-          aria-label={unitsMetric ? 'Metric units active. Click for Imperial' : 'Imperial units active. Click for Metric'}
-        >
-          {unitsMetric ? '°C' : '°F'}
         </button>
 
         {/* Fullscreen Toggle (Hidden on iPad / iOS devices where HTML5 fullscreen triggers the intrusive floating 'X') */}

@@ -3419,8 +3419,6 @@ export default function App() {
         onResetToGlobal={handleResetToGlobalExtent}
         isFullscreen={isFullscreen}
         onToggleFullscreen={toggleFullscreen}
-        unitsMetric={unitsMetric}
-        onSetUnitsMetric={handleSetUnitsMetric}
         earthProjection={earthProjection}
         onToggleProjection={handleToggleProjection}
       />
@@ -3459,36 +3457,6 @@ export default function App() {
         </button>
 
         <div className="flex items-center gap-2 shrink-0">
-          {/* Units Toggle (FT / M) */}
-          <div className="flex items-center h-8 bg-[#EFECE4] rounded-md border border-[#D6D0C2] p-0.5 text-[10.5px] font-bold">
-            <button
-              type="button"
-              onClick={() => handleSetUnitsMetric(false)}
-              className={`h-full px-2.5 flex items-center justify-center rounded-[4px] transition-colors cursor-pointer leading-none ${
-                !unitsMetric
-                  ? 'bg-[#FAF8F3] text-[#1C1B18] border border-[#A8A299]'
-                  : 'text-[#5C5852] hover:text-[#1C1B18] border border-transparent'
-              }`}
-              title="Imperial units (ft, in, ac, mi)"
-              aria-label="Imperial units"
-            >
-              FT
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSetUnitsMetric(true)}
-              className={`h-full px-2.5 flex items-center justify-center rounded-[4px] transition-colors cursor-pointer leading-none ${
-                unitsMetric
-                  ? 'bg-[#FAF8F3] text-[#1C1B18] border border-[#A8A299]'
-                  : 'text-[#5C5852] hover:text-[#1C1B18] border border-transparent'
-              }`}
-              title="Metric units (m, cm, ha, km)"
-              aria-label="Metric units"
-            >
-              M
-            </button>
-          </div>
-
           <button
             onClick={() => {
               setMapMenuOpen((prev) => !prev);
@@ -3515,7 +3483,7 @@ export default function App() {
           <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#D6D0C2]">
             <div className="flex items-center gap-1.5 text-xs font-bold text-[#1C1B18] uppercase tracking-wider">
               <Sliders className="w-3.5 h-3.5 text-[#1C1B18]" />
-              <span>Filter Criteria</span>
+              <span>Filters</span>
               {activeFiltersCount > 0 && (
                 <span className="bg-[#B84A39] text-[#FAF8F3] text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums">
                   {activeFiltersCount}
@@ -3523,7 +3491,7 @@ export default function App() {
               )}
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               {activeFiltersCount > 0 && (
                 <button
                   type="button"
@@ -3533,6 +3501,23 @@ export default function App() {
                   Reset All
                 </button>
               )}
+              <button
+                type="button"
+                onClick={() => handleSetUnitsMetric(!unitsMetric)}
+                className="px-2 py-1 text-xs font-bold text-[#1C1B18] bg-[#EAE5D9] hover:bg-[#DDD9CF] border border-[#D6D0C2] rounded-md cursor-pointer transition-colors select-none tabular-nums"
+                title={
+                  unitsMetric
+                    ? 'Metric units active (°C, m, cm, ha, km). Click for Imperial (°F, ft)'
+                    : 'Imperial units active (°F, ft, in, ac, mi). Click for Metric (°C, m)'
+                }
+                aria-label={
+                  unitsMetric
+                    ? 'Metric units active. Click to switch to Imperial (°F/ft)'
+                    : 'Imperial units active. Click to switch to Metric (°C/m)'
+                }
+              >
+                {unitsMetric ? '°C/m' : '°F/ft'}
+              </button>
               <button
                 type="button"
                 onClick={() => setMobileFilterPopoverOpen(false)}
@@ -3605,6 +3590,7 @@ export default function App() {
             selectedResort={selectedResort}
             selectedResortId={selectedResortId}
             unitsMetric={unitsMetric}
+            onSetUnitsMetric={handleSetUnitsMetric}
             matchingPeaks={matchingPeaks}
             onSelectPeak={handleSelectPeak}
             matchingLookouts={matchingLookouts}
@@ -3676,6 +3662,7 @@ export default function App() {
             selectedResort={selectedResort}
             selectedResortId={selectedResortId}
             unitsMetric={unitsMetric}
+            onSetUnitsMetric={handleSetUnitsMetric}
             matchingPeaks={matchingPeaks}
             onSelectPeak={handleSelectPeak}
             matchingLookouts={matchingLookouts}

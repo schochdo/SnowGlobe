@@ -1,6 +1,15 @@
 ## [Unreleased]
 
 ### Fixed & Feat
+- **Single-State Units Button (`°C/m` ↔ `°F/ft`) in Filters & Auto-Dismiss Filter Panel on Search**:
+  - **What was wrong**:
+    1. *Wide Segmented `FT / M` Toggle in Top Header*: The mobile top bar rendered a two-segment `[ FT | M ]` light-switch toggle showing both options simultaneously (taking extra header space), while desktop rendered a separate `°F` / `°C` button in `TopNavBar`.
+    2. *Filter Panel Obscuring Search Results*: In `DirectoryList.tsx`, the search `<input>` remained accessible at the top of the drawer while `isFiltersOpen` was `true`, but focusing or typing into the search box left `isFiltersOpen` open—hiding Quick Matches, scope/sort controls, and all matching resort cards behind the filter panel.
+  - **What changed**:
+    - Replaced the segmented header unit switchers (`src/App.tsx`, `src/components/header/TopNavBar.tsx`) with a single compact unit button inside the Filters header (`src/components/sidebar/DirectoryList.tsx`, `src/App.tsx`) showing only the active unit system (`°C/m` or `°F/ft`); clicking flips directly to the other system and snaps filter slider thresholds cleanly.
+    - Updated `DirectoryList.tsx` to automatically close the Filter panel (`handleCloseFilters()`) when focusing, typing in, or clearing the Search input while `isFiltersOpen` is active so live search results are immediately visible.
+
+### Fixed & Feat
 - **Two-Pass Inbounds Bootpack/Bowl Topology Engine, 5,905-Resort Re-Bake & Global Heli/Cat Overhaul (Phases 1, 4, 6)**:
   - **What was wrong**:
     1. *Inbounds Bootpacks, Polygon Bowls & Glacier Aprons Misclassified as Touring*: In `src/utils/pisteTopologyGraph.ts`, (a) Tier 2B short-circuited `piste:type=skitour` before graph evaluation, hiding OSM-tagged inbounds bootpacks/sidesteps (*Mary's Nipple Traverse* & *Watchabe Return* at Grand Targhee, *Blackcomb Bench Climb* at Whistler, *Gunsight Sidestep* & *Eddie's Bootpack* at Alta) unless the Touring layer was on; (b) `Polygon` bowls (*Symphony Bowl*, *Olympic Learning Zone*, *Lakeside Bowl*, *Powder Monkey*, *Feuz Bowl*, *T2 North Ridge*) divided vertical drop by closed polygon circumference (`<= 4.5°`) and tested only 1 perimeter vertex for lift return; (c) open glacier aprons (*Ruby Bowl*, *Surf's Up*) failed the tight `65 m` bottom snap; and (d) legacy `classifyOsmPiste()` (`170` lines) still lived in `src/App.tsx` AND `export_global_touring_tiles.cjs` could re-emit rescued `skitour` bootpacks from `trails.db`.

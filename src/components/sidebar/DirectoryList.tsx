@@ -32,6 +32,7 @@ interface DirectoryListProps {
   selectedResort: SkiResort | null;
   selectedResortId: string | null;
   unitsMetric: boolean;
+  onSetUnitsMetric?: (toMetric: boolean) => void;
   matchingPeaks?: MajorPeak[];
   onSelectPeak?: (peak: MajorPeak) => void;
   matchingLookouts?: FireLookout[];
@@ -87,6 +88,7 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
   selectedResort: _selectedResort,
   selectedResortId,
   unitsMetric,
+  onSetUnitsMetric,
   matchingPeaks = [],
   onSelectPeak,
   matchingLookouts = [],
@@ -195,7 +197,17 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
               type="text"
               placeholder="Search"
               value={searchQuery}
-              onChange={(e) => onSearchChange(e.target.value)}
+              onFocus={() => {
+                if (isFiltersOpen) {
+                  handleCloseFilters();
+                }
+              }}
+              onChange={(e) => {
+                onSearchChange(e.target.value);
+                if (isFiltersOpen) {
+                  handleCloseFilters();
+                }
+              }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault();
@@ -216,7 +228,12 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
             {searchQuery && (
               <button
                 type="button"
-                onClick={() => onSearchChange('')}
+                onClick={() => {
+                  onSearchChange('');
+                  if (isFiltersOpen) {
+                    handleCloseFilters();
+                  }
+                }}
                 className="absolute right-2 text-[#8A847C] hover:text-[#1C1B18] cursor-pointer p-0.5 rounded"
                 aria-label="Clear search"
               >
@@ -373,11 +390,11 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
       <div className="flex-1 min-h-0 relative overflow-hidden flex flex-col">
         {isFiltersOpen ? (
           <div className="flex-1 min-h-0 overflow-y-auto bg-[#F7F4ED] p-3 pb-8 animate-slide-down">
-            {/* Filter Criteria Sticky Subheader */}
+            {/* Filters Subheader */}
             <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#D6D0C2]">
               <div className="flex items-center gap-1.5 text-xs font-bold text-[#1C1B18] uppercase tracking-wider">
                 <Sliders className="w-3.5 h-3.5 text-[#1C1B18]" />
-                <span>Filter Criteria</span>
+                <span>Filters</span>
                 {activeFiltersCount > 0 && (
                   <span className="bg-[#B84A39] text-[#FAF8F3] text-[10px] px-1.5 py-0.2 rounded-full font-bold tabular-nums">
                     {activeFiltersCount}
@@ -385,7 +402,7 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
                 )}
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 {activeFiltersCount > 0 && (
                   <button
                     type="button"
@@ -393,6 +410,25 @@ export const DirectoryList: React.FC<DirectoryListProps> = ({
                     className="text-xs text-[#B84A39] font-bold hover:underline cursor-pointer mr-1"
                   >
                     Reset All
+                  </button>
+                )}
+                {onSetUnitsMetric && (
+                  <button
+                    type="button"
+                    onClick={() => onSetUnitsMetric(!unitsMetric)}
+                    className="px-2 py-1 text-xs font-bold text-[#1C1B18] bg-[#EAE5D9] hover:bg-[#DDD9CF] border border-[#D6D0C2] rounded-md cursor-pointer transition-colors select-none tabular-nums"
+                    title={
+                      unitsMetric
+                        ? 'Metric units active (°C, m, cm, ha, km). Click for Imperial (°F, ft)'
+                        : 'Imperial units active (°F, ft, in, ac, mi). Click for Metric (°C, m)'
+                    }
+                    aria-label={
+                      unitsMetric
+                        ? 'Metric units active. Click to switch to Imperial (°F/ft)'
+                        : 'Imperial units active. Click to switch to Metric (°C/m)'
+                    }
+                  >
+                    {unitsMetric ? '°C/m' : '°F/ft'}
                   </button>
                 )}
                 <button
