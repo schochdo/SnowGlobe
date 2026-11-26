@@ -84,6 +84,7 @@ import {
   PASS_DISPLAY_NAMES,
   PASS_SHORT_LABELS,
   classifySkiFeature,
+  getEquivalentResortSize,
   getPassNetworksForSkiArea,
   getResortStats,
   getResortWebsite,
@@ -611,9 +612,12 @@ export default function App() {
 
   // Global Points Ref & Features
   const [showGlobalPoints, setShowGlobalPoints] = useState(true);
-  const [categoryCounts, setCategoryCounts] = useState({ downhill: 6955, nordic: 5276, heli_cat: HELI_CAT_OPERATIONS.length, touring: 1 });
+  const [categoryCounts, setCategoryCounts] = useState({ downhill: 6955, nordic: 5276, heli_cat: HELI_CAT_OPERATIONS.length, touring: 0 });
   const allGlobalFeaturesRef = useRef<any[]>([]);
   const globalFeaturesRef = useRef<any[]>([]);
+  const touringManifestRef = useRef<Set<string> | null>(null);
+  const loadedTouringCellsRef = useRef<Set<string>>(new Set());
+  const inFlightTouringCellsRef = useRef<Set<string>>(new Set());
 
   // Localhost SQLite Trails Cache & Refs
   const liveFeaturesMapRef = useRef<Map<string, any>>(new Map());
@@ -738,9 +742,9 @@ export default function App() {
       if (minAreaAcres !== 0) count++;
       if (minNordicMi !== 0) count++;
     }
-    if (!showDownhill || showNordic || showHeliCat || showTouring) count++;
+    if (!showDownhill || showNordic || showHeliCat) count++;
     return count;
-  }, [selectedPasses, unitsMetric, minVerticalFt, minVerticalM, minAreaAcres, minAreaHa, minNordicMi, minNordicKm, showDownhill, showNordic, showHeliCat, showTouring]);
+  }, [selectedPasses, unitsMetric, minVerticalFt, minVerticalM, minAreaAcres, minAreaHa, minNordicMi, minNordicKm, showDownhill, showNordic, showHeliCat]);
 
   // Dynamic Category Counts Matching Sliders & Pass Network Filters
   const categoryFilterCounts = useMemo(() => {
@@ -756,8 +760,7 @@ export default function App() {
       if (cat === 'downhill') {
         const vert = r.vertical_drop_ft || 0;
         if (effectiveMinVerticalFt > 0 && vert < effectiveMinVerticalFt) continue;
-        const acres = r.skiable_acres || 0;
-        if (effectiveMinAcreage > 0 && acres < effectiveMinAcreage) continue;
+        if (effectiveMinAcreage > 0 && getEquivalentResortSize(r) < effectiveMinAcreage) continue;
         downhill++;
       } else if (cat === 'nordic') {
         if (effectiveMinNordicKm > 0 && ((r.trail_km || 0) < effectiveMinNordicKm)) continue;
@@ -768,7 +771,7 @@ export default function App() {
         touring++;
       }
     }
-    return { downhill, nordic, heli_cat, touring: Math.max(touring, 1) };
+    return { downhill, nordic, heli_cat, touring };
   }, [resorts, effectiveMinVerticalFt, effectiveMinAcreage, effectiveMinNordicKm, selectedPasses]);
 
   const ALL_PASS_NETWORKS: PassNetwork[] = useMemo(
@@ -2235,6 +2238,9 @@ export default function App() {
           vertical_ft: r.vertical_drop_ft || 0,
           vertical_drop_ft: r.vertical_drop_ft || 0,
           skiable_acres: r.skiable_acres || 0,
+          equiv_size_acres: getEquivalentResortSize(r),
+          trail_km: r.trail_km || null,
+          trail_mi: r.trail_mi || null,
         },
       }));
 
@@ -2725,6 +2731,68 @@ export default function App() {
     syncTrailFilterAndVisibility(mapRef.current, showDownhill, showNordic, showHeliCat, showTouring);
   }, [showDownhill, showNordic, showHeliCat, showTouring, mapLoaded]);
 
+  // Lazy-load 5°×5° global backcountry touring route tiles when Backcountry Touring layer is active
+  useEffect(() => {
+    if (!showTouring || !mapLoaded || !viewportBounds || mapZoom < 7.5) return;
+    let cancelled = false;
+
+    const loadVisibleTouringTiles = async () => {
+      if (!touringManifestRef.current) {
+        try {
+          const res = await fetch(getStaticDataUrl('data/touring/manifest.json'));
+          if (!res.ok) return;
+          const json = await res.json();
+          touringManifestRef.current = new Set<string>(json.cells || []);
+        } catch (_) {
+          return;
+        }
+      }
+      if (cancelled || !touringManifestRef.current) return;
+
+      const [west, south, east, north] = viewportBounds;
+      const minLat = Math.floor(south / 5) * 5;
+      const maxLat = Math.floor(north / 5) * 5;
+      const minLng = Math.floor(west / 5) * 5;
+      const maxLng = Math.floor(east / 5) * 5;
+
+      const cellsToLoad: string[] = [];
+      for (let lat5 = minLat; lat5 <= maxLat; lat5 += 5) {
+        for (let lng5 = minLng; lng5 <= maxLng; lng5 += 5) {
+          const key = `${lat5}_${lng5}`;
+          if (
+            touringManifestRef.current.has(key) &&
+            !loadedTouringCellsRef.current.has(key) &&
+            !inFlightTouringCellsRef.current.has(key)
+          ) {
+            cellsToLoad.push(key);
+          }
+        }
+      }
+
+      // Guard against huge tile fans at low zoom
+      for (const cellKey of cellsToLoad.slice(0, 6)) {
+        inFlightTouringCellsRef.current.add(cellKey);
+        fetch(getStaticDataUrl(`data/touring/${cellKey}.json`))
+          .then((r) => (r.ok ? r.json() : null))
+          .then((fc) => {
+            if (!cancelled && fc?.features?.length) {
+              loadedTouringCellsRef.current.add(cellKey);
+              ingestTrailFeatures(fc.features, true, 'touring');
+            }
+          })
+          .catch(() => {})
+          .finally(() => {
+            inFlightTouringCellsRef.current.delete(cellKey);
+          });
+      }
+    };
+
+    loadVisibleTouringTiles();
+    return () => {
+      cancelled = true;
+    };
+  }, [showTouring, mapLoaded, viewportBounds, mapZoom, ingestTrailFeatures]);
+
   /* =========================================================================
      MAP POINTS GPU FILTERING (Keeps map markers strictly in sync with filters)
      ========================================================================= */
@@ -2985,11 +3053,6 @@ export default function App() {
         setCategoryCounts(counts);
 
         setResorts((prev) => mergeResortsWithWeather(prev, globalResorts));
-
-        if (mapRef.current) {
-          const src = mapRef.current.getSource('global-ski-areas-source') as GeoJSONSource;
-          if (src) src.setData({ type: 'FeatureCollection', features });
-        }
       } catch (err) {
         console.warn('Could not load global ski areas:', err);
       }
@@ -3959,6 +4022,8 @@ export default function App() {
         onTogglePeaks={() => setShowPeaks((prev) => !prev)}
         showLookouts={showLookouts}
         onToggleLookouts={() => setShowLookouts((prev) => !prev)}
+        showTouring={showTouring}
+        onToggleTouring={() => setShowTouring((prev) => !prev)}
         showCountryOutlines={showCountryOutlines}
         onToggleCountryOutlines={() => setShowCountryOutlines((prev) => !prev)}
         terrainExaggeration={terrainExaggeration}

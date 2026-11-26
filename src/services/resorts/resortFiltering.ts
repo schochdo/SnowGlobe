@@ -56,8 +56,8 @@ export function filterResortCatalog(
       const matchesName = r.name.toLowerCase().includes(q);
       const matchesRegion = (r.region || '').toLowerCase().includes(q);
       const matchesCountry = (r.country || '').toLowerCase().includes(q);
-      const matchesSummary = (r.summary || '').toLowerCase().includes(q);
-      if (!matchesName && !matchesRegion && !matchesCountry && !matchesSummary) return false;
+      const matchesPass = (r.pass_networks || []).some((pn) => pn.toLowerCase().includes(q));
+      if (!matchesName && !matchesRegion && !matchesCountry && !matchesPass) return false;
     }
 
     return true;
@@ -153,8 +153,10 @@ export function syncDynamicMapSources(
       if (cat === 'downhill') {
         const vert = p.vertical_ft || p.vertical_drop_ft || 0;
         if (effectiveMinVerticalFt > 0 && vert < effectiveMinVerticalFt) return false;
-        const acres = p.skiable_acres || 0;
-        if (effectiveMinAcreage > 0 && acres < effectiveMinAcreage) return false;
+        if (effectiveMinAcreage > 0) {
+          const equivSize = p.equiv_size_acres ?? getEquivalentResortSize(p);
+          if (equivSize < effectiveMinAcreage) return false;
+        }
       } else if (cat === 'nordic') {
         if (effectiveMinNordicKm > 0 && ((p.trail_km || 0) < effectiveMinNordicKm)) return false;
       }
@@ -164,7 +166,8 @@ export function syncDynamicMapSources(
         const matchName = (p.name || '').toLowerCase().includes(q);
         const matchReg = (p.region || '').toLowerCase().includes(q);
         const matchCountry = (p.country || '').toLowerCase().includes(q);
-        if (!matchName && !matchReg && !matchCountry) return false;
+        const matchPass = passes.some((pn) => pn.toLowerCase().includes(q));
+        if (!matchName && !matchReg && !matchCountry && !matchPass) return false;
       }
       return true;
     });
@@ -185,8 +188,10 @@ export function syncDynamicMapSources(
       if (cat === 'downhill') {
         const vert = r.vertical_drop_ft || 0;
         if (effectiveMinVerticalFt > 0 && vert < effectiveMinVerticalFt) return false;
-        const acres = r.skiable_acres || 0;
-        if (effectiveMinAcreage > 0 && acres < effectiveMinAcreage) return false;
+        if (effectiveMinAcreage > 0) {
+          const equivSize = getEquivalentResortSize(r);
+          if (equivSize < effectiveMinAcreage) return false;
+        }
       } else if (cat === 'nordic') {
         if (effectiveMinNordicKm > 0 && ((r.trail_km || 0) < effectiveMinNordicKm)) return false;
       }
@@ -196,7 +201,8 @@ export function syncDynamicMapSources(
         const matchName = r.name.toLowerCase().includes(q);
         const matchReg = (r.region || '').toLowerCase().includes(q);
         const matchCountry = (r.country || '').toLowerCase().includes(q);
-        if (!matchName && !matchReg && !matchCountry) return false;
+        const matchPass = (r.pass_networks || []).some((pn) => pn.toLowerCase().includes(q));
+        if (!matchName && !matchReg && !matchCountry && !matchPass) return false;
       }
       return true;
     }).map((r) => ({
@@ -211,6 +217,7 @@ export function syncDynamicMapSources(
         vertical_ft: r.vertical_drop_ft || 0,
         vertical_drop_ft: r.vertical_drop_ft || 0,
         skiable_acres: r.skiable_acres || 0,
+        equiv_size_acres: getEquivalentResortSize(r),
         trail_km: r.trail_km || null,
         trail_mi: r.trail_mi || null,
       },

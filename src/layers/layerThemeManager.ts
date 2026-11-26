@@ -384,7 +384,11 @@ export function syncResortPointFilters(
     downhillConditions.push(['>=', ['coalesce', ['get', 'vertical_ft'], ['get', 'vertical_drop_ft'], 0], effectiveMinVerticalFt]);
   }
   if (effectiveMinAcreage > 0) {
-    downhillConditions.push(['>=', ['coalesce', ['get', 'skiable_acres'], 0], effectiveMinAcreage]);
+    downhillConditions.push([
+      '>=',
+      ['coalesce', ['get', 'equiv_size_acres'], ['get', 'skiable_acres'], 0],
+      effectiveMinAcreage,
+    ]);
   }
 
   const nordicConditions: any[] = ['all'];

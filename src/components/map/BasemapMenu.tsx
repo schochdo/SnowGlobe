@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { Menu, X, Layers, Mountain, Globe, Flame } from 'lucide-react';
+import { Menu, X, Layers, Mountain, Globe, Flame, Route } from 'lucide-react';
 import type { BasemapMode, TerrainOverlayMode, EarthProjectionMode } from '../../types';
 
 interface BasemapMenuProps {
@@ -15,6 +15,8 @@ interface BasemapMenuProps {
   onTogglePeaks: () => void;
   showLookouts?: boolean;
   onToggleLookouts?: () => void;
+  showTouring?: boolean;
+  onToggleTouring?: () => void;
   showCountryOutlines: boolean;
   onToggleCountryOutlines: () => void;
   terrainExaggeration: number;
@@ -37,6 +39,8 @@ export const BasemapMenu: React.FC<BasemapMenuProps> = ({
   onTogglePeaks,
   showLookouts = false,
   onToggleLookouts,
+  showTouring = false,
+  onToggleTouring,
   showCountryOutlines,
   onToggleCountryOutlines,
   terrainExaggeration,
@@ -200,7 +204,7 @@ export const BasemapMenu: React.FC<BasemapMenuProps> = ({
                 >
                   <Layers className="w-3.5 h-3.5" />
                   <span>Layers</span>
-                  {(showLookouts || terrainOverlay !== 'none') && (
+                  {(showLookouts || showTouring || terrainOverlay !== 'none') && (
                     <span className="w-1.5 h-1.5 rounded-full bg-[#D96B27]" />
                   )}
                 </button>
@@ -383,6 +387,44 @@ export const BasemapMenu: React.FC<BasemapMenuProps> = ({
                     </span>
                   </button>
                 </div>
+
+                {/* BACKCOUNTRY TOURING ROUTES */}
+                {onToggleTouring && (
+                  <div className="pt-2.5 border-t border-[#D6D0C2] space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] uppercase text-[#8A847C] font-semibold tracking-wider">
+                        Backcountry Touring
+                      </span>
+                      <span
+                        className={`text-[9px] uppercase font-bold px-1.5 py-0.5 rounded border ${
+                          showTouring
+                            ? 'bg-[#EAE5D9] text-[#1C1B18] border-[#A8A299]'
+                            : 'bg-[#F2EFE8] text-[#8A847C] border-[#D6D0C2]'
+                        }`}
+                      >
+                        {showTouring ? 'Active' : 'Off'}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={onToggleTouring}
+                      className={`w-full flex items-center justify-between p-2 rounded-md border text-xs transition-all cursor-pointer ${
+                        showTouring
+                          ? 'bg-[#EAE5D9] text-[#1C1B18] border-[#A8A299] shadow-2xs font-bold'
+                          : 'bg-[#F7F4ED] text-[#736E67] border-[#D6D0C2] hover:bg-[#EFECE4] hover:text-[#1C1B18] font-medium'
+                      }`}
+                      title="Toggle mapped backcountry ski touring routes and skin tracks worldwide"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Route className="w-3.5 h-3.5 text-[#D97706]" />
+                        <span>Ski Touring Routes</span>
+                      </div>
+                      <span className="text-[10px] font-semibold text-[#5C5852]">
+                        {showTouring ? 'Visible' : 'Hidden'}
+                      </span>
+                    </button>
+                  </div>
+                )}
 
                 {/* TERRAIN ANALYSIS OVERLAYS (SLOPE & ASPECT) */}
                 <div className="pt-2.5 border-t border-[#D6D0C2] space-y-2">

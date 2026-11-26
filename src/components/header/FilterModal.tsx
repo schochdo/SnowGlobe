@@ -1,5 +1,5 @@
 import React from 'react';
-import { MountainSnow, Trees, Route } from 'lucide-react';
+import { MountainSnow, Trees } from 'lucide-react';
 import { HelicopterIcon } from '../icons/HelicopterIcon';
 import type { EarthProjectionMode, PassNetwork } from '../../types';
 import { PASS_DISPLAY_NAMES } from '../../utils/classification';
@@ -93,8 +93,8 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
 }) => {
   return (
     <div className="space-y-3.5 text-[#1C1B18]">
-      {/* Category Segmented Controls (Stacked icon + full legible title-case label, zero truncation) */}
-      <div className="grid grid-cols-4 gap-1.5">
+      {/* Category Segmented Controls (3 Operating Ski Area / Outfitter Categories) */}
+      <div className="grid grid-cols-3 gap-1.5">
         <button
           type="button"
           onClick={onToggleDownhill}
@@ -138,21 +138,6 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
           <HelicopterIcon className="w-4 h-4 shrink-0" />
           <span className="text-[10.5px] font-bold leading-tight tracking-tight whitespace-nowrap">
             Heli/Cat
-          </span>
-        </button>
-        <button
-          type="button"
-          onClick={onToggleTouring}
-          className={`py-2 px-1 rounded-md border transition-colors duration-150 cursor-pointer flex flex-col items-center justify-center gap-1 text-center ${
-            showTouring
-              ? 'bg-[#2C2A27] border-[#2C2A27] text-[#FAF8F3] shadow-2xs'
-              : 'bg-[#FAF8F3] border-[#D6D0C2] text-[#736E67] hover:text-[#1C1B18] hover:border-[#8A847C]'
-          }`}
-          title={`Toggle Backcountry Ski Touring Routes & Zones (${(categoryFilterCounts.touring ?? 1).toLocaleString()})`}
-        >
-          <Route className="w-4 h-4 shrink-0" />
-          <span className="text-[10.5px] font-bold leading-tight tracking-tight whitespace-nowrap">
-            Touring
           </span>
         </button>
       </div>

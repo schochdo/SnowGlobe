@@ -8,6 +8,7 @@ import {
   cleanNameForMatching,
   getSignificantTokens,
   classifySkiFeature,
+  getEquivalentResortSize,
   PASS_COLORS,
 } from '../../utils/classification';
 import { getStaticDataUrl } from '../../utils/url';
@@ -108,6 +109,13 @@ export async function fetchGlobalSkiAreas(): Promise<GlobalSkiAreasResult> {
 
     const rVert = p.vertical_ft || classified.cleanedVertFt || 0;
     const rAcres = classified.category === 'nordic' ? 0 : (p.skiable_acres || 0);
+    const equivSizeAcres = getEquivalentResortSize({
+      country,
+      skiable_acres: rAcres,
+      trail_km: p.trail_km || null,
+      run_count: p.run_count || null,
+      category: classified.category,
+    });
 
     if (classified.category === 'downhill') dhTotal++;
     else if (classified.category === 'nordic') nordTotal++;
@@ -138,6 +146,7 @@ export async function fetchGlobalSkiAreas(): Promise<GlobalSkiAreasResult> {
         summit_elev_ft: p.summit_elev_ft || classified.cleanedSummitFt || 0,
         base_elev_ft: p.base_elev_ft || classified.cleanedBaseFt || 0,
         skiable_acres: rAcres,
+        equiv_size_acres: equivSizeAcres,
         website: cleanSite,
         trail_km: p.trail_km || null,
         trail_mi: p.trail_mi || null,
@@ -185,7 +194,7 @@ export async function fetchGlobalSkiAreas(): Promise<GlobalSkiAreasResult> {
       downhill: dhTotal,
       nordic: nordTotal,
       heli_cat: HELI_CAT_OPERATIONS.length,
-      touring: 1,
+      touring: 0,
     },
   };
 }
