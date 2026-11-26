@@ -99,9 +99,14 @@ SnowGlobe/
 │   └── pisteTopologyGraph.cjs     ← CommonJS adapter re-exporting canonical src/utils/pisteTopologyGraph.ts
 ├── scripts/
 │   ├── apply_piste_topology.cjs   ← Offline batch script: applies topology classifier to public/data/trails/
-│   └── verify_topology_canary.cjs ← Fast headless CLI test suite asserting topology classifications & edge cases
+│   ├── verify_topology_canary.cjs ← Fast headless CLI test suite asserting 11 topology edge cases
+│   ├── compute_resort_stats_from_trails.cjs ← Relation-scoped 3D resort stats from trails.db + trails/*.json
+│   ├── enrich_global_infobox_stats.cjs ← Global Wikipedia Infobox ski area & Wikidata P625 enrichment
+│   ├── strip_boilerplate_summaries.cjs ← Purges templated AI boilerplate blurbs from global_ski_areas.json
+│   └── export_global_touring_tiles.cjs ← Exports global 5°×5° backcountry touring tiles from trails.db
 ├── public/                        ← Static assets served as-is (resort GeoJSON, country bounds, peaks, lookouts)
-│   └── data/trails/*.json         ← Pre-baked resort GeoJSON with immutable atlas_category tags
+│   ├── data/trails/*.json         ← Pre-baked resort GeoJSON with immutable atlas_category tags
+│   └── data/touring/*.json        ← Lazy-loaded 5°×5° backcountry touring route tiles + manifest.json
 ├── index.html
 ├── vite.config.ts
 └── CHANGELOG.md                   ← Every feature/fix logged here
@@ -348,14 +353,13 @@ To prevent undoing previous sanitization work or re-introducing upstream bugs, f
 
 To solve the lack of relational resort boundaries and network topology in OpenStreetMap without brittle proximity heuristics, the system uses a **3-Tier Topological Graph Classifier** (`src/utils/pisteTopologyGraph.ts` and `data_pipeline/pisteTopologyGraph.cjs`):
 
-1. **Tier 1 — Strict Discipline Segregation**: Isolates Nordic cross-country (`piste:type=nordic`) and uphill touring (`skitour`) before downhill evaluation. Non-ski clutter without winter attributes is marked `ignore`.
-2. **Tier 2 — Universal Physical Gradient Law (Kinematics)**: Evaluates 3D coordinates. If a trail has length $\ge 1,200\text{m}$, average pitch $\le 4.5^\circ$ ($< 8\%$ grade), and lacks machine grooming (`classic`, `skating`, `scooter`), it cannot physically sustain downhill skiing. Demoted to `ignore` or `touring`. Catwalks and ski-outs with novice/easy difficulty are preserved. Features within `landuse=winter_sports` polygons are immediately classified as `downhill`.
-3. **Tier 3 — Directed Downhill BFS & Gravity Sink Law**:
-   - Builds a ~65m ($\pm 3$ cells) spatial hash grid and propagates `lift_served = true` up to 8,000m from upper lift terminals along connected run segments.
-   - Fully indexes perimeter vertices and centroids of polygon glades and bowls.
-   - Enforces downhill elevation monotonicity during propagation (`nextMinZ <= currentMaxZ + 15m`) and caps trail-name bridging to 150m.
-   - **Gravity Sink Law**: If the lowest elevation terminus of a candidate run terminates $> 350\text{m}$ from any lift and connects to no downstream run returning to a lift, it is an unserviced backcountry descent. Automatically classified as `touring`.
-4. **Client-Side Immutability**: The client MapLibre renderer treats pre-baked `atlas_category` as authoritative and never mutates it using client-side radius checks.
+1. **Tier 1 — Strict Discipline Segregation**: Isolates Nordic cross-country (`piste:type=nordic`) before downhill evaluation and strips non-ski clutter (e.g. dedicated snowshoe loops). Bounded `piste:type=skitour` ways (`<= 2,400m`, `<= 400m` vertical, within `850m` of lifts, `patrolled !== 'no'`) enter candidate bootpack evaluation so OSM-tagged inbounds hike-to ridges and traverses are not prematurely discarded.
+2. **Tier 2 — Universal Physical Gradient Law (Kinematics)**: Evaluates 3D coordinates. If a `LineString` trail has length $\ge 1,200\text{m}$, average pitch $\le 4.5^\circ$ ($< 8\%$ grade), and lacks machine grooming (`classic`, `skating`, `scooter`), it cannot physically sustain downhill skiing and is demoted to `ignore` or `touring` (`Polygon` bowls measure fall-line distance between summit and base vertices rather than closed circumference). Catwalks and ski-outs with novice/easy difficulty are preserved. Features within `landuse=winter_sports` polygons are immediately classified as `downhill`.
+3. **Tier 3 — Forward Lift-Access BFS, Backward Gravity-Return Closure & Inbounds Bootpack Bridging**:
+   - **Forward Pass (`liftServed`)**: Builds a ~65m ($\pm 3$ cells) spatial hash grid (interpolating `Polygon` perimeters every 35m) and propagates `liftServed` up to 8,000m from upper lift terminals with downhill monotonicity (`nextMinZ <= currentMaxZ + 15m`) and 150m trail-name bridging.
+   - **Backward Pass (`canReturnToLift`)**: Computes fixed-point gravity-return closure from lift bases (`<= 350m`) uphill across multi-vertex `Polygon` lower rims, interior polygon containment, and `<= 280m` open glacier/bowl aprons (`0..140m` drop). Any downhill bowl/chute within `1,200m` of an upper lift whose path satisfies `canReturnToLift` is classified `downhill`; candidate `skitour` bootpacks bridging from upper lifts/inbounds runs into `canReturnToLift` terrain are promoted to `downhill`.
+   - **Gravity Sink Law**: Un-returned backcountry/freeride/expert descents (`!canReturnToLift`) are classified as `touring`.
+4. **Client-Side Immutability**: The client MapLibre renderer treats pre-baked `atlas_category` as authoritative and routes any unbaked local dev-server features strictly through `classifySkiAreaTopology()`.
 
 ---
 

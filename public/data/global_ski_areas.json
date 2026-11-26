@@ -1406,7 +1406,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 25 pistes",
+        "infrastructure": "2 lifts · 26 pistes",
         "vertical_ft": 1592,
         "summit_elev_ft": 2915,
         "base_elev_ft": 1323,
@@ -1419,11 +1419,11 @@
         "summary": "",
         "website": "https://skibigmoose.com/",
         "lift_count": 2,
-        "run_count": 25,
+        "run_count": 26,
         "avg_snowfall_in": null,
         "default_bearing": 199,
-        "trail_km": 14.9,
-        "trail_mi": 9.2
+        "trail_km": 15,
+        "trail_mi": 9.3
       }
     },
     {
@@ -2223,7 +2223,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "26 lifts · 127 pistes",
+        "infrastructure": "26 lifts · 135 pistes",
         "vertical_ft": 4424,
         "summit_elev_ft": 7458,
         "base_elev_ft": 3034,
@@ -2236,11 +2236,11 @@
         "summary": "",
         "website": "https://www.kronplatz.com/",
         "lift_count": 26,
-        "run_count": 127,
+        "run_count": 135,
         "avg_snowfall_in": null,
         "default_bearing": 213,
-        "trail_km": 70.1,
-        "trail_mi": 43.5
+        "trail_km": 76.2,
+        "trail_mi": 47.3
       }
     },
     {
@@ -2628,7 +2628,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 8 pistes",
+        "infrastructure": "2 lifts · 9 pistes",
         "vertical_ft": 941,
         "summit_elev_ft": 2309,
         "base_elev_ft": 1368,
@@ -2641,11 +2641,11 @@
         "summary": "",
         "website": "https://www.almasafritid.se/",
         "lift_count": 2,
-        "run_count": 8,
+        "run_count": 9,
         "avg_snowfall_in": null,
         "default_bearing": 25,
-        "trail_km": 7.6,
-        "trail_mi": 4.7
+        "trail_km": 7.8,
+        "trail_mi": 4.8
       }
     },
     {
@@ -3072,7 +3072,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "85 lifts · 331 pistes",
+        "infrastructure": "85 lifts · 330 pistes",
         "vertical_ft": 3433,
         "summit_elev_ft": 6737,
         "base_elev_ft": 3304,
@@ -3085,11 +3085,11 @@
         "summary": "",
         "website": "https://www.espacediamant.com",
         "lift_count": 85,
-        "run_count": 331,
+        "run_count": 330,
         "avg_snowfall_in": null,
         "default_bearing": 152,
-        "trail_km": 198,
-        "trail_mi": 123
+        "trail_km": 197.5,
+        "trail_mi": 122.7
       }
     },
     {
@@ -3192,7 +3192,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "8 lifts · 19 pistes",
+        "infrastructure": "8 lifts · 20 pistes",
         "vertical_ft": 1089,
         "summit_elev_ft": 2683,
         "base_elev_ft": 1594,
@@ -3205,11 +3205,11 @@
         "summary": "",
         "website": "",
         "lift_count": 8,
-        "run_count": 19,
+        "run_count": 20,
         "avg_snowfall_in": null,
         "default_bearing": 263,
-        "trail_km": 14.1,
-        "trail_mi": 8.8
+        "trail_km": 14.7,
+        "trail_mi": 9.1
       }
     },
     {
@@ -3803,7 +3803,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 19 pistes",
+        "infrastructure": "6 lifts · 20 pistes",
         "vertical_ft": 2336,
         "summit_elev_ft": 4878,
         "base_elev_ft": 2542,
@@ -3816,11 +3816,11 @@
         "summary": "",
         "website": "https://www.sattel-hochstuckli.ch/",
         "lift_count": 6,
-        "run_count": 19,
+        "run_count": 20,
         "avg_snowfall_in": null,
         "default_bearing": 179,
-        "trail_km": 9.5,
-        "trail_mi": 5.9
+        "trail_km": 10.2,
+        "trail_mi": 6.4
       }
     },
     {
@@ -4941,7 +4941,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "13 lifts · 41 pistes",
+        "infrastructure": "13 lifts · 39 pistes",
         "vertical_ft": 2212,
         "summit_elev_ft": 8855,
         "base_elev_ft": 6643,
@@ -4954,11 +4954,11 @@
         "summary": "",
         "website": "https://www.sierraattahoe.com",
         "lift_count": 13,
-        "run_count": 41,
+        "run_count": 39,
         "avg_snowfall_in": 480,
         "default_bearing": 131,
-        "trail_km": 27.1,
-        "trail_mi": 16.9
+        "trail_km": 26.2,
+        "trail_mi": 16.3
       }
     },
     {
@@ -5837,7 +5837,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "18 lifts · 258 pistes",
+        "infrastructure": "18 lifts · 261 pistes",
         "vertical_ft": 3155,
         "summit_elev_ft": 8505,
         "base_elev_ft": 5350,
@@ -5850,11 +5850,11 @@
         "summary": "",
         "website": "https://www.valdallos.com/",
         "lift_count": 18,
-        "run_count": 258,
+        "run_count": 261,
         "avg_snowfall_in": null,
         "default_bearing": 247,
-        "trail_km": 93.6,
-        "trail_mi": 58.1
+        "trail_km": 96.1,
+        "trail_mi": 59.7
       }
     },
     {
@@ -6162,7 +6162,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 86 pistes",
+        "infrastructure": "7 lifts · 87 pistes",
         "vertical_ft": 2758,
         "summit_elev_ft": 7640,
         "base_elev_ft": 4882,
@@ -6175,10 +6175,10 @@
         "summary": "",
         "website": "https://tamarackidaho.com",
         "lift_count": 7,
-        "run_count": 86,
+        "run_count": 87,
         "avg_snowfall_in": 300,
         "default_bearing": 271,
-        "trail_km": 57.9,
+        "trail_km": 58,
         "trail_mi": 36
       }
     },
@@ -6203,7 +6203,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "17 lifts · 240 pistes",
+        "infrastructure": "17 lifts · 243 pistes",
         "vertical_ft": 3767,
         "summit_elev_ft": 8564,
         "base_elev_ft": 4797,
@@ -6216,11 +6216,11 @@
         "summary": "",
         "website": "https://www.espacesanbernardo.ski/",
         "lift_count": 17,
-        "run_count": 240,
+        "run_count": 243,
         "avg_snowfall_in": null,
         "default_bearing": 212,
-        "trail_km": 78,
-        "trail_mi": 48.5
+        "trail_km": 78.7,
+        "trail_mi": 48.9
       }
     },
     {
@@ -7414,7 +7414,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 11 pistes",
+        "infrastructure": "1 lifts · 12 pistes",
         "vertical_ft": 808,
         "summit_elev_ft": 2849,
         "base_elev_ft": 2041,
@@ -7426,11 +7426,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 1,
-        "run_count": 11,
+        "run_count": 12,
         "avg_snowfall_in": null,
         "default_bearing": 19,
-        "trail_km": 6.6,
-        "trail_mi": 4.1
+        "trail_km": 7.2,
+        "trail_mi": 4.5
       }
     },
     {
@@ -7454,9 +7454,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "33 lifts · 295 pistes",
-        "vertical_ft": 4768,
-        "summit_elev_ft": 9315,
+        "infrastructure": "33 lifts · 296 pistes",
+        "vertical_ft": 5462,
+        "summit_elev_ft": 10009,
         "base_elev_ft": 4547,
         "skiable_acres": 0,
         "pass_networks": [
@@ -7466,11 +7466,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 33,
-        "run_count": 295,
+        "run_count": 296,
         "avg_snowfall_in": null,
         "default_bearing": 123,
-        "trail_km": 118.1,
-        "trail_mi": 73.4
+        "trail_km": 123.1,
+        "trail_mi": 76.5
       }
     },
     {
@@ -9526,7 +9526,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 53 pistes",
+        "infrastructure": "6 lifts · 54 pistes",
         "vertical_ft": 5033,
         "summit_elev_ft": 10144,
         "base_elev_ft": 5111,
@@ -9538,7 +9538,7 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 6,
-        "run_count": 53,
+        "run_count": 54,
         "avg_snowfall_in": null,
         "default_bearing": 71,
         "trail_km": 26.9,
@@ -9972,10 +9972,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "0 lifts · 1 pistes",
-        "vertical_ft": 625,
-        "summit_elev_ft": 6250,
-        "base_elev_ft": 5625,
+        "infrastructure": "Alpine Ski Area",
+        "vertical_ft": 0,
+        "summit_elev_ft": 0,
+        "base_elev_ft": 0,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -9984,12 +9984,12 @@
         "pass_color": "#8A847C",
         "summary": "",
         "website": "https://nevadosdevilcun.cl/",
-        "lift_count": 0,
-        "run_count": 1,
+        "lift_count": null,
+        "run_count": null,
         "avg_snowfall_in": null,
         "default_bearing": 102,
-        "trail_km": 0.9,
-        "trail_mi": 0.6
+        "trail_km": null,
+        "trail_mi": null
       }
     },
     {
@@ -10054,10 +10054,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 6 pistes",
-        "vertical_ft": 1377,
+        "infrastructure": "3 lifts · 7 pistes",
+        "vertical_ft": 1547,
         "summit_elev_ft": 2826,
-        "base_elev_ft": 1449,
+        "base_elev_ft": 1279,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -10067,7 +10067,7 @@
         "summary": "",
         "website": "http://www.zavjalikha.su/",
         "lift_count": 3,
-        "run_count": 6,
+        "run_count": 7,
         "avg_snowfall_in": null,
         "default_bearing": 219,
         "trail_km": 10.1,
@@ -10135,7 +10135,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 35 pistes",
+        "infrastructure": "5 lifts · 38 pistes",
         "vertical_ft": 1705,
         "summit_elev_ft": 5024,
         "base_elev_ft": 3319,
@@ -10148,11 +10148,11 @@
         "summary": "",
         "website": "https://www.trollresort.com/",
         "lift_count": 5,
-        "run_count": 35,
+        "run_count": 38,
         "avg_snowfall_in": null,
         "default_bearing": 354,
-        "trail_km": 31.9,
-        "trail_mi": 19.8
+        "trail_km": 34,
+        "trail_mi": 21.1
       }
     },
     {
@@ -10663,9 +10663,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "0 lifts · 1 pistes",
-        "vertical_ft": 1443,
-        "summit_elev_ft": 2972,
+        "infrastructure": "0 lifts · 3 pistes",
+        "vertical_ft": 1853,
+        "summit_elev_ft": 3382,
         "base_elev_ft": 1529,
         "skiable_acres": 0,
         "pass_networks": [
@@ -10675,7 +10675,7 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 0,
-        "run_count": 1,
+        "run_count": 3,
         "avg_snowfall_in": null,
         "default_bearing": 180
       }
@@ -10947,7 +10947,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "23 lifts · 156 pistes",
+        "infrastructure": "23 lifts · 157 pistes",
         "vertical_ft": 2645,
         "summit_elev_ft": 12351,
         "base_elev_ft": 9706,
@@ -10960,7 +10960,7 @@
         "summary": "",
         "website": "https://www.coppercolorado.com/",
         "lift_count": 23,
-        "run_count": 156,
+        "run_count": 157,
         "avg_snowfall_in": 310,
         "default_bearing": 205,
         "trail_km": 115,
@@ -11516,7 +11516,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "34 lifts · 267 pistes",
+        "infrastructure": "34 lifts · 268 pistes",
         "vertical_ft": 4386,
         "summit_elev_ft": 8993,
         "base_elev_ft": 4607,
@@ -11528,11 +11528,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 34,
-        "run_count": 267,
+        "run_count": 268,
         "avg_snowfall_in": null,
         "default_bearing": 119,
-        "trail_km": 138,
-        "trail_mi": 85.8
+        "trail_km": 143.4,
+        "trail_mi": 89.1
       }
     },
     {
@@ -12291,7 +12291,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 32 pistes",
+        "infrastructure": "2 lifts · 33 pistes",
         "vertical_ft": 1361,
         "summit_elev_ft": 8225,
         "base_elev_ft": 6864,
@@ -12304,11 +12304,11 @@
         "summary": "",
         "website": "https://www.pinecreekskiresort.com/",
         "lift_count": 2,
-        "run_count": 32,
+        "run_count": 33,
         "avg_snowfall_in": null,
         "default_bearing": 140,
-        "trail_km": 17.7,
-        "trail_mi": 11
+        "trail_km": 17.9,
+        "trail_mi": 11.1
       }
     },
     {
@@ -12811,7 +12811,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 36 pistes",
+        "infrastructure": "4 lifts · 38 pistes",
         "vertical_ft": 912,
         "summit_elev_ft": 5421,
         "base_elev_ft": 4509,
@@ -12824,11 +12824,11 @@
         "summary": "",
         "website": "https://www.skitimothy.com/",
         "lift_count": 4,
-        "run_count": 36,
+        "run_count": 38,
         "avg_snowfall_in": null,
         "default_bearing": 183,
-        "trail_km": 24.8,
-        "trail_mi": 15.4
+        "trail_km": 26.3,
+        "trail_mi": 16.3
       }
     },
     {
@@ -14560,7 +14560,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "25 lifts · 131 pistes",
+        "infrastructure": "25 lifts · 122 pistes",
         "vertical_ft": 2938,
         "summit_elev_ft": 7864,
         "base_elev_ft": 4926,
@@ -14573,11 +14573,11 @@
         "summary": "",
         "website": "https://www.aramon.com/formigal-panticosa",
         "lift_count": 25,
-        "run_count": 131,
+        "run_count": 122,
         "avg_snowfall_in": null,
         "default_bearing": 225,
-        "trail_km": 104.9,
-        "trail_mi": 65.2
+        "trail_km": 93.6,
+        "trail_mi": 58.1
       }
     },
     {
@@ -16187,7 +16187,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "82 lifts · 353 pistes",
+        "infrastructure": "82 lifts · 354 pistes",
         "vertical_ft": 8495,
         "summit_elev_ft": 10873,
         "base_elev_ft": 2378,
@@ -16200,11 +16200,11 @@
         "summary": "",
         "website": "https://www.alpedhuez.com",
         "lift_count": 82,
-        "run_count": 353,
+        "run_count": 354,
         "avg_snowfall_in": null,
         "default_bearing": 69,
-        "trail_km": 162.8,
-        "trail_mi": 101.1
+        "trail_km": 162.9,
+        "trail_mi": 101.2
       }
     },
     {
@@ -17488,7 +17488,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 49 pistes",
+        "infrastructure": "7 lifts · 51 pistes",
         "vertical_ft": 1566,
         "summit_elev_ft": 10921,
         "base_elev_ft": 9355,
@@ -17501,11 +17501,11 @@
         "summary": "",
         "website": "https://www.sunrise.ski/",
         "lift_count": 7,
-        "run_count": 49,
+        "run_count": 51,
         "avg_snowfall_in": 250,
         "default_bearing": 166,
-        "trail_km": 41.2,
-        "trail_mi": 25.6
+        "trail_km": 42.3,
+        "trail_mi": 26.3
       }
     },
     {
@@ -18543,7 +18543,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 101 pistes",
+        "infrastructure": "10 lifts · 104 pistes",
         "vertical_ft": 2400,
         "summit_elev_ft": 6400,
         "base_elev_ft": 4000,
@@ -18556,11 +18556,11 @@
         "summary": "",
         "website": "https://www.schweitzer.com",
         "lift_count": 10,
-        "run_count": 101,
+        "run_count": 104,
         "avg_snowfall_in": 300,
         "default_bearing": 270,
-        "trail_km": 73.1,
-        "trail_mi": 45.4
+        "trail_km": 74,
+        "trail_mi": 46
       }
     },
     {
@@ -18625,7 +18625,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 51 pistes",
+        "infrastructure": "6 lifts · 52 pistes",
         "vertical_ft": 7672,
         "summit_elev_ft": 10575,
         "base_elev_ft": 2903,
@@ -18637,11 +18637,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 6,
-        "run_count": 51,
+        "run_count": 52,
         "avg_snowfall_in": null,
         "default_bearing": 110,
-        "trail_km": 23.3,
-        "trail_mi": 14.5
+        "trail_km": 24.7,
+        "trail_mi": 15.3
       }
     },
     {
@@ -19074,7 +19074,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 69 pistes",
+        "infrastructure": "5 lifts · 70 pistes",
         "vertical_ft": 2208,
         "summit_elev_ft": 6255,
         "base_elev_ft": 4047,
@@ -19087,11 +19087,11 @@
         "summary": "",
         "website": "https://www.skikimberley.com",
         "lift_count": 5,
-        "run_count": 69,
+        "run_count": 70,
         "avg_snowfall_in": 157,
         "default_bearing": 231,
-        "trail_km": 59.7,
-        "trail_mi": 37.1
+        "trail_km": 60,
+        "trail_mi": 37.3
       }
     },
     {
@@ -19155,9 +19155,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 8 pistes",
-        "vertical_ft": 2070,
-        "summit_elev_ft": 10546,
+        "infrastructure": "1 lifts · 12 pistes",
+        "vertical_ft": 2071,
+        "summit_elev_ft": 10547,
         "base_elev_ft": 8476,
         "skiable_acres": 741,
         "pass_networks": [
@@ -19168,11 +19168,11 @@
         "summary": "",
         "website": "",
         "lift_count": 1,
-        "run_count": 8,
+        "run_count": 12,
         "avg_snowfall_in": null,
         "default_bearing": 360,
-        "trail_km": 7.1,
-        "trail_mi": 4.4
+        "trail_km": 10.1,
+        "trail_mi": 6.3
       }
     },
     {
@@ -19482,7 +19482,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "36 lifts · 644 pistes",
+        "infrastructure": "36 lifts · 646 pistes",
         "vertical_ft": 5346,
         "summit_elev_ft": 7476,
         "base_elev_ft": 2130,
@@ -19495,11 +19495,11 @@
         "summary": "",
         "website": "https://www.whistlerblackcomb.com",
         "lift_count": 36,
-        "run_count": 644,
+        "run_count": 646,
         "avg_snowfall_in": 415,
         "default_bearing": 144,
-        "trail_km": 297.7,
-        "trail_mi": 185
+        "trail_km": 298.8,
+        "trail_mi": 185.6
       }
     },
     {
@@ -19523,7 +19523,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 53 pistes",
+        "infrastructure": "5 lifts · 36 pistes",
         "vertical_ft": 3498,
         "summit_elev_ft": 6712,
         "base_elev_ft": 3214,
@@ -19536,11 +19536,11 @@
         "summary": "",
         "website": "https://www.stubai.at/skigebiete/elferbahnen/",
         "lift_count": 5,
-        "run_count": 53,
+        "run_count": 36,
         "avg_snowfall_in": null,
         "default_bearing": 177,
-        "trail_km": 8.5,
-        "trail_mi": 5.3
+        "trail_km": 4.7,
+        "trail_mi": 2.9
       }
     },
     {
@@ -19564,7 +19564,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 46 pistes",
+        "infrastructure": "3 lifts · 47 pistes",
         "vertical_ft": 943,
         "summit_elev_ft": 8661,
         "base_elev_ft": 7718,
@@ -19577,11 +19577,11 @@
         "summary": "",
         "website": "https://www.pomerelle-mtn.com/",
         "lift_count": 3,
-        "run_count": 46,
+        "run_count": 47,
         "avg_snowfall_in": 500,
         "default_bearing": 216,
-        "trail_km": 20.5,
-        "trail_mi": 12.7
+        "trail_km": 20.7,
+        "trail_mi": 12.9
       }
     },
     {
@@ -20173,7 +20173,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 10 pistes",
+        "infrastructure": "4 lifts · 11 pistes",
         "vertical_ft": 1329,
         "summit_elev_ft": 6885,
         "base_elev_ft": 5556,
@@ -20185,11 +20185,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 4,
-        "run_count": 10,
+        "run_count": 11,
         "avg_snowfall_in": null,
         "default_bearing": 163,
-        "trail_km": 6.5,
-        "trail_mi": 4
+        "trail_km": 7,
+        "trail_mi": 4.3
       }
     },
     {
@@ -21679,10 +21679,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 4 pistes",
-        "vertical_ft": 910,
+        "infrastructure": "2 lifts · 5 pistes",
+        "vertical_ft": 1005,
         "summit_elev_ft": 1895,
-        "base_elev_ft": 985,
+        "base_elev_ft": 890,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -21692,11 +21692,11 @@
         "summary": "",
         "website": "https://cherry.my1.ru/",
         "lift_count": 2,
-        "run_count": 4,
+        "run_count": 5,
         "avg_snowfall_in": null,
         "default_bearing": 291,
-        "trail_km": 3.2,
-        "trail_mi": 2
+        "trail_km": 4.5,
+        "trail_mi": 2.8
       }
     },
     {
@@ -21720,7 +21720,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 10 pistes",
+        "infrastructure": "6 lifts · 11 pistes",
         "vertical_ft": 1527,
         "summit_elev_ft": 8114,
         "base_elev_ft": 6587,
@@ -21732,11 +21732,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 6,
-        "run_count": 10,
+        "run_count": 11,
         "avg_snowfall_in": null,
         "default_bearing": 300,
-        "trail_km": 8.2,
-        "trail_mi": 5.1
+        "trail_km": 8.8,
+        "trail_mi": 5.5
       }
     },
     {
@@ -22226,8 +22226,8 @@
         "run_count": 193,
         "avg_snowfall_in": null,
         "default_bearing": 342,
-        "trail_km": 88.9,
-        "trail_mi": 55.2
+        "trail_km": 84.3,
+        "trail_mi": 52.4
       }
     },
     {
@@ -22292,7 +22292,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "23 lifts · 95 pistes",
+        "infrastructure": "23 lifts · 96 pistes",
         "vertical_ft": 2342,
         "summit_elev_ft": 6430,
         "base_elev_ft": 4088,
@@ -22305,11 +22305,11 @@
         "summary": "",
         "website": "https://www.prazdelys-sommand.com/",
         "lift_count": 23,
-        "run_count": 95,
+        "run_count": 96,
         "avg_snowfall_in": null,
         "default_bearing": 204,
-        "trail_km": 47.5,
-        "trail_mi": 29.5
+        "trail_km": 49.6,
+        "trail_mi": 30.8
       }
     },
     {
@@ -23263,7 +23263,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "8 lifts · 56 pistes",
+        "infrastructure": "8 lifts · 57 pistes",
         "vertical_ft": 4804,
         "summit_elev_ft": 8200,
         "base_elev_ft": 3396,
@@ -23276,11 +23276,11 @@
         "summary": "",
         "website": "https://www.jungfrau.ch",
         "lift_count": 8,
-        "run_count": 56,
+        "run_count": 57,
         "avg_snowfall_in": null,
         "default_bearing": 8,
-        "trail_km": 40.5,
-        "trail_mi": 25.2
+        "trail_km": 41.3,
+        "trail_mi": 25.7
       }
     },
     {
@@ -24890,7 +24890,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 26 pistes",
+        "infrastructure": "7 lifts · 25 pistes",
         "vertical_ft": 2174,
         "summit_elev_ft": 3955,
         "base_elev_ft": 1781,
@@ -24903,11 +24903,11 @@
         "summary": "",
         "website": "https://skipark.sk/",
         "lift_count": 7,
-        "run_count": 26,
+        "run_count": 25,
         "avg_snowfall_in": null,
         "default_bearing": 220,
-        "trail_km": 12.6,
-        "trail_mi": 7.8
+        "trail_km": 11.7,
+        "trail_mi": 7.3
       }
     },
     {
@@ -25052,7 +25052,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 22 pistes",
+        "infrastructure": "5 lifts · 23 pistes",
         "vertical_ft": 3031,
         "summit_elev_ft": 7507,
         "base_elev_ft": 4476,
@@ -25065,11 +25065,11 @@
         "summary": "",
         "website": "https://www.amirsoy.com/",
         "lift_count": 5,
-        "run_count": 22,
+        "run_count": 23,
         "avg_snowfall_in": null,
         "default_bearing": 184,
-        "trail_km": 15.1,
-        "trail_mi": 9.4
+        "trail_km": 15.5,
+        "trail_mi": 9.6
       }
     },
     {
@@ -25660,7 +25660,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "20 lifts · 205 pistes",
+        "infrastructure": "20 lifts · 207 pistes",
         "vertical_ft": 3753,
         "summit_elev_ft": 10562,
         "base_elev_ft": 6809,
@@ -25673,11 +25673,11 @@
         "summary": "",
         "website": "https://www.steamboat.com",
         "lift_count": 20,
-        "run_count": 205,
+        "run_count": 207,
         "avg_snowfall_in": 400,
         "default_bearing": 101,
-        "trail_km": 120.5,
-        "trail_mi": 74.9
+        "trail_km": 121.6,
+        "trail_mi": 75.6
       }
     },
     {
@@ -27406,10 +27406,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 5 pistes",
-        "vertical_ft": 82,
-        "summit_elev_ft": 4835,
-        "base_elev_ft": 4753,
+        "infrastructure": "3 lifts · 7 pistes",
+        "vertical_ft": 500,
+        "summit_elev_ft": 5242,
+        "base_elev_ft": 4742,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -27419,11 +27419,11 @@
         "summary": "",
         "website": "https://www.mairie-aiguilles.com/",
         "lift_count": 3,
-        "run_count": 5,
+        "run_count": 7,
         "avg_snowfall_in": null,
         "default_bearing": 180,
-        "trail_km": 0.8,
-        "trail_mi": 0.5
+        "trail_km": 1.3,
+        "trail_mi": 0.8
       }
     },
     {
@@ -27487,7 +27487,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 44 pistes",
+        "infrastructure": "1 lifts · 45 pistes",
         "vertical_ft": 1084,
         "summit_elev_ft": 2467,
         "base_elev_ft": 1383,
@@ -27500,11 +27500,11 @@
         "summary": "",
         "website": "https://skilandfairbanks.com/",
         "lift_count": 1,
-        "run_count": 44,
+        "run_count": 45,
         "avg_snowfall_in": null,
         "default_bearing": 177,
-        "trail_km": 20.5,
-        "trail_mi": 12.7
+        "trail_km": 20.7,
+        "trail_mi": 12.9
       }
     },
     {
@@ -27690,7 +27690,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 13 pistes",
+        "infrastructure": "2 lifts · 4 pistes",
         "vertical_ft": 630,
         "summit_elev_ft": 4297,
         "base_elev_ft": 3667,
@@ -27703,11 +27703,11 @@
         "summary": "",
         "website": "https://www.valbella-sciovie.com/",
         "lift_count": 2,
-        "run_count": 13,
+        "run_count": 4,
         "avg_snowfall_in": null,
         "default_bearing": 181,
-        "trail_km": 11.6,
-        "trail_mi": 7.2
+        "trail_km": 4.2,
+        "trail_mi": 2.6
       }
     },
     {
@@ -27853,7 +27853,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "18 lifts · 70 pistes",
+        "infrastructure": "18 lifts · 71 pistes",
         "vertical_ft": 2926,
         "summit_elev_ft": 4587,
         "base_elev_ft": 1661,
@@ -27866,11 +27866,11 @@
         "summary": "",
         "website": "https://www.beidahu.com/",
         "lift_count": 18,
-        "run_count": 70,
+        "run_count": 71,
         "avg_snowfall_in": null,
         "default_bearing": 158,
-        "trail_km": 53.5,
-        "trail_mi": 33.3
+        "trail_km": 54.2,
+        "trail_mi": 33.7
       }
     },
     {
@@ -28298,7 +28298,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 22 pistes",
+        "infrastructure": "2 lifts · 23 pistes",
         "vertical_ft": 1039,
         "summit_elev_ft": 3892,
         "base_elev_ft": 2853,
@@ -28311,11 +28311,11 @@
         "summary": "",
         "website": "https://www.mountsima.com/",
         "lift_count": 2,
-        "run_count": 22,
+        "run_count": 23,
         "avg_snowfall_in": null,
         "default_bearing": 226,
-        "trail_km": 9.8,
-        "trail_mi": 6.1
+        "trail_km": 9.9,
+        "trail_mi": 6.2
       }
     },
     {
@@ -28823,7 +28823,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "63 lifts · 431 pistes",
+        "infrastructure": "63 lifts · 433 pistes",
         "vertical_ft": 4037,
         "summit_elev_ft": 6537,
         "base_elev_ft": 2500,
@@ -28836,11 +28836,11 @@
         "summary": "",
         "website": "https://www.kitzski.at/",
         "lift_count": 63,
-        "run_count": 431,
+        "run_count": 433,
         "avg_snowfall_in": null,
         "default_bearing": 43,
-        "trail_km": 185.4,
-        "trail_mi": 115.2
+        "trail_km": 185.7,
+        "trail_mi": 115.4
       }
     },
     {
@@ -29801,7 +29801,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "73 lifts · 332 pistes",
+        "infrastructure": "73 lifts · 334 pistes",
         "vertical_ft": 4203,
         "summit_elev_ft": 6576,
         "base_elev_ft": 2373,
@@ -29814,11 +29814,11 @@
         "summary": "",
         "website": "https://www.schladming-dachstein.at/",
         "lift_count": 73,
-        "run_count": 332,
+        "run_count": 334,
         "avg_snowfall_in": null,
         "default_bearing": 357,
-        "trail_km": 178.4,
-        "trail_mi": 110.9
+        "trail_km": 179.2,
+        "trail_mi": 111.4
       }
     },
     {
@@ -31874,7 +31874,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "8 lifts · 73 pistes",
+        "infrastructure": "8 lifts · 75 pistes",
         "vertical_ft": 4050,
         "summit_elev_ft": 7344,
         "base_elev_ft": 3294,
@@ -31887,11 +31887,11 @@
         "summary": "",
         "website": "https://www.stubai.at/skigebiete/schlick2000/",
         "lift_count": 8,
-        "run_count": 73,
+        "run_count": 75,
         "avg_snowfall_in": null,
         "default_bearing": 215,
-        "trail_km": 20.9,
-        "trail_mi": 13
+        "trail_km": 21.4,
+        "trail_mi": 13.3
       }
     },
     {
@@ -32971,7 +32971,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "59 lifts · 472 pistes",
+        "infrastructure": "59 lifts · 473 pistes",
         "vertical_ft": 5221,
         "summit_elev_ft": 8864,
         "base_elev_ft": 3643,
@@ -32983,12 +32983,12 @@
         "pass_color": "#2E5A44",
         "summary": "",
         "lift_count": 59,
-        "run_count": 472,
+        "run_count": 473,
         "website": "https://www.courchevel.com",
         "avg_snowfall_in": null,
         "default_bearing": 180,
         "trail_km": 151.5,
-        "trail_mi": 94.1
+        "trail_mi": 94.2
       }
     },
     {
@@ -33539,7 +33539,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 50 pistes",
+        "infrastructure": "10 lifts · 52 pistes",
         "vertical_ft": 2063,
         "summit_elev_ft": 7219,
         "base_elev_ft": 5156,
@@ -33552,11 +33552,11 @@
         "summary": "",
         "website": "https://www.lachtal.at/",
         "lift_count": 10,
-        "run_count": 50,
+        "run_count": 52,
         "avg_snowfall_in": null,
         "default_bearing": 348,
-        "trail_km": 24.1,
-        "trail_mi": 15
+        "trail_km": 25.3,
+        "trail_mi": 15.7
       }
     },
     {
@@ -34028,7 +34028,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "28 lifts · 132 pistes",
+        "infrastructure": "28 lifts · 134 pistes",
         "vertical_ft": 6220,
         "summit_elev_ft": 8067,
         "base_elev_ft": 1847,
@@ -34041,11 +34041,11 @@
         "summary": "",
         "website": "https://rosakhutor.ru/",
         "lift_count": 28,
-        "run_count": 132,
+        "run_count": 134,
         "avg_snowfall_in": null,
         "default_bearing": 179,
-        "trail_km": 88.7,
-        "trail_mi": 55.1
+        "trail_km": 89.9,
+        "trail_mi": 55.9
       }
     },
     {
@@ -34233,7 +34233,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "40 lifts · 455 pistes",
+        "infrastructure": "40 lifts · 456 pistes",
         "vertical_ft": 2376,
         "summit_elev_ft": 3712,
         "base_elev_ft": 1336,
@@ -34246,11 +34246,11 @@
         "summary": "",
         "website": "https://www.skistar.com/no/vare-skisteder/trysil/vinter-i-trysil/",
         "lift_count": 40,
-        "run_count": 455,
+        "run_count": 456,
         "avg_snowfall_in": null,
         "default_bearing": 247,
-        "trail_km": 99.7,
-        "trail_mi": 62
+        "trail_km": 100.7,
+        "trail_mi": 62.5
       }
     },
     {
@@ -35885,7 +35885,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 213 pistes",
+        "infrastructure": "10 lifts · 214 pistes",
         "vertical_ft": 1654,
         "summit_elev_ft": 5198,
         "base_elev_ft": 3544,
@@ -35898,10 +35898,10 @@
         "summary": "",
         "website": "https://www.mountwashington.ca",
         "lift_count": 10,
-        "run_count": 213,
+        "run_count": 214,
         "avg_snowfall_in": 354,
         "default_bearing": 25,
-        "trail_km": 60.5,
+        "trail_km": 60.6,
         "trail_mi": 37.6
       }
     },
@@ -38317,7 +38317,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "19 lifts · 60 pistes",
+        "infrastructure": "19 lifts · 61 pistes",
         "vertical_ft": 2180,
         "summit_elev_ft": 5264,
         "base_elev_ft": 3084,
@@ -38330,11 +38330,11 @@
         "summary": "",
         "website": "https://hirmentaz-bellevaux.com/",
         "lift_count": 19,
-        "run_count": 60,
+        "run_count": 61,
         "avg_snowfall_in": null,
         "default_bearing": 192,
-        "trail_km": 25.9,
-        "trail_mi": 16.1
+        "trail_km": 26.5,
+        "trail_mi": 16.4
       }
     },
     {
@@ -41493,10 +41493,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 6 pistes",
-        "vertical_ft": 1828,
+        "infrastructure": "1 lifts · 3 pistes",
+        "vertical_ft": 731,
         "summit_elev_ft": 5414,
-        "base_elev_ft": 3586,
+        "base_elev_ft": 4683,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -41506,11 +41506,11 @@
         "summary": "",
         "website": "https://montigemelli.it/",
         "lift_count": 1,
-        "run_count": 6,
+        "run_count": 3,
         "avg_snowfall_in": null,
         "default_bearing": 155,
-        "trail_km": 4.8,
-        "trail_mi": 3
+        "trail_km": 2.8,
+        "trail_mi": 1.8
       }
     },
     {
@@ -42671,7 +42671,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 11 pistes",
+        "infrastructure": "3 lifts · 12 pistes",
         "vertical_ft": 1569,
         "summit_elev_ft": 3271,
         "base_elev_ft": 1702,
@@ -42684,11 +42684,11 @@
         "summary": "",
         "website": "https://www.nango-ski.com/",
         "lift_count": 3,
-        "run_count": 11,
+        "run_count": 12,
         "avg_snowfall_in": null,
         "default_bearing": 118,
-        "trail_km": 5.9,
-        "trail_mi": 3.7
+        "trail_km": 6.2,
+        "trail_mi": 3.9
       }
     },
     {
@@ -43157,7 +43157,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "32 lifts · 137 pistes",
+        "infrastructure": "32 lifts · 139 pistes",
         "vertical_ft": 3980,
         "summit_elev_ft": 7377,
         "base_elev_ft": 3397,
@@ -43170,11 +43170,11 @@
         "summary": "",
         "website": "https://www.regiondentsdumidi.ch",
         "lift_count": 32,
-        "run_count": 137,
+        "run_count": 139,
         "avg_snowfall_in": null,
         "default_bearing": 185,
-        "trail_km": 79.2,
-        "trail_mi": 49.2
+        "trail_km": 82.5,
+        "trail_mi": 51.3
       }
     },
     {
@@ -43484,7 +43484,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 17 pistes",
+        "infrastructure": "4 lifts · 18 pistes",
         "vertical_ft": 2919,
         "summit_elev_ft": 8263,
         "base_elev_ft": 5344,
@@ -43496,11 +43496,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 4,
-        "run_count": 17,
+        "run_count": 18,
         "avg_snowfall_in": null,
         "default_bearing": 224,
-        "trail_km": 15.5,
-        "trail_mi": 9.6
+        "trail_km": 15.9,
+        "trail_mi": 9.9
       }
     },
     {
@@ -43644,10 +43644,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "11 lifts · 43 pistes",
-        "vertical_ft": 2886,
+        "infrastructure": "11 lifts · 41 pistes",
+        "vertical_ft": 2877,
         "summit_elev_ft": 7883,
-        "base_elev_ft": 4997,
+        "base_elev_ft": 5006,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -43656,11 +43656,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 11,
-        "run_count": 43,
+        "run_count": 41,
         "avg_snowfall_in": null,
         "default_bearing": 28,
-        "trail_km": 25.8,
-        "trail_mi": 16
+        "trail_km": 25.2,
+        "trail_mi": 15.6
       }
     },
     {
@@ -44145,8 +44145,8 @@
         "run_count": null,
         "avg_snowfall_in": null,
         "default_bearing": 180,
-        "trail_km": 29.2,
-        "trail_mi": 18.1
+        "trail_km": null,
+        "trail_mi": null
       }
     },
     {
@@ -45121,8 +45121,8 @@
         "run_count": 108,
         "avg_snowfall_in": 180,
         "default_bearing": 258,
-        "trail_km": 44.9,
-        "trail_mi": 27.9
+        "trail_km": 45.1,
+        "trail_mi": 28
       }
     },
     {
@@ -45677,7 +45677,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "11 lifts · 137 pistes",
+        "infrastructure": "11 lifts · 136 pistes",
         "vertical_ft": 2770,
         "summit_elev_ft": 10915,
         "base_elev_ft": 8145,
@@ -45691,11 +45691,11 @@
         "summary": "",
         "website": "https://www.alta.com",
         "lift_count": 11,
-        "run_count": 137,
+        "run_count": 136,
         "avg_snowfall_in": 545,
         "default_bearing": 157,
-        "trail_km": 76.5,
-        "trail_mi": 47.5
+        "trail_km": 75.8,
+        "trail_mi": 47.1
       }
     },
     {
@@ -45801,10 +45801,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "0 lifts · 11 pistes",
-        "vertical_ft": 2057,
+        "infrastructure": "0 lifts · 9 pistes",
+        "vertical_ft": 1739,
         "summit_elev_ft": 6163,
-        "base_elev_ft": 4106,
+        "base_elev_ft": 4424,
         "skiable_acres": 400,
         "pass_networks": [
           "Independent"
@@ -45814,11 +45814,11 @@
         "summary": "",
         "website": "https://www.craigieburn.co.nz/",
         "lift_count": 0,
-        "run_count": 11,
+        "run_count": 9,
         "avg_snowfall_in": null,
         "default_bearing": 318,
-        "trail_km": 4.1,
-        "trail_mi": 2.5
+        "trail_km": 3.2,
+        "trail_mi": 2
       }
     },
     {
@@ -46128,10 +46128,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "0 lifts · 1 pistes",
-        "vertical_ft": 40,
+        "infrastructure": "0 lifts · 2 pistes",
+        "vertical_ft": 117,
         "summit_elev_ft": 790,
-        "base_elev_ft": 750,
+        "base_elev_ft": 673,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -46141,11 +46141,11 @@
         "summary": "",
         "website": "https://www.levi.fi/",
         "lift_count": 0,
-        "run_count": 1,
+        "run_count": 2,
         "avg_snowfall_in": null,
         "default_bearing": 64,
-        "trail_km": 0.8,
-        "trail_mi": 0.5
+        "trail_km": 2.5,
+        "trail_mi": 1.6
       }
     },
     {
@@ -49282,7 +49282,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "9 lifts · 59 pistes",
+        "infrastructure": "9 lifts · 60 pistes",
         "vertical_ft": 1380,
         "summit_elev_ft": 3880,
         "base_elev_ft": 2500,
@@ -49295,11 +49295,11 @@
         "summary": "",
         "website": "https://hovden.com/",
         "lift_count": 9,
-        "run_count": 59,
+        "run_count": 60,
         "avg_snowfall_in": null,
         "default_bearing": 359,
-        "trail_km": 30.7,
-        "trail_mi": 19.1
+        "trail_km": 31.6,
+        "trail_mi": 19.6
       }
     },
     {
@@ -49567,7 +49567,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "15 lifts · 83 pistes",
+        "infrastructure": "15 lifts · 84 pistes",
         "vertical_ft": 4909,
         "summit_elev_ft": 7945,
         "base_elev_ft": 3036,
@@ -49580,11 +49580,11 @@
         "summary": "",
         "website": "https://www.gg-resort.at/",
         "lift_count": 15,
-        "run_count": 83,
+        "run_count": 84,
         "avg_snowfall_in": null,
         "default_bearing": 231,
-        "trail_km": 45.4,
-        "trail_mi": 28.2
+        "trail_km": 45.6,
+        "trail_mi": 28.3
       }
     },
     {
@@ -50948,7 +50948,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "80 lifts · 598 pistes",
+        "infrastructure": "80 lifts · 599 pistes",
         "vertical_ft": 4126,
         "summit_elev_ft": 6119,
         "base_elev_ft": 1993,
@@ -50961,11 +50961,11 @@
         "summary": "",
         "website": "https://www.skiwelt.at/",
         "lift_count": 80,
-        "run_count": 598,
+        "run_count": 599,
         "avg_snowfall_in": null,
         "default_bearing": 155,
-        "trail_km": 228.7,
-        "trail_mi": 142.1
+        "trail_km": 228.8,
+        "trail_mi": 142.2
       }
     },
     {
@@ -53221,7 +53221,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "33 lifts · 359 pistes",
+        "infrastructure": "33 lifts · 361 pistes",
         "vertical_ft": 7672,
         "summit_elev_ft": 10575,
         "base_elev_ft": 2903,
@@ -53233,12 +53233,12 @@
         "pass_color": "#2E5A44",
         "summary": "",
         "lift_count": 33,
-        "run_count": 359,
+        "run_count": 361,
         "website": "https://www.valthorens.com",
         "avg_snowfall_in": null,
         "default_bearing": 117,
-        "trail_km": 143.8,
-        "trail_mi": 89.4
+        "trail_km": 146.2,
+        "trail_mi": 90.9
       }
     },
     {
@@ -53911,7 +53911,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 26 pistes",
+        "infrastructure": "6 lifts · 27 pistes",
         "vertical_ft": 2664,
         "summit_elev_ft": 6304,
         "base_elev_ft": 3640,
@@ -53924,11 +53924,11 @@
         "summary": "",
         "website": "https://www.almbahn.at/",
         "lift_count": 6,
-        "run_count": 26,
+        "run_count": 27,
         "avg_snowfall_in": null,
         "default_bearing": 69,
-        "trail_km": 17.6,
-        "trail_mi": 10.9
+        "trail_km": 19.6,
+        "trail_mi": 12.2
       }
     },
     {
@@ -53993,7 +53993,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 7 pistes",
+        "infrastructure": "1 lifts · 8 pistes",
         "vertical_ft": 3183,
         "summit_elev_ft": 4559,
         "base_elev_ft": 1376,
@@ -54005,11 +54005,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 1,
-        "run_count": 7,
+        "run_count": 8,
         "avg_snowfall_in": null,
         "default_bearing": 205,
-        "trail_km": 11.9,
-        "trail_mi": 7.4
+        "trail_km": 13.2,
+        "trail_mi": 8.2
       }
     },
     {
@@ -55982,7 +55982,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "43 lifts · 386 pistes",
+        "infrastructure": "43 lifts · 389 pistes",
         "vertical_ft": 3266,
         "summit_elev_ft": 9994,
         "base_elev_ft": 6728,
@@ -55995,11 +55995,11 @@
         "summary": "",
         "website": "https://www.parkcitymountain.com",
         "lift_count": 43,
-        "run_count": 386,
+        "run_count": 389,
         "avg_snowfall_in": 355,
         "default_bearing": 223,
-        "trail_km": 253.5,
-        "trail_mi": 157.5
+        "trail_km": 256.3,
+        "trail_mi": 159.2
       }
     },
     {
@@ -56268,7 +56268,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 28 pistes",
+        "infrastructure": "3 lifts · 29 pistes",
         "vertical_ft": 1228,
         "summit_elev_ft": 2199,
         "base_elev_ft": 971,
@@ -56281,11 +56281,11 @@
         "summary": "",
         "website": "https://www.skiblackmountain.org/",
         "lift_count": 3,
-        "run_count": 28,
+        "run_count": 29,
         "avg_snowfall_in": null,
         "default_bearing": 285,
-        "trail_km": 13.1,
-        "trail_mi": 8.1
+        "trail_km": 13.3,
+        "trail_mi": 8.3
       }
     },
     {
@@ -57769,10 +57769,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 10 pistes",
-        "vertical_ft": 649,
+        "infrastructure": "1 lifts · 2 pistes",
+        "vertical_ft": 607,
         "summit_elev_ft": 4037,
-        "base_elev_ft": 3388,
+        "base_elev_ft": 3430,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -57781,11 +57781,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 1,
-        "run_count": 10,
+        "run_count": 2,
         "avg_snowfall_in": null,
         "default_bearing": 183,
-        "trail_km": 2.8,
-        "trail_mi": 1.8
+        "trail_km": 0.8,
+        "trail_mi": 0.5
       }
     },
     {
@@ -57865,8 +57865,8 @@
         "run_count": 133,
         "avg_snowfall_in": null,
         "default_bearing": 262,
-        "trail_km": 80,
-        "trail_mi": 49.7
+        "trail_km": 81,
+        "trail_mi": 50.3
       }
     },
     {
@@ -59629,7 +59629,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "13 lifts · 157 pistes",
+        "infrastructure": "13 lifts · 155 pistes",
         "vertical_ft": 3000,
         "summit_elev_ft": 9350,
         "base_elev_ft": 6450,
@@ -59642,11 +59642,11 @@
         "summary": "",
         "website": "https://www.snowbasin.com/",
         "lift_count": 13,
-        "run_count": 157,
+        "run_count": 155,
         "avg_snowfall_in": 300,
         "default_bearing": 227,
-        "trail_km": 86,
-        "trail_mi": 53.4
+        "trail_km": 85.1,
+        "trail_mi": 52.9
       }
     },
     {
@@ -59670,7 +59670,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "21 lifts · 270 pistes",
+        "infrastructure": "21 lifts · 271 pistes",
         "vertical_ft": 3285,
         "summit_elev_ft": 8191,
         "base_elev_ft": 4906,
@@ -59683,11 +59683,11 @@
         "summary": "",
         "website": "https://www.praloup.com/",
         "lift_count": 21,
-        "run_count": 270,
+        "run_count": 271,
         "avg_snowfall_in": null,
         "default_bearing": 232,
-        "trail_km": 89.1,
-        "trail_mi": 55.4
+        "trail_km": 89.3,
+        "trail_mi": 55.5
       }
     },
     {
@@ -59793,7 +59793,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 37 pistes",
+        "infrastructure": "5 lifts · 35 pistes",
         "vertical_ft": 2076,
         "summit_elev_ft": 5270,
         "base_elev_ft": 3194,
@@ -59806,11 +59806,11 @@
         "summary": "",
         "website": "https://www.montealpet.com/inverno/",
         "lift_count": 5,
-        "run_count": 37,
+        "run_count": 35,
         "avg_snowfall_in": null,
         "default_bearing": 200,
-        "trail_km": 19.1,
-        "trail_mi": 11.9
+        "trail_km": 16.1,
+        "trail_mi": 10
       }
     },
     {
@@ -60075,7 +60075,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 19 pistes",
+        "infrastructure": "4 lifts · 18 pistes",
         "vertical_ft": 342,
         "summit_elev_ft": 2197,
         "base_elev_ft": 1855,
@@ -60088,11 +60088,11 @@
         "summary": "",
         "website": "https://www.huffhills.com/",
         "lift_count": 4,
-        "run_count": 19,
+        "run_count": 18,
         "avg_snowfall_in": null,
         "default_bearing": 252,
-        "trail_km": 5.5,
-        "trail_mi": 3.4
+        "trail_km": 5.1,
+        "trail_mi": 3.2
       }
     },
     {
@@ -61253,7 +61253,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 9 pistes",
+        "infrastructure": "3 lifts · 11 pistes",
         "vertical_ft": 3055,
         "summit_elev_ft": 6582,
         "base_elev_ft": 3527,
@@ -61266,11 +61266,11 @@
         "summary": "",
         "website": "https://www.skigastein.com/",
         "lift_count": 3,
-        "run_count": 9,
+        "run_count": 11,
         "avg_snowfall_in": null,
         "default_bearing": 197,
-        "trail_km": 9.9,
-        "trail_mi": 6.1
+        "trail_km": 11.6,
+        "trail_mi": 7.2
       }
     },
     {
@@ -62102,7 +62102,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 71 pistes",
+        "infrastructure": "3 lifts · 70 pistes",
         "vertical_ft": 2312,
         "summit_elev_ft": 6415,
         "base_elev_ft": 4103,
@@ -62115,11 +62115,11 @@
         "summary": "",
         "website": "https://cardrona-treblecone.com/",
         "lift_count": 3,
-        "run_count": 71,
+        "run_count": 70,
         "avg_snowfall_in": 106,
         "default_bearing": 302,
-        "trail_km": 30.5,
-        "trail_mi": 19
+        "trail_km": 30.3,
+        "trail_mi": 18.8
       }
     },
     {
@@ -62547,10 +62547,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 34 pistes",
-        "vertical_ft": 1866,
+        "infrastructure": "10 lifts · 32 pistes",
+        "vertical_ft": 1290,
         "summit_elev_ft": 4891,
-        "base_elev_ft": 3025,
+        "base_elev_ft": 3601,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -62560,11 +62560,11 @@
         "summary": "",
         "website": "https://lesbrasses.com/",
         "lift_count": 10,
-        "run_count": 34,
+        "run_count": 32,
         "avg_snowfall_in": null,
         "default_bearing": 186,
-        "trail_km": 16.2,
-        "trail_mi": 10.1
+        "trail_km": 14.5,
+        "trail_mi": 9
       }
     },
     {
@@ -63114,7 +63114,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 55 pistes",
+        "infrastructure": "7 lifts · 54 pistes",
         "vertical_ft": 667,
         "summit_elev_ft": 1883,
         "base_elev_ft": 1216,
@@ -63127,10 +63127,10 @@
         "summary": "",
         "website": "https://www.skigranitepeak.com/",
         "lift_count": 7,
-        "run_count": 55,
+        "run_count": 54,
         "avg_snowfall_in": 60,
         "default_bearing": 195,
-        "trail_km": 19.5,
+        "trail_km": 19.4,
         "trail_mi": 12.1
       }
     },
@@ -65063,7 +65063,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "12 lifts · 70 pistes",
+        "infrastructure": "12 lifts · 71 pistes",
         "vertical_ft": 3690,
         "summit_elev_ft": 8540,
         "base_elev_ft": 4850,
@@ -65076,7 +65076,7 @@
         "summary": "",
         "website": "https://timberlinemountain.com",
         "lift_count": 12,
-        "run_count": 70,
+        "run_count": 71,
         "avg_snowfall_in": 550,
         "default_bearing": 352,
         "trail_km": 53.3,
@@ -65873,7 +65873,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 28 pistes",
+        "infrastructure": "5 lifts · 27 pistes",
         "vertical_ft": 3024,
         "summit_elev_ft": 8324,
         "base_elev_ft": 5300,
@@ -65886,11 +65886,11 @@
         "summary": "",
         "website": "https://www.serreponcon.com/crevoux/",
         "lift_count": 5,
-        "run_count": 28,
+        "run_count": 27,
         "avg_snowfall_in": null,
         "default_bearing": 214,
-        "trail_km": 17.6,
-        "trail_mi": 10.9
+        "trail_km": 15.9,
+        "trail_mi": 9.9
       }
     },
     {
@@ -69400,7 +69400,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "18 lifts · 52 pistes",
+        "infrastructure": "18 lifts · 54 pistes",
         "vertical_ft": 4736,
         "summit_elev_ft": 7663,
         "base_elev_ft": 2927,
@@ -69413,11 +69413,11 @@
         "summary": "",
         "website": "https://www.muttereralm.at/",
         "lift_count": 18,
-        "run_count": 52,
+        "run_count": 54,
         "avg_snowfall_in": null,
         "default_bearing": 212,
-        "trail_km": 37.9,
-        "trail_mi": 23.6
+        "trail_km": 38.8,
+        "trail_mi": 24.1
       }
     },
     {
@@ -71099,7 +71099,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "8 lifts · 15 pistes",
+        "infrastructure": "8 lifts · 16 pistes",
         "vertical_ft": 3979,
         "summit_elev_ft": 10094,
         "base_elev_ft": 6115,
@@ -71111,11 +71111,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 8,
-        "run_count": 15,
+        "run_count": 16,
         "avg_snowfall_in": null,
         "default_bearing": 96,
-        "trail_km": 27.4,
-        "trail_mi": 17
+        "trail_km": 28.3,
+        "trail_mi": 17.6
       }
     },
     {
@@ -73574,7 +73574,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "8 lifts · 40 pistes",
+        "infrastructure": "8 lifts · 41 pistes",
         "vertical_ft": 4806,
         "summit_elev_ft": 8212,
         "base_elev_ft": 3406,
@@ -73587,11 +73587,11 @@
         "summary": "",
         "website": "https://www.plose.org/",
         "lift_count": 8,
-        "run_count": 40,
+        "run_count": 41,
         "avg_snowfall_in": null,
         "default_bearing": 61,
-        "trail_km": 22.4,
-        "trail_mi": 13.9
+        "trail_km": 22.5,
+        "trail_mi": 14
       }
     },
     {
@@ -74505,7 +74505,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "92 lifts · 594 pistes",
+        "infrastructure": "92 lifts · 595 pistes",
         "vertical_ft": 5061,
         "summit_elev_ft": 9203,
         "base_elev_ft": 4142,
@@ -74518,11 +74518,11 @@
         "summary": "",
         "website": "https://www.skiarlberg.at/",
         "lift_count": 92,
-        "run_count": 594,
+        "run_count": 595,
         "avg_snowfall_in": null,
         "default_bearing": 351,
-        "trail_km": 269.9,
-        "trail_mi": 167.7
+        "trail_km": 272.1,
+        "trail_mi": 169.1
       }
     },
     {
@@ -75034,7 +75034,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "239 lifts · 1139 pistes",
+        "infrastructure": "239 lifts · 1143 pistes",
         "vertical_ft": 6484,
         "summit_elev_ft": 8674,
         "base_elev_ft": 2190,
@@ -75047,11 +75047,11 @@
         "summary": "",
         "website": "https://www.skiamade.com/",
         "lift_count": 239,
-        "run_count": 1139,
+        "run_count": 1143,
         "avg_snowfall_in": null,
         "default_bearing": 204,
-        "trail_km": 604.1,
-        "trail_mi": 375.4
+        "trail_km": 605.3,
+        "trail_mi": 376.1
       }
     },
     {
@@ -79012,10 +79012,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "0 lifts · 1 pistes",
-        "vertical_ft": 846,
+        "infrastructure": "0 lifts · 2 pistes",
+        "vertical_ft": 1459,
         "summit_elev_ft": 2770,
-        "base_elev_ft": 1924,
+        "base_elev_ft": 1311,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -79024,7 +79024,7 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 0,
-        "run_count": 1,
+        "run_count": 2,
         "avg_snowfall_in": null,
         "default_bearing": 180
       }
@@ -82415,7 +82415,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "13 lifts · 48 pistes",
+        "infrastructure": "13 lifts · 51 pistes",
         "vertical_ft": 3474,
         "summit_elev_ft": 7103,
         "base_elev_ft": 3629,
@@ -82428,11 +82428,11 @@
         "summary": "",
         "website": "https://belmont-alpidibergamo.it/",
         "lift_count": 13,
-        "run_count": 48,
+        "run_count": 51,
         "avg_snowfall_in": null,
         "default_bearing": 97,
-        "trail_km": 16.4,
-        "trail_mi": 10.2
+        "trail_km": 18.8,
+        "trail_mi": 11.7
       }
     },
     {
@@ -84443,7 +84443,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "48 lifts · 275 pistes",
+        "infrastructure": "48 lifts · 277 pistes",
         "vertical_ft": 3369,
         "summit_elev_ft": 4646,
         "base_elev_ft": 1277,
@@ -84456,11 +84456,11 @@
         "summary": "",
         "website": "https://www.skistar.com/en/ski-destinations/are/",
         "lift_count": 48,
-        "run_count": 275,
+        "run_count": 277,
         "avg_snowfall_in": null,
         "default_bearing": 357,
-        "trail_km": 114.5,
-        "trail_mi": 71.2
+        "trail_km": 114.7,
+        "trail_mi": 71.3
       }
     },
     {
@@ -85700,7 +85700,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "37 lifts · 105 pistes",
+        "infrastructure": "37 lifts · 107 pistes",
         "vertical_ft": 6780,
         "summit_elev_ft": 10720,
         "base_elev_ft": 3940,
@@ -85713,11 +85713,11 @@
         "summary": "",
         "website": "https://monterosaski.eu/en",
         "lift_count": 37,
-        "run_count": 105,
+        "run_count": 107,
         "avg_snowfall_in": null,
         "default_bearing": 27,
-        "trail_km": 71.9,
-        "trail_mi": 44.7
+        "trail_km": 73.3,
+        "trail_mi": 45.6
       }
     },
     {
@@ -86391,7 +86391,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "45 lifts · 277 pistes",
+        "infrastructure": "45 lifts · 260 pistes",
         "vertical_ft": 7381,
         "summit_elev_ft": 10526,
         "base_elev_ft": 3145,
@@ -86404,11 +86404,11 @@
         "summary": "",
         "website": "https://www.stubai.at/",
         "lift_count": 45,
-        "run_count": 277,
+        "run_count": 260,
         "avg_snowfall_in": null,
         "default_bearing": 223,
-        "trail_km": 92.1,
-        "trail_mi": 57.2
+        "trail_km": 88.2,
+        "trail_mi": 54.8
       }
     },
     {
@@ -88012,7 +88012,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 72 pistes",
+        "infrastructure": "10 lifts · 73 pistes",
         "vertical_ft": 4528,
         "summit_elev_ft": 9071,
         "base_elev_ft": 4543,
@@ -88024,11 +88024,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 10,
-        "run_count": 72,
+        "run_count": 73,
         "avg_snowfall_in": null,
         "default_bearing": 11,
-        "trail_km": 67.5,
-        "trail_mi": 41.9
+        "trail_km": 67.9,
+        "trail_mi": 42.2
       }
     },
     {
@@ -90082,7 +90082,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "9 lifts · 32 pistes",
+        "infrastructure": "9 lifts · 31 pistes",
         "vertical_ft": 4792,
         "summit_elev_ft": 7869,
         "base_elev_ft": 3077,
@@ -90095,11 +90095,11 @@
         "summary": "",
         "website": "https://www.skiworldahrntal.it/",
         "lift_count": 9,
-        "run_count": 32,
+        "run_count": 31,
         "avg_snowfall_in": null,
         "default_bearing": 228,
-        "trail_km": 29.9,
-        "trail_mi": 18.6
+        "trail_km": 28.7,
+        "trail_mi": 17.9
       }
     },
     {
@@ -91417,7 +91417,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "40 lifts · 191 pistes",
+        "infrastructure": "40 lifts · 192 pistes",
         "vertical_ft": 5003,
         "summit_elev_ft": 9203,
         "base_elev_ft": 4200,
@@ -91429,12 +91429,12 @@
         "pass_color": "#2E5A44",
         "summary": "",
         "lift_count": 40,
-        "run_count": 191,
+        "run_count": 192,
         "website": "https://www.skiarlberg.at",
         "avg_snowfall_in": null,
         "default_bearing": 337,
-        "trail_km": 96.9,
-        "trail_mi": 60.2
+        "trail_km": 99.1,
+        "trail_mi": 61.6
       }
     },
     {
@@ -92637,7 +92637,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 7 pistes",
+        "infrastructure": "2 lifts · 8 pistes",
         "vertical_ft": 1654,
         "summit_elev_ft": 5133,
         "base_elev_ft": 3479,
@@ -92649,11 +92649,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 2,
-        "run_count": 7,
+        "run_count": 8,
         "avg_snowfall_in": null,
         "default_bearing": 189,
-        "trail_km": 6.1,
-        "trail_mi": 3.8
+        "trail_km": 6.3,
+        "trail_mi": 3.9
       }
     },
     {
@@ -93003,7 +93003,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "169 lifts · 1448 pistes",
+        "infrastructure": "169 lifts · 1453 pistes",
         "vertical_ft": 6923,
         "summit_elev_ft": 10566,
         "base_elev_ft": 3643,
@@ -93016,11 +93016,11 @@
         "summary": "",
         "website": "https://www.les3vallees.com/",
         "lift_count": 169,
-        "run_count": 1448,
+        "run_count": 1453,
         "avg_snowfall_in": null,
         "default_bearing": 123,
-        "trail_km": 542.1,
-        "trail_mi": 336.8
+        "trail_km": 549.6,
+        "trail_mi": 341.5
       }
     },
     {
@@ -97551,7 +97551,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 48 pistes",
+        "infrastructure": "10 lifts · 50 pistes",
         "vertical_ft": 1600,
         "summit_elev_ft": 8189,
         "base_elev_ft": 6589,
@@ -97564,11 +97564,11 @@
         "summary": "",
         "website": "https://pirineu365.cat/vallter/inici/",
         "lift_count": 10,
-        "run_count": 48,
+        "run_count": 50,
         "avg_snowfall_in": null,
         "default_bearing": 281,
-        "trail_km": 14.3,
-        "trail_mi": 8.9
+        "trail_km": 17.1,
+        "trail_mi": 10.6
       }
     },
     {
@@ -98036,7 +98036,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 13 pistes",
+        "infrastructure": "4 lifts · 14 pistes",
         "vertical_ft": 2654,
         "summit_elev_ft": 10267,
         "base_elev_ft": 7613,
@@ -98048,11 +98048,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 4,
-        "run_count": 13,
+        "run_count": 14,
         "avg_snowfall_in": null,
         "default_bearing": 150,
-        "trail_km": 20.4,
-        "trail_mi": 12.7
+        "trail_km": 21.6,
+        "trail_mi": 13.4
       }
     },
     {
@@ -99575,7 +99575,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "17 lifts · 47 pistes",
+        "infrastructure": "17 lifts · 48 pistes",
         "vertical_ft": 3824,
         "summit_elev_ft": 7495,
         "base_elev_ft": 3671,
@@ -99588,11 +99588,11 @@
         "summary": "",
         "website": "https://www.soerenberg.ch",
         "lift_count": 17,
-        "run_count": 47,
+        "run_count": 48,
         "avg_snowfall_in": null,
         "default_bearing": 214,
-        "trail_km": 37,
-        "trail_mi": 23
+        "trail_km": 37.8,
+        "trail_mi": 23.5
       }
     },
     {
@@ -100754,7 +100754,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 24 pistes",
+        "infrastructure": "4 lifts · 23 pistes",
         "vertical_ft": 3223,
         "summit_elev_ft": 8737,
         "base_elev_ft": 5514,
@@ -100767,7 +100767,7 @@
         "summary": "",
         "website": "https://minschuns.ch/",
         "lift_count": 4,
-        "run_count": 24,
+        "run_count": 23,
         "avg_snowfall_in": null,
         "default_bearing": 359,
         "trail_km": 15.8,
@@ -100795,7 +100795,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 18 pistes",
+        "infrastructure": "4 lifts · 19 pistes",
         "vertical_ft": 1021,
         "summit_elev_ft": 3593,
         "base_elev_ft": 2572,
@@ -100808,11 +100808,11 @@
         "summary": "",
         "website": "https://www.gala-alpin.no/",
         "lift_count": 4,
-        "run_count": 18,
+        "run_count": 19,
         "avg_snowfall_in": null,
         "default_bearing": 143,
-        "trail_km": 10.1,
-        "trail_mi": 6.3
+        "trail_km": 10.3,
+        "trail_mi": 6.4
       }
     },
     {
@@ -100836,7 +100836,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "194 lifts · 981 pistes",
+        "infrastructure": "194 lifts · 983 pistes",
         "vertical_ft": 4362,
         "summit_elev_ft": 7380,
         "base_elev_ft": 3018,
@@ -100849,11 +100849,11 @@
         "summary": "",
         "website": "https://www.portesdusoleil.com/",
         "lift_count": 194,
-        "run_count": 981,
+        "run_count": 983,
         "avg_snowfall_in": null,
         "default_bearing": 139,
-        "trail_km": 406,
-        "trail_mi": 252.3
+        "trail_km": 409.4,
+        "trail_mi": 254.4
       }
     },
     {
@@ -101569,7 +101569,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "13 lifts · 57 pistes",
+        "infrastructure": "13 lifts · 58 pistes",
         "vertical_ft": 1657,
         "summit_elev_ft": 9470,
         "base_elev_ft": 7813,
@@ -101582,11 +101582,11 @@
         "summary": "",
         "website": "https://www.kirkwood.com",
         "lift_count": 13,
-        "run_count": 57,
+        "run_count": 58,
         "avg_snowfall_in": 500,
         "default_bearing": 196,
-        "trail_km": 40.9,
-        "trail_mi": 25.4
+        "trail_km": 41.2,
+        "trail_mi": 25.6
       }
     },
     {
@@ -102664,7 +102664,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 22 pistes",
+        "infrastructure": "4 lifts · 23 pistes",
         "vertical_ft": 2584,
         "summit_elev_ft": 4376,
         "base_elev_ft": 1792,
@@ -102676,11 +102676,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 4,
-        "run_count": 22,
+        "run_count": 23,
         "avg_snowfall_in": null,
         "default_bearing": 119,
-        "trail_km": 26.8,
-        "trail_mi": 16.7
+        "trail_km": 27.3,
+        "trail_mi": 17
       }
     },
     {
@@ -103834,7 +103834,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "16 lifts · 54 pistes",
+        "infrastructure": "16 lifts · 59 pistes",
         "vertical_ft": 5927,
         "summit_elev_ft": 7981,
         "base_elev_ft": 2054,
@@ -103847,11 +103847,11 @@
         "summary": "",
         "website": "https://www.meiringen-hasliberg.ch/",
         "lift_count": 16,
-        "run_count": 54,
+        "run_count": 59,
         "avg_snowfall_in": null,
         "default_bearing": 76,
-        "trail_km": 43.2,
-        "trail_mi": 26.8
+        "trail_km": 47.7,
+        "trail_mi": 29.6
       }
     },
     {
@@ -104579,47 +104579,6 @@
         "trail_mi": 6.8,
         "avg_snowfall_in": null,
         "default_bearing": 180
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -115.18479,
-          49.50765
-        ]
-      },
-      "properties": {
-        "id": "74623b63f9f57ed692fc1db5ce61f4bec0682cd7",
-        "name": "Island Lake Cat Skiing",
-        "country": "Canada",
-        "region": "British Columbia",
-        "lng": -115.18479,
-        "lat": 49.50765,
-        "category": "heli_cat",
-        "status": "operating",
-        "is_closed": false,
-        "is_private": false,
-        "archetype": "Heli & Cat Ski Operation",
-        "infrastructure": "0 lifts · 95 pistes",
-        "vertical_ft": 3411,
-        "summit_elev_ft": 7214,
-        "base_elev_ft": 3803,
-        "skiable_acres": 0,
-        "pass_networks": [
-          "Independent"
-        ],
-        "primary_pass": "Independent",
-        "pass_color": "#8A847C",
-        "summary": "",
-        "website": "https://www.islandlakelodge.com/",
-        "lift_count": 0,
-        "run_count": 95,
-        "avg_snowfall_in": null,
-        "default_bearing": 180,
-        "trail_km": 74.3,
-        "trail_mi": 46.2
       }
     },
     {
@@ -107006,7 +106965,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "24 lifts · 123 pistes",
+        "infrastructure": "24 lifts · 121 pistes",
         "vertical_ft": 4759,
         "summit_elev_ft": 9442,
         "base_elev_ft": 4683,
@@ -107019,11 +106978,11 @@
         "summary": "",
         "website": "https://www.crans-montana.ch/",
         "lift_count": 24,
-        "run_count": 123,
+        "run_count": 121,
         "avg_snowfall_in": null,
         "default_bearing": 357,
-        "trail_km": 73.9,
-        "trail_mi": 45.9
+        "trail_km": 71.9,
+        "trail_mi": 44.6
       }
     },
     {
@@ -108540,7 +108499,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 45 pistes",
+        "infrastructure": "10 lifts · 46 pistes",
         "vertical_ft": 1784,
         "summit_elev_ft": 5445,
         "base_elev_ft": 3661,
@@ -108553,11 +108512,11 @@
         "summary": "",
         "website": "https://www.schladming-dachstein.at/de/schladming-dachstein-entdecken/erlebniszentren/ramsau-am-dachstein",
         "lift_count": 10,
-        "run_count": 45,
+        "run_count": 46,
         "avg_snowfall_in": null,
         "default_bearing": 357,
-        "trail_km": 20.2,
-        "trail_mi": 12.6
+        "trail_km": 20.9,
+        "trail_mi": 13
       }
     },
     {
@@ -108907,7 +108866,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "39 lifts · 210 pistes",
+        "infrastructure": "39 lifts · 211 pistes",
         "vertical_ft": 6239,
         "summit_elev_ft": 10653,
         "base_elev_ft": 4414,
@@ -108920,11 +108879,11 @@
         "summary": "",
         "website": "https://www.soelden.com/",
         "lift_count": 39,
-        "run_count": 210,
+        "run_count": 211,
         "avg_snowfall_in": null,
         "default_bearing": 254,
-        "trail_km": 104.4,
-        "trail_mi": 64.8
+        "trail_km": 105.3,
+        "trail_mi": 65.4
       }
     },
     {
@@ -109720,10 +109679,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "0 lifts · 8 pistes",
-        "vertical_ft": 414,
+        "infrastructure": "0 lifts · 2 pistes",
+        "vertical_ft": 362,
         "summit_elev_ft": 2359,
-        "base_elev_ft": 1945,
+        "base_elev_ft": 1997,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -109733,11 +109692,11 @@
         "summary": "",
         "website": "https://northcountryschool.org/signature-programs/outdoors/skiing-snowboarding/",
         "lift_count": 0,
-        "run_count": 8,
+        "run_count": 2,
         "avg_snowfall_in": null,
         "default_bearing": 180,
-        "trail_km": 1.5,
-        "trail_mi": 0.9
+        "trail_km": 0.2,
+        "trail_mi": 0.1
       }
     },
     {
@@ -110941,7 +110900,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 13 pistes",
+        "infrastructure": "5 lifts · 14 pistes",
         "vertical_ft": 4362,
         "summit_elev_ft": 13048,
         "base_elev_ft": 8686,
@@ -110954,11 +110913,11 @@
         "summary": "",
         "website": "https://skigulmarg.com/",
         "lift_count": 5,
-        "run_count": 13,
+        "run_count": 14,
         "avg_snowfall_in": null,
         "default_bearing": 229,
-        "trail_km": 11.3,
-        "trail_mi": 7
+        "trail_km": 12.2,
+        "trail_mi": 7.6
       }
     },
     {
@@ -110982,7 +110941,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "26 lifts · 59 pistes",
+        "infrastructure": "26 lifts · 60 pistes",
         "vertical_ft": 1302,
         "summit_elev_ft": 2741,
         "base_elev_ft": 1439,
@@ -110995,11 +110954,11 @@
         "summary": "",
         "website": "https://www.stoten.se/",
         "lift_count": 26,
-        "run_count": 59,
+        "run_count": 60,
         "avg_snowfall_in": null,
         "default_bearing": 178,
-        "trail_km": 35.8,
-        "trail_mi": 22.3
+        "trail_km": 36.1,
+        "trail_mi": 22.5
       }
     },
     {
@@ -111181,7 +111140,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "13 lifts · 70 pistes",
+        "infrastructure": "13 lifts · 71 pistes",
         "vertical_ft": 3079,
         "summit_elev_ft": 5259,
         "base_elev_ft": 2180,
@@ -111194,11 +111153,11 @@
         "summary": "",
         "website": "https://www.bergbahnen-stjohann.at/",
         "lift_count": 13,
-        "run_count": 70,
+        "run_count": 71,
         "avg_snowfall_in": null,
         "default_bearing": 148,
-        "trail_km": 31.2,
-        "trail_mi": 19.4
+        "trail_km": 31.6,
+        "trail_mi": 19.6
       }
     },
     {
@@ -111303,7 +111262,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 25 pistes",
+        "infrastructure": "5 lifts · 26 pistes",
         "vertical_ft": 1902,
         "summit_elev_ft": 7234,
         "base_elev_ft": 5332,
@@ -111316,11 +111275,11 @@
         "summary": "",
         "website": "https://mta.ski/",
         "lift_count": 5,
-        "run_count": 25,
+        "run_count": 26,
         "avg_snowfall_in": null,
         "default_bearing": 171,
-        "trail_km": 14.7,
-        "trail_mi": 9.2
+        "trail_km": 15,
+        "trail_mi": 9.3
       }
     },
     {
@@ -111507,7 +111466,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "46 lifts · 513 pistes",
+        "infrastructure": "46 lifts · 518 pistes",
         "vertical_ft": 4984,
         "summit_elev_ft": 9411,
         "base_elev_ft": 4427,
@@ -111520,11 +111479,11 @@
         "summary": "",
         "website": "https://www.ischgl.com",
         "lift_count": 46,
-        "run_count": 513,
+        "run_count": 518,
         "avg_snowfall_in": null,
         "default_bearing": 131,
-        "trail_km": 162.1,
-        "trail_mi": 100.7
+        "trail_km": 164.9,
+        "trail_mi": 102.5
       }
     },
     {
@@ -112196,7 +112155,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "23 lifts · 102 pistes",
+        "infrastructure": "23 lifts · 103 pistes",
         "vertical_ft": 2914,
         "summit_elev_ft": 4805,
         "base_elev_ft": 1891,
@@ -112209,7 +112168,7 @@
         "summary": "",
         "website": "https://www.sheregesh.su/",
         "lift_count": 23,
-        "run_count": 102,
+        "run_count": 103,
         "avg_snowfall_in": null,
         "default_bearing": 293,
         "trail_km": 65,
@@ -112483,7 +112442,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 55 pistes",
+        "infrastructure": "4 lifts · 54 pistes",
         "vertical_ft": 1409,
         "summit_elev_ft": 2145,
         "base_elev_ft": 736,
@@ -112496,11 +112455,11 @@
         "summary": "",
         "website": "https://www.skitenney.com/",
         "lift_count": 4,
-        "run_count": 55,
+        "run_count": 54,
         "avg_snowfall_in": null,
         "default_bearing": 251,
-        "trail_km": 19.7,
-        "trail_mi": 12.3
+        "trail_km": 19.6,
+        "trail_mi": 12.2
       }
     },
     {
@@ -112930,7 +112889,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "20 lifts · 159 pistes",
+        "infrastructure": "20 lifts · 162 pistes",
         "vertical_ft": 3128,
         "summit_elev_ft": 12408,
         "base_elev_ft": 9280,
@@ -112943,11 +112902,11 @@
         "summary": "",
         "website": "https://www.keystoneresort.com",
         "lift_count": 20,
-        "run_count": 159,
+        "run_count": 162,
         "avg_snowfall_in": 235,
         "default_bearing": 139,
-        "trail_km": 114,
-        "trail_mi": 70.8
+        "trail_km": 115.4,
+        "trail_mi": 71.7
       }
     },
     {
@@ -113134,7 +113093,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 11 pistes",
+        "infrastructure": "3 lifts · 12 pistes",
         "vertical_ft": 855,
         "summit_elev_ft": 1229,
         "base_elev_ft": 374,
@@ -113147,11 +113106,11 @@
         "summary": "",
         "website": "https://sunneskibike.se/",
         "lift_count": 3,
-        "run_count": 11,
+        "run_count": 12,
         "avg_snowfall_in": null,
         "default_bearing": 246,
-        "trail_km": 6.6,
-        "trail_mi": 4.1
+        "trail_km": 6.9,
+        "trail_mi": 4.3
       }
     },
     {
@@ -114228,7 +114187,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "8 lifts · 56 pistes",
+        "infrastructure": "8 lifts · 59 pistes",
         "vertical_ft": 1630,
         "summit_elev_ft": 9567,
         "base_elev_ft": 7937,
@@ -114241,11 +114200,11 @@
         "summary": "",
         "website": "https://skirose.com/",
         "lift_count": 8,
-        "run_count": 56,
+        "run_count": 59,
         "avg_snowfall_in": 350,
         "default_bearing": 203,
-        "trail_km": 23.1,
-        "trail_mi": 14.4
+        "trail_km": 24.3,
+        "trail_mi": 15.1
       }
     },
     {
@@ -114474,7 +114433,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "14 lifts · 26 pistes",
+        "infrastructure": "14 lifts · 27 pistes",
         "vertical_ft": 2531,
         "summit_elev_ft": 10987,
         "base_elev_ft": 8456,
@@ -114487,11 +114446,11 @@
         "summary": "",
         "website": "https://skiportillo.com",
         "lift_count": 14,
-        "run_count": 26,
+        "run_count": 27,
         "avg_snowfall_in": 327,
         "default_bearing": 25,
-        "trail_km": 13.8,
-        "trail_mi": 8.6
+        "trail_km": 14.8,
+        "trail_mi": 9.2
       }
     },
     {
@@ -114716,7 +114675,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "23 lifts · 109 pistes",
+        "infrastructure": "23 lifts · 108 pistes",
         "vertical_ft": 4895,
         "summit_elev_ft": 9437,
         "base_elev_ft": 4542,
@@ -114729,11 +114688,11 @@
         "summary": "",
         "website": "https://www.valdanniviers.ch/fr/grimentz-zinal-134.html",
         "lift_count": 23,
-        "run_count": 109,
+        "run_count": 108,
         "avg_snowfall_in": null,
         "default_bearing": 273,
-        "trail_km": 71.2,
-        "trail_mi": 44.3
+        "trail_km": 71.1,
+        "trail_mi": 44.2
       }
     },
     {
@@ -116626,7 +116585,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "14 lifts · 28 pistes",
+        "infrastructure": "14 lifts · 29 pistes",
         "vertical_ft": 3306,
         "summit_elev_ft": 10344,
         "base_elev_ft": 7038,
@@ -116638,11 +116597,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 14,
-        "run_count": 28,
+        "run_count": 29,
         "avg_snowfall_in": null,
         "default_bearing": 142,
-        "trail_km": 28.7,
-        "trail_mi": 17.8
+        "trail_km": 29.5,
+        "trail_mi": 18.3
       }
     },
     {
@@ -116666,7 +116625,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 13 pistes",
+        "infrastructure": "5 lifts · 14 pistes",
         "vertical_ft": 1858,
         "summit_elev_ft": 4683,
         "base_elev_ft": 2825,
@@ -116679,11 +116638,11 @@
         "summary": "",
         "website": "https://www.erlebnisalm.com",
         "lift_count": 5,
-        "run_count": 13,
+        "run_count": 14,
         "avg_snowfall_in": null,
         "default_bearing": 258,
-        "trail_km": 8.7,
-        "trail_mi": 5.4
+        "trail_km": 9.3,
+        "trail_mi": 5.8
       }
     },
     {
@@ -119391,7 +119350,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 93 pistes",
+        "infrastructure": "6 lifts · 94 pistes",
         "vertical_ft": 2270,
         "summit_elev_ft": 9862,
         "base_elev_ft": 7592,
@@ -119404,11 +119363,11 @@
         "summary": "",
         "website": "https://www.grandtarghee.com",
         "lift_count": 6,
-        "run_count": 93,
+        "run_count": 94,
         "avg_snowfall_in": 500,
         "default_bearing": 92,
-        "trail_km": 55.7,
-        "trail_mi": 34.6
+        "trail_km": 56.4,
+        "trail_mi": 35
       }
     },
     {
@@ -120042,7 +120001,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 48 pistes",
+        "infrastructure": "7 lifts · 49 pistes",
         "vertical_ft": 3695,
         "summit_elev_ft": 8179,
         "base_elev_ft": 4484,
@@ -120055,11 +120014,11 @@
         "summary": "",
         "website": "https://www.san-domenico.com/",
         "lift_count": 7,
-        "run_count": 48,
+        "run_count": 49,
         "avg_snowfall_in": null,
         "default_bearing": 63,
-        "trail_km": 19.8,
-        "trail_mi": 12.3
+        "trail_km": 20.7,
+        "trail_mi": 12.9
       }
     },
     {
@@ -120238,11 +120197,11 @@
         "region": "Sofiya",
         "lng": 23.23411,
         "lat": 42.59931,
-        "category": "heli_cat",
+        "category": "downhill",
         "status": "operating",
         "is_closed": false,
         "is_private": false,
-        "archetype": "Heli & Cat Ski Operation",
+        "archetype": "Downhill Alpine",
         "infrastructure": "2 lifts · 0 pistes",
         "vertical_ft": 40,
         "summit_elev_ft": 5069,
@@ -121340,7 +121299,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "37 lifts · 127 pistes",
+        "infrastructure": "37 lifts · 128 pistes",
         "vertical_ft": 2004,
         "summit_elev_ft": 6017,
         "base_elev_ft": 4013,
@@ -121353,11 +121312,11 @@
         "summary": "",
         "website": "https://lemontdore.fr",
         "lift_count": 37,
-        "run_count": 127,
+        "run_count": 128,
         "avg_snowfall_in": null,
         "default_bearing": 287,
-        "trail_km": 58.1,
-        "trail_mi": 36.1
+        "trail_km": 58.8,
+        "trail_mi": 36.5
       }
     },
     {
@@ -121422,7 +121381,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 11 pistes",
+        "infrastructure": "4 lifts · 12 pistes",
         "vertical_ft": 3497,
         "summit_elev_ft": 8742,
         "base_elev_ft": 5245,
@@ -121435,11 +121394,11 @@
         "summary": "",
         "website": "https://pontechianalesci.it/",
         "lift_count": 4,
-        "run_count": 11,
+        "run_count": 12,
         "avg_snowfall_in": null,
         "default_bearing": 53,
-        "trail_km": 9.4,
-        "trail_mi": 5.8
+        "trail_km": 11.1,
+        "trail_mi": 6.9
       }
     },
     {
@@ -122598,7 +122557,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 38 pistes",
+        "infrastructure": "3 lifts · 39 pistes",
         "vertical_ft": 2634,
         "summit_elev_ft": 8038,
         "base_elev_ft": 5404,
@@ -122611,11 +122570,11 @@
         "summary": "",
         "website": "https://www.crevacol.it",
         "lift_count": 3,
-        "run_count": 38,
+        "run_count": 39,
         "avg_snowfall_in": null,
         "default_bearing": 6,
-        "trail_km": 24.2,
-        "trail_mi": 15
+        "trail_km": 24.5,
+        "trail_mi": 15.2
       }
     },
     {
@@ -123244,10 +123203,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "Alpine Ski Area",
-        "vertical_ft": 0,
-        "summit_elev_ft": 0,
-        "base_elev_ft": 0,
+        "infrastructure": "0 lifts · 1 pistes",
+        "vertical_ft": 963,
+        "summit_elev_ft": 1469,
+        "base_elev_ft": 506,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -123256,12 +123215,12 @@
         "pass_color": "#8A847C",
         "summary": "",
         "website": "https://www.skimore.no/oslo",
-        "lift_count": null,
-        "run_count": null,
+        "lift_count": 0,
+        "run_count": 1,
         "avg_snowfall_in": null,
         "default_bearing": 126,
-        "trail_km": 9.6,
-        "trail_mi": 6
+        "trail_km": 1.3,
+        "trail_mi": 0.8
       }
     },
     {
@@ -126083,7 +126042,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 10 pistes",
+        "infrastructure": "2 lifts · 11 pistes",
         "vertical_ft": 2516,
         "summit_elev_ft": 6809,
         "base_elev_ft": 4293,
@@ -126096,11 +126055,11 @@
         "summary": "",
         "website": "https://viamala.ch/de/informieren/destination/heinzenberg/sarn.html",
         "lift_count": 2,
-        "run_count": 10,
+        "run_count": 11,
         "avg_snowfall_in": null,
         "default_bearing": 292,
-        "trail_km": 15.8,
-        "trail_mi": 9.8
+        "trail_km": 16.2,
+        "trail_mi": 10.1
       }
     },
     {
@@ -126734,7 +126693,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "14 lifts · 204 pistes",
+        "infrastructure": "14 lifts · 205 pistes",
         "vertical_ft": 3224,
         "summit_elev_ft": 10960,
         "base_elev_ft": 7736,
@@ -126748,11 +126707,11 @@
         "summary": "",
         "website": "https://www.snowbird.com",
         "lift_count": 14,
-        "run_count": 204,
+        "run_count": 205,
         "avg_snowfall_in": 545,
         "default_bearing": 153,
-        "trail_km": 96.5,
-        "trail_mi": 59.9
+        "trail_km": 96.8,
+        "trail_mi": 60.1
       }
     },
     {
@@ -128070,10 +128029,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 5 pistes",
-        "vertical_ft": 2654,
+        "infrastructure": "3 lifts · 6 pistes",
+        "vertical_ft": 2781,
         "summit_elev_ft": 9189,
-        "base_elev_ft": 6535,
+        "base_elev_ft": 6408,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -128083,7 +128042,7 @@
         "summary": "",
         "website": "https://myler.am/en/",
         "lift_count": 3,
-        "run_count": 5,
+        "run_count": 6,
         "avg_snowfall_in": null,
         "default_bearing": 97,
         "trail_km": 9.4,
@@ -128800,7 +128759,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "21 lifts · 148 pistes",
+        "infrastructure": "21 lifts · 150 pistes",
         "vertical_ft": 4575,
         "summit_elev_ft": 8978,
         "base_elev_ft": 4403,
@@ -128813,11 +128772,11 @@
         "summary": "",
         "website": "https://www.nauders.com/",
         "lift_count": 21,
-        "run_count": 148,
+        "run_count": 150,
         "avg_snowfall_in": null,
         "default_bearing": 125,
-        "trail_km": 49.1,
-        "trail_mi": 30.5
+        "trail_km": 50.1,
+        "trail_mi": 31.2
       }
     },
     {
@@ -130826,7 +130785,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "164 lifts · 1033 pistes",
+        "infrastructure": "164 lifts · 1037 pistes",
         "vertical_ft": 7902,
         "summit_elev_ft": 10552,
         "base_elev_ft": 2650,
@@ -130839,11 +130798,11 @@
         "summary": "",
         "website": "https://paradiski.com",
         "lift_count": 164,
-        "run_count": 1033,
+        "run_count": 1037,
         "avg_snowfall_in": null,
         "default_bearing": 136,
-        "trail_km": 400.5,
-        "trail_mi": 248.9
+        "trail_km": 402.1,
+        "trail_mi": 249.9
       }
     },
     {
@@ -131315,7 +131274,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "25 lifts · 86 pistes",
+        "infrastructure": "25 lifts · 87 pistes",
         "vertical_ft": 3111,
         "summit_elev_ft": 6745,
         "base_elev_ft": 3634,
@@ -131328,11 +131287,11 @@
         "summary": "",
         "website": "https://www.villarddelans-correnconenvercors.com/",
         "lift_count": 25,
-        "run_count": 86,
+        "run_count": 87,
         "avg_snowfall_in": null,
         "default_bearing": 146,
-        "trail_km": 55.8,
-        "trail_mi": 34.6
+        "trail_km": 55.9,
+        "trail_mi": 34.8
       }
     },
     {
@@ -133021,7 +132980,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "9 lifts · 44 pistes",
+        "infrastructure": "9 lifts · 33 pistes",
         "vertical_ft": 5915,
         "summit_elev_ft": 7879,
         "base_elev_ft": 1964,
@@ -133034,11 +132993,11 @@
         "summary": "",
         "website": "https://dachstein-salzkammergut.com/",
         "lift_count": 9,
-        "run_count": 44,
+        "run_count": 33,
         "avg_snowfall_in": null,
         "default_bearing": 177,
-        "trail_km": 19.8,
-        "trail_mi": 12.3
+        "trail_km": 18.7,
+        "trail_mi": 11.6
       }
     },
     {
@@ -135313,8 +135272,8 @@
         "run_count": 175,
         "avg_snowfall_in": null,
         "default_bearing": 182,
-        "trail_km": 139,
-        "trail_mi": 86.4
+        "trail_km": 138.4,
+        "trail_mi": 86
       }
     },
     {
@@ -135664,7 +135623,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "11 lifts · 41 pistes",
+        "infrastructure": "11 lifts · 42 pistes",
         "vertical_ft": 2922,
         "summit_elev_ft": 3112,
         "base_elev_ft": 190,
@@ -135677,11 +135636,11 @@
         "summary": "",
         "website": "https://vossresort.no/no/vinter/",
         "lift_count": 11,
-        "run_count": 41,
+        "run_count": 42,
         "avg_snowfall_in": null,
         "default_bearing": 290,
-        "trail_km": 22.8,
-        "trail_mi": 14.2
+        "trail_km": 23.1,
+        "trail_mi": 14.4
       }
     },
     {
@@ -135705,7 +135664,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "18 lifts · 95 pistes",
+        "infrastructure": "18 lifts · 94 pistes",
         "vertical_ft": 3502,
         "summit_elev_ft": 6443,
         "base_elev_ft": 2941,
@@ -135718,11 +135677,11 @@
         "summary": "",
         "website": "https://www.dietauplitz.com/",
         "lift_count": 18,
-        "run_count": 95,
+        "run_count": 94,
         "avg_snowfall_in": null,
         "default_bearing": 326,
-        "trail_km": 33.4,
-        "trail_mi": 20.7
+        "trail_km": 30.3,
+        "trail_mi": 18.9
       }
     },
     {
@@ -136520,7 +136479,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "33 lifts · 103 pistes",
+        "infrastructure": "33 lifts · 104 pistes",
         "vertical_ft": 3467,
         "summit_elev_ft": 6865,
         "base_elev_ft": 3398,
@@ -136533,11 +136492,11 @@
         "summary": "",
         "website": "https://catedralaltapatagonia.com",
         "lift_count": 33,
-        "run_count": 103,
+        "run_count": 104,
         "avg_snowfall_in": 118,
         "default_bearing": 271,
-        "trail_km": 56.4,
-        "trail_mi": 35
+        "trail_km": 56.7,
+        "trail_mi": 35.3
       }
     },
     {
@@ -136927,7 +136886,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "35 lifts · 246 pistes",
+        "infrastructure": "35 lifts · 247 pistes",
         "vertical_ft": 5976,
         "summit_elev_ft": 7788,
         "base_elev_ft": 1812,
@@ -136940,7 +136899,7 @@
         "summary": "",
         "website": "https://www.hochzillertal.com/",
         "lift_count": 35,
-        "run_count": 246,
+        "run_count": 247,
         "avg_snowfall_in": null,
         "default_bearing": 233,
         "trail_km": 81.1,
@@ -138304,7 +138263,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 63 pistes",
+        "infrastructure": "7 lifts · 69 pistes",
         "vertical_ft": 665,
         "summit_elev_ft": 1783,
         "base_elev_ft": 1118,
@@ -138317,11 +138276,11 @@
         "summary": "",
         "website": "https://www.skimontblanc.com",
         "lift_count": 7,
-        "run_count": 63,
+        "run_count": 69,
         "avg_snowfall_in": null,
         "default_bearing": 161,
-        "trail_km": 21.8,
-        "trail_mi": 13.5
+        "trail_km": 27.6,
+        "trail_mi": 17.1
       }
     },
     {
@@ -139279,7 +139238,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "51 lifts · 149 pistes",
+        "infrastructure": "51 lifts · 151 pistes",
         "vertical_ft": 4753,
         "summit_elev_ft": 8125,
         "base_elev_ft": 3372,
@@ -139292,11 +139251,11 @@
         "summary": "",
         "website": "https://www.laclusaz.com/",
         "lift_count": 51,
-        "run_count": 149,
+        "run_count": 151,
         "avg_snowfall_in": null,
         "default_bearing": 130,
-        "trail_km": 96.3,
-        "trail_mi": 59.9
+        "trail_km": 96.6,
+        "trail_mi": 60
       }
     },
     {
@@ -139481,7 +139440,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "38 lifts · 193 pistes",
+        "infrastructure": "38 lifts · 195 pistes",
         "vertical_ft": 3597,
         "summit_elev_ft": 8950,
         "base_elev_ft": 5353,
@@ -139494,11 +139453,11 @@
         "summary": "",
         "website": "https://www.vars.com/hiver/",
         "lift_count": 38,
-        "run_count": 193,
+        "run_count": 195,
         "avg_snowfall_in": null,
         "default_bearing": 200,
-        "trail_km": 130.1,
-        "trail_mi": 80.8
+        "trail_km": 131,
+        "trail_mi": 81.4
       }
     },
     {
@@ -142642,7 +142601,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 8 pistes",
+        "infrastructure": "4 lifts · 9 pistes",
         "vertical_ft": 2463,
         "summit_elev_ft": 5320,
         "base_elev_ft": 2857,
@@ -142655,11 +142614,11 @@
         "summary": "",
         "website": "https://www.charmey.ch/",
         "lift_count": 4,
-        "run_count": 8,
+        "run_count": 9,
         "avg_snowfall_in": null,
         "default_bearing": 133,
-        "trail_km": 10.7,
-        "trail_mi": 6.6
+        "trail_km": 12.6,
+        "trail_mi": 7.8
       }
     },
     {
@@ -143290,9 +143249,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "0 lifts · 2 pistes",
-        "vertical_ft": 729,
-        "summit_elev_ft": 7542,
+        "infrastructure": "0 lifts · 3 pistes",
+        "vertical_ft": 739,
+        "summit_elev_ft": 7552,
         "base_elev_ft": 6813,
         "skiable_acres": 1260,
         "pass_networks": [
@@ -143303,11 +143262,11 @@
         "summary": "",
         "website": "https://www.skihomewood.com/",
         "lift_count": 0,
-        "run_count": 2,
+        "run_count": 3,
         "avg_snowfall_in": 400,
         "default_bearing": 243,
-        "trail_km": 1.1,
-        "trail_mi": 0.7
+        "trail_km": 1.5,
+        "trail_mi": 0.9
       }
     },
     {
@@ -145420,45 +145379,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -107.1064,
-          38.87887
-        ]
-      },
-      "properties": {
-        "id": "a42e3b4aae21c5db9b3b491587410fe51f8580ab",
-        "name": "Irwin Lodge Snowcat",
-        "country": "United States",
-        "region": "Colorado",
-        "lng": -107.1064,
-        "lat": 38.87887,
-        "category": "heli_cat",
-        "status": "operating",
-        "is_closed": false,
-        "is_private": false,
-        "archetype": "Heli & Cat Ski Operation",
-        "infrastructure": "Alpine Ski Area",
-        "vertical_ft": 0,
-        "summit_elev_ft": 0,
-        "base_elev_ft": 0,
-        "skiable_acres": 0,
-        "pass_networks": [
-          "Independent"
-        ],
-        "primary_pass": "Independent",
-        "pass_color": "#8A847C",
-        "summary": "",
-        "website": "https://irwinguides.com/snowcat-skiing/",
-        "lift_count": null,
-        "run_count": null,
-        "avg_snowfall_in": null,
-        "default_bearing": 180
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           17.03945,
           50.20093
         ]
@@ -146529,7 +146449,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 58 pistes",
+        "infrastructure": "7 lifts · 59 pistes",
         "vertical_ft": 2394,
         "summit_elev_ft": 7256,
         "base_elev_ft": 4862,
@@ -146542,10 +146462,10 @@
         "summary": "",
         "website": "https://www.spluegen.ch/",
         "lift_count": 7,
-        "run_count": 58,
+        "run_count": 59,
         "avg_snowfall_in": null,
         "default_bearing": 208,
-        "trail_km": 20.1,
+        "trail_km": 20.2,
         "trail_mi": 12.5
       }
     },
@@ -147180,7 +147100,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "84 lifts · 425 pistes",
+        "infrastructure": "84 lifts · 427 pistes",
         "vertical_ft": 6223,
         "summit_elev_ft": 11337,
         "base_elev_ft": 5114,
@@ -147193,11 +147113,11 @@
         "summary": "",
         "website": "https://www.valdisere.com",
         "lift_count": 84,
-        "run_count": 425,
+        "run_count": 427,
         "avg_snowfall_in": null,
         "default_bearing": 204,
-        "trail_km": 210.3,
-        "trail_mi": 130.7
+        "trail_km": 210.6,
+        "trail_mi": 130.9
       }
     },
     {
@@ -147465,7 +147385,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 19 pistes",
+        "infrastructure": "4 lifts · 20 pistes",
         "vertical_ft": 2382,
         "summit_elev_ft": 7198,
         "base_elev_ft": 4816,
@@ -147478,11 +147398,11 @@
         "summary": "",
         "website": "https://www.saint-bernard.ch/fr/destination/champex-lac-26/",
         "lift_count": 4,
-        "run_count": 19,
+        "run_count": 20,
         "avg_snowfall_in": null,
         "default_bearing": 200,
-        "trail_km": 11.1,
-        "trail_mi": 6.9
+        "trail_km": 11.3,
+        "trail_mi": 7
       }
     },
     {
@@ -148564,10 +148484,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 20 pistes",
-        "vertical_ft": 2129,
+        "infrastructure": "1 lifts · 6 pistes",
+        "vertical_ft": 361,
         "summit_elev_ft": 10714,
-        "base_elev_ft": 8585,
+        "base_elev_ft": 10353,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -148577,11 +148497,11 @@
         "summary": "",
         "website": "",
         "lift_count": 1,
-        "run_count": 20,
+        "run_count": 6,
         "avg_snowfall_in": null,
         "default_bearing": 187,
-        "trail_km": 10.4,
-        "trail_mi": 6.5
+        "trail_km": 2.4,
+        "trail_mi": 1.5
       }
     },
     {
@@ -148686,7 +148606,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "12 lifts · 23 pistes",
+        "infrastructure": "12 lifts · 22 pistes",
         "vertical_ft": 315,
         "summit_elev_ft": 1852,
         "base_elev_ft": 1537,
@@ -148699,11 +148619,11 @@
         "summary": "",
         "website": "https://skibrule.com/",
         "lift_count": 12,
-        "run_count": 23,
+        "run_count": 22,
         "avg_snowfall_in": null,
         "default_bearing": 217,
-        "trail_km": 8.6,
-        "trail_mi": 5.4
+        "trail_km": 8.3,
+        "trail_mi": 5.2
       }
     },
     {
@@ -150391,7 +150311,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "24 lifts · 144 pistes",
+        "infrastructure": "24 lifts · 150 pistes",
         "vertical_ft": 2980,
         "summit_elev_ft": 6316,
         "base_elev_ft": 3336,
@@ -150404,11 +150324,11 @@
         "summary": "",
         "website": "https://www.lesportesdumontblanc.fr/",
         "lift_count": 24,
-        "run_count": 144,
+        "run_count": 150,
         "avg_snowfall_in": null,
         "default_bearing": 206,
-        "trail_km": 84.8,
-        "trail_mi": 52.7
+        "trail_km": 89.8,
+        "trail_mi": 55.8
       }
     },
     {
@@ -151132,8 +151052,8 @@
         "run_count": 476,
         "avg_snowfall_in": null,
         "default_bearing": 223,
-        "trail_km": 292.5,
-        "trail_mi": 181.7
+        "trail_km": 290.7,
+        "trail_mi": 180.7
       }
     },
     {
@@ -151687,10 +151607,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 6 pistes",
-        "vertical_ft": 2391,
+        "infrastructure": "5 lifts · 5 pistes",
+        "vertical_ft": 2164,
         "summit_elev_ft": 6612,
-        "base_elev_ft": 4221,
+        "base_elev_ft": 4448,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -151700,11 +151620,11 @@
         "summary": "",
         "website": "https://www.mob.ch/fr/",
         "lift_count": 5,
-        "run_count": 6,
+        "run_count": 5,
         "avg_snowfall_in": null,
         "default_bearing": 210,
-        "trail_km": 5.6,
-        "trail_mi": 3.5
+        "trail_km": 3.9,
+        "trail_mi": 2.5
       }
     },
     {
@@ -152255,7 +152175,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "22 lifts · 184 pistes",
+        "infrastructure": "22 lifts · 183 pistes",
         "vertical_ft": 3050,
         "summit_elev_ft": 4241,
         "base_elev_ft": 1165,
@@ -152268,7 +152188,7 @@
         "summary": "",
         "website": "https://www.killington.com",
         "lift_count": 22,
-        "run_count": 184,
+        "run_count": 183,
         "avg_snowfall_in": 250,
         "default_bearing": 245,
         "trail_km": 107,
@@ -152822,7 +152742,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 55 pistes",
+        "infrastructure": "5 lifts · 56 pistes",
         "vertical_ft": 1653,
         "summit_elev_ft": 9833,
         "base_elev_ft": 8180,
@@ -152835,11 +152755,11 @@
         "summary": "",
         "website": "https://www.powderhorn.com/",
         "lift_count": 5,
-        "run_count": 55,
+        "run_count": 56,
         "avg_snowfall_in": 250,
         "default_bearing": 178,
-        "trail_km": 36.3,
-        "trail_mi": 22.6
+        "trail_km": 37,
+        "trail_mi": 23
       }
     },
     {
@@ -154689,7 +154609,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 23 pistes",
+        "infrastructure": "4 lifts · 24 pistes",
         "vertical_ft": 821,
         "summit_elev_ft": 5498,
         "base_elev_ft": 4677,
@@ -154702,11 +154622,11 @@
         "summary": "",
         "website": "https://www.bergbahnen-bg.de/",
         "lift_count": 4,
-        "run_count": 23,
+        "run_count": 24,
         "avg_snowfall_in": null,
         "default_bearing": 270,
-        "trail_km": 9,
-        "trail_mi": 5.6
+        "trail_km": 9.2,
+        "trail_mi": 5.7
       }
     },
     {
@@ -155437,8 +155357,8 @@
         "run_count": 25,
         "avg_snowfall_in": null,
         "default_bearing": 133,
-        "trail_km": 18.6,
-        "trail_mi": 11.5
+        "trail_km": 17.4,
+        "trail_mi": 10.8
       }
     },
     {
@@ -156597,7 +156517,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 12 pistes",
+        "infrastructure": "5 lifts · 13 pistes",
         "vertical_ft": 2367,
         "summit_elev_ft": 3978,
         "base_elev_ft": 1611,
@@ -156610,11 +156530,11 @@
         "summary": "",
         "website": "https://www.mizuhohighland.com/",
         "lift_count": 5,
-        "run_count": 12,
+        "run_count": 13,
         "avg_snowfall_in": null,
         "default_bearing": 220,
-        "trail_km": 13,
-        "trail_mi": 8.1
+        "trail_km": 14.5,
+        "trail_mi": 9
       }
     },
     {
@@ -159527,7 +159447,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "474 lifts · 2092 pistes",
+        "infrastructure": "474 lifts · 2103 pistes",
         "vertical_ft": 7831,
         "summit_elev_ft": 10614,
         "base_elev_ft": 2783,
@@ -159540,11 +159460,11 @@
         "summary": "",
         "website": "https://www.dolomitisuperski.com",
         "lift_count": 474,
-        "run_count": 2092,
+        "run_count": 2103,
         "avg_snowfall_in": null,
         "default_bearing": 134,
-        "trail_km": 1062.4,
-        "trail_mi": 660.1
+        "trail_km": 1069.5,
+        "trail_mi": 664.6
       }
     },
     {
@@ -160379,7 +160299,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "30 lifts · 148 pistes",
+        "infrastructure": "30 lifts · 149 pistes",
         "vertical_ft": 3195,
         "summit_elev_ft": 6893,
         "base_elev_ft": 3698,
@@ -160392,11 +160312,11 @@
         "summary": "",
         "website": "https://www.tvgd.ch/",
         "lift_count": 30,
-        "run_count": 148,
+        "run_count": 149,
         "avg_snowfall_in": null,
         "default_bearing": 179,
-        "trail_km": 60.4,
-        "trail_mi": 37.5
+        "trail_km": 60.8,
+        "trail_mi": 37.8
       }
     },
     {
@@ -161679,7 +161599,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "36 lifts · 340 pistes",
+        "infrastructure": "36 lifts · 345 pistes",
         "vertical_ft": 3000,
         "summit_elev_ft": 9570,
         "base_elev_ft": 6570,
@@ -161692,11 +161612,11 @@
         "summary": "",
         "website": "https://www.deervalley.com",
         "lift_count": 36,
-        "run_count": 340,
+        "run_count": 345,
         "avg_snowfall_in": 300,
         "default_bearing": 220,
-        "trail_km": 181.2,
-        "trail_mi": 112.6
+        "trail_km": 183.4,
+        "trail_mi": 113.9
       }
     },
     {
@@ -163262,7 +163182,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "11 lifts · 49 pistes",
+        "infrastructure": "11 lifts · 50 pistes",
         "vertical_ft": 4203,
         "summit_elev_ft": 6576,
         "base_elev_ft": 2373,
@@ -163275,11 +163195,11 @@
         "summary": "",
         "website": "https://www.hauser-kaibling.at",
         "lift_count": 11,
-        "run_count": 49,
+        "run_count": 50,
         "avg_snowfall_in": null,
         "default_bearing": 167,
-        "trail_km": 29.7,
-        "trail_mi": 18.5
+        "trail_km": 29.9,
+        "trail_mi": 18.6
       }
     },
     {
@@ -163424,10 +163344,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 16 pistes",
-        "vertical_ft": 2591,
+        "infrastructure": "3 lifts · 13 pistes",
+        "vertical_ft": 1752,
         "summit_elev_ft": 7266,
-        "base_elev_ft": 4675,
+        "base_elev_ft": 5514,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -163437,11 +163357,11 @@
         "summary": "",
         "website": "https://ontakeskijo.com/",
         "lift_count": 3,
-        "run_count": 16,
+        "run_count": 13,
         "avg_snowfall_in": null,
         "default_bearing": 280,
-        "trail_km": 18,
-        "trail_mi": 11.2
+        "trail_km": 14.5,
+        "trail_mi": 9
       }
     },
     {
@@ -163602,8 +163522,8 @@
         "run_count": null,
         "avg_snowfall_in": null,
         "default_bearing": 162,
-        "trail_km": 37,
-        "trail_mi": 23
+        "trail_km": null,
+        "trail_mi": null
       }
     },
     {
@@ -163912,7 +163832,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 54 pistes",
+        "infrastructure": "6 lifts · 55 pistes",
         "vertical_ft": 1137,
         "summit_elev_ft": 1948,
         "base_elev_ft": 811,
@@ -163925,11 +163845,11 @@
         "summary": "",
         "website": "https://www.ski-stoneham.com",
         "lift_count": 6,
-        "run_count": 54,
+        "run_count": 55,
         "avg_snowfall_in": 150,
         "default_bearing": 274,
-        "trail_km": 28.3,
-        "trail_mi": 17.6
+        "trail_km": 28.6,
+        "trail_mi": 17.7
       }
     },
     {
@@ -164833,7 +164753,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 48 pistes",
+        "infrastructure": "5 lifts · 49 pistes",
         "vertical_ft": 1033,
         "summit_elev_ft": 3153,
         "base_elev_ft": 2120,
@@ -164846,7 +164766,7 @@
         "summary": "",
         "website": "https://www.blueknob.com/",
         "lift_count": 5,
-        "run_count": 48,
+        "run_count": 49,
         "avg_snowfall_in": null,
         "default_bearing": 210,
         "trail_km": 10.2,
@@ -166618,7 +166538,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "13 lifts · 82 pistes",
+        "infrastructure": "13 lifts · 83 pistes",
         "vertical_ft": 4355,
         "summit_elev_ft": 8818,
         "base_elev_ft": 4463,
@@ -166631,11 +166551,11 @@
         "summary": "",
         "website": "https://www.vialattea.it",
         "lift_count": 13,
-        "run_count": 82,
+        "run_count": 83,
         "avg_snowfall_in": null,
         "default_bearing": 130,
-        "trail_km": 33.7,
-        "trail_mi": 21
+        "trail_km": 34.2,
+        "trail_mi": 21.2
       }
     },
     {
@@ -168691,9 +168611,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "20 lifts · 161 pistes",
-        "vertical_ft": 3777,
-        "summit_elev_ft": 12509,
+        "infrastructure": "20 lifts · 162 pistes",
+        "vertical_ft": 3803,
+        "summit_elev_ft": 12535,
         "base_elev_ft": 8732,
         "skiable_acres": 2000,
         "pass_networks": [
@@ -168705,11 +168625,11 @@
         "summary": "",
         "website": "https://tellurideskiresort.com",
         "lift_count": 20,
-        "run_count": 161,
+        "run_count": 162,
         "avg_snowfall_in": 330,
         "default_bearing": 172,
-        "trail_km": 100.5,
-        "trail_mi": 62.4
+        "trail_km": 101.5,
+        "trail_mi": 63.1
       }
     },
     {
@@ -168855,7 +168775,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 18 pistes",
+        "infrastructure": "5 lifts · 19 pistes",
         "vertical_ft": 2169,
         "summit_elev_ft": 4385,
         "base_elev_ft": 2216,
@@ -168868,11 +168788,11 @@
         "summary": "",
         "website": "https://www.schigebiet-unterberg.at/",
         "lift_count": 5,
-        "run_count": 18,
+        "run_count": 19,
         "avg_snowfall_in": null,
         "default_bearing": 286,
-        "trail_km": 11.2,
-        "trail_mi": 7
+        "trail_km": 11.9,
+        "trail_mi": 7.4
       }
     },
     {
@@ -169303,7 +169223,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 7 pistes",
+        "infrastructure": "2 lifts · 5 pistes",
         "vertical_ft": 1461,
         "summit_elev_ft": 5995,
         "base_elev_ft": 4534,
@@ -169315,11 +169235,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 2,
-        "run_count": 7,
+        "run_count": 5,
         "avg_snowfall_in": null,
         "default_bearing": 242,
-        "trail_km": 8.4,
-        "trail_mi": 5.2
+        "trail_km": 6.6,
+        "trail_mi": 4.1
       }
     },
     {
@@ -169667,7 +169587,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 14 pistes",
+        "infrastructure": "4 lifts · 15 pistes",
         "vertical_ft": 3802,
         "summit_elev_ft": 6946,
         "base_elev_ft": 3144,
@@ -169680,11 +169600,11 @@
         "summary": "",
         "website": "https://www.rosskopf.com/",
         "lift_count": 4,
-        "run_count": 14,
+        "run_count": 15,
         "avg_snowfall_in": null,
         "default_bearing": 293,
-        "trail_km": 12.7,
-        "trail_mi": 7.9
+        "trail_km": 14.6,
+        "trail_mi": 9.1
       }
     },
     {
@@ -171047,7 +170967,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "14 lifts · 52 pistes",
+        "infrastructure": "14 lifts · 53 pistes",
         "vertical_ft": 3987,
         "summit_elev_ft": 8326,
         "base_elev_ft": 4339,
@@ -171060,11 +170980,11 @@
         "summary": "",
         "website": "https://www.borovets-bg.com/",
         "lift_count": 14,
-        "run_count": 52,
+        "run_count": 53,
         "avg_snowfall_in": null,
         "default_bearing": 203,
-        "trail_km": 41.9,
-        "trail_mi": 26
+        "trail_km": 42.8,
+        "trail_mi": 26.6
       }
     },
     {
@@ -171088,7 +171008,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 9 pistes",
+        "infrastructure": "1 lifts · 10 pistes",
         "vertical_ft": 2345,
         "summit_elev_ft": 6142,
         "base_elev_ft": 3797,
@@ -171100,11 +171020,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 1,
-        "run_count": 9,
+        "run_count": 10,
         "avg_snowfall_in": null,
         "default_bearing": 225,
-        "trail_km": 11.7,
-        "trail_mi": 7.2
+        "trail_km": 12.3,
+        "trail_mi": 7.6
       }
     },
     {
@@ -171333,7 +171253,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 52 pistes",
+        "infrastructure": "6 lifts · 54 pistes",
         "vertical_ft": 1607,
         "summit_elev_ft": 8761,
         "base_elev_ft": 7154,
@@ -171346,11 +171266,11 @@
         "summary": "",
         "website": "https://www.skithebeav.com/",
         "lift_count": 6,
-        "run_count": 52,
+        "run_count": 54,
         "avg_snowfall_in": 400,
         "default_bearing": 244,
-        "trail_km": 29.5,
-        "trail_mi": 18.3
+        "trail_km": 30.7,
+        "trail_mi": 19.1
       }
     },
     {
@@ -171577,7 +171497,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 25 pistes",
+        "infrastructure": "1 lifts · 27 pistes",
         "vertical_ft": 127,
         "summit_elev_ft": 1192,
         "base_elev_ft": 1065,
@@ -171590,7 +171510,7 @@
         "summary": "",
         "website": "https://www.sf-laubendorf.de/skiabteilung/",
         "lift_count": 1,
-        "run_count": 25,
+        "run_count": 27,
         "avg_snowfall_in": null,
         "default_bearing": 180,
         "trail_km": 1.1,
@@ -171902,10 +171822,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 76 pistes",
-        "vertical_ft": 1954,
+        "infrastructure": "3 lifts · 71 pistes",
+        "vertical_ft": 1744,
         "summit_elev_ft": 9880,
-        "base_elev_ft": 7926,
+        "base_elev_ft": 8136,
         "skiable_acres": 680,
         "pass_networks": [
           "Indy"
@@ -171915,11 +171835,11 @@
         "summary": "",
         "website": "https://sunlightmtn.com/",
         "lift_count": 3,
-        "run_count": 76,
+        "run_count": 71,
         "avg_snowfall_in": 250,
         "default_bearing": 184,
-        "trail_km": 36.9,
-        "trail_mi": 22.9
+        "trail_km": 35.3,
+        "trail_mi": 21.9
       }
     },
     {
@@ -172556,7 +172476,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "32 lifts · 182 pistes",
+        "infrastructure": "32 lifts · 184 pistes",
         "vertical_ft": 3323,
         "summit_elev_ft": 8009,
         "base_elev_ft": 4686,
@@ -172569,11 +172489,11 @@
         "summary": "",
         "website": "https://www.skiarlberg.at/",
         "lift_count": 32,
-        "run_count": 182,
+        "run_count": 184,
         "avg_snowfall_in": null,
         "default_bearing": 294,
-        "trail_km": 119.6,
-        "trail_mi": 74.3
+        "trail_km": 120.5,
+        "trail_mi": 74.8
       }
     },
     {
@@ -175194,7 +175114,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "12 lifts · 72 pistes",
+        "infrastructure": "12 lifts · 73 pistes",
         "vertical_ft": 4117,
         "summit_elev_ft": 6949,
         "base_elev_ft": 2832,
@@ -175207,11 +175127,11 @@
         "summary": "",
         "website": "https://www.kreischberg.at/",
         "lift_count": 12,
-        "run_count": 72,
+        "run_count": 73,
         "avg_snowfall_in": null,
         "default_bearing": 208,
-        "trail_km": 39.7,
-        "trail_mi": 24.7
+        "trail_km": 40.1,
+        "trail_mi": 24.9
       }
     },
     {
@@ -175642,7 +175562,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "18 lifts · 62 pistes",
+        "infrastructure": "18 lifts · 63 pistes",
         "vertical_ft": 3293,
         "summit_elev_ft": 6745,
         "base_elev_ft": 3452,
@@ -175655,11 +175575,11 @@
         "summary": "",
         "website": "https://www.riservabianca.it/",
         "lift_count": 18,
-        "run_count": 62,
+        "run_count": 63,
         "avg_snowfall_in": null,
         "default_bearing": 153,
-        "trail_km": 42.2,
-        "trail_mi": 26.2
+        "trail_km": 42.4,
+        "trail_mi": 26.4
       }
     },
     {
@@ -175765,7 +175685,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "15 lifts · 38 pistes",
+        "infrastructure": "15 lifts · 39 pistes",
         "vertical_ft": 3107,
         "summit_elev_ft": 6721,
         "base_elev_ft": 3614,
@@ -175778,11 +175698,11 @@
         "summary": "",
         "website": "https://www.guzet.ski/",
         "lift_count": 15,
-        "run_count": 38,
+        "run_count": 39,
         "avg_snowfall_in": null,
         "default_bearing": 164,
-        "trail_km": 25.9,
-        "trail_mi": 16.1
+        "trail_km": 27.7,
+        "trail_mi": 17.2
       }
     },
     {
@@ -176820,7 +176740,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "11 lifts · 189 pistes",
+        "infrastructure": "11 lifts · 192 pistes",
         "vertical_ft": 2500,
         "summit_elev_ft": 6280,
         "base_elev_ft": 3780,
@@ -176833,11 +176753,11 @@
         "summary": "",
         "website": "https://www.skisilverstar.com/",
         "lift_count": 11,
-        "run_count": 189,
+        "run_count": 192,
         "avg_snowfall_in": 275,
         "default_bearing": 277,
-        "trail_km": 109.7,
-        "trail_mi": 68.2
+        "trail_km": 111.1,
+        "trail_mi": 69
       }
     },
     {
@@ -177470,7 +177390,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "24 lifts · 88 pistes",
+        "infrastructure": "24 lifts · 89 pistes",
         "vertical_ft": 5347,
         "summit_elev_ft": 7694,
         "base_elev_ft": 2347,
@@ -177482,11 +177402,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 24,
-        "run_count": 88,
+        "run_count": 89,
         "avg_snowfall_in": null,
         "default_bearing": 215,
-        "trail_km": 50.8,
-        "trail_mi": 31.6
+        "trail_km": 51.9,
+        "trail_mi": 32.2
       }
     },
     {
@@ -180186,7 +180106,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "8 lifts · 44 pistes",
+        "infrastructure": "8 lifts · 43 pistes",
         "vertical_ft": 3972,
         "summit_elev_ft": 8516,
         "base_elev_ft": 4544,
@@ -180199,10 +180119,10 @@
         "summary": "",
         "website": "https://www.leukerbad.ch/",
         "lift_count": 8,
-        "run_count": 44,
+        "run_count": 43,
         "avg_snowfall_in": null,
         "default_bearing": 59,
-        "trail_km": 24.2,
+        "trail_km": 24.1,
         "trail_mi": 15
       }
     },
@@ -181275,7 +181195,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "15 lifts · 110 pistes",
+        "infrastructure": "15 lifts · 111 pistes",
         "vertical_ft": 2204,
         "summit_elev_ft": 6683,
         "base_elev_ft": 4479,
@@ -181288,11 +181208,11 @@
         "summary": "",
         "website": "https://thredbo.com.au",
         "lift_count": 15,
-        "run_count": 110,
+        "run_count": 111,
         "avg_snowfall_in": null,
         "default_bearing": 326,
-        "trail_km": 54.7,
-        "trail_mi": 34
+        "trail_km": 54.9,
+        "trail_mi": 34.1
       }
     },
     {
@@ -184111,10 +184031,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 26 pistes",
-        "vertical_ft": 1098,
+        "infrastructure": "10 lifts · 27 pistes",
+        "vertical_ft": 1147,
         "summit_elev_ft": 3775,
-        "base_elev_ft": 2677,
+        "base_elev_ft": 2628,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -184124,11 +184044,11 @@
         "summary": "",
         "website": "https://www.ballondalsace.fr/",
         "lift_count": 10,
-        "run_count": 26,
+        "run_count": 27,
         "avg_snowfall_in": null,
         "default_bearing": 176,
-        "trail_km": 6.8,
-        "trail_mi": 4.3
+        "trail_km": 8,
+        "trail_mi": 5
       }
     },
     {
@@ -184598,7 +184518,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "15 lifts · 67 pistes",
+        "infrastructure": "15 lifts · 68 pistes",
         "vertical_ft": 2436,
         "summit_elev_ft": 4355,
         "base_elev_ft": 1919,
@@ -184611,11 +184531,11 @@
         "summary": "",
         "website": "https://www.alpinco.com/no/oppdal",
         "lift_count": 15,
-        "run_count": 67,
+        "run_count": 68,
         "avg_snowfall_in": null,
         "default_bearing": 352,
-        "trail_km": 39.6,
-        "trail_mi": 24.6
+        "trail_km": 40.6,
+        "trail_mi": 25.2
       }
     },
     {
@@ -184639,7 +184559,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "45 lifts · 455 pistes",
+        "infrastructure": "45 lifts · 457 pistes",
         "vertical_ft": 4347,
         "summit_elev_ft": 11162,
         "base_elev_ft": 6815,
@@ -184653,11 +184573,11 @@
         "summary": "",
         "website": "https://bigskyresort.com",
         "lift_count": 45,
-        "run_count": 455,
+        "run_count": 457,
         "avg_snowfall_in": null,
         "default_bearing": 242,
-        "trail_km": 236.4,
-        "trail_mi": 146.9
+        "trail_km": 238.1,
+        "trail_mi": 148
       }
     },
     {
@@ -186511,7 +186431,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "37 lifts · 224 pistes",
+        "infrastructure": "37 lifts · 221 pistes",
         "vertical_ft": 6315,
         "summit_elev_ft": 9760,
         "base_elev_ft": 3445,
@@ -186524,11 +186444,11 @@
         "summary": "",
         "website": "https://www.laax.com",
         "lift_count": 37,
-        "run_count": 224,
+        "run_count": 221,
         "avg_snowfall_in": null,
         "default_bearing": 319,
-        "trail_km": 149.3,
-        "trail_mi": 92.8
+        "trail_km": 150.2,
+        "trail_mi": 93.3
       }
     },
     {
@@ -187283,7 +187203,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "20 lifts · 85 pistes",
+        "infrastructure": "20 lifts · 84 pistes",
         "vertical_ft": 5049,
         "summit_elev_ft": 8126,
         "base_elev_ft": 3077,
@@ -187296,11 +187216,11 @@
         "summary": "",
         "website": "https://www.kronplatz.com/",
         "lift_count": 20,
-        "run_count": 85,
+        "run_count": 84,
         "avg_snowfall_in": null,
         "default_bearing": 228,
-        "trail_km": 60.4,
-        "trail_mi": 37.5
+        "trail_km": 59.3,
+        "trail_mi": 36.8
       }
     },
     {
@@ -189890,9 +189810,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "11 lifts · 47 pistes",
-        "vertical_ft": 1938,
-        "summit_elev_ft": 5153,
+        "infrastructure": "11 lifts · 56 pistes",
+        "vertical_ft": 2326,
+        "summit_elev_ft": 5541,
         "base_elev_ft": 3215,
         "skiable_acres": 0,
         "pass_networks": [
@@ -189903,11 +189823,11 @@
         "summary": "",
         "website": "https://www.alpenbahnen-spitzingsee.de/de/skifahren-snowboarden.html",
         "lift_count": 11,
-        "run_count": 47,
+        "run_count": 56,
         "avg_snowfall_in": null,
         "default_bearing": 152,
-        "trail_km": 16.3,
-        "trail_mi": 10.1
+        "trail_km": 21.5,
+        "trail_mi": 13.3
       }
     },
     {
@@ -190054,9 +189974,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 3 pistes",
-        "vertical_ft": 709,
-        "summit_elev_ft": 2899,
+        "infrastructure": "2 lifts · 5 pistes",
+        "vertical_ft": 1494,
+        "summit_elev_ft": 3684,
         "base_elev_ft": 2190,
         "skiable_acres": 0,
         "pass_networks": [
@@ -190067,11 +189987,11 @@
         "summary": "",
         "website": "https://www.josalzburg.com/",
         "lift_count": 2,
-        "run_count": 3,
+        "run_count": 5,
         "avg_snowfall_in": null,
         "default_bearing": 129,
-        "trail_km": 1.5,
-        "trail_mi": 0.9
+        "trail_km": 1.9,
+        "trail_mi": 1.2
       }
     },
     {
@@ -191069,10 +190989,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "8 lifts · 30 pistes",
-        "vertical_ft": 955,
+        "infrastructure": "8 lifts · 21 pistes",
+        "vertical_ft": 627,
         "summit_elev_ft": 4885,
-        "base_elev_ft": 3930,
+        "base_elev_ft": 4258,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -191082,11 +191002,11 @@
         "summary": "",
         "website": "http://www.mottaroneski.it/",
         "lift_count": 8,
-        "run_count": 30,
+        "run_count": 21,
         "avg_snowfall_in": null,
         "default_bearing": 152,
-        "trail_km": 11,
-        "trail_mi": 6.8
+        "trail_km": 7.2,
+        "trail_mi": 4.5
       }
     },
     {
@@ -191231,7 +191151,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 71 pistes",
+        "infrastructure": "10 lifts · 75 pistes",
         "vertical_ft": 4485,
         "summit_elev_ft": 7715,
         "base_elev_ft": 3230,
@@ -191244,11 +191164,11 @@
         "summary": "",
         "website": "https://www.sondrioevalmalenco.it/",
         "lift_count": 10,
-        "run_count": 71,
+        "run_count": 75,
         "avg_snowfall_in": null,
         "default_bearing": 120,
-        "trail_km": 22.7,
-        "trail_mi": 14.1
+        "trail_km": 26.6,
+        "trail_mi": 16.5
       }
     },
     {
@@ -192039,7 +191959,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 6 pistes",
+        "infrastructure": "4 lifts · 7 pistes",
         "vertical_ft": 5178,
         "summit_elev_ft": 7124,
         "base_elev_ft": 1946,
@@ -192052,11 +191972,11 @@
         "summary": "",
         "website": "https://www.churbergbahnen.ch/",
         "lift_count": 4,
-        "run_count": 6,
+        "run_count": 7,
         "avg_snowfall_in": null,
         "default_bearing": 237,
-        "trail_km": 9.5,
-        "trail_mi": 5.9
+        "trail_km": 9.9,
+        "trail_mi": 6.2
       }
     },
     {
@@ -193098,7 +193018,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "17 lifts · 28 pistes",
+        "infrastructure": "17 lifts · 29 pistes",
         "vertical_ft": 5294,
         "summit_elev_ft": 9711,
         "base_elev_ft": 4417,
@@ -193111,11 +193031,11 @@
         "summary": "",
         "website": "https://www.glacier3000.ch/",
         "lift_count": 17,
-        "run_count": 28,
+        "run_count": 29,
         "avg_snowfall_in": null,
         "default_bearing": 227,
-        "trail_km": 21.1,
-        "trail_mi": 13.1
+        "trail_km": 22,
+        "trail_mi": 13.7
       }
     },
     {
@@ -193871,7 +193791,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "19 lifts · 179 pistes",
+        "infrastructure": "19 lifts · 178 pistes",
         "vertical_ft": 3844,
         "summit_elev_ft": 7448,
         "base_elev_ft": 3604,
@@ -193884,7 +193804,7 @@
         "summary": "",
         "website": "https://www.obersaxen-mundaun.ch",
         "lift_count": 19,
-        "run_count": 179,
+        "run_count": 178,
         "avg_snowfall_in": null,
         "default_bearing": 160,
         "trail_km": 91.7,
@@ -195538,7 +195458,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "46 lifts · 343 pistes",
+        "infrastructure": "46 lifts · 344 pistes",
         "vertical_ft": 7578,
         "summit_elev_ft": 9579,
         "base_elev_ft": 2001,
@@ -195551,7 +195471,7 @@
         "summary": "",
         "website": "https://www.meribel.net",
         "lift_count": 46,
-        "run_count": 343,
+        "run_count": 344,
         "avg_snowfall_in": null,
         "default_bearing": 169,
         "trail_km": 141.2,
@@ -195701,7 +195621,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "14 lifts · 147 pistes",
+        "infrastructure": "14 lifts · 150 pistes",
         "vertical_ft": 2769,
         "summit_elev_ft": 9391,
         "base_elev_ft": 6622,
@@ -195714,11 +195634,11 @@
         "summary": "",
         "website": "https://powdermountain.com/",
         "lift_count": 14,
-        "run_count": 147,
+        "run_count": 150,
         "avg_snowfall_in": 360,
         "default_bearing": 166,
-        "trail_km": 125.7,
-        "trail_mi": 78.1
+        "trail_km": 127.4,
+        "trail_mi": 79.1
       }
     },
     {
@@ -195742,7 +195662,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "20 lifts · 23 pistes",
+        "infrastructure": "20 lifts · 19 pistes",
         "vertical_ft": 4111,
         "summit_elev_ft": 6241,
         "base_elev_ft": 2130,
@@ -195755,11 +195675,11 @@
         "summary": "",
         "website": "https://www.braunwald.ch/",
         "lift_count": 20,
-        "run_count": 23,
+        "run_count": 19,
         "avg_snowfall_in": null,
         "default_bearing": 347,
-        "trail_km": 12.5,
-        "trail_mi": 7.8
+        "trail_km": 9.4,
+        "trail_mi": 5.9
       }
     },
     {
@@ -197485,9 +197405,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "3 lifts · 10 pistes",
-        "vertical_ft": 1607,
-        "summit_elev_ft": 5930,
+        "infrastructure": "3 lifts · 11 pistes",
+        "vertical_ft": 1677,
+        "summit_elev_ft": 6000,
         "base_elev_ft": 4323,
         "skiable_acres": 791,
         "pass_networks": [
@@ -197498,11 +197418,11 @@
         "summary": "",
         "website": "https://www.templebasin.co.nz/",
         "lift_count": 3,
-        "run_count": 10,
+        "run_count": 11,
         "avg_snowfall_in": null,
         "default_bearing": 97,
-        "trail_km": 6.3,
-        "trail_mi": 3.9
+        "trail_km": 7.4,
+        "trail_mi": 4.6
       }
     },
     {
@@ -198866,7 +198786,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 32 pistes",
+        "infrastructure": "4 lifts · 26 pistes",
         "vertical_ft": 2287,
         "summit_elev_ft": 6036,
         "base_elev_ft": 3749,
@@ -198879,11 +198799,11 @@
         "summary": "",
         "website": "https://www.consorziomontecampione.it/",
         "lift_count": 4,
-        "run_count": 32,
+        "run_count": 26,
         "avg_snowfall_in": null,
         "default_bearing": 119,
-        "trail_km": 18.9,
-        "trail_mi": 11.8
+        "trail_km": 17.1,
+        "trail_mi": 10.6
       }
     },
     {
@@ -199710,7 +199630,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "48 lifts · 457 pistes",
+        "infrastructure": "48 lifts · 460 pistes",
         "vertical_ft": 5242,
         "summit_elev_ft": 9251,
         "base_elev_ft": 4009,
@@ -199723,11 +199643,11 @@
         "summary": "",
         "website": "https://www.serfaus-fiss-ladis.at/de/winter",
         "lift_count": 48,
-        "run_count": 457,
+        "run_count": 460,
         "avg_snowfall_in": null,
         "default_bearing": 262,
-        "trail_km": 164.4,
-        "trail_mi": 102.1
+        "trail_km": 167.1,
+        "trail_mi": 103.8
       }
     },
     {
@@ -200402,7 +200322,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "37 lifts · 213 pistes",
+        "infrastructure": "37 lifts · 215 pistes",
         "vertical_ft": 5681,
         "summit_elev_ft": 7942,
         "base_elev_ft": 2261,
@@ -200415,11 +200335,11 @@
         "summary": "",
         "website": "https://www.silvretta-montafon.at",
         "lift_count": 37,
-        "run_count": 213,
+        "run_count": 215,
         "avg_snowfall_in": null,
         "default_bearing": 110,
-        "trail_km": 101.4,
-        "trail_mi": 63
+        "trail_km": 101.9,
+        "trail_mi": 63.3
       }
     },
     {
@@ -201371,7 +201291,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 34 pistes",
+        "infrastructure": "5 lifts · 35 pistes",
         "vertical_ft": 2006,
         "summit_elev_ft": 6858,
         "base_elev_ft": 4852,
@@ -201384,11 +201304,11 @@
         "summary": "",
         "website": "https://www.fanningberg.info/",
         "lift_count": 5,
-        "run_count": 34,
+        "run_count": 35,
         "avg_snowfall_in": null,
         "default_bearing": 260,
-        "trail_km": 22.5,
-        "trail_mi": 14
+        "trail_km": 22.7,
+        "trail_mi": 14.1
       }
     },
     {
@@ -201575,7 +201495,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "6 lifts · 14 pistes",
+        "infrastructure": "6 lifts · 15 pistes",
         "vertical_ft": 1889,
         "summit_elev_ft": 6530,
         "base_elev_ft": 4641,
@@ -201587,11 +201507,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 6,
-        "run_count": 14,
+        "run_count": 15,
         "avg_snowfall_in": null,
         "default_bearing": 170,
-        "trail_km": 8.2,
-        "trail_mi": 5.1
+        "trail_km": 8.7,
+        "trail_mi": 5.4
       }
     },
     {
@@ -203849,7 +203769,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "5 lifts · 9 pistes",
+        "infrastructure": "5 lifts · 10 pistes",
         "vertical_ft": 690,
         "summit_elev_ft": 5746,
         "base_elev_ft": 5056,
@@ -203862,11 +203782,11 @@
         "summary": "",
         "website": "https://www.skirainbow.co.nz/",
         "lift_count": 5,
-        "run_count": 9,
+        "run_count": 10,
         "avg_snowfall_in": null,
         "default_bearing": 349,
-        "trail_km": 5.6,
-        "trail_mi": 3.5
+        "trail_km": 6.3,
+        "trail_mi": 3.9
       }
     },
     {
@@ -204216,7 +204136,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "25 lifts · 158 pistes",
+        "infrastructure": "25 lifts · 160 pistes",
         "vertical_ft": 3060,
         "summit_elev_ft": 12060,
         "base_elev_ft": 9000,
@@ -204229,11 +204149,11 @@
         "summary": "",
         "website": "https://www.winterparkresort.com",
         "lift_count": 25,
-        "run_count": 158,
+        "run_count": 160,
         "avg_snowfall_in": 344,
         "default_bearing": 194,
-        "trail_km": 111.2,
-        "trail_mi": 69.1
+        "trail_km": 111.7,
+        "trail_mi": 69.4
       }
     },
     {
@@ -204866,7 +204786,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "47 lifts · 185 pistes",
+        "infrastructure": "47 lifts · 187 pistes",
         "vertical_ft": 4295,
         "summit_elev_ft": 6485,
         "base_elev_ft": 2190,
@@ -204879,11 +204799,11 @@
         "summary": "",
         "website": "https://www.snow-space.com/",
         "lift_count": 47,
-        "run_count": 185,
+        "run_count": 187,
         "avg_snowfall_in": null,
         "default_bearing": 204,
-        "trail_km": 84.7,
-        "trail_mi": 52.6
+        "trail_km": 85.1,
+        "trail_mi": 52.9
       }
     },
     {
@@ -205596,7 +205516,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "9 lifts · 26 pistes",
+        "infrastructure": "9 lifts · 28 pistes",
         "vertical_ft": 1778,
         "summit_elev_ft": 3135,
         "base_elev_ft": 1357,
@@ -205609,11 +205529,11 @@
         "summary": "",
         "website": "http://www.wanfengtonghuaski.com/",
         "lift_count": 9,
-        "run_count": 26,
+        "run_count": 28,
         "avg_snowfall_in": null,
         "default_bearing": 190,
-        "trail_km": 21.8,
-        "trail_mi": 13.5
+        "trail_km": 22.6,
+        "trail_mi": 14
       }
     },
     {
@@ -208310,7 +208230,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "69 lifts · 451 pistes",
+        "infrastructure": "69 lifts · 452 pistes",
         "vertical_ft": 5918,
         "summit_elev_ft": 8154,
         "base_elev_ft": 2236,
@@ -208323,7 +208243,7 @@
         "summary": "",
         "website": "https://www.grand-massif.com/",
         "lift_count": 69,
-        "run_count": 451,
+        "run_count": 452,
         "avg_snowfall_in": null,
         "default_bearing": 144,
         "trail_km": 174.5,
@@ -208445,8 +208365,8 @@
         "run_count": 36,
         "avg_snowfall_in": null,
         "default_bearing": 39,
-        "trail_km": 29.7,
-        "trail_mi": 18.4
+        "trail_km": 29.1,
+        "trail_mi": 18.1
       }
     },
     {
@@ -209974,7 +209894,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "4 lifts · 8 pistes",
+        "infrastructure": "4 lifts · 10 pistes",
         "vertical_ft": 1826,
         "summit_elev_ft": 2859,
         "base_elev_ft": 1033,
@@ -209987,11 +209907,11 @@
         "summary": "",
         "website": "https://www.orstaskisenter.no/",
         "lift_count": 4,
-        "run_count": 8,
+        "run_count": 10,
         "avg_snowfall_in": null,
         "default_bearing": 1,
-        "trail_km": 5.4,
-        "trail_mi": 3.3
+        "trail_km": 9.5,
+        "trail_mi": 5.9
       }
     },
     {
@@ -210056,7 +209976,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 51 pistes",
+        "infrastructure": "7 lifts · 52 pistes",
         "vertical_ft": 5592,
         "summit_elev_ft": 11244,
         "base_elev_ft": 5652,
@@ -210069,11 +209989,11 @@
         "summary": "",
         "website": "https://www.pitztaler-gletscher.at/",
         "lift_count": 7,
-        "run_count": 51,
+        "run_count": 52,
         "avg_snowfall_in": null,
         "default_bearing": 229,
-        "trail_km": 30.2,
-        "trail_mi": 18.8
+        "trail_km": 31.6,
+        "trail_mi": 19.6
       }
     },
     {
@@ -210949,9 +210869,9 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 82 pistes",
-        "vertical_ft": 5935,
-        "summit_elev_ft": 7619,
+        "infrastructure": "7 lifts · 84 pistes",
+        "vertical_ft": 5951,
+        "summit_elev_ft": 7635,
         "base_elev_ft": 1684,
         "skiable_acres": 3121,
         "pass_networks": [
@@ -210963,11 +210883,11 @@
         "summary": "",
         "website": "https://www.revelstokemountainresort.com",
         "lift_count": 7,
-        "run_count": 82,
+        "run_count": 84,
         "avg_snowfall_in": 413,
         "default_bearing": 97,
-        "trail_km": 81.6,
-        "trail_mi": 50.7
+        "trail_km": 83.6,
+        "trail_mi": 52
       }
     },
     {
@@ -211047,8 +210967,8 @@
         "run_count": null,
         "avg_snowfall_in": null,
         "default_bearing": 180,
-        "trail_km": 24,
-        "trail_mi": 14.9
+        "trail_km": null,
+        "trail_mi": null
       }
     },
     {
@@ -211758,7 +211678,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "9 lifts · 60 pistes",
+        "infrastructure": "9 lifts · 61 pistes",
         "vertical_ft": 1862,
         "summit_elev_ft": 8484,
         "base_elev_ft": 6622,
@@ -211771,11 +211691,11 @@
         "summary": "",
         "website": "https://www.bearvalley.com/",
         "lift_count": 9,
-        "run_count": 60,
+        "run_count": 61,
         "avg_snowfall_in": 359,
         "default_bearing": 142,
-        "trail_km": 35.2,
-        "trail_mi": 21.9
+        "trail_km": 35.5,
+        "trail_mi": 22.1
       }
     },
     {
@@ -211799,7 +211719,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "16 lifts · 113 pistes",
+        "infrastructure": "16 lifts · 116 pistes",
         "vertical_ft": 2550,
         "summit_elev_ft": 7606,
         "base_elev_ft": 4950,
@@ -211812,11 +211732,11 @@
         "summary": "",
         "website": "https://www.bigwhite.com",
         "lift_count": 16,
-        "run_count": 113,
+        "run_count": 116,
         "avg_snowfall_in": 295,
         "default_bearing": 3,
-        "trail_km": 94.6,
-        "trail_mi": 58.8
+        "trail_km": 95.9,
+        "trail_mi": 59.6
       }
     },
     {
@@ -212772,7 +212692,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "75 lifts · 335 pistes",
+        "infrastructure": "75 lifts · 336 pistes",
         "vertical_ft": 6097,
         "summit_elev_ft": 10032,
         "base_elev_ft": 3935,
@@ -212785,11 +212705,11 @@
         "summary": "",
         "website": "https://en.laplagne.com",
         "lift_count": 75,
-        "run_count": 335,
+        "run_count": 336,
         "avg_snowfall_in": null,
         "default_bearing": 168,
-        "trail_km": 188.1,
-        "trail_mi": 116.9
+        "trail_km": 188.7,
+        "trail_mi": 117.3
       }
     },
     {
@@ -214031,7 +213951,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 20 pistes",
+        "infrastructure": "7 lifts · 22 pistes",
         "vertical_ft": 3849,
         "summit_elev_ft": 5734,
         "base_elev_ft": 1885,
@@ -214043,11 +213963,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 7,
-        "run_count": 20,
+        "run_count": 22,
         "avg_snowfall_in": null,
         "default_bearing": 146,
-        "trail_km": 22.1,
-        "trail_mi": 13.7
+        "trail_km": 23,
+        "trail_mi": 14.3
       }
     },
     {
@@ -215171,7 +215091,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "7 lifts · 44 pistes",
+        "infrastructure": "7 lifts · 45 pistes",
         "vertical_ft": 3430,
         "summit_elev_ft": 8210,
         "base_elev_ft": 4780,
@@ -215183,11 +215103,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 7,
-        "run_count": 44,
+        "run_count": 45,
         "avg_snowfall_in": null,
         "default_bearing": 118,
-        "trail_km": 24,
-        "trail_mi": 14.9
+        "trail_km": 24.2,
+        "trail_mi": 15
       }
     },
     {
@@ -215698,7 +215618,7 @@
         "is_closed": false,
         "is_private": true,
         "archetype": "Private Member Ski Club",
-        "infrastructure": "17 lifts · 98 pistes",
+        "infrastructure": "17 lifts · 101 pistes",
         "vertical_ft": 2670,
         "summit_elev_ft": 9851,
         "base_elev_ft": 7181,
@@ -215711,11 +215631,11 @@
         "summary": "",
         "website": "https://yellowstoneclub.com/",
         "lift_count": 17,
-        "run_count": 98,
+        "run_count": 101,
         "avg_snowfall_in": null,
         "default_bearing": 242,
-        "trail_km": 101.5,
-        "trail_mi": 63.1
+        "trail_km": 103.7,
+        "trail_mi": 64.5
       }
     },
     {
@@ -217487,10 +217407,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "2 lifts · 24 pistes",
-        "vertical_ft": 811,
+        "infrastructure": "2 lifts · 20 pistes",
+        "vertical_ft": 805,
         "summit_elev_ft": 2260,
-        "base_elev_ft": 1449,
+        "base_elev_ft": 1455,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -217500,11 +217420,11 @@
         "summary": "",
         "website": "https://valdi.ski/en/home.html",
         "lift_count": 2,
-        "run_count": 24,
+        "run_count": 20,
         "avg_snowfall_in": null,
         "default_bearing": 317,
-        "trail_km": 14.5,
-        "trail_mi": 9
+        "trail_km": 12.8,
+        "trail_mi": 8
       }
     },
     {
@@ -218136,7 +218056,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "49 lifts · 111 pistes",
+        "infrastructure": "49 lifts · 112 pistes",
         "vertical_ft": 4261,
         "summit_elev_ft": 9910,
         "base_elev_ft": 5649,
@@ -218149,10 +218069,10 @@
         "summary": "",
         "website": "https://www.mountains.ch/",
         "lift_count": 49,
-        "run_count": 111,
+        "run_count": 112,
         "avg_snowfall_in": null,
         "default_bearing": 294,
-        "trail_km": 67.5,
+        "trail_km": 67.6,
         "trail_mi": 42
       }
     },
@@ -219112,7 +219032,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "75 lifts · 352 pistes",
+        "infrastructure": "75 lifts · 350 pistes",
         "vertical_ft": 8153,
         "summit_elev_ft": 10844,
         "base_elev_ft": 2691,
@@ -219125,11 +219045,11 @@
         "summary": "",
         "website": "https://verbier4vallees.ch",
         "lift_count": 75,
-        "run_count": 352,
+        "run_count": 350,
         "avg_snowfall_in": null,
         "default_bearing": 165,
-        "trail_km": 172.8,
-        "trail_mi": 107.4
+        "trail_km": 170.2,
+        "trail_mi": 105.8
       }
     },
     {
@@ -219276,10 +219196,10 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "1 lifts · 0 pistes",
-        "vertical_ft": 231,
-        "summit_elev_ft": 587,
-        "base_elev_ft": 356,
+        "infrastructure": "1 lifts · 1 pistes",
+        "vertical_ft": 902,
+        "summit_elev_ft": 1113,
+        "base_elev_ft": 211,
         "skiable_acres": 0,
         "pass_networks": [
           "Independent"
@@ -219288,7 +219208,7 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 1,
-        "run_count": 0,
+        "run_count": 1,
         "avg_snowfall_in": null,
         "default_bearing": 53,
         "trail_km": null,
@@ -220781,7 +220701,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "63 lifts · 345 pistes",
+        "infrastructure": "63 lifts · 349 pistes",
         "vertical_ft": 7657,
         "summit_elev_ft": 12768,
         "base_elev_ft": 5111,
@@ -220794,11 +220714,11 @@
         "summary": "",
         "website": "https://www.matterhornparadise.ch",
         "lift_count": 63,
-        "run_count": 345,
+        "run_count": 349,
         "avg_snowfall_in": null,
         "default_bearing": 150,
-        "trail_km": 207.4,
-        "trail_mi": 128.9
+        "trail_km": 208.5,
+        "trail_mi": 129.6
       }
     },
     {
@@ -223521,11 +223441,11 @@
         "region": "Quebec",
         "lng": -68.89409,
         "lat": 47.66528,
-        "category": "heli_cat",
+        "category": "nordic",
         "status": "operating",
         "is_closed": false,
         "is_private": false,
-        "archetype": "Heli & Cat Ski Operation",
+        "archetype": "Cross-Country Ski Center",
         "infrastructure": "1 lifts · 2 pistes",
         "vertical_ft": 122,
         "summit_elev_ft": 676,
@@ -223647,7 +223567,7 @@
         "is_closed": false,
         "is_private": false,
         "archetype": "Alpine Ski Area",
-        "infrastructure": "10 lifts · 26 pistes",
+        "infrastructure": "10 lifts · 28 pistes",
         "vertical_ft": 1299,
         "summit_elev_ft": 3239,
         "base_elev_ft": 1940,
@@ -223659,11 +223579,11 @@
         "pass_color": "#8A847C",
         "summary": "",
         "lift_count": 10,
-        "run_count": 26,
+        "run_count": 28,
         "avg_snowfall_in": null,
         "default_bearing": 148,
-        "trail_km": 9.5,
-        "trail_mi": 5.9
+        "trail_km": 10.2,
+        "trail_mi": 6.3
       }
     },
     {

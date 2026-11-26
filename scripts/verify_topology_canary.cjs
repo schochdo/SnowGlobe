@@ -4,7 +4,7 @@
  * scripts/verify_topology_canary.cjs
  *
  * Fast CLI verification script for Piste Topology Graph classification.
- * Loads 7 representative resort JSONs from public/data/trails/, strips any
+ * Loads 11 representative resort JSONs from public/data/trails/, strips any
  * pre-baked `atlas_category`, runs `classifySkiAreaTopology`, prints a concise
  * pass/fail summary table of category counts, and asserts known edge cases.
  */
@@ -13,13 +13,15 @@ const fs = require('fs');
 const path = require('path');
 const { classifySkiAreaTopology } = require('../data_pipeline/pisteTopologyGraph.cjs');
 
-// 1. Target representative resorts
 const TEST_RESORTS = [
   { id: 'mt-baker', file: 'public/data/trails/mt-baker.json', label: 'Mt. Baker' },
   { id: 'jackson-hole', file: 'public/data/trails/jackson-hole.json', label: 'Jackson Hole' },
+  { id: 'grand-targhee', file: 'public/data/trails/grand-targhee.json', label: 'Grand Targhee' },
   { id: 'queyras-haut-guil', file: 'public/data/trails/534530805814dea3640ab85f879f4d122fec8aac.json', label: 'Queyras (Abriès/Valpreveyre)' },
   { id: 'levi', file: 'public/data/trails/6ff3d800655f463f2ea8d24980630b01000c8c49.json', label: 'Levi (Kittilä)' },
   { id: 'whistler-blackcomb', file: 'public/data/trails/whistler-blackcomb.json', label: 'Whistler Blackcomb' },
+  { id: 'revelstoke', file: 'public/data/trails/revelstoke.json', label: 'Revelstoke' },
+  { id: 'kicking-horse', file: 'public/data/trails/kicking-horse.json', label: 'Kicking Horse' },
   { id: 'chamonix', file: 'public/data/trails/chamonix.json', label: 'Chamonix Mont-Blanc' },
   { id: 'zermatt', file: 'public/data/trails/zermatt.json', label: 'Zermatt / Matterhorn' },
   { id: 'crested-butte', file: 'public/data/trails/crested-butte.json', label: 'Crested Butte' },
@@ -32,18 +34,21 @@ console.log('='.repeat(78));
 const tableRows = [];
 const failures = [];
 
-// Track specific edge case assertions
 const edgeAssertions = {
   bakerBlueberryChutesTouring: false,
   jackson41MiPathIgnored: false,
+  jacksonCodyBowlTouringAndHeadwallDownhill: false,
+  targheeMarysNippleDownhill: false,
   queyrasValpreveyreDownhill: false,
   whistlerCatwalksDownhill: false,
+  whistlerInboundsBowlsAndBootpacksDownhill: false,
+  whistlerSpearheadBackcountryTouring: false,
+  revelstokeAndKickingHorseBowlsDownhill: false,
   leviBaseTracksNordic: false,
   crestedButteDownhillBowlGlades: false,
 };
 
 // Raw un-pruned 4.1-mile Jackson Hole summer hiking path (id: 548d46ed)
-// Tested as an unclassified input to verify Universal Physical Gradient Law filters it to 'ignore'
 const JACKSON_4_1MI_RAW_FEATURE = {
   type: 'Feature',
   id: '548d46ede0ecb638149da6b7f45aab8c217d3707',
@@ -100,8 +105,8 @@ const JACKSON_4_1MI_RAW_FEATURE = {
       [-110.829118, 43.5812485, 2057.7],
       [-110.8288325, 43.5802862, 2052.4],
       [-110.8285471, 43.5793238, 2047.1],
-      [-110.8280987, 43.5918916, 1969.2]
-    ]
+      [-110.8280987, 43.5918916, 1969.2],
+    ],
   },
   properties: {
     id: '548d46ede0ecb638149da6b7f45aab8c217d3707',
@@ -112,9 +117,12 @@ const JACKSON_4_1MI_RAW_FEATURE = {
     'piste:difficulty': 'freeride',
     uses: ['downhill'],
     grooming: 'backcountry',
-    gladed: null
-  }
+    gladed: null,
+  },
 };
+
+let revOk = false;
+let khOk = false;
 
 for (const resort of TEST_RESORTS) {
   const filePath = path.resolve(__dirname, '..', resort.file);
@@ -129,28 +137,23 @@ for (const resort of TEST_RESORTS) {
   const rawPistes = originalFeatures.filter(f => f.properties?.kind === 'piste');
   const lifts = originalFeatures.filter(f => f.properties?.kind === 'lift' || f.properties?.kind === 'aerialway');
 
-  // Deep clone and completely strip any pre-baked atlas_category
   const clonedPistes = JSON.parse(JSON.stringify(rawPistes));
   for (const p of clonedPistes) {
     delete p.properties.atlas_category;
   }
 
-  // Inject raw Jackson Hole 4.1-mi path into Jackson Hole test run to verify Universal Gradient Law
   if (resort.id === 'jackson-hole') {
     clonedPistes.push(JSON.parse(JSON.stringify(JACKSON_4_1MI_RAW_FEATURE)));
   }
 
-  // Run canonical classifier
   classifySkiAreaTopology(clonedPistes, lifts);
 
-  // Aggregate category counts
   const counts = { downhill: 0, nordic: 0, touring: 0, ignore: 0 };
   for (const p of clonedPistes) {
     const cat = p.properties.atlas_category || 'undefined';
     counts[cat] = (counts[cat] || 0) + 1;
   }
 
-  // Run Resort-Specific Assertions
   if (resort.id === 'mt-baker') {
     const blueberryChutes = clonedPistes.find(p => p.properties?.name === 'Blueberry Chutes');
     if (blueberryChutes && blueberryChutes.properties.atlas_category === 'touring') {
@@ -166,6 +169,28 @@ for (const resort of TEST_RESORTS) {
       edgeAssertions.jackson41MiPathIgnored = true;
     } else {
       failures.push(`Jackson Hole: 4.1-mi path expected 'ignore', got '${jackson41?.properties?.atlas_category}'`);
+    }
+
+    const headwall = clonedPistes.find(p => p.properties?.name === 'Headwall Traverse');
+    const cody = clonedPistes.filter(p => p.properties?.name === 'Cody Bowl');
+    if (
+      headwall?.properties?.atlas_category === 'downhill' &&
+      cody.length > 0 &&
+      cody.every(p => p.properties.atlas_category === 'touring')
+    ) {
+      edgeAssertions.jacksonCodyBowlTouringAndHeadwallDownhill = true;
+    } else {
+      failures.push(`Jackson Hole: Headwall expected 'downhill' (${headwall?.properties?.atlas_category}), Cody Bowl expected 'touring'`);
+    }
+  }
+
+  if (resort.id === 'grand-targhee') {
+    const marys = clonedPistes.find(p => p.properties?.name === "Mary's Nipple Traverse");
+    const watchabe = clonedPistes.find(p => p.properties?.name === 'Watchabe Return');
+    if (marys?.properties?.atlas_category === 'downhill' && watchabe?.properties?.atlas_category === 'downhill') {
+      edgeAssertions.targheeMarysNippleDownhill = true;
+    } else {
+      failures.push(`Grand Targhee: Mary's Nipple Traverse ('${marys?.properties?.atlas_category}') & Watchabe Return ('${watchabe?.properties?.atlas_category}') expected 'downhill'`);
     }
   }
 
@@ -189,8 +214,53 @@ for (const resort of TEST_RESORTS) {
     if (mostlyDownhill) {
       edgeAssertions.whistlerCatwalksDownhill = true;
     } else {
-      failures.push(`Whistler: Expected flat catwalks/traverses to be 'downhill', found non-downhill items`);
+      failures.push(`Whistler: Expected flat catwalks/traverses to be 'downhill'`);
     }
+
+    const inboundsNames = ['Ruby Bowl', 'Lakeside Bowl', 'Symphony Bowl', 'Olympic Learning Zone', "Surf's Up"];
+    const allInboundsOk = inboundsNames.every(nm => {
+      const matches = clonedPistes.filter(p => p.properties?.name === nm);
+      return matches.length > 0 && matches.every(m => m.properties.atlas_category === 'downhill');
+    });
+    const benchClimb = clonedPistes.filter(p => p.properties?.name === 'Blackcomb Bench Climb');
+    const benchOk = benchClimb.length > 0 && benchClimb.every(m => m.properties.atlas_category === 'downhill');
+    if (allInboundsOk && benchOk) {
+      edgeAssertions.whistlerInboundsBowlsAndBootpacksDownhill = true;
+    } else {
+      failures.push(
+        `Whistler: Expected Ruby/Lakeside/Symphony/Olympic/Surf's Up & Blackcomb Bench Climb to be 'downhill'`
+      );
+    }
+
+    const bcNames = ['Spearhead Traverse', 'Singing Pass Trail', 'Rainbow Lake Trail'];
+    const allBcOk = bcNames.every(nm => {
+      const matches = clonedPistes.filter(p => (p.properties?.name || '').includes(nm));
+      return matches.length > 0 && matches.every(m => m.properties.atlas_category === 'touring');
+    });
+    if (allBcOk) {
+      edgeAssertions.whistlerSpearheadBackcountryTouring = true;
+    } else {
+      failures.push(`Whistler: Expected Spearhead/Singing Pass/Rainbow Lake to remain 'touring'`);
+    }
+  }
+
+  if (resort.id === 'revelstoke') {
+    const revNames = ['Conifers of Gnarnia Glades', 'Powder Monkey Glades', 'Upper South Side', 'Powder Assault'];
+    revOk = revNames.every(nm => {
+      const matches = clonedPistes.filter(p => p.properties?.name === nm);
+      return matches.length > 0 && matches.every(m => m.properties.atlas_category === 'downhill');
+    });
+    if (!revOk) failures.push(`Revelstoke: Expected Gnarnia/Powder Monkey/Upper South Side/Powder Assault to be 'downhill'`);
+  }
+
+  if (resort.id === 'kicking-horse') {
+    const khNames = ['Fuez Bowl', 'T2 North Ridge'];
+    khOk = khNames.every(nm => {
+      const matches = clonedPistes.filter(p => p.properties?.name === nm);
+      return matches.length > 0 && matches.every(m => m.properties.atlas_category === 'downhill');
+    });
+    if (!khOk) failures.push(`Kicking Horse: Expected Fuez Bowl & T2 North Ridge to be 'downhill'`);
+    edgeAssertions.revelstokeAndKickingHorseBowlsDownhill = revOk && khOk;
   }
 
   if (resort.id === 'levi') {
@@ -207,16 +277,15 @@ for (const resort of TEST_RESORTS) {
     const staircases = clonedPistes.filter(p => p.properties?.name === 'Staircase');
     const treeline = clonedPistes.find(p => p.properties?.name === 'Treeline');
 
-    const pStepsDownhill = pSteps?.properties?.atlas_category === 'downhill';
-    const staircaseDownhill = staircases.length > 0 && staircases.every(p => p.properties?.atlas_category === 'downhill');
-    const treelineDownhill = treeline?.properties?.atlas_category === 'downhill';
-
-    if (pStepsDownhill && staircaseDownhill && treelineDownhill) {
+    if (
+      pSteps?.properties?.atlas_category === 'downhill' &&
+      staircases.length > 0 &&
+      staircases.every(p => p.properties?.atlas_category === 'downhill') &&
+      treeline?.properties?.atlas_category === 'downhill'
+    ) {
       edgeAssertions.crestedButteDownhillBowlGlades = true;
     } else {
-      failures.push(
-        `Crested Butte: Expected Phoenix Steps ('${pSteps?.properties?.atlas_category}'), Staircase (${JSON.stringify(staircases.map(s => s.properties?.atlas_category))}), Treeline ('${treeline?.properties?.atlas_category}') to be 'downhill'`
-      );
+      failures.push(`Crested Butte: Expected Phoenix Steps, Staircase, Treeline to be 'downhill'`);
     }
   }
 
@@ -230,20 +299,24 @@ for (const resort of TEST_RESORTS) {
   });
 }
 
-// Print Category Table
 console.table(tableRows);
 
 console.log('-'.repeat(78));
 console.log('  EDGE CASE ASSERTIONS:');
 console.log('-'.repeat(78));
 
-const check = (ok) => ok ? '✓ PASS' : '✗ FAIL';
+const check = (ok) => (ok ? '✓ PASS' : '✗ FAIL');
 console.log(`  ${check(edgeAssertions.bakerBlueberryChutesTouring)} : Baker Blueberry Chutes == 'touring' (Gravity Sink Law)`);
 console.log(`  ${check(edgeAssertions.jackson41MiPathIgnored)} : Jackson Hole 4.1-mi path == 'ignore' (Physical Gradient Law)`);
+console.log(`  ${check(edgeAssertions.jacksonCodyBowlTouringAndHeadwallDownhill)} : Jackson Hole Headwall == 'downhill' & Cody Bowl == 'touring'`);
+console.log(`  ${check(edgeAssertions.targheeMarysNippleDownhill)} : Grand Targhee Mary's Nipple Traverse & Watchabe Return == 'downhill'`);
 console.log(`  ${check(edgeAssertions.queyrasValpreveyreDownhill)} : Queyras Valpreveyre == 'downhill' (1km Spatial Fracture BFS)`);
 console.log(`  ${check(edgeAssertions.whistlerCatwalksDownhill)} : Whistler flat catwalks == 'downhill' (Machine Groomed Flow)`);
+console.log(`  ${check(edgeAssertions.whistlerInboundsBowlsAndBootpacksDownhill)} : Whistler Ruby/Lakeside/Symphony/Olympic/Bench Climb == 'downhill'`);
+console.log(`  ${check(edgeAssertions.whistlerSpearheadBackcountryTouring)} : Whistler Spearhead/Singing Pass/Rainbow Lake == 'touring'`);
+console.log(`  ${check(edgeAssertions.revelstokeAndKickingHorseBowlsDownhill)} : Revelstoke & Kicking Horse hike-to bowls/glades == 'downhill'`);
 console.log(`  ${check(edgeAssertions.leviBaseTracksNordic)} : Levi base tracks == 'nordic' (Strict Discipline Segregation)`);
-console.log(`  ${check(edgeAssertions.crestedButteDownhillBowlGlades)} : Crested Butte Phoenix Steps / Staircase / Treeline == 'downhill' (Cliff Band & Polygon Snapping)`);
+console.log(`  ${check(edgeAssertions.crestedButteDownhillBowlGlades)} : Crested Butte Phoenix Steps / Staircase / Treeline == 'downhill'`);
 
 console.log('='.repeat(78));
 
@@ -252,6 +325,6 @@ if (failures.length > 0) {
   failures.forEach(f => console.error(`  - ${f}`));
   process.exit(1);
 } else {
-  console.log('ALL CANARY TOPOLOGY CHECKS PASSED DETERMINISTICALLY.\n');
+  console.log('ALL 11 CANARY TOPOLOGY CHECKS PASSED DETERMINISTICALLY.\n');
   process.exit(0);
 }

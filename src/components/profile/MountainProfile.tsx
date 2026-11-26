@@ -118,20 +118,28 @@ export const MountainProfile: React.FC<MountainProfileProps> = ({
                   <div className="text-sm font-bold text-[#1C1B18] mt-0.5">Nordic XC</div>
                 </div>
               </>
-            ) : resort.category === 'touring' ? (
+            ) : resort.category === 'heli_cat' ? (
               <>
                 <div>
-                  <div className="text-[10px] font-semibold text-[#5C5852] uppercase tracking-wider">Lines / Chutes</div>
-                  <div className="text-sm font-bold text-[#B45309] mt-0.5">{resort.run_count ?? stats.pistes ?? '—'}</div>
+                  <div className="text-[10px] font-semibold text-[#5C5852] uppercase tracking-wider">Access</div>
+                  <div className="text-sm font-bold text-[#B84A39] mt-0.5">
+                    {resort.archetype === 'Cat & Heli' || resort.archetype === 'Heli & Cat'
+                      ? 'Cat & Heli'
+                      : resort.operation_type === 'cat_ski'
+                      ? 'Snowcat'
+                      : 'Helicopter'}
+                  </div>
                 </div>
                 <div>
                   <div className="text-[10px] font-semibold text-[#5C5852] uppercase tracking-wider">Terrain</div>
-                  <div className="text-sm font-bold text-[#1C1B18] mt-0.5">Backcountry</div>
+                  <div className="text-sm font-bold text-[#1C1B18] mt-0.5">Guided BC</div>
                 </div>
                 <div>
-                  <div className="text-[10px] font-semibold text-[#5C5852] uppercase tracking-wider">Acres</div>
+                  <div className="text-[10px] font-semibold text-[#5C5852] uppercase tracking-wider">Tenure</div>
                   <div className="text-sm font-bold text-[#1C1B18] mt-0.5">
-                    {stats.acres && stats.acres > 0 ? formatAcres(stats.acres, unitsMetric) : resort.skiable_acres ? formatAcres(resort.skiable_acres, unitsMetric) : '—'}
+                    {resort.tenure_acres && resort.tenure_acres > 0
+                      ? formatAcres(resort.tenure_acres, unitsMetric)
+                      : '—'}
                   </div>
                 </div>
               </>

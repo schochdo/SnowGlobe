@@ -16,7 +16,8 @@ const path = require('path');
 const { DatabaseSync } = require('node:sqlite');
 
 const DB_PATH = path.join(__dirname, '../data_pipeline/trails.db');
-const TUCKERMAN_PATH = path.join(__dirname, '../public/data/trails/tuckerman-ravine.json');
+const TRAILS_DIR = path.join(__dirname, '../public/data/trails');
+const TUCKERMAN_PATH = path.join(__dirname, '../data_pipeline/tuckerman_ravine_chutes.json');
 const OUT_DIR = path.join(__dirname, '../public/data/touring');
 
 if (!fs.existsSync(DB_PATH)) {
@@ -57,6 +58,24 @@ function getFirstPoint(geom) {
 const seenIds = new Set();
 const tiles = new Map();
 let totalExported = 0;
+
+// 0. Collect all trail IDs classified as inbounds `downhill` or `nordic` across resort trail files
+//    so rescued inbounds bootpacks (e.g. Mary's Nipple Traverse, Blackcomb Bench Climb) never leak into touring tiles.
+if (fs.existsSync(TRAILS_DIR)) {
+  for (const file of fs.readdirSync(TRAILS_DIR)) {
+    if (!file.endsWith('.json') || file === 'tuckerman-ravine.json' || file === 'manifest.json') continue;
+    try {
+      const rfc = JSON.parse(fs.readFileSync(path.join(TRAILS_DIR, file), 'utf8'));
+      for (const f of rfc.features || []) {
+        const cat = f.properties?.atlas_category;
+        if (cat === 'downhill' || cat === 'nordic') {
+          const fid = String(f.properties?.id ?? f.id ?? '');
+          if (fid) seenIds.add(fid);
+        }
+      }
+    } catch (_) {}
+  }
+}
 
 function addFeature(rawFeature) {
   if (!rawFeature || !rawFeature.geometry) return;

@@ -81,7 +81,17 @@ export const ResortCard: React.FC<ResortCardProps> = ({
           {(() => {
             const stats: string[] = [];
             const isEuro = isEuropeanResort(r.country);
-            if (r.category !== 'nordic') {
+            if (r.category === 'heli_cat') {
+              if (r.vertical_drop_ft && r.vertical_drop_ft > 0) {
+                stats.push(formatVert(r.vertical_drop_ft, unitsMetric));
+              }
+              if (r.tenure_acres && r.tenure_acres > 0) {
+                stats.push(`${formatAcres(r.tenure_acres, unitsMetric)} tenure`);
+              }
+              if (r.avg_snowfall_in && r.avg_snowfall_in > 0) {
+                stats.push(`${formatSnow(r.avg_snowfall_in, unitsMetric)}/yr`);
+              }
+            } else if (r.category !== 'nordic') {
               if (r.vertical_drop_ft && r.vertical_drop_ft > 0) {
                 stats.push(formatVert(r.vertical_drop_ft, unitsMetric));
               }

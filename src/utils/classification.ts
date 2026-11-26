@@ -89,6 +89,10 @@ export function getEquivalentResortSize(resort: {
   run_count?: number | null;
   category?: string | null;
 }): number {
+  if (resort.category === 'heli_cat') {
+    // Backcountry flight/cat permit tenure is not comparable to inbounds lift-served skiable acres
+    return 0;
+  }
   if (resort.category === 'nordic') {
     return (resort.trail_km || resort.run_count || 0) * 10;
   }
@@ -163,7 +167,10 @@ export function classifySkiFeature(
     p.archetype === 'National Park Nordic Center'
   ) {
     category = 'nordic';
-  } else if (p.category === 'heli_cat') {
+  } else if (
+    p.category === 'heli_cat' ||
+    /\b(heli[-\s]?ski\w*|heliski\w*|cat[-\s]?ski\w*|snowcat\w*|powder\s*cats?)\b/i.test(nameLower)
+  ) {
     category = 'heli_cat';
   } else if (p.category === 'touring' || p.archetype?.toLowerCase().includes('touring') || p.archetype?.toLowerCase().includes('backcountry')) {
     category = 'touring';

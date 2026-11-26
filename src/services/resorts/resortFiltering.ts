@@ -72,8 +72,9 @@ export function filterResortCatalog(
       const diff = (a.vertical_drop_ft || 0) - (b.vertical_drop_ft || 0);
       return diff * multiplier;
     } else if (sortBy === 'acres') {
-      const valA = getEquivalentResortSize(a);
-      const valB = getEquivalentResortSize(b);
+      const heliOnly = showHeliCat && !showDownhill && !showNordic;
+      const valA = heliOnly ? (a.tenure_acres || 0) : getEquivalentResortSize(a);
+      const valB = heliOnly ? (b.tenure_acres || 0) : getEquivalentResortSize(b);
       const diff = valA - valB;
       return diff * multiplier;
     } else {
