@@ -1,7 +1,7 @@
 import type { Map as MapLibreMap } from 'maplibre-gl';
 import { CAMERA_CONSTANTS } from './types';
 
-export const DEFAULT_NORTH_AMERICA_CENTER: [number, number] = [-98, 40];
+export const DEFAULT_NORTH_AMERICA_CENTER: [number, number] = [-105.55, 39.0];
 
 /**
  * Normalizes bearing in degrees to [0, 360)
@@ -103,7 +103,7 @@ export function sampleTerrainObstacle(
  * @param windowHeight - Window inner height in CSS pixels
  * @param isMobile - Whether running on a mobile viewport (<768px)
  * @param dockOpen - Whether the desktop left dock is open (404px width)
- * @param centerLat - Center latitude in degrees (defaults to 40 for North America focus)
+ * @param centerLat - Center latitude in degrees (defaults to 39.0 for Colorado focus)
  * @param targetRatio - Target ratio of the constraining viewport dimension (defaults to 0.84)
  */
 export function computeGlobeFitZoom(
@@ -111,7 +111,7 @@ export function computeGlobeFitZoom(
   windowHeight: number,
   isMobile: boolean,
   dockOpen: boolean,
-  centerLat: number = 40,
+  centerLat: number = 39.0,
   targetRatio: number = 0.84
 ): number {
   const leftPad = isMobile ? 0 : (dockOpen ? 404 : 20);

@@ -183,7 +183,7 @@ GLOBAL_SKI_ATLAS (static)
 **Library:** MapLibre GL JS (open-source fork of Mapbox GL JS)
 
 **Projection modes:**
-- `globe` — 3D spherical globe (default on startup, centered on North America)
+- `globe` — 3D spherical globe (default on startup, centered on Colorado)
 - `mercator` — flat 2D map
 
 **Terrain:** Mapterhorn global DEM (void-free, replaces AWS Terrarium which caused geometry spikes)
@@ -206,7 +206,7 @@ GLOBAL_SKI_ATLAS (static)
 **Globe startup behavior:**
 - Initial padding applied **synchronously** before map construction to prevent globe drift
 - North-up (`bearing: 0`) by default
-- Centered on North America: `[-100, 47]` zoom 3.2
+- Centered on Colorado: `[-105.55, 39.0]` (calibrated to ~84% of available viewport)
 
 ---
 

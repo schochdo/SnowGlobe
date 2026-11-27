@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+### Feat
+- **Centered Initial 3D Globe on Colorado (`[-105.55, 39.0]`)**:
+  - Updated `DEFAULT_NORTH_AMERICA_CENTER` in `src/camera/cameraUtils.ts` from central Kansas (`[-98, 40]`) to the geographic center of Colorado (`[-105.55, 39.0]`), so startup and global reset in 3D globe mode frame Colorado and the Western Cordillera directly.
+
 ### Fixed & Feat
 - **Single-State Units Button (`°C/m` ↔ `°F/ft`) in Filters & Auto-Dismiss Filter Panel on Search**:
   - **What was wrong**:
