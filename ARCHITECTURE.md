@@ -99,8 +99,8 @@ SnowGlobe/
 │   └── pisteTopologyGraph.cjs     ← CommonJS adapter re-exporting canonical src/utils/pisteTopologyGraph.ts
 ├── scripts/
 │   ├── apply_piste_topology.cjs   ← Offline batch script: applies topology classifier to public/data/trails/
-│   ├── verify_topology_canary.cjs ← Fast headless CLI test suite asserting 11 topology edge cases
-│   ├── compute_resort_stats_from_trails.cjs ← Relation-scoped 3D resort stats from trails.db + trails/*.json
+│   ├── verify_topology_canary.cjs ← Fast headless CLI test suite asserting topology & Nordic network edge cases
+│   ├── compute_resort_stats_from_trails.cjs ← Relation-scoped downhill + Voronoi-connected Nordic 3D resort stats & trail sync
 │   ├── enrich_global_infobox_stats.cjs ← Global Wikipedia Infobox ski area & Wikidata P625 enrichment
 │   ├── strip_boilerplate_summaries.cjs ← Purges templated AI boilerplate blurbs from global_ski_areas.json
 │   └── export_global_touring_tiles.cjs ← Exports global 5°×5° backcountry touring tiles from trails.db

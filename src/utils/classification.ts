@@ -174,6 +174,8 @@ export function classifySkiFeature(
     category = 'heli_cat';
   } else if (p.category === 'touring' || p.archetype?.toLowerCase().includes('touring') || p.archetype?.toLowerCase().includes('backcountry')) {
     category = 'touring';
+  } else if (p.category === 'downhill' && !hasXcName) {
+    category = 'downhill';
   } else if (hasXcName && totalLifts <= 4) {
     category = 'nordic';
   } else if (nordicRuns > 0 && downhillRuns === 0) {

@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+### Fixed
+- **Voronoi-Bounded Connected Nordic Network Assignment & Disguised Alpine Resort Reclassification**:
+  - **What was wrong**:
+    1. *Unbounded OpenSkiData Nordic Flood-Fill vs. Tight Stadium Polygons*: OpenSkiData generated `resort_trails` for `piste:type=nordic` by locking polygon-mapped Olympic/World Cup stadiums inside their small concrete stadium fences while allowing neighboring un-polygon'd nodes to flood-fill across `50–80 km` of connected groomed corridors—leaving *Birkebeineren Ski- og Skiskytterstadion* (Lillehammer) at `1.9 km` (`1.2 mi`) next to *Sjusjøen* at `1,481.6 km` (`920.6 mi`), *Holmenkollen National Ski Arena* (Oslo) at `8.9 km`, and *Kincaid Park Cross Country Ski Trails* (Anchorage) at `null` while *APU Mahaffey* claimed `186.5 km` across Anchorage. In addition, `5,825` anonymous OpenSkiData cluster IDs (`62,333` links) in `resort_trails` blocked unclaimed trail fallback.
+    2. *Alpine Ski Resorts Misclassified as Nordic*: Several genuine lift-served downhill resorts (*Pyhätunturi - Luosto*, *Saariselkä*, *Mont Grand-Fonds*, *Plešivec*, *Zadní Telnice*, *Deštné v Orlických horách*, *Uvdal Alpinpark*, *Ski areál Severák*, *"Erste Berg" Masserberg*, *Lyžařský vlek Kubiška*) had been classified as `nordic` when regional cross-country corridors flooded their OpenSkiData run counts, putting alpine ski areas at the top of the Nordic leaderboard.
+  - **The fix**:
+    - Updated `scripts/compute_resort_stats_from_trails.cjs` and `src/utils/classification.ts` to reclassify disguised multi-lift/explicitly-named alpine ski areas back to `downhill`, filter `claimedByAnyResort` strictly to valid `global_ski_areas.json` IDs, and partition `piste:type=nordic` networks across `nordic` centers via **Voronoi-Bounded Connected-Network BFS** (`15 km` geodesic Voronoi radius, `250 m` trailhead/road-crossing connectivity so trails never jump across rivers/valleys into separate parks like *Nakkertok* $\to$ Gatineau Park, and excluding ungroomed `grooming=backcountry` forest routes unless local).
+    - Synchronized `public/data/trails/<id>.json` and `public/data/trails/manifest.json` for all Nordic centers so 3D map trail rendering matches directory network stats 1:1 (e.g., *Birkebeineren* `1.9 km` $\to$ `257.3 km`, *Sjusjøen* `1,481.6 km` $\to$ `390.7 km`, *Holmenkollen* `8.9 km` $\to$ `471.5 km`, *Kincaid Park* `null` $\to$ `76.0 km`, *APU Mahaffey* `186.5 km` $\to$ `25.0 km`, *Chiwawa Sno-Park* `12.6 km`).
+
 ### Feat
 - **Centered Initial 3D Globe on Colorado (`[-105.55, 39.0]`)**:
   - Updated `DEFAULT_NORTH_AMERICA_CENTER` in `src/camera/cameraUtils.ts` from central Kansas (`[-98, 40]`) to the geographic center of Colorado (`[-105.55, 39.0]`), so startup and global reset in 3D globe mode frame Colorado and the Western Cordillera directly.
